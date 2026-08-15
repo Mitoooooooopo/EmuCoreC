@@ -30,7 +30,7 @@ import androidx.compose.foundation.layout.statusBarsIgnoringVisibility
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ViewList
@@ -314,11 +314,13 @@ fun LibraryScreen(
                 }
             }
         } else if (layoutMode == LibraryLayoutMode.LIST) {
-            items(uiState.items, key = { it.titleId }) { game ->
+            itemsIndexed(uiState.items, key = { _, game -> game.titleId }) { index, game ->
                 val selectGameClick = rememberDebouncedClick { onLaunchGame(game.titleId) }
                 val shape = RoundedCornerShape(24.dp)
                 var menuExpanded by remember(game.titleId) { mutableStateOf(false) }
-                Box {
+                Box(
+                    modifier = if (index == 0) Modifier.padding(top = (-7).dp) else Modifier
+                ) {
                     Surface(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -467,12 +469,14 @@ fun LibraryScreen(
                 }
             }
         } else {
-            items(
+            itemsIndexed(
                 items = uiState.items.chunked(gridColumns),
-                key = { row -> row.firstOrNull()?.titleId ?: row.hashCode().toString() }
-            ) { rowItems ->
+                key = { _, row -> row.firstOrNull()?.titleId ?: row.hashCode().toString() }
+            ) { index, rowItems ->
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .then(if (index == 0) Modifier.padding(top = (-7).dp) else Modifier),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     rowItems.forEach { game ->
@@ -697,6 +701,7 @@ private fun LibraryGameArtwork(
         }
     }
 }
+
 
 
 
