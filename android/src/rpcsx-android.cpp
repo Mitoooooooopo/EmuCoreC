@@ -4534,22 +4534,6 @@ static bool installIso(JNIEnv *env, fs::file &&file, jlong progressId) {
     progress.report(processedBytes, totalBytes);
   }
 
-  // Precompile the game before it can be booted. Without this the first
-  // boot runs the modules on the interpreter while LLVM compiles them in
-  // the background, and a big title looks stuck (GTA SA's unpacking
-  // counter never moved past 0/570 while the EBOOT was still interpreted).
-  // This is safe here for the same reason the firmware precompile is:
-  // installs run with the emulator stopped, before any game has booted, so
-  // the compilation queue's state setup (vm::init, progress dialog server,
-  // main_ppu_module) happens exactly once.
-  const std::string ebootPath =
-      destinationPath.string() + "/PS3_GAME/USRDIR/EBOOT.BIN";
-  if (fs::is_file(ebootPath)) {
-    rpcsx_android.notice("installIso: queuing %s for precompilation",
-                         ebootPath);
-    g_compilationQueue.push(progress, ebootPath);
-  }
-
   return true;
 }
 
