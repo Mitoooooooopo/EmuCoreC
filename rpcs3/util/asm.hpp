@@ -186,6 +186,15 @@ namespace utils
 #endif
 	}
 
+	inline void wait_for_event()
+	{
+#if defined(ARCH_ARM64)
+		__asm__ volatile("sevl\n\twfe\n\twfe" ::: "memory");
+#else
+		pause();
+#endif
+	}
+
 	// The hardware clock on many arm timers run south of 100mhz
 	// and the busy waits in RPCS3 were written assuming an x86 machine
 	// with hardware timers that run around 3GHz.

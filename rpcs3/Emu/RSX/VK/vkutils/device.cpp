@@ -1,6 +1,7 @@
 #include "device.h"
 #include "instance.h"
 #include "util/logs.hpp"
+#include "Utilities/File.h"
 #include "Emu/system_config.h"
 #include <vulkan/vulkan_core.h>
 #ifdef __APPLE__
@@ -81,11 +82,12 @@ namespace vk
 			features2.pNext         = &device_fault_info;
 		}
 
-		if (device_extensions.is_supported(VK_EXT_MULTI_DRAW_EXTENSION_NAME))
+		VkPhysicalDeviceExtendedDynamicStateFeaturesEXT extended_dynamic_state_info{};
+		if (device_extensions.is_supported(VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME))
 		{
-			multidraw_info.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_FEATURES_EXT;
-			multidraw_info.pNext = features2.pNext;
-			features2.pNext      = &multidraw_info;
+			extended_dynamic_state_info.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT;
+			extended_dynamic_state_info.pNext = features2.pNext;
+			features2.pNext                   = &extended_dynamic_state_info;
 		}
 
 		vkGetPhysicalDeviceFeatures2(dev, &features2);
@@ -104,6 +106,7 @@ namespace vk
 		optional_features_support.barycentric_coords  = !!shader_barycentric_info.fragmentShaderBarycentric;
 		optional_features_support.framebuffer_loops   = !!fbo_loops_info.attachmentFeedbackLoopLayout;
 		optional_features_support.extended_device_fault = !!device_fault_info.deviceFault;
+		optional_features_support.extended_dynamic_state = !!extended_dynamic_state_info.extendedDynamicState;
 
 		features = features2.features;
 
@@ -121,6 +124,7 @@ namespace vk
 		optional_features_support.shader_stencil_export    = device_extensions.is_supported(VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME);
 		optional_features_support.conditional_rendering    = device_extensions.is_supported(VK_EXT_CONDITIONAL_RENDERING_EXTENSION_NAME);
 		optional_features_support.external_memory_host     = device_extensions.is_supported(VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME);
+		optional_features_support.memory_budget            = device_extensions.is_supported(VK_EXT_MEMORY_BUDGET_EXTENSION_NAME);
 		optional_features_support.synchronization_2        = device_extensions.is_supported(VK_KHR_SYNCHRONIZATION_2_EXTENSION_NAME);
 		optional_features_support.unrestricted_depth_range = device_extensions.is_supported(VK_EXT_DEPTH_RANGE_UNRESTRICTED_EXTENSION_NAME);
 #ifdef __APPLE__
@@ -270,6 +274,16 @@ namespace vk
 			// Disable fp16 if driver uses LLVM emitter. It does fine with AMD proprietary drivers though.
 			shader_types_support.allow_float16 = (driver_properties.driverID == VK_DRIVER_ID_AMD_PROPRIETARY_KHR);
 		}
+
+		constexpr u32 s_adreno_fp16_min_driver = (512u << 22) | (676u << 12) | 53u; // 512.676.53
+		const bool adreno_fp16_ok = is_ADRENO(get_driver_vendor()) &&
+			props.driverVersion >= s_adreno_fp16_min_driver;
+
+		if (!adreno_fp16_ok && is_MOBILE(get_driver_vendor()) && shader_types_support.allow_float16)
+		{
+			rsx_log.warning("Mobile GPU: disabling native float16 shader types (driver shader compiler rejects them).");
+			shader_types_support.allow_float16 = false;
+		}
 	}
 
 	std::string physical_device::get_name() const
@@ -347,6 +361,26 @@ namespace vk
 				return driver_vendor::ARM_MALI;
 			}
 
+			if (gpu_name.find("Turnip") != umax)
+			{
+				return driver_vendor::TURNIP;
+			}
+
+			if (gpu_name.find("Adreno") != umax)
+			{
+				return driver_vendor::ADRENO;
+			}
+
+			if (gpu_name.find("PowerVR") != umax || gpu_name.find("Imagination") != umax)
+			{
+				return driver_vendor::POWERVR;
+			}
+
+			if (gpu_name.find("Xclipse") != umax || gpu_name.find("Samsung") != umax)
+			{
+				return driver_vendor::XCLIPSE;
+			}
+
 			return driver_vendor::unknown;
 		}
 		else
@@ -378,8 +412,20 @@ namespace vk
 				return driver_vendor::PANVK;
 			case VK_DRIVER_ID_ARM_PROPRIETARY:
 				return driver_vendor::ARM_MALI;
+			case VK_DRIVER_ID_QUALCOMM_PROPRIETARY:
+				return driver_vendor::ADRENO;
+			case VK_DRIVER_ID_MESA_TURNIP:
+				return driver_vendor::TURNIP;
+			case VK_DRIVER_ID_IMAGINATION_PROPRIETARY:
+			case VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA:
+				return driver_vendor::POWERVR;
+			case VK_DRIVER_ID_SAMSUNG_PROPRIETARY:
+				return driver_vendor::XCLIPSE;
+			case VK_DRIVER_ID_BROADCOM_PROPRIETARY:
+				return driver_vendor::BROADCOM;
+			case VK_DRIVER_ID_VERISILICON_PROPRIETARY:
+				return driver_vendor::VERISILICON;
 			default:
-				// Mobile?
 				return driver_vendor::unknown;
 			}
 		}
@@ -545,6 +591,11 @@ namespace vk
 			requested_extensions.push_back(VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME);
 		}
 
+		if (pgpu->optional_features_support.memory_budget)
+		{
+			requested_extensions.push_back(VK_EXT_MEMORY_BUDGET_EXTENSION_NAME);
+		}
+
 		if (pgpu->optional_features_support.shader_stencil_export)
 		{
 			requested_extensions.push_back(VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME);
@@ -568,6 +619,11 @@ namespace vk
 		if (pgpu->optional_features_support.extended_device_fault)
 		{
 			requested_extensions.push_back(VK_EXT_DEVICE_FAULT_EXTENSION_NAME);
+		}
+
+		if (pgpu->optional_features_support.extended_dynamic_state)
+		{
+			requested_extensions.push_back(VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME);
 		}
 		
 #ifdef __APPLE__
@@ -811,6 +867,15 @@ namespace vk
 			device.pNext = &conditional_rendering_info;
 		}
 
+		VkPhysicalDeviceExtendedDynamicStateFeaturesEXT extended_dynamic_state_info{};
+		if (pgpu->optional_features_support.extended_dynamic_state)
+		{
+			extended_dynamic_state_info.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT;
+			extended_dynamic_state_info.pNext = const_cast<void*>(device.pNext);
+			extended_dynamic_state_info.extendedDynamicState = VK_TRUE;
+			device.pNext = &extended_dynamic_state_info;
+		}
+
 		VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR shader_barycentric_info{};
 		if (pgpu->optional_features_support.barycentric_coords)
 		{
@@ -845,6 +910,8 @@ namespace vk
 		memory_map = vk::get_memory_mapping(pdev);
 		m_formats_support = vk::get_optimal_tiling_supported_formats(pdev);
 
+		load_pipeline_cache();
+
 		if (g_cfg.video.disable_vulkan_mem_allocator)
 		{
 			m_allocator = std::make_unique<vk::mem_allocator_vk>(*this, pdev);
@@ -874,11 +941,148 @@ namespace vk
 				m_allocator.reset();
 			}
 
+			save_and_destroy_pipeline_cache();
+
 			vkDestroyDevice(dev, nullptr);
 			dev = nullptr;
 			memory_map = {};
 			m_formats_support = {};
 		}
+	}
+
+	namespace
+	{
+		struct pipeline_cache_disk_header
+		{
+			u32 length;   // sizeof(header), guards against layout drift
+			u32 version;
+			u32 vendorID;
+			u32 deviceID;
+			u8 uuid[VK_UUID_SIZE];
+		};
+
+		constexpr u32 k_pipeline_cache_disk_version = 1;
+	}
+
+	std::string render_device::get_pipeline_cache_path() const
+	{
+		return fs::get_cache_dir() + "vk_pipeline_cache.bin";
+	}
+
+	void render_device::load_pipeline_cache()
+	{
+		m_pipeline_cache = VK_NULL_HANDLE;
+		m_pipeline_cache_saved_size = 0;
+
+		std::vector<u8> initial_data;
+
+		if (fs::file f{ get_pipeline_cache_path(), fs::read })
+		{
+			const u64 file_size = f.size();
+
+			if (file_size > sizeof(pipeline_cache_disk_header) && file_size < (256ull << 20))
+			{
+				std::vector<u8> blob(file_size);
+				if (f.read(blob.data(), file_size) == file_size)
+				{
+					pipeline_cache_disk_header hdr{};
+					std::memcpy(&hdr, blob.data(), sizeof(hdr));
+
+					const auto& props = pgpu->props;
+					const bool header_ok =
+						hdr.length == sizeof(pipeline_cache_disk_header) &&
+						hdr.version == k_pipeline_cache_disk_version &&
+						hdr.vendorID == props.vendorID &&
+						hdr.deviceID == props.deviceID &&
+						std::memcmp(hdr.uuid, props.pipelineCacheUUID, VK_UUID_SIZE) == 0;
+
+					if (header_ok)
+					{
+						initial_data.assign(blob.begin() + sizeof(pipeline_cache_disk_header), blob.end());
+					}
+					else
+					{
+						rsx_log.notice("vk: on-disk pipeline cache rejected (driver or device changed); rebuilding.");
+					}
+				}
+			}
+		}
+
+		VkPipelineCacheCreateInfo create_info{};
+		create_info.sType = VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO;
+		create_info.initialDataSize = initial_data.size();
+		create_info.pInitialData = initial_data.empty() ? nullptr : initial_data.data();
+
+		VkPipelineCache cache = VK_NULL_HANDLE;
+		const VkResult res = vkCreatePipelineCache(dev, &create_info, nullptr, &cache);
+
+		if (res == VK_SUCCESS && cache != VK_NULL_HANDLE)
+		{
+			m_pipeline_cache = cache;
+			rsx_log.notice("vk: driver pipeline cache active (seeded with %zu bytes).", initial_data.size());
+		}
+		else
+		{
+			rsx_log.warning("vk: vkCreatePipelineCache failed (0x%x); continuing without a driver pipeline cache.", static_cast<u32>(res));
+		}
+	}
+
+	void render_device::save_pipeline_cache() const
+	{
+		if (m_pipeline_cache == VK_NULL_HANDLE)
+		{
+			return;
+		}
+
+		usz data_size = 0;
+		if (vkGetPipelineCacheData(dev, m_pipeline_cache, &data_size, nullptr) != VK_SUCCESS || !data_size)
+		{
+			return;
+		}
+
+		if (data_size == m_pipeline_cache_saved_size)
+		{
+			return;
+		}
+
+		std::vector<u8> blob(data_size);
+		if (vkGetPipelineCacheData(dev, m_pipeline_cache, &data_size, blob.data()) != VK_SUCCESS)
+		{
+			return;
+		}
+
+		blob.resize(data_size);
+
+		pipeline_cache_disk_header hdr{};
+		hdr.length = sizeof(pipeline_cache_disk_header);
+		hdr.version = k_pipeline_cache_disk_version;
+		hdr.vendorID = pgpu->props.vendorID;
+		hdr.deviceID = pgpu->props.deviceID;
+		std::memcpy(hdr.uuid, pgpu->props.pipelineCacheUUID, VK_UUID_SIZE);
+
+		fs::create_path(fs::get_cache_dir());
+
+		if (fs::file out{get_pipeline_cache_path(), fs::rewrite})
+		{
+			if (out.write(&hdr, sizeof(hdr)) == sizeof(hdr) &&
+				(blob.empty() || out.write(blob.data(), blob.size()) == blob.size()))
+			{
+				m_pipeline_cache_saved_size = data_size;
+			}
+		}
+	}
+
+	void render_device::save_and_destroy_pipeline_cache()
+	{
+		if (m_pipeline_cache == VK_NULL_HANDLE)
+		{
+			return;
+		}
+
+		save_pipeline_cache();
+
+		vkDestroyPipelineCache(dev, m_pipeline_cache, nullptr);
+		m_pipeline_cache = VK_NULL_HANDLE;
 	}
 
 	const VkFormatProperties render_device::get_format_properties(VkFormat format) const

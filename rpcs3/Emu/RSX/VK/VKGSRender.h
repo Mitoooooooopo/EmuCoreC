@@ -190,6 +190,7 @@ private:
 	rsx::invalidation_cause m_offloader_fault_cause;
 
 	vk::draw_call_t m_current_draw {};
+	VkPrimitiveTopology m_current_primitive_topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
 	u64 m_current_renderpass_key = 0;
 	VkRenderPass m_cached_renderpass = VK_NULL_HANDLE;
 	std::vector<vk::image*> m_fbo_images;
@@ -237,6 +238,7 @@ private:
 	void invalidate_render_pass();
 
 	void update_draw_state();
+	void set_extended_dynamic_state();
 	void check_present_status();
 
 	vk::vertex_upload_info upload_vertex_data();

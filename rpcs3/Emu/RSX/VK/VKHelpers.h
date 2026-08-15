@@ -122,6 +122,9 @@ namespace vk
 	void leave_uninterruptible();
 	bool is_uninterruptible();
 
+	bool is_last_ditch_eviction();
+	void set_last_ditch_eviction(bool state);
+
 	void advance_completed_frame_counter();
 	void advance_frame_counter();
 	u64 get_current_frame_id();

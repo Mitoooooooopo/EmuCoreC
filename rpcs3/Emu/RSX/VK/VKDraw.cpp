@@ -11,6 +11,9 @@
 
 namespace vk
 {
+	VkFrontFace get_front_face(rsx::front_face ffv);
+	VkCullModeFlags get_cull_face(rsx::cull_face cfv);
+
 	VkImageViewType get_view_type(rsx::texture_dimension_extended type)
 	{
 		switch (type)
@@ -153,6 +156,29 @@ void VKGSRender::invalidate_render_pass()
 		m_current_renderpass_key = key;
 		m_cached_renderpass = VK_NULL_HANDLE;
 	}
+}
+
+void VKGSRender::set_extended_dynamic_state()
+{
+	_vkCmdSetPrimitiveTopologyEXT(*m_current_command_buffer, m_current_primitive_topology);
+
+	_vkCmdSetCullModeEXT(*m_current_command_buffer,
+		rsx::method_registers.cull_face_enabled()
+			? vk::get_cull_face(rsx::method_registers.cull_face_mode())
+			: VK_CULL_MODE_NONE);
+
+	_vkCmdSetFrontFaceEXT(*m_current_command_buffer,
+		vk::get_front_face(rsx::method_registers.front_face_mode()));
+
+	const bool depth_test_enabled = rsx::method_registers.depth_test_enabled();
+
+	_vkCmdSetDepthTestEnableEXT(*m_current_command_buffer, depth_test_enabled ? VK_TRUE : VK_FALSE);
+
+	_vkCmdSetDepthWriteEnableEXT(*m_current_command_buffer,
+		(depth_test_enabled && rsx::method_registers.depth_write_enabled()) ? VK_TRUE : VK_FALSE);
+
+	_vkCmdSetDepthCompareOpEXT(*m_current_command_buffer,
+		depth_test_enabled ? vk::get_compare_func(rsx::method_registers.depth_func()) : VK_COMPARE_OP_NEVER);
 }
 
 void VKGSRender::update_draw_state()
@@ -1091,6 +1117,11 @@ void VKGSRender::emit_geometry(u32 sub_index)
 	// Bind both pipe and descriptors in one go
 	// FIXME: We only need to rebind the pipeline when reload state is set. Flags?
 	m_program->bind(*m_current_command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS);
+
+	if (m_device->get_extended_dynamic_state_support())
+	{
+		set_extended_dynamic_state();
+	}
 
 	if (reload_state)
 	{

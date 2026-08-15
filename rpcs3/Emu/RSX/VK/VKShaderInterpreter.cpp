@@ -751,6 +751,11 @@ namespace vk
 		base_props.state.set_depth_mask(true);
 		pipe_properties.push_back(base_props);
 
+		for (auto& props : pipe_properties)
+		{
+			vk::normalize_dynamic_pipeline_state(props);
+		}
+
 		const auto variants = program_common::interpreter::get_interpreter_variants();
 		const u32 limit1 = ::size32(variants.base_pipelines) * ::size32(pipe_properties);
 		const u32 limit2 = ::size32(variants.pipelines) * ::size32(pipe_properties);

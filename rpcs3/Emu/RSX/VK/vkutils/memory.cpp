@@ -3,6 +3,8 @@
 
 namespace
 {
+	static constexpr u64 GIGABYTE = 0x40000000ull;
+
 	// Copied from rsx_utils.h. Move to a more convenient location
 	template<typename T, typename U>
 	static inline T align2(T value, U alignment)
@@ -13,6 +15,9 @@ namespace
 
 namespace vk
 {
+	bool is_last_ditch_eviction();
+	void set_last_ditch_eviction(bool state);
+
 	memory_type_info::memory_type_info(u32 index, u64 size)
 	{
 		push(index, size);
@@ -196,6 +201,16 @@ namespace vk
 			allocatorInfo.pHeapSizeLimit = heap_limits.data();
 		}
 
+		if (dev.get_memory_budget_support())
+		{
+			allocatorInfo.flags |= VMA_ALLOCATOR_CREATE_EXT_MEMORY_BUDGET_BIT;
+		}
+		else
+		{
+			rsx_log.warning("VK_EXT_memory_budget is unavailable. Video memory pressure will be "
+				"judged against the heap size rather than what the driver will actually part with.");
+		}
+
 		CHECK_RESULT(vmaCreateAllocator(&allocatorInfo, &m_allocator));
 
 		// Allow fastest possible allocation on start
@@ -275,6 +290,31 @@ namespace vk
 					vmm_notify_memory_allocated(vma_alloc, type, request.size, request.pool);
 					return vma_alloc;
 				}
+			}
+		}
+
+		const bool last_ditch_recovered = [&]()
+		{
+			if (!request.recover_vmem_on_fail || error_code != VK_ERROR_OUT_OF_DEVICE_MEMORY)
+			{
+				return false;
+			}
+
+			vk::set_last_ditch_eviction(true);
+			const bool relieved = vmm_handle_memory_pressure(rsx::problem_severity::fatal);
+			vk::set_last_ditch_eviction(false);
+			return relieved;
+		}();
+
+		if (last_ditch_recovered)
+		{
+			const auto [status, type] = do_vma_alloc();
+			if (status == VK_SUCCESS)
+			{
+				rsx_log.error("Renderer ran out of video memory and recovered only by evicting everything it could. "
+					"A visual glitch here is expected, and is the alternative to the renderer dying.");
+				vmm_notify_memory_allocated(vma_alloc, type, request.size, request.pool);
+				return vma_alloc;
 			}
 		}
 

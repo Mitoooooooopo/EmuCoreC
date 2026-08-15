@@ -50,6 +50,13 @@ namespace vk
 		}
 	};
 
+	// Topology to build the pipeline object with. Identity unless VK_EXT_extended_dynamic_state
+	// is live, in which case only the topology CLASS survives.
+	VkPrimitiveTopology get_pipeline_topology(VkPrimitiveTopology topology, VkBool32 primitive_restart);
+
+	// Strip the states the draw path now sets per draw out of the pipeline identity.
+	void normalize_dynamic_pipeline_state(pipeline_props& props);
+
 	class pipe_compiler
 	{
 	public:

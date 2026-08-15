@@ -3,6 +3,7 @@
 #include "nv47_sync.hpp"
 
 #include "Emu/RSX/RSXThread.h"
+#include "util/sysinfo.hpp"
 
 #include "context_accessors.define.h"
 
@@ -50,8 +51,35 @@ namespace rsx
 			u64 start = get_system_time();
 			u64 last_check_val = start;
 
-			while (sema != arg)
+			// Kept for the timeout log: lets a report distinguish a semaphore that
+			// changed after we started waiting from one that never moved at all.
+			const u32 first_observed = static_cast<u32>(sema);
+
+			// The exclusive-load wait below faults on an unaligned address; the
+			// release side ignores unaligned semaphores, so mirror that here and
+			// fall back to a plain paced wait instead of the armed one.
+			const bool aligned = (addr % 4) == 0;
+
+			if (!aligned)
 			{
+				rsx_log.warning("NV406E semaphore acquire is using an unaligned semaphore; using unmonitored waits. (address=0x%x)", addr);
+			}
+
+#if defined(ARCH_ARM64)
+			u64 spin_budget = 0;
+			// Whether wait_for_event() below has a bounded wake on this kernel.
+			const bool has_event_stream = utils::has_wfe_event_stream();
+#endif
+
+			while (true)
+			{
+				const RsxSemaphore observed = atomic_sema.observe();
+
+				if (observed == arg)
+				{
+					break;
+				}
+
 				if (RSX(ctx)->test_stopped())
 				{
 					RSX(ctx)->state += cpu_flag::again;
@@ -64,7 +92,7 @@ namespace rsx
 
 					if (current - last_check_val > 20'000)
 					{
-						// Suspicious amnount of time has passed
+						// Suspicious amount of time has passed
 						// External pause such as debuggers' pause or operating system sleep may have taken place
 						// Ignore it
 						start += current - last_check_val;
@@ -74,8 +102,10 @@ namespace rsx
 
 					if ((current - start) > tdr)
 					{
-						// If longer than driver timeout force exit
-						rsx_log.error("nv406e::semaphore_acquire has timed out. semaphore_address=0x%X", addr);
+						// If longer than driver timeout force exit. first/last observed
+						// let a report distinguish a value that changed during the wait
+						// from one that never moved
+						rsx_log.error("nv406e::semaphore_acquire has timed out. semaphore_address=0x%X, awaited=0x%X, first_observed=0x%X, last_observed=0x%X", addr, arg, first_observed, static_cast<u32>(observed));
 						break;
 					}
 				}
@@ -89,8 +119,27 @@ namespace rsx
 
 				RSX(ctx)->on_semaphore_acquire_wait();
 
+#if defined(ARCH_ARM64)
+				if (++spin_budget > 500)
+				{
+					if (has_event_stream)
+					{
+						utils::wait_for_event();
+					}
+					else
+					{
+						std::this_thread::sleep_for(std::chrono::microseconds(100));
+					}
+				}
+
+				if (!aligned)
+				{
+					utils::pause();
+					continue;
+				}
+#endif
 				// Wait until the value changes or until 100us pass.
-				utils::spin_on_cacheline_once(atomic_sema, sema, 100);
+				utils::spin_on_cacheline_once(atomic_sema, observed, 100);
 			}
 
 			RSX(ctx)->fifo_wake_delay();

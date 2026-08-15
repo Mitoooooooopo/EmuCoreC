@@ -56,6 +56,7 @@ namespace utils
 	bool has_um_wait();
 #ifdef ARCH_ARM64
 	bool has_neon();
+	bool has_wfe_event_stream();
 
 	bool has_sha3();
 
@@ -98,6 +99,8 @@ namespace utils
 	bool get_low_power_mode();
 
 	u64 get_total_memory();
+
+	u64 get_avail_memory();
 
 	u32 get_thread_count();
 

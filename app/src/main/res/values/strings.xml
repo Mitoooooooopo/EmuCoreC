@@ -372,7 +372,7 @@
     <string name="settings_play_store_profile_desc">See more Android apps from the developer.</string>
     <string name="settings_core_source_code">Core Source Code</string>
     <string name="settings_core_source_description">EmuCoreC uses its own Android interface. Only the emulation core is based on RPCS3.</string>
-    <string name="settings_rpcsx_repository_desc">Open the upstream RPCS3 project repository.</string>
+    <string name="settings_rpcsx_repository_desc">Open the original RPCS3 project repository.</string>
     <string name="settings_updates_version_label">Version</string>
     <string name="settings_updates_open_release">Open release page</string>
     <string name="settings_updates_release_notes_title">What’s new</string>

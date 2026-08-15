@@ -101,7 +101,9 @@ namespace vk
 			bool conditional_rendering = false;
 			bool debug_utils = false;
 			bool external_memory_host = false;
+			bool extended_dynamic_state = false;
 			bool framebuffer_loops = false;
+			bool memory_budget = false;
 			bool shader_stencil_export = false;
 			bool surface_capabilities_2 = false;
 			bool synchronization_2 = false;
@@ -163,6 +165,14 @@ namespace vk
 			const std::vector<const char*>& requested_extensions,
 			const VkPhysicalDeviceFeatures& requested_features) const;
 
+		VkPipelineCache m_pipeline_cache = VK_NULL_HANDLE;
+		mutable usz m_pipeline_cache_saved_size = 0;
+
+		std::string get_pipeline_cache_path() const;
+		void load_pipeline_cache();
+		void save_pipeline_cache() const;
+		void save_and_destroy_pipeline_cache();
+
 	public:
 		render_device() = default;
 		~render_device() = default;
@@ -198,8 +208,10 @@ namespace vk
 		bool get_anisotropic_filtering_support() const { return pgpu->features.samplerAnisotropy != VK_FALSE; }
 		bool get_wide_lines_support() const { return pgpu->features.wideLines != VK_FALSE; }
 		bool get_conditional_render_support() const { return pgpu->optional_features_support.conditional_rendering; }
+		bool get_extended_dynamic_state_support() const { return pgpu->optional_features_support.extended_dynamic_state; }
 		bool get_unrestricted_depth_range_support() const { return pgpu->optional_features_support.unrestricted_depth_range; }
 		bool get_external_memory_host_support() const { return pgpu->optional_features_support.external_memory_host; }
+		bool get_memory_budget_support() const { return pgpu->optional_features_support.memory_budget; }
 		bool get_surface_capabilities_2_support() const { return pgpu->optional_features_support.surface_capabilities_2; }
 		bool get_debug_utils_support() const { return g_cfg.video.renderdoc_compatiblity && pgpu->optional_features_support.debug_utils; }
 		bool get_framebuffer_loops_support() const { return pgpu->optional_features_support.framebuffer_loops; }
@@ -219,6 +231,7 @@ namespace vk
 		u32 get_transfer_queue_family() const { return m_transfer_queue_family; }
 
 		mem_allocator_base* get_allocator() const { return m_allocator.get(); }
+		VkPipelineCache get_pipeline_cache() const { return m_pipeline_cache; }
 
 		operator VkDevice() const { return dev; }
 	};

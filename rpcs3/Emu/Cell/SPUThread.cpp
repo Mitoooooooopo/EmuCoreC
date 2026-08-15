@@ -1563,6 +1563,13 @@ void spu_thread::cpu_task()
 				continue;
 			}
 
+			if (interp_fallback) [[unlikely]]
+			{
+				allow_interrupts_in_cpu_work = true;
+				spu_recompiler_base::old_interpreter(*this, _ptr<u8>(0), nullptr);
+				continue;
+			}
+
 			spu_runtime::g_gateway(*this, _ptr<u8>(0), nullptr);
 		}
 
@@ -4323,6 +4330,7 @@ bool spu_thread::process_mfc_cmd()
 								// Seemingly not
 								getllar_busy_waiting_switch = umax;
 								getllar_spin_count = 0;
+								getllar_outbuf_hits = 0;
 								return true;
 							}
 
@@ -4330,16 +4338,29 @@ bool spu_thread::process_mfc_cmd()
 							{
 								getllar_busy_waiting_switch = umax;
 								getllar_spin_count = 0;
+								getllar_outbuf_hits = 0;
 								return true;
 							}
 
 							// Check if LSA points to an OUT buffer on the stack from a caller - unlikely to be a loop
 							if (last_getllar_lsa >= SPU_LS_SIZE - 0x10000 && last_getllar_lsa > last_getllar_gpr1)
 							{
-								auto cs = dump_callstack_list();
+								const u32 cur_sp = gpr[1]._u32[3];
+								const u32 cur_lr = gpr[0]._u32[3];
 
-								if (!cs.empty() && last_getllar_lsa > cs[0].second)
+								if (pc != getllar_cs_pc || cur_sp != getllar_cs_sp || cur_lr != getllar_cs_lr)
 								{
+									getllar_cs_pc = pc;
+									getllar_cs_sp = cur_sp;
+									getllar_cs_lr = cur_lr;
+									const auto cs = dump_callstack_list();
+									getllar_cs_first = cs.empty() ? umax : cs[0].second;
+								}
+
+								if (getllar_cs_first != umax && last_getllar_lsa > getllar_cs_first &&
+									getllar_outbuf_hits < 32)
+								{
+									getllar_outbuf_hits++;
 									getllar_busy_waiting_switch = umax;
 									getllar_spin_count = 0;
 									return true;

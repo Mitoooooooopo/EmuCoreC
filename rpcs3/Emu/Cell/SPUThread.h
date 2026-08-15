@@ -791,6 +791,10 @@ public:
 
 	std::unique_ptr<class spu_recompiler_base> jit; // Recompiler instance
 
+	bool interp_fallback = false;
+	u32 interp_fallback_begin = 0;
+	u32 interp_fallback_end = 0;
+
 	u64 block_counter = 0;
 	u64 block_recover = 0;
 	u64 block_failure = 0;
@@ -810,6 +814,11 @@ public:
 	u32 last_getllar_gpr1 = umax;
 	u32 last_getllar_addr = umax;
 	u32 last_getllar_lsa = umax;
+	u32 getllar_cs_pc = umax;
+	u32 getllar_cs_sp = umax;
+	u32 getllar_cs_lr = umax;
+	u32 getllar_cs_first = umax;
+	u32 getllar_outbuf_hits = 0;
 	u32 getllar_spin_count = 0;
 	u32 getllar_busy_waiting_switch = umax; // umax means the test needs evaluation, otherwise it's a boolean
 	u64 getllar_evaluate_time = 0;

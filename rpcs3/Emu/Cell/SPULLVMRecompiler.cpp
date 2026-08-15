@@ -1655,7 +1655,7 @@ public:
 			// Wait for the duplicate
 			while (!add_loc->compiled)
 			{
-				add_loc->compiled.wait(nullptr);
+				add_loc->compiled.wait(nullptr, atomic_wait_timeout{10'000'000});
 			}
 
 			return add_loc->compiled;
@@ -1686,6 +1686,7 @@ public:
 
 #ifdef ARCH_ARM64
 		m_use_tbl2 = !g_spu_llvm_compile_context || g_spu_llvm_compile_context->use_tbl2;
+		m_use_fma = !g_spu_llvm_compile_context || g_spu_llvm_compile_context->use_fma;
 
 		if (g_spu_llvm_compile_context)
 		{

@@ -1021,7 +1021,18 @@ void VKGSRender::on_semaphore_acquire_wait()
 
 bool VKGSRender::on_vram_exhausted(rsx::problem_severity severity)
 {
-	ensure(!vk::is_uninterruptible() && rsx::get_current_renderer()->is_current_thread());
+	ensure(rsx::get_current_renderer()->is_current_thread());
+
+	if (vk::is_uninterruptible() && !vk::is_last_ditch_eviction())
+	{
+		const auto safe_severity = std::min(severity, rsx::problem_severity::severe);
+		const bool relieved = m_texture_cache.handle_memory_pressure(safe_severity);
+
+		rsx_log.warning("Video memory pressure while uninterruptible: %s without a hard sync.",
+			relieved ? "released some resources" : "found nothing to release");
+
+		return relieved;
+	}
 
 	bool texture_cache_relieved = false;
 	if (severity >= rsx::problem_severity::fatal)
@@ -1793,8 +1804,9 @@ bool VKGSRender::load_program()
 {
 	const auto shadermode = g_cfg.video.shadermode.get();
 
-	// TODO: EXT_dynamic_state should get rid of this sillyness soon (kd)
 	const auto vertex_state = vk::decode_vertex_input_assembly_state();
+	const auto pipeline_topology = vk::get_pipeline_topology(vertex_state.primitive, vertex_state.restart_index_enabled);
+	m_current_primitive_topology = vertex_state.primitive;
 
 	if (m_graphics_state & rsx::pipeline_state::invalidate_pipeline_bits)
 	{
@@ -1807,7 +1819,7 @@ bool VKGSRender::load_program()
 	}
 	else if (!(m_graphics_state & rsx::pipeline_state::pipeline_config_dirty) &&
 		m_program &&
-		m_pipeline_properties.state.ia.topology == vertex_state.primitive &&
+		m_pipeline_properties.state.ia.topology == pipeline_topology &&
 		m_pipeline_properties.state.ia.primitiveRestartEnable == vertex_state.restart_index_enabled)
 	{
 		if (!m_shader_interpreter.is_interpreter(m_program)) [[ likely ]]
@@ -1854,14 +1866,16 @@ bool VKGSRender::load_program()
 
 		// Fallthrough
 		m_pipeline_properties = properties;
+		vk::normalize_dynamic_pipeline_state(m_pipeline_properties);
 		m_graphics_state.clear(rsx::pipeline_state::pipeline_config_dirty);
 	}
 	else
 	{
 		// Update primitive type and restart index. Note that this is not needed with EXT_dynamic_state
-		m_pipeline_properties.state.set_primitive_type(vertex_state.primitive);
+		m_pipeline_properties.state.set_primitive_type(pipeline_topology);
 		m_pipeline_properties.state.enable_primitive_restart(vertex_state.restart_index_enabled);
 		m_pipeline_properties.renderpass_key = m_current_renderpass_key;
+		vk::normalize_dynamic_pipeline_state(m_pipeline_properties);
 	}
 
 	m_vertex_prog = nullptr;

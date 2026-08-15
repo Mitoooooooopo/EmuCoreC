@@ -284,6 +284,18 @@ namespace vk
 		clear_status_interrupt(runtime_state::uninterruptible);
 	}
 
+	static thread_local bool g_last_ditch_eviction = false;
+
+	bool is_last_ditch_eviction()
+	{
+		return g_last_ditch_eviction;
+	}
+
+	void set_last_ditch_eviction(bool state)
+	{
+		g_last_ditch_eviction = state;
+	}
+
 	bool is_uninterruptible()
 	{
 		return test_status_interrupt(runtime_state::uninterruptible);

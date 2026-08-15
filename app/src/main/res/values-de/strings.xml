@@ -254,7 +254,7 @@
     <string name="settings_about_support">Unterstütze EmuCoreC</string>
     <string name="settings_about_support_desc">Hilf durch eine Patreon-Mitgliedschaft, die Entwicklung fortzusetzen.</string>
     <string name="settings_play_store_profile_desc">Weitere Android-Apps vom Entwickler ansehen.</string>
-    <string name="settings_rpcsx_repository_desc">Das Upstream-RPCS3-Projekt-Repository öffnen.</string>
+    <string name="settings_rpcsx_repository_desc">Das originale RPCS3-Projekt-Repository öffnen.</string>
     <string name="settings_updates_version_label">Version</string>
     <string name="settings_updates_open_release">Release-Seite öffnen</string>
     <string name="settings_updates_release_notes_title">Was ist neu</string>

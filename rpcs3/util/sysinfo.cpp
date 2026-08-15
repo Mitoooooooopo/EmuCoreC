@@ -391,6 +391,19 @@ bool utils::has_neon()
 	return g_value;
 }
 
+bool utils::has_wfe_event_stream()
+{
+	static const bool g_value = []() -> bool
+	{
+#if defined(__linux__) || defined(__ANDROID__)
+		return (getauxval(AT_HWCAP) & HWCAP_EVTSTRM) != 0;
+#else
+		return true;
+#endif
+	}();
+	return g_value;
+}
+
 bool utils::has_sha3()
 {
 	static const bool g_value = []() -> bool
@@ -1104,6 +1117,27 @@ u64 utils::get_total_memory()
 #else
 	return ::sysconf(_SC_PHYS_PAGES) * ::sysconf(_SC_PAGE_SIZE);
 #endif
+}
+
+u64 utils::get_avail_memory()
+{
+#ifdef __linux__
+	if (fs::file meminfo{"/proc/meminfo"})
+	{
+		const std::string data = meminfo.to_string();
+
+		if (const usz pos = data.find("MemAvailable:"); pos != umax)
+		{
+			u64 kb = 0;
+			if (std::sscanf(data.c_str() + pos, "MemAvailable: %llu kB", reinterpret_cast<unsigned long long*>(&kb)) == 1)
+			{
+				return kb * 1024;
+			}
+		}
+	}
+#endif
+
+	return 0;
 }
 
 u32 utils::get_thread_count()
