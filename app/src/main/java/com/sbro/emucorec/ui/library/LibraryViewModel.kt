@@ -1,6 +1,7 @@
-package com.sbro.emucorec.ui.library
+﻿package com.sbro.emucorec.ui.library
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -48,26 +49,29 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(isLoading = true)
-            allItems = runCatching { repository.loadInstalledGames(context) }
-                .getOrElse { error ->
-                    Log.e("LibraryViewModel", "Game library scan failed", error)
-                    allItems
-                }
+            val isFirstLoad = !_uiState.value.hasLoadedOnce
+            allItems = scanGames(context)
             publishState()
             // The first scan after onboarding can run before the picked folder
-            // (or a storage migration) has settled. Retry once if it came back
-            // empty; the UI shows the retry's result when it lands.
-            if (allItems.isEmpty() && !_uiState.value.hasLoadedOnce) {
-                kotlinx.coroutines.delay(1_200)
-                allItems = runCatching { repository.loadInstalledGames(context) }
-                    .getOrElse { error ->
-                        Log.e("LibraryViewModel", "Game library scan retry failed", error)
-                        allItems
-                    }
-                publishState()
+            // (or a storage migration) has settled. Retry the initial load a
+            // few times when it comes back empty; later refreshes scan once.
+            if (isFirstLoad && allItems.isEmpty()) {
+                for (attempt in 1..3) {
+                    kotlinx.coroutines.delay(1_200)
+                    allItems = scanGames(context)
+                    publishState()
+                    if (allItems.isNotEmpty()) break
+                }
             }
         }
     }
+
+    private fun scanGames(context: Context): List<InstalledPs3Game> =
+        runCatching { repository.loadInstalledGames(context) }
+            .getOrElse { error ->
+                Log.e("LibraryViewModel", "Game library scan failed", error)
+                allItems
+            }
 
     fun deleteInstalledGame(titleId: String, onComplete: (Boolean) -> Unit) {
         val context = getApplication<Application>()
@@ -139,3 +143,4 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 }
+

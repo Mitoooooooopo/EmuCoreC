@@ -28,6 +28,14 @@ class InstalledGameRepository {
                 ?: raw
             File(resolved).takeIf { it.exists() }
         }
+        if (customFolders.size < AppPreferences(context).gameDirectories.size) {
+            Log.w(
+                "InstalledGameRepository",
+                "Some game folders could not be resolved to existing paths: " +
+                    "${AppPreferences(context).gameDirectories.size} configured, " +
+                    "${customFolders.size} usable"
+            )
+        }
 
         val customGameDirs = customFolders.flatMap { folder ->
             if (findParamSfo(folder) != null) {
