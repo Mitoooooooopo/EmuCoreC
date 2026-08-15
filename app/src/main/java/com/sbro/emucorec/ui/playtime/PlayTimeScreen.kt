@@ -303,19 +303,19 @@ private fun GameSelectorCard(
                     modifier = Modifier.fillMaxSize()
                 )
             }
-            Column(modifier = Modifier.widthIn(min = 120.dp)) {
+            Column(modifier = Modifier.widthIn(min = 120.dp, max = 160.dp)) {
                 Text(
                     text = game.title,
                     style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold),
                     maxLines = 1,
-                    softWrap = false
+                    overflow = TextOverflow.Ellipsis
                 )
                 Text(
                     text = formatDuration(game.totalMs),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1,
-                    softWrap = false
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }

@@ -244,7 +244,8 @@ private fun TrophySetSelector(
                         Text(
                             text = set.gameTitle,
                             maxLines = 1,
-                            softWrap = false
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.widthIn(max = 180.dp)
                         )
                     },
                     leadingIcon = {
