@@ -2003,7 +2003,7 @@ private:
       return;
     }
 
-    rpcsx_android.error("Creating cache initiated, state %d",
+    rpcsx_android.notice("Creating cache initiated, state %d",
                         (int)Emu.GetStatus(false));
 
     while (true) {
@@ -2013,7 +2013,7 @@ private:
         break;
       }
 
-      rpcsx_android.error("Creating cache wait, state %d", (int)state);
+      rpcsx_android.notice("Creating cache wait, state %d", (int)state);
       std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
@@ -2148,7 +2148,7 @@ private:
     }
 
     std::vector<ppu_module<lv2_obj> *> mod_list;
-    rpcsx_android.error("Going to analyze executable");
+    rpcsx_android.notice("Going to analyze executable");
 
     // FIXME: split states
     if (!is_vsh) {
@@ -2164,7 +2164,7 @@ private:
 
     ppu_precompile(dir_queue, mod_list.empty() ? nullptr : &mod_list, false);
 
-    rpcsx_android.error("Finalization");
+    rpcsx_android.notice("Finalization");
     g_fxo->reset();
 
     // Pairs with the vm::init() above. Nothing else unmaps it, since vm::close()
@@ -2786,7 +2786,7 @@ extern "C" bool _rpcsx_initialize(std::string_view rootDir,
     }
 
     rlim.rlim_cur = std::min<std::size_t>(rlim.rlim_max, limit);
-    rpcsx_android.error("rlimit[%d] = %u (requested %u, max %u)", resource,
+    rpcsx_android.notice("rlimit[%d] = %u (requested %u, max %u)", resource,
                         rlim.rlim_cur, limit, rlim.rlim_max);
 
     if (setrlimit64(resource, &rlim) != 0) {

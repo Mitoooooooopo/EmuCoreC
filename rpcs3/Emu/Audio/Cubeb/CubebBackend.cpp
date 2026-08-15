@@ -276,7 +276,6 @@ CubebBackend::device_handle CubebBackend::GetDevice(std::string_view dev_id)
 	cubeb_device_collection dev_collection{};
 	if (int err = cubeb_enumerate_devices(m_ctx, CUBEB_DEVICE_TYPE_OUTPUT, &dev_collection))
 	{
-		Cubeb.error("cubeb_enumerate_devices() failed: %i", err);
 		if (err == CUBEB_ERROR_NOT_SUPPORTED)
 		{
 			// Some backends (e.g. AAudio on Android) do not implement device
@@ -284,6 +283,8 @@ CubebBackend::device_handle CubebBackend::GetDevice(std::string_view dev_id)
 			Cubeb.notice("Device enumeration is not supported, falling back to the default device");
 			return device_handle{};
 		}
+
+		Cubeb.error("cubeb_enumerate_devices() failed: %i", err);
 		return {};
 	}
 
