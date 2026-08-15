@@ -20,7 +20,11 @@ struct cfg_root : cfg::node
 		cfg::_bool ppu_call_history{ this, "PPU Calling History" }; // Enable PPU calling history recording
 		cfg::_bool llvm_logs{ this, "Save LLVM logs" };
 		cfg::string llvm_cpu{ this, "Use LLVM CPU" };
-		cfg::_int<0, 1024> llvm_threads{ this, "Max LLVM Compile Threads", 0 };
+		// Default 2, not 0 (auto = all cores): first-boot PPU compilation on a
+		// phone uses every core, which heats the device up badly. Two workers
+		// still finish quickly while keeping thermals sane; the UI re-applies
+		// this value on boot so existing config files with 0 are upgraded.
+		cfg::_int<0, 1024> llvm_threads{ this, "Max LLVM Compile Threads", 2 };
 		cfg::_bool llvm_precompilation{ this, "LLVM Precompilation", true };
 		cfg::_enum<thread_scheduler_mode> thread_scheduler{this, "Thread Scheduler Mode", thread_scheduler_mode::os};
 		cfg::_bool set_daz_and_ftz{ this, "Set DAZ and FTZ", false };

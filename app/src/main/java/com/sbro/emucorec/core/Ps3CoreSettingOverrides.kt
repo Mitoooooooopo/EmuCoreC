@@ -22,7 +22,10 @@ object Ps3CoreSettingOverrides {
     /**
      * Recommended performance defaults for ARM64 Android hardware.
      *
-     * "Max LLVM Compile Threads = 0" is the core default (auto).
+     * "Max LLVM Compile Threads = 2": the core default is 2 as well (auto = 0
+     * would use every core and heat the phone up badly during first-boot PPU
+     * compilation). Applied on every boot so existing config files that still
+     * carry 0 are upgraded; the user can still raise it in the settings.
      *
      * "Shader Mode = Async Recompiler" skips the GPU shader-interpreter precompile
      * ("Precompiling interpreter variants") that otherwise runs on every first boot
@@ -35,7 +38,7 @@ object Ps3CoreSettingOverrides {
      * "Video@@Shader Mode" back in the settings screen.
      */
     val RECOMMENDED_DEFAULTS = mapOf(
-        "Core@@Max LLVM Compile Threads" to "0", // 0 = Auto: compiles across all available CPU cores
+        "Core@@Max LLVM Compile Threads" to "2",
         "Video@@Shader Mode" to "\"Async Recompiler (multi-threaded)\"",
     )
 
