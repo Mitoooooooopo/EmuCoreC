@@ -1545,8 +1545,7 @@ spu_runtime::spu_runtime()
 	// codegen-affecting setting without adding it here serves stale machine code; a mismatch on
 	// the HW feature bits is worse still (a -sha3 core loading a +sha3 object executes an
 	// illegal instruction). Bump SPU_OBJ_CACHE_VERSION whenever SPU codegen itself changes,
-	// including compile-time switches such as ARMSX3_SPU_ARM64_BYTE_GATHER.
-	// Ported from ouroboros420/rpcsx (8430a6558), key re-derived against our config surface.
+	// including compile-time switches such as the SPU ARM64 byte-gather path.
 	{
 		constexpr u32 SPU_OBJ_CACHE_VERSION = 1;
 		constexpr usz SPU_OBJ_CACHE_MAX_FILES = 12000;

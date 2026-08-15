@@ -3697,7 +3697,6 @@ extern "C" bool _rpcsx_surfaceEvent(JNIEnv *env, jobject surface, jint event) {
     // force-close whenever someone backgrounded a still-compiling first boot. The native
     // window is already released above -- the only thing the SurfaceHolder contract
     // actually requires -- so hand the rest to a detached worker and return now.
-    // Ported from ouroboros420/rpcsx (31d1425bc).
     std::thread([] {
       if (auto padThread = pad::get_pad_thread(true)) {
         padThread->open_home_menu();

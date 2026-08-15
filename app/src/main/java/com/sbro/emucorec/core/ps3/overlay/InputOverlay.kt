@@ -26,8 +26,8 @@ class InputOverlay(context: Context) {
     // Set the first time ANY physical gamepad event arrives. The classifier-based
     // controller presence probe is only a hint for the UI; a pad it fails to
     // recognise (or one connected mid-session without an InputManager callback)
-    // must not leave input dead. ARMSX3 pushes unconditionally from the activity;
-    // this mirrors that, gated only on the emulator being initialised.
+    // must not leave input dead. The pad is pushed unconditionally from the
+    // activity; this mirrors that, gated only on the emulator being initialised.
     private var physicalInputSeen = false
     private var pushFailureLogged = false
     private val lock = Any()

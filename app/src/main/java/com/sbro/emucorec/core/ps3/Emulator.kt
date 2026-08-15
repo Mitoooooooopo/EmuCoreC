@@ -302,7 +302,7 @@ class Emulator : ComponentActivity(), InputManager.InputDeviceListener {
         return super.dispatchKeyEvent(event)
     }
 
-    // Physical gamepad input, delivered exactly like ARMSX3/PS3Native do it:
+    // Physical gamepad input, delivered at the Activity level:
     // Activity-level onKeyDown/onKeyUp with a persistent pad state pushed on
     // every event. Not routed through the Compose tree, not gated on the touch
     // overlay, so a pad works regardless of overlay visibility or classifier

@@ -127,10 +127,10 @@ struct cfg_root : cfg::node
 #ifdef __ANDROID__
 		// Shader interpreter disabled by default on Android: its pipeline precompile
 		// ("Precompiling interpreter variants") runs on every first boot with a cold
-		// shader cache and can take minutes on a mobile driver. Modern Android ports
-		// (PS3Native, ARMSX3's GLES path) default to Async Recompiler for the same
-		// reason. Games whose shaders a driver cannot compile natively lose the
-		// interpreter fallback; the setting is still available per-title.
+		// shader cache and can take minutes on a mobile driver. Android ports default
+		// to Async Recompiler for the same reason. Games whose shaders a driver cannot
+		// compile natively lose the interpreter fallback; the setting is still
+		// available per-title.
 		cfg::_enum<shader_mode> shadermode{ this, "Shader Mode", shader_mode::async_recompiler };
 #else
 		cfg::_enum<shader_mode> shadermode{ this, "Shader Mode", shader_mode::async_with_interpreter };
