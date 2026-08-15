@@ -4176,23 +4176,285 @@ static bool installRap(JNIEnv *env, fs::file &&file, jlong progressId,
   return true;
 }
 
+// Minimal ISO9660 reader over an already-open file handle. The modern core's
+// iso_archive is path-based, but the install API only receives a descriptor,
+// so the disc layout is parsed directly from it. Plain ISO9660 (the layout PS3
+// discs ship with); names are matched case-insensitively.
+class Iso9660Reader {
+public:
+  struct Entry {
+    u64 extent = 0; // byte offset into the image
+    u64 size = 0;
+    bool isDir = false;
+    std::string name; // without the ";1" version suffix
+  };
+
+  explicit Iso9660Reader(fs::file &file) : m_file(file) {}
+
+  // Parse a directory record starting at `offset` (record layout is fixed:
+  // length, extended attribute length, extent (LE), extent (BE), size (LE),
+  // size (BE), date, flags, ..., name length, name).
+  bool readRecord(u64 offset, Entry &entry) {
+    u8 buf[70];
+    m_file.seek(offset);
+    u8 len = 0;
+    if (!m_file.read(&len, 1)) {
+      return false;
+    }
+    if (len == 0 || len > sizeof(buf)) {
+      return false;
+    }
+    if (!m_file.read(buf, len - 1)) {
+      return false;
+    }
+
+    entry.extent =
+        u64(u32(buf[1]) | u32(buf[2]) << 8 | u32(buf[3]) << 16 | u32(buf[4]) << 24) *
+        2048;
+    entry.size = u32(buf[9]) | u32(buf[10]) << 8 | u32(buf[11]) << 16 |
+                 u32(buf[12]) << 24;
+    entry.isDir = (buf[24] & 0x02) != 0;
+    entry.name.assign(reinterpret_cast<const char *>(buf) + 32, buf[31]);
+    if (auto semi = entry.name.find(';'); semi != std::string::npos) {
+      entry.name.erase(semi);
+    }
+    return true;
+  }
+
+  // List the entries of a directory, skipping the "." and ".." links.
+  bool listDir(const Entry &dir, std::vector<Entry> &out) {
+    out.clear();
+    const u64 end = dir.extent + dir.size;
+    for (u64 off = dir.extent; off < end;) {
+      m_file.seek(off);
+      u8 len = 0;
+      if (!m_file.read(&len, 1)) {
+        return false;
+      }
+      if (len == 0) {
+        off = (off / 2048 + 1) * 2048; // skip inter-record padding
+        continue;
+      }
+      Entry entry;
+      if (!readRecord(off, entry)) {
+        return false;
+      }
+      off += len;
+      if (entry.name.empty() || entry.name == "." || entry.name == "..") {
+        continue;
+      }
+      out.emplace_back(std::move(entry));
+    }
+    return true;
+  }
+
+  // The root directory record from the primary volume descriptor.
+  bool rootDir(Entry &dir) {
+    u8 pvd[2048];
+    m_file.seek(0x8000);
+    if (!m_file.read(pvd, sizeof(pvd)) || pvd[0] != 1) {
+      return false;
+    }
+    if (!readRecord(0x8000 + 156, dir) || !dir.isDir) {
+      return false;
+    }
+    return true;
+  }
+
+  // Locate a file by its ISO path, e.g. "PS3_GAME/PARAM.SFO".
+  bool find(const std::string &path, Entry &out) {
+    Entry dir;
+    if (!rootDir(dir)) {
+      return false;
+    }
+
+    std::vector<std::string> parts;
+    std::string current;
+    for (const char c : path) {
+      if (c == '/') {
+        if (!current.empty()) {
+          parts.emplace_back(std::move(current));
+          current.clear();
+        }
+      } else {
+        current.push_back(c);
+      }
+    }
+    if (!current.empty()) {
+      parts.emplace_back(std::move(current));
+    }
+
+    auto equalsIgnoreCase = [](const std::string &a, const std::string &b) {
+      if (a.size() != b.size()) {
+        return false;
+      }
+      for (std::size_t i = 0; i < a.size(); ++i) {
+        if (std::tolower(static_cast<u8>(a[i])) !=
+            std::tolower(static_cast<u8>(b[i]))) {
+          return false;
+        }
+      }
+      return true;
+    };
+
+    for (auto it = parts.begin(); it != parts.end(); ++it) {
+      std::vector<Entry> entries;
+      if (!listDir(dir, entries)) {
+        return false;
+      }
+      auto found = std::find_if(entries.begin(), entries.end(),
+                                [&](const Entry &entry) {
+                                  return equalsIgnoreCase(entry.name, *it);
+                                });
+      if (found == entries.end()) {
+        return false;
+      }
+      out = std::move(*found);
+      if (it + 1 != parts.end()) {
+        if (!out.isDir) {
+          return false;
+        }
+        dir = out;
+      }
+    }
+    return true;
+  }
+
+private:
+  fs::file &m_file;
+};
+
 static bool installIso(JNIEnv *env, fs::file &&file, jlong progressId) {
   Progress progress(env, progressId);
 
-  // EmuCoreC: modern RPCS3's iso_archive is path-based (BootGame(path) mounts
-  // the ISO), while this install API only receives a file descriptor. The
-  // PS3_GAME extraction flow from the RPCSX-era glue has no modern equivalent
-  // here yet; detect the disc and fail gracefully so the app can guide the
-  // user, instead of corrupting the library.
-  file.seek(0x8001);
-  std::array<char, 5> iso_sig{};
-  if (!(file.read(iso_sig) && iso_sig == std::array<char, 5>{'C', 'D', '0', '0', '1'})) {
-    progress.failure("Not a valid ISO9660 disc image");
+  Iso9660Reader iso(file);
+
+  Iso9660Reader::Entry sfoEntry;
+  if (!iso.find("PS3_GAME/PARAM.SFO", sfoEntry)) {
+    progress.failure("Failed to locate PARAM.SFO in ISO");
     return false;
   }
 
-  progress.failure("ISO installation is not supported yet on this build");
-  return false;
+  file.seek(sfoEntry.extent);
+  std::vector<u8> sfoData(sfoEntry.size);
+  if (!file.read(sfoData.data(), sfoData.size())) {
+    progress.failure("Failed to read PARAM.SFO from ISO");
+    return false;
+  }
+
+  auto sfoFile = fs::make_stream<std::vector<u8>>(std::move(sfoData));
+  auto sfo = psf::load_object(sfoFile, "iso://PS3_GAME/PARAM.SFO");
+  auto titleId = psf::get_string(sfo, "TITLE_ID");
+
+  if (titleId.empty()) {
+    progress.failure("Failed to fetch TITLE_ID from PARAM.SFO in ISO");
+    return false;
+  }
+
+  if (auto gameInfo = fetchGameInfo(sfo)) {
+    sendGameInfo(env, progressId, {{*gameInfo}});
+  }
+
+  std::filesystem::path destinationPath =
+      fs::get_config_dir() + "games/" + std::string(titleId);
+
+  // Enumerate the whole tree (PS3_UPDATE is not part of the playable game).
+  std::vector<std::pair<std::string, Iso9660Reader::Entry>> dirs;
+  std::vector<std::pair<std::string, Iso9660Reader::Entry>> files;
+  u64 totalBytes = 0;
+
+  {
+    Iso9660Reader::Entry root;
+    if (!iso.rootDir(root)) {
+      progress.failure("Failed to read the ISO directory tree");
+      return false;
+    }
+
+    std::vector<std::pair<std::string, Iso9660Reader::Entry>> workList;
+    workList.emplace_back("", std::move(root));
+
+    while (!workList.empty()) {
+      auto [isoPath, entry] = std::move(workList.back());
+      workList.pop_back();
+
+      std::vector<Iso9660Reader::Entry> entries;
+      if (!iso.listDir(entry, entries)) {
+        progress.failure(fmt::format("Failed to read directory %s in ISO",
+                                     isoPath.empty() ? "/" : isoPath));
+        return false;
+      }
+
+      for (auto &child : entries) {
+        if (isoPath.empty() && child.name == "PS3_UPDATE") {
+          continue;
+        }
+        auto childPath =
+            isoPath.empty() ? child.name : isoPath + "/" + child.name;
+        if (child.isDir) {
+          dirs.emplace_back(childPath, child);
+          workList.emplace_back(std::move(childPath), std::move(child));
+        } else {
+          totalBytes += child.size;
+          files.emplace_back(std::move(childPath), std::move(child));
+        }
+      }
+    }
+  }
+
+  std::error_code ec;
+  if (!std::filesystem::create_directories(destinationPath, ec) && ec) {
+    progress.failure(fmt::format("Failed to create dir %s: %s",
+                                 destinationPath.string(), ec.message()));
+    return false;
+  }
+
+  for (auto &[dirPath, entry] : dirs) {
+    auto dest = destinationPath / dirPath;
+    std::filesystem::create_directories(dest, ec);
+    if (ec) {
+      progress.failure(fmt::format("Failed to create dir %s: %s",
+                                   dest.string(), ec.message()));
+      return false;
+    }
+  }
+
+  progress.report(0, totalBytes);
+
+  std::vector<u8> buffer(4 * 1024 * 1024);
+  u64 processedBytes = 0;
+
+  for (auto &[isoPath, entry] : files) {
+    auto dest = destinationPath / isoPath;
+    fs::file out;
+    if (!out.open(dest.string(),
+                  fs::open_mode::create + fs::open_mode::trunc +
+                      fs::open_mode::write)) {
+      progress.failure(fmt::format("Failed to write file: %s", dest.string()));
+      return false;
+    }
+
+    file.seek(entry.extent);
+    u64 remaining = entry.size;
+    while (remaining) {
+      const u64 chunk = std::min<u64>(buffer.size(), remaining);
+      if (!file.read(buffer.data(), chunk)) {
+        progress.failure(
+            fmt::format("Failed to read %s in ISO", isoPath));
+        return false;
+      }
+      if (!out.write(buffer.data(), chunk)) {
+        progress.failure(
+            fmt::format("Failed to write file: %s", dest.string()));
+        return false;
+      }
+      remaining -= chunk;
+      processedBytes += chunk;
+    }
+
+    progress.report(processedBytes, totalBytes);
+  }
+
+  return true;
 }
 
 extern "C" bool _rpcsx_installFw(JNIEnv *env, int fd, long progressId) {

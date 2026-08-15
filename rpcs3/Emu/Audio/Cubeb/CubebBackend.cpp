@@ -114,9 +114,12 @@ bool CubebBackend::Open(std::string_view dev_id, AudioFreq freq, AudioSampleSize
 
 	if (!device.handle)
 	{
-		if (use_default_device) Cubeb.error("Opening default device failed");
-		else Cubeb.error("Device with id=%s not found", dev_id);
-		return false;
+		if (!use_default_device)
+		{
+			Cubeb.error("Device with id=%s not found", dev_id);
+			return false;
+		}
+		Cubeb.notice("Using the system default output device");
 	}
 
 	if (device.ch_cnt == 0)
@@ -274,6 +277,13 @@ CubebBackend::device_handle CubebBackend::GetDevice(std::string_view dev_id)
 	if (int err = cubeb_enumerate_devices(m_ctx, CUBEB_DEVICE_TYPE_OUTPUT, &dev_collection))
 	{
 		Cubeb.error("cubeb_enumerate_devices() failed: %i", err);
+		if (err == CUBEB_ERROR_NOT_SUPPORTED)
+		{
+			// Some backends (e.g. AAudio on Android) do not implement device
+			// enumeration. Fall back to the system default output device.
+			Cubeb.notice("Device enumeration is not supported, falling back to the default device");
+			return device_handle{};
+		}
 		return {};
 	}
 
