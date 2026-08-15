@@ -2,7 +2,10 @@
 
 package com.sbro.emucorec.ui.onboarding
 
+import android.net.Uri
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -14,7 +17,10 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import com.sbro.emucorec.core.InstallStateBus
+import com.sbro.emucorec.data.AppPreferences
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -49,6 +55,7 @@ import androidx.compose.material.icons.rounded.Gamepad
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Memory
 import androidx.compose.material.icons.rounded.SmartDisplay
+import androidx.compose.material.icons.rounded.Storage
 import androidx.compose.material.icons.rounded.SystemUpdateAlt
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -63,6 +70,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -114,6 +122,24 @@ fun OnboardingScreen(
     var isCompleting by remember { mutableStateOf(false) }
     val folderPickerFailedMessage = stringResource(R.string.folder_picker_failed)
 
+    val preferences = remember(context) { AppPreferences(context) }
+    var selectedGamesFolder by remember { mutableStateOf(preferences.gameDirectories.firstOrNull()) }
+    val gamesFolderPicker = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocumentTree()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            preferences.addGameDirectory(uri.toString())
+            runCatching {
+                context.contentResolver.takePersistableUriPermission(
+                    uri,
+                    android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION or android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
+            }
+            selectedGamesFolder = uri.toString()
+            InstallStateBus.notifyCompleted()
+        }
+    }
+
     LaunchedEffect(uiState.currentPage) {
         if (pagerState.currentPage != uiState.currentPage) {
             pagerState.animateScrollToPage(uiState.currentPage)
@@ -150,6 +176,7 @@ fun OnboardingScreen(
     val nextClick = { goToPage(pagerState.currentPage + 1) }
     val canComplete = uiState.canContinue &&
         firmwareInstalled &&
+        !selectedGamesFolder.isNullOrBlank() &&
         !uiState.storageChangeInProgress
     val completeClick = rememberDebouncedClick {
         if (isCompleting || !canComplete) return@rememberDebouncedClick
@@ -290,7 +317,9 @@ fun OnboardingScreen(
                             installFirmware = installFirmwareClick,
                             downloadState = downloadState,
                             startFirmwareDownload = firmwareDownloadViewModel::start,
-                            cancelFirmwareDownload = firmwareDownloadViewModel::cancel
+                            cancelFirmwareDownload = firmwareDownloadViewModel::cancel,
+                            selectedGamesFolder = selectedGamesFolder,
+                            onPickGamesFolder = { gamesFolderPicker.launch(null) }
                         )
                     }
                 }
@@ -391,21 +420,29 @@ private fun OnboardingHero(
     subtitle: String
 ) {
     Column(
+        modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Box(
-            modifier = Modifier
-                .size(112.dp)
-                .clip(RoundedCornerShape(32.dp))
-                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.12f)),
-            contentAlignment = Alignment.Center
+        Surface(
+            modifier = Modifier.size(112.dp),
+            shape = CircleShape,
+            color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.82f),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.52f)),
+            shadowElevation = 8.dp
         ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(56.dp)
-            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.12f)),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(56.dp)
+                )
+            }
         }
         Spacer(modifier = Modifier.height(36.dp))
         Text(
@@ -438,8 +475,11 @@ private fun OnboardingSetupContent(
     installFirmware: () -> Unit,
     downloadState: FirmwareDownloadState,
     startFirmwareDownload: (FirmwareKind) -> Unit,
-    cancelFirmwareDownload: () -> Unit
+    cancelFirmwareDownload: () -> Unit,
+    selectedGamesFolder: String?,
+    onPickGamesFolder: () -> Unit
 ) {
+    val context = LocalContext.current
     val isDownloading = downloadState.status == FirmwareDownloadStatus.Running
     val downloadButton = stringResource(R.string.onboarding_firmware_download)
     val cancelDownloadButton = stringResource(R.string.onboarding_firmware_cancel_download)
@@ -449,6 +489,66 @@ private fun OnboardingSetupContent(
     val baseDownloadStatus = firmwareDownloadStatusText(FirmwareKind.Base, downloadState)
     val baseDownloadProgress = downloadState.progress.takeIf {
         downloadState.kind == FirmwareKind.Base && downloadState.status == FirmwareDownloadStatus.Running
+    }
+
+    val displayFolderName = remember(selectedGamesFolder) {
+        selectedGamesFolder?.let { raw ->
+            com.sbro.emucorec.core.DocumentPathResolver.getDisplayName(context, raw)
+        }
+    }
+
+    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+    var hasStoragePermission by remember {
+        mutableStateOf(
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                android.os.Environment.isExternalStorageManager()
+            } else {
+                androidx.core.content.ContextCompat.checkSelfPermission(
+                    context,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+            }
+        )
+    }
+
+    DisposableEffect(lifecycleOwner) {
+        val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
+            if (event == androidx.lifecycle.Lifecycle.Event.ON_RESUME) {
+                hasStoragePermission = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                    android.os.Environment.isExternalStorageManager()
+                } else {
+                    androidx.core.content.ContextCompat.checkSelfPermission(
+                        context,
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE
+                    ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+                }
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
+    val requestStoragePermission = {
+        runCatching {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                val intent = android.content.Intent(android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION).apply {
+                    data = Uri.parse("package:${context.packageName}")
+                }
+                context.startActivity(intent)
+            } else {
+                val intent = android.content.Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                    data = Uri.fromParts("package", context.packageName, null)
+                }
+                context.startActivity(intent)
+            }
+        }.onFailure {
+            runCatching {
+                val intent = android.content.Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                    data = Uri.fromParts("package", context.packageName, null)
+                }
+                context.startActivity(intent)
+            }
+        }
     }
 
     LaunchedEffect(downloadState.status) {
@@ -541,6 +641,40 @@ private fun OnboardingSetupContent(
             onInfoClick = { firmwareInfoVisible = true },
             downloadProgress = baseDownloadProgress,
             downloadStatus = baseDownloadStatus
+        )
+
+        Spacer(modifier = Modifier.height(9.dp))
+
+        SetupCard(
+            icon = Icons.Rounded.Storage,
+            title = stringResource(R.string.onboarding_permission_storage_title),
+            description = stringResource(R.string.onboarding_permission_storage_desc),
+            status = if (hasStoragePermission) {
+                stringResource(R.string.onboarding_permission_storage_granted)
+            } else {
+                stringResource(R.string.onboarding_permission_storage_grant)
+            },
+            statusColor = if (hasStoragePermission) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary,
+            onClick = {
+                if (!hasStoragePermission) {
+                    requestStoragePermission()
+                }
+            }
+        )
+
+        Spacer(modifier = Modifier.height(9.dp))
+
+        SetupCard(
+            icon = androidx.compose.material.icons.Icons.Rounded.Gamepad,
+            title = stringResource(R.string.onboarding_games_folder_title),
+            description = displayFolderName ?: stringResource(R.string.onboarding_games_folder_desc),
+            status = if (displayFolderName != null) {
+                stringResource(R.string.onboarding_status_ready)
+            } else {
+                stringResource(R.string.onboarding_status_choose_folder)
+            },
+            statusColor = if (displayFolderName != null) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary,
+            onClick = onPickGamesFolder
         )
 
         FirmwareDownloadInfoDialog(

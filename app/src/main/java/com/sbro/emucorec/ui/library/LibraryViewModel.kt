@@ -3,6 +3,7 @@ package com.sbro.emucorec.ui.library
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.sbro.emucorec.R
 import com.sbro.emucorec.core.InstallStateBus
 import com.sbro.emucorec.data.InstalledGameRepository
 import com.sbro.emucorec.data.InstalledPs3Game
@@ -78,5 +79,29 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
             isLoading = false,
             hasLoadedOnce = true
         )
+    }
+
+    fun addGameDirectory(uri: android.net.Uri, onResult: (Boolean, String) -> Unit) {
+        val context = getApplication<Application>()
+        viewModelScope.launch(Dispatchers.IO) {
+            val preferences = com.sbro.emucorec.data.AppPreferences(context)
+            preferences.addGameDirectory(uri.toString())
+
+            runCatching {
+                context.contentResolver.takePersistableUriPermission(
+                    uri,
+                    android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION or android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
+            }
+
+            allItems = repository.loadInstalledGames(context)
+            publishState()
+            InstallStateBus.notifyCompleted()
+
+            val displayName = com.sbro.emucorec.core.DocumentPathResolver.getDisplayName(context, uri.toString())
+            withContext(Dispatchers.Main) {
+                onResult(true, context.getString(R.string.direct_boot_added_success, displayName))
+            }
+        }
     }
 }

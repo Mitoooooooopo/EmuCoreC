@@ -7,32 +7,85 @@ import java.io.File
 
 class InstalledGameRepository {
     fun loadInstalledGames(context: Context): List<InstalledPs3Game> {
+        val customFolders = AppPreferences(context).gameDirectories.mapNotNull { raw ->
+            val resolved = com.sbro.emucorec.core.DocumentPathResolver.resolveDirectoryPath(context, raw)
+                ?: com.sbro.emucorec.core.DocumentPathResolver.resolveFilePath(context, raw)
+                ?: raw
+            File(resolved).takeIf { it.exists() }
+        }
+
+        val customGameDirs = customFolders.flatMap { folder ->
+            if (findParamSfo(folder) != null) {
+                listOf(folder)
+            } else {
+                val directChildren = folder.listFiles().orEmpty().filter { it.isDirectory }.toList()
+                val directMatches = directChildren.filter { findParamSfo(it) != null }
+                val nestedMatches = directChildren.flatMap { child ->
+                    if (findParamSfo(child) != null) emptyList()
+                    else child.listFiles().orEmpty().filter { it.isDirectory && findParamSfo(it) != null }
+                }
+                val allFound = directMatches + nestedMatches
+                if (allFound.isNotEmpty()) allFound else if (findParamSfo(folder) != null) listOf(folder) else emptyList()
+            }
+        }
+
+        val customIsoGames = customFolders.flatMap { folder ->
+            val directFiles = folder.listFiles().orEmpty().filter { it.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(it) }.toList()
+            val nestedFiles = folder.listFiles().orEmpty().filter { it.isDirectory }.flatMap { sub ->
+                sub.listFiles().orEmpty().filter { it.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(it) }
+            }
+            (directFiles + nestedFiles).mapNotNull { isoFile ->
+                com.sbro.emucorec.core.Ps3IsoParser.parse(context, isoFile)
+            }
+        }
+
+        customGameDirs.forEach { dir ->
+            val sfo = findParamSfo(dir) ?: return@forEach
+            val metadata = Ps3SfoParser.parse(sfo)
+            val tid = metadata.titleId?.takeIf(String::isNotBlank) ?: return@forEach
+            FolderGames.link(context, dir.absolutePath, tid)
+        }
+
+        customIsoGames.forEach { game ->
+            FolderGames.link(context, game.installPath, game.titleId)
+        }
+
         val searchRoots = EmulatorStorage.knownStorageRoots(context).flatMap { storageRoot ->
             listOf(
                 File(storageRoot, "ps3/config/dev_hdd0/game"),
                 File(storageRoot, "ps3/config/games"),
                 File(storageRoot, "ps3/config/dev_hdd0/disc"),
+                File(storageRoot, "ps3/directboot"),
                 File(storageRoot, "config/dev_hdd0/game"),
                 File(storageRoot, "config/games"),
-                File(storageRoot, "config/dev_hdd0/disc")
+                File(storageRoot, "config/dev_hdd0/disc"),
+                File(storageRoot, "directboot")
             )
         }.plus(
             listOf(
                 EmulatorStorage.hdd0GameRoot(context),
                 EmulatorStorage.discGamesRoot(context),
-                EmulatorStorage.hdd0DiscRoot(context)
+                EmulatorStorage.hdd0DiscRoot(context),
+                FolderGames.linkRoot(context)
             )
         ).distinctBy { it.absolutePath }
-        val installed = searchRoots
-            .flatMap { root -> root.listFiles().orEmpty().filter(File::isDirectory).toList() }
+
+        val candidateGameDirs = searchRoots
+            .flatMap { root -> root.listFiles().orEmpty().filter { it.isDirectory || FolderGames.isLink(it) }.toList() }
+            .plus(customGameDirs)
+            .distinctBy { it.absolutePath }
+
+        val installedFromDirs = candidateGameDirs
             .mapNotNull { directory ->
-                val titleId = directory.name
-                val sfo = findParamSfo(directory) ?: EmulatorStorage.paramSfoPath(context, titleId)
+                if (directory.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(directory)) {
+                    return@mapNotNull com.sbro.emucorec.core.Ps3IsoParser.parse(context, directory)
+                }
+                val sfo = findParamSfo(directory) ?: EmulatorStorage.paramSfoPath(context, directory.name)
                 if (!sfo.isFile) return@mapNotNull null
                 val metadata = Ps3SfoParser.parse(sfo)
                 val parsedTitleId = metadata.titleId?.takeIf(String::isNotBlank) ?: return@mapNotNull null
                 val parsedTitle = metadata.title?.takeIf(String::isNotBlank) ?: return@mapNotNull null
-                val iconFile = findIcon(directory) ?: EmulatorStorage.iconPath(context, titleId)
+                val iconFile = findIcon(directory) ?: EmulatorStorage.iconPath(context, parsedTitleId)
                 InstalledPs3Game(
                     titleId = parsedTitleId,
                     title = parsedTitle,
@@ -45,8 +98,17 @@ class InstalledGameRepository {
                     installPath = directory.absolutePath
                 )
             }
+
+        val directBootGames = FolderGames.entries(context).mapNotNull { (_, targetPath) ->
+            val target = File(targetPath)
+            if (target.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(target)) {
+                com.sbro.emucorec.core.Ps3IsoParser.parse(context, target)
+            } else null
+        }
+
+        val installed = (installedFromDirs + customIsoGames + directBootGames)
             // Prioritise bootable game directories over DLC/patch folders that share the
-            // same TITLE_ID but contain no EBOOT.BIN.  distinctBy keeps the first entry,
+            // same TITLE_ID but contain no EBOOT.BIN. distinctBy keeps the first entry,
             // so we sort bootable entries to the front before deduplication.
             .sortedByDescending { hasBootable(File(it.installPath)) }
             .distinctBy { it.titleId.uppercase() }
@@ -66,12 +128,18 @@ class InstalledGameRepository {
 
     fun deleteByTitleId(context: Context, titleId: String): Boolean {
         val safeTitleId = titleId.trim().takeIf(::isSafePathSegment) ?: return false
+        val matchingFolders = findInstalledGameFolders(context, safeTitleId)
+        if (matchingFolders.isEmpty()) return false
+
         val deleted = mutableListOf<File>()
         val failed = mutableListOf<File>()
+
+        FolderGames.removeDirectBootByTitleId(context, safeTitleId)
 
         EmulatorStorage.knownStorageRoots(context).forEach { storageRoot ->
             val ps3Root = File(storageRoot, "ps3")
             deleteInstalledGameFiles(
+                context = context,
                 ps3Root = ps3Root,
                 titleSegment = safeTitleId,
                 deleted = deleted,
@@ -79,20 +147,15 @@ class InstalledGameRepository {
             )
         }
 
-        return deleted.isNotEmpty() && failed.isEmpty() && findInstalledGameFolders(context, safeTitleId).isEmpty()
+        return findInstalledGameFolders(context, safeTitleId).isEmpty()
     }
 
-    /**
-     * Returns true when [directory] contains a bootable EBOOT.BIN in any of the
-     * standard PS3 layout locations.  DLC and patch packages share the base
-     * game's TITLE_ID but never ship an EBOOT.BIN, so this is a reliable way to
-     * distinguish a launchable game from supplemental content.
-     */
-    private fun hasBootable(directory: File): Boolean {
-        return File(directory, "EBOOT.BIN").isFile ||
-               File(directory, "PS3_GAME/EBOOT.BIN").isFile ||
-               File(directory, "USRDIR/EBOOT.BIN").isFile ||
-               File(directory, "PS3_GAME/USRDIR/EBOOT.BIN").isFile
+    private fun hasBootable(fileOrDir: File): Boolean {
+        if (fileOrDir.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(fileOrDir)) return true
+        return File(fileOrDir, "EBOOT.BIN").isFile ||
+               File(fileOrDir, "PS3_GAME/EBOOT.BIN").isFile ||
+               File(fileOrDir, "USRDIR/EBOOT.BIN").isFile ||
+               File(fileOrDir, "PS3_GAME/USRDIR/EBOOT.BIN").isFile
     }
 
     private fun findParamSfo(directory: File): File? {
@@ -100,6 +163,8 @@ class InstalledGameRepository {
         if (direct.isFile) return direct
         val disc = File(directory, "PS3_GAME/PARAM.SFO")
         if (disc.isFile) return disc
+        val usrdir = File(directory, "USRDIR/PARAM.SFO")
+        if (usrdir.isFile) return usrdir
         return null
     }
 
@@ -112,10 +177,16 @@ class InstalledGameRepository {
     }
 
     private fun findInstalledGameFolders(context: Context, titleId: String): Set<File> {
-        val searchSubdirs = listOf("ps3/config/dev_hdd0/game", "ps3/config/games", "ps3/config/dev_hdd0/disc")
+        val searchSubdirs = listOf(
+            "ps3/config/dev_hdd0/game",
+            "ps3/config/games",
+            "ps3/config/dev_hdd0/disc",
+            "ps3/directboot"
+        )
         return EmulatorStorage.knownStorageRoots(context)
             .flatMap { storageRoot -> searchSubdirs.map { File(storageRoot, it) } }
-            .flatMap { appRoot -> appRoot.listFiles().orEmpty().filter(File::isDirectory) }
+            .plus(listOf(FolderGames.linkRoot(context)))
+            .flatMap { appRoot -> appRoot.listFiles().orEmpty().filter { it.isDirectory || FolderGames.isLink(it) } }
             .filter { directory ->
                 directory.name.equals(titleId, ignoreCase = true) ||
                     findParamSfo(directory)?.let(Ps3SfoParser::parse)?.titleId
@@ -125,18 +196,33 @@ class InstalledGameRepository {
     }
 
     private fun deleteInstalledGameFiles(
+        context: Context,
         ps3Root: File,
         titleSegment: String,
         deleted: MutableList<File>,
         failed: MutableList<File>
     ) {
         if (!isSafePathSegment(titleSegment)) return
+
+        val directBootLink = File(FolderGames.linkRoot(context), titleSegment)
+        if (FolderGames.isLink(directBootLink) || directBootLink.exists()) {
+            FolderGames.removeDirectBootByTitleId(context, titleSegment)
+            deleted += directBootLink
+        }
+
         listOf(
             "config/dev_hdd0/game/$titleSegment",
             "config/games/$titleSegment",
-            "config/dev_hdd0/disc/$titleSegment"
+            "config/dev_hdd0/disc/$titleSegment",
+            "directboot/$titleSegment"
         ).forEach { relativePath ->
-            deleteRecursively(File(ps3Root, relativePath), deleted, failed)
+            val target = File(ps3Root, relativePath)
+            if (FolderGames.isLink(target)) {
+                target.delete()
+                deleted += target
+            } else {
+                deleteRecursively(target, deleted, failed)
+            }
         }
     }
 

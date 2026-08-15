@@ -17,6 +17,10 @@ object Ps3SfoParser {
     fun parse(file: File): Ps3SfoData {
         if (!file.exists() || !file.isFile) return Ps3SfoData()
         val bytes = runCatching { file.readBytes() }.getOrElse { return Ps3SfoData() }
+        return parse(bytes)
+    }
+
+    fun parse(bytes: ByteArray): Ps3SfoData {
         if (bytes.size < 20) return Ps3SfoData()
 
         val buffer = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN)

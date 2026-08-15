@@ -35,7 +35,13 @@ class BrandingUiContractTest {
 
     @Test
     fun iconGeneratorHasAReproducibleCheckModeForEmuCoreC() {
-        val script = appModuleRoot().parent.resolve("tools/generate_drawer_icons.py").readText()
+        val root = appModuleRoot().parent
+        val scriptPath = sequenceOf(
+            root.resolve("tools/generate_drawer_icons.py"),
+            root.resolve("emucorec-tools/generate_drawer_icons.py"),
+            root.resolve("EmuCoreC(files)/tools/generate_drawer_icons.py")
+        ).firstOrNull { Files.isRegularFile(it) } ?: error("generate_drawer_icons.py not found")
+        val script = scriptPath.readText()
         assertTrue("--check" in script)
         assertTrue("ic_drawer_app.png" in script)
         assertFalse("Removed Pro icon must not be generated", "ic_drawer_app_pro.png" in script)

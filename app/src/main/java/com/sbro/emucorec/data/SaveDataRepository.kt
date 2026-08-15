@@ -240,11 +240,36 @@ class SaveDataRepository {
         }
     }
 
-    private fun saveRoots(context: Context): List<File> =
-        listOf(
-            EmulatorStorage.hdd0SaveDataRoot(context),
-            EmulatorStorage.hdd0SaveDataRoot(context, "00")
-        ).distinctBy { it.absolutePath }
+    private fun saveRoots(context: Context): List<File> {
+        val roots = mutableListOf<File>()
+        val baseDirs = mutableListOf<File>()
+        baseDirs.add(File(EmulatorStorage.ps3Root(context), "config/dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.ps3Root(context), "dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.storageRoot(context), "ps3/config/dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.storageRoot(context), "ps3/dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.storageRoot(context), "config/dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.storageRoot(context), "dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.runtimeRoot(context), "config/dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.runtimeRoot(context), "dev_hdd0/home"))
+        EmulatorStorage.knownStorageRoots(context).forEach { storageRoot ->
+            baseDirs.add(File(storageRoot, "ps3/config/dev_hdd0/home"))
+            baseDirs.add(File(storageRoot, "ps3/dev_hdd0/home"))
+            baseDirs.add(File(storageRoot, "config/dev_hdd0/home"))
+            baseDirs.add(File(storageRoot, "dev_hdd0/home"))
+        }
+
+        baseDirs.distinctBy { it.absolutePath }.forEach { home ->
+            if (home.isDirectory) {
+                home.listFiles().orEmpty().filter(File::isDirectory).forEach { userDir ->
+                    val saveDir = File(userDir, "savedata")
+                    if (saveDir.isDirectory) roots.add(saveDir)
+                }
+            }
+        }
+        roots.add(EmulatorStorage.hdd0SaveDataRoot(context))
+        roots.add(EmulatorStorage.hdd0SaveDataRoot(context, "00"))
+        return roots.distinctBy { it.absolutePath }
+    }
 
     private fun isSafeSaveId(value: String): Boolean {
         return value.isNotBlank() &&

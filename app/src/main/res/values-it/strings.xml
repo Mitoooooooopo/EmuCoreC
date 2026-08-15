@@ -135,7 +135,7 @@
     <string name="shell_setup_section">Installazione</string>
     <string name="shell_library_section">Libreria</string>
     <string name="shell_tools_section">Strumenti</string>
-    <string name="shell_install_content">Installa gioco</string>
+    <string name="shell_install_content">Installa pacchetti e DLC</string>
     <string name="game_launch_failed">Impossibile avviare questo gioco.</string>
     <string name="folder_picker_failed">Impossibile utilizzare la cartella selezionata.</string>
     <string name="core_install_firmware_failed">Impossibile avviare l\'installazione del firmware.</string>
@@ -1586,4 +1586,24 @@ Questa impostazione viene applicata solo quando il decodificatore SPU è imposta
         <item quantity="other">Completato %1$d di %2$d elementi</item>
     </plurals>
 
+    <string name="direct_boot_add_game">Aggiungi gioco dalla cartella</string>
+    <string name="direct_boot_added_success">Gioco "%1$s" aggiunto con successo</string>
+    <string name="direct_boot_folder_resolve_failed">Impossibile risolvere il percorso della cartella</string>
+    <string name="direct_boot_no_param_sfo">PARAM.SFO non trovato nella cartella selezionata</string>
+    <string name="direct_boot_invalid_title_id">Title ID del gioco non valido</string>
+    <string name="direct_boot_link_failed">Impossibile creare il collegamento direct boot</string>
+    <string name="onboarding_games_folder_title">Cartella dei giochi</string>
+    <string name="onboarding_games_folder_desc">Seleziona una cartella con i tuoi giochi PS3 (JB Folder, PS3_GAME, ISO, Disc)</string>
+    <string name="onboarding_status_choose_folder">Scegli cartella</string>
+    <string name="settings_tab_library">Libreria</string>
+    <string name="settings_library_folders_title">Cartelle dei giochi</string>
+    <string name="settings_library_folders_desc">I giochi di queste cartelle compaiono nella libreria e si avviano direttamente senza copiare file.</string>
+    <string name="settings_library_add_folder">Aggiungi cartella giochi</string>
+    <string name="settings_library_remove_folder">Rimuovi cartella</string>
+    <string name="settings_library_no_folders">Nessuna cartella di giochi aggiunta</string>
+    <string name="settings_library_folder_removed">Cartella rimossa dalla libreria</string>
+    <string name="onboarding_permission_storage_title">Autorizzazione di archiviazione</string>
+    <string name="onboarding_permission_storage_desc">Accesso alla memoria del dispositivo per la lettura diretta dei giochi senza copiatura</string>
+    <string name="onboarding_permission_storage_grant">Concedi autorizzazione</string>
+    <string name="onboarding_permission_storage_granted">Autorizzazione concessa</string>
 </resources>

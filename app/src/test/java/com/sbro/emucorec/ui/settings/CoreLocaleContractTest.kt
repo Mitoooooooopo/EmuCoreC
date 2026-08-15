@@ -88,9 +88,14 @@ class CoreLocaleContractTest {
         val systemTypes = coreRoot.resolve("Emu/system_config_types.cpp").toFile().readText()
         val keyboardTypes = coreRoot.resolve("Emu/Io/KeyboardHandler.cpp").toFile().readText()
             .substringBefore("fmt_class_string<keyboard_consumer")
-        val sysutilSource = repoRoot.resolve("ps3fw/cellSysutil.cpp").toFile().readText()
-        val sysutilTypes = sysutilSource.substringAfter("fmt_class_string<CellSysutilLang>")
-            .substringBefore("fmt_class_string<CellSysutilParamId>")
+        val sysutilFile = sequenceOf(
+            coreRoot.resolve("Emu/Cell/Modules/cellSysutil.cpp"),
+            repoRoot.resolve("ps3fw/cellSysutil.cpp")
+        ).firstOrNull { Files.isRegularFile(it) }?.toFile()
+        val sysutilTypes = sysutilFile?.readText()?.let { src ->
+            src.substringAfter("fmt_class_string<CellSysutilLang>", "")
+                .substringBefore("fmt_class_string<CellSysutilParamId>", "")
+        }.orEmpty()
         val nativeLabels = listOf(systemTypes, keyboardTypes, sysutilTypes).flatMap { source ->
             Regex("""return\s+"([^"]+)"""").findAll(source)
                 .map { it.groupValues[1] }

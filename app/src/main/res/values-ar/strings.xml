@@ -290,7 +290,7 @@
     <string name="shell_setup_section">التثبيت</string>
     <string name="shell_library_section">المكتبة</string>
     <string name="shell_tools_section">الأدوات</string>
-    <string name="shell_install_content">تثبيت اللعبة</string>
+    <string name="shell_install_content">تثبيت الحزم ومحتوى DLC</string>
     <string name="game_launch_failed">فشل تشغيل هذه اللعبة.</string>
     <string name="folder_picker_failed">فشل استخدام المجلد المحدد.</string>
     <string name="core_install_firmware_failed">فشل بدء تثبيت البرامج الثابتة.</string>
@@ -1579,4 +1579,24 @@
     <string name="core_setting_search">البحث في الخيارات</string>
     <string name="core_setting_no_results">لا توجد خيارات مطابقة</string>
 
+    <string name="direct_boot_add_game">إضافة لعبة من مجلد</string>
+    <string name="direct_boot_added_success">تمت إضافة اللعبة "%1$s" بنجاح</string>
+    <string name="direct_boot_folder_resolve_failed">تعذر تحديد مسار المجلد</string>
+    <string name="direct_boot_no_param_sfo">لم يتم العثور على PARAM.SFO في المجلد المحدد</string>
+    <string name="direct_boot_invalid_title_id">معرف عنوان اللعبة غير صالح</string>
+    <string name="direct_boot_link_failed">فشل إنشاء رابط direct boot</string>
+    <string name="onboarding_games_folder_title">مجلد الألعاب</string>
+    <string name="onboarding_games_folder_desc">حدد مجلداً يحتوي على ألعاب PS3 الخاصة بك (JB Folder, PS3_GAME, ISO, Disc)</string>
+    <string name="onboarding_status_choose_folder">اختيار مجلد</string>
+    <string name="settings_tab_library">المكتبة</string>
+    <string name="settings_library_folders_title">مجلدات الألعاب</string>
+    <string name="settings_library_folders_desc">تظهر الألعاب من هذه المجلدات في مكتبتك ويتم تشغيلها مباشرة دون نسخ الملفات إلى التخزين الداخلي.</string>
+    <string name="settings_library_add_folder">إضافة مجلد ألعاب</string>
+    <string name="settings_library_remove_folder">إزالة المجلد</string>
+    <string name="settings_library_no_folders">لم تتم إضافة مجلدات ألعاب</string>
+    <string name="settings_library_folder_removed">تمت إزالة المجلد من المكتبة</string>
+    <string name="onboarding_permission_storage_title">إذن التخزين</string>
+    <string name="onboarding_permission_storage_desc">الوصول إلى مساحة تخزين الجهاز لقراءة ملفات الألعاب مباشرة دون نسخ</string>
+    <string name="onboarding_permission_storage_grant">منح الإذن</string>
+    <string name="onboarding_permission_storage_granted">تم منح الإذن</string>
 </resources>

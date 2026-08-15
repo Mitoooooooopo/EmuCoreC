@@ -391,7 +391,7 @@
     <string name="shell_setup_section">Installation</string>
     <string name="shell_library_section">Library</string>
     <string name="shell_tools_section">Tools</string>
-    <string name="shell_install_content">Install game</string>
+    <string name="shell_install_content">Install packages &amp; DLC</string>
     <string name="game_launch_failed">Failed to launch this game.</string>
     <string name="folder_picker_failed">Failed to use the selected folder.</string>
     <string name="core_install_firmware_failed">Failed to start firmware installation.</string>
@@ -1586,4 +1586,24 @@ This setting is only applied when SPU Decoder is set to Dynamic or LLVM.</string
         <item quantity="other">Completed %1$d of %2$d items</item>
     </plurals>
 
+    <string name="direct_boot_add_game">Add game from folder</string>
+    <string name="direct_boot_added_success">Game "%1$s" added successfully</string>
+    <string name="direct_boot_folder_resolve_failed">Failed to resolve folder path</string>
+    <string name="direct_boot_no_param_sfo">PARAM.SFO not found in selected folder</string>
+    <string name="direct_boot_invalid_title_id">Invalid game Title ID</string>
+    <string name="direct_boot_link_failed">Failed to create direct boot link</string>
+    <string name="onboarding_games_folder_title">Games folder</string>
+    <string name="onboarding_games_folder_desc">Select a folder with your PS3 games (JB Folder, PS3_GAME, ISO, Disc)</string>
+    <string name="onboarding_status_choose_folder">Choose folder</string>
+    <string name="settings_tab_library">Library</string>
+    <string name="settings_library_folders_title">Game folders</string>
+    <string name="settings_library_folders_desc">Games from these folders appear in your library and boot directly without copying files to internal storage.</string>
+    <string name="settings_library_add_folder">Add game folder</string>
+    <string name="settings_library_remove_folder">Remove folder</string>
+    <string name="settings_library_no_folders">No game folders added</string>
+    <string name="settings_library_folder_removed">Folder removed from library</string>
+    <string name="onboarding_permission_storage_title">Storage Permission</string>
+    <string name="onboarding_permission_storage_desc">Device storage access for direct reading of game files without copying</string>
+    <string name="onboarding_permission_storage_grant">Grant Permission</string>
+    <string name="onboarding_permission_storage_granted">Permission Granted</string>
 </resources>

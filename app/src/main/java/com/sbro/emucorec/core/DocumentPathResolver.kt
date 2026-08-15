@@ -15,9 +15,33 @@ object DocumentPathResolver {
         if (rawPath.startsWith("file://")) return File(rawPath.toUri().path.orEmpty()).name
         if (!rawPath.startsWith("content://")) return File(rawPath).name
         val uri = rawPath.toUri()
-        return DocumentFile.fromSingleUri(context, uri)?.name
+        val directPath = resolveExternalStoragePath(uri)
+        if (directPath != null) {
+            val name = File(directPath).name
+            if (name.isNotBlank()) return name
+        }
+        val docFile = runCatching {
+            if (DocumentsContract.isTreeUri(uri)) {
+                DocumentFile.fromTreeUri(context, uri)
+            } else {
+                DocumentFile.fromSingleUri(context, uri)
+            }
+        }.getOrNull()
+        return docFile?.name
             ?: uri.lastPathSegment?.substringAfterLast(':')
             ?: rawPath.substringAfterLast('/')
+    }
+
+    fun resolveDirectoryPath(context: Context, rawPath: String): String? {
+        if (rawPath.startsWith("file://")) return rawPath.toUri().path
+        if (!rawPath.startsWith("content://")) return rawPath
+
+        val uri = rawPath.toUri()
+        val direct = resolveExternalStoragePath(uri)
+        if (direct != null && (File(direct).exists() || File(direct).isDirectory)) {
+            return direct
+        }
+        return direct
     }
 
     fun resolveFilePath(context: Context, rawPath: String, copyToCache: Boolean = false): String? {
@@ -26,7 +50,7 @@ object DocumentPathResolver {
 
         val uri = rawPath.toUri()
         val directPath = resolveExternalStoragePath(uri)
-        if (directPath != null && File(directPath).canRead()) {
+        if (directPath != null && (File(directPath).exists() || File(directPath).canRead())) {
             return directPath
         }
 
@@ -87,9 +111,11 @@ object DocumentPathResolver {
     private fun resolveExternalStoragePath(uri: Uri): String? {
         val documentId = runCatching { DocumentsContract.getDocumentId(uri) }.getOrNull()
             ?: runCatching { DocumentsContract.getTreeDocumentId(uri) }.getOrNull()
+            ?: uri.lastPathSegment
             ?: return null
 
-        val parts = documentId.split(':', limit = 2)
+        val cleanDocId = if (documentId.startsWith("tree/")) documentId.removePrefix("tree/") else documentId
+        val parts = cleanDocId.split(':', limit = 2)
         if (parts.isEmpty()) return null
 
         val volume = parts[0]
@@ -107,7 +133,15 @@ object DocumentPathResolver {
             }
 
             volume.startsWith("/") -> volume
-            else -> null
+            else -> {
+                val storageFile = File("/storage/$volume", relativePath)
+                if (storageFile.exists() || File("/storage/$volume").exists()) {
+                    storageFile.absolutePath
+                } else {
+                    File("/mnt/media_rw/$volume", relativePath).takeIf { it.exists() }?.absolutePath
+                        ?: storageFile.absolutePath
+                }
+            }
         }
     }
 

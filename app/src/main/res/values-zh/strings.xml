@@ -135,7 +135,7 @@
     <string name="shell_setup_section">安裝</string>
     <string name="shell_library_section">收藏庫</string>
     <string name="shell_tools_section">工具</string>
-    <string name="shell_install_content">安裝遊戲</string>
+    <string name="shell_install_content">安装安装包与 DLC</string>
     <string name="game_launch_failed">啟動此遊戲失敗。</string>
     <string name="folder_picker_failed">無法使用所選的資料夾。</string>
     <string name="core_install_firmware_failed">無法開始韌體安裝。</string>
@@ -1585,4 +1585,24 @@ Over-Under 更接近原生立体声输出，但不太受支持。</string>
         <item quantity="other">已完成 %1$d / %2$d 個項目</item>
     </plurals>
 
+    <string name="direct_boot_add_game">从文件夹添加游戏</string>
+    <string name="direct_boot_added_success">游戏 “%1$s” 添加成功</string>
+    <string name="direct_boot_folder_resolve_failed">无法解析文件夹路径</string>
+    <string name="direct_boot_no_param_sfo">在选定文件夹中未找到 PARAM.SFO</string>
+    <string name="direct_boot_invalid_title_id">无效的游戏 Title ID</string>
+    <string name="direct_boot_link_failed">创建 direct boot 链接失败</string>
+    <string name="onboarding_games_folder_title">游戏文件夹</string>
+    <string name="onboarding_games_folder_desc">选择包含 PS3 游戏的文件夹（JB Folder、PS3_GAME、ISO、Disc）</string>
+    <string name="onboarding_status_choose_folder">选择文件夹</string>
+    <string name="settings_tab_library">游戏库</string>
+    <string name="settings_library_folders_title">游戏文件夹</string>
+    <string name="settings_library_folders_desc">这些文件夹中的游戏会自动出现在游戏库中，无需将文件复制到内部存储即可直接启动。</string>
+    <string name="settings_library_add_folder">添加游戏文件夹</string>
+    <string name="settings_library_remove_folder">移除文件夹</string>
+    <string name="settings_library_no_folders">未添加游戏文件夹</string>
+    <string name="settings_library_folder_removed">已从游戏库中移除文件夹</string>
+    <string name="onboarding_permission_storage_title">存储权限</string>
+    <string name="onboarding_permission_storage_desc">用于直接读取游戏文件而无需复制的设备存储访问权限</string>
+    <string name="onboarding_permission_storage_grant">授予权限</string>
+    <string name="onboarding_permission_storage_granted">已授予权限</string>
 </resources>

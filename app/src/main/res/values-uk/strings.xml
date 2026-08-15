@@ -135,7 +135,7 @@
     <string name="shell_setup_section">Встановлення</string>
     <string name="shell_library_section">Бібліотека</string>
     <string name="shell_tools_section">Інструменти</string>
-    <string name="shell_install_content">Встановити гру</string>
+    <string name="shell_install_content">Встановлення пакетів і DLC</string>
     <string name="game_launch_failed">Не вдалося запустити цю гру.</string>
     <string name="folder_picker_failed">Не вдалося використати вибрану папку.</string>
     <string name="core_install_firmware_failed">Не вдалося розпочати встановлення прошивки.</string>
@@ -1592,4 +1592,24 @@ Over-Under ближче до рідного стереовиходу, але п�
         <item quantity="other">Завершено %1$d з %2$d елементів</item>
     </plurals>
 
+    <string name="direct_boot_add_game">Додати гру з папки</string>
+    <string name="direct_boot_added_success">Гру "%1$s" успішно додано</string>
+    <string name="direct_boot_folder_resolve_failed">Не вдалося визначити шлях до папки</string>
+    <string name="direct_boot_no_param_sfo">У вибраній папці не знайдено PARAM.SFO</string>
+    <string name="direct_boot_invalid_title_id">Некоректний Title ID гри</string>
+    <string name="direct_boot_link_failed">Не вдалося створити символічне посилання</string>
+    <string name="onboarding_games_folder_title">Папка з іграми</string>
+    <string name="onboarding_games_folder_desc">Виберіть папку з вашими іграми PS3 (JB Folder, PS3_GAME, ISO, Disc)</string>
+    <string name="onboarding_status_choose_folder">Вибрати папку</string>
+    <string name="settings_tab_library">Бібліотека</string>
+    <string name="settings_library_folders_title">Папки з іграми</string>
+    <string name="settings_library_folders_desc">Ігри з цих папок автоматично відображаються у вашій бібліотеці та запускаються без дублювання файлів у внутрішню пам\'ять.</string>
+    <string name="settings_library_add_folder">Додати папку з іграми</string>
+    <string name="settings_library_remove_folder">Видалити папку</string>
+    <string name="settings_library_no_folders">Жодної папки не додано</string>
+    <string name="settings_library_folder_removed">Папку видалено з бібліотеки</string>
+    <string name="onboarding_permission_storage_title">Дозвіл на сховище</string>
+    <string name="onboarding_permission_storage_desc">Доступ до пам\'яті пристрою для прямого читання ігор без копіювання</string>
+    <string name="onboarding_permission_storage_grant">Надати дозвіл</string>
+    <string name="onboarding_permission_storage_granted">Дозвіл надано</string>
 </resources>

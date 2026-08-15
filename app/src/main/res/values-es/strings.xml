@@ -135,7 +135,7 @@
     <string name="shell_setup_section">Instalación</string>
     <string name="shell_library_section">Biblioteca</string>
     <string name="shell_tools_section">Herramientas</string>
-    <string name="shell_install_content">Instalar juego</string>
+    <string name="shell_install_content">Instalar paquetes y DLC</string>
     <string name="game_launch_failed">No se pudo iniciar este juego.</string>
     <string name="folder_picker_failed">No se pudo usar la carpeta seleccionada.</string>
     <string name="core_install_firmware_failed">No se pudo iniciar la instalación del firmware.</string>
@@ -1590,4 +1590,24 @@ Esta configuración solo se aplica cuando SPU Decoder está configurado en Diná
         <item quantity="other">%1$d de %2$d elementos completados</item>
     </plurals>
 
+    <string name="direct_boot_add_game">Añadir juego desde carpeta</string>
+    <string name="direct_boot_added_success">Juego "%1$s" añadido correctamente</string>
+    <string name="direct_boot_folder_resolve_failed">No se pudo resolver la ruta de la carpeta</string>
+    <string name="direct_boot_no_param_sfo">No se encontró PARAM.SFO en la carpeta seleccionada</string>
+    <string name="direct_boot_invalid_title_id">Title ID del juego no válido</string>
+    <string name="direct_boot_link_failed">Error al crear enlace de direct boot</string>
+    <string name="onboarding_games_folder_title">Carpeta de juegos</string>
+    <string name="onboarding_games_folder_desc">Seleccione una carpeta con sus juegos de PS3 (JB Folder, PS3_GAME, ISO, Disc)</string>
+    <string name="onboarding_status_choose_folder">Elegir carpeta</string>
+    <string name="settings_tab_library">Biblioteca</string>
+    <string name="settings_library_folders_title">Carpetas de juegos</string>
+    <string name="settings_library_folders_desc">Los juegos de estas carpetas aparecen en su biblioteca y se inician directamente sin copiar archivos.</string>
+    <string name="settings_library_add_folder">Añadir carpeta de juegos</string>
+    <string name="settings_library_remove_folder">Eliminar carpeta</string>
+    <string name="settings_library_no_folders">No se han añadido carpetas de juegos</string>
+    <string name="settings_library_folder_removed">Carpeta eliminada de la biblioteca</string>
+    <string name="onboarding_permission_storage_title">Permiso de almacenamiento</string>
+    <string name="onboarding_permission_storage_desc">Acceso al almacenamiento del dispositivo para lectura directa de juegos sin copiar</string>
+    <string name="onboarding_permission_storage_grant">Conceder permiso</string>
+    <string name="onboarding_permission_storage_granted">Permiso concedido</string>
 </resources>

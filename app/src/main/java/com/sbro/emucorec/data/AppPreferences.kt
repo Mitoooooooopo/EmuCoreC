@@ -173,9 +173,26 @@ class AppPreferences(context: Context) {
             awaitClose { prefs.unregisterOnSharedPreferenceChangeListener(listener) }
         }.distinctUntilChanged()
 
+    var gameDirectories: Set<String>
+        get() = prefs.getStringSet(KEY_GAME_DIRECTORIES, emptySet()) ?: emptySet()
+        set(value) = prefs.edit { putStringSet(KEY_GAME_DIRECTORIES, value) }
+
+    fun addGameDirectory(pathOrUri: String) {
+        val current = gameDirectories.toMutableSet()
+        current.add(pathOrUri)
+        gameDirectories = current
+    }
+
+    fun removeGameDirectory(pathOrUri: String) {
+        val current = gameDirectories.toMutableSet()
+        current.remove(pathOrUri)
+        gameDirectories = current
+    }
+
     companion object {
         private const val KEY_PACKAGES_FOLDER_URI = "packages_folder_uri"
         private const val KEY_PS3_STORAGE_ROOT_PATH = "ps3_storage_root_path"
+        private const val KEY_GAME_DIRECTORIES = "game_directories"
         private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
         private const val KEY_THEME_MODE = "theme_mode"
         private const val KEY_APP_LANGUAGE = "app_language"

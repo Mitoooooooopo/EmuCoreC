@@ -42,6 +42,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.VolumeUp
 import androidx.compose.material.icons.rounded.CameraAlt
+import androidx.compose.material.icons.rounded.FolderOpen
 import androidx.compose.material.icons.rounded.Gamepad
 import androidx.compose.material.icons.rounded.GraphicEq
 import androidx.compose.material.icons.rounded.Info
@@ -56,6 +57,8 @@ import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.SystemUpdateAlt
 import androidx.compose.material.icons.rounded.Tune
 import androidx.compose.material.icons.rounded.Vibration
+import com.sbro.emucorec.core.InstallStateBus
+import com.sbro.emucorec.data.AppPreferences
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
@@ -128,6 +131,23 @@ fun SettingsScreen(
     var selectedTab by rememberSaveable(initialTab) { mutableStateOf(initialTab) }
     val topInset = WindowInsets.statusBarsIgnoringVisibility.asPaddingValues().calculateTopPadding()
     val backupCreatedMessage = stringResource(R.string.settings_backup_created)
+
+    val gameFolderLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocumentTree()
+    ) { uri ->
+        if (uri != null) {
+            val prefs = AppPreferences(context)
+            prefs.addGameDirectory(uri.toString())
+            runCatching {
+                context.contentResolver.takePersistableUriPermission(
+                    uri,
+                    android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION or android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
+            }
+            InstallStateBus.notifyCompleted()
+            Toast.makeText(context, R.string.direct_boot_added_success, Toast.LENGTH_SHORT).show()
+        }
+    }
     val backupFailedMessage = stringResource(R.string.settings_backup_failed)
     val restoreCompletedMessage = stringResource(R.string.settings_backup_restored)
     val restoreFailedMessage = stringResource(R.string.settings_backup_restore_failed)
@@ -220,6 +240,7 @@ fun SettingsScreen(
                             viewModel = viewModel,
                             onOpenLanguageSettings = onOpenLanguageSettings,
                             onOpenGpuDriverSettings = onOpenGpuDriverSettings,
+                            onAddGameFolder = { gameFolderLauncher.launch(null) },
                             createBackupClick = createBackupClick,
                             restoreBackupClick = { showRestoreBackupDialog = true }
                         )

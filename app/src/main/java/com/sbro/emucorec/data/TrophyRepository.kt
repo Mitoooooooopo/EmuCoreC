@@ -86,10 +86,13 @@ class TrophyRepository {
 
     fun loadForTitle(context: Context, titleId: String): List<Ps3TrophySet> {
         val normalized = titleId.lowercase()
+        val game = InstalledGameRepository().findByTitleId(context, titleId)
+        val gameTitleNorm = game?.title?.lowercase()
         return list(context).filter {
             it.titleId?.lowercase() == normalized ||
                 it.communicationId.lowercase() == normalized ||
-                it.gameTitle.lowercase() == normalized
+                it.gameTitle.lowercase() == normalized ||
+                (gameTitleNorm != null && (it.gameTitle.lowercase() == gameTitleNorm || it.setName.lowercase() == gameTitleNorm))
         }
     }
 
@@ -162,15 +165,21 @@ class TrophyRepository {
         val game = installedPackage?.game ?: installedGames.firstOrNull { g ->
             g.titleId.equals(commId, ignoreCase = true) ||
                 (details.setName.isNotBlank() && g.title.equals(details.setName, ignoreCase = true)) ||
+                (details.setName.isNotBlank() && (g.title.contains(details.setName, ignoreCase = true) || details.setName.contains(g.title, ignoreCase = true))) ||
                 g.trophyPackages().any { it.name.equals(commId, ignoreCase = true) }
         }
 
         val fallbackName = game?.title ?: details.setName.takeIf(String::isNotBlank) ?: commId
+        val fallbackIcon = game?.iconPath
+            ?: confDir?.resolve("ICON0.PNG")?.takeIf(File::isFile)?.absolutePath
+            ?: confDir?.resolve("GR00.PNG")?.takeIf(File::isFile)?.absolutePath
+            ?: confDir?.resolve("TROP000.PNG")?.takeIf(File::isFile)?.absolutePath
+
         return Ps3TrophySet(
             communicationId = commId,
             titleId = game?.titleId,
-            gameTitle = game?.title ?: fallbackName,
-            gameIconPath = game?.iconPath,
+            gameTitle = fallbackName,
+            gameIconPath = fallbackIcon,
             setName = details.setName.takeIf(String::isNotBlank) ?: fallbackName,
             setDetail = details.setDetail,
             groups = groups
@@ -180,16 +189,28 @@ class TrophyRepository {
     /** RPCS3 stores each trophy set under dev_hdd0/home/<user>/trophy/<NPWR...>. */
     private fun trophyRoots(context: Context): List<File> {
         val roots = mutableListOf<File>()
-        val defaultHome = File(EmulatorStorage.ps3Root(context), "config/dev_hdd0/home")
-        defaultHome.listFiles().orEmpty().filter(File::isDirectory).forEach { userDir ->
-            val trophyDir = File(userDir, "trophy")
-            if (trophyDir.isDirectory) roots.add(trophyDir)
-        }
+        val baseDirs = mutableListOf<File>()
+        baseDirs.add(File(EmulatorStorage.ps3Root(context), "config/dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.ps3Root(context), "dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.storageRoot(context), "ps3/config/dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.storageRoot(context), "ps3/dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.storageRoot(context), "config/dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.storageRoot(context), "dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.runtimeRoot(context), "config/dev_hdd0/home"))
+        baseDirs.add(File(EmulatorStorage.runtimeRoot(context), "dev_hdd0/home"))
         EmulatorStorage.knownStorageRoots(context).forEach { storageRoot ->
-            val home = File(storageRoot, "ps3/config/dev_hdd0/home")
-            home.listFiles().orEmpty().filter(File::isDirectory).forEach { userDir ->
-                val trophyDir = File(userDir, "trophy")
-                if (trophyDir.isDirectory) roots.add(trophyDir)
+            baseDirs.add(File(storageRoot, "ps3/config/dev_hdd0/home"))
+            baseDirs.add(File(storageRoot, "ps3/dev_hdd0/home"))
+            baseDirs.add(File(storageRoot, "config/dev_hdd0/home"))
+            baseDirs.add(File(storageRoot, "dev_hdd0/home"))
+        }
+
+        baseDirs.distinctBy { it.absolutePath }.forEach { home ->
+            if (home.isDirectory) {
+                home.listFiles().orEmpty().filter(File::isDirectory).forEach { userDir ->
+                    val trophyDir = File(userDir, "trophy")
+                    if (trophyDir.isDirectory) roots.add(trophyDir)
+                }
             }
         }
         return roots.distinctBy { it.absolutePath }

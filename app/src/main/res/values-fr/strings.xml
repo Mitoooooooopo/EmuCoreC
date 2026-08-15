@@ -135,7 +135,7 @@
     <string name="shell_setup_section">Installation</string>
     <string name="shell_library_section">Bibliothèque</string>
     <string name="shell_tools_section">Outils</string>
-    <string name="shell_install_content">Installer un jeu</string>
+    <string name="shell_install_content">Installer des paquets et DLC</string>
     <string name="game_launch_failed">Échec du lancement de ce jeu.</string>
     <string name="folder_picker_failed">Échec de l\'utilisation du dossier sélectionné.</string>
     <string name="core_install_firmware_failed">Échec du démarrage de l\'installation du firmware.</string>
@@ -1590,4 +1590,24 @@ Ce paramètre n\'est appliqué que lorsque SPU Decoder est défini sur Dynamic o
         <item quantity="other">%1$d éléments sur %2$d terminés</item>
     </plurals>
 
+    <string name="direct_boot_add_game">Ajouter un jeu depuis un dossier</string>
+    <string name="direct_boot_added_success">Jeu « %1$s » ajouté avec succès</string>
+    <string name="direct_boot_folder_resolve_failed">Impossible de résoudre le chemin du dossier</string>
+    <string name="direct_boot_no_param_sfo">PARAM.SFO introuvable dans le dossier sélectionné</string>
+    <string name="direct_boot_invalid_title_id">Title ID du jeu invalide</string>
+    <string name="direct_boot_link_failed">Échec de la création du lien direct boot</string>
+    <string name="onboarding_games_folder_title">Dossier des jeux</string>
+    <string name="onboarding_games_folder_desc">Sélectionnez un dossier contenant vos jeux PS3 (JB Folder, PS3_GAME, ISO, Disc)</string>
+    <string name="onboarding_status_choose_folder">Choisir un dossier</string>
+    <string name="settings_tab_library">Bibliothèque</string>
+    <string name="settings_library_folders_title">Dossiers de jeux</string>
+    <string name="settings_library_folders_desc">Les jeux de ces dossiers apparaissent dans votre bibliothèque et démarrent directement sans copie de fichiers.</string>
+    <string name="settings_library_add_folder">Ajouter un dossier de jeux</string>
+    <string name="settings_library_remove_folder">Supprimer le dossier</string>
+    <string name="settings_library_no_folders">Aucun dossier de jeux ajouté</string>
+    <string name="settings_library_folder_removed">Dossier retiré de la bibliothèque</string>
+    <string name="onboarding_permission_storage_title">Autorisation de stockage</string>
+    <string name="onboarding_permission_storage_desc">Accès au stockage de l\'appareil pour la lecture directe des jeux sans copie</string>
+    <string name="onboarding_permission_storage_grant">Accorder l\'autorisation</string>
+    <string name="onboarding_permission_storage_granted">Autorisation accordée</string>
 </resources>

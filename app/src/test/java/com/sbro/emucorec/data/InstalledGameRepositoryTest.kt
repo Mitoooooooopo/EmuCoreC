@@ -41,6 +41,32 @@ class InstalledGameRepositoryTest {
         assertTrue(iconFile.isFile)
     }
 
+    @Test
+    fun locatesSfoAndIconInDirectGameStructure() {
+        val gameFolder = tempFolder.newFolder("NPUB30001")
+        val sfoFile = File(gameFolder, "PARAM.SFO")
+        val iconFile = File(gameFolder, "ICON0.PNG")
+        sfoFile.writeBytes(createParamSfoBytes("NPUB30001", "Minecraft PS3"))
+        iconFile.writeBytes(byteArrayOf(4, 5, 6))
+
+        val parsed = Ps3SfoParser.parse(sfoFile)
+        assertEquals("NPUB30001", parsed.titleId)
+        assertEquals("Minecraft PS3", parsed.title)
+        assertTrue(iconFile.isFile)
+    }
+
+    @Test
+    fun locatesSfoInUsrdirStructure() {
+        val gameFolder = tempFolder.newFolder("BLUS12345")
+        val usrDir = File(gameFolder, "USRDIR").apply { mkdirs() }
+        val sfoFile = File(usrDir, "PARAM.SFO")
+        sfoFile.writeBytes(createParamSfoBytes("BLUS12345", "Custom Game"))
+
+        val parsed = Ps3SfoParser.parse(sfoFile)
+        assertEquals("BLUS12345", parsed.titleId)
+        assertEquals("Custom Game", parsed.title)
+    }
+
     private fun createParamSfoBytes(titleId: String, title: String): ByteArray {
         val entries = listOf(
             "TITLE_ID" to titleId,

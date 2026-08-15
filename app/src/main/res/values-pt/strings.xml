@@ -135,7 +135,7 @@
     <string name="shell_setup_section">Instalação</string>
     <string name="shell_library_section">Biblioteca</string>
     <string name="shell_tools_section">Ferramentas</string>
-    <string name="shell_install_content">Instalar jogo</string>
+    <string name="shell_install_content">Instalar pacotes e DLC</string>
     <string name="game_launch_failed">Falha ao iniciar este jogo.</string>
     <string name="folder_picker_failed">Falha ao usar a pasta selecionada.</string>
     <string name="core_install_firmware_failed">Falha ao iniciar a instalação do firmware.</string>
@@ -1586,4 +1586,24 @@ Esta configuração só é aplicada quando o Decodificador SPU está definido co
         <item quantity="other">Concluído %1$d de %2$d itens</item>
     </plurals>
 
+    <string name="direct_boot_add_game">Adicionar jogo da pasta</string>
+    <string name="direct_boot_added_success">Jogo "%1$s" adicionado com sucesso</string>
+    <string name="direct_boot_folder_resolve_failed">Falha ao resolver o caminho da pasta</string>
+    <string name="direct_boot_no_param_sfo">PARAM.SFO não encontrado na pasta selecionada</string>
+    <string name="direct_boot_invalid_title_id">Title ID do jogo inválido</string>
+    <string name="direct_boot_link_failed">Falha ao criar link direct boot</string>
+    <string name="onboarding_games_folder_title">Pasta de jogos</string>
+    <string name="onboarding_games_folder_desc">Selecione uma pasta com seus jogos de PS3 (JB Folder, PS3_GAME, ISO, Disc)</string>
+    <string name="onboarding_status_choose_folder">Escolher pasta</string>
+    <string name="settings_tab_library">Biblioteca</string>
+    <string name="settings_library_folders_title">Pastas de jogos</string>
+    <string name="settings_library_folders_desc">Os jogos dessas pastas aparecem na sua biblioteca e iniciam diretamente sem copiar arquivos.</string>
+    <string name="settings_library_add_folder">Adicionar pasta de jogos</string>
+    <string name="settings_library_remove_folder">Remover pasta</string>
+    <string name="settings_library_no_folders">Nenhuma pasta de jogos adicionada</string>
+    <string name="settings_library_folder_removed">Pasta removida da biblioteca</string>
+    <string name="onboarding_permission_storage_title">Permissão de armazenamento</string>
+    <string name="onboarding_permission_storage_desc">Acesso ao armazenamento do dispositivo para leitura direta de jogos sem copiar</string>
+    <string name="onboarding_permission_storage_grant">Conceder permissão</string>
+    <string name="onboarding_permission_storage_granted">Permissão concedida</string>
 </resources>

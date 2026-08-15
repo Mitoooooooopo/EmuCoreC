@@ -135,7 +135,7 @@
     <string name="shell_setup_section">इंस्टॉलेशन</string>
     <string name="shell_library_section">लाइब्रेरी</string>
     <string name="shell_tools_section">उपकरण</string>
-    <string name="shell_install_content">गेम इंस्टॉल करें</string>
+    <string name="shell_install_content">पैकेज और DLC इंस्टॉल करें</string>
     <string name="game_launch_failed">इस गेम को लॉन्च करने में विफल।</string>
     <string name="folder_picker_failed">चयनित फ़ोल्डर का उपयोग करने में विफल।</string>
     <string name="core_install_firmware_failed">फ़र्मवेयर इंस्टॉलेशन शुरू करने में विफल।</string>
@@ -1586,4 +1586,24 @@ PS3 नेटिव का उपयोग केवल तभी किया �
         <item quantity="other">%2$d में से %1$d आइटम पूरे हुए</item>
     </plurals>
 
+    <string name="direct_boot_add_game">फ़ोल्डर से गेम जोड़ें</string>
+    <string name="direct_boot_added_success">गेम "%1$s" सफलतापूर्वक जोड़ा गया</string>
+    <string name="direct_boot_folder_resolve_failed">फ़ोल्डर पथ हल करने में विफल</string>
+    <string name="direct_boot_no_param_sfo">चयनित फ़ोल्डर में PARAM.SFO नहीं मिला</string>
+    <string name="direct_boot_invalid_title_id">अमान्य गेम Title ID</string>
+    <string name="direct_boot_link_failed">डायरेक्ट बूट लिंक बनाने में विफल</string>
+    <string name="onboarding_games_folder_title">गेम फ़ोल्डर</string>
+    <string name="onboarding_games_folder_desc">अपने PS3 गेम वाला फ़ोल्डर चुनें (JB Folder, PS3_GAME, ISO, Disc)</string>
+    <string name="onboarding_status_choose_folder">फ़ोल्डर चुनें</string>
+    <string name="settings_tab_library">लाइब्रेरी</string>
+    <string name="settings_library_folders_title">गेम फ़ोल्डर</string>
+    <string name="settings_library_folders_desc">इन फ़ोल्डरों के गेम आपकी लाइब्रेरी में दिखाई देते हैं और आंतरिक मेमोरी में कॉपी किए बिना सीधे बूट होते हैं।</string>
+    <string name="settings_library_add_folder">गेम फ़ोल्डर जोड़ें</string>
+    <string name="settings_library_remove_folder">फ़ोल्डर हटाएं</string>
+    <string name="settings_library_no_folders">कोई गेम फ़ोल्डर नहीं जोड़ा गया</string>
+    <string name="settings_library_folder_removed">लाइब्रेरी से फ़ोल्डर हटा दिया गया</string>
+    <string name="onboarding_permission_storage_title">स्टोरेज अनुमति</string>
+    <string name="onboarding_permission_storage_desc">बिना कॉपी किए गेम फाइलों को सीधे पढ़ने के लिए डिवाइस स्टोरेज एक्सेस</string>
+    <string name="onboarding_permission_storage_grant">अनुमति दें</string>
+    <string name="onboarding_permission_storage_granted">अनुमति दी गई</string>
 </resources>

@@ -163,7 +163,7 @@
     <string name="shell_setup_section">Yükleme</string>
     <string name="shell_library_section">Kütüphane</string>
     <string name="shell_tools_section">Araçlar</string>
-    <string name="shell_install_content">Oyun yükle</string>
+    <string name="shell_install_content">Paket ve DLC Yükle</string>
     <string name="game_launch_failed">Bu oyun başlatılamadı.</string>
     <string name="folder_picker_failed">Seçilen klasör kullanılamadı.</string>
     <string name="core_install_firmware_failed">Firmware yüklemesi başlatılamadı.</string>
@@ -1586,4 +1586,24 @@ Bu ayar yalnızca SPU Kod Çözücü Dinamik veya LLVM olarak ayarlandığında 
         <item quantity="other">%2$d öğeden %1$d tanesi tamamlandı</item>
     </plurals>
 
+    <string name="direct_boot_add_game">Klasörden oyun ekle</string>
+    <string name="direct_boot_added_success">"%1$s" oyunu başarıyla eklendi</string>
+    <string name="direct_boot_folder_resolve_failed">Klasör yolu çözülemedi</string>
+    <string name="direct_boot_no_param_sfo">Seçilen klasörde PARAM.SFO bulunamadı</string>
+    <string name="direct_boot_invalid_title_id">Geçersiz oyun Title ID\'si</string>
+    <string name="direct_boot_link_failed">Direct boot bağlantısı oluşturulamadı</string>
+    <string name="onboarding_games_folder_title">Oyun klasörü</string>
+    <string name="onboarding_games_folder_desc">PS3 oyunlarınızın bulunduğu bir klasör seçin (JB Folder, PS3_GAME, ISO, Disc)</string>
+    <string name="onboarding_status_choose_folder">Klasör seç</string>
+    <string name="settings_tab_library">Kütüphane</string>
+    <string name="settings_library_folders_title">Oyun klasörleri</string>
+    <string name="settings_library_folders_desc">Bu klasörlerdeki oyunlar kütüphanenizde görünür ve dahili depolamaya kopyalanmadan doğrudan başlar.</string>
+    <string name="settings_library_add_folder">Oyun klasörü ekle</string>
+    <string name="settings_library_remove_folder">Klasörü kaldır</string>
+    <string name="settings_library_no_folders">Oyun klasörü eklenmedi</string>
+    <string name="settings_library_folder_removed">Klasör kütüphaneden kaldırıldı</string>
+    <string name="onboarding_permission_storage_title">Depolama İzni</string>
+    <string name="onboarding_permission_storage_desc">Kopyalamadan oyun dosyalarını doğrudan okumak için cihaz depolama erişimi</string>
+    <string name="onboarding_permission_storage_grant">İzin Ver</string>
+    <string name="onboarding_permission_storage_granted">İzin Verildi</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.sbro.emucorec.ui.library
 
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
@@ -121,6 +123,7 @@ fun LibraryScreen(
     var layoutMode by rememberSaveable { mutableStateOf(LibraryLayoutMode.LIST) }
     var searchExpanded by rememberSaveable { mutableStateOf(false) }
     var deleteGameId by remember { mutableStateOf<String?>(null) }
+
     val topInset = WindowInsets.statusBarsIgnoringVisibility.asPaddingValues().calculateTopPadding()
     val gameCountSubtitle = pluralStringResource(
         R.plurals.library_game_count,
@@ -179,74 +182,70 @@ fun LibraryScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .navigationBarsPadding(),
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(
-            start = ScreenHorizontalPadding,
-            end = ScreenHorizontalPadding,
-            top = topInset,
-            bottom = ScreenContentBottomPadding
-        ),
-        verticalArrangement = Arrangement.spacedBy(14.dp)
-    ) {
-        item {
-            ScreenTopBarSurface {
-                Row(
-                    modifier = Modifier.weight(1f),
-                    verticalAlignment = Alignment.CenterVertically
+                .padding(horizontal = ScreenHorizontalPadding),
+            contentPadding = androidx.compose.foundation.layout.PaddingValues(
+                top = topInset + 8.dp,
+                bottom = ScreenContentBottomPadding
+            ),
+            verticalArrangement = Arrangement.spacedBy(14.dp)
+        ) {
+            item {
+                ScreenTopBarSurface(
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    if (onMenuClick != null) {
-                        NavigationMenuButton(
-                            onClick = onMenuClick,
-                            modifier = Modifier.padding(end = 14.dp)
-                        )
-                    }
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.nav_library),
-                            style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
-                        Text(
-                            text = gameCountSubtitle,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    IconButton(
-                        onClick = {
-                            if (searchExpanded) {
-                                searchExpanded = false
-                                viewModel.updateQuery("")
-                            } else {
-                                searchExpanded = true
-                            }
-                        }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 14.dp, vertical = 12.dp),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Icon(
-                            imageVector = if (searchExpanded) Icons.Rounded.Close else Icons.Rounded.Search,
-                            contentDescription = stringResource(R.string.library_search_hint),
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    IconButton(onClick = { layoutMode = if (layoutMode == LibraryLayoutMode.LIST) LibraryLayoutMode.GRID else LibraryLayoutMode.LIST }) {
-                        Icon(
-                            imageVector = if (layoutMode == LibraryLayoutMode.LIST) Icons.Rounded.ViewModule else Icons.AutoMirrored.Rounded.ViewList,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    IconButton(onClick = refreshClick) {
-                        Icon(
-                            imageVector = Icons.Rounded.Refresh,
-                            contentDescription = stringResource(R.string.library_refresh),
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
+                        if (onMenuClick != null) {
+                            NavigationMenuButton(
+                                onClick = onMenuClick,
+                                modifier = Modifier.padding(end = 8.dp)
+                            )
+                        }
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = stringResource(R.string.nav_library),
+                                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+                            Text(
+                                text = gameCountSubtitle,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        IconButton(
+                            onClick = {
+                                searchExpanded = !searchExpanded
+                                if (!searchExpanded) viewModel.updateQuery("")
+                            }
+                        ) {
+                            Icon(
+                                imageVector = if (searchExpanded) Icons.Rounded.Close else Icons.Rounded.Search,
+                                contentDescription = stringResource(R.string.library_search_hint),
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        IconButton(onClick = { layoutMode = if (layoutMode == LibraryLayoutMode.LIST) LibraryLayoutMode.GRID else LibraryLayoutMode.LIST }) {
+                            Icon(
+                                imageVector = if (layoutMode == LibraryLayoutMode.LIST) Icons.Rounded.ViewModule else Icons.AutoMirrored.Rounded.ViewList,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        IconButton(onClick = refreshClick) {
+                            Icon(
+                                imageVector = Icons.Rounded.Refresh,
+                                contentDescription = stringResource(R.string.library_refresh),
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                     }
                 }
             }
-        }
 
         item {
             AnimatedVisibility(
@@ -307,7 +306,7 @@ fun LibraryScreen(
                             textAlign = TextAlign.Center
                         )
                         Button(onClick = refreshClick) {
-                            Icon(Icons.Rounded.FolderOpen, contentDescription = null)
+                            Icon(Icons.Rounded.Refresh, contentDescription = null)
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(stringResource(R.string.library_refresh))
                         }

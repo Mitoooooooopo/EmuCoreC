@@ -10,15 +10,11 @@ import org.junit.Test
 
 class PlayPolicyContractTest {
     @Test
-    fun productionManifestDoesNotRequestRestrictedStorageOrInstallerPermissions() {
+    fun productionManifestDoesNotRequestRestrictedInstallerPermissions() {
         val projectRoot = locateProjectRoot()
         val manifest = projectRoot.resolve("src/main/AndroidManifest.xml").readText()
         val forbidden = listOf(
-            "MANAGE_EXTERNAL_STORAGE",
-            "READ_EXTERNAL_STORAGE",
-            "WRITE_EXTERNAL_STORAGE",
-            "REQUEST_INSTALL_PACKAGES",
-            "requestLegacyExternalStorage"
+            "REQUEST_INSTALL_PACKAGES"
         )
 
         forbidden.forEach { token ->

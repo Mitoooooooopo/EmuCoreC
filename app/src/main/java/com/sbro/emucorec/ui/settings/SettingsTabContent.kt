@@ -20,7 +20,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Code
+import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.FolderOpen
 import androidx.compose.material.icons.rounded.Groups
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Language
@@ -33,6 +35,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
@@ -93,6 +96,7 @@ fun SettingsTabContent(
     viewModel: SettingsViewModel,
     onOpenLanguageSettings: () -> Unit,
     onOpenGpuDriverSettings: () -> Unit = {},
+    onAddGameFolder: () -> Unit = {},
     createBackupClick: () -> Unit,
     restoreBackupClick: () -> Unit
 ) {
@@ -124,6 +128,7 @@ fun SettingsTabContent(
                 viewModel = viewModel,
                 selectStorageLocation = viewModel::selectStorageLocation,
                 dismissStorageMigrationDialog = viewModel::dismissStorageMigrationDialog,
+                onAddGameFolder = onAddGameFolder,
                 createBackupClick = createBackupClick,
                 restoreBackupClick = restoreBackupClick
             )
@@ -427,12 +432,106 @@ private fun StorageTab(
     viewModel: SettingsViewModel,
     selectStorageLocation: (String) -> Unit,
     dismissStorageMigrationDialog: () -> Unit,
+    onAddGameFolder: () -> Unit,
     createBackupClick: () -> Unit,
     restoreBackupClick: () -> Unit
 ) {
+    val context = LocalContext.current
+    val preferences = remember(context) { com.sbro.emucorec.data.AppPreferences(context) }
+    var gameFolders by remember { mutableStateOf(preferences.gameDirectories.toList()) }
+
     var storagePickerVisible by rememberSaveable { mutableStateOf(false) }
     var pendingStorageRootPath by rememberSaveable { mutableStateOf<String?>(null) }
     val pendingStorageLocation = uiState.storageLocations.firstOrNull { it.rootPath == pendingStorageRootPath }
+
+    SectionCard(
+        title = stringResource(R.string.settings_library_folders_title),
+        contentPadding = androidx.compose.foundation.layout.PaddingValues(SettingsSectionContentPadding)
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(
+                text = stringResource(R.string.settings_library_folders_desc),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+
+            if (gameFolders.isEmpty()) {
+                Text(
+                    text = stringResource(R.string.settings_library_no_folders),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                )
+            } else {
+                gameFolders.forEach { folderUri ->
+                    val displayName = com.sbro.emucorec.core.DocumentPathResolver.getDisplayName(context, folderUri)
+                    Surface(
+                        shape = RoundedCornerShape(16.dp),
+                        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 14.dp, vertical = 10.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(
+                                imageVector = androidx.compose.material.icons.Icons.Rounded.FolderOpen,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(24.dp)
+                            )
+                            Column(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(horizontal = 12.dp)
+                            ) {
+                                Text(
+                                    text = displayName,
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = MaterialTheme.colorScheme.onSurface
+                                )
+                                val resolvedPath = com.sbro.emucorec.core.DocumentPathResolver.resolveDirectoryPath(context, folderUri)
+                                    ?: com.sbro.emucorec.core.DocumentPathResolver.resolveFilePath(context, folderUri)
+                                if (resolvedPath != null && resolvedPath != displayName) {
+                                    Text(
+                                        text = resolvedPath,
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        maxLines = 1,
+                                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                                    )
+                                }
+                            }
+                            androidx.compose.material3.IconButton(
+                                onClick = {
+                                    preferences.removeGameDirectory(folderUri)
+                                    gameFolders = preferences.gameDirectories.toList()
+                                    com.sbro.emucorec.core.InstallStateBus.notifyCompleted()
+                                    Toast.makeText(context, R.string.settings_library_folder_removed, Toast.LENGTH_SHORT).show()
+                                }
+                            ) {
+                                Icon(
+                                    imageVector = androidx.compose.material.icons.Icons.Rounded.Delete,
+                                    contentDescription = stringResource(R.string.settings_library_remove_folder),
+                                    tint = MaterialTheme.colorScheme.error
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
+            Button(
+                onClick = onAddGameFolder,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Icon(androidx.compose.material.icons.Icons.Rounded.FolderOpen, contentDescription = null)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(stringResource(R.string.settings_library_add_folder))
+            }
+        }
+    }
 
     SectionCard(title = stringResource(R.string.settings_storage_title), contentPadding = androidx.compose.foundation.layout.PaddingValues(SettingsSectionContentPadding)) {
         Text(text = stringResource(R.string.settings_storage_body), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.82f))

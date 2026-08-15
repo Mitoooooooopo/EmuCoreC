@@ -135,7 +135,7 @@
     <string name="shell_setup_section">Installation</string>
     <string name="shell_library_section">Bibliothek</string>
     <string name="shell_tools_section">Tools</string>
-    <string name="shell_install_content">Spiel installieren</string>
+    <string name="shell_install_content">Pakete und DLC installieren</string>
     <string name="game_launch_failed">Dieses Spiel konnte nicht gestartet werden.</string>
     <string name="folder_picker_failed">Der ausgewählte Ordner konnte nicht verwendet werden.</string>
     <string name="core_install_firmware_failed">Starten der Firmware-Installation fehlgeschlagen.</string>
@@ -1586,4 +1586,24 @@ Diese Einstellung wird nur angewendet, wenn der SPU-Decoder auf „Dynamisch“ 
         <item quantity="other">%1$d von %2$d Elementen abgeschlossen</item>
     </plurals>
 
+    <string name="direct_boot_add_game">Spiel aus Ordner hinzufügen</string>
+    <string name="direct_boot_added_success">Spiel „%1$s“ erfolgreich hinzugefügt</string>
+    <string name="direct_boot_folder_resolve_failed">Ordnerpfad konnte nicht aufgelöst werden</string>
+    <string name="direct_boot_no_param_sfo">PARAM.SFO im ausgewählten Ordner nicht gefunden</string>
+    <string name="direct_boot_invalid_title_id">Ungültige Spiel-Title-ID</string>
+    <string name="direct_boot_link_failed">Direct-Boot-Link konnte nicht erstellt werden</string>
+    <string name="onboarding_games_folder_title">Spieleordner</string>
+    <string name="onboarding_games_folder_desc">Wählen Sie einen Ordner mit Ihren PS3-Spielen (JB Folder, PS3_GAME, ISO, Disc)</string>
+    <string name="onboarding_status_choose_folder">Ordner wählen</string>
+    <string name="settings_tab_library">Bibliothek</string>
+    <string name="settings_library_folders_title">Spieleordner</string>
+    <string name="settings_library_folders_desc">Spiele aus diesen Ordnern erscheinen in Ihrer Bibliothek und starten direkt ohne Kopieren in den internen Speicher.</string>
+    <string name="settings_library_add_folder">Spieleordner hinzufügen</string>
+    <string name="settings_library_remove_folder">Ordner entfernen</string>
+    <string name="settings_library_no_folders">Keine Spieleordner hinzugefügt</string>
+    <string name="settings_library_folder_removed">Ordner aus Bibliothek entfernt</string>
+    <string name="onboarding_permission_storage_title">Speicherberechtigung</string>
+    <string name="onboarding_permission_storage_desc">Gerätespeicherzugriff zum direkten Lesen von Spieldateien ohne Kopieren</string>
+    <string name="onboarding_permission_storage_grant">Berechtigung erteilen</string>
+    <string name="onboarding_permission_storage_granted">Berechtigung erteilt</string>
 </resources>
