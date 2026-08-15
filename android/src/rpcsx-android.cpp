@@ -85,6 +85,7 @@
 #include <string>
 #include <sys/resource.h>
 #include <thread>
+#include <unordered_set>
 #include <vector>
 
 #pragma GCC diagnostic push
@@ -4186,6 +4187,7 @@ public:
     u64 extent = 0; // byte offset into the image
     u64 size = 0;
     bool isDir = false;
+    bool multiExtent = false; // file continues in the next record
     std::string name; // without the ";1" version suffix
   };
 
@@ -4206,6 +4208,8 @@ public:
     }
     if (!m_file.read(buf, len - 1)) {
       return false;
+
+
     }
 
     entry.extent =
@@ -4214,6 +4218,7 @@ public:
     entry.size = u32(buf[9]) | u32(buf[10]) << 8 | u32(buf[11]) << 16 |
                  u32(buf[12]) << 24;
     entry.isDir = (buf[24] & 0x02) != 0;
+    entry.multiExtent = (buf[24] & 0x80) != 0;
     entry.name.assign(reinterpret_cast<const char *>(buf) + 32, buf[31]);
     if (auto semi = entry.name.find(';'); semi != std::string::npos) {
       entry.name.erase(semi);
@@ -4221,7 +4226,12 @@ public:
     return true;
   }
 
-  // List the entries of a directory, skipping the "." and ".." links.
+  // List the entries of a directory. In ISO9660 the "." and ".." links are
+  // single-byte names 0x00 and 0x01 (not the ASCII strings), and treating the
+  // parent link as a real subdirectory points back into the tree, so a disc
+  // with such a record would make the walk recurse forever and exhaust the
+  // heap. Guard the record count too: directory sizes come from the image and
+  // a corrupt value would otherwise walk gigabytes of garbage.
   bool listDir(const Entry &dir, std::vector<Entry> &out) {
     out.clear();
     const u64 end = dir.extent + dir.size;
@@ -4240,8 +4250,19 @@ public:
         return false;
       }
       off += len;
-      if (entry.name.empty() || entry.name == "." || entry.name == "..") {
+      if (entry.name.empty()) {
         continue;
+      }
+      const bool is_self = entry.name == "." ||
+                           (entry.name.size() == 1 && u8(entry.name[0]) == 0);
+      const bool is_parent = entry.name == ".." ||
+                             (entry.name.size() == 1 && u8(entry.name[0]) == 1);
+      if (is_self || is_parent) {
+        continue;
+      }
+      if (out.size() >= 100000) {
+        rpcsx_android.warning("iso: refusing directory with too many records");
+        return false;
       }
       out.emplace_back(std::move(entry));
     }
@@ -4335,6 +4356,11 @@ static bool installIso(JNIEnv *env, fs::file &&file, jlong progressId) {
     return false;
   }
 
+  if (sfoEntry.size == 0 || sfoEntry.size > 4 * 1024 * 1024) {
+    progress.failure("Invalid PARAM.SFO record in ISO");
+    return false;
+  }
+
   file.seek(sfoEntry.extent);
   std::vector<u8> sfoData(sfoEntry.size);
   if (!file.read(sfoData.data(), sfoData.size())) {
@@ -4359,8 +4385,11 @@ static bool installIso(JNIEnv *env, fs::file &&file, jlong progressId) {
       fs::get_config_dir() + "games/" + std::string(titleId);
 
   // Enumerate the whole tree (PS3_UPDATE is not part of the playable game).
-  std::vector<std::pair<std::string, Iso9660Reader::Entry>> dirs;
-  std::vector<std::pair<std::string, Iso9660Reader::Entry>> files;
+  // Files are stored as an extent list: ISO9660 splits files larger than the
+  // first extent into consecutive records carrying the same name, and those
+  // must be written back to back or the image data is corrupt.
+  std::vector<std::string> dirs;
+  std::vector<std::pair<std::string, std::vector<Iso9660Reader::Entry>>> files;
   u64 totalBytes = 0;
 
   {
@@ -4370,6 +4399,7 @@ static bool installIso(JNIEnv *env, fs::file &&file, jlong progressId) {
       return false;
     }
 
+    std::unordered_set<u64> seenDirs{root.extent};
     std::vector<std::pair<std::string, Iso9660Reader::Entry>> workList;
     workList.emplace_back("", std::move(root));
 
@@ -4391,15 +4421,31 @@ static bool installIso(JNIEnv *env, fs::file &&file, jlong progressId) {
         auto childPath =
             isoPath.empty() ? child.name : isoPath + "/" + child.name;
         if (child.isDir) {
-          dirs.emplace_back(childPath, child);
+          if (dirs.size() >= 10000 || !seenDirs.emplace(child.extent).second) {
+            continue; // cycle or absurd tree: stop descending
+          }
+          dirs.emplace_back(childPath);
           workList.emplace_back(std::move(childPath), std::move(child));
         } else {
           totalBytes += child.size;
-          files.emplace_back(std::move(childPath), std::move(child));
+          if (!files.empty() && files.back().first == childPath) {
+            files.back().second.emplace_back(std::move(child));
+          } else {
+            files.emplace_back(childPath,
+                               std::vector<Iso9660Reader::Entry>{
+                                   std::move(child)});
+          }
+          if (files.size() >= 100000) {
+            progress.failure("ISO game has too many files");
+            return false;
+          }
         }
       }
     }
   }
+
+  rpcsx_android.notice("installIso: %s: %zu dirs, %zu files, %llu bytes",
+                       titleId, dirs.size(), files.size(), totalBytes);
 
   std::error_code ec;
   if (!std::filesystem::create_directories(destinationPath, ec) && ec) {
@@ -4408,7 +4454,7 @@ static bool installIso(JNIEnv *env, fs::file &&file, jlong progressId) {
     return false;
   }
 
-  for (auto &[dirPath, entry] : dirs) {
+  for (auto &dirPath : dirs) {
     auto dest = destinationPath / dirPath;
     std::filesystem::create_directories(dest, ec);
     if (ec) {
@@ -4423,7 +4469,7 @@ static bool installIso(JNIEnv *env, fs::file &&file, jlong progressId) {
   std::vector<u8> buffer(4 * 1024 * 1024);
   u64 processedBytes = 0;
 
-  for (auto &[isoPath, entry] : files) {
+  for (auto &[isoPath, parts] : files) {
     auto dest = destinationPath / isoPath;
     fs::file out;
     if (!out.open(dest.string(),
@@ -4433,22 +4479,24 @@ static bool installIso(JNIEnv *env, fs::file &&file, jlong progressId) {
       return false;
     }
 
-    file.seek(entry.extent);
-    u64 remaining = entry.size;
-    while (remaining) {
-      const u64 chunk = std::min<u64>(buffer.size(), remaining);
-      if (!file.read(buffer.data(), chunk)) {
-        progress.failure(
-            fmt::format("Failed to read %s in ISO", isoPath));
-        return false;
+    for (auto &part : parts) {
+      file.seek(part.extent);
+      u64 remaining = part.size;
+      while (remaining) {
+        const u64 chunk = std::min<u64>(buffer.size(), remaining);
+        if (!file.read(buffer.data(), chunk)) {
+          progress.failure(
+              fmt::format("Failed to read %s in ISO", isoPath));
+          return false;
+        }
+        if (!out.write(buffer.data(), chunk)) {
+          progress.failure(
+              fmt::format("Failed to write file: %s", dest.string()));
+          return false;
+        }
+        remaining -= chunk;
+        processedBytes += chunk;
       }
-      if (!out.write(buffer.data(), chunk)) {
-        progress.failure(
-            fmt::format("Failed to write file: %s", dest.string()));
-        return false;
-      }
-      remaining -= chunk;
-      processedBytes += chunk;
     }
 
     progress.report(processedBytes, totalBytes);
