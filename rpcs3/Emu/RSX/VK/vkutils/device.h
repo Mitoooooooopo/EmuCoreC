@@ -86,6 +86,12 @@ namespace vk
 		descriptor_indexing_features descriptor_indexing_support{};
 
 		custom_border_color_features custom_border_color_support{};
+		// VK_EXT_shader_uniform_buffer_unsized_array. RPCS3's shaders declare
+		// runtime-sized arrays inside uniform blocks, which needs this.
+		bool unsized_array_support = false;
+		// Largest range bindable as a uniform buffer. When unsized_array_support is
+		// false the shader generators need it to emit a concrete array bound.
+		u32 max_ubo_range = 16384;
 
 		multidraw_features multidraw_support{};
 
@@ -174,6 +180,16 @@ namespace vk
 		const gpu_formats_support& get_formats_support() const { return m_formats_support; }
 		const gpu_shader_types_support& get_shader_types_support() const { return pgpu->shader_types_support; }
 		const custom_border_color_features& get_custom_border_color_support() const { return pgpu->custom_border_color_support; }
+		bool get_unsized_array_support() const { return pgpu->unsized_array_support; }
+
+		/**
+		 * Array bound to emit for a runtime-sized uniform-block array when the
+		 * device cannot do unsized ones.
+		 */
+		u32 ubo_array_bound(u32 element_size) const
+		{
+			return std::max<u32>(1u, pgpu->max_ubo_range / element_size);
+		}
 		const multidraw_features get_multidraw_support() const { return pgpu->multidraw_support; }
 
 		bool get_shader_stencil_export_support() const { return pgpu->optional_features_support.shader_stencil_export; }

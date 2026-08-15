@@ -281,7 +281,7 @@
     <string name="settings_play_store_profile_desc">شاهد المزيد من تطبيقات Android من المطور.</string>
     <string name="settings_core_source_code">الكود المصدري للنواة</string>
     <string name="settings_core_source_description">يستخدم EmuCoreC واجهة Android الخاصة به. النواة فقط هي المبنية على RPCS3.</string>
-    <string name="settings_rpcsx_repository_desc">فتح مستودع مشروع RPCS3 الأساسي.</string>
+    <string name="settings_rpcsx_repository_desc">فتح مستودع مشروع RPCS3 الأصلي.</string>
     <string name="settings_updates_version_label">الإصدار</string>
     <string name="settings_updates_open_release">فتح صفحة الإصدار</string>
     <string name="settings_updates_release_notes_title">ما الجديد</string>

@@ -254,7 +254,7 @@
     <string name="settings_about_support">支持 EmuCoreC</string>
     <string name="settings_about_support_desc">通过 Patreon 会员资格帮助我们继续开发。</string>
     <string name="settings_play_store_profile_desc">查看开发者的更多 Android 应用。</string>
-    <string name="settings_rpcsx_repository_desc">打开上游 RPCS3 项目仓库。</string>
+    <string name="settings_rpcsx_repository_desc">打开原始 RPCS3 项目仓库。</string>
     <string name="settings_updates_version_label">版本</string>
     <string name="settings_updates_open_release">打开发布页面</string>
     <string name="settings_updates_release_notes_title">新功能</string>

@@ -254,7 +254,7 @@
     <string name="settings_about_support">EmuCoreC को सपोर्ट करें</string>
     <string name="settings_about_support_desc">Patreon मेंबरशिप के ज़रिए डेवलपमेंट को जारी रखने में मदद करें।</string>
     <string name="settings_play_store_profile_desc">डेवलपर के और Android ऐप देखें।</string>
-    <string name="settings_rpcsx_repository_desc">अपस्ट्रीम RPCS3 प्रोजेक्ट रिपॉजिटरी खोलें।</string>
+    <string name="settings_rpcsx_repository_desc">मूल RPCS3 प्रोजेक्ट रिपॉजिटरी खोलें।</string>
     <string name="settings_updates_version_label">वर्ज़न</string>
     <string name="settings_updates_open_release">रिलीज़ पेज खोलें</string>
     <string name="settings_updates_release_notes_title">नया क्या है</string>

@@ -111,7 +111,7 @@ namespace vk
 			info.pMultisampleState = &m_ms;
 			info.pViewportState = &m_vp;
 			info.pDepthStencilState = &m_properties.state.ds;
-			info.pTessellationState = &m_ts;
+			info.pTessellationState = nullptr;
 			info.stageCount = 2;
 			info.pStages = m_shader_stages;
 			info.pDynamicState = &m_dynamic_state_info;
@@ -206,7 +206,7 @@ namespace vk
 		comp.insertInputs(builder, {});
 
 		// Outputs
-		builder << "layout(location=16) out flat uvec4 draw_params_payload;\n\n";
+		builder << "layout(location=15) out flat uvec4 draw_params_payload;\n\n";
 
 		builder <<
 		"#define xform_constants_offset get_draw_params().xform_constants_offset\n"
@@ -224,7 +224,7 @@ namespace vk
 		"	uint entry;\n"
 		"	uint output_mask;\n"
 		"	uint control;\n"
-		"	uvec4 vp_instructions[];\n"
+		"	uvec4 vp_instructions" << vk::ubo_array_dim(16) << ";\n"
 		"};\n\n";
 
 		if (compiler_options & COMPILER_OPT_ENABLE_VTX_TEXTURES)
@@ -308,13 +308,14 @@ namespace vk
 		builder <<
 		"#version 450\n"
 		"#extension GL_EXT_scalar_block_layout : require\n"
-		"#extension GL_EXT_uniform_buffer_unsized_array : require\n"
+		<< (vk::get_current_renderer()->get_unsized_array_support() ? "#extension GL_EXT_uniform_buffer_unsized_array : require\n" : "")
+		<<
 		"#extension GL_ARB_separate_shader_objects : enable\n\n";
 
 		::glsl::insert_subheader_block(builder);
 		comp.insertConstants(builder);
 
-		builder << "layout(location=16) in flat uvec4 draw_params_payload;\n\n";
+		builder << "layout(location=15) in flat uvec4 draw_params_payload;\n\n";
 
 		builder <<
 		"#define fog_param0 fs_contexts[_fs_context_offset].fog_param0\n"
@@ -411,7 +412,7 @@ namespace vk
 			"	uint texture_control;\n"
 			"	uint reserved1;\n"
 			"	uint reserved2;\n"
-			"	uvec4 fp_instructions[];\n"
+			"	uvec4 fp_instructions" << vk::ubo_array_dim(16) << ";\n"
 			"};\n\n";
 
 		builder <<

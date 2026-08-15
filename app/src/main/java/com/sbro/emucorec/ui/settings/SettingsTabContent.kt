@@ -927,12 +927,6 @@ private fun AboutTab() {
             LinkItem(
                 icon = Icons.Rounded.Link,
                 title = "RPCS3",
-                subtitle = stringResource(R.string.settings_rpcsx_repository_desc),
-                onClick = { uriHandler.openUri(RPCS3RepositoryUrl) }
-            )
-            LinkItem(
-                icon = Icons.Rounded.Link,
-                title = "RPCS3",
                 subtitle = stringResource(R.string.settings_rpcs3_repository_desc),
                 onClick = { uriHandler.openUri(RPCS3RepositoryUrl) }
             )

@@ -127,6 +127,9 @@ namespace vk
 		optional_features_support.portability              = device_extensions.is_supported(VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME);
 #endif
 
+		unsized_array_support                              = device_extensions.is_supported(VK_EXT_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_EXTENSION_NAME);
+		max_ubo_range                                      = props.limits.maxUniformBufferRange;
+
 		optional_features_support.debug_utils              = instance_extensions.is_supported(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
 		optional_features_support.surface_capabilities_2   = instance_extensions.is_supported(VK_KHR_GET_SURFACE_CAPABILITIES_2_EXTENSION_NAME);
 
@@ -512,6 +515,11 @@ namespace vk
 		// 1. Anisotropic sampling
 		// 2. Indexable storage buffers
 		VkPhysicalDeviceFeatures enabled_features{};
+		if (pgpu->unsized_array_support)
+		{
+			requested_extensions.push_back(VK_EXT_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_EXTENSION_NAME);
+		}
+
 		if (pgpu->custom_border_color_support)
 		{
 			requested_extensions.push_back(VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME);
@@ -733,12 +741,19 @@ namespace vk
 			rsx_log.notice("GPU/driver lacks support for float16 data types. All float16_t arithmetic will be emulated with float32_t.");
 		}
 
-		// FIXME: Fall back to something. Idk how that would even work though, this really is a hard requirement
+		// Runtime-sized arrays inside uniform blocks
 		VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT ubo_unsized_array_feature{};
-		ubo_unsized_array_feature.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT;
-		ubo_unsized_array_feature.shaderUniformBufferUnsizedArray = VK_TRUE;
-		ubo_unsized_array_feature.pNext = const_cast<void*>(device.pNext);
-		device.pNext = &ubo_unsized_array_feature;
+		if (pgpu->unsized_array_support)
+		{
+			ubo_unsized_array_feature.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT;
+			ubo_unsized_array_feature.shaderUniformBufferUnsizedArray = VK_TRUE;
+			ubo_unsized_array_feature.pNext = const_cast<void*>(device.pNext);
+			device.pNext = &ubo_unsized_array_feature;
+		}
+		else
+		{
+			rsx_log.notice("VK_EXT_shader_uniform_buffer_unsized_array is NOT supported by this driver. Concrete array bounds will be used.");
+		}
 
 		VkPhysicalDeviceCustomBorderColorFeaturesEXT custom_border_color_features{};
 		if (pgpu->custom_border_color_support)

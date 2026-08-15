@@ -17,6 +17,12 @@ namespace rsx
 
 namespace vk
 {
+	/**
+	 * "[]" when the device supports unsized arrays in uniform blocks, otherwise a
+	 * concrete "[N]" sized to the bindable window.
+	 */
+	std::string ubo_array_dim(u32 element_size);
+
 	// Forward declarations
 	struct buffer;
 	class command_buffer;

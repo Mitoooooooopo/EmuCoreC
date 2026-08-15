@@ -55,6 +55,7 @@ private:
 #pragma GCC diagnostic ignored "-Wsuggest-attribute=noreturn"
 #endif
 #endif
+#include "VulkanAPI.h"
 #include <vk_mem_alloc.h>
 #if defined(_MSC_VER) && !defined(__clang__)
 #pragma warning(pop)
