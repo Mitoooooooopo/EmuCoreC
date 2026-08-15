@@ -195,29 +195,29 @@ fun LibraryScreen(
                         .padding(bottom = 7.dp)
                 ) {
                     Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 14.dp, vertical = 12.dp),
+                        modifier = Modifier.weight(1f),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         if (onMenuClick != null) {
                             NavigationMenuButton(
                                 onClick = onMenuClick,
-                                modifier = Modifier.padding(end = 8.dp)
+                                modifier = Modifier.padding(end = 14.dp)
                             )
                         }
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 text = stringResource(R.string.nav_library),
                                 style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
-                                color = MaterialTheme.colorScheme.onSurface
+                                color = MaterialTheme.colorScheme.onBackground
                             )
                             Text(
                                 text = gameCountSubtitle,
-                                style = MaterialTheme.typography.bodyMedium,
+                                style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
+                    }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         IconButton(
                             onClick = {
                                 searchExpanded = !searchExpanded
