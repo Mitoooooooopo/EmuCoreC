@@ -1,6 +1,7 @@
-package com.sbro.emucorec.ui.playtime
+﻿package com.sbro.emucorec.ui.playtime
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.sbro.emucorec.core.PlayTimeRepository
@@ -78,14 +79,21 @@ class PlayTimeViewModel(application: Application) : AndroidViewModel(application
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(isLoading = true)
-            val games = gameRepository.loadInstalledGames(context)
-            val sessions = playTimeRepository.loadSessions()
-                .sortedByDescending { it.startedAt }
-            val selected = focusTitleId
-                ?.takeIf { id ->
-                    sessions.any { it.titleId.equals(id, ignoreCase = true) } ||
-                        games.any { it.titleId.equals(id, ignoreCase = true) }
-                }
+            val loaded = runCatching {
+                val games = gameRepository.loadInstalledGames(context)
+                val sessions = playTimeRepository.loadSessions()
+                    .sortedByDescending { it.startedAt }
+                val selected = focusTitleId
+                    ?.takeIf { id ->
+                        sessions.any { it.titleId.equals(id, ignoreCase = true) } ||
+                            games.any { it.titleId.equals(id, ignoreCase = true) }
+                    }
+                Triple(games, sessions, selected)
+            }.getOrElse { error ->
+                Log.e("PlayTimeViewModel", "Play time data load failed", error)
+                Triple(emptyList<InstalledPs3Game>(), emptyList<PlayTimeSession>(), null)
+            }
+            val (games, sessions, selected) = loaded
             _uiState.value = PlayTimeUiState(
                 games = games,
                 gameStats = buildGameStats(games, sessions),
@@ -180,3 +188,4 @@ class PlayTimeViewModel(application: Application) : AndroidViewModel(application
         const val DAY_MS = 24L * 60L * 60L * 1_000L
     }
 }
+

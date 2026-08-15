@@ -1364,8 +1364,28 @@ static void sendVshBootable(JNIEnv *env, jlong progressId) {
       }}});
 }
 
+// psf::get_string aborts via ensure() when an entry carries a non-string type,
+// and a hand-crafted or corrupt SFO can put any type under any key. All glue
+// reads of untrusted SFOs go through this instead.
+static std::string_view safe_psf_get_string(const psf::registry& psf,
+                                            std::string_view key,
+                                            std::string_view def = {}) {
+  const auto found = psf.find(key);
+  if (found == psf.end()) {
+    return def;
+  }
+
+  const auto& entry = found->second;
+  if (entry.type() != psf::format::string &&
+      entry.type() != psf::format::array) {
+    return def;
+  }
+
+  return entry.as_string();
+}
+
 static bool tryUnlockGame(const psf::registry &psf) {
-  auto contentId = psf::get_string(psf, "CONTENT_ID");
+  auto contentId = safe_psf_get_string(psf, "CONTENT_ID");
 
   if (contentId.empty()) {
     return true;
@@ -1471,10 +1491,10 @@ static std::string locateParamSfoPath(std::string_view root) {
 static std::optional<GameInfo>
 fetchGameInfo(const psf::registry &psf,
               std::filesystem::path psfRootPath = {}) {
-  auto titleId = std::string(psf::get_string(psf, "TITLE_ID"));
-  auto name = std::string(psf::get_string(psf, "TITLE"));
+  auto titleId = std::string(safe_psf_get_string(psf, "TITLE_ID"));
+  auto name = std::string(safe_psf_get_string(psf, "TITLE"));
   auto bootable = psf::get_integer(psf, "BOOTABLE", 0);
-  auto category = psf::get_string(psf, "CATEGORY");
+  auto category = safe_psf_get_string(psf, "CATEGORY");
 
   if (!bootable || titleId.empty()) {
     return {};
@@ -1547,8 +1567,8 @@ fetchGameInfo(const psf::registry &psf,
 
         if (std::filesystem::is_regular_file(c00IconPath)) {
           auto c00Sfo = psf::load_object(c00SfoPath);
-          titleId = psf::get_string(c00Sfo, "TITLE_ID", titleId);
-          name = psf::get_string(c00Sfo, "TITLE", name);
+          titleId = safe_psf_get_string(c00Sfo, "TITLE_ID", titleId);
+          name = safe_psf_get_string(c00Sfo, "TITLE", name);
         }
       }
     }
@@ -2102,7 +2122,7 @@ private:
         if (!sfoPath.empty()) {
           const auto psf = psf::load_object(sfoPath);
           rpcsx_android.warning("title id is %s",
-                                psf::get_string(psf, "TITLE_ID"));
+                                safe_psf_get_string(psf, "TITLE_ID"));
 
           // EmuCoreC: title id is set by Emu.BootGame on the real boot; this
           // precompilation pass does not own the running game title.
@@ -3411,8 +3431,8 @@ static std::string read_sfo_game_info(const std::string &root,
   }
 
   const auto psf = psf::load_object(sfo, root + "/PARAM.SFO");
-  const auto titleId = std::string(psf::get_string(psf, "TITLE_ID"));
-  const auto title = std::string(psf::get_string(psf, "TITLE"));
+  const auto titleId = std::string(safe_psf_get_string(psf, "TITLE_ID"));
+  const auto title = std::string(safe_psf_get_string(psf, "TITLE"));
 
   if (titleId.empty()) {
     return "{}";
@@ -4119,7 +4139,7 @@ static bool installEdat(JNIEnv *env, fs::file &&file, jlong progressId,
     }
 
     auto psf = psf::load_object(sfoPath);
-    auto contentId = psf::get_string(psf, "CONTENT_ID");
+    auto contentId = safe_psf_get_string(psf, "CONTENT_ID");
 
     if (contentId != npdHeader.content_id) {
       progress.failure(fmt::format("File cannot be used for this game. EDAT "
@@ -4401,7 +4421,7 @@ static bool installIso(JNIEnv *env, fs::file &&file, jlong progressId) {
 
   auto sfoFile = fs::make_stream<std::vector<u8>>(std::move(sfoData));
   auto sfo = psf::load_object(sfoFile, "iso://PS3_GAME/PARAM.SFO");
-  auto titleId = psf::get_string(sfo, "TITLE_ID");
+  auto titleId = safe_psf_get_string(sfo, "TITLE_ID");
 
   if (titleId.empty()) {
     progress.failure("Failed to fetch TITLE_ID from PARAM.SFO in ISO");

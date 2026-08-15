@@ -1,6 +1,7 @@
 package com.sbro.emucorec.ui.catalog
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.sbro.emucorec.data.Ps3CompatibilityRepository
@@ -26,6 +27,13 @@ data class CatalogUiState(
     val selectedGenre: String? = null,
     val selectedYear: Int? = null,
     val minRating: Float? = null
+)
+
+private data class CatalogQueryResult(
+    val hasCatalog: Boolean,
+    val availableGenres: List<String>,
+    val availableYears: List<Int>,
+    val results: List<Ps3CatalogEntry>
 )
 
 class CatalogViewModel(application: Application) : AndroidViewModel(application) {
@@ -103,38 +111,53 @@ class CatalogViewModel(application: Application) : AndroidViewModel(application)
         )
         refreshJob = viewModelScope.launch(Dispatchers.IO) {
             val snapshot = _uiState.value
-            val hasCatalog = repository.hasCatalog()
-            val availableGenres = if (hasCatalog && snapshot.availableGenres.isEmpty()) {
-                repository.getAvailableGenres()
-            } else {
-                snapshot.availableGenres
-            }
-            val availableYears = if (hasCatalog && snapshot.availableYears.isEmpty()) {
-                repository.getAvailableYears()
-            } else {
-                snapshot.availableYears
-            }
-            val rawResults = if (hasCatalog) {
-                repository.search(
-                    query = snapshot.query,
-                    genre = snapshot.selectedGenre,
-                    year = snapshot.selectedYear,
-                    minRating = snapshot.minRating,
-                    limit = PAGE_SIZE,
-                    offset = 0
+            val loaded = runCatching {
+                val hasCatalog = repository.hasCatalog()
+                val availableGenres = if (hasCatalog && snapshot.availableGenres.isEmpty()) {
+                    repository.getAvailableGenres()
+                } else {
+                    snapshot.availableGenres
+                }
+                val availableYears = if (hasCatalog && snapshot.availableYears.isEmpty()) {
+                    repository.getAvailableYears()
+                } else {
+                    snapshot.availableYears
+                }
+                val rawResults = if (hasCatalog) {
+                    repository.search(
+                        query = snapshot.query,
+                        genre = snapshot.selectedGenre,
+                        year = snapshot.selectedYear,
+                        minRating = snapshot.minRating,
+                        limit = PAGE_SIZE,
+                        offset = 0
+                    )
+                } else {
+                    emptyList()
+                }
+                val compatibilitySnapshot = compatibilityRepository.getSnapshot()
+                CatalogQueryResult(
+                    hasCatalog = hasCatalog,
+                    availableGenres = availableGenres,
+                    availableYears = availableYears,
+                    results = rawResults.attachCompatibility(compatibilitySnapshot)
                 )
-            } else {
-                emptyList()
+            }.getOrElse { error ->
+                Log.e("CatalogViewModel", "Catalog query failed", error)
+                CatalogQueryResult(
+                    hasCatalog = _uiState.value.hasCatalog,
+                    availableGenres = _uiState.value.availableGenres,
+                    availableYears = _uiState.value.availableYears,
+                    results = _uiState.value.results
+                )
             }
-            val compatibilitySnapshot = compatibilityRepository.getSnapshot()
-            val results = rawResults.attachCompatibility(compatibilitySnapshot)
             _uiState.value = _uiState.value.copy(
                 isLoading = false,
-                hasCatalog = hasCatalog,
-                hasMore = hasCatalog && results.size >= PAGE_SIZE,
-                results = results,
-                availableGenres = availableGenres,
-                availableYears = availableYears
+                hasCatalog = loaded.hasCatalog,
+                hasMore = loaded.hasCatalog && loaded.results.size >= PAGE_SIZE,
+                results = loaded.results,
+                availableGenres = loaded.availableGenres,
+                availableYears = loaded.availableYears
             )
         }
     }
@@ -148,15 +171,20 @@ class CatalogViewModel(application: Application) : AndroidViewModel(application)
         loadMoreJob = viewModelScope.launch(Dispatchers.IO) {
             val snapshot = _uiState.value
             _uiState.value = snapshot.copy(isLoadingMore = true)
-            val compatibilitySnapshot = compatibilityRepository.getSnapshot()
-            val nextPage = repository.search(
-                query = snapshot.query,
-                genre = snapshot.selectedGenre,
-                year = snapshot.selectedYear,
-                minRating = snapshot.minRating,
-                limit = PAGE_SIZE,
-                offset = snapshot.results.size
-            ).attachCompatibility(compatibilitySnapshot)
+            val nextPage = runCatching {
+                val compatibilitySnapshot = compatibilityRepository.getSnapshot()
+                repository.search(
+                    query = snapshot.query,
+                    genre = snapshot.selectedGenre,
+                    year = snapshot.selectedYear,
+                    minRating = snapshot.minRating,
+                    limit = PAGE_SIZE,
+                    offset = snapshot.results.size
+                ).attachCompatibility(compatibilitySnapshot)
+            }.getOrElse { error ->
+                Log.e("CatalogViewModel", "Catalog pagination failed", error)
+                emptyList()
+            }
             val merged = snapshot.results + nextPage.filterNot { next ->
                 snapshot.results.any { it.igdbId == next.igdbId }
             }

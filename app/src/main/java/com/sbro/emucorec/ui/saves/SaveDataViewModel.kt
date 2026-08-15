@@ -1,7 +1,8 @@
-package com.sbro.emucorec.ui.saves
+﻿package com.sbro.emucorec.ui.saves
 
 import android.app.Application
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.sbro.emucorec.data.SaveDataBulkImportResult
@@ -42,9 +43,16 @@ class SaveDataViewModel(application: Application) : AndroidViewModel(application
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(isLoading = true)
-            val focusTarget = focusTitleId?.let { repository.targetForTitleId(context, it) }
-            allSaves = repository.list(context)
-            _uiState.value = _uiState.value.copy(focusTarget = focusTarget, hasLoadedOnce = true)
+            val loaded = runCatching {
+                val focusTarget = focusTitleId?.let { repository.targetForTitleId(context, it) }
+                val saves = repository.list(context)
+                saves to focusTarget
+            }.getOrElse { error ->
+                Log.e("SaveDataViewModel", "Save data scan failed", error)
+                allSaves to _uiState.value.focusTarget
+            }
+            allSaves = loaded.first
+            _uiState.value = _uiState.value.copy(focusTarget = loaded.second, hasLoadedOnce = true)
             publishState()
         }
     }
@@ -58,9 +66,17 @@ class SaveDataViewModel(application: Application) : AndroidViewModel(application
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(busySaveId = saveId)
-            val deleted = repository.delete(context, saveId)
+            val deleted = runCatching { repository.delete(context, saveId) }
+                .getOrElse { error ->
+                    Log.e("SaveDataViewModel", "Save data deletion failed", error)
+                    false
+                }
             if (deleted) {
-                allSaves = repository.list(context)
+                allSaves = runCatching { repository.list(context) }
+                    .getOrElse { error ->
+                        Log.e("SaveDataViewModel", "Save data scan failed", error)
+                        allSaves
+                    }
                 publishState()
             }
             _uiState.value = _uiState.value.copy(busySaveId = null)
@@ -72,7 +88,11 @@ class SaveDataViewModel(application: Application) : AndroidViewModel(application
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(busySaveId = saveId)
-            val result = repository.exportToZip(context, saveId, destination)
+            val result = runCatching { repository.exportToZip(context, saveId, destination) }
+                .getOrElse { error ->
+                    Log.e("SaveDataViewModel", "Save data export failed", error)
+                    Result.failure(error)
+                }
             _uiState.value = _uiState.value.copy(busySaveId = null)
             withContext(Dispatchers.Main) { onComplete(result) }
         }
@@ -82,8 +102,16 @@ class SaveDataViewModel(application: Application) : AndroidViewModel(application
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(busySaveId = targetSaveId)
-            val result = repository.importFromZip(context, source, targetSaveId)
-            allSaves = repository.list(context)
+            val result = runCatching { repository.importFromZip(context, source, targetSaveId) }
+                .getOrElse { error ->
+                    Log.e("SaveDataViewModel", "Save data import failed", error)
+                    SaveDataImportResult.Failure(error)
+                }
+            allSaves = runCatching { repository.list(context) }
+                .getOrElse { error ->
+                    Log.e("SaveDataViewModel", "Save data scan failed", error)
+                    allSaves
+                }
             publishState()
             _uiState.value = _uiState.value.copy(busySaveId = null)
             withContext(Dispatchers.Main) { onComplete(result) }
@@ -94,7 +122,11 @@ class SaveDataViewModel(application: Application) : AndroidViewModel(application
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(bulkBusy = true)
-            val result = repository.exportAllToZip(context, destination)
+            val result = runCatching { repository.exportAllToZip(context, destination) }
+                .getOrElse { error ->
+                    Log.e("SaveDataViewModel", "Save data bulk export failed", error)
+                    Result.failure(error)
+                }
             _uiState.value = _uiState.value.copy(bulkBusy = false)
             withContext(Dispatchers.Main) { onComplete(result) }
         }
@@ -104,8 +136,16 @@ class SaveDataViewModel(application: Application) : AndroidViewModel(application
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(bulkBusy = true)
-            val result = repository.importAllFromZip(context, source)
-            allSaves = repository.list(context)
+            val result = runCatching { repository.importAllFromZip(context, source) }
+                .getOrElse { error ->
+                    Log.e("SaveDataViewModel", "Save data bulk restore failed", error)
+                    SaveDataBulkImportResult.Failure(error)
+                }
+            allSaves = runCatching { repository.list(context) }
+                .getOrElse { error ->
+                    Log.e("SaveDataViewModel", "Save data scan failed", error)
+                    allSaves
+                }
             publishState()
             _uiState.value = _uiState.value.copy(bulkBusy = false)
             withContext(Dispatchers.Main) { onComplete(result) }
@@ -133,3 +173,4 @@ class SaveDataViewModel(application: Application) : AndroidViewModel(application
         )
     }
 }
+

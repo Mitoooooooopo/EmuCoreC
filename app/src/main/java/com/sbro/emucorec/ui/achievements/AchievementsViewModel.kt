@@ -75,7 +75,11 @@ class AchievementsViewModel(application: Application) : AndroidViewModel(applica
         requestedTitleId = activeTitleId
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(isLoading = true)
-            val sets = repository.list(context)
+            val sets = runCatching { repository.list(context) }
+                .getOrElse { error ->
+                    Log.e(TAG, "Trophy scan failed", error)
+                    emptyList()
+                }
             val titleIdToSelect = requestedTitleId
             _uiState.value = AchievementsUiState(
                 sets = sets,

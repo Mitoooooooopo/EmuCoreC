@@ -2,6 +2,7 @@ package com.sbro.emucorec.ui.profile
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.sbro.emucorec.R
@@ -51,7 +52,11 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 
     fun refresh() {
         viewModelScope.launch(Dispatchers.IO) {
-            val games = repository.loadCatalogGames()
+            val games = runCatching { repository.loadCatalogGames() }
+                .getOrElse { error ->
+                    Log.e("ProfileViewModel", "Profile list load failed", error)
+                    emptyList()
+                }
             _uiState.value = _uiState.value.copy(
                 isLoading = false,
                 gamesByStatus = games.byStatus(),
@@ -89,8 +94,15 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 
     private fun updateGames(action: () -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
-            action()
-            val games = repository.loadCatalogGames()
+            val actionResult = runCatching(action)
+            if (actionResult.isFailure) {
+                Log.e("ProfileViewModel", "Profile update failed", actionResult.exceptionOrNull())
+            }
+            val games = runCatching { repository.loadCatalogGames() }
+                .getOrElse { error ->
+                    Log.e("ProfileViewModel", "Profile list load failed", error)
+                    emptyList()
+                }
             _uiState.value = _uiState.value.copy(
                 gamesByStatus = games.byStatus(),
                 favoriteGames = games.favorites(),

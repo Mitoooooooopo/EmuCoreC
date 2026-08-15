@@ -1,6 +1,7 @@
 package com.sbro.emucorec.ui.detail
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.sbro.emucorec.core.InstallStateBus
@@ -49,26 +50,38 @@ class GameDetailViewModel(application: Application) : AndroidViewModel(applicati
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = GameDetailUiState(isLoading = true)
-            val hasCatalog = catalogRepository.hasCatalog()
-            val game = titleId?.let { installedRepository.findByTitleId(context, it) }
-            val rawCatalogEntry = when {
-                hasCatalog && igdbId != null -> catalogRepository.getDetails(igdbId)
-                hasCatalog && game != null -> game.title.let(catalogRepository::findBestMatchDetails)
-                else -> null
+            val loaded = runCatching {
+                val hasCatalog = catalogRepository.hasCatalog()
+                val game = titleId?.let { installedRepository.findByTitleId(context, it) }
+                val rawCatalogEntry = when {
+                    hasCatalog && igdbId != null -> catalogRepository.getDetails(igdbId)
+                    hasCatalog && game != null -> game.title.let(catalogRepository::findBestMatchDetails)
+                    else -> null
+                }
+                val compatibilitySnapshot = compatibilityRepository.getSnapshot()
+                val compatibility = game?.titleId?.let(compatibilitySnapshot::resolve)
+                    ?: compatibilitySnapshot.resolve(rawCatalogEntry?.serials.orEmpty(), gameName = rawCatalogEntry?.name)
+                val catalogEntry = rawCatalogEntry?.copy(
+                    compatibility = compatibilitySnapshot.resolve(rawCatalogEntry.serials, gameName = rawCatalogEntry.name)
+                )
+                GameDetailLoadResult(
+                    hasCatalog = hasCatalog,
+                    game = game,
+                    catalogEntry = catalogEntry,
+                    compatibility = compatibility,
+                    isCompatibilityAvailable = compatibilitySnapshot.records.isNotEmpty()
+                )
+            }.getOrElse { error ->
+                Log.e("GameDetailViewModel", "Game detail load failed", error)
+                GameDetailLoadResult(hasCatalog = false)
             }
-            val compatibilitySnapshot = compatibilityRepository.getSnapshot()
-            val compatibility = game?.titleId?.let(compatibilitySnapshot::resolve)
-                ?: compatibilitySnapshot.resolve(rawCatalogEntry?.serials.orEmpty(), gameName = rawCatalogEntry?.name)
-            val catalogEntry = rawCatalogEntry?.copy(
-                compatibility = compatibilitySnapshot.resolve(rawCatalogEntry.serials, gameName = rawCatalogEntry.name)
-            )
             _uiState.value = GameDetailUiState(
                 isLoading = false,
-                game = game,
-                catalogEntry = catalogEntry,
-                compatibility = compatibility,
-                isCatalogAvailable = hasCatalog,
-                isCompatibilityAvailable = compatibilitySnapshot.records.isNotEmpty()
+                game = loaded.game,
+                catalogEntry = loaded.catalogEntry,
+                compatibility = loaded.compatibility,
+                isCatalogAvailable = loaded.hasCatalog,
+                isCompatibilityAvailable = loaded.isCompatibilityAvailable
             )
         }
     }
@@ -76,7 +89,11 @@ class GameDetailViewModel(application: Application) : AndroidViewModel(applicati
     fun deleteInstalledGame(titleId: String, onComplete: (Boolean) -> Unit) {
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
-            val deleted = installedRepository.deleteByTitleId(context, titleId)
+            val deleted = runCatching { installedRepository.deleteByTitleId(context, titleId) }
+                .getOrElse { error ->
+                    Log.e("GameDetailViewModel", "Game deletion failed", error)
+                    false
+                }
             if (deleted) {
                 loadedKey = null
                 InstallStateBus.notifyCompleted()
@@ -86,4 +103,12 @@ class GameDetailViewModel(application: Application) : AndroidViewModel(applicati
             }
         }
     }
+
+    private data class GameDetailLoadResult(
+        val hasCatalog: Boolean = false,
+        val game: InstalledPs3Game? = null,
+        val catalogEntry: Ps3CatalogDetails? = null,
+        val compatibility: Ps3CompatibilitySummary? = null,
+        val isCompatibilityAvailable: Boolean = false
+    )
 }
