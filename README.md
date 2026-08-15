@@ -13,6 +13,24 @@ EmuCoreC is a PlayStation 3 emulator application for Android. It combines a focu
 > [!WARNING]
 > EmuCoreC is experimental. Compatibility and performance vary by game, SoC, GPU driver, and Android version. The current build targets `arm64-v8a` only.
 
+## Screenshots
+
+<p align="center">
+  <img src="screenshots/library.png" width="47%" alt="Game library" />
+  <img src="screenshots/catalog.png" width="47%" alt="Game catalog" />
+</p>
+<p align="center">
+  <img src="screenshots/game-detail.png" width="47%" alt="Game details" />
+  <img src="screenshots/game-manager.png" width="47%" alt="Game manager" />
+</p>
+<p align="center">
+  <img src="screenshots/play-time.png" width="47%" alt="Play time statistics" />
+  <img src="screenshots/achievements.png" width="47%" alt="Trophies" />
+</p>
+<p align="center">
+  <img src="screenshots/home-menu.png" width="47%" alt="In-game menu" />
+</p>
+
 ## Features
 
 - PS3 game discovery using `PARAM.SFO` and exact `TITLE_ID` serials
