@@ -1,0 +1,1588 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="emulation_quickbar_home_menu">RPCS3 主選單</string>
+    <string name="onboarding_storage_title">模擬器儲存空間</string>
+    <string name="onboarding_status_install_firmware">安装 Sony 官方 PS3 系统软件。</string>
+    <string name="onboarding_status_ready">設定完成。</string>
+    <string name="onboarding_firmware_download">下載</string>
+    <string name="onboarding_firmware_cancel_download">取消</string>
+    <string name="onboarding_firmware_downloading">下載中 %1$d%%</string>
+    <string name="onboarding_firmware_download_failed">下載失敗。請再試一次。</string>
+    <string name="onboarding_back">返回</string>
+    <string name="onboarding_next">下一步</string>
+    <string name="onboarding_get_started">開始使用</string>
+    <string name="nav_setup">遊戲</string>
+    <string name="nav_library">收藏庫</string>
+    <string name="nav_catalog">目錄</string>
+    <string name="nav_settings">設定</string>
+    <string name="library_refresh">重新整理</string>
+    <string name="library_search_hint">搜尋已安裝的遊戲</string>
+    <string name="library_empty_title">找不到遊戲</string>
+    <string name="library_empty_body">在「遊戲」畫面安裝遊戲，然後重新整理收藏庫。</string>
+    <string name="detail_launch">啟動遊戲</string>
+    <string name="detail_delete_game">刪除遊戲</string>
+    <string name="detail_delete_game_confirm_title">確定要刪除已安裝的遊戲？</string>
+    <string name="detail_delete_game_confirm_body">這將從您的收藏庫中移除已安裝的遊戲檔案。</string>
+    <string name="detail_delete_game_failed">刪除遊戲失敗。</string>
+    <string name="detail_title_id">Title ID</string>
+    <string name="detail_content_id">Content ID</string>
+    <string name="detail_version">版本</string>
+    <string name="detail_category">類別</string>
+    <string name="detail_overview_title">總覽</string>
+    <string name="detail_catalog_meta_title">目錄詳細資訊</string>
+    <string name="detail_installed_section">已安裝遊戲</string>
+    <string name="detail_screenshots_title">螢幕截圖</string>
+    <string name="detail_videos_title">影片</string>
+    <string name="detail_release_year">發行年份</string>
+    <string name="detail_rating">評分</string>
+    <string name="detail_genres">類型</string>
+    <string name="detail_empty_title">無可用的詳細資訊</string>
+    <string name="detail_empty_body">目前此遊戲沒有可用的安裝資料或目錄資料。</string>
+    <string name="detail_catalog_missing_body">暫時無法提供目錄詳細資訊。</string>
+    <string name="detail_igdb_source_note">此畫面上的部分描述與遊戲資料來自 IGDB。</string>
+    <string name="detail_compatibility_title">相容性</string>
+    <string name="detail_compatibility_status">狀態</string>
+    <string name="detail_compatibility_issue">問題</string>
+    <string name="detail_compatibility_title_id_label">相符的 Title ID</string>
+    <string name="detail_compatibility_known_serials">已知的 Title IDs</string>
+    <string name="detail_compatibility_updated">已更新</string>
+    <string name="detail_compatibility_unavailable">目前无法使用 RPCS3 官方兼容性数据库。</string>
+    <string name="detail_compatibility_unmapped">此目錄項目尚未在本機目錄中對應到 Title ID。</string>
+    <string name="detail_compatibility_missing_entry">RPCS3 目前没有这些 Title ID 的兼容性条目。</string>
+    <string name="detail_compatibility_source_note">数据来自 RPCS3 官方兼容性列表。报告 #%1$d。</string>
+    <string name="detail_show_more">顯示更多</string>
+    <string name="detail_show_less">顯示較少</string>
+    <string name="detail_screenshot_saved">螢幕截圖已儲存</string>
+    <string name="detail_screenshot_save_failed">無法儲存螢幕截圖</string>
+    <string name="detail_save_screenshot">儲存螢幕截圖</string>
+    <string name="compatibility_unknown">未知</string>
+    <string name="compatibility_nothing">無法執行 (Nothing)</string>
+    <string name="compatibility_bootable">可開機 (Bootable)</string>
+    <string name="compatibility_intro">開場 (Intro)</string>
+    <string name="compatibility_menu">選單 (Menu)</string>
+    <string name="compatibility_ingame_less">遊戲內 - (Ingame -)</string>
+    <string name="compatibility_ingame_more">遊戲內 + (Ingame +)</string>
+    <string name="compatibility_playable">可遊玩 (Playable)</string>
+    <string name="catalog_title">PS3 目錄</string>
+    <string name="catalog_search_hint">搜尋遊戲</string>
+    <string name="catalog_search_clear">清除搜尋</string>
+    <string name="catalog_filters_title">篩選器</string>
+    <string name="catalog_filter_genre">類型</string>
+    <string name="catalog_filter_year">年份</string>
+    <string name="catalog_filter_rating">評分</string>
+    <string name="catalog_filter_all_genres">所有類型</string>
+    <string name="catalog_filter_all_years">所有年份</string>
+    <string name="catalog_filter_any_rating">任何評分</string>
+    <string name="catalog_filters_clear">清除篩選器</string>
+    <string name="catalog_empty_title">找不到目錄資料庫</string>
+    <string name="catalog_empty_body">新增 games.db 以啟用本機 PS3 目錄。</string>
+    <string name="catalog_no_results_title">找不到符合的項目</string>
+    <string name="catalog_no_results_body">請嘗試其他的遊戲名稱、年份或拼寫方式。</string>
+    <string name="settings_title">設定</string>
+    <string name="settings_tab_general">一般</string>
+    <string name="settings_tab_graphics">圖形</string>
+    <string name="settings_tab_overlay">覆疊層</string>
+    <string name="settings_tab_controls">控制</string>
+    <string name="settings_tab_storage">儲存空間</string>
+    <string name="settings_tab_about">關於</string>
+    <string name="settings_core_overlay_opacity_label">覆疊層不透明度</string>
+    <string name="settings_core_overlay_opacity_value">%1$d%%</string>
+    <string name="settings_core_gamepad_overlay">顯示遊戲手把覆疊層</string>
+    <string name="settings_core_overlay_scale_label">覆疊層縮放比例</string>
+    <string name="settings_core_overlay_scale_value">%1$.1fx</string>
+    <string name="settings_core_analog_multiplier_label">類比搖桿倍率</string>
+    <string name="settings_core_analog_multiplier_value">%1$.1fx</string>
+    <string name="settings_storage_title">儲存空間</string>
+    <string name="settings_storage_body">模擬器資料儲存在所選的 PS3 根目錄中。已安裝遊戲位於 config/dev_hdd0/game，存檔與獎盃位於 config/dev_hdd0/home，著色器與暫存快取則位於 cache。</string>
+    <string name="settings_about_title">關於 EmuCoreC</string>
+    <string name="settings_help_content_description">開啟設定說明</string>
+    <string name="settings_help_dialog_label">设置指南</string>
+    <string name="settings_help_dialog_tip">每次只更改一个选项，然后测试同一段游戏场景，这样才能看清真正改善了什么。</string>
+    <string name="settings_help_gamepad_overlay">在未使用實體控制器時顯示螢幕控制項。\n\n用于让触摸或手柄输入更符合你的玩法。如果控制已经正常，请避免随意更改，极端数值可能让瞄准、菜单或触摸功能更难使用。</string>
+    <string name="settings_help_overlay_scale">變更螢幕控制項的大小。\n\n用于让触摸或手柄输入更符合你的玩法。如果控制已经正常，请避免随意更改，极端数值可能让瞄准、菜单或触摸功能更难使用。</string>
+    <string name="settings_help_overlay_opacity">變更螢幕控制項的透明度。\n\n用于让触摸或手柄输入更符合你的玩法。如果控制已经正常，请避免随意更改，极端数值可能让瞄准、菜单或触摸功能更难使用。</string>
+    <string name="settings_help_analog_multiplier">變更類比搖桿靈敏度。\n\n用于让触摸或手柄输入更符合你的玩法。如果控制已经正常，请避免随意更改，极端数值可能让瞄准、菜单或触摸功能更难使用。</string>
+    <string name="settings_reset_toast">%1$s 已重設為預設值</string>
+    <string name="settings_app_language">應用程式語言</string>
+    <string name="settings_app_language_system">系統預設</string>
+    <string name="settings_app_language_english">英文</string>
+    <string name="settings_app_language_russian">俄文</string>
+    <string name="settings_app_language_ukrainian">烏克蘭文</string>
+    <string name="settings_language_picker_title">語言</string>
+    <string name="settings_gpu_driver">GPU 驅動程式</string>
+    <string name="settings_gpu_driver_system">系統</string>
+    <string name="settings_gpu_driver_custom">自訂</string>
+    <string name="settings_gpu_driver_installed">已安裝的驅動程式</string>
+    <string name="settings_help_gpu_driver">在系統 Vulkan 驅動程式與自訂驅動程式之間進行選擇。\n\n自定义驱动主要适合兼容的 Adreno 设备，用于解决系统 Vulkan 驱动的图形错误或性能不足。Mali、PowerVR、未知 GPU 或自定义驱动导致崩溃时请使用系统驱动。</string>
+    <string name="settings_gpu_driver_remove">移除驅動程式</string>
+    <string name="settings_gpu_driver_none_installed">尚未安裝自訂 GPU 驅動程式。</string>
+    <string name="settings_gpu_driver_install_failed">GPU 驅動程式安裝失敗。</string>
+    <string name="settings_gpu_driver_install_success">已安裝 GPU 驅動程式：%1$s</string>
+    <string name="settings_gpu_driver_status_system">系統 Vulkan 驅動程式使用中</string>
+    <string name="settings_gpu_driver_status_system_desc">未選擇自訂驅動程式，因此正使用系統 Vulkan 驅動程式。</string>
+    <string name="settings_gpu_driver_status_active">自訂驅動程式使用中：%1$s</string>
+    <string name="settings_gpu_driver_status_active_desc">此驅動程式已準備好與 Vulkan 搭配使用。實際支援程度仍取決於裝置的相容性。</string>
+    <string name="settings_gpu_driver_status_renderer">已選擇自訂驅動程式，但渲染器為 %1$s</string>
+    <string name="settings_gpu_driver_status_renderer_desc">自訂 GPU 驅動程式僅適用於 Vulkan。請將渲染器切換至 Vulkan 以使用此驅動程式。</string>
+    <string name="settings_gpu_driver_status_broken">驅動程式壓縮檔不完整：找不到 %1$s</string>
+    <string name="settings_gpu_driver_status_broken_desc">存在驅動程式中繼資料，但缺少 Vulkan 函式庫。請重新安裝驅動程式。</string>
+    <string name="settings_emulation_core">模擬器核心</string>
+    <string name="settings_based_on_rpcsx">基於 RPCS3</string>
+    <string name="settings_developer">開發者</string>
+    <string name="settings_created_by_sbro">由 Sashkin Apps 製作</string>
+    <string name="settings_play_store_profile">Play 商店個人檔案</string>
+    <string name="settings_core_source_code">核心原始碼</string>
+    <string name="settings_core_source_description">EmuCoreC 使用自己的 Android 介面。只有模擬核心基於 RPCS3。</string>
+    <string name="shell_setup_section">安裝</string>
+    <string name="shell_library_section">收藏庫</string>
+    <string name="shell_tools_section">工具</string>
+    <string name="shell_install_content">安裝遊戲</string>
+    <string name="game_launch_failed">啟動此遊戲失敗。</string>
+    <string name="folder_picker_failed">無法使用所選的資料夾。</string>
+    <string name="core_install_firmware_failed">無法開始韌體安裝。</string>
+    <string name="core_install_firmware_unsupported">請選擇支援的韌體檔案，例如 .PUP。</string>
+    <string name="core_install_pkg_failed">無法開始安裝 PS3 內容。</string>
+    <string name="game_launch_requires_firmware">在啟動遊戲前，請先安裝基礎韌體。</string>
+    <string name="install_dialog_title_generic">安裝中</string>
+    <string name="install_dialog_title_firmware">正在安裝韌體</string>
+    <string name="install_dialog_title_pkg">正在安裝 PS3 內容</string>
+    <string name="install_dialog_success">安裝完成。</string>
+    <string name="install_dialog_error">安裝失敗。</string>
+    <string name="install_dialog_percent">已完成 %1$d%%</string>
+    <string name="install_dialog_close">關閉</string>
+    <string name="install_dialog_unexpected_error">安裝期間發生錯誤。</string>
+    <string name="install_dialog_firmware_failed">韌體安裝失敗。</string>
+    <string name="install_dialog_pkg_failed">PS3 內容安裝失敗。</string>
+    <string name="install_dialog_firmware_done">韌體套件安裝成功。</string>
+    <string name="install_dialog_pkg_done">PS3 內容安裝成功。</string>
+    <string name="install_dialog_extracting_archive">正在解壓 %1$s…</string>
+    <string name="install_archive_missing_volume">缺少一個或多個壓縮分卷。請選擇包括首卷和末卷在內的全部分卷。</string>
+    <string name="install_archive_password_protected">暫不支援密碼保護的壓縮檔。請先解壓或移除密碼。</string>
+    <string name="install_archive_unsafe">壓縮檔包含不安全的路徑或連結，已被拒絕。</string>
+    <string name="install_archive_not_enough_space">可用空間不足，無法安全解壓並安裝此內容。</string>
+    <string name="install_archive_no_content">未找到支援的 PS3 PKG、ISO、RAP 或 EDAT 檔案。</string>
+    <string name="install_archive_failed">壓縮檔已損壞、不完整或使用了不支援的格式。</string>
+    <string name="setup_title">安裝遊戲</string>
+    <string name="common_back">返回</string>
+    <string name="common_not_available">無法使用</string>
+    <string name="common_unknown">未知</string>
+    <string name="common_close">關閉</string>
+    <string name="emulation_pause">暫停</string>
+    <string name="emulation_resume">繼續</string>
+    <string name="emulation_menu_title">遊戲選單</string>
+    <string name="emulation_menu_unknown_game">執行中的遊戲</string>
+    <string name="emulation_menu_controls_desc">顯示或隱藏螢幕控制項。</string>
+    <string name="emulation_menu_hide_controls">隱藏控制項</string>
+    <string name="emulation_menu_show_controls">顯示控制項</string>
+    <string name="emulation_menu_edit_controls">編輯控制項</string>
+    <string name="emulation_menu_edit_controls_desc">移動、調整大小、顯示或隱藏每個螢幕控制項。</string>
+    <string name="emulation_menu_reset_overlay">重設控制項配置</string>
+    <string name="emulation_menu_reset_overlay_desc">將觸控控制項還原為預設的縮放比例、不透明度與配置。</string>
+    <string name="emulation_controls_editor_title">控制項編輯器</string>
+    <string name="emulation_controls_editor_percent">%1$d%%</string>
+    <string name="emulation_controls_editor_done">完成</string>
+    <string name="emulation_menu_exit_game">退出遊戲</string>
+    <string name="emulation_exit_confirm_title">確定要退出遊戲？</string>
+    <string name="emulation_exit_confirm_body">目前的工作階段將被關閉，您將返回收藏庫。</string>
+    <string name="emulation_exit_confirm_action">退出</string>
+    <string name="emulation_exit_cancel_action">取消</string>
+    <string name="settings_app_language_spanish">西班牙语</string>
+    <string name="settings_app_language_french">法语</string>
+    <string name="settings_app_language_german">德语</string>
+    <string name="settings_app_language_portuguese">葡萄牙语</string>
+    <string name="settings_app_language_chinese_traditional">繁体中文</string>
+    <string name="settings_app_language_hindi">印地语</string>
+    <string name="settings_app_language_italian">意大利语</string>
+    <string name="settings_gpu_driver_manage">管理驱动程序</string>
+    <string name="settings_gpu_driver_manager_title">GPU 驱动程序</string>
+    <string name="settings_gpu_driver_manager_subtitle">安装、下载、应用或卸载 Adreno 驱动程序。</string>
+    <string name="settings_gpu_driver_active_title">当前驱动程序</string>
+    <string name="settings_gpu_driver_install_from_file">从文件安装</string>
+    <string name="settings_gpu_driver_catalog">驱动程序目录</string>
+    <string name="settings_gpu_driver_refresh">刷新</string>
+    <string name="settings_gpu_driver_catalog_loading">正在加载驱动程序目录…</string>
+    <string name="settings_gpu_driver_catalog_failed">无法加载驱动程序目录</string>
+    <string name="settings_gpu_driver_catalog_empty">暂无可用的在线驱动程序。</string>
+    <string name="settings_gpu_driver_download_apply">下载并应用</string>
+    <string name="settings_gpu_driver_downloaded">已下载</string>
+    <string name="settings_gpu_driver_apply">应用</string>
+    <string name="settings_gpu_driver_applied">已应用</string>
+    <string name="settings_gpu_driver_remove_short">移除</string>
+    <string name="settings_gpu_driver_recommended">推荐</string>
+    <string name="settings_gpu_driver_source">来源</string>
+    <string name="settings_gpu_driver_search">搜索驱动程序</string>
+    <string name="settings_gpu_driver_filter_all">全部</string>
+    <string name="settings_gpu_driver_no_matches">没有匹配的驱动程序</string>
+    <string name="settings_gpu_driver_no_matches_desc">请更改搜索文本或所选的筛选条件。</string>
+    <string name="settings_app_language_turkish">土耳其语</string>
+    <string name="save_manager_title">存档</string>
+    <string name="save_manager_open_for_game">存档</string>
+    <string name="save_manager_search_hint">搜索存档</string>
+    <string name="save_manager_export">导出</string>
+    <string name="save_manager_import">导入</string>
+    <string name="save_manager_delete">删除存档</string>
+    <string name="save_manager_delete_confirm_title">删除存档数据？</string>
+    <string name="save_manager_delete_confirm_body">这将移除 %1$s 的存档数据。</string>
+    <string name="save_manager_delete_failed">删除存档数据失败。</string>
+    <string name="save_manager_export_success">存档数据已导出。</string>
+    <string name="save_manager_export_failed">导出存档数据失败。</string>
+    <string name="save_manager_import_success">存档数据已导入：%1$s。</string>
+    <string name="save_manager_import_failed">导入存档数据失败。</string>
+    <string name="save_manager_import_empty">压缩包内不包含存档文件。</string>
+    <string name="save_manager_import_unsafe">压缩包包含不安全的路径。</string>
+    <string name="save_manager_import_unknown_target">在导入此压缩包之前，请选择一个游戏存档卡，或使用只包含单个存档文件夹的压缩包。</string>
+    <string name="save_manager_empty_title">未找到存档数据</string>
+    <string name="save_manager_empty_body">启动游戏以创建存档数据，或导入一个存档压缩包。</string>
+    <string name="save_manager_empty_game_title">没有 %1$s 的存档数据</string>
+    <string name="save_manager_empty_game_body">启动此游戏以创建存档数据，或为它导入一个存档压缩包。</string>
+    <string name="save_manager_orphan_save">游戏未安装</string>
+    <string name="nav_save_manager">存档</string>
+    <string name="settings_options_content_description">设置选项</string>
+    <string name="settings_reset_defaults_menu">恢复默认设置</string>
+    <string name="settings_reset_defaults_title">恢复默认设置？</string>
+    <string name="settings_reset_defaults_message">这会将模拟器设置重置为推荐的默认值。您的游戏、存档、应用语言和选定的文件夹将保持不变。</string>
+    <string name="settings_reset_defaults_confirm">恢复</string>
+    <string name="settings_reset_defaults_cancel">取消</string>
+    <string name="settings_tab_updates">更新</string>
+    <string name="settings_about_version">应用版本</string>
+    <string name="settings_about_version_value">版本 %1$s</string>
+    <string name="settings_about_body_extended">EmuCoreC 将 PS3 模拟带到了 Android 平台，并提供专注的移动端界面、本地库管理以及基于 RPCS3 的模拟核心。</string>
+    <string name="settings_about_community_title">社区与支持</string>
+    <string name="settings_about_repository">EmuCoreC 仓库</string>
+    <string name="settings_about_repository_desc">在 GitHub 上查看源代码、报告问题并关注开发进展。</string>
+    <string name="settings_about_discord">加入我们的 Discord</string>
+    <string name="settings_about_discord_desc">与社区交流、分享反馈并获取项目更新。</string>
+    <string name="settings_about_support">支持 EmuCoreC</string>
+    <string name="settings_about_support_desc">通过 Patreon 会员资格帮助我们继续开发。</string>
+    <string name="settings_play_store_profile_desc">查看开发者的更多 Android 应用。</string>
+    <string name="settings_rpcsx_repository_desc">打开上游 RPCS3 项目仓库。</string>
+    <string name="settings_updates_version_label">版本</string>
+    <string name="settings_updates_open_release">打开发布页面</string>
+    <string name="settings_updates_release_notes_title">新功能</string>
+    <string name="settings_updates_release_notes_empty">此版本不包含发布说明。</string>
+    <string name="settings_updates_cancel">取消</string>
+    <string name="settings_backup_title">设置备份</string>
+    <string name="settings_backup_body">将应用偏好设置和模拟器设置备份到文件中，或从之前的备份中恢复。</string>
+    <string name="settings_backup_create">备份设置</string>
+    <string name="settings_backup_restore">恢复备份</string>
+    <string name="settings_backup_created">设置备份已创建。</string>
+    <string name="settings_backup_failed">无法创建设置备份。</string>
+    <string name="settings_backup_restored">已从备份中恢复设置。</string>
+    <string name="settings_backup_restore_failed">无法恢复设置备份。</string>
+    <string name="settings_backup_restore_title">恢复设置备份？</string>
+    <string name="settings_backup_restore_message">当前的应用偏好设置和模拟器设置将被选定的备份替换。</string>
+    <string name="settings_backup_restore_confirm">恢复</string>
+    <string name="settings_clear_cache_title">清除缓存</string>
+    <string name="settings_clear_cache_body">删除着色器缓存、纹理缓存、日志和临时安装文件。您的设置、存档、已安装的游戏和固件不会受到影响。</string>
+    <string name="settings_clear_cache_action">清除缓存</string>
+    <string name="settings_clear_cache_size">缓存大小：%1$s</string>
+    <string name="settings_clear_cache_empty">没有可删除的缓存数据。</string>
+    <string name="settings_clear_cache_confirm_title">要清除缓存吗？</string>
+    <string name="settings_clear_cache_confirm_message">这将释放 %1$s。重新生成着色器期间，游戏首次启动可能会稍慢。</string>
+    <string name="settings_clear_cache_confirm_action">清除</string>
+    <string name="settings_clear_cache_done">缓存已清除，释放了 %1$s。</string>
+    <string name="settings_clear_cache_failed">无法清除缓存。</string>
+    <string name="settings_clear_cover_cache_title">清除封面快取</string>
+    <string name="settings_clear_cover_cache_body">移除已下載的遊戲封面、螢幕截圖與橫幅。需要時將重新下載。</string>
+    <string name="settings_clear_cover_cache_action">清除封面快取</string>
+    <string name="settings_clear_cover_cache_size">封面快取大小：%1$s</string>
+    <string name="settings_clear_cover_cache_empty">沒有可移除的封面快取。</string>
+    <string name="settings_clear_cover_cache_confirm_title">清除封面快取？</string>
+    <string name="settings_clear_cover_cache_confirm_message">這將刪除快取的遊戲封面與截圖，釋放 %1$s 空間。</string>
+    <string name="settings_clear_cover_cache_confirm_action">清除</string>
+    <string name="settings_clear_cover_cache_done">封面快取已清除，釋放了 %1$s。</string>
+    <string name="settings_clear_cover_cache_failed">清除封面快取失敗。</string>
+    <string name="settings_keep_screen_on">保持螢幕開啟</string>
+    <string name="settings_keep_screen_on_summary">在使用應用程式或玩遊戲時防止螢幕關閉</string>
+    <string name="emulation_quickbar_open_menu">打开菜单</string>
+    <string name="emulation_menu_paused_badge">已暂停</string>
+    <string name="emulation_menu_badge_live">实时</string>
+    <string name="emulation_menu_badge_restart">需要重启</string>
+    <string name="emulation_menu_section_now">立即</string>
+    <string name="emulation_menu_section_now_desc">更改会立即应用到运行中的游戏。</string>
+    <string name="emulation_menu_section_touch">触摸控制</string>
+    <string name="emulation_menu_section_touch_desc">屏幕虚拟手柄。更改会立即应用。</string>
+    <string name="emulation_tab_game">游戏</string>
+    <string name="emulation_tab_controls">控制</string>
+    <string name="settings_gamepad_section">物理手柄</string>
+    <string name="settings_gamepad_connected">手柄已连接。这些设置会在您游玩时实时生效。</string>
+    <string name="settings_gamepad_disconnected">连接物理手柄以启用这些设置。</string>
+    <string name="settings_gamepad_deadzone">摇杆死区</string>
+    <string name="settings_gamepad_trigger_threshold">扳机阈值</string>
+    <string name="settings_gamepad_percent_value">%1$d%%</string>
+    <string name="settings_gamepad_button_profile">按钮重映射</string>
+    <string name="settings_gamepad_profile_standard">标准</string>
+    <string name="settings_gamepad_profile_swap_cross_circle">互换叉/圆圈</string>
+    <string name="settings_gamepad_profile_nintendo_face">任天堂按键布局</string>
+    <string name="settings_gamepad_swap_sticks">互换摇杆</string>
+    <string name="settings_gamepad_invert_left_y">反转左摇杆 Y 轴</string>
+    <string name="settings_gamepad_invert_right_y">反转右摇杆 Y 轴</string>
+    <string name="settings_help_gamepad_deadzone">过滤靠近中心的小幅度摇杆移动以减少漂移。如果相机或角色自行移动，请调高此值；如果瞄准感觉迟钝，请调低此值。</string>
+    <string name="settings_help_gamepad_trigger_threshold">设置发送输入前模拟扳机必须移动的距离。对于过于敏感的扳机，请调高此值；对于赛车或压感控制，请调低此值。</string>
+    <string name="settings_help_gamepad_button_profile">在物理操作按钮到达模拟器之前重新映射它们。当您的手柄布局与 PS3 的叉、圆圈、方块和三角位置不匹配时，请使用此功能。</string>
+    <string name="settings_help_gamepad_swap_sticks">互换左右摇杆轴。对摇杆映射异常的游戏或手柄很有用。</string>
+    <string name="settings_help_gamepad_invert_x">反转用于转向或镜头控制的摇杆水平移动。</string>
+    <string name="settings_help_gamepad_invert_y">翻转相机或瞄准控制的垂直摇杆移动。</string>
+    <string name="emulation_tab_gamepad">手柄</string>
+    <string name="emulation_menu_section_gamepad">物理手柄</string>
+    <string name="emulation_menu_section_gamepad_desc">连接手柄的死区、重映射、振动和摇杆行为。</string>
+    <string name="emulation_menu_section_gamepad_disconnected">连接物理手柄以更改这些控制。</string>
+    <string name="game_manager_title">游戏管理器</string>
+    <string name="game_manager_open_for_game">游戏设置</string>
+    <string name="game_manager_empty_title">没有已安装的游戏</string>
+    <string name="game_manager_empty_body">请先安装游戏，然后在此处为其创建自定义配置文件。</string>
+    <string name="game_manager_choose_game">选择游戏</string>
+    <string name="game_manager_reset_global">使用全局默认设置</string>
+    <string name="game_manager_invert_left_x">反转左摇杆 X 轴</string>
+    <string name="game_manager_invert_right_x">反转右摇杆 X 轴</string>
+    <string name="nav_game_manager">游戏管理器</string>
+    <string name="nav_play_time">游玩时间</string>
+    <string name="play_time_title">游玩时间</string>
+    <string name="play_time_open_for_game">游玩时间</string>
+    <string name="play_time_current_session">当前会话</string>
+    <string name="play_time_filter_game">选择游戏</string>
+    <string name="play_time_all_games">所有游戏</string>
+    <string name="play_time_total_time">总时间</string>
+    <string name="play_time_sessions">会话</string>
+    <string name="play_time_games_played">游玩的游戏</string>
+    <string name="play_time_daily_chart">过去 14 天</string>
+    <string name="play_time_games_chart">按游戏统计时间</string>
+    <string name="play_time_recent_sessions">会话</string>
+    <string name="play_time_no_sessions_title">暂无游玩会话</string>
+    <string name="play_time_no_sessions_body">启动游戏后，您的游玩会话将显示在此处。</string>
+    <string name="play_time_no_game_sessions_body">此游戏尚未游玩过。启动它，其游玩会话将显示在此处。</string>
+    <string name="library_add_shortcut">添加快捷方式</string>
+    <string name="library_shortcut_requested">快捷方式请求已发送。</string>
+    <string name="library_shortcut_unsupported">此启动器不支持固定快捷方式。</string>
+    <string name="library_shortcut_failed">无法创建快捷方式。</string>
+    <string name="settings_app_language_arabic">阿拉伯语</string>
+    <string name="play_time_today">今天</string>
+    <string name="play_time_yesterday">昨天</string>
+    <string name="settings_gpu_driver_global">使用全局</string>
+    <string name="settings_gpu_driver_status_global">使用全局 GPU 驱动程序：%1$s</string>
+    <string name="settings_gpu_driver_status_global_system">使用全局 GPU 驱动程序：系统 Vulkan</string>
+    <string name="settings_gpu_driver_status_game_system">游戏覆盖：系统 Vulkan 驱动程序</string>
+    <string name="settings_gpu_driver_status_game_active">游戏覆盖：%1$s</string>
+    <string name="settings_about_website">官方网站</string>
+    <string name="settings_about_website_desc">打开 EmuCoreC 网站以获取下载、新闻和项目链接。</string>
+    <string name="settings_gpu_driver_status_global_desc">此游戏遵循全局 GPU 驱动程序选择。</string>
+    <string name="settings_gpu_driver_game_title">游戏 GPU 驱动程序</string>
+    <string name="install_dialog_title_license">正在安装许可证</string>
+    <string name="install_dialog_license_failed">许可证安装失败。</string>
+    <string name="install_dialog_license_done">许可证安装成功。</string>
+    <string name="common_cancel">取消</string>
+    <string name="save_manager_backup_all_title">所有存档备份</string>
+    <string name="save_manager_backup_all_body">创建一个包含每个存档文件夹的 ZIP 备份，或从以前的完整备份中恢复存档文件夹。</string>
+    <string name="save_manager_backup_all">备份</string>
+    <string name="save_manager_restore_all">恢复全部</string>
+    <string name="save_manager_backup_all_success">已备份 %1$d 个存档文件夹。</string>
+    <string name="save_manager_backup_all_failed">备份所有存档失败。</string>
+    <string name="save_manager_restore_all_success">已恢复 %1$d 个存档文件夹。</string>
+    <string name="save_manager_restore_all_failed">恢复所有存档失败。</string>
+    <string name="save_manager_restore_all_confirm_title">恢复所有存档？</string>
+    <string name="save_manager_restore_all_confirm_body">所选备份中的存档文件夹将替换此设备上匹配的存档文件夹。仅当备份中不包含该存档 ID 时，才会保留现有存档。</string>
+    <string name="save_manager_restore_all_confirm">恢复存档</string>
+    <string name="settings_change_storage">更改存储</string>
+    <string name="settings_storage_location_internal">设备存储</string>
+    <string name="settings_storage_location_sd">SD 卡</string>
+    <string name="settings_storage_location_external">外部存储</string>
+    <string name="settings_storage_change_note">更改存储位置时，EmuCoreC 会将缺失的模拟器数据移动到所选位置。目标位置中已有的文件会保留。</string>
+    <string name="onboarding_storage_choose_title">选择模拟器存储</string>
+    <string name="onboarding_storage_only_default">Android 目前仅提供一个应用存储位置。如果安装了 SD 卡，请确保已挂载并可供应用使用。</string>
+    <string name="nav_achievements">成就</string>
+    <string name="achievements_title">成就</string>
+    <string name="achievements_progress_count">%1$d/%2$d</string>
+    <string name="achievements_choose_game">选择游戏</string>
+    <string name="achievements_trophy">奖杯</string>
+    <string name="achievements_hidden_trophy">隐藏奖杯</string>
+    <string name="achievements_hidden_trophy_body">解锁此奖杯以显示其详细信息。</string>
+    <string name="achievements_unlocked_at">已于 %1$s 解锁</string>
+    <string name="achievements_empty_title">未找到奖杯</string>
+    <string name="achievements_empty_body">启动支持奖杯的游戏或在安装游戏后刷新。</string>
+    <string name="achievements_open_for_game">成就</string>
+    <string name="achievements_how_to_unlock">如何解锁？</string>
+    <string name="achievements_translate">翻译</string>
+    <string name="achievements_hint_title">如何解锁</string>
+    <string name="achievements_translation_title">已翻译</string>
+    <string name="achievements_assist_error">无法加载。请重试。</string>
+    <string name="emulation_achievements_loading">正在加载运行中游戏的奖杯。</string>
+    <string name="emulation_achievements_empty">未找到运行中游戏的奖杯。</string>
+    <string name="emulation_achievements_empty_body">安装支持奖杯的游戏或从库中刷新游戏奖杯。</string>
+    <string name="emulation_tab_achievements">成就</string>
+    <string name="settings_storage_migrating">正在移动模拟器数据…</string>
+    <string name="settings_storage_confirm_title">更改模拟器存储？</string>
+    <string name="settings_storage_confirm_body">EmuCoreC 会将完整的虚拟 PS3 文件系统（包括固件、游戏、存档、奖杯和核心配置）复制到 %1$s。目标中的现有文件会保留；可重新生成的缓存和补丁仍位于稳定的应用存储中。</string>
+    <string name="settings_storage_confirm_action">移动数据</string>
+    <string name="settings_storage_migration_title">正在移动模拟器数据</string>
+    <string name="settings_storage_migration_body">将虚拟 PS3 文件系统复制到所选存储时，请保持 EmuCoreC 打开。</string>
+    <string name="settings_storage_migration_count">已检查 %1$d/%2$d 个文件</string>
+    <string name="settings_storage_migration_failed">无法移动存储</string>
+    <string name="settings_vibration_section">震动</string>
+    <string name="settings_vibration_enable">震动</string>
+    <string name="settings_vibration_strength">震动强度</string>
+    <string name="settings_test_vibration">测试震动</string>
+    <string name="settings_test_vibration_button">测试</string>
+    <string name="settings_device_vibration_fallback">使用设备震动作为后备</string>
+    <string name="settings_help_vibration_enable">允许受支持的游戏将震动发送到物理控制器，或者在启用后备时，发送到 Android 设备机身。</string>
+    <string name="settings_help_vibration_strength">调整手柄震动和设备后备的震动强度。</string>
+    <string name="settings_help_test_vibration">使用当前的震动强度和路由播放短促的震动脉冲。</string>
+    <string name="settings_help_device_vibration_fallback">当缺少物理控制器或其没有震动马达时，使手机或掌机机身震动。</string>
+    <string name="nav_profile">个人资料</string>
+    <string name="catalog_toggle_search">切换目录搜索</string>
+    <string name="catalog_toggle_filters">切换目录过滤器</string>
+    <string name="catalog_profile_menu">个人资料列表</string>
+    <string name="catalog_profile_remove">从个人资料中移除</string>
+    <string name="catalog_profile_status_title">游玩状态</string>
+    <string name="catalog_profile_clear_status">清除游玩状态</string>
+    <string name="profile_title">个人资料</string>
+    <string name="profile_game_count">已保存 %1$d 个游戏</string>
+    <string name="profile_refresh">刷新个人资料</string>
+    <string name="profile_toggle_layout">切换个人资料布局</string>
+    <string name="profile_section_count">%1$d</string>
+    <string name="profile_status_playing">现在游玩</string>
+    <string name="profile_status_want_to_play">想玩</string>
+    <string name="profile_status_completed">已完成</string>
+    <string name="profile_status_dropped">已放弃</string>
+    <string name="profile_status_favorites">收藏</string>
+    <string name="profile_account_title">本地个人资料</string>
+    <string name="profile_account_body">您的名称、头像、收藏和游戏列表仅存储在此设备上。</string>
+    <string name="profile_hide_backup">隐藏本地个人资料</string>
+    <string name="profile_show_backup">显示本地个人资料</string>
+    <string name="profile_user_name">显示名称</string>
+    <string name="profile_default_name">玩家</string>
+    <string name="profile_change_avatar">更改头像</string>
+    <string name="profile_backup">保存</string>
+    <string name="profile_empty_title">个人资料中还没有游戏</string>
+    <string name="profile_empty_body">打开目录，点击游戏上的三点菜单，并将其添加到您的个人资料列表之一。</string>
+    <string name="settings_updates_history_title">更新历史</string>
+    <string name="settings_updates_history_body">浏览 GitHub 发布版本、发布日期和更新日志。</string>
+    <string name="settings_updates_history_loading">正在加载发布历史</string>
+    <string name="settings_updates_history_empty">未找到任何发布版本。</string>
+    <string name="settings_updates_published_label">已发布</string>
+    <string name="settings_updates_parallel_title">并行版本</string>
+    <string name="settings_updates_parallel_body">只有当发布版本包含使用唯一包名和应用标签（例如 EmuCoreC (0.1.1)）构建的特殊 APK 时，Android 才能安装多个 EmuCoreC 版本。普通的旧版 APK 会替换或降级当前应用。</string>
+    <string name="settings_updates_parallel_unavailable">此发布版本没有提供单独的 APK。</string>
+    <string name="settings_updates_parallel_package">单独的应用包</string>
+    <string name="settings_updates_parallel_download">下载</string>
+    <string name="emulation_controls_editor_touch_area_mode">触摸区域</string>
+    <string name="emulation_controls_editor_width">宽度</string>
+    <string name="emulation_controls_editor_height">高度</string>
+    <string name="settings_tab_customization">个性化</string>
+    <string name="customization_preview_title">预览</string>
+    <string name="customization_preview_subtitle">为你定制的游戏库</string>
+    <plurals name="customization_games_per_row">
+        <item quantity="other">每行 %1$d 个游戏</item>
+    </plurals>
+    <string name="customization_home_background">主屏幕背景</string>
+    <string name="customization_background_select">选择图片、GIF 或视频</string>
+    <string name="customization_background_default">默认背景</string>
+    <string name="customization_background_selected">已选择自定义背景</string>
+    <string name="customization_background_imported">背景已更新</string>
+    <string name="customization_background_failed">无法使用此背景文件</string>
+    <string name="customization_library_layout">游戏库布局</string>
+    <string name="customization_cover_size">游戏封面大小</string>
+    <string name="customization_percent_value">%1$d%%</string>
+    <string name="customization_text_and_fonts">文字和字体</string>
+    <string name="customization_app_font">应用字体</string>
+    <string name="customization_font_system">系统默认</string>
+    <string name="customization_font_custom">自定义</string>
+    <string name="customization_import_font">导入自定义字体</string>
+    <string name="customization_import_font_hint">选择 TTF 或 OTF 文件</string>
+    <string name="customization_font_imported">字体已导入</string>
+    <string name="customization_font_failed">无法使用此字体文件</string>
+    <string name="customization_text_size">文字大小</string>
+    <string name="customization_reset_section">重置</string>
+    <string name="customization_reset">重置个性化设置</string>
+    <string name="customization_reset_description">恢复默认背景、封面大小、字体和文字大小</string>
+    <string name="customization_reset_confirm_title">重置个性化设置？</string>
+    <string name="customization_reset_confirm_body">自定义背景和导入的字体将被删除。</string>
+    <string name="customization_reset_action">重置</string>
+    <string name="settings_theme">主題</string>
+    <string name="settings_theme_system">系統</string>
+    <string name="settings_theme_light">淺色</string>
+    <string name="settings_theme_dark">深色</string>
+    <string name="settings_about_privacy_policy">隐私政策</string>
+    <string name="settings_about_privacy_policy_desc">打开 EmuCoreC 隐私政策。</string>
+    <string name="shell_discord_server">Discord 服务器</string>
+    <string name="settings_customization_touch_controls_section">屏幕虚拟按键</string>
+    <string name="settings_customization_touch_controls_style">按键风格</string>
+    <string name="settings_customization_touch_controls_help">更换整套控制设计，包括按键外壳、方向键、摇杆环、拇指帽、轮廓和按下状态。按键位置、触控区域、多点触控和输入逻辑保持不变。</string>
+    <string name="settings_customization_touch_style_classic">经典</string>
+    <string name="settings_customization_touch_style_glass">经典立体</string>
+    <string name="settings_customization_touch_style_neon">现代</string>
+    <string name="settings_game_menu_tab">游戏菜单</string>
+    <string name="settings_customization_drawer_section">导航抽屉</string>
+    <string name="settings_customization_touch_style_arcade">街机</string>
+    <string name="settings_customization_touch_style_minimal">极简</string>
+    <string name="settings_customization_touch_press_effect">按压效果</string>
+    <string name="settings_customization_touch_press_effect_help">选择屏幕上的每个按钮、方向键方向和模拟摇杆在按下时的响应方式。这仅更改动画；控件大小和触摸目标保持不变。</string>
+    <string name="settings_customization_touch_press_effect_grow">放大</string>
+    <string name="settings_customization_touch_press_effect_shrink">压缩</string>
+    <string name="settings_customization_touch_press_effect_spring">回弹</string>
+    <string name="settings_customization_touch_press_effect_glow">发光</string>
+    <string name="settings_drawer_style_classic">经典</string>
+    <string name="settings_drawer_style_compact">紧凑</string>
+    <string name="settings_drawer_style_glass">玻璃</string>
+    <string name="settings_drawer_style_console">主机</string>
+    <string name="settings_game_menu_layout_help">更改游戏内菜单的结构和导航。标签页、内容可见性、安全操作和手柄控制在每个布局之间保持共享。</string>
+    <string name="settings_game_menu_layout_sidebar">侧边栏</string>
+    <string name="settings_game_menu_layout_dashboard">仪表板</string>
+    <string name="settings_game_menu_layout_command_center">指挥中心</string>
+    <string name="settings_game_menu_layout_compact">紧凑</string>
+    <string name="feedback_title">反馈</string>
+    <string name="feedback_subtitle">直接向 EmuCoreC 团队发送反馈</string>
+    <string name="feedback_category_title">这与什么有关？</string>
+    <string name="feedback_category_compatibility">游戏兼容性</string>
+    <string name="feedback_category_performance">性能或卡顿</string>
+    <string name="feedback_category_graphics">图形或渲染</string>
+    <string name="feedback_category_audio">音频</string>
+    <string name="feedback_category_controls">控制或手柄</string>
+    <string name="feedback_category_crash">崩溃或冻结</string>
+    <string name="feedback_category_feature">功能请求</string>
+    <string name="feedback_category_ui">界面或易用性</string>
+    <string name="feedback_category_other">其他</string>
+    <string name="feedback_details_title">详细信息</string>
+    <string name="feedback_game_label">库中的游戏（可选）</string>
+    <string name="feedback_game_placeholder">按标题或序列号搜索，或手动输入游戏</string>
+    <string name="feedback_game_library_empty">未找到缓存的游戏。您可以手动输入游戏标题或序列号。</string>
+    <string name="feedback_game_clear_selection">清除游戏选择</string>
+    <string name="feedback_message_label">您的反馈</string>
+    <string name="feedback_message_placeholder">告诉我们发生了什么，您期望的是什么，以及我们该如何复现。</string>
+    <string name="feedback_character_counter">%1$d / %2$d</string>
+    <string name="feedback_attachments_title">附件</string>
+    <string name="feedback_attachments_help">最多添加 %1$d 张照片、视频、日志、存档文件或其他文件。每个文件最大 %2$d MB，总共 %3$d MB。</string>
+    <string name="feedback_add_attachment">添加附件</string>
+    <string name="feedback_attachment_source_title">选择附件类型</string>
+    <string name="feedback_add_media">照片或视频</string>
+    <string name="feedback_add_files">文件</string>
+    <string name="feedback_attachment_counter">已选择 %1$d 个文件，共 %2$d 个</string>
+    <string name="feedback_tip_title">获取更好反馈的提示</string>
+    <string name="feedback_tip_body">添加复现问题的简短步骤，并附上屏幕截图、视频、日志、存档或其他有用文件。</string>
+    <string name="feedback_remove_attachment">移除附件</string>
+    <string name="feedback_send">发送反馈</string>
+    <string name="feedback_queueing">正在准备…</string>
+    <string name="feedback_queued">反馈已排队。它将在有网络可用时自动发送。</string>
+    <string name="feedback_error_message_required">请先描述您的反馈内容。</string>
+    <string name="feedback_error_too_many_files">您选择的文件过多。</string>
+    <string name="feedback_error_file_too_large">其中一个文件大于 49 MB。</string>
+    <string name="feedback_error_total_too_large">所选文件总计大于 90 MB。</string>
+    <string name="feedback_error_file_unreadable">无法读取所选的其中一个文件。</string>
+    <string name="feedback_error_queue_failed">无法准备反馈。请检查所选文件并重试。</string>
+    <string name="feedback_not_configured">此版本中未配置反馈传递功能。请将 Worker URL 和 API 密钥添加到 local.properties 中。</string>
+    <string name="feedback_discard_title">放弃反馈？</string>
+    <string name="feedback_discard_message">您的消息和所选的附件将丢失。</string>
+    <string name="feedback_discard_action">放弃</string>
+    <string name="settings_customization_drawer_style">抽屉外观</string>
+    <string name="settings_touch_haptics">触摸控制震动反馈</string>
+    <string name="settings_help_touch_haptics">首次按下屏幕按钮、十字键方向或模拟摇杆时添加轻微的 Android 触觉反馈。这仅影响控制手感，不会改变游戏内的震动。</string>
+    <string name="settings_touch_haptics_strength">触摸震动强度</string>
+    <string name="settings_help_touch_haptics_strength">控制用于触摸控件震动反馈的设备震动强度。如果震动太微弱，请将其调高；如果想在掌机模式下安静游玩，请将其调低。</string>
+    <string name="settings_touch_haptics_test">测试触摸震动</string>
+    <string name="settings_help_touch_haptics_test">播放与屏幕控件使用的相同设备震动反馈，以便在启动游戏前调整强度。</string>
+    <string name="settings_touch_haptics_preset">触感</string>
+    <string name="settings_touch_haptics_preset_soft">柔和</string>
+    <string name="settings_touch_haptics_preset_balanced">均衡</string>
+    <string name="settings_touch_haptics_preset_crisp">清脆</string>
+    <string name="settings_touch_haptics_preset_strong">强烈</string>
+    <string name="settings_help_touch_haptics_preset">“柔和”使用轻柔的按下和非常轻的释放感觉。“均衡”提供清晰的按下和较轻的释放感觉，是默认设置。“清脆”使用最短、最干脆的组合来实现精确的点按。“强烈”针对振动马达较弱的手机使用更深、更长的脉冲。强度滑块可调节所选触感的强度。</string>
+    <string name="settings_gyro_mode">陀螺仪控制</string>
+    <string name="settings_gyro_off">关闭</string>
+    <string name="settings_gyro_aim">瞄准 — 右摇杆</string>
+    <string name="settings_gyro_steering">转向 — 左摇杆</string>
+    <string name="settings_gyro_sensitivity">陀螺仪灵敏度</string>
+    <string name="settings_gyro_smoothing">陀螺仪平滑度</string>
+    <string name="settings_gyro_invert_x">反转水平陀螺仪</string>
+    <string name="settings_gyro_invert_x_desc">反转左右移动方向。</string>
+    <string name="settings_gyro_invert_y">反转垂直陀螺仪</string>
+    <string name="settings_gyro_invert_y_desc">反转上下瞄准移动方向。</string>
+    <string name="settings_help_gyro_mode">“瞄准”将手机的旋转速度转换为射击游戏中的右摇杆来控制视角，并在手机停止移动时自动回中。“转向”将手机的倾斜角度转换为赛车游戏中的左摇杆，并在游戏开始时将当前角度校准为中心点。所选模式仅在游戏运行时生效，并且需要相应的运动传感器。</string>
+    <string name="settings_help_gyro_sensitivity">控制手机移动对模拟摇杆产生的偏移强度。由于不同游戏具有不同的视角和转向响应曲线，建议为每个游戏单独设置。</string>
+    <string name="settings_help_gyro_smoothing">过滤传感器噪声和手部抖动。数值越低反应越快；数值越高感觉越稳定，但会增加少许延迟。</string>
+    <string name="settings_gyro_unavailable">此设备未提供所选模式所需的运动传感器。</string>
+    <string name="settings_touch_controls_section">触屏控制</string>
+    <string name="settings_gpu_driver_detected_device">检测到：%1$s · %2$s</string>
+    <string name="settings_gpu_driver_device_hint">兼容的驱动会优先显示。点按驱动卡片可查看支持的 Snapdragon 芯片。</string>
+    <string name="settings_gpu_driver_compatibility">Snapdragon 兼容性</string>
+    <string name="settings_gpu_driver_best_match">最佳匹配</string>
+    <string name="settings_gpu_driver_compatible">兼容</string>
+    <string name="settings_gpu_driver_other_family">其他 Adreno 系列</string>
+    <string name="settings_gpu_driver_compatibility_a6xx">Adreno 6xx：Snapdragon 845/855/865/888 及众多 Snapdragon 6/7 系列型号</string>
+    <string name="settings_gpu_driver_compatibility_a7xx">Adreno 7xx：Snapdragon 8 Gen 1/2/3、8s Gen 3、较新的 Snapdragon 7 系列和 6 Gen 1/3</string>
+    <string name="settings_gpu_driver_compatibility_a8xx">Adreno 8xx：Snapdragon 8 Elite Gen 5、8 Gen 5、8 Elite、8s Gen 4 和 6 Gen 4</string>
+    <string name="app_name_emucorec">EmuCoreC</string>
+    <string name="home_title">PlayStation 3</string>
+    <string name="home_subtitle">適用於 Android 的 PS3 模擬器</string>
+    <string name="home_installed_count">已安裝遊戲：%1$d</string>
+    <string name="home_catalog_count">目錄遊戲：%1$d</string>
+    <string name="home_storage_short">就緒</string>
+    <string name="home_storage_path">儲存空間：%1$s</string>
+    <string name="home_open_setup">開啟遊戲</string>
+    <string name="home_open_library">開啟收藏庫</string>
+    <string name="home_open_catalog">瀏覽目錄</string>
+    <string name="home_empty_library_title">尚未安裝遊戲</string>
+    <string name="home_recent_titles_title">最近遊玩</string>
+    <string name="onboarding_page_1_title">Android 上的 PlayStation 3</string>
+    <string name="onboarding_page_1_body">使用 RPCS3 核心在 Android 上遊玩您的 PS3 遊戲。</string>
+    <string name="onboarding_page_2_title">您的遊戲收藏庫</string>
+    <string name="onboarding_page_2_body">您安裝的遊戲將集中於同一個收藏庫中。</string>
+    <string name="onboarding_page_3_title">內建目錄</string>
+    <string name="onboarding_page_3_body">在同一個地方瀏覽封面、螢幕截圖、影片與遊戲詳細資訊。</string>
+    <string name="onboarding_page_4_title">快完成了</string>
+    <string name="home_empty_library_body">安装官方 PS3 固件，然后从游戏页面添加 PKG 游戏或 RAP 许可证。</string>
+    <string name="onboarding_page_4_body">启动游戏前请安装官方 PS3 固件。</string>
+    <string name="onboarding_firmware_title">PS3 固件</string>
+    <string name="onboarding_firmware_desc">下载或选择官方 PS3 系统软件文件 PS3UPDAT.PUP。</string>
+    <string name="onboarding_firmware_info_title">官方 PS3 固件</string>
+    <string name="onboarding_firmware_info_body">固件直接从 Sony 官方更新服务器下载。EmuCoreC 不托管、镜像、修改或重新分发该文件。</string>
+    <string name="core_install_pkg_unsupported">請選擇 PS3 PKG/ISO 檔案或 ZIP/RAR 壓縮檔的全部分卷。</string>
+    <string name="core_install_license_unsupported">请选择 PS3 RAP 许可证文件。</string>
+    <string name="setup_pkg_title">安裝 PS3 內容</string>
+    <string name="setup_pkg_body">直接安裝 PKG/ISO，或選擇一個或多個 ZIP/RAR 分卷。內部的 PKG、ISO、RAP 和 EDAT 檔案會自動識別。</string>
+    <string name="setup_pkg_license_step_title">安装 RAP 许可证</string>
+    <string name="setup_pkg_license_step_body">选择属于数字版 PS3 游戏的 RAP 许可证。</string>
+    <string name="setup_pkg_license_button">选择 RAP 文件</string>
+    <string name="setup_pkg_button">選擇內容或壓縮檔</string>
+    <string name="setup_pkg_order_note">部分数字版游戏需要匹配的 RAP 许可证。PKG 和 RAP 可以按任意顺序安装。</string>
+    <string name="install_choice_title">安装 PS3 内容</string>
+    <string name="install_choice_body">選擇 PKG/ISO 檔案、ZIP/RAR 壓縮檔，或安裝 RAP 授權。</string>
+    <string name="install_choice_pkg_without_license_note">可同時選擇多卷 ZIP/RAR 的全部分卷。EmuCoreC 會安全解壓、尋找 PS3 內容、按自然順序安裝分包並刪除暫存檔。</string>
+    <string name="ps3_core_settings_unavailable">无法加载或初始化 RPCS3 核心。</string>
+    <string name="ps3_core_setting_rejected">RPCS3 核心拒绝了“%1$s”。</string>
+    <string name="ps3_core_setting_default">核心默认值：%1$s</string>
+    <string name="ps3_core_setting_reset_game">将此设置重置为全局值</string>
+    <string name="catalog_open_for_game">在目录中打开</string>
+    <string name="catalog_serial_not_found">本地目录中未找到此 PS3 序列号。</string>
+    <string name="settings_rpcs3_repository_desc">原始 PlayStation 3 模拟器 RPCS3 的仓库。感谢所有 RPCS3 贡献者提供本项目最终依赖的核心。</string>
+    <string name="settings_tab_audio">音频</string>
+    <string name="settings_tab_network">网络</string>
+    <string name="settings_tab_advanced">高级</string>
+    <string name="shell_launch_system_menu">启动 PS3</string>
+    <string name="system_menu_launch_failed">无法启动 PS3 系统菜单。</string>
+    <!-- Core settings: generated from the live RPCS3 config schema. -->
+    <!-- Generated from the live RPCS3 configuration schema. -->
+    <string name="core_setting_edit">编辑值</string>
+    <string name="core_setting_value">价值</string>
+    <string name="core_setting_apply">申请</string>
+    <string name="core_setting_cancel">取消</string>
+    <string name="core_setting_default_value">默认值：%1$s</string>
+    <string name="core_setting_no_options">本节中没有可用的支持设置。</string>
+    <string name="core_label_1_controller">1 个控制器</string>
+    <string name="core_label_120">120</string>
+    <string name="core_label_1280x1080">1280x1080</string>
+    <string name="core_label_1280x720">1280x720</string>
+    <string name="core_label_1440x1080">1440x1080</string>
+    <string name="core_label_16_9">16:9</string>
+    <string name="core_label_1600x1080">1600x1080</string>
+    <string name="core_label_1920x1080">1920x1080</string>
+    <string name="core_label_1920x1080i">1920x1080i</string>
+    <string name="core_label_2_controllers">2个控制器</string>
+    <string name="core_label_30">30</string>
+    <string name="core_label_3d_display_enabled">启用 3D 显示</string>
+    <string name="core_label_3d_display_mode">3D显示模式</string>
+    <string name="core_label_4_3">4:3</string>
+    <string name="core_label_50">50</string>
+    <string name="core_label_60">60</string>
+    <string name="core_label_720x480">720x480</string>
+    <string name="core_label_720x480i">720x480i</string>
+    <string name="core_label_720x576">720x576</string>
+    <string name="core_label_720x576i">720x576i</string>
+    <string name="core_label_960x1080">960x1080</string>
+    <string name="core_label_accurate">准确</string>
+    <string name="core_label_accurate_cache_line_stores">准确的缓存行存储</string>
+    <string name="core_label_accurate_ppu_128_byte_reservation_op_max_length">准确的 PPU 128 字节保留操作最大长度</string>
+    <string name="core_label_accurate_rsx_reservation_access">准确的RSX预约访问</string>
+    <string name="core_label_accurate_spu_dma">精确的SPU DMA</string>
+    <string name="core_label_accurate_spu_reservations">准确的SPU预订</string>
+    <string name="core_label_accurate_zcull_stats">准确的 ZCULL 统计数据</string>
+    <string name="core_label_adapter">适配器</string>
+    <string name="core_label_adaptive">自适应</string>
+    <string name="core_label_all">全部</string>
+    <string name="core_label_all_timers">所有定时器</string>
+    <string name="core_label_allow_custom_background">允许自定义背景</string>
+    <string name="core_label_allow_host_gpu_labels">允许主机 GPU 标签</string>
+    <string name="core_label_allow_move_hue_set_by_game">允许游戏设置的移动色调</string>
+    <string name="core_label_allow_rsx_cpu_preemptions">允许 RSX CPU 抢占</string>
+    <string name="core_label_anaglyph_amber_blue">浮雕琥珀蓝</string>
+    <string name="core_label_anaglyph_custom">浮雕定制</string>
+    <string name="core_label_anaglyph_magenta_cyan">浮雕洋红-青色</string>
+    <string name="core_label_anaglyph_red_blue">浮雕红蓝</string>
+    <string name="core_label_anaglyph_red_cyan">浮雕红青色</string>
+    <string name="core_label_anaglyph_red_green">浮雕红绿</string>
+    <string name="core_label_anaglyph_trioscopic">浮雕三视镜</string>
+    <string name="core_label_anisotropic_filter_override">各向异性过滤器覆盖</string>
+    <string name="core_label_approximate">大约</string>
+    <string name="core_label_as_host">作为主持人</string>
+    <string name="core_label_aspect_ratio">纵横比</string>
+    <string name="core_label_assume_external_debugger">假设外部调试器</string>
+    <string name="core_label_async_recompiler_multi_threaded">异步重新编译器（多线程）</string>
+    <string name="core_label_async_recompiler_with_shader_interpreter">带有着色器解释器的异步重新编译器</string>
+    <string name="core_label_asynchronous_queue_scheduler">异步队列调度器</string>
+    <string name="core_label_asynchronous_texture_streaming">异步纹理流</string>
+    <string name="core_label_atomic">原子性</string>
+    <string name="core_label_audio">音频</string>
+    <string name="core_label_audio_channel_layout">音频通道布局</string>
+    <string name="core_label_audio_device">音频设备</string>
+    <string name="core_label_audio_format">音频格式</string>
+    <string name="core_label_audio_formats">音频格式</string>
+    <string name="core_label_audio_provider">音频提供商</string>
+    <string name="core_label_auto">汽车</string>
+    <string name="core_label_automatic">自动</string>
+    <string name="core_label_automatically_start_games_after_boot">开机后自动开始游戏</string>
+    <string name="core_label_av_multiout">AV 多路输出</string>
+    <string name="core_label_background_input_enabled">启用后台输入</string>
+    <string name="core_label_basic">基础</string>
+    <string name="core_label_bilinear">双线性</string>
+    <string name="core_label_bind_address">绑定地址</string>
+    <string name="core_label_blur_effect_strength">模糊效果强度</string>
+    <string name="core_label_body_background_hex">正文背景（十六进制）</string>
+    <string name="core_label_body_color_hex">机身颜色（十六进制）</string>
+    <string name="core_label_both">两者都</string>
+    <string name="core_label_bottom_left">左下角</string>
+    <string name="core_label_bottom_right">右下角</string>
+    <string name="core_label_buzz_emulated_controller">Buzz 仿真控制器</string>
+    <string name="core_label_camera">相机</string>
+    <string name="core_label_camera_flip">相机翻转</string>
+    <string name="core_label_camera_id">相机ID</string>
+    <string name="core_label_camera_type">相机类型</string>
+    <string name="core_label_cellaudio">细胞音频</string>
+    <string name="core_label_center_horizontally">水平居中</string>
+    <string name="core_label_center_vertically">垂直居中</string>
+    <string name="core_label_clans_enabled">部落已启用</string>
+    <string name="core_label_clock12">时钟12</string>
+    <string name="core_label_clock24">时钟24</string>
+    <string name="core_label_clocks_scale">钟表刻度</string>
+    <string name="core_label_compatible_savestate_mode">兼容的保存状态模式</string>
+    <string name="core_label_connected">已连接</string>
+    <string name="core_label_consecutive_frames_to_draw">要绘制的连续帧</string>
+    <string name="core_label_consecutive_frames_to_skip">要跳过的连续帧</string>
+    <string name="core_label_console_psid">控制台 PSID</string>
+    <string name="core_label_console_time_offset_s">控制台时间偏移（秒）</string>
+    <string name="core_label_convert_to_16_bit">转换为16位</string>
+    <string name="core_label_core">核心</string>
+    <string name="core_label_cubeb">荠菜属</string>
+    <string name="core_label_custom_anaglyph_matrices">自定义浮雕矩阵</string>
+    <string name="core_label_darkening_effect_strength">变暗效果强度</string>
+    <string name="core_label_date_format">日期格式</string>
+    <string name="core_label_ddmmyyyy">Ddmmyyyy</string>
+    <string name="core_label_debug_console_mode">调试控制台模式</string>
+    <string name="core_label_debug_output">调试输出</string>
+    <string name="core_label_debug_overlay">调试覆盖</string>
+    <string name="core_label_debug_program_analyser">调试程序分析器</string>
+    <string name="core_label_decr_memory_layout">DECR内存布局</string>
+    <string name="core_label_derive_mac_from_psid">从 PSID 导出 MAC</string>
+    <string name="core_label_desired_audio_buffer_duration">所需的音频缓冲持续时间</string>
+    <string name="core_label_detail_level">细节级别</string>
+    <string name="core_label_disable">禁用</string>
+    <string name="core_label_disable_asynchronous_memory_manager">禁用异步内存管理器</string>
+    <string name="core_label_disable_fifo_reordering">禁用 FIFO 重新排序</string>
+    <string name="core_label_disable_hardware_colorspace_remapping">禁用硬件色彩空间重新映射</string>
+    <string name="core_label_disable_msl_fast_math">禁用 MSL 快速数学</string>
+    <string name="core_label_disable_on_disk_shader_cache">禁用磁盘着色器缓存</string>
+    <string name="core_label_disable_sampling_skip">禁用采样跳过</string>
+    <string name="core_label_disable_spu_getllar_spin_optimization">禁用 SPU GETLLAR 旋转优化</string>
+    <string name="core_label_disable_vertex_cache">禁用顶点缓存</string>
+    <string name="core_label_disable_video_output">禁用视频输出</string>
+    <string name="core_label_disable_vulkan_memory_allocator">禁用 Vulkan 内存分配器</string>
+    <string name="core_label_disable_zcull_occlusion_queries">禁用 ZCull 遮挡查询</string>
+    <string name="core_label_disabled">残疾人</string>
+    <string name="core_label_disconnected">已断开连接</string>
+    <string name="core_label_disk_cache_maximum_size_mb">磁盘缓存最大大小 (MB)</string>
+    <string name="core_label_display">显示</string>
+    <string name="core_label_display_aspect_override">显示方面覆盖</string>
+    <string name="core_label_dns_address">DNS地址</string>
+    <string name="core_label_driver_recovery_timeout">驱动程序恢复超时</string>
+    <string name="core_label_driver_wake_up_delay">驱动器唤醒延迟</string>
+    <string name="core_label_dump_to_file">转储到文件</string>
+    <string name="core_label_empty_dev_hdd0_tmp">空/dev_hdd0/tmp/</string>
+    <string name="core_label_emulate_special_depth_comparison">模拟特殊深度比较</string>
+    <string name="core_label_emulated_midi_devices">模拟 Midi 设备</string>
+    <string name="core_label_enable">启用</string>
+    <string name="core_label_enable_host_root">启用/主机根/</string>
+    <string name="core_label_enable_buffering">启用缓冲</string>
+    <string name="core_label_enable_frame_skip">启用跳帧</string>
+    <string name="core_label_enable_framerate_graph">启用帧率图</string>
+    <string name="core_label_enable_frametime_graph">启用帧时间图</string>
+    <string name="core_label_enable_gamemode">启用游戏模式</string>
+    <string name="core_label_enable_performance_report">启用性能报告</string>
+    <string name="core_label_enable_time_stretching">启用时间拉伸</string>
+    <string name="core_label_enabled">启用</string>
+    <string name="core_label_enter_button_assignment">输入按钮分配</string>
+    <string name="core_label_enter_with_circle">用圆圈输入</string>
+    <string name="core_label_enter_with_cross">输入十字</string>
+    <string name="core_label_exclusive_fullscreen_mode">独家全屏模式</string>
+    <string name="core_label_exit_rpcs3_when_process_finishes">进程完成后退出 RPCS3</string>
+    <string name="core_label_eyetoy">眼睛玩具</string>
+    <string name="core_label_fake">假货</string>
+    <string name="core_label_fake_move_rotation_cone">假动作旋转锥体</string>
+    <string name="core_label_fake_move_rotation_cone_vertical">假动作旋转锥体（垂直）</string>
+    <string name="core_label_fast">快</string>
+    <string name="core_label_faudio">福迪奥</string>
+    <string name="core_label_fidelityfx_cas_sharpening_intensity">FidelityFX CAS 锐化强度</string>
+    <string name="core_label_fidelityfx_super_resolution">FidelityFX 超分辨率</string>
+    <string name="core_label_font">字体</string>
+    <string name="core_label_font_size_px">字体大小（像素）</string>
+    <string name="core_label_force_cpu_blit">强制 CPU Blit</string>
+    <string name="core_label_force_hardware_msaa_resolve">强制硬件 MSAA 解析</string>
+    <string name="core_label_force_high_precision_z_buffer">强制高精度 Z 缓冲器</string>
+    <string name="core_label_frame_limit">帧数限制</string>
+    <string name="core_label_framebuffer_aliasing_heuristic_bias">帧缓冲区别名启发式偏差</string>
+    <string name="core_label_framerate_datapoints">帧率数据点</string>
+    <string name="core_label_framerate_graph_detail_level">帧率图细节级别</string>
+    <string name="core_label_frametime_datapoints">帧时间数据点</string>
+    <string name="core_label_frametime_graph_detail_level">帧时间图细节级别</string>
+    <string name="core_label_full">满</string>
+    <string name="core_label_gdb_server">数据库服务器</string>
+    <string name="core_label_ghltar_emulated_controller">GHLtar 仿真控制器</string>
+    <string name="core_label_giga">千兆</string>
+    <string name="core_label_gun">枪</string>
+    <string name="core_label_handle_rsx_memory_tiling">处理 RSX 内存平铺</string>
+    <string name="core_label_hdd_model_name">硬盘型号</string>
+    <string name="core_label_hdd_serial_number">硬盘序列号</string>
+    <string name="core_label_hdmi_0">HDMI 0</string>
+    <string name="core_label_hdmi_1">HDMI 1</string>
+    <string name="core_label_high">高</string>
+    <string name="core_label_hle_lwmutex">HLE 互斥体</string>
+    <string name="core_label_hook_static_functions">挂钩静态函数</string>
+    <string name="core_label_horizontal">卧式</string>
+    <string name="core_label_horizontal_margin" formatted="false">水平边距 (%)</string>
+    <string name="core_label_inaccurate">不准确</string>
+    <string name="core_label_infinite">无限</string>
+    <string name="core_label_initialize_directories">初始化目录</string>
+    <string name="core_label_input_output">输入/输出</string>
+    <string name="core_label_inspection_mode_savestates">检查模式保存状态</string>
+    <string name="core_label_interlaced">隔行扫描</string>
+    <string name="core_label_internet_enabled">启用互联网</string>
+    <string name="core_label_interpreter_dynamic">口译员（动态）</string>
+    <string name="core_label_interpreter_static">口译员（静态）</string>
+    <string name="core_label_io_debug_overlay">IO 调试覆盖</string>
+    <string name="core_label_ip_address">IP地址</string>
+    <string name="core_label_ip_swap_list">IP交换列表</string>
+    <string name="core_label_keep_pads_connected">保持焊盘连接</string>
+    <string name="core_label_keyboard">键盘</string>
+    <string name="core_label_keyboard_type">键盘类型</string>
+    <string name="core_label_language">语言</string>
+    <string name="core_label_legacy_recompiler_single_threaded">旧版重新编译器（单线程）</string>
+    <string name="core_label_libraries_control">图书馆控制</string>
+    <string name="core_label_license_area">许可区域</string>
+    <string name="core_label_limit_disk_cache_size">限制磁盘缓存大小</string>
+    <string name="core_label_llvm_precompilation">LLVM预编译</string>
+    <string name="core_label_load_sdl_gamecontroller_mappings">加载 SDL GameController 映射</string>
+    <string name="core_label_lock_overlay_input_to_player_one">将覆盖输入锁定到玩家一</string>
+    <string name="core_label_log">日志</string>
+    <string name="core_label_log_shader_programs">日志着色器程序</string>
+    <string name="core_label_low">低</string>
+    <string name="core_label_manual">手册</string>
+    <string name="core_label_master_volume">主音量</string>
+    <string name="core_label_matrix_left">矩阵左</string>
+    <string name="core_label_matrix_right">矩阵右</string>
+    <string name="core_label_max_cpu_preempt_count">最大 CPU 抢占数</string>
+    <string name="core_label_max_llvm_compile_threads">最大 LLVM 编译线程数</string>
+    <string name="core_label_max_spurs_threads">最大 SPURS 线程数</string>
+    <string name="core_label_maximum_savestate_files">最大保存状态文件数</string>
+    <string name="core_label_maximum_savestate_files_space_mib">最大 SaveState 文件空间 (MiB)</string>
+    <string name="core_label_medium">中等</string>
+    <string name="core_label_mega">兆丰</string>
+    <string name="core_label_metrics_update_interval_ms">指标更新间隔（毫秒）</string>
+    <string name="core_label_mfc_commands_shuffling_in_steps">MFC 命令逐步改组</string>
+    <string name="core_label_mfc_commands_shuffling_limit">MFC 命令改组限制</string>
+    <string name="core_label_mfc_commands_timeout">MFC 命令超时</string>
+    <string name="core_label_mfc_debug">MFC调试</string>
+    <string name="core_label_microphone_devices">麦克风设备</string>
+    <string name="core_label_microphone_type">麦克风类型</string>
+    <string name="core_label_minimal">最小</string>
+    <string name="core_label_minimum_scalable_dimension">最小可缩放尺寸</string>
+    <string name="core_label_miscellaneous">杂项</string>
+    <string name="core_label_mmddyyyy">嗯嗯</string>
+    <string name="core_label_mono">单声道</string>
+    <string name="core_label_mouse">鼠标</string>
+    <string name="core_label_mouse_debug_overlay">鼠标调试覆盖</string>
+    <string name="core_label_mouse_based_gyro_enabled">启用基于鼠标的陀螺仪</string>
+    <string name="core_label_move">移动</string>
+    <string name="core_label_msaa">MSAA</string>
+    <string name="core_label_multi_threaded">多线程</string>
+    <string name="core_label_multithreaded_rsx">多线程RSX</string>
+    <string name="core_label_music_handler">音乐处理程序</string>
+    <string name="core_label_nearest">最近的</string>
+    <string name="core_label_net">网络</string>
+    <string name="core_label_none">无</string>
+    <string name="core_label_null">空</string>
+    <string name="core_label_off">关闭</string>
+    <string name="core_label_opacity" formatted="false">不透明度 (%)</string>
+    <string name="core_label_opengl">OpenGL</string>
+    <string name="core_label_operating_system">操作系统</string>
+    <string name="core_label_ordered_atomic">有序和原子</string>
+    <string name="core_label_output_scaling_mode">输出缩放模式</string>
+    <string name="core_label_over_under">大小盘</string>
+    <string name="core_label_pad_handler_mode">焊盘处理模式</string>
+    <string name="core_label_pad_handler_sleep_microseconds">焊盘处理程序睡眠（微秒）</string>
+    <string name="core_label_paint_move_spheres">绘制移动球体</string>
+    <string name="core_label_pause_emulation_during_home_menu">在主菜单期间暂停仿真</string>
+    <string name="core_label_pause_emulation_on_rpcs3_focus_loss">RPCS3 焦点丢失时暂停仿真</string>
+    <string name="core_label_performance_overlay">性能叠加</string>
+    <string name="core_label_performance_report_threshold">绩效报告阈值</string>
+    <string name="core_label_play_music_during_boot_sequence">在启动过程中播放音乐</string>
+    <string name="core_label_position">职位</string>
+    <string name="core_label_ppu_accurate_non_java_mode">PPU 精确非 Java 模式</string>
+    <string name="core_label_ppu_accurate_vector_nan_values">PPU 精确向量 NaN 值</string>
+    <string name="core_label_ppu_calling_history">PPU 通话记录</string>
+    <string name="core_label_ppu_debug">PPU调试</string>
+    <string name="core_label_ppu_decoder">PPU解码器</string>
+    <string name="core_label_ppu_profiler">PPU 分析仪</string>
+    <string name="core_label_ppu_reservation_priority_over_spus">PPU 预留优先于 SPU</string>
+    <string name="core_label_ppu_set_fpcc_bits">PPU 设置 FPCC 位</string>
+    <string name="core_label_ppu_set_saturation_bit">PPU 设置饱和位</string>
+    <string name="core_label_ppu_threads">PPU 线程</string>
+    <string name="core_label_ppu_vector_nan_handling">PPU 向量 NaN 处理</string>
+    <string name="core_label_precise_spu_verification">精确的SPU验证</string>
+    <string name="core_label_prefer_color">喜欢颜色</string>
+    <string name="core_label_prefer_depth">偏好深度</string>
+    <string name="core_label_preferred_spu_threads">首选 SPU 线程</string>
+    <string name="core_label_prevent_display_sleep_while_running_games">运行游戏时防止显示器休眠</string>
+    <string name="core_label_process_argv">处理ARGV</string>
+    <string name="core_label_ps_eye">PS眼</string>
+    <string name="core_label_ps3">PS3</string>
+    <string name="core_label_ps3_native">PS3 原生</string>
+    <string name="core_label_psn_country">PSN国家</string>
+    <string name="core_label_psn_status">PSN状态</string>
+    <string name="core_label_qt">Qt</string>
+    <string name="core_label_quadraphonic">四声道</string>
+    <string name="core_label_quadraphonic_lfe">四声道低频音效</string>
+    <string name="core_label_raw">原料</string>
+    <string name="core_label_raw_mouse">生鼠标</string>
+    <string name="core_label_read_color_buffers">读取颜色缓冲区</string>
+    <string name="core_label_read_depth_buffer">读取深度缓冲区</string>
+    <string name="core_label_real">真实</string>
+    <string name="core_label_real_singstar">真正的歌星</string>
+    <string name="core_label_recompiler_asmjit">重新编译器 (ASMJIT)</string>
+    <string name="core_label_recompiler_llvm">重新编译器 (LLVM)</string>
+    <string name="core_label_record_with_overlays">使用叠加记录</string>
+    <string name="core_label_relaxed">轻松</string>
+    <string name="core_label_relaxed_zcull_sync">轻松的 ZCULL 同步</string>
+    <string name="core_label_renderdoc_compatibility_mode">渲染文档兼容模式</string>
+    <string name="core_label_renderer">渲染器</string>
+    <string name="core_label_resolution">分辨率</string>
+    <string name="core_label_resolution_scale">分辨率比例</string>
+    <string name="core_label_rocksmith">石匠</string>
+    <string name="core_label_rpcn">远程控制网络</string>
+    <string name="core_label_rpcs3_alternative_scheduler">RPCS3 替代调度程序</string>
+    <string name="core_label_rpcs3_scheduler">RPCS3 调度程序</string>
+    <string name="core_label_rsx_fifo_fetch_accuracy">RSX FIFO 读取精度</string>
+    <string name="core_label_rsx_profiler">RSX 分析器</string>
+    <string name="core_label_rsxaudio">RSX音频</string>
+    <string name="core_label_rsxaudio_avport">RSX音频端口</string>
+    <string name="core_label_safe">安全</string>
+    <string name="core_label_save_disc_game_data">保存光盘游戏数据</string>
+    <string name="core_label_save_llvm_logs">保存LLVM日志</string>
+    <string name="core_label_savestate">保存状态</string>
+    <string name="core_label_screen_size_in_inches">屏幕尺寸（英寸）</string>
+    <string name="core_label_sdl">雪迪龙</string>
+    <string name="core_label_sdl_camera_id">SDL 相机 ID</string>
+    <string name="core_label_second_frame_limit">第二帧限制</string>
+    <string name="core_label_set_daz_and_ftz">设置 DAZ 和 FTZ</string>
+    <string name="core_label_shader_chain_librashader">着色器链（libshader）</string>
+    <string name="core_label_shader_compiler_threads">着色器编译器线程</string>
+    <string name="core_label_shader_interpreter_only">仅着色器解释器</string>
+    <string name="core_label_shader_loading_dialog">着色器加载对话框</string>
+    <string name="core_label_shader_mode">着色器模式</string>
+    <string name="core_label_shader_precision">着色器精度</string>
+    <string name="core_label_shader_preset_path">着色器预设路径</string>
+    <string name="core_label_show_1_and_average" formatted="false">显示 1% 和平均值</string>
+    <string name="core_label_show_analog_limiter_toggle_hint">显示模拟限制器切换提示</string>
+    <string name="core_label_show_autosave_autoload_hint">显示自动保存/自动加载提示</string>
+    <string name="core_label_show_capture_hints">显示捕获提示</string>
+    <string name="core_label_show_fatal_error_hints">显示致命错误提示</string>
+    <string name="core_label_show_min_and_max">显示最小值和最大值</string>
+    <string name="core_label_show_mouse_and_keyboard_toggle_hint">显示鼠标和键盘切换提示</string>
+    <string name="core_label_show_move_cursor">显示移动光标</string>
+    <string name="core_label_show_ppu_compilation_hint">显示 PPU 编译提示</string>
+    <string name="core_label_show_pressure_intensity_toggle_hint">显示压力强度切换提示</string>
+    <string name="core_label_show_rpcn_popups">显示 RPCN 弹出窗口</string>
+    <string name="core_label_show_shader_compilation_hint">显示着色器编译提示</string>
+    <string name="core_label_show_trophy_popups">显示奖杯弹出窗口</string>
+    <string name="core_label_side_by_side">并排</string>
+    <string name="core_label_silence_all_logs">静默所有日志</string>
+    <string name="core_label_simulated">模拟</string>
+    <string name="core_label_single_threaded">单线程</string>
+    <string name="core_label_singstar">星星</string>
+    <string name="core_label_sleep_timers_accuracy">睡眠定时器精度</string>
+    <string name="core_label_spdif_0">SPDIF 0</string>
+    <string name="core_label_spdif_1">SPDIF 1</string>
+    <string name="core_label_spu_block_size">SPU块大小</string>
+    <string name="core_label_spu_cache">SPU缓存</string>
+    <string name="core_label_spu_debug">SPU调试</string>
+    <string name="core_label_spu_decoder">SPU解码器</string>
+    <string name="core_label_spu_delay_penalty">SPU延迟惩罚</string>
+    <string name="core_label_spu_getllar_busy_waiting_percentage">SPU GETLLAR 忙等待百分比</string>
+    <string name="core_label_spu_llvm_lower_bound">SPU LLVM 下界</string>
+    <string name="core_label_spu_llvm_upper_bound">SPU LLVM 上限</string>
+    <string name="core_label_spu_loop_detection">SPU环路检测</string>
+    <string name="core_label_spu_profiler">SPU 分析仪</string>
+    <string name="core_label_spu_reservation_busy_waiting_enabled">SPU 预留忙等待已启用</string>
+    <string name="core_label_spu_reservation_busy_waiting_percentage_1">SPU 预留忙等待百分比 1</string>
+    <string name="core_label_spu_verification">SPU验证</string>
+    <string name="core_label_spu_wake_up_delay">SPU 唤醒延迟</string>
+    <string name="core_label_spu_wake_up_delay_thread_mask">SPU 唤醒延迟线程掩码</string>
+    <string name="core_label_spu_xfloat_accuracy">SPU XFloat 精度</string>
+    <string name="core_label_standard">标准型</string>
+    <string name="core_label_start_games_in_fullscreen_mode">以全屏模式开始游戏</string>
+    <string name="core_label_start_paused">开始暂停</string>
+    <string name="core_label_stereo">立体声</string>
+    <string name="core_label_stereo_lfe">立体声低频音效</string>
+    <string name="core_label_stretch_to_display_area">拉伸至显示区域</string>
+    <string name="core_label_strict_rendering_mode">严格渲染模式</string>
+    <string name="core_label_strict_texture_flushing">严格纹理冲洗</string>
+    <string name="core_label_stub_ppu_traps">短截线 PPU 陷阱</string>
+    <string name="core_label_surround_5_1">环绕5.1</string>
+    <string name="core_label_surround_7_1">环绕7.1</string>
+    <string name="core_label_suspend_emulation_savestate_mode">暂停仿真保存状态模式</string>
+    <string name="core_label_system">系统</string>
+    <string name="core_label_system_name">系统名称</string>
+    <string name="core_label_texture_lod_bias_addend">纹理 LOD 偏差加数</string>
+    <string name="core_label_thread_scheduler_mode">线程调度模式</string>
+    <string name="core_label_time_format">时间格式</string>
+    <string name="core_label_time_stretching_threshold">时间拉伸阈值</string>
+    <string name="core_label_title_background_hex">标题背景（十六进制）</string>
+    <string name="core_label_title_color_hex">标题颜色（十六进制）</string>
+    <string name="core_label_top_left">左上</string>
+    <string name="core_label_top_right">右上</string>
+    <string name="core_label_turntable_emulated_controller">转盘仿真控制器</string>
+    <string name="core_label_ultra">超</string>
+    <string name="core_label_unknown">未知</string>
+    <string name="core_label_upnp_enabled">UPNP 已启用</string>
+    <string name="core_label_use_accurate_dfma">使用准确的 DFMA</string>
+    <string name="core_label_use_full_rgb_output_range">使用完整的 RGB 输出范围</string>
+    <string name="core_label_use_gpu_texture_scaling">使用 GPU 纹理缩放</string>
+    <string name="core_label_use_llvm_cpu">使用LLVM CPU</string>
+    <string name="core_label_use_native_user_interface">使用本机用户界面</string>
+    <string name="core_label_use_re_bar_for_gpu_uploads">使用 Re-BAR 进行 GPU 上传</string>
+    <string name="core_label_use_recursive_scan">使用递归扫描</string>
+    <string name="core_label_use_window_space">利用窗户空间</string>
+    <string name="core_label_usleep_only">仅限睡眠</string>
+    <string name="core_label_usleep_time_addend">睡眠时间加数</string>
+    <string name="core_label_uvc_1_1">紫外线1.1</string>
+    <string name="core_label_vblank_ntsc_fixup">Vblank NTSC 修复</string>
+    <string name="core_label_vblank_rate">空白率</string>
+    <string name="core_label_vertical">垂直</string>
+    <string name="core_label_vertical_margin" formatted="false">垂直边距 (%)</string>
+    <string name="core_label_vfs">虚拟FS</string>
+    <string name="core_label_video">视频</string>
+    <string name="core_label_vram_allocation_limit_mb">VRAM 分配限制 (MB)</string>
+    <string name="core_label_vsync_mode">垂直同步模式</string>
+    <string name="core_label_vulkan">伏尔甘</string>
+    <string name="core_label_window_title_format">窗口标题格式</string>
+    <string name="core_label_write_color_buffers">写入颜色缓冲区</string>
+    <string name="core_label_write_depth_buffer">写入深度缓冲区</string>
+    <string name="core_label_xaudio2">X音频2</string>
+    <string name="core_label_yyyymmdd">年月日</string>
+    <string name="core_help_core_accurate_cache_line_stores" formatted="false">准确处理PPU DCBZ指令。
+此外，当与 Accurate SPU DMA 结合使用时，SPU PUT 缓存行访问将以原子方式处理。</string>
+    <string name="core_help_core_use_accurate_dfma" formatted="false">在 PPU 和 SPU 后端使用准确的双精度 FMA 指令。
+如果您的 CPU 不支持 FMA，禁用它可能会带来不错的性能提升，但它也可能会引入原本不会发生的微妙错误。
+如果您的 CPU 支持 FMA，则不应禁用它。</string>
+    <string name="core_help_core_accurate_ppu_128_byte_reservation_op_max_length" formatted="false">启用时，PPU 原子操作将对整个缓存行数据进行操作，而不是禁用时对单个 64 位内存块进行操作。
+数值控制是否根据原子操作的长度启用精确版本。</string>
+    <string name="core_help_core_ppu_set_fpcc_bits" formatted="false">在 PPU 后端准确设置 FPCC 位。
+如果不确定，请勿修改此设置。</string>
+    <string name="core_help_core_ppu_accurate_non_java_mode" formatted="false">尊重 PPU 后端向量操作的非 Java 模式位值。
+如果不确定，请勿修改此设置。</string>
+    <string name="core_help_core_ppu_set_saturation_bit" formatted="false">在 PPU 后端准确设置饱和位值。
+如果不确定，请勿修改此设置。</string>
+    <string name="core_help_core_ppu_accurate_vector_nan_values" formatted="false">在 PPU 后端的向量指令中准确设置 NaN 结果。
+如果不确定，请勿修改此设置。</string>
+    <string name="core_help_core_accurate_rsx_reservation_access" formatted="false">强制 RSX 在 SPU MFC_GETLLAR 和 SPU MFC_PUTLLUC 操作上暂停。</string>
+    <string name="core_help_core_accurate_spu_dma" formatted="false">准确处理SPU DMA操作。</string>
+    <string name="core_help_video_allow_host_gpu_labels" formatted="false">允许主机GPU直接与CELL同步。这会导致性能损失，但会将 GPU 对象的真实状态暴露给客户 CPU。可以帮助消除视觉噪音和故障，但以性能为代价。谨慎使用。</string>
+    <string name="core_help_video_anisotropic_filter_override" formatted="false">较高的值会增加倾斜表面上纹理的清晰度，但会消耗 GPU 资源。
+现代 GPU 可以很好地处理此设置，即使是 16 倍也是如此。
+如果您想使用真实 PS3 所使用的原始设置，请将其保留为“自动”。</string>
+    <string name="core_help_video_aspect_ratio" formatted="false">除非您有 4:3 显示器，否则请将其保留为 16:9。</string>
+    <string name="core_help_audio_rsxaudio_avport" formatted="false">控制使用哪个 avport 来采样音频数据。</string>
+    <string name="core_help_audio_desired_audio_buffer_duration" formatted="false">目标缓冲区持续时间（以毫秒为单位）。
+较高的值使缓冲算法的工作更容易，但可能会引入明显的音频延迟。</string>
+    <string name="core_help_audio_audio_channel_layout" formatted="false">确定 RPCS3 的声音格式。
+使用“自动”让 RPCS3 根据音频设备和模拟的音频格式决定最佳格式。</string>
+    <string name="core_help_audio_audio_device" formatted="false">控制音频后端使用哪个设备。</string>
+    <string name="core_help_audio_audio_format" formatted="false">确定仿真的声音格式。
+如果您想在立体声和环绕声之间切换，请配置此设置。
+更改这些值需要重新启动游戏。
+手动设置将使用您选择的格式，而自动设置将让游戏从所有可用格式中进行选择。</string>
+    <string name="core_help_audio_audio_formats" formatted="false">确定仿真的声音格式。
+如果您想在立体声和环绕声之间切换，请配置此设置。
+更改这些值需要重新启动游戏。
+手动设置将使用您选择的格式，而自动设置将让游戏从所有可用格式中进行选择。</string>
+    <string name="core_help_audio_audio_provider" formatted="false">控制使用哪个 PS3 音频 API。
+游戏使用 CellAudio，而 VSH 需要 RSXAudio。</string>
+    <string name="core_help_audio_renderer" formatted="false">Cubeb 采用跨平台方法并支持音频缓冲，因此是推荐的选项。
+如果不可用，可以使用 FAudio 代替。</string>
+    <string name="core_help_input_output_background_input_enabled" formatted="false">当游戏窗口未聚焦时允许键盘和键盘输入。</string>
+    <string name="core_help_net_bind_address" formatted="false">要绑定到的接口 IP 地址。
+仅适用于自定义配置。</string>
+    <string name="core_help_input_output_buzz_emulated_controller" formatted="false">嗡嗡声！支持。
+如果游戏需要 Buzz!，请选择 1 或 2 个控制器。控制器，而你没有真正的控制器。
+如果游戏支持 DualShock 或者您有真正的 Buzz，请选择 Null！控制器。</string>
+    <string name="core_help_input_output_camera" formatted="false">选择 Qt Camera 以使用操作系统的默认摄像头设备。</string>
+    <string name="core_help_input_output_camera_flip" formatted="false">水平、垂直或在两个轴上翻转相机图像。</string>
+    <string name="core_help_input_output_camera_id" formatted="false">选择您想在游戏过程中使用的相机。</string>
+    <string name="core_help_input_output_camera_type" formatted="false">根据游戏的不同，您可能需要选择特定的相机类型。</string>
+    <string name="core_help_core_clocks_scale" formatted="false">更改模拟系统时间的范围。
+影响使用系统时间来计算动态时间步长等内容的软件。</string>
+    <string name="core_help_savestate_compatible_savestate_mode" formatted="false">当此模式打开时，SPU 模拟会优先考虑保存状态兼容性，但是，它可能会稍微降低性能。
+当此模式关闭时，某些游戏可能不允许进行保存状态并在日志中显示 SPU 暂停错误。</string>
+    <string name="core_help_system_console_time_offset_s" formatted="false">设置要在控制台内使用的时间。这将用作跟踪挂钟时间的偏移量。
+可以通过单击“设置为现在”重置为当前挂钟时间。</string>
+    <string name="core_help_audio_convert_to_16_bit" formatted="false">使用 16 位音频样本而不是默认的 32 位浮点。
+如果您没有声音或声音完全损坏，请使用有缺陷的音频驱动程序。</string>
+    <string name="core_help_video_custom_anaglyph_matrices_matrix_left" formatted="false">设置 3D 立体渲染模式（仅在默认分辨率为 720p 的自定义配置中可用）。
+浮雕对每只眼睛使用不同的颜色，然后可以用某些眼镜进行过滤。
+VR 查看器应用程序更普遍支持并排。
+Over-Under 更接近原生立体声输出，但不太受支持。</string>
+    <string name="core_help_video_custom_anaglyph_matrices_matrix_right" formatted="false">设置 3D 立体渲染模式（仅在默认分辨率为 720p 的自定义配置中可用）。
+浮雕对每只眼睛使用不同的颜色，然后可以用某些眼镜进行过滤。
+VR 查看器应用程序更普遍支持并排。
+Over-Under 更接近原生立体声输出，但不太受支持。</string>
+    <string name="core_help_system_date_format" formatted="false">选择 PS3 的日期格式。</string>
+    <string name="core_help_core_debug_console_mode" formatted="false">增加可用系统内存量以匹配 DECR 控制台等。
+导致某些软件的行为与零售硬件上的行为不同。</string>
+    <string name="core_help_video_debug_output" formatted="false">启用所选 API 的内置调试功能。
+会导致严重的性能下降，尤其是使用 Vulkan 时。
+只对开发者有用。
+如果不确定，请勿使用此选项。</string>
+    <string name="core_help_video_debug_overlay" formatted="false">提供各种调试信息的图形叠加。
+如果不确定，请勿使用此选项。</string>
+    <string name="core_help_net_derive_mac_from_psid" formatted="false">从 PSID 导出 MAC 地址。</string>
+    <string name="core_help_video_disable_asynchronous_memory_manager" formatted="false">强制内联主机内存管理调用而不是异步处理。
+这可能会导致某些游戏的性能严重下降和卡顿。
+仅开发人员在调试纹理缓存内存保护问题时才需要此选项。</string>
+    <string name="core_help_video_disable_fifo_reordering" formatted="false">完全禁用 RSX FIFO 优化。 DMA 拉取器接收到绘图后就会对其进行处理。</string>
+    <string name="core_help_video_disable_hardware_colorspace_remapping" formatted="false">禁用硬件本机颜色空间重新映射格式，例如 _sRGB 和 _SNORM 后缀。
+与 PS3 相比，禁用此选项可提高准确性，但也会因软件模拟的工作方式而引入一些噪音。</string>
+    <string name="core_help_video_disable_msl_fast_math" formatted="false">禁用 MSL 着色器的快速数学，这可能违反 IEEE 754 标准。
+禁用它可能会修复一些问题，尤其是在 Apple GPU 上，但会牺牲性能。</string>
+    <string name="core_help_video_disable_zcull_occlusion_queries" formatted="false">禁用运行遮挡查询。小到中度的性能提升。
+可能会引入遮挡破坏的问题，例如缺少几何形状和极端弹出。</string>
+    <string name="core_help_video_disable_on_disk_shader_cache" formatted="false">禁止从数据目录中的着色器缓存加载和保存着色器。</string>
+    <string name="core_help_core_disable_spu_getllar_spin_optimization" formatted="false">禁用 SPU GETLLAR 自旋优化。
+这可能会导致许多游戏严重性能下降和卡顿。
+仅特定数量的游戏需要此选项。</string>
+    <string name="core_help_video_disable_vertex_cache" formatted="false">禁用顶点缓存。
+可能会解决图形输出丢失或闪烁的问题。
+可能会降低性能。</string>
+    <string name="core_help_video_disable_video_output" formatted="false">禁用所有视频输出和 PS3 图形渲染。
+它唯一的用例是评估 CELL 上的开发性能。</string>
+    <string name="core_help_video_disable_vulkan_memory_allocator" formatted="false">禁用自定义 Vulkan 内存分配器并恢复为直接调用 VkAllocateMemory/VkFreeMemory。</string>
+    <string name="core_help_net_dns_address" formatted="false">DNS 用于由应用程序解析主机名。</string>
+    <string name="core_help_video_driver_wake_up_delay" formatted="false">控制 RSX 在被 Cell 处理器唤醒后开始处理所需的时间。
+增加唤醒延迟可提高稳定性，但过高的值会降低 RSX/GPU 性能。
+建议以 20µs 至 40µs 的增量进行调整，直到达到最佳稳定性的最佳值。</string>
+    <string name="core_help_audio_dump_to_file" formatted="false">将所有音频保存为原始波形文件。如果不确定，请不要选中此项。</string>
+    <string name="core_help_vfs_empty_dev_hdd0_tmp" formatted="false">某些自制程序或游戏模组需要。
+如果不确定，请勿使用此选项</string>
+    <string name="core_help_video_emulate_special_depth_comparison" formatted="false">模拟桌面硬件行为与 PS3 不同的深度比较操作，通常是 EQUAL 比较模式。
+修复了某些游戏中过多的阴影闪烁和 Z-fighting 问题。
+这在某些 Z 预通道深度格式与光栅化深度格式不同的游戏中最为明显，这种情况在兼容的桌面硬件上永远无法正确运行。</string>
+    <string name="core_help_audio_enable_buffering" formatted="false">启用音频缓冲，这可以减少裂纹/卡顿，但会增加音频延迟。</string>
+    <string name="core_help_net_clans_enabled" formatted="false">启用与部落服务器的连接。
+仅影响支持部落功能的游戏。</string>
+    <string name="core_help_core_spu_reservation_busy_waiting_enabled" formatted="false">启用 SPU RdEventStat 自旋。
+这会增加 CPU 使用率，此设置有利于高线程 CPU（12+）和选定数量的游戏。</string>
+    <string name="core_help_miscellaneous_enable_gamemode" formatted="false">激活 Feral Interactive 的游戏模式。
+这是一系列 CPU 和 GPU 优化，可能会提高某些系统上的游戏性能。</string>
+    <string name="core_help_vfs_enable_host_root" formatted="false">某些自制程序需要。
+如果不确定，请勿使用此选项。</string>
+    <string name="core_help_audio_enable_time_stretching" formatted="false">启用时间拉伸 - 需要启用缓冲。
+进一步减少裂纹/卡顿，但可能会导致速度较慢的 CPU 上的音频质量明显下降。</string>
+    <string name="core_help_net_upnp_enabled" formatted="false">启用 UPNP。
+如果您的路由器启用了 UPNP，这将自动转发绑定在 0.0.0.0 上的端口。</string>
+    <string name="core_help_system_enter_button_assignment" formatted="false">用于在系统对话框中输入/接受/确认的按钮。
+将其更改为使用“圆形”按钮，这是日本系统和许多日本游戏中的默认配置。
+在这些情况下，分配十字按钮通常会导致混乱。</string>
+    <string name="core_help_video_vulkan_exclusive_fullscreen_mode" formatted="false">控制使用 Vulkan 渲染器时 RPCS3 从驱动程序请求的全屏模式。
+自动将让驾驶员选择合适的模式，而其他选项将提示驾驶员是否应该使用独占全屏或无边框全屏。
+如果您在流式传输 RPCS3 游戏时遇到问题，或者您的系统在使用全屏时错误地启用了 HDR 模式，那么使用“首选无边框全屏”选项会有所帮助。</string>
+    <string name="core_help_miscellaneous_exit_rpcs3_when_process_finishes" formatted="false">关闭游戏或游戏自行关闭时自动关闭 RPCS3。</string>
+    <string name="core_help_core_rsx_fifo_fetch_accuracy" formatted="false">“快速”是最不准确的设置，RSX 不模拟原子 FIFO 缓冲区。
+“原子”在许多游戏中极大地提高了稳定性，并且几乎没有性能损失。
+“原子和有序”是最准确的，但它是最慢的，并且在游戏中没有太多稳定性优势。</string>
+    <string name="core_help_video_force_cpu_blit" formatted="false">强制模拟 CPU 上的所有位块传送和图像处理操作。
+在大多数情况下还需要启用“写入颜色缓冲区”选项以避免丢失图形。
+显着降低性能，但在某些情况下更准确。
+此设置会覆盖“GPU 纹理缩放”选项。</string>
+    <string name="core_help_video_force_high_precision_z_buffer" formatted="false">仅在调试 GPU 硬件差异时有用。
+对于普通用户来说没有必要。
+如果不确定，请勿使用此选项。</string>
+    <string name="core_help_video_force_hardware_msaa_resolve" formatted="false">强制 MSAA 使用主机 GPU 的解析功能来执行所有采样操作。
+此选项会导致性能损失以及视觉伪像的风险，但在启用 MSAA 时可以产生更清晰的视觉效果。</string>
+    <string name="core_help_video_framebuffer_aliasing_heuristic_bias" formatted="false">控制 RPCS3 如何解析颜色和深度别名相同内存的渲染目标。对于大多数游戏，建议使用“自动”。
+·汽车是现有行为，偏向于深度。
+当启用颜色写入而未启用深度写入时，Prefer Color 会保留颜色绑定。修复了某些延迟渲染器（例如 Starhawk）中缺失的几何体，但代价是跳过该绘制的深度测试。
+目前“首选深度”与“自动”相同。</string>
+    <string name="core_help_video_frame_limit" formatted="false">关闭是最快的选项。
+使用帧限制器会增加额外的开销并减慢游戏速度。但是，如果帧率太高，某些游戏会崩溃。
+仅当自动无法正常工作时才应使用 PS3 原生，因为它可能会引入帧节奏问题。
+Infinite 添加了一个正反馈循环，每帧添加另一个 vblank 信号，从而使更多游戏的 fps 不受限制。
+需要其他帧限制的经验丰富的用户应使用配置文件中的“第二帧限制”设置。</string>
+    <string name="core_help_video_fidelityfx_cas_sharpening_intensity" formatted="false">控制 FidelityFX 超分辨率应用的锐化强度。较高的值将提供更清晰的输出，但可能会引入伪影。</string>
+    <string name="core_help_input_output_ghltar_emulated_controller" formatted="false">Guitar Hero Live (GHL) 吉他控制器支持。
+如果游戏需要 GHL 吉他控制器而您没有真正的吉他控制器，请选择 1 或 2 个控制器。
+如果游戏支持 DualShock 或者您有真正的吉他控制器，请选择 Null。
+真实吉他控制器可以与仿真吉他控制器同时使用。</string>
+    <string name="core_help_video_use_gpu_texture_scaling" formatted="false">强制 GPU 上的所有纹理传输、缩放和转换操作。
+在某些情况下可能会导致纹理损坏。</string>
+    <string name="core_help_video_handle_rsx_memory_tiling" formatted="false">将 GPU 数据写入虚拟机内存时遵守 RSX 内存切片配置。
+这可以修复启用“读取颜色”或“读取深度”选项时观察到的图形损坏。</string>
+    <string name="core_help_core_hook_static_functions" formatted="false">允许挂钩一些函数，如“memcpy”，用高级实现替换它们。可能什么都不做或破坏东西。实验性的。</string>
+    <string name="core_help_net_internet_enabled" formatted="false">如果设置为“已连接”，RPCS3 将允许程序使用您的互联网连接。</string>
+    <string name="core_help_input_output_io_debug_overlay" formatted="false">为玩家 1 提供带有键盘输入值的图形叠加。
+仅当禁用调试覆盖时才会显示此信息。
+如果不确定，请勿使用此选项。</string>
+    <string name="core_help_net_ip_swap_list" formatted="false">DNS 交换列表。
+仅适用于自定义配置。</string>
+    <string name="core_help_input_output_keyboard" formatted="false">有些游戏支持本机键盘输入。
+Basic 在这些情况下将起作用。</string>
+    <string name="core_help_system_keyboard_type" formatted="false">设置使用的键盘布局。
+目前仅完全支持美国、日本和德国布局。</string>
+    <string name="core_help_system_language" formatted="false">如果游戏本身不提供系统语言，某些游戏可能无法启动。
+其他游戏会自动将语言切换为此处选择的语言。
+建议将其保留为游戏支持的语言。</string>
+    <string name="core_help_system_license_area" formatted="false">控制台区域定义了 PS3 的许可区域。
+根据许可区域的不同，某些游戏可能无法运行。</string>
+    <string name="core_help_vfs_limit_disk_cache_size" formatted="false">如果旧文件增长超过指定值，则在启动时自动从磁盘缓存中删除旧文件。
+游戏可以使用缓存文件夹临时存储系统内存之外的数据。它不用于长期储存。
+
+此设置仅在全局配置中可用。</string>
+    <string name="core_help_core_llvm_precompilation" formatted="false">在启动期间搜索游戏目录并预编译额外的 PPU 和 SPU 模块。
+如果禁用，这些模块将仅在需要时编译。根据游戏的不同，这可能会意外且频繁地中断游戏玩法。
+仅当您想更快地进入游戏时才禁用此功能。</string>
+    <string name="core_help_input_output_lock_overlay_input_to_player_one" formatted="false">将本机覆盖输入锁定到第一个玩家。</string>
+    <string name="core_help_video_log_shader_programs" formatted="false">将游戏着色器转储到文件。只对开发者有用。
+如果不确定，请勿使用此选项。</string>
+    <string name="core_help_audio_master_volume" formatted="false">控制模拟的总体音量。
+高于 100% 的值可能会降低音频质量。</string>
+    <string name="core_help_vfs_disk_cache_maximum_size_mb" formatted="false">如果旧文件增长超过指定值，则在启动时自动从磁盘缓存中删除旧文件。
+游戏可以使用缓存文件夹临时存储系统内存之外的数据。它不用于长期储存。
+
+此设置仅在全局配置中可用。</string>
+    <string name="core_help_core_max_llvm_compile_threads" formatted="false">限制用于初始 PPU 和 SPU 模块编译的最大线程数。
+降低此值可以提高其他打开的应用程序的性能。
+默认使用所有可用线程。</string>
+    <string name="core_help_core_max_cpu_preempt_count" formatted="false">降低 CPU 使用率和功耗，延长移动设备的电池寿命。 （0表示禁用）
+值越高，效果越明显，但可能会导致音频或性能问题。建议使用 50 或更小的值。
+此选项强制 FPS 限制，因为它在帧速率稳定时处于活动状态。
+游戏在硬件上越轻，就越省电。 （直到达到抢占计数屏障）</string>
+    <string name="core_help_core_max_spurs_threads" formatted="false">限制每个线程组中 SPURS 线程的最大数量。
+在某些情况下可能会提高性能，特别是在硬件线程数量有限的系统上。
+限制线程数很可能会导致崩溃；建议将此值保留为默认值。</string>
+    <string name="core_help_core_mfc_commands_shuffling_limit" formatted="false">强制延迟任何奇怪的 MFC 命令，等待至少 2 个待处理命令以随机顺序执行它们。
+当前必须与任一 SPU 解释器一起使用。
+严重降低性能！如果不确定，请勿使用此选项。</string>
+    <string name="core_help_core_mfc_debug" formatted="false">创建 MFC 日志。
+只对开发者有用。
+切勿使用此功能。</string>
+    <string name="core_help_audio_microphone_devices" formatted="false">大多数游戏都应使用标准。
+SingStar 模拟 SingStar 设备，应与 SingStar 游戏一起使用。
+Real SingStar 只能与运行 SingStar 游戏的 REAL SingStar 设备一起使用。
+Rocksmith 应与 Rocksmith 加密狗一起使用。</string>
+    <string name="core_help_audio_microphone_type" formatted="false">大多数游戏都应使用标准。
+SingStar 模拟 SingStar 设备，应与 SingStar 游戏一起使用。
+Real SingStar 只能与运行 SingStar 游戏的 REAL SingStar 设备一起使用。
+Rocksmith 应与 Rocksmith 加密狗一起使用。</string>
+    <string name="core_help_input_output_emulated_midi_devices" formatted="false">最多选择 3 个模拟 MIDI 设备及其类型。</string>
+    <string name="core_help_video_minimum_scalable_dimension" formatted="false">只有大于此大小的帧缓冲区才会被放大。
+增加此值可能会解决升级时丢失图形的问题，尤其是在启用“写入颜色缓冲区”时。
+如果不确定，请勿更改此选项。</string>
+    <string name="core_help_input_output_mouse_based_gyro_enabled" formatted="false">在游戏启动时启用基于鼠标的陀螺仪模拟。也可以随时使用关联的热键进行切换。
+按住鼠标右键激活陀螺仪输入：移动鼠标映射到 X 和 Z 运动轴，滚轮映射到 Y 轴。松开按钮即可重置运动值。</string>
+    <string name="core_help_input_output_mouse_debug_overlay" formatted="false">提供带有鼠标输入值的图形叠加。
+仅当禁用其他调试覆盖时才会显示此信息。
+如果不确定，请勿使用此选项。</string>
+    <string name="core_help_input_output_mouse" formatted="false">有些游戏支持本机鼠标输入。
+Basic 或 Raw 在这些情况下都适用。</string>
+    <string name="core_help_input_output_move" formatted="false">建议将 PS Move 处理程序用于官方 PS Move 控制器。</string>
+    <string name="core_help_video_msaa" formatted="false">模拟 PS3 多重采样布局。
+可以修复一些原本难以解决的图形故障。
+低到中等的性能影响取决于您的 GPU 硬件。</string>
+    <string name="core_help_video_multithreaded_rsx" formatted="false">将一些 RSX 操作卸载到辅助线程。
+提高高核处理器的性能。
+由于额外的工作线程负载，可能会导致较弱的 CPU 速度变慢。</string>
+    <string name="core_help_audio_music_handler" formatted="false">目前仅用于cellMusic仿真。
+选择 Qt 以使用操作系统的默认输出设备。
+这可能无法播放所有音频格式。</string>
+    <string name="core_help_core_ppu_threads" formatted="false">影响最大并发运行的PPU线程数，值为1对游戏的兼容性很低。
+2 是默认值，如果不确定，请勿修改此设置。
+警告：更改此值将使已编译的 PPU/SPU 缓存失效。下次启动时将从头开始重新执行完整的模块编译。</string>
+    <string name="core_help_video_output_scaling_mode" formatted="false">最终图像过滤。最近不应用任何过滤，双线性平滑图像，FidelityFX 超分辨率增强放大图像。
+如果游戏以低于窗口分辨率的内部分辨率渲染，FidelityFX 将处理高档。
+FidelityFX 可能会导致视觉伪影。
+FidelityFX 目前不支持立体 3D 输出。</string>
+    <string name="core_help_input_output_keep_pads_connected" formatted="false">显示所有已配置的键盘在游戏中始终连接，即使它们物理上断开连接。</string>
+    <string name="core_help_input_output_pad_handler_mode" formatted="false">单线程：所有焊盘处理程序按顺序在同一线程上运行。
+多线程：每个焊盘处理程序都有自己的线程。
+仅当您可以节省额外的线程时才使用多线程。</string>
+    <string name="core_help_miscellaneous_pause_emulation_during_home_menu" formatted="false">启用后，打开主菜单也会暂停仿真。
+虽然大多数游戏在显示主菜单时会自行暂停，但有些游戏不会。
+在这种情况下，每当主菜单打开时暂停仿真会很有帮助。</string>
+    <string name="core_help_miscellaneous_pause_emulation_on_rpcs3_focus_loss" formatted="false">当 RPCS3 失去焦点或应用程序不活动时自动暂停仿真，以节省电量并减少 CPU 使用率。
+请注意，模拟暂停通常并不完美，并且可能并不与所有游戏兼容。
+虽然它目前也暂停游戏，但不建议依赖它，因为这种行为将来可能会改变，并且这不是此设置的目的。</string>
+    <string name="core_help_core_enable_performance_report" formatted="false">测量某些事件并在模拟器停止后打印图表。如果没有要求，请勿启用。</string>
+    <string name="core_help_video_performance_overlay_center_horizontally" formatted="false">将性能叠加层水平居中并覆盖水平边距。</string>
+    <string name="core_help_video_performance_overlay_center_vertically" formatted="false">将性能叠加层垂直居中并覆盖垂直边距。</string>
+    <string name="core_help_video_performance_overlay_detail_level" formatted="false">控制性能叠加层上显示的信息量。</string>
+    <string name="core_help_video_performance_overlay_enabled" formatted="false">启用或禁用性能叠加。</string>
+    <string name="core_help_video_performance_overlay_font_size_px" formatted="false">设置性能叠加层的字体大小（以像素为单位）。</string>
+    <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">设置帧速率图中使用的数据点数量。</string>
+    <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">控制性能叠加层上显示的信息量。</string>
+    <string name="core_help_video_performance_overlay_enable_framerate_graph" formatted="false">启用或禁用帧速率图。</string>
+    <string name="core_help_video_performance_overlay_frametime_datapoints" formatted="false">设置帧时间图中使用的数据点数量。</string>
+    <string name="core_help_video_performance_overlay_frametime_graph_detail_level" formatted="false">控制性能叠加层上显示的信息量。</string>
+    <string name="core_help_video_performance_overlay_enable_frametime_graph" formatted="false">启用或禁用帧时间图。</string>
+    <string name="core_help_video_performance_overlay_horizontal_margin" formatted="false">设置相对于屏幕象限到屏幕边框的水平距离（以% 为单位）。</string>
+    <string name="core_help_video_performance_overlay_vertical_margin" formatted="false">设置相对于屏幕象限到屏幕边框的垂直距离（以 % 为单位）。</string>
+    <string name="core_help_video_performance_overlay_opacity" formatted="false">设置性能叠加层的不透明度（以% 为单位）。</string>
+    <string name="core_help_video_performance_overlay_position" formatted="false">设置性能叠加层的屏幕位置（象限）。</string>
+    <string name="core_help_video_performance_overlay_metrics_update_interval_ms" formatted="false">设置更新性能覆盖的时间间隔（以毫秒为单位）。
+将其设置为 16 毫秒将以大约 60Hz 的频率刷新性能叠加。
+性能覆盖刷新率不会影响帧图统计数据，只能在当前游戏允许的范围内刷新。</string>
+    <string name="core_help_video_performance_overlay_use_window_space" formatted="false">相对于整个窗口表面放置叠加层，从而可以将其放置在游戏渲染区域之外。</string>
+    <string name="core_help_miscellaneous_play_music_during_boot_sequence" formatted="false">在启动序列期间播放音乐（如果可用）。</string>
+    <string name="core_help_core_ppu_debug" formatted="false">创建 PPU 日志。
+只对开发者有用。
+切勿使用此功能。</string>
+    <string name="core_help_core_ppu_decoder" formatted="false">在首次运行游戏之前，使用 LLVM 重新编译器重新编译并缓存游戏的 PPU 代码。
+这是迄今为止最快的选项，应该始终使用。
+如果您遇到兼容性问题，请使用其中一种解释器并重试。
+如果不确定，请使用此选项。</string>
+    <string name="core_help_core_ppu_reservation_priority_over_spus" formatted="false">当 SPU 使用预留时，为 PPU 提供执行优势。
+仅建议少数游戏使用此设置以提高性能。
+由于潜在的性能下降，请勿在未经建议的情况下使用它。</string>
+    <string name="core_help_core_ppu_vector_nan_handling" formatted="false">Fixup NaN 会在 PPU 后端产生向量指令。
+如果不确定，请勿修改此设置。</string>
+    <string name="core_help_video_accurate_zcull_stats" formatted="false">更改 ZCULL 报告同步行为。尝试找到最适合您游戏的选项。对于大多数游戏，建议使用近似模式。
+· 精确是对 PS3 行为最准确的。在《恶魔之魂》和《黑暗》等某些游戏中需要获得准确的视觉效果。
+近似是生成遮挡数据的一种更快的方法，该数据可能并不总是与 PS3 生成的数据匹配。适用于大多数 PS3 游戏。
+·Reladed 彻底改变了同步方法，可以极大地提高某些游戏的性能，也可以完全破坏其他游戏。</string>
+    <string name="core_help_core_preferred_spu_threads" formatted="false">一些 SPU 阶段对竞争条件很敏感，一次允许有限的数量有助于缓解性能停滞。
+将其设置为较小的值可能会提高性能并减少某些游戏中的卡顿。
+如果设置较小值时性能受到负面影响，请将其保留为自动。</string>
+    <string name="core_help_miscellaneous_prevent_display_sleep_while_running_games" formatted="false">防止游戏运行时显示器休眠。
+这需要 Linux 上的 org.freedesktop.ScreenSaver D-Bus 服务。
+如果当前平台不支持显示睡眠控制，则此选项将被禁用。</string>
+    <string name="core_help_net_psn_country" formatted="false">更改 RPCN 国家/地区。</string>
+    <string name="core_help_net_psn_status" formatted="false">如果设置为 RPCN，如果游戏支持，RPCS3 将使用 RPCN 服务器作为 PSN 连接。
+如果设置为“模拟”，RPCS3 将尝试伪造 PSN 连接，但任何使用 PSN 功能的实际尝试都可能会导致错误或崩溃。
+模拟仅在自定义配置中可用。</string>
+    <string name="core_help_video_read_color_buffers" formatted="false">使用虚拟机内存初始化渲染目标内存。</string>
+    <string name="core_help_video_read_depth_buffer" formatted="false">使用虚拟机内存初始化渲染目标内存。</string>
+    <string name="core_help_video_record_with_overlays" formatted="false">启用叠加录制。
+这也会影响屏幕截图。</string>
+    <string name="core_help_video_relaxed_zcull_sync" formatted="false">更改 ZCULL 报告同步行为。尝试找到最适合您游戏的选项。对于大多数游戏，建议使用近似模式。
+· 精确是对 PS3 行为最准确的。在《恶魔之魂》和《黑暗》等某些游戏中需要获得准确的视觉效果。
+近似是生成遮挡数据的一种更快的方法，该数据可能并不总是与 PS3 生成的数据匹配。适用于大多数 PS3 游戏。
+·Reladed 彻底改变了同步方法，可以极大地提高某些游戏的性能，也可以完全破坏其他游戏。</string>
+    <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">允许使用经典的 OpenGL 缓冲区，从而允许捕获工具与 RPCS3（例如 RenderDoc）配合使用。
+还允许 Vulkan 使用调试标记来获得更好的 Renderdoc 捕获。
+如果不确定，请勿使用此选项。</string>
+    <string name="core_help_video_renderer" formatted="false">Vulkan 是最快的渲染器。 OpenGL 是最精确的渲染器。
+如果不确定，请使用 Vulkan。如果您有任何兼容性问题，请回退到 OpenGL。</string>
+    <string name="core_help_video_resolution" formatted="false">如果分辨率比例设置为 100% 以外的任何值，则此设置将被忽略！
+将其保留为 1280x720。每个 PS3 游戏都兼容此分辨率。
+仅当游戏支持时才使用 1920x1080。
+由于仿真错误，某些游戏很少会仅以 480p 等低分辨率渲染。</string>
+    <string name="core_help_video_resolution_scale" formatted="false">按给定的百分比缩放游戏的分辨率。
+基本分辨率始终为 1280x720。
+如果您想使用正常的分辨率选项，请将此值设置为 100%。
+低于 100% 的值通常不会提高性能。</string>
+    <string name="core_help_video_screen_size_in_inches" formatted="false">设置 3D 立体渲染模式（仅在默认分辨率为 720p 的自定义配置中可用）。
+浮雕对每只眼睛使用不同的颜色，然后可以用某些眼镜进行过滤。
+VR 查看器应用程序更普遍支持并排。
+Over-Under 更接近原生立体声输出，但不太受支持。</string>
+    <string name="core_help_input_output_load_sdl_gamecontroller_mappings" formatted="false">加载 SDL GameController 数据库以提高游戏手柄兼容性。仅在 SDL 焊盘处理程序中使用。</string>
+    <string name="core_help_core_set_daz_and_ftz" formatted="false">设置特殊 MXCSR 标志以调试 SSE 操作中的错误。
+以牺牲准确性为代价来提高 PPU 性能。</string>
+    <string name="core_help_video_shader_compiler_threads" formatted="false">用于着色器编译器后端的线程数。
+仅当着色器模式设置为异步模式之一时才会产生影响。</string>
+    <string name="core_help_video_shader_loading_dialog_blur_effect_strength" formatted="false">更改本机着色器加载对话框的背景图像模糊效果强度。
+这可以用于提高可读性和/或美观性。</string>
+    <string name="core_help_video_shader_loading_dialog_darkening_effect_strength" formatted="false">更改本机着色器加载对话框的背景图像变暗效果强度。
+这可以用于提高可读性和/或美观性。</string>
+    <string name="core_help_video_shader_loading_dialog_allow_custom_background" formatted="false">在本机着色器加载对话框/加载屏幕期间显示背景图像。
+默认情况下，使用的图像将为/PS3_GAME/PIC1.PNG。</string>
+    <string name="core_help_video_shader_mode" formatted="false">这是推荐的选项。
+如果在缓存中找不到着色器，则在编译之前不会为该着色器渲染任何内容。
+您可能会遇到图形弹出的情况。</string>
+    <string name="core_help_video_shader_precision" formatted="false">控制生成的着色器的精度级别。低精度会生成更快的代码，具体取决于硬件，但有时会产生轻微的视觉故障或闪烁。</string>
+    <string name="core_help_miscellaneous_show_analog_limiter_toggle_hint" formatted="false">使用本机覆盖层显示模拟限制器切换提示。</string>
+    <string name="core_help_miscellaneous_show_autosave_autoload_hint" formatted="false">使用本机覆盖显示自动保存/自动加载提示。</string>
+    <string name="core_help_miscellaneous_show_capture_hints" formatted="false">使用本机覆盖层显示屏幕截图和录制提示。</string>
+    <string name="core_help_miscellaneous_show_fatal_error_hints" formatted="false">使用本机覆盖显示致命错误提示。</string>
+    <string name="core_help_miscellaneous_show_mouse_and_keyboard_toggle_hint" formatted="false">使用本机覆盖层显示鼠标和键盘切换提示。</string>
+    <string name="core_help_input_output_show_move_cursor" formatted="false">显示 PS Move 输入的原始位置。
+这在校准屏幕期间非常有帮助。</string>
+    <string name="core_help_miscellaneous_show_ppu_compilation_hint" formatted="false">使用本机覆盖层显示“编译 PPU 模块”提示。</string>
+    <string name="core_help_miscellaneous_show_pressure_intensity_toggle_hint" formatted="false">使用本机覆盖层显示压力强度切换提示。</string>
+    <string name="core_help_miscellaneous_show_rpcn_popups" formatted="false">显示 RPCN 好友列表弹出窗口。</string>
+    <string name="core_help_miscellaneous_show_shader_compilation_hint" formatted="false">使用本机覆盖显示“编译着色器”提示。</string>
+    <string name="core_help_miscellaneous_show_trophy_popups" formatted="false">奖杯解锁时显示奖杯弹出窗口。</string>
+    <string name="core_help_miscellaneous_silence_all_logs" formatted="false">游戏启动后停止写入任何日志。除非您认为有必要，否则不要使用。</string>
+    <string name="core_help_core_sleep_timers_accuracy" formatted="false">更改睡眠周期的准确性。
+“作为主机”使用底层操作系统的默认准确性，而“所有计时器”则尝试改进它。
+“Usleep Only”仅限制对 usleep 系统调用的调整。
+可能会以意想不到的方式影响性能。</string>
+    <string name="core_help_core_spu_block_size" formatted="false">该选项控制 SPU 分析器，特别是编译单元的大小。 Mega 和 Giga 模式可以通过将较小的单元捆绑在一起、减少编译单元的数量但增加其大小来提高性能。
+使用安全模式以获得最大兼容性。</string>
+    <string name="core_help_core_spu_cache" formatted="false">在运行之前使用 LLVM 重新编译器重新编译并缓存游戏的 SPU 代码，这会增加额外的启动时间。
+这是最快的选项，具有非常好的兼容性。
+如果遇到问题，请使用 ASMJIT 重新编译器。</string>
+    <string name="core_help_core_spu_debug" formatted="false">创建 SPU 日志。
+只对开发者有用。
+切勿使用此功能。</string>
+    <string name="core_help_core_spu_decoder" formatted="false">在运行之前使用 LLVM 重新编译器重新编译并缓存游戏的 SPU 代码，这会增加额外的启动时间。
+这是最快的选项，具有非常好的兼容性。
+如果遇到问题，请使用 ASMJIT 重新编译器。</string>
+    <string name="core_help_core_spu_loop_detection" formatted="false">尝试检测 SPU 内核中的循环条件并将其用作调度提示。
+提高性能并降低 CPU 使用率。
+在极少数情况下可能会导致严重的音频卡顿。</string>
+    <string name="core_help_core_spu_profiler" formatted="false">启用后，SPU 性能在运行时测量。
+仅在开发人员请求时启用，因为启用后它本身会降低性能。</string>
+    <string name="core_help_miscellaneous_start_games_in_fullscreen_mode" formatted="false">自动将游戏窗口置于全屏。
+双击游戏窗口或按 Alt+Enter 可切换全屏和窗口模式。</string>
+    <string name="core_help_miscellaneous_automatically_start_games_after_boot" formatted="false">除非您是开发人员，否则请启用此功能。</string>
+    <string name="core_help_savestate_start_paused" formatted="false">启用此模式后，将加载保存状态并在第一帧暂停。
+这使得玩家可以为游戏做好准备，而不必立即投入行动。</string>
+    <string name="core_help_video_3d_display_enabled" formatted="false">设置 3D 立体渲染模式（仅在默认分辨率为 720p 的自定义配置中可用）。
+浮雕对每只眼睛使用不同的颜色，然后可以用某些眼镜进行过滤。
+VR 查看器应用程序更普遍支持并排。
+Over-Under 更接近原生立体声输出，但不太受支持。</string>
+    <string name="core_help_video_3d_display_mode" formatted="false">设置 3D 立体渲染模式（仅在默认分辨率为 720p 的自定义配置中可用）。
+浮雕对每只眼睛使用不同的颜色，然后可以用某些眼镜进行过滤。
+VR 查看器应用程序更普遍支持并排。
+Over-Under 更接近原生立体声输出，但不太受支持。</string>
+    <string name="core_help_video_stretch_to_display_area" formatted="false">覆盖宽高比并将图像拉伸到整个显示区域。</string>
+    <string name="core_help_video_strict_rendering_mode" formatted="false">强制严格遵守 API 规范。
+可能会导致某些游戏的性能下降。
+可以解决罕见的图形丢失和闪烁问题。
+如果不确定，请勿使用此选项。</string>
+    <string name="core_help_video_strict_texture_flushing" formatted="false">即使在不必要/不正确的情况下也会强制纹理刷新。已知会导致视觉伪影，但对于调试某些纹理缓存问题很有用。</string>
+    <string name="core_help_savestate_suspend_emulation_savestate_mode" formatted="false">当此模式打开时，仿真会在保存时退出，并且保存状态文件在加载后会被隐藏，从而防止 RPCS3 重复使用。
+此模式就像模拟休眠：如果您不想在玩游戏时使用保存状态进行作弊，请考虑使用此模式。
+请注意，savestate 文件并没有完全消失，只是被 RPCS3 忽略了。如果需要，您可以手动重新启动它。</string>
+    <string name="core_help_video_texture_lod_bias_addend" formatted="false">更改纹理采样精度。 （小变化会产生大影响。）
+如果您不确定，请避免使用 -12 到 +12 范围之外的值。
+-3 到 +3 对于大多数用例来说已经足够了</string>
+    <string name="core_help_core_thread_scheduler_mode" formatted="false">控制 RPCS3 如何利用系统线程。
+每个选项在很大程度上取决于游戏和您的 CPU。建议尝试每个选项，找出效果最好的。
+线程少于 12 个的 CPU 不支持更改线程调度程序。</string>
+    <string name="core_help_system_time_format" formatted="false">选择 PS3 的时间格式。</string>
+    <string name="core_help_audio_time_stretching_threshold" formatted="false">缓冲区填充水平（以百分比表示），低于该水平将开始时间拉伸。</string>
+    <string name="core_help_input_output_turntable_emulated_controller" formatted="false">DJ Hero 转盘控制器支持。
+如果游戏需要 DJ Hero Turntable 控制器而您没有真正的转盘控制器，请选择 1 或 2 个控制器。
+如果游戏支持 DualShock 或者您有真正的转盘控制器，请选择 Null。
+真实转盘控制器可以与仿真转盘控制器同时使用。</string>
+    <string name="core_help_miscellaneous_use_native_user_interface" formatted="false">允许在游戏窗口中使用可与游戏控制器交互的本机 HUD。
+禁用时，将使用常规 Qt 对话框。
+目前，屏幕键盘仅支持英文按键布局。</string>
+    <string name="core_help_video_vulkan_use_re_bar_for_gpu_uploads" formatted="false">启用后，Vulkan 将尝试使用 PCI-e 可调整大小的条地址空间来上传时序敏感数据的 GPU。
+当基本帧速率较低时，这会在 NVIDIA 卡上带来巨大的性能提升。
+对于帧速率非常高的游戏，此选项可能会导致所有 GPU 供应商的性能变差。</string>
+    <string name="core_help_miscellaneous_use_recursive_scan" formatted="false">从选定的文件夹中扫描游戏时，启用对子文件夹的递归扫描。
+禁用后，仅在选定的文件夹中扫描游戏。</string>
+    <string name="core_help_video_vblank_ntsc_fixup" formatted="false">对于 59.94Hz 等值，将 VBLANK 的速率乘以 1000/1001。
+已知修复节奏游戏Space Channel 5 Part 2</string>
+    <string name="core_help_video_vblank_rate" formatted="false">调整仿真器发送的垂直消隐信号的频率。
+影响依赖这些信号的事件的时序。</string>
+    <string name="core_help_video_vsync_mode" formatted="false">启用垂直同步以消除撕裂。
+自适应模式 - 更愿意保持性能。它可能会跳帧甚至撕裂，以避免降低游戏的帧速率。
+完整模式 - 即使性能降低，也不允许撕裂。默认情况下，此模式会将帧速率限制为显示器的刷新率，除非在驱动程序控制面板中进行覆盖。</string>
+    <string name="core_help_video_vulkan_adapter" formatted="false">在多 GPU 系统上，选择使用 Vulkan 时在 RPCS3 中使用哪个 GPU。
+使用 OpenGL 时不需要这样做。</string>
+    <string name="core_help_video_vulkan_asynchronous_queue_scheduler" formatted="false">确定使用异步流时如何安排 GPU 异步计算作业。
+使用“安全”模式可实现更符合规范的行为，但会产生一些 CPU 开销。此设置适用于所有设备。
+使用“快速”可使用更快但较老的版本。由于导致 GPU 挂起，此选项在 NVIDIA GPU 内部被禁用。</string>
+    <string name="core_help_video_vulkan_asynchronous_texture_streaming" formatted="false">使用异步计算将纹理流式传输到 GPU 并与 3D 渲染并行。
+可以提高具有备用空间的更强大 GPU 的性能。
+仅适用于 Vulkan 渲染器，如果您有功能强大的 CPU，启用 MTRSX 会带来很大好处。</string>
+    <string name="core_help_miscellaneous_window_title_format" formatted="false">配置游戏窗口标题。
+更改此设置和/或添加帧速率可能会导致有问题或过时的录制软件无法注意到 RPCS3。</string>
+    <string name="core_help_video_write_color_buffers" formatted="false">如果您在游戏中缺少图形或灯光损坏，请启用此选项。
+在某些情况下可能会降低性能并导致卡顿。
+恶魔之魂所需。</string>
+    <string name="core_help_video_write_depth_buffer" formatted="false">将深度缓冲区值写入虚拟机内存。</string>
+    <string name="core_help_core_spu_xfloat_accuracy" formatted="false">SPU 浮点矢量处理的控制精度。
+以性能为代价修复各种游戏中的错误。
+仅当 SPU 解码器设置为动态或 LLVM 时，才应用此设置。</string>
+    <string name="core_label_chinese_simplified">中文（简体）</string>
+    <string name="core_label_chinese_traditional">中文（繁体）</string>
+    <string name="core_label_chinese_keyboard_simplified">中文键盘（简体）</string>
+    <string name="core_label_chinese_keyboard_traditional">中文键盘（繁体）</string>
+    <string name="core_label_danish">丹麦语</string>
+    <string name="core_label_danish_keyboard">丹麦语键盘</string>
+    <string name="core_label_dutch">荷兰语</string>
+    <string name="core_label_dutch_keyboard">荷兰语键盘</string>
+    <string name="core_label_english_uk">英语（英国）</string>
+    <string name="core_label_english_us">英语（美国）</string>
+    <string name="core_label_english_keyboard_uk_standard">英文键盘（英国标准）</string>
+    <string name="core_label_english_keyboard_us_standard">英文键盘（美国标准）</string>
+    <string name="core_label_finnish">芬兰语</string>
+    <string name="core_label_finnish_keyboard">芬兰语键盘</string>
+    <string name="core_label_french">法语</string>
+    <string name="core_label_french_keyboard">法语键盘</string>
+    <string name="core_label_french_keyboard_belgium">法语键盘（比利时）</string>
+    <string name="core_label_french_keyboard_canada">法语键盘（加拿大）</string>
+    <string name="core_label_french_keyboard_switzerland">法语键盘（瑞士）</string>
+    <string name="core_label_german">德语</string>
+    <string name="core_label_german_keyboard">德语键盘</string>
+    <string name="core_label_german_keyboard_switzerland">德语键盘（瑞士）</string>
+    <string name="core_label_italian">意大利语</string>
+    <string name="core_label_italian_keyboard">意大利语键盘</string>
+    <string name="core_label_japanese">日语</string>
+    <string name="core_label_japanese_keyboard">日语键盘</string>
+    <string name="core_label_japanese_keyboard_kana_state">日语键盘（假名状态）</string>
+    <string name="core_label_korean">韩语</string>
+    <string name="core_label_korean_keyboard">韩语键盘</string>
+    <string name="core_label_norwegian">挪威语</string>
+    <string name="core_label_norwegian_keyboard">挪威语键盘</string>
+    <string name="core_label_other">其他</string>
+    <string name="core_label_polish">波兰语</string>
+    <string name="core_label_polish_keyboard">波兰语键盘</string>
+    <string name="core_label_portuguese_brazil">葡萄牙语（巴西）</string>
+    <string name="core_label_portuguese_portugal">葡萄牙语（葡萄牙）</string>
+    <string name="core_label_portuguese_keyboard_brazil">葡萄牙语键盘（巴西）</string>
+    <string name="core_label_portuguese_keyboard_portugal">葡萄牙语键盘（葡萄牙）</string>
+    <string name="core_label_russian">俄语</string>
+    <string name="core_label_russian_keyboard">俄语键盘</string>
+    <string name="core_label_scea">SCEA</string>
+    <string name="core_label_scee">SCEE</string>
+    <string name="core_label_sceh">科学与工程学院</string>
+    <string name="core_label_scej">科学与工程杂志</string>
+    <string name="core_label_scek">塞克</string>
+    <string name="core_label_sch">SCH</string>
+    <string name="core_label_spanish">西班牙语</string>
+    <string name="core_label_spanish_keyboard">西班牙语键盘</string>
+    <string name="core_label_swedish">瑞典语</string>
+    <string name="core_label_swedish_keyboard">瑞典语键盘</string>
+    <string name="core_label_turkish">土耳其语</string>
+    <string name="core_label_turkish_keyboard">土耳其语键盘</string>
+    <string name="core_help_video_display_aspect_override" formatted="false">覆盖最终显示纵横比（以千分之一为单位）（1778 = 16:9、1333 = 4:3）。将其设置为 0 以使用游戏比例。仅适用于不寻常的手机或平板电脑显示屏；不正确的值会拉伸图像。</string>
+    <string name="core_help_video_shader_preset_path" formatted="false">当输出缩放模式设置为着色器链时使用的 RetroArch .slangp 着色器预设的绝对路径。将其留空以进行正常输出。仅使用兼容的预设；无效路径会退回到普通图像。</string>
+
+    <string name="core_label_async_shader_recompiler">异步着色器重编译器</string>
+    <string name="core_label_async_with_shader_interpreter">异步着色器解释器</string>
+    <string name="core_label_forced">强制</string>
+    <string name="core_label_interpreter">解释器</string>
+    <string name="core_label_interpreter_legacy">解释器（旧版）</string>
+    <string name="core_label_llvm_recompiler_legacy">LLVM 重编译器（旧版）</string>
+    <string name="core_label_shader_recompiler">着色器重编译器</string>
+    <string name="core_setting_search">搜索选项</string>
+    <string name="core_setting_no_results">没有匹配的选项</string>
+
+
+    <plurals name="library_game_count" tools:ignore="MissingTranslation,UnusedQuantity">
+        <item quantity="one">共 %1$d 款遊戲</item>
+        <item quantity="other">共 %1$d 款遊戲</item>
+    </plurals>
+
+<plurals name="install_dialog_items_progress" tools:ignore="MissingTranslation,UnusedQuantity">
+        <item quantity="one">已完成 %1$d / %2$d 個項目</item>
+        <item quantity="other">已完成 %1$d / %2$d 個項目</item>
+    </plurals>
+
+</resources>

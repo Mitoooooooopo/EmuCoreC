@@ -1,0 +1,1582 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="emulation_quickbar_home_menu">قائمة RPCS3 الرئيسية</string>
+    <string name="onboarding_storage_title">مساحة تخزين المحاكي</string>
+    <string name="onboarding_status_install_firmware">ثبّت برنامج نظام PS3 الرسمي من Sony.</string>
+    <string name="onboarding_status_ready">اكتمل الإعداد.</string>
+    <string name="onboarding_firmware_download">تنزيل</string>
+    <string name="onboarding_firmware_cancel_download">إلغاء</string>
+    <string name="onboarding_firmware_downloading">جاري التنزيل %1$d%%</string>
+    <string name="onboarding_firmware_download_failed">فشل التنزيل. حاول مرة أخرى.</string>
+    <string name="onboarding_back">رجوع</string>
+    <string name="onboarding_next">التالي</string>
+    <string name="onboarding_get_started">البدء</string>
+    <string name="nav_setup">الألعاب</string>
+    <string name="nav_library">المكتبة</string>
+    <string name="nav_game_manager">مدير الألعاب</string>
+    <string name="nav_play_time">وقت اللعب</string>
+    <string name="nav_save_manager">ملفات الحفظ</string>
+    <string name="nav_catalog">الكتالوج</string>
+    <string name="nav_settings">الإعدادات</string>
+    <string name="library_refresh">تحديث</string>
+    <string name="library_search_hint">البحث في الألعاب المثبتة</string>
+    <string name="library_empty_title">لم يتم العثور على ألعاب</string>
+    <string name="library_empty_body">قم بتثبيت الألعاب من شاشة الألعاب، ثم قم بتحديث المكتبة.</string>
+    <string name="library_add_shortcut">إضافة اختصار</string>
+    <string name="library_shortcut_requested">تم إرسال طلب الاختصار.</string>
+    <string name="library_shortcut_unsupported">المشغل الخاص بك لا يدعم الاختصارات المثبتة.</string>
+    <string name="library_shortcut_failed">فشل إنشاء الاختصار.</string>
+    <string name="detail_launch">تشغيل اللعبة</string>
+    <string name="detail_delete_game">حذف اللعبة</string>
+    <string name="detail_delete_game_confirm_title">حذف اللعبة المثبتة؟</string>
+    <string name="detail_delete_game_confirm_body">سيؤدي هذا إلى إزالة ملفات اللعبة المثبتة من مكتبتك.</string>
+    <string name="detail_delete_game_failed">فشل حذف اللعبة.</string>
+    <string name="save_manager_title">ملفات الحفظ</string>
+    <string name="save_manager_open_for_game">ملفات الحفظ</string>
+    <string name="save_manager_search_hint">البحث في ملفات الحفظ</string>
+    <string name="save_manager_export">تصدير</string>
+    <string name="save_manager_import">استيراد</string>
+    <string name="save_manager_delete">حذف الحفظ</string>
+    <string name="save_manager_delete_confirm_title">حذف بيانات الحفظ؟</string>
+    <string name="save_manager_delete_confirm_body">سيؤدي هذا إلى إزالة بيانات الحفظ لـ %1$s.</string>
+    <string name="save_manager_delete_failed">فشل حذف بيانات الحفظ.</string>
+    <string name="save_manager_export_success">تم تصدير بيانات الحفظ.</string>
+    <string name="save_manager_export_failed">فشل تصدير بيانات الحفظ.</string>
+    <string name="save_manager_import_success">تم استيراد بيانات الحفظ: %1$s.</string>
+    <string name="save_manager_import_failed">فشل استيراد بيانات الحفظ.</string>
+    <string name="save_manager_import_empty">الأرشيف لا يحتوي على ملفات حفظ.</string>
+    <string name="save_manager_import_unsafe">الأرشيف يحتوي على مسارات غير آمنة.</string>
+    <string name="save_manager_import_unknown_target">اختر بطاقة حفظ للعبة قبل استيراد هذا الأرشيف، أو استخدم أرشيفاً يحتوي على مجلد حفظ واحد.</string>
+    <string name="save_manager_empty_title">لم يتم العثور على بيانات حفظ</string>
+    <string name="save_manager_empty_body">قم بتشغيل لعبة لإنشاء بيانات حفظ، أو قم باستيراد أرشيف حفظ.</string>
+    <string name="save_manager_empty_game_title">لا توجد بيانات حفظ لـ %1$s</string>
+    <string name="save_manager_empty_game_body">قم بتشغيل هذه اللعبة لإنشاء بيانات حفظ، أو قم باستيراد أرشيف حفظ لها.</string>
+    <string name="save_manager_orphan_save">اللعبة غير مثبتة</string>
+    <string name="game_manager_title">مدير الألعاب</string>
+    <string name="game_manager_open_for_game">إعدادات اللعبة</string>
+    <string name="game_manager_empty_title">لا توجد ألعاب مثبتة</string>
+    <string name="game_manager_empty_body">قم بتثبيت لعبة أولاً، ثم أنشئ ملف تعريف مخصص لها هنا.</string>
+    <string name="game_manager_choose_game">اختيار اللعبة</string>
+    <string name="game_manager_reset_global">استخدام الافتراضيات العامة</string>
+    <string name="game_manager_invert_left_x">عكس المحور X للعصا اليسرى</string>
+    <string name="game_manager_invert_right_x">عكس المحور X للعصا اليمنى</string>
+    <string name="play_time_title">وقت اللعب</string>
+    <string name="play_time_open_for_game">وقت اللعب</string>
+    <string name="play_time_current_session">الجلسة الحالية</string>
+    <string name="play_time_filter_game">اختيار اللعبة</string>
+    <string name="play_time_all_games">كل الألعاب</string>
+    <string name="play_time_total_time">الوقت الإجمالي</string>
+    <string name="play_time_sessions">الجلسات</string>
+    <string name="play_time_games_played">الألعاب التي تم لعبها</string>
+    <string name="play_time_daily_chart">آخر 14 يوماً</string>
+    <string name="play_time_games_chart">الوقت حسب اللعبة</string>
+    <string name="play_time_recent_sessions">الجلسات</string>
+    <string name="play_time_no_sessions_title">لا توجد جلسات لعب بعد</string>
+    <string name="play_time_no_sessions_body">قم بتشغيل لعبة وستظهر جلسات اللعب الخاصة بك هنا.</string>
+    <string name="play_time_no_game_sessions_body">لم يتم لعب هذه اللعبة بعد. قم بتشغيلها وستظهر جلسات اللعب الخاصة بها هنا.</string>
+    <string name="detail_title_id">معرف العنوان</string>
+    <string name="detail_content_id">معرف المحتوى</string>
+    <string name="detail_version">الإصدار</string>
+    <string name="detail_category">الفئة</string>
+    <string name="detail_overview_title">نظرة عامة</string>
+    <string name="detail_catalog_meta_title">تفاصيل الكتالوج</string>
+    <string name="detail_installed_section">اللعبة المثبتة</string>
+    <string name="detail_screenshots_title">لقطات الشاشة</string>
+    <string name="detail_videos_title">مقاطع الفيديو</string>
+    <string name="detail_release_year">سنة الإصدار</string>
+    <string name="detail_rating">التقييم</string>
+    <string name="detail_genres">الأنواع</string>
+    <string name="detail_empty_title">لا تتوفر تفاصيل</string>
+    <string name="detail_empty_body">لا تتوفر بيانات مثبتة أو بيانات كتالوج لهذه اللعبة في الوقت الحالي.</string>
+    <string name="detail_catalog_missing_body">تفاصيل الكتالوج غير متوفرة مؤقتاً.</string>
+    <string name="detail_igdb_source_note">بعض الأوصاف وبيانات الألعاب على هذه الشاشة تأتي من IGDB.</string>
+    <string name="detail_compatibility_title">التوافق</string>
+    <string name="detail_compatibility_status">الحالة</string>
+    <string name="detail_compatibility_issue">المشكلة</string>
+    <string name="detail_compatibility_title_id_label">معرف العنوان المطابق</string>
+    <string name="detail_compatibility_known_serials">معرفات العناوين المعروفة</string>
+    <string name="detail_compatibility_updated">تم التحديث</string>
+    <string name="detail_compatibility_unavailable">قاعدة بيانات التوافق الرسمية لـ RPCS3 غير متوفرة حاليًا.</string>
+    <string name="detail_compatibility_unmapped">إدخال الكتالوج هذا لا يحتوي على معرف عنوان مطابق في الكتالوج المحلي بعد.</string>
+    <string name="detail_compatibility_missing_entry">لا يمتلك RPCS3 حاليًا إدخال توافق لمعرفات العناوين هذه.</string>
+    <string name="detail_compatibility_source_note">تأتي بيانات التوافق من قائمة RPCS3 الرسمية. البلاغ #%1$d.</string>
+    <string name="detail_show_more">عرض المزيد</string>
+    <string name="detail_show_less">عرض أقل</string>
+    <string name="detail_screenshot_saved">تم حفظ لقطة الشاشة</string>
+    <string name="detail_screenshot_save_failed">تعذر حفظ لقطة الشاشة</string>
+    <string name="detail_save_screenshot">حفظ لقطة الشاشة</string>
+    <string name="compatibility_unknown">غير معروف</string>
+    <string name="compatibility_nothing">لا شيء</string>
+    <string name="compatibility_bootable">قابلة للإقلاع</string>
+    <string name="compatibility_intro">مقدمة</string>
+    <string name="compatibility_menu">قائمة</string>
+    <string name="compatibility_ingame_less">داخل اللعبة -</string>
+    <string name="compatibility_ingame_more">داخل اللعبة +</string>
+    <string name="compatibility_playable">قابلة للعب</string>
+    <string name="catalog_title">كتالوج PS3</string>
+    <string name="catalog_search_hint">البحث في الألعاب</string>
+    <string name="catalog_search_clear">مسح البحث</string>
+    <string name="catalog_filters_title">الفلاتر</string>
+    <string name="catalog_filter_genre">النوع</string>
+    <string name="catalog_filter_year">السنة</string>
+    <string name="catalog_filter_rating">التقييم</string>
+    <string name="catalog_filter_all_genres">جميع الأنواع</string>
+    <string name="catalog_filter_all_years">جميع السنوات</string>
+    <string name="catalog_filter_any_rating">أي تقييم</string>
+    <string name="catalog_filters_clear">مسح الفلاتر</string>
+    <string name="catalog_empty_title">لم يتم العثور على قاعدة بيانات الكتالوج</string>
+    <string name="catalog_empty_body">أضف games.db لتمكين كتالوج PS3 المحلي.</string>
+    <string name="catalog_no_results_title">لم يتم العثور على نتائج مطابقة</string>
+    <string name="catalog_no_results_body">جرب عنواناً، أو سنة، أو تهجئة مختلفة.</string>
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_options_content_description">خيارات الإعدادات</string>
+    <string name="settings_reset_defaults_menu">استعادة الإعدادات الافتراضية</string>
+    <string name="settings_reset_defaults_title">استعادة الإعدادات الافتراضية؟</string>
+    <string name="settings_reset_defaults_message">سيؤدي هذا إلى إعادة ضبط إعدادات المحاكي إلى إعداداتها الافتراضية الموصى بها. ستبقى ألعابك، ملفات الحفظ، لغة التطبيق، والمجلدات المحددة دون تغيير.</string>
+    <string name="settings_reset_defaults_confirm">استعادة</string>
+    <string name="settings_reset_defaults_cancel">إلغاء</string>
+    <string name="settings_tab_general">عام</string>
+    <string name="settings_tab_graphics">الرسومات</string>
+    <string name="settings_tab_overlay">التراكب (Overlay)</string>
+    <string name="settings_tab_controls">التحكم</string>
+    <string name="settings_tab_storage">مساحة التخزين</string>
+    <string name="settings_tab_about">حول</string>
+    <string name="settings_tab_updates">التحديثات</string>
+    <string name="settings_core_overlay_opacity_label">شفافية التراكب</string>
+    <string name="settings_core_overlay_opacity_value">%1$d%%</string>
+    <string name="settings_core_gamepad_overlay">إظهار تراكب لوحة اللعب</string>
+    <string name="settings_core_overlay_scale_label">حجم التراكب</string>
+    <string name="settings_core_overlay_scale_value">%1$.1fx</string>
+    <string name="settings_core_analog_multiplier_label">مضاعف العصا التناظرية (Analog)</string>
+    <string name="settings_core_analog_multiplier_value">%1$.1fx</string>
+    <string name="settings_gamepad_section">وحدة تحكم فعلية (Gamepad)</string>
+    <string name="settings_gamepad_connected">تم توصيل وحدة التحكم. يتم تطبيق هذه الإعدادات مباشرة أثناء اللعب.</string>
+    <string name="settings_gamepad_disconnected">قم بتوصيل وحدة تحكم فعلية لتمكين هذه الإعدادات.</string>
+    <string name="settings_gamepad_deadzone">المنطقة الميتة للعصا (Dead zone)</string>
+    <string name="settings_gamepad_trigger_threshold">عتبة الزناد (Trigger)</string>
+    <string name="settings_gamepad_percent_value">%1$d%%</string>
+    <string name="settings_gamepad_button_profile">إعادة تعيين الأزرار</string>
+    <string name="settings_gamepad_profile_standard">قياسي</string>
+    <string name="settings_gamepad_profile_swap_cross_circle">تبديل Cross/Circle</string>
+    <string name="settings_gamepad_profile_nintendo_face">أزرار واجهة Nintendo</string>
+    <string name="settings_gamepad_swap_sticks">تبديل العصي</string>
+    <string name="settings_gamepad_invert_left_y">عكس المحور Y للعصا اليسرى</string>
+    <string name="settings_gamepad_invert_right_y">عكس المحور Y للعصا اليمنى</string>
+    <string name="settings_storage_title">مساحة التخزين</string>
+    <string name="settings_storage_body">تُحفظ بيانات المحاكي ضمن جذر PS3 المحدد. توجد الألعاب المثبتة في config/dev_hdd0/game، وملفات الحفظ والجوائز في config/dev_hdd0/home، وذاكرة التظليل والملفات المؤقتة في cache.</string>
+    <string name="settings_backup_title">النسخ الاحتياطي للإعدادات</string>
+    <string name="settings_backup_body">قم بنسخ تفضيلات التطبيق وإعدادات المحاكي احتياطياً إلى ملف، أو استعادتها من نسخة احتياطية سابقة.</string>
+    <string name="settings_backup_create">نسخ الإعدادات احتياطياً</string>
+    <string name="settings_backup_restore">استعادة النسخة الاحتياطية</string>
+    <string name="settings_backup_created">تم إنشاء نسخة احتياطية للإعدادات.</string>
+    <string name="settings_backup_failed">فشل إنشاء نسخة احتياطية للإعدادات.</string>
+    <string name="settings_backup_restored">تمت استعادة الإعدادات من النسخة الاحتياطية.</string>
+    <string name="settings_backup_restore_failed">فشل استعادة النسخة الاحتياطية للإعدادات.</string>
+    <string name="settings_backup_restore_title">استعادة النسخة الاحتياطية للإعدادات؟</string>
+    <string name="settings_backup_restore_message">سيتم استبدال تفضيلات التطبيق الحالية وإعدادات المحاكي بالنسخة الاحتياطية المحددة.</string>
+    <string name="settings_backup_restore_confirm">استعادة</string>
+    <string name="settings_clear_cache_title">مسح ذاكرة التخزين المؤقت</string>
+    <string name="settings_clear_cache_body">يزيل ذاكرة التخزين المؤقت للمظللات والقوام والسجلات وملفات التثبيت المؤقتة. لن تتأثر إعداداتك أو ملفات الحفظ أو الألعاب المثبتة أو البرنامج الثابت.</string>
+    <string name="settings_clear_cache_action">مسح ذاكرة التخزين المؤقت</string>
+    <string name="settings_clear_cache_size">حجم ذاكرة التخزين المؤقت: %1$s</string>
+    <string name="settings_clear_cache_empty">لا توجد بيانات مخزنة مؤقتًا لإزالتها.</string>
+    <string name="settings_clear_cache_confirm_title">مسح ذاكرة التخزين المؤقت؟</string>
+    <string name="settings_clear_cache_confirm_message">سيؤدي هذا إلى تحرير %1$s. قد تستغرق الألعاب وقتًا أطول قليلًا عند التشغيل الأول أثناء إعادة إنشاء المظللات.</string>
+    <string name="settings_clear_cache_confirm_action">مسح</string>
+    <string name="settings_clear_cache_done">تم مسح ذاكرة التخزين المؤقت، وتم تحرير %1$s.</string>
+    <string name="settings_clear_cache_failed">تعذر مسح ذاكرة التخزين المؤقت.</string>
+    <string name="settings_clear_cover_cache_title">مسح ذاكرة الغلاف المؤقتة</string>
+    <string name="settings_clear_cover_cache_body">يزيل أغلفة الألعاب ولقطات الشاشة واللافتات المحملة. سيتم إعادة تنزيلها عند الحاجة.</string>
+    <string name="settings_clear_cover_cache_action">مسح ذاكرة الغلاف المؤقتة</string>
+    <string name="settings_clear_cover_cache_size">حجم ذاكرة الغلاف المؤقتة: %1$s</string>
+    <string name="settings_clear_cover_cache_empty">لا توجد بيانات غلاف مخزنة مؤقتًا لإزالتها.</string>
+    <string name="settings_clear_cover_cache_confirm_title">مسح ذاكرة الغلاف المؤقتة؟</string>
+    <string name="settings_clear_cover_cache_confirm_message">سيؤدي هذا إلى حذف الأغلفة ولقطات الشاشة المخزنة مؤقتًا وتحرير %1$s.</string>
+    <string name="settings_clear_cover_cache_confirm_action">مسح</string>
+    <string name="settings_clear_cover_cache_done">تم مسح ذاكرة الغلاف المؤقتة، وتم تحرير %1$s.</string>
+    <string name="settings_clear_cover_cache_failed">تعذر مسح ذاكرة الغلاف المؤقتة.</string>
+    <string name="settings_keep_screen_on">إبقاء الشاشة قيد التشغيل</string>
+    <string name="settings_keep_screen_on_summary">منع إيقاف تشغيل الشاشة أثناء استخدام التطبيق أو تشغيل الألعاب</string>
+    <string name="settings_about_title">حول EmuCoreC</string>
+    <string name="settings_help_content_description">فتح مساعدة الإعدادات</string>
+    <string name="settings_help_dialog_label">دليل الإعدادات</string>
+    <string name="settings_help_dialog_tip">قم بتغيير خيار واحد في كل مرة، ثم اختبر نفس المشهد في اللعبة حتى تتمكن من رؤية ما تحسن بالفعل.</string>
+    <string name="settings_help_gamepad_overlay">يُظهر أزرار التحكم على الشاشة عندما لا تستخدم وحدة تحكم فعلية.\n\nاستخدم هذا لجعل الإدخال باللمس أو بوحدة التحكم أقرب إلى طريقتك في اللعب. تجنب تغييره عندما تشعر أن أزرار التحكم صحيحة بالفعل، لأن القيم المتطرفة يمكن أن تجعل التصويب أو القوائم أو ميزات اللمس أصعب في الاستخدام.</string>
+    <string name="settings_help_overlay_scale">يغير حجم أزرار التحكم على الشاشة.\n\nاستخدم هذا لجعل الإدخال باللمس أو بوحدة التحكم أقرب إلى طريقتك في اللعب. تجنب تغييره عندما تشعر أن أزرار التحكم صحيحة بالفعل، لأن القيم المتطرفة يمكن أن تجعل التصويب أو القوائم أو ميزات اللمس أصعب في الاستخدام.</string>
+    <string name="settings_help_overlay_opacity">يغير مدى شفافية أزرار التحكم على الشاشة.\n\nاستخدم هذا لجعل الإدخال باللمس أو بوحدة التحكم أقرب إلى طريقتك في اللعب. تجنب تغييره عندما تشعر أن أزرار التحكم صحيحة بالفعل، لأن القيم المتطرفة يمكن أن تجعل التصويب أو القوائم أو ميزات اللمس أصعب في الاستخدام.</string>
+    <string name="settings_help_analog_multiplier">يغير حساسية العصا التناظرية.\n\nاستخدم هذا لجعل الإدخال باللمس أو بوحدة التحكم أقرب إلى طريقتك في اللعب. تجنب تغييره عندما تشعر أن أزرار التحكم صحيحة بالفعل، لأن القيم المتطرفة يمكن أن تجعل التصويب أو القوائم أو ميزات اللمس أصعب في الاستخدام.</string>
+    <string name="settings_help_gamepad_deadzone">يصفي حركة العصا الصغيرة بالقرب من المركز لتقليل الانجراف (Drift). ارفعه إذا كانت الكاميرا أو الشخصية تتحرك من تلقاء نفسها؛ خفضه إذا شعرت أن التصويب غير مستجيب.</string>
+    <string name="settings_help_gamepad_trigger_threshold">يحدد المسافة التي يجب أن تتحرك فيها الأزرار التناظرية قبل إرسال الإدخال. ارفعه للأزرار المزعجة؛ خفضه لسباقات السيارات أو عناصر التحكم الحساسة للضغط.</string>
+    <string name="settings_help_gamepad_button_profile">يعيد تعيين أزرار الوجه الفعلية قبل أن تصل إلى المحاكي. استخدم هذا عندما لا يتطابق تخطيط وحدة التحكم الخاصة بك مع وضع Cross، Circle، Square، و Triangle الخاص بـ PS3.</string>
+    <string name="settings_help_gamepad_swap_sticks">يبدل محاور العصا اليسرى واليمنى. مفيد للألعاب أو وحدات التحكم ذات توجيه العصا غير المعتاد.</string>
+    <string name="settings_help_gamepad_invert_x">يعكس الحركة الأفقية للعصا للتحكم في التوجيه أو الكاميرا.</string>
+    <string name="settings_help_gamepad_invert_y">يقلب حركة العصا الرأسية للكاميرا أو عناصر التحكم في التصويب.</string>
+    <string name="settings_reset_toast">تمت إعادة تعيين %1$s إلى الافتراضي</string>
+    <string name="settings_app_language">لغة التطبيق</string>
+    <string name="settings_app_language_system">النظام الافتراضي</string>
+    <string name="settings_app_language_english">الإنجليزية</string>
+    <string name="settings_app_language_russian">الروسية</string>
+    <string name="settings_app_language_ukrainian">الأوكرانية</string>
+    <string name="settings_app_language_spanish">الإسبانية</string>
+    <string name="settings_app_language_french">الفرنسية</string>
+    <string name="settings_app_language_german">الألمانية</string>
+    <string name="settings_app_language_portuguese">البرتغالية</string>
+    <string name="settings_app_language_chinese_traditional">الصينية التقليدية</string>
+    <string name="settings_app_language_hindi">الهندية</string>
+    <string name="settings_app_language_italian">الإيطالية</string>
+    <string name="settings_app_language_turkish">التركية</string>
+    <string name="settings_language_picker_title">اللغة</string>
+    <string name="settings_gpu_driver">تعريف وحدة معالجة الرسومات (GPU)</string>
+    <string name="settings_gpu_driver_system">النظام</string>
+    <string name="settings_gpu_driver_custom">مخصص</string>
+    <string name="settings_gpu_driver_installed">التعريفات المثبتة</string>
+    <string name="settings_help_gpu_driver">اختر بين تعريف Vulkan الخاص بالنظام وتعريف مخصص.\n\nاستخدم تعريفاً مخصصاً بشكل أساسي على أجهزة Adreno المتوافقة عندما يحتوي تعريف Vulkan للنظام على أخطاء رسومية أو أداء ضعيف. التزم بتعريف النظام على أجهزة Mali أو PowerVR أو وحدات معالجة الرسومات غير المعروفة، أو عندما يتسبب التعريف المخصص في حدوث أعطال.</string>
+    <string name="settings_gpu_driver_manage">إدارة التعريفات</string>
+    <string name="settings_gpu_driver_manager_title">تعريفات وحدة معالجة الرسومات (GPU)</string>
+    <string name="settings_gpu_driver_manager_subtitle">تثبيت، تنزيل، تطبيق، أو إزالة تعريفات Adreno.</string>
+    <string name="settings_gpu_driver_active_title">التعريف النشط</string>
+    <string name="settings_gpu_driver_install_from_file">تثبيت من ملف</string>
+    <string name="settings_gpu_driver_catalog">كتالوج التعريفات</string>
+    <string name="settings_gpu_driver_refresh">تحديث</string>
+    <string name="settings_gpu_driver_catalog_loading">جاري تحميل كتالوج التعريفات…</string>
+    <string name="settings_gpu_driver_catalog_failed">تعذر تحميل كتالوج التعريفات</string>
+    <string name="settings_gpu_driver_catalog_empty">لا تتوفر تعريفات عبر الإنترنت بعد.</string>
+    <string name="settings_gpu_driver_download_apply">تنزيل وتطبيق</string>
+    <string name="settings_gpu_driver_downloaded">تم التنزيل</string>
+    <string name="settings_gpu_driver_apply">تطبيق</string>
+    <string name="settings_gpu_driver_applied">تم التطبيق</string>
+    <string name="settings_gpu_driver_remove_short">إزالة</string>
+    <string name="settings_gpu_driver_recommended">موصى به</string>
+    <string name="settings_gpu_driver_source">المصدر</string>
+    <string name="settings_gpu_driver_search">البحث في التعريفات</string>
+    <string name="settings_gpu_driver_filter_all">الكل</string>
+    <string name="settings_gpu_driver_no_matches">لا يوجد تعريفات مطابقة</string>
+    <string name="settings_gpu_driver_no_matches_desc">قم بتغيير نص البحث أو الفلاتر المحددة.</string>
+    <string name="settings_gpu_driver_remove">إزالة التعريف</string>
+    <string name="settings_gpu_driver_none_installed">لم يتم تثبيت أي تعريفات مخصصة لـ GPU بعد.</string>
+    <string name="settings_gpu_driver_install_failed">فشل تثبيت تعريف GPU.</string>
+    <string name="settings_gpu_driver_install_success">تم تثبيت تعريف GPU: %1$s</string>
+    <string name="settings_gpu_driver_status_system">تعريف Vulkan الخاص بالنظام نشط</string>
+    <string name="settings_gpu_driver_status_system_desc">لم يتم اختيار أي تعريف مخصص، لذلك يتم استخدام تعريف Vulkan الخاص بالنظام.</string>
+    <string name="settings_gpu_driver_status_active">التعريف المخصص نشط: %1$s</string>
+    <string name="settings_gpu_driver_status_active_desc">هذا التعريف جاهز للاستخدام مع Vulkan. لا يزال الدعم الفعلي يعتمد على توافق الجهاز.</string>
+    <string name="settings_gpu_driver_status_renderer">تم تحديد تعريف مخصص، لكن المُصيّر هو %1$s</string>
+    <string name="settings_gpu_driver_status_renderer_desc">تعمل تعريفات GPU المخصصة فقط مع Vulkan. قم بتبديل المُصيّر إلى Vulkan لاستخدام هذا التعريف.</string>
+    <string name="settings_gpu_driver_status_broken">أرشيف التعريف غير مكتمل: لم يتم العثور على %1$s</string>
+    <string name="settings_gpu_driver_status_broken_desc">البيانات الوصفية للتعريف موجودة، لكن مكتبة Vulkan مفقودة. أعد تثبيت التعريف.</string>
+    <string name="settings_about_version">إصدار التطبيق</string>
+    <string name="settings_about_version_value">الإصدار %1$s</string>
+    <string name="settings_about_body_extended">يجلب EmuCoreC محاكاة PS3 إلى Android مع واجهة محمولة مخصصة، إدارة مكتبة محلية، ونواة محاكاة مبنية على RPCS3.</string>
+    <string name="settings_about_community_title">المجتمع والدعم</string>
+    <string name="settings_about_repository">مستودع EmuCoreC</string>
+    <string name="settings_about_repository_desc">عرض الكود المصدري، الإبلاغ عن المشاكل، ومتابعة التطوير على GitHub.</string>
+    <string name="settings_about_discord">انضم إلى خادم Discord</string>
+    <string name="settings_about_discord_desc">دردش مع المجتمع، شارك التعليقات، واحصل على تحديثات المشروع.</string>
+    <string name="settings_about_support">دعم EmuCoreC</string>
+    <string name="settings_about_support_desc">ساعد في استمرار التطوير من خلال عضوية Patreon.</string>
+    <string name="settings_emulation_core">نواة المحاكاة</string>
+    <string name="settings_based_on_rpcsx">مبني على RPCS3</string>
+    <string name="settings_developer">المطور</string>
+    <string name="settings_created_by_sbro">تم الإنشاء بواسطة Sashkin Apps</string>
+    <string name="settings_play_store_profile">ملف متجر Play</string>
+    <string name="settings_play_store_profile_desc">شاهد المزيد من تطبيقات Android من المطور.</string>
+    <string name="settings_core_source_code">الكود المصدري للنواة</string>
+    <string name="settings_core_source_description">يستخدم EmuCoreC واجهة Android الخاصة به. النواة فقط هي المبنية على RPCS3.</string>
+    <string name="settings_rpcsx_repository_desc">فتح مستودع مشروع RPCS3 الأساسي.</string>
+    <string name="settings_updates_version_label">الإصدار</string>
+    <string name="settings_updates_open_release">فتح صفحة الإصدار</string>
+    <string name="settings_updates_release_notes_title">ما الجديد</string>
+    <string name="settings_updates_release_notes_empty">لا يتضمن هذا الإصدار ملاحظات إصدار.</string>
+    <string name="settings_updates_cancel">إلغاء</string>
+    <string name="shell_setup_section">التثبيت</string>
+    <string name="shell_library_section">المكتبة</string>
+    <string name="shell_tools_section">الأدوات</string>
+    <string name="shell_install_content">تثبيت اللعبة</string>
+    <string name="game_launch_failed">فشل تشغيل هذه اللعبة.</string>
+    <string name="folder_picker_failed">فشل استخدام المجلد المحدد.</string>
+    <string name="core_install_firmware_failed">فشل بدء تثبيت البرامج الثابتة.</string>
+    <string name="core_install_firmware_unsupported">اختر ملف برامج ثابتة مدعوم، مثل .PUP.</string>
+    <string name="core_install_pkg_failed">تعذر بدء تثبيت محتوى PS3.</string>
+    <string name="game_launch_requires_firmware">قم بتثبيت البرامج الثابتة الأساسية قبل تشغيل اللعبة.</string>
+    <string name="install_dialog_title_generic">التثبيت</string>
+    <string name="install_dialog_title_firmware">تثبيت البرامج الثابتة</string>
+    <string name="install_dialog_title_pkg">تثبيت محتوى PS3</string>
+    <string name="install_dialog_success">اكتمل التثبيت.</string>
+    <string name="install_dialog_error">فشل التثبيت.</string>
+    <string name="install_dialog_percent">%1$d%% مكتمل</string>
+    <string name="install_dialog_close">إغلاق</string>
+    <string name="install_dialog_unexpected_error">حدث خطأ ما أثناء التثبيت.</string>
+    <string name="install_dialog_firmware_failed">فشل تثبيت البرامج الثابتة.</string>
+    <string name="install_dialog_pkg_failed">فشل تثبيت محتوى PS3.</string>
+    <string name="install_dialog_firmware_done">تم تثبيت حزمة البرامج الثابتة بنجاح.</string>
+    <string name="install_dialog_pkg_done">تم تثبيت محتوى PS3 بنجاح.</string>
+    <string name="install_dialog_extracting_archive">جارٍ استخراج %1$s…</string>
+    <string name="install_archive_missing_volume">جزء واحد أو أكثر من الأرشيف مفقود. حدد جميع الأجزاء، بما فيها الأول والأخير.</string>
+    <string name="install_archive_password_protected">الأرشيفات المحمية بكلمة مرور غير مدعومة بعد. استخرج الأرشيف أولًا أو أزل كلمة المرور.</string>
+    <string name="install_archive_unsafe">يحتوي الأرشيف على مسار أو رابط غير آمن ولذلك تم رفضه.</string>
+    <string name="install_archive_not_enough_space">لا توجد مساحة حرة كافية لاستخراج هذا المحتوى وتثبيته بأمان.</string>
+    <string name="install_archive_no_content">لم يتم العثور على ملفات PS3 مدعومة من نوع PKG أو ISO أو RAP أو EDAT.</string>
+    <string name="install_archive_failed">الأرشيف تالف أو غير مكتمل أو يستخدم تنسيقًا غير مدعوم.</string>
+    <string name="setup_title">تثبيت الألعاب</string>
+    <string name="common_back">رجوع</string>
+    <string name="common_not_available">غير متوفر</string>
+    <string name="common_unknown">غير معروف</string>
+    <string name="common_close">إغلاق</string>
+    <string name="emulation_pause">إيقاف مؤقت</string>
+    <string name="emulation_resume">استئناف</string>
+    <string name="emulation_menu_title">قائمة اللعبة</string>
+    <string name="emulation_menu_unknown_game">جاري تشغيل اللعبة</string>
+    <string name="emulation_tab_game">اللعبة</string>
+    <string name="emulation_tab_controls">التحكم</string>
+    <string name="emulation_tab_gamepad">لوحة اللعب</string>
+    <string name="emulation_quickbar_open_menu">فتح القائمة</string>
+    <string name="emulation_menu_paused_badge">متوقف مؤقتاً</string>
+    <string name="emulation_menu_badge_live">مباشر</string>
+    <string name="emulation_menu_badge_restart">يتطلب إعادة التشغيل</string>
+    <string name="emulation_menu_section_now">الآن</string>
+    <string name="emulation_menu_section_now_desc">تنطبق التغييرات على اللعبة قيد التشغيل فوراً.</string>
+    <string name="emulation_menu_section_touch">التحكم باللمس</string>
+    <string name="emulation_menu_section_touch_desc">لوحة اللعب على الشاشة. التغييرات تنطبق فوراً.</string>
+    <string name="emulation_menu_section_gamepad">وحدة تحكم فعلية</string>
+    <string name="emulation_menu_section_gamepad_desc">المنطقة الميتة، إعادة التعيين، الاهتزاز، وسلوك العصا لوحدة التحكم المتصلة.</string>
+    <string name="emulation_menu_section_gamepad_disconnected">قم بتوصيل وحدة تحكم فعلية لتغيير عناصر التحكم هذه.</string>
+    <string name="emulation_menu_controls_desc">إظهار أو إخفاء عناصر التحكم على الشاشة.</string>
+    <string name="emulation_menu_hide_controls">إخفاء عناصر التحكم</string>
+    <string name="emulation_menu_show_controls">إظهار عناصر التحكم</string>
+    <string name="emulation_menu_edit_controls">تعديل عناصر التحكم</string>
+    <string name="emulation_menu_edit_controls_desc">تحريك، تغيير الحجم، إظهار، أو إخفاء كل عنصر تحكم على الشاشة.</string>
+    <string name="emulation_menu_reset_overlay">إعادة ضبط تخطيط التحكم</string>
+    <string name="emulation_menu_reset_overlay_desc">استعادة الحجم والشفافية والتخطيط الافتراضي لعناصر التحكم باللمس.</string>
+    <string name="emulation_controls_editor_title">محرر عناصر التحكم</string>
+    <string name="emulation_controls_editor_percent">%1$d%%</string>
+    <string name="emulation_controls_editor_done">تم</string>
+    <string name="emulation_menu_exit_game">الخروج من اللعبة</string>
+    <string name="emulation_exit_confirm_title">الخروج من اللعبة؟</string>
+    <string name="emulation_exit_confirm_body">سيتم إغلاق الجلسة الحالية وستعود إلى المكتبة.</string>
+    <string name="emulation_exit_confirm_action">خروج</string>
+    <string name="emulation_exit_cancel_action">إلغاء</string>
+    <string name="settings_app_language_arabic">العربية</string>
+    <string name="play_time_today">اليوم</string>
+    <string name="play_time_yesterday">أمس</string>
+    <string name="settings_gpu_driver_global">استخدام العالمي</string>
+    <string name="settings_gpu_driver_status_global">استخدام برنامج تشغيل GPU العالمي: %1$s</string>
+    <string name="settings_gpu_driver_status_global_system">استخدام برنامج تشغيل GPU العالمي: System Vulkan</string>
+    <string name="settings_gpu_driver_status_game_system">تجاوز اللعبة: برنامج تشغيل System Vulkan</string>
+    <string name="settings_gpu_driver_status_game_active">تجاوز اللعبة: %1$s</string>
+    <string name="settings_about_website">الموقع الرسمي</string>
+    <string name="settings_about_website_desc">افتح موقع EmuCoreC للتنزيلات والأخبار وروابط المشروع.</string>
+    <string name="settings_gpu_driver_status_global_desc">تتبع هذه اللعبة اختيار برنامج تشغيل GPU العالمي.</string>
+    <string name="settings_gpu_driver_game_title">برنامج تشغيل GPU للعبة</string>
+    <string name="install_dialog_title_license">جاري تثبيت الترخيص</string>
+    <string name="install_dialog_license_failed">فشل تثبيت الترخيص.</string>
+    <string name="install_dialog_license_done">تم تثبيت الترخيص بنجاح.</string>
+    <string name="common_cancel">إلغاء</string>
+    <string name="save_manager_backup_all_title">النسخ الاحتياطي لجميع عمليات الحفظ</string>
+    <string name="save_manager_backup_all_body">قم بإنشاء نسخة احتياطية واحدة بتنسيق ZIP تحتوي على كل مجلد حفظ، أو قم باستعادة مجلدات الحفظ من نسخة احتياطية كاملة سابقة.</string>
+    <string name="save_manager_backup_all">نسخ احتياطي</string>
+    <string name="save_manager_restore_all">استعادة الكل</string>
+    <string name="save_manager_backup_all_success">تم إجراء نسخ احتياطي لـ %1$d من مجلدات الحفظ.</string>
+    <string name="save_manager_backup_all_failed">فشل إجراء النسخ الاحتياطي لجميع عمليات الحفظ.</string>
+    <string name="save_manager_restore_all_success">تمت استعادة %1$d من مجلدات الحفظ.</string>
+    <string name="save_manager_restore_all_failed">فشلت استعادة جميع عمليات الحفظ.</string>
+    <string name="save_manager_restore_all_confirm_title">هل تريد استعادة جميع عمليات الحفظ؟</string>
+    <string name="save_manager_restore_all_confirm_body">ستحل مجلدات الحفظ من النسخة الاحتياطية المحددة محل مجلدات الحفظ المطابقة على هذا الجهاز. يتم الاحتفاظ بعمليات الحفظ الحالية فقط عندما لا تحتوي النسخة الاحتياطية على معرف الحفظ ذلك.</string>
+    <string name="save_manager_restore_all_confirm">استعادة عمليات الحفظ</string>
+    <string name="settings_change_storage">تغيير مساحة التخزين</string>
+    <string name="settings_storage_location_internal">مساحة تخزين الجهاز</string>
+    <string name="settings_storage_location_sd">بطاقة SD</string>
+    <string name="settings_storage_location_external">مساحة تخزين خارجية</string>
+    <string name="settings_storage_change_note">يؤدي تغيير التخزين إلى نقل بيانات المحاكي الناقصة إلى الموقع المحدد. يتم الاحتفاظ بالملفات الموجودة في الوجهة.</string>
+    <string name="onboarding_storage_choose_title">اختر مساحة تخزين المحاكي</string>
+    <string name="onboarding_storage_only_default">يعرض Android موقع تخزين تطبيق واحد فقط في الوقت الحالي. إذا تم تثبيت بطاقة SD، فتأكد من تركيبها وإتاحتها للتطبيقات.</string>
+    <string name="nav_achievements">الإنجازات</string>
+    <string name="achievements_title">الإنجازات</string>
+    <string name="achievements_progress_count">%1$d/%2$d</string>
+    <string name="achievements_choose_game">اختر اللعبة</string>
+    <string name="achievements_trophy">كأس</string>
+    <string name="achievements_hidden_trophy">كأس مخفي</string>
+    <string name="achievements_hidden_trophy_body">افتح هذا الكأس للكشف عن تفاصيله.</string>
+    <string name="achievements_unlocked_at">تم الفتح %1$s</string>
+    <string name="achievements_empty_title">لم يتم العثور على كؤوس</string>
+    <string name="achievements_empty_body">قم بتشغيل لعبة تدعم الكؤوس أو قم بالتحديث بعد تثبيت الألعاب.</string>
+    <string name="achievements_open_for_game">الإنجازات</string>
+    <string name="achievements_how_to_unlock">كيفية الفتح؟</string>
+    <string name="achievements_translate">ترجمة</string>
+    <string name="achievements_hint_title">كيفية الفتح</string>
+    <string name="achievements_translation_title">مترجم</string>
+    <string name="achievements_assist_error">تعذر التحميل. حاول مرة أخرى.</string>
+    <string name="emulation_achievements_loading">جاري تحميل الكؤوس للعبة قيد التشغيل.</string>
+    <string name="emulation_achievements_empty">لم يتم العثور على كؤوس للعبة قيد التشغيل.</string>
+    <string name="emulation_achievements_empty_body">قم بتثبيت لعبة تدعم الكؤوس أو قم بتحديث كؤوس اللعبة من المكتبة.</string>
+    <string name="emulation_tab_achievements">الإنجازات</string>
+    <string name="settings_storage_migrating">جاري نقل بيانات المحاكي…</string>
+    <string name="settings_storage_confirm_title">هل تريد تغيير مساحة تخزين المحاكي؟</string>
+    <string name="settings_storage_confirm_body">سينسخ EmuCoreC نظام ملفات PS3 الافتراضي كاملًا، بما فيه البرنامج الثابت والألعاب والحفظ والكؤوس وإعدادات النواة، إلى %1$s. ستُحفظ الملفات الموجودة في الوجهة، بينما تبقى ذاكرات التخزين المؤقت القابلة لإعادة الإنشاء والتصحيحات في مساحة التطبيق الثابتة.</string>
+    <string name="settings_storage_confirm_action">نقل البيانات</string>
+    <string name="settings_storage_migration_title">نقل بيانات المحاكي</string>
+    <string name="settings_storage_migration_body">أبقِ EmuCoreC مفتوحًا أثناء نسخ نظام ملفات PS3 الافتراضي إلى مساحة التخزين المحددة.</string>
+    <string name="settings_storage_migration_count">تم فحص %1$d/%2$d من الملفات</string>
+    <string name="settings_storage_migration_failed">تعذر نقل مساحة التخزين</string>
+    <string name="settings_vibration_section">الاهتزاز</string>
+    <string name="settings_vibration_enable">الاهتزاز</string>
+    <string name="settings_vibration_strength">قوة الاهتزاز</string>
+    <string name="settings_test_vibration">اختبار الاهتزاز</string>
+    <string name="settings_test_vibration_button">اختبار</string>
+    <string name="settings_device_vibration_fallback">استخدام اهتزاز الجهاز كبديل</string>
+    <string name="settings_help_vibration_enable">يسمح للألعاب المدعومة بإرسال اهتزاز إلى وحدة تحكم فعلية أو، عند تمكين البديل، إلى هيكل جهاز Android.</string>
+    <string name="settings_help_vibration_strength">يضبط شدة الاهتزاز لاهتزاز وحدة التحكم والاهتزاز البديل للجهاز.</string>
+    <string name="settings_help_test_vibration">يقوم بتشغيل نبضة قصيرة باستخدام قوة الاهتزاز الحالية والتوجيه.</string>
+    <string name="settings_help_device_vibration_fallback">يقوم بهز الهاتف أو هيكل الجهاز المحمول عندما تكون وحدة التحكم الفعلية مفقودة أو لا تحتوي على محرك اهتزاز.</string>
+    <string name="nav_profile">الملف الشخصي</string>
+    <string name="catalog_toggle_search">تبديل بحث الكتالوج</string>
+    <string name="catalog_toggle_filters">تبديل عوامل تصفية الكتالوج</string>
+    <string name="catalog_profile_menu">قائمة الملف الشخصي</string>
+    <string name="catalog_profile_remove">إزالة من الملف الشخصي</string>
+    <string name="catalog_profile_status_title">حالة اللعب</string>
+    <string name="catalog_profile_clear_status">مسح حالة اللعب</string>
+    <string name="profile_title">الملف الشخصي</string>
+    <string name="profile_game_count">تم حفظ %1$d من الألعاب</string>
+    <string name="profile_refresh">تحديث الملف الشخصي</string>
+    <string name="profile_toggle_layout">تبديل تخطيط الملف الشخصي</string>
+    <string name="profile_section_count">%1$d</string>
+    <string name="profile_status_playing">ألعب الآن</string>
+    <string name="profile_status_want_to_play">أريد أن ألعب</string>
+    <string name="profile_status_completed">مكتملة</string>
+    <string name="profile_status_dropped">تم تركها</string>
+    <string name="profile_status_favorites">المفضلة</string>
+    <string name="profile_account_title">ملف شخصي محلي</string>
+    <string name="profile_account_body">يتم تخزين اسمك وصورتك والمفضلة وقوائم الألعاب على هذا الجهاز فقط.</string>
+    <string name="profile_hide_backup">إخفاء الملف المحلي</string>
+    <string name="profile_show_backup">إظهار الملف المحلي</string>
+    <string name="profile_user_name">اسم العرض</string>
+    <string name="profile_default_name">اللاعب</string>
+    <string name="profile_change_avatar">تغيير الصورة</string>
+    <string name="profile_backup">حفظ</string>
+    <string name="profile_empty_title">لا توجد ألعاب في الملف الشخصي بعد</string>
+    <string name="profile_empty_body">افتح الكتالوج، وانقر على قائمة النقاط الثلاث في اللعبة، وأضفها إلى إحدى قوائم ملفك الشخصي.</string>
+    <string name="settings_updates_history_title">سجل التحديثات</string>
+    <string name="settings_updates_history_body">تصفح إصدارات GitHub وتواريخ الإصدار وسجلات التغيير.</string>
+    <string name="settings_updates_history_loading">جارٍ تحميل سجل الإصدارات</string>
+    <string name="settings_updates_history_empty">لم يتم العثور على أي إصدارات.</string>
+    <string name="settings_updates_published_label">تم النشر</string>
+    <string name="settings_updates_parallel_title">الإصدارات المتوازية</string>
+    <string name="settings_updates_parallel_body">يمكن لنظام Android تثبيت إصدارات EmuCoreC متعددة فقط عندما يتضمن الإصدار ملف APK خاصًا مصممًا باسم حزمة فريد وتسمية تطبيق، مثل EmuCoreC (0.1.1). تحل ملفات APK الأقدم العادية محل التطبيق الحالي أو ترجعه لإصدار أقدم.</string>
+    <string name="settings_updates_parallel_unavailable">ملف APK المنفصل غير متوفر لهذا الإصدار.</string>
+    <string name="settings_updates_parallel_package">حزمة تطبيق منفصلة</string>
+    <string name="settings_updates_parallel_download">تنزيل</string>
+    <string name="emulation_controls_editor_touch_area_mode">منطقة اللمس</string>
+    <string name="emulation_controls_editor_width">العرض</string>
+    <string name="emulation_controls_editor_height">الارتفاع</string>
+    <string name="settings_tab_customization">التخصيص</string>
+    <string name="customization_preview_title">معاينة</string>
+    <string name="customization_preview_subtitle">مكتبتك مضبوطة حسب تفضيلاتك</string>
+    <plurals name="customization_games_per_row">
+        <item quantity="zero">لا ألعاب في الصف</item>
+        <item quantity="one">لعبة واحدة في الصف</item>
+        <item quantity="two">لعبتان في الصف</item>
+        <item quantity="few">%1$d ألعاب في الصف</item>
+        <item quantity="many">%1$d لعبة في الصف</item>
+        <item quantity="other">%1$d لعبة في الصف</item>
+    </plurals>
+    <string name="customization_home_background">خلفية الشاشة الرئيسية</string>
+    <string name="customization_background_select">اختر صورة أو GIF أو فيديو</string>
+    <string name="customization_background_default">الخلفية الافتراضية</string>
+    <string name="customization_background_selected">تم اختيار خلفية مخصصة</string>
+    <string name="customization_background_imported">تم تحديث الخلفية</string>
+    <string name="customization_background_failed">تعذر استخدام ملف الخلفية هذا</string>
+    <string name="customization_library_layout">تخطيط المكتبة</string>
+    <string name="customization_cover_size">حجم غلاف اللعبة</string>
+    <string name="customization_percent_value">%1$d%%</string>
+    <string name="customization_text_and_fonts">النص والخطوط</string>
+    <string name="customization_app_font">خط التطبيق</string>
+    <string name="customization_font_system">خط النظام الافتراضي</string>
+    <string name="customization_font_custom">مخصص</string>
+    <string name="customization_import_font">استيراد خط مخصص</string>
+    <string name="customization_import_font_hint">اختر ملف TTF أو OTF</string>
+    <string name="customization_font_imported">تم استيراد الخط</string>
+    <string name="customization_font_failed">تعذر استخدام ملف الخط هذا</string>
+    <string name="customization_text_size">حجم النص</string>
+    <string name="customization_reset_section">إعادة الضبط</string>
+    <string name="customization_reset">إعادة ضبط التخصيص</string>
+    <string name="customization_reset_description">استعادة الخلفية وحجم الأغلفة والخط وحجم النص الافتراضي</string>
+    <string name="customization_reset_confirm_title">هل تريد إعادة ضبط التخصيص؟</string>
+    <string name="customization_reset_confirm_body">ستتم إزالة الخلفية المخصصة والخط المستورد.</string>
+    <string name="customization_reset_action">إعادة الضبط</string>
+    <string name="settings_theme">السمة</string>
+    <string name="settings_theme_system">النظام</string>
+    <string name="settings_theme_light">فاتح</string>
+    <string name="settings_theme_dark">داكن</string>
+    <string name="settings_about_privacy_policy">سياسة الخصوصية</string>
+    <string name="settings_about_privacy_policy_desc">افتح سياسة خصوصية EmuCoreC.</string>
+    <string name="shell_discord_server">خادم Discord</string>
+    <string name="settings_customization_touch_controls_section">عناصر التحكم على الشاشة</string>
+    <string name="settings_customization_touch_controls_style">نمط التحكم</string>
+    <string name="settings_customization_touch_controls_help">يغير تصميم عناصر التحكم بالكامل: هياكل الأزرار، ولوحة الاتجاهات، وحلقات العصي، وأغطية الإبهام، والحدود، وحالات الضغط. تبقى المواضع ومناطق اللمس واللمس المتعدد ومنطق الإدخال دون تغيير.</string>
+    <string name="settings_customization_touch_style_classic">كلاسيكي</string>
+    <string name="settings_customization_touch_style_glass">تراثي</string>
+    <string name="settings_customization_touch_style_neon">حديث</string>
+    <string name="settings_game_menu_tab">قائمة اللعبة</string>
+    <string name="settings_customization_drawer_section">قائمة التنقل</string>
+    <string name="settings_customization_touch_style_arcade">أركيد</string>
+    <string name="settings_customization_touch_style_minimal">بسيط</string>
+    <string name="settings_customization_touch_press_effect">تأثير الضغط</string>
+    <string name="settings_customization_touch_press_effect_help">اختر كيف يستجيب كل زر على الشاشة، واتجاه لوحة الاتجاهات (D-pad)، والعصا التناظرية أثناء الضغط. يؤدي هذا إلى تغيير الرسوم المتحركة فقط؛ يظل حجم عنصر التحكم وأهداف اللمس دون تغيير.</string>
+    <string name="settings_customization_touch_press_effect_grow">تكبير</string>
+    <string name="settings_customization_touch_press_effect_shrink">تصغير</string>
+    <string name="settings_customization_touch_press_effect_spring">ارتداد</string>
+    <string name="settings_customization_touch_press_effect_glow">توهج</string>
+    <string name="settings_drawer_style_classic">كلاسيكي</string>
+    <string name="settings_drawer_style_compact">مضغوط</string>
+    <string name="settings_drawer_style_glass">زجاجي</string>
+    <string name="settings_drawer_style_console">كونسول</string>
+    <string name="settings_game_menu_layout_help">يغير هيكل وتنقل القائمة داخل اللعبة. تظل علامات التبويب ورؤية المحتوى وإجراءات الأمان وعناصر تحكم لوحة الألعاب مشتركة بين كل تخطيط.</string>
+    <string name="settings_game_menu_layout_sidebar">شريط جانبي</string>
+    <string name="settings_game_menu_layout_dashboard">لوحة القيادة</string>
+    <string name="settings_game_menu_layout_command_center">مركز القيادة</string>
+    <string name="settings_game_menu_layout_compact">مضغوط</string>
+    <string name="feedback_title">ملاحظات</string>
+    <string name="feedback_subtitle">أرسل تعليقاتك مباشرة إلى فريق EmuCoreC</string>
+    <string name="feedback_category_title">ما هو موضوع هذا؟</string>
+    <string name="feedback_category_compatibility">توافق اللعبة</string>
+    <string name="feedback_category_performance">الأداء أو التقطيع</string>
+    <string name="feedback_category_graphics">الرسومات أو العرض</string>
+    <string name="feedback_category_audio">الصوت</string>
+    <string name="feedback_category_controls">عناصر التحكم أو لوحة الألعاب</string>
+    <string name="feedback_category_crash">تعطل أو تجميد</string>
+    <string name="feedback_category_feature">طلب ميزة</string>
+    <string name="feedback_category_ui">الواجهة أو سهولة الاستخدام</string>
+    <string name="feedback_category_other">أخرى</string>
+    <string name="feedback_details_title">التفاصيل</string>
+    <string name="feedback_game_label">لعبة من مكتبتك (اختياري)</string>
+    <string name="feedback_game_placeholder">ابحث بالعنوان أو الرقم التسلسلي، أو اكتب لعبة يدويًا</string>
+    <string name="feedback_game_library_empty">لم يتم العثور على ألعاب مخزنة مؤقتًا. يمكنك إدخال عنوان لعبة أو رقمها التسلسلي يدويًا.</string>
+    <string name="feedback_game_clear_selection">مسح اختيار اللعبة</string>
+    <string name="feedback_message_label">تعليقاتك</string>
+    <string name="feedback_message_placeholder">أخبرنا بما حدث، وما كنت تتوقعه، وكيف يمكننا إعادة إنتاجه.</string>
+    <string name="feedback_character_counter">%1$d / %2$d</string>
+    <string name="feedback_attachments_title">المرفقات</string>
+    <string name="feedback_attachments_help">أضف ما يصل إلى %1$d من الصور، الفيديوهات، السجلات، ملفات الحفظ، أو ملفات أخرى. بحد أقصى %2$d ميغابايت لكل ملف و %3$d ميغابايت إجماليًا.</string>
+    <string name="feedback_add_attachment">إضافة مرفق</string>
+    <string name="feedback_attachment_source_title">اختر نوع المرفق</string>
+    <string name="feedback_add_media">صورة أو فيديو</string>
+    <string name="feedback_add_files">ملف</string>
+    <string name="feedback_attachment_counter">تم تحديد %1$d من %2$d ملفات</string>
+    <string name="feedback_tip_title">نصائح لتعليقات أفضل</string>
+    <string name="feedback_tip_body">أضف خطوات قصيرة لإعادة إنتاج المشكلة وأرفق لقطات شاشة أو فيديو أو سجلات أو حفظات أو ملفات مفيدة أخرى.</string>
+    <string name="feedback_remove_attachment">إزالة المرفق</string>
+    <string name="feedback_send">إرسال التعليقات</string>
+    <string name="feedback_queueing">جاري التحضير…</string>
+    <string name="feedback_queued">تم وضع التعليق في قائمة الانتظار. سيتم إرساله تلقائيًا عند توفر شبكة.</string>
+    <string name="feedback_error_message_required">يرجى وصف تعليقك أولاً.</string>
+    <string name="feedback_error_too_many_files">لقد حددت ملفات أكثر من اللازم.</string>
+    <string name="feedback_error_file_too_large">أحد الملفات أكبر من 49 ميغابايت.</string>
+    <string name="feedback_error_total_too_large">إجمالي حجم الملفات المحددة أكبر من 90 ميغابايت.</string>
+    <string name="feedback_error_file_unreadable">لا يمكن قراءة أحد الملفات المحددة.</string>
+    <string name="feedback_error_queue_failed">تعذر تحضير التعليق. تحقق من الملفات المحددة وحاول مرة أخرى.</string>
+    <string name="feedback_not_configured">لم يتم تكوين تسليم التعليقات في هذا الإصدار. أضف عنوان URL للعامل ومفتاح API إلى local.properties.</string>
+    <string name="feedback_discard_title">تجاهل التعليق؟</string>
+    <string name="feedback_discard_message">سيتم فقد رسالتك والمرفقات المحددة.</string>
+    <string name="feedback_discard_action">تجاهل</string>
+    <string name="settings_customization_drawer_style">مظهر الدرج</string>
+    <string name="settings_touch_haptics">استجابة اللمس لعناصر التحكم</string>
+    <string name="settings_help_touch_haptics">يضيف استجابة لمس Android خفيفة عند الضغط لأول مرة على زر على الشاشة أو اتجاه D-pad أو عصا تناظرية. هذا يؤثر على الشعور بالتحكم فقط ولا يغير اهتزاز اللعبة.</string>
+    <string name="settings_touch_haptics_strength">قوة استجابة اللمس</string>
+    <string name="settings_help_touch_haptics_strength">يتحكم في قوة اهتزاز الجهاز المستخدمة لاستجابة اللمس لعناصر التحكم. قم بزيادتها إذا كانت النبضة خفيفة للغاية، أو قم بخفضها للعب محمول أكثر هدوءًا.</string>
+    <string name="settings_touch_haptics_test">اختبار استجابة اللمس</string>
+    <string name="settings_help_touch_haptics_test">يشغل نفس نبضة اللمس للجهاز التي تستخدمها عناصر التحكم على الشاشة، حتى تتمكن من ضبط القوة قبل بدء اللعبة.</string>
+    <string name="settings_touch_haptics_preset">الشعور اللمسي</string>
+    <string name="settings_touch_haptics_preset_soft">ناعم</string>
+    <string name="settings_touch_haptics_preset_balanced">متوازن</string>
+    <string name="settings_touch_haptics_preset_crisp">واضح</string>
+    <string name="settings_touch_haptics_preset_strong">قوي</string>
+    <string name="settings_help_touch_haptics_preset">يستخدم "ناعم" ضغطة رقيقة وإفلاتاً خفيفاً جداً. يعطي "متوازن" ضغطة واضحة مع إفلات أخف وهو الإعداد الافتراضي. يستخدم "واضح" الزوج الأقصر والأكثر حدة للنقرات الدقيقة. يستخدم "قوي" نبضات أعمق وأطول للهواتف ذات محركات الاهتزاز الأضعف. يقوم شريط التمرير الخاص بالقوة بضبط الشعور المحدد.</string>
+    <string name="settings_gyro_mode">تحكم الجيروسكوب</string>
+    <string name="settings_gyro_off">إيقاف</string>
+    <string name="settings_gyro_aim">التصويب — العصا اليمنى</string>
+    <string name="settings_gyro_steering">التوجيه — العصا اليسرى</string>
+    <string name="settings_gyro_sensitivity">حساسية الجيروسكوب</string>
+    <string name="settings_gyro_smoothing">تنعيم الجيروسكوب</string>
+    <string name="settings_gyro_invert_x">عكس الجيروسكوب الأفقي</string>
+    <string name="settings_gyro_invert_x_desc">يعكس الحركة يمينًا ويسارًا.</string>
+    <string name="settings_gyro_invert_y">عكس الجيروسكوب العمودي</string>
+    <string name="settings_gyro_invert_y_desc">يعكس حركة التصويب لأعلى ولأسفل.</string>
+    <string name="settings_help_gyro_mode">يحول "التصويب" سرعة دوران الهاتف إلى العصا التناظرية اليمنى للتحكم في الكاميرا في ألعاب التصويب ويعود تلقائيًا إلى المركز عندما يتوقف الهاتف عن الحركة. يحول "التوجيه" إمالة الهاتف إلى العصا التناظرية اليسرى لألعاب السباق ويعاير الزاوية الحالية كمركز عند بدء اللعب. يُستخدم الوضع المحدد فقط أثناء تشغيل اللعبة ويتطلب مستشعر الحركة المقابل.</string>
+    <string name="settings_help_gyro_sensitivity">يتحكم في مدى قوة تأثير حركة الهاتف على العصا التناظرية المحاكية. يُوصى بتخصيص الإعدادات لكل لعبة لأن الألعاب تستخدم منحنيات استجابة مختلفة للكاميرا والتوجيه.</string>
+    <string name="settings_help_gyro_smoothing">يصفي ضوضاء المستشعر واهتزاز اليد. تتفاعل القيم الأقل بشكل أسرع؛ وتشعر القيم الأعلى بثبات أكبر ولكنها تضيف مقدارًا صغيرًا من التأخير.</string>
+    <string name="settings_gyro_unavailable">لا يوفر هذا الجهاز مستشعر الحركة المطلوب للوضع المحدد.</string>
+    <string name="settings_touch_controls_section">عناصر التحكم باللمس</string>
+    <string name="settings_gpu_driver_detected_device">تم الاكتشاف: %1$s · %2$s</string>
+    <string name="settings_gpu_driver_device_hint">تظهر برامج التشغيل المتوافقة أولاً. اضغط على بطاقة برنامج التشغيل لرؤية شرائح Snapdragon المدعومة.</string>
+    <string name="settings_gpu_driver_compatibility">التوافق مع Snapdragon</string>
+    <string name="settings_gpu_driver_best_match">أفضل تطابق</string>
+    <string name="settings_gpu_driver_compatible">متوافق</string>
+    <string name="settings_gpu_driver_other_family">عائلة Adreno مختلفة</string>
+    <string name="settings_gpu_driver_compatibility_a6xx">Adreno 6xx: ‏Snapdragon 845/855/865/888 والعديد من طرز سلسلتي Snapdragon 6/7</string>
+    <string name="settings_gpu_driver_compatibility_a7xx">Adreno 7xx: ‏Snapdragon 8 Gen 1/2/3 و8s Gen 3 وطرازات Snapdragon 7 الحديثة و6 Gen 1/3</string>
+    <string name="settings_gpu_driver_compatibility_a8xx">Adreno 8xx: ‏Snapdragon 8 Elite Gen 5 و8 Gen 5 و8 Elite و8s Gen 4 و6 Gen 4</string>
+    <string name="app_name_emucorec">EmuCoreC</string>
+    <string name="home_title">PlayStation 3</string>
+    <string name="home_subtitle">محاكي PS3 لنظام Android</string>
+    <string name="home_installed_count">الألعاب المثبتة: %1$d</string>
+    <string name="home_catalog_count">ألعاب الكتالوج: %1$d</string>
+    <string name="home_storage_short">جاهز</string>
+    <string name="home_storage_path">مساحة التخزين: %1$s</string>
+    <string name="home_open_setup">فتح الألعاب</string>
+    <string name="home_open_library">فتح المكتبة</string>
+    <string name="home_open_catalog">تصفح الكتالوج</string>
+    <string name="home_empty_library_title">لم يتم تثبيت أي ألعاب بعد</string>
+    <string name="home_recent_titles_title">تم لعبها مؤخراً</string>
+    <string name="onboarding_page_1_title">PlayStation 3 على Android</string>
+    <string name="onboarding_page_1_body">العب ألعاب PS3 الخاصة بك على Android باستخدام نواة RPCS3.</string>
+    <string name="onboarding_page_2_title">مكتبة ألعابك</string>
+    <string name="onboarding_page_2_body">يتم جمع ألعابك المثبتة في مكتبة واحدة.</string>
+    <string name="onboarding_page_3_title">كتالوج مدمج</string>
+    <string name="onboarding_page_3_body">تصفح الأغلفة، لقطات الشاشة، مقاطع الفيديو، وتفاصيل الألعاب في مكان واحد.</string>
+    <string name="onboarding_page_4_title">جاهز تقريباً</string>
+    <string name="home_empty_library_body">ثبّت برنامج PS3 الثابت الرسمي، ثم أضف ألعاب PKG أو تراخيص RAP من شاشة الألعاب.</string>
+    <string name="onboarding_page_4_body">ثبّت برنامج PS3 الثابت الرسمي قبل تشغيل الألعاب.</string>
+    <string name="onboarding_firmware_title">برنامج PS3 الثابت</string>
+    <string name="onboarding_firmware_desc">نزّل أو اختر ملف نظام PS3 الرسمي PS3UPDAT.PUP.</string>
+    <string name="onboarding_firmware_info_title">برنامج PS3 الثابت الرسمي</string>
+    <string name="onboarding_firmware_info_body">يتم التنزيل مباشرة من خوادم تحديث Sony الرسمية. لا يستضيف EmuCoreC الملف ولا ينسخه أو يعدله أو يعيد توزيعه.</string>
+    <string name="core_install_pkg_unsupported">حدد ملفات PS3 من نوع PKG/ISO أو جميع أجزاء أرشيف ZIP/RAR.</string>
+    <string name="core_install_license_unsupported">اختر ملف ترخيص RAP لجهاز PS3.</string>
+    <string name="setup_pkg_title">تثبيت محتوى PS3</string>
+    <string name="setup_pkg_body">ثبّت PKG/ISO مباشرة أو حدد جزءًا واحدًا أو أكثر من ZIP/RAR. يتم اكتشاف ملفات PKG وISO وRAP وEDAT الموجودة داخله تلقائيًا.</string>
+    <string name="setup_pkg_license_step_title">تثبيت ترخيص RAP</string>
+    <string name="setup_pkg_license_step_body">اختر ترخيص RAP الخاص بلعبة PS3 الرقمية.</string>
+    <string name="setup_pkg_license_button">اختيار ملف RAP</string>
+    <string name="setup_pkg_button">اختيار محتوى أو أرشيفات</string>
+    <string name="setup_pkg_order_note">تتطلب بعض الألعاب الرقمية ترخيص RAP المطابق. يمكن تثبيت PKG وRAP بأي ترتيب.</string>
+    <string name="install_choice_title">تثبيت محتوى PS3</string>
+    <string name="install_choice_body">اختر ملفات PKG/ISO أو أرشيفات ZIP/RAR أو ثبّت ترخيص RAP.</string>
+    <string name="install_choice_pkg_without_license_note">يمكنك تحديد جميع أجزاء أرشيف ZIP/RAR متعدد الأجزاء معًا. يستخرجه EmuCoreC بأمان، ويعثر على محتوى PS3، ويثبت أجزاء الحزمة بالترتيب الطبيعي، ثم يحذف الملفات المؤقتة.</string>
+    <string name="ps3_core_settings_unavailable">تعذر تحميل نواة RPCS3 أو تهيئتها.</string>
+    <string name="ps3_core_setting_rejected">رفضت نواة RPCS3 الإعداد «%1$s».</string>
+    <string name="ps3_core_setting_default">القيمة الافتراضية للنواة: %1$s</string>
+    <string name="ps3_core_setting_reset_game">إعادة هذا الإعداد إلى القيمة العامة</string>
+    <string name="catalog_open_for_game">فتح في الكتالوج</string>
+    <string name="catalog_serial_not_found">لم يُعثر على رمز PS3 التسلسلي هذا في الكتالوج المحلي.</string>
+    <string name="settings_rpcs3_repository_desc">مستودع محاكي PlayStation 3 الأصلي RPCS3. شكرًا لكل المساهمين في RPCS3 على النواة التي يعتمد عليها هذا المشروع في النهاية.</string>
+    <string name="settings_tab_audio">الصوت</string>
+    <string name="settings_tab_network">الشبكة</string>
+    <string name="settings_tab_advanced">متقدم</string>
+    <string name="shell_launch_system_menu">تشغيل PS3</string>
+    <string name="system_menu_launch_failed">تعذر تشغيل قائمة نظام PS3.</string>
+    <!-- Core settings: generated from the live RPCS3 config schema. -->
+    <!-- Generated from the live RPCS3 configuration schema. -->
+    <string name="core_setting_edit">تحرير القيمة</string>
+    <string name="core_setting_value">القيمة</string>
+    <string name="core_setting_apply">تطبيق</string>
+    <string name="core_setting_cancel">إلغاء</string>
+    <string name="core_setting_default_value">الافتراضي: %1$s</string>
+    <string name="core_setting_no_options">لا تتوفر أي إعدادات مدعومة في هذا القسم.</string>
+    <string name="core_label_1_controller">1 وحدة تحكم</string>
+    <string name="core_label_120">120</string>
+    <string name="core_label_1280x1080">1280x1080</string>
+    <string name="core_label_1280x720">1280x720</string>
+    <string name="core_label_1440x1080">1440x1080</string>
+    <string name="core_label_16_9">16:9</string>
+    <string name="core_label_1600x1080">1600x1080</string>
+    <string name="core_label_1920x1080">1920x1080</string>
+    <string name="core_label_1920x1080i">1920x1080i</string>
+    <string name="core_label_2_controllers">2 وحدات تحكم</string>
+    <string name="core_label_30">30</string>
+    <string name="core_label_3d_display_enabled">تم تمكين العرض ثلاثي الأبعاد</string>
+    <string name="core_label_3d_display_mode">وضع العرض ثلاثي الأبعاد</string>
+    <string name="core_label_4_3">4:3</string>
+    <string name="core_label_50">50</string>
+    <string name="core_label_60">60</string>
+    <string name="core_label_720x480">720x480</string>
+    <string name="core_label_720x480i">720x480i</string>
+    <string name="core_label_720x576">720x576</string>
+    <string name="core_label_720x576i">720x576i</string>
+    <string name="core_label_960x1080">960x1080</string>
+    <string name="core_label_accurate">دقيق</string>
+    <string name="core_label_accurate_cache_line_stores">مخازن خط ذاكرة التخزين المؤقت دقيقة</string>
+    <string name="core_label_accurate_ppu_128_byte_reservation_op_max_length">حجز PPU دقيق بحجم 128 بايت بحد أقصى للطول</string>
+    <string name="core_label_accurate_rsx_reservation_access">وصول دقيق لحجز RSX</string>
+    <string name="core_label_accurate_spu_dma">دقة SPU DMA</string>
+    <string name="core_label_accurate_spu_reservations">حجوزات SPU دقيقة</string>
+    <string name="core_label_accurate_zcull_stats">إحصائيات ZCULL دقيقة</string>
+    <string name="core_label_adapter">محول</string>
+    <string name="core_label_adaptive">التكيف</string>
+    <string name="core_label_all">الكل</string>
+    <string name="core_label_all_timers">جميع الموقتات</string>
+    <string name="core_label_allow_custom_background">السماح بخلفية مخصصة</string>
+    <string name="core_label_allow_host_gpu_labels">السماح بتسميات GPU المضيفة</string>
+    <string name="core_label_allow_move_hue_set_by_game">السماح بضبط درجة اللون حسب اللعبة</string>
+    <string name="core_label_allow_rsx_cpu_preemptions">السماح بإجراءات RSX CPU</string>
+    <string name="core_label_anaglyph_amber_blue">النقش العنبر الأزرق</string>
+    <string name="core_label_anaglyph_custom">النقش المخصص</string>
+    <string name="core_label_anaglyph_magenta_cyan">النقش أرجواني سماوي</string>
+    <string name="core_label_anaglyph_red_blue">النقش الأحمر والأزرق</string>
+    <string name="core_label_anaglyph_red_cyan">النقش الأحمر السماوي</string>
+    <string name="core_label_anaglyph_red_green">النقش الأحمر والأخضر</string>
+    <string name="core_label_anaglyph_trioscopic">النقش الثلاثي</string>
+    <string name="core_label_anisotropic_filter_override">تجاوز مرشح متباين الخواص</string>
+    <string name="core_label_approximate">تقريبي</string>
+    <string name="core_label_as_host">كمضيف</string>
+    <string name="core_label_aspect_ratio">نسبة الارتفاع</string>
+    <string name="core_label_assume_external_debugger">تفترض المصحح الخارجي</string>
+    <string name="core_label_async_recompiler_multi_threaded">أداة التحويل البرمجي غير المتزامن (متعددة الخيوط)</string>
+    <string name="core_label_async_recompiler_with_shader_interpreter">برنامج إعادة الترجمة غير المتزامن مع مترجم شادر</string>
+    <string name="core_label_asynchronous_queue_scheduler">جدولة قائمة الانتظار غير المتزامنة</string>
+    <string name="core_label_asynchronous_texture_streaming">تدفق الملمس غير المتزامن</string>
+    <string name="core_label_atomic">الذرية</string>
+    <string name="core_label_audio">الصوت</string>
+    <string name="core_label_audio_channel_layout">تخطيط قناة الصوت</string>
+    <string name="core_label_audio_device">جهاز الصوت</string>
+    <string name="core_label_audio_format">تنسيق الصوت</string>
+    <string name="core_label_audio_formats">تنسيقات الصوت</string>
+    <string name="core_label_audio_provider">مزود الصوت</string>
+    <string name="core_label_auto">تلقائي</string>
+    <string name="core_label_automatic">تلقائي</string>
+    <string name="core_label_automatically_start_games_after_boot">بدء الألعاب تلقائيًا بعد التمهيد</string>
+    <string name="core_label_av_multiout">مخرج AV متعدد</string>
+    <string name="core_label_background_input_enabled">تم تمكين إدخال الخلفية</string>
+    <string name="core_label_basic">الأساسية</string>
+    <string name="core_label_bilinear">خطين</string>
+    <string name="core_label_bind_address">ربط العنوان</string>
+    <string name="core_label_blur_effect_strength">قوة تأثير طمس</string>
+    <string name="core_label_body_background_hex">خلفية الجسم (ست عشري)</string>
+    <string name="core_label_body_color_hex">لون الجسم (ست عشري)</string>
+    <string name="core_label_both">كلاهما</string>
+    <string name="core_label_bottom_left">أسفل اليسار</string>
+    <string name="core_label_bottom_right">أسفل اليمين</string>
+    <string name="core_label_buzz_emulated_controller">تحكم Buzz الذي تمت محاكاته</string>
+    <string name="core_label_camera">الكاميرا</string>
+    <string name="core_label_camera_flip">الوجه الكاميرا</string>
+    <string name="core_label_camera_id">معرف الكاميرا</string>
+    <string name="core_label_camera_type">نوع الكاميرا</string>
+    <string name="core_label_cellaudio">CellAudio</string>
+    <string name="core_label_center_horizontally">مركز أفقيا</string>
+    <string name="core_label_center_vertically">مركز عموديا</string>
+    <string name="core_label_clans_enabled">تم تمكين العشائر</string>
+    <string name="core_label_clock12">Clock12</string>
+    <string name="core_label_clock24">Clock24</string>
+    <string name="core_label_clocks_scale">مقياس الساعات</string>
+    <string name="core_label_compatible_savestate_mode">وضع Savestate المتوافق</string>
+    <string name="core_label_connected">متصل</string>
+    <string name="core_label_consecutive_frames_to_draw">إطارات متتالية للرسم</string>
+    <string name="core_label_consecutive_frames_to_skip">إطارات متتالية لتخطيها</string>
+    <string name="core_label_console_psid">PSID لوحدة التحكم</string>
+    <string name="core_label_console_time_offset_s">إزاحة (إزاحات) وقت وحدة التحكم</string>
+    <string name="core_label_convert_to_16_bit">تحويل إلى 16 بت</string>
+    <string name="core_label_core">الأساسية</string>
+    <string name="core_label_cubeb">كوبيب</string>
+    <string name="core_label_custom_anaglyph_matrices">مصفوفات النقش المخصصة</string>
+    <string name="core_label_darkening_effect_strength">قوة تأثير سواد</string>
+    <string name="core_label_date_format">تنسيق التاريخ</string>
+    <string name="core_label_ddmmyyyy">Ddmmyyyy</string>
+    <string name="core_label_debug_console_mode">وضع وحدة التحكم التصحيح</string>
+    <string name="core_label_debug_output">إخراج التصحيح</string>
+    <string name="core_label_debug_overlay">تراكب التصحيح</string>
+    <string name="core_label_debug_program_analyser">محلل برامج التصحيح</string>
+    <string name="core_label_decr_memory_layout">تخطيط الذاكرة DECR</string>
+    <string name="core_label_derive_mac_from_psid">اشتقاق MAC من PSID</string>
+    <string name="core_label_desired_audio_buffer_duration">المدة المطلوبة لمخزن الصوت المؤقت</string>
+    <string name="core_label_detail_level">مستوى التفاصيل</string>
+    <string name="core_label_disable">تعطيل</string>
+    <string name="core_label_disable_asynchronous_memory_manager">تعطيل إدارة الذاكرة غير المتزامنة</string>
+    <string name="core_label_disable_fifo_reordering">تعطيل إعادة ترتيب FIFO</string>
+    <string name="core_label_disable_hardware_colorspace_remapping">تعطيل إعادة تعيين ColorSpace للأجهزة</string>
+    <string name="core_label_disable_msl_fast_math">تعطيل MSL Fast Math</string>
+    <string name="core_label_disable_on_disk_shader_cache">تعطيل ذاكرة التخزين المؤقت للتظليل على القرص</string>
+    <string name="core_label_disable_sampling_skip">تعطيل تخطي أخذ العينات</string>
+    <string name="core_label_disable_spu_getllar_spin_optimization">قم بتعطيل تحسين الدوران SPU GETLLAR</string>
+    <string name="core_label_disable_vertex_cache">تعطيل ذاكرة التخزين المؤقت فيرتكس</string>
+    <string name="core_label_disable_video_output">تعطيل إخراج الفيديو</string>
+    <string name="core_label_disable_vulkan_memory_allocator">تعطيل مخصص ذاكرة Vulkan</string>
+    <string name="core_label_disable_zcull_occlusion_queries">تعطيل استعلامات انسداد ZCull</string>
+    <string name="core_label_disabled">معطل</string>
+    <string name="core_label_disconnected">غير متصل</string>
+    <string name="core_label_disk_cache_maximum_size_mb">الحد الأقصى لحجم ذاكرة التخزين المؤقت على القرص (ميجابايت)</string>
+    <string name="core_label_display">عرض</string>
+    <string name="core_label_display_aspect_override">تجاوز أبعاد العرض</string>
+    <string name="core_label_dns_address">عنوان DNS</string>
+    <string name="core_label_driver_recovery_timeout">انتهت مهلة استرداد برنامج التشغيل</string>
+    <string name="core_label_driver_wake_up_delay">تأخير استيقاظ السائق</string>
+    <string name="core_label_dump_to_file">تفريغ إلى الملف</string>
+    <string name="core_label_empty_dev_hdd0_tmp">فارغ /dev_hdd0/tmp/</string>
+    <string name="core_label_emulate_special_depth_comparison">محاكاة مقارنة العمق الخاص</string>
+    <string name="core_label_emulated_midi_devices">أجهزة ميدي مقلدة</string>
+    <string name="core_label_enable">تمكين</string>
+    <string name="core_label_enable_host_root">تمكين /host_root/</string>
+    <string name="core_label_enable_buffering">تمكين التخزين المؤقت</string>
+    <string name="core_label_enable_frame_skip">تمكين تخطي الإطار</string>
+    <string name="core_label_enable_framerate_graph">تمكين الرسم البياني لمعدل الإطارات</string>
+    <string name="core_label_enable_frametime_graph">تمكين الرسم البياني لإطار الإطار</string>
+    <string name="core_label_enable_gamemode">تمكين وضع اللعبة</string>
+    <string name="core_label_enable_performance_report">تمكين تقرير الأداء</string>
+    <string name="core_label_enable_time_stretching">تمكين تمديد الوقت</string>
+    <string name="core_label_enabled">ممكّن</string>
+    <string name="core_label_enter_button_assignment">أدخل مهمة الزر</string>
+    <string name="core_label_enter_with_circle">أدخل بالدائرة</string>
+    <string name="core_label_enter_with_cross">أدخل بالصليب</string>
+    <string name="core_label_exclusive_fullscreen_mode">وضع ملء الشاشة الحصري</string>
+    <string name="core_label_exit_rpcs3_when_process_finishes">قم بالخروج من RPCS3 عند انتهاء العملية</string>
+    <string name="core_label_eyetoy">EyeToy</string>
+    <string name="core_label_fake">وهمية</string>
+    <string name="core_label_fake_move_rotation_cone">مخروط دوران الحركة الزائفة</string>
+    <string name="core_label_fake_move_rotation_cone_vertical">مخروط الدوران الزائف (عموديًا)</string>
+    <string name="core_label_fast">سريع</string>
+    <string name="core_label_faudio">FAudio</string>
+    <string name="core_label_fidelityfx_cas_sharpening_intensity">كثافة شحذ FidelityFX CAS</string>
+    <string name="core_label_fidelityfx_super_resolution">الدقة الفائقة لـ FidelityFX</string>
+    <string name="core_label_font">الخط</string>
+    <string name="core_label_font_size_px">حجم الخط (بيكسل)</string>
+    <string name="core_label_force_cpu_blit">قوة وحدة المعالجة المركزية Blit</string>
+    <string name="core_label_force_hardware_msaa_resolve">فرض حل MSAA للأجهزة</string>
+    <string name="core_label_force_high_precision_z_buffer">فرض عازلة Z عالية الدقة</string>
+    <string name="core_label_frame_limit">حد الإطار</string>
+    <string name="core_label_framebuffer_aliasing_heuristic_bias">Framebuffer التحيز الإرشادي</string>
+    <string name="core_label_framerate_datapoints">نقاط بيانات معدل الإطارات</string>
+    <string name="core_label_framerate_graph_detail_level">مستوى تفاصيل الرسم البياني لمعدل الإطارات</string>
+    <string name="core_label_frametime_datapoints">نقاط بيانات الإطار الزمني</string>
+    <string name="core_label_frametime_graph_detail_level">مستوى تفاصيل الرسم البياني للإطار</string>
+    <string name="core_label_full">كامل</string>
+    <string name="core_label_gdb_server">خادم جي دي بي</string>
+    <string name="core_label_ghltar_emulated_controller">وحدة تحكم GHLtar تمت محاكاتها</string>
+    <string name="core_label_giga">جيجا</string>
+    <string name="core_label_gun">بندقية</string>
+    <string name="core_label_handle_rsx_memory_tiling">التعامل مع بلاط ذاكرة RSX</string>
+    <string name="core_label_hdd_model_name">اسم طراز القرص الصلب</string>
+    <string name="core_label_hdd_serial_number">الرقم التسلسلي لمحرك الأقراص الصلبة</string>
+    <string name="core_label_hdmi_0">اتش دي ام اي 0</string>
+    <string name="core_label_hdmi_1">اتش دي ام اي 1</string>
+    <string name="core_label_high">عالية</string>
+    <string name="core_label_hle_lwmutex">HLE لوموتيكس</string>
+    <string name="core_label_hook_static_functions">ربط وظائف ثابتة</string>
+    <string name="core_label_horizontal">أفقي</string>
+    <string name="core_label_horizontal_margin" formatted="false">الهامش الأفقي (%)</string>
+    <string name="core_label_inaccurate">غير دقيق</string>
+    <string name="core_label_infinite">لانهائي</string>
+    <string name="core_label_initialize_directories">تهيئة الدلائل</string>
+    <string name="core_label_input_output">الإدخال/الإخراج</string>
+    <string name="core_label_inspection_mode_savestates">وضع الفحص يحفظ</string>
+    <string name="core_label_interlaced">متشابك</string>
+    <string name="core_label_internet_enabled">تمكين الإنترنت</string>
+    <string name="core_label_interpreter_dynamic">مترجم (ديناميكي)</string>
+    <string name="core_label_interpreter_static">مترجم (ثابت)</string>
+    <string name="core_label_io_debug_overlay">تراكب تصحيح IO</string>
+    <string name="core_label_ip_address">عنوان IP</string>
+    <string name="core_label_ip_swap_list">قائمة مبادلة IP</string>
+    <string name="core_label_keep_pads_connected">أبقِ الوسادات متصلة</string>
+    <string name="core_label_keyboard">لوحة المفاتيح</string>
+    <string name="core_label_keyboard_type">نوع لوحة المفاتيح</string>
+    <string name="core_label_language">اللغة</string>
+    <string name="core_label_legacy_recompiler_single_threaded">Recompiler القديم (مؤشر ترابط واحد)</string>
+    <string name="core_label_libraries_control">مراقبة المكتبات</string>
+    <string name="core_label_license_area">منطقة الترخيص</string>
+    <string name="core_label_limit_disk_cache_size">الحد من حجم ذاكرة التخزين المؤقت على القرص</string>
+    <string name="core_label_llvm_precompilation">LLVM التجميع المسبق</string>
+    <string name="core_label_load_sdl_gamecontroller_mappings">قم بتحميل تعيينات SDL GameController</string>
+    <string name="core_label_lock_overlay_input_to_player_one">قفل إدخال التراكب للاعب الأول</string>
+    <string name="core_label_log">سجل</string>
+    <string name="core_label_log_shader_programs">برامج تظليل السجل</string>
+    <string name="core_label_low">منخفض</string>
+    <string name="core_label_manual">دليل</string>
+    <string name="core_label_master_volume">الحجم الرئيسي</string>
+    <string name="core_label_matrix_left">مصفوفة اليسار</string>
+    <string name="core_label_matrix_right">مصفوفة الحق</string>
+    <string name="core_label_max_cpu_preempt_count">الحد الأقصى لعدد الإجراءات الوقائية لوحدة المعالجة المركزية</string>
+    <string name="core_label_max_llvm_compile_threads">ماكس LLVM تجميع المواضيع</string>
+    <string name="core_label_max_spurs_threads">خيوط ماكس سبيرز</string>
+    <string name="core_label_maximum_savestate_files">الحد الأقصى لملفات SaveState</string>
+    <string name="core_label_maximum_savestate_files_space_mib">الحد الأقصى لمساحة ملفات SaveState (MiB)</string>
+    <string name="core_label_medium">متوسط</string>
+    <string name="core_label_mega">ميجا</string>
+    <string name="core_label_metrics_update_interval_ms">الفاصل الزمني لتحديث المقاييس (بالمللي ثانية)</string>
+    <string name="core_label_mfc_commands_shuffling_in_steps">أوامر MFC خلط في الخطوات</string>
+    <string name="core_label_mfc_commands_shuffling_limit">الحد الأقصى لخلط أوامر MFC</string>
+    <string name="core_label_mfc_commands_timeout">مهلة أوامر MFC</string>
+    <string name="core_label_mfc_debug">تصحيح MFC</string>
+    <string name="core_label_microphone_devices">أجهزة الميكروفون</string>
+    <string name="core_label_microphone_type">نوع الميكروفون</string>
+    <string name="core_label_minimal">الحد الأدنى</string>
+    <string name="core_label_minimum_scalable_dimension">الحد الأدنى للبعد القابل للتطوير</string>
+    <string name="core_label_miscellaneous">متنوعة</string>
+    <string name="core_label_mmddyyyy">Mmddyyyy</string>
+    <string name="core_label_mono">أحادية</string>
+    <string name="core_label_mouse">الفأر</string>
+    <string name="core_label_mouse_debug_overlay">تراكب تصحيح أخطاء الماوس</string>
+    <string name="core_label_mouse_based_gyro_enabled">تم تمكين الجيروسكوب القائم على الماوس</string>
+    <string name="core_label_move">تحرك</string>
+    <string name="core_label_msaa">MSAA</string>
+    <string name="core_label_multi_threaded">متعدد الخيوط</string>
+    <string name="core_label_multithreaded_rsx">متعدد الخيوط RSX</string>
+    <string name="core_label_music_handler">معالج الموسيقى</string>
+    <string name="core_label_nearest">الأقرب</string>
+    <string name="core_label_net">صافي</string>
+    <string name="core_label_none">لا شيء</string>
+    <string name="core_label_null">لاغية</string>
+    <string name="core_label_off">إيقاف</string>
+    <string name="core_label_opacity">العتامة (٪)</string>
+    <string name="core_label_opengl">برنامج OpenGL</string>
+    <string name="core_label_operating_system">نظام التشغيل</string>
+    <string name="core_label_ordered_atomic">أمر والذرية</string>
+    <string name="core_label_output_scaling_mode">وضع تحجيم الإخراج</string>
+    <string name="core_label_over_under">أكثر من تحت</string>
+    <string name="core_label_pad_handler_mode">وضع معالج الوسادة</string>
+    <string name="core_label_pad_handler_sleep_microseconds">سكون معالج الوسادة (ميكروثانية)</string>
+    <string name="core_label_paint_move_spheres">طلاء المجالات المتحركة</string>
+    <string name="core_label_pause_emulation_during_home_menu">إيقاف المحاكاة مؤقتًا أثناء القائمة الرئيسية</string>
+    <string name="core_label_pause_emulation_on_rpcs3_focus_loss">إيقاف المحاكاة مؤقتًا عند فقدان تركيز RPCS3</string>
+    <string name="core_label_performance_overlay">تراكب الأداء</string>
+    <string name="core_label_performance_report_threshold">عتبة تقرير الأداء</string>
+    <string name="core_label_play_music_during_boot_sequence">قم بتشغيل الموسيقى أثناء تسلسل التمهيد</string>
+    <string name="core_label_position">الموقف</string>
+    <string name="core_label_ppu_accurate_non_java_mode">PPU وضع دقيق غير جافا</string>
+    <string name="core_label_ppu_accurate_vector_nan_values">PPU قيم ناقلات NaN دقيقة</string>
+    <string name="core_label_ppu_calling_history">سجل مكالمات PPU</string>
+    <string name="core_label_ppu_debug">تصحيح PPU</string>
+    <string name="core_label_ppu_decoder">وحدة فك ترميز PPU</string>
+    <string name="core_label_ppu_profiler">ملف تعريف PPU</string>
+    <string name="core_label_ppu_reservation_priority_over_spus">أولوية حجز PPU على وحدات SPU</string>
+    <string name="core_label_ppu_set_fpcc_bits">تعيين PPU بتات FPCC</string>
+    <string name="core_label_ppu_set_saturation_bit">PPU تعيين بت التشبع</string>
+    <string name="core_label_ppu_threads">المواضيع PPU</string>
+    <string name="core_label_ppu_vector_nan_handling">معالجة PPU Vector NaN</string>
+    <string name="core_label_precise_spu_verification">التحقق الدقيق من SPU</string>
+    <string name="core_label_prefer_color">تفضل اللون</string>
+    <string name="core_label_prefer_depth">تفضل العمق</string>
+    <string name="core_label_preferred_spu_threads">خيوط SPU المفضلة</string>
+    <string name="core_label_prevent_display_sleep_while_running_games">منع عرض السكون أثناء تشغيل الألعاب</string>
+    <string name="core_label_process_argv">عملية ARGV</string>
+    <string name="core_label_ps_eye">عين ملاحظة</string>
+    <string name="core_label_ps3">PS3</string>
+    <string name="core_label_ps3_native">PS3 الأصلي</string>
+    <string name="core_label_psn_country">بلد PSN</string>
+    <string name="core_label_psn_status">حالة PSN</string>
+    <string name="core_label_qt">كيو تي</string>
+    <string name="core_label_quadraphonic">رباعي الصوت</string>
+    <string name="core_label_quadraphonic_lfe">رباعي الصوت LFE</string>
+    <string name="core_label_raw">الخام</string>
+    <string name="core_label_raw_mouse">الفأر الخام</string>
+    <string name="core_label_read_color_buffers">قراءة مخازن الألوان</string>
+    <string name="core_label_read_depth_buffer">قراءة عمق المخزن المؤقت</string>
+    <string name="core_label_real">حقيقي</string>
+    <string name="core_label_real_singstar">سينغ ستار الحقيقي</string>
+    <string name="core_label_recompiler_asmjit">معيد الترجمة (ASMJIT)</string>
+    <string name="core_label_recompiler_llvm">معيد الترجمة (LLVM)</string>
+    <string name="core_label_record_with_overlays">سجل مع التراكبات</string>
+    <string name="core_label_relaxed">استرخاء</string>
+    <string name="core_label_relaxed_zcull_sync">مزامنة ZCULL مريحة</string>
+    <string name="core_label_renderdoc_compatibility_mode">وضع التوافق مع Renderdoc</string>
+    <string name="core_label_renderer">العارض</string>
+    <string name="core_label_resolution">القرار</string>
+    <string name="core_label_resolution_scale">مقياس القرار</string>
+    <string name="core_label_rocksmith">روكسميث</string>
+    <string name="core_label_rpcn">RCN</string>
+    <string name="core_label_rpcs3_alternative_scheduler">RPCS3 جدولة بديلة</string>
+    <string name="core_label_rpcs3_scheduler">جدولة RPCS3</string>
+    <string name="core_label_rsx_fifo_fetch_accuracy">دقة جلب RSX FIFO</string>
+    <string name="core_label_rsx_profiler">ملف تعريف RSX</string>
+    <string name="core_label_rsxaudio">RSXAudio</string>
+    <string name="core_label_rsxaudio_avport">آر إس إكس أوديو أفبورت</string>
+    <string name="core_label_safe">آمنة</string>
+    <string name="core_label_save_disc_game_data">حفظ بيانات لعبة القرص</string>
+    <string name="core_label_save_llvm_logs">حفظ سجلات LLVM</string>
+    <string name="core_label_savestate">Savestate</string>
+    <string name="core_label_screen_size_in_inches">حجم الشاشة بالبوصة</string>
+    <string name="core_label_sdl">SDL</string>
+    <string name="core_label_sdl_camera_id">معرف كاميرا SDL</string>
+    <string name="core_label_second_frame_limit">حد الإطار الثاني</string>
+    <string name="core_label_set_daz_and_ftz">تعيين DAZ و FTZ</string>
+    <string name="core_label_shader_chain_librashader">سلسلة شادر (librashader)</string>
+    <string name="core_label_shader_compiler_threads">المواضيع شادر مترجم</string>
+    <string name="core_label_shader_interpreter_only">شادر مترجم فقط</string>
+    <string name="core_label_shader_loading_dialog">حوار تحميل التظليل</string>
+    <string name="core_label_shader_mode">وضع التظليل</string>
+    <string name="core_label_shader_precision">دقة التظليل</string>
+    <string name="core_label_shader_preset_path">مسار التظليل المسبق</string>
+    <string name="core_label_show_1_and_average" formatted="false">عرض 1% ومتوسط</string>
+    <string name="core_label_show_analog_limiter_toggle_hint">إظهار تلميح تبديل المحدد التناظري</string>
+    <string name="core_label_show_autosave_autoload_hint">إظهار تلميح الحفظ التلقائي/التحميل التلقائي</string>
+    <string name="core_label_show_capture_hints">إظهار تلميحات الالتقاط</string>
+    <string name="core_label_show_fatal_error_hints">إظهار تلميحات الخطأ الفادح</string>
+    <string name="core_label_show_min_and_max">عرض الحد الأدنى والحد الأقصى</string>
+    <string name="core_label_show_mouse_and_keyboard_toggle_hint">إظهار تلميح تبديل الماوس ولوحة المفاتيح</string>
+    <string name="core_label_show_move_cursor">إظهار تحرك المؤشر</string>
+    <string name="core_label_show_ppu_compilation_hint">إظهار تلميح تجميع PPU</string>
+    <string name="core_label_show_pressure_intensity_toggle_hint">إظهار تلميح تبديل شدة الضغط</string>
+    <string name="core_label_show_rpcn_popups">إظهار النوافذ المنبثقة لـRPCN</string>
+    <string name="core_label_show_shader_compilation_hint">إظهار تلميح تجميع التظليل</string>
+    <string name="core_label_show_trophy_popups">إظهار النوافذ المنبثقة للكأس</string>
+    <string name="core_label_side_by_side">جنبًا إلى جنب</string>
+    <string name="core_label_silence_all_logs">إسكات كافة السجلات</string>
+    <string name="core_label_simulated">مقلد</string>
+    <string name="core_label_single_threaded">خيط واحد</string>
+    <string name="core_label_singstar">سينغ ستار</string>
+    <string name="core_label_sleep_timers_accuracy">دقة مؤقتات النوم</string>
+    <string name="core_label_spdif_0">سبديف 0</string>
+    <string name="core_label_spdif_1">سبديف 1</string>
+    <string name="core_label_spu_block_size">حجم كتلة SPU</string>
+    <string name="core_label_spu_cache">ذاكرة التخزين المؤقت لوحدة الخدمة SPU</string>
+    <string name="core_label_spu_debug">تصحيح SPU</string>
+    <string name="core_label_spu_decoder">وحدة فك ترميز SPU</string>
+    <string name="core_label_spu_delay_penalty">عقوبة تأخير SPU</string>
+    <string name="core_label_spu_getllar_busy_waiting_percentage">SPU GETLLAR نسبة انتظار الانشغال</string>
+    <string name="core_label_spu_llvm_lower_bound">SPU LLVM الحد الأدنى</string>
+    <string name="core_label_spu_llvm_upper_bound">SPU LLVM الحد العلوي</string>
+    <string name="core_label_spu_loop_detection">كشف حلقة SPU</string>
+    <string name="core_label_spu_profiler">ملف التعريف SPU</string>
+    <string name="core_label_spu_reservation_busy_waiting_enabled">تم تمكين حجز وحدة SPU في انتظار الانشغال</string>
+    <string name="core_label_spu_reservation_busy_waiting_percentage_1">حجز SPU نسبة الانشغال في الانتظار 1</string>
+    <string name="core_label_spu_verification">التحقق من SPU</string>
+    <string name="core_label_spu_wake_up_delay">تأخير إيقاظ SPU</string>
+    <string name="core_label_spu_wake_up_delay_thread_mask">قناع خيط تأخير الاستيقاظ من SPU</string>
+    <string name="core_label_spu_xfloat_accuracy">دقة SPU XFloat</string>
+    <string name="core_label_standard">قياسي</string>
+    <string name="core_label_start_games_in_fullscreen_mode">ابدأ الألعاب في وضع ملء الشاشة</string>
+    <string name="core_label_start_paused">ابدأ متوقفًا مؤقتًا</string>
+    <string name="core_label_stereo">ستيريو</string>
+    <string name="core_label_stereo_lfe">ستيريو LFE</string>
+    <string name="core_label_stretch_to_display_area">تمتد إلى منطقة العرض</string>
+    <string name="core_label_strict_rendering_mode">وضع العرض الصارم</string>
+    <string name="core_label_strict_texture_flushing">Strict Texture Flushing</string>
+    <string name="core_label_stub_ppu_traps">كعب PPU الفخاخ</string>
+    <string name="core_label_surround_5_1">المحيطي 5.1</string>
+    <string name="core_label_surround_7_1">المحيطي 7.1</string>
+    <string name="core_label_suspend_emulation_savestate_mode">تعليق وضع Savestate للمحاكاة</string>
+    <string name="core_label_system">النظام</string>
+    <string name="core_label_system_name">اسم النظام</string>
+    <string name="core_label_texture_lod_bias_addend">إضافة تحيز LOD للملمس</string>
+    <string name="core_label_thread_scheduler_mode">وضع جدولة الموضوع</string>
+    <string name="core_label_time_format">Time Format</string>
+    <string name="core_label_time_stretching_threshold">عتبة تمديد الوقت</string>
+    <string name="core_label_title_background_hex">خلفية العنوان (ست عشرية)</string>
+    <string name="core_label_title_color_hex">لون العنوان (ست عشري)</string>
+    <string name="core_label_top_left">أعلى اليسار</string>
+    <string name="core_label_top_right">أعلى اليمين</string>
+    <string name="core_label_turntable_emulated_controller">وحدة تحكم القرص الدوار التي تمت محاكاتها</string>
+    <string name="core_label_ultra">الترا</string>
+    <string name="core_label_unknown">غير معروف</string>
+    <string name="core_label_upnp_enabled">تم تمكين UPNP</string>
+    <string name="core_label_use_accurate_dfma">استخدم DFMA الدقيق</string>
+    <string name="core_label_use_full_rgb_output_range">استخدم نطاق إخراج RGB الكامل</string>
+    <string name="core_label_use_gpu_texture_scaling">استخدم تحجيم نسيج GPU</string>
+    <string name="core_label_use_llvm_cpu">استخدم وحدة المعالجة المركزية LLVM</string>
+    <string name="core_label_use_native_user_interface">استخدم واجهة المستخدم الأصلية</string>
+    <string name="core_label_use_re_bar_for_gpu_uploads">استخدم Re-BAR لتحميلات GPU</string>
+    <string name="core_label_use_recursive_scan">استخدام المسح العودي</string>
+    <string name="core_label_use_window_space">استخدم مساحة النافذة</string>
+    <string name="core_label_usleep_only">النوم فقط</string>
+    <string name="core_label_usleep_time_addend">إضافة وقت النوم</string>
+    <string name="core_label_uvc_1_1">يو في سي 1.1</string>
+    <string name="core_label_vblank_ntsc_fixup">إصلاح Vblank NTSC</string>
+    <string name="core_label_vblank_rate">معدل Vblank</string>
+    <string name="core_label_vertical">عمودي</string>
+    <string name="core_label_vertical_margin" formatted="false">الهامش العمودي (%)</string>
+    <string name="core_label_vfs">في اف اس</string>
+    <string name="core_label_video">فيديو</string>
+    <string name="core_label_vram_allocation_limit_mb">حد تخصيص VRAM (ميجابايت)</string>
+    <string name="core_label_vsync_mode">وضع VSync</string>
+    <string name="core_label_vulkan">فولكان</string>
+    <string name="core_label_window_title_format">تنسيق عنوان النافذة</string>
+    <string name="core_label_write_color_buffers">كتابة مخازن الألوان</string>
+    <string name="core_label_write_depth_buffer">Write Depth Buffer</string>
+    <string name="core_label_xaudio2">XAudio2</string>
+    <string name="core_label_yyyymmdd">Yyymmdd</string>
+    <string name="core_help_core_accurate_cache_line_stores" formatted="false">يعالج بدقة تعليمات PPU DCBZ.
+بالإضافة إلى ذلك، عند دمجه مع Accurate SPU DMA، ستتم معالجة عمليات الوصول إلى خط ذاكرة التخزين المؤقت SPU PUT تلقائيًا.</string>
+    <string name="core_help_core_use_accurate_dfma" formatted="false">استخدم تعليمات FMA دقيقة ومزدوجة الدقة في الواجهات الخلفية لـ PPU وSPU.
+على الرغم من أن تعطيله قد يؤدي إلى تعزيز الأداء بشكل جيد إذا كانت وحدة المعالجة المركزية الخاصة بك لا تدعم FMA، إلا أنه قد يؤدي أيضًا إلى ظهور أخطاء خفية لا تحدث بخلاف ذلك.
+لا يجب عليك تعطيله إذا كانت وحدة المعالجة المركزية لديك تدعم FMA.</string>
+    <string name="core_help_core_accurate_ppu_128_byte_reservation_op_max_length" formatted="false">عند التمكين، ستعمل العمليات الذرية لـ PPU على بيانات خط ذاكرة التخزين المؤقت بالكامل، بدلاً من كتلة واحدة من الذاكرة بحجم 64 بت عند تعطيلها.
+تتحكم القيم الرقمية في تمكين الإصدار الدقيق أم لا بناءً على طول العملية الذرية.</string>
+    <string name="core_help_core_ppu_set_fpcc_bits" formatted="false">قم بتعيين بتات FPCC بدقة في الواجهات الخلفية لـ PPU.
+إذا لم تكن متأكدًا، فلا تقم بتعديل هذا الإعداد.</string>
+    <string name="core_help_core_ppu_accurate_non_java_mode" formatted="false">احترم قيم بتات وضع Non-Java لعمليات المتجهات في الواجهات الخلفية لـ PPU.
+إذا لم تكن متأكدًا، فلا تقم بتعديل هذا الإعداد.</string>
+    <string name="core_help_core_ppu_set_saturation_bit" formatted="false">قم بتعيين قيم بت التشبع بدقة في الواجهات الخلفية لـ PPU.
+إذا لم تكن متأكدًا، فلا تقم بتعديل هذا الإعداد.</string>
+    <string name="core_help_core_ppu_accurate_vector_nan_values" formatted="false">قم بتعيين نتائج NaN بدقة في تعليمات المتجهات في الواجهات الخلفية لـ PPU.
+إذا لم تكن متأكدًا، فلا تقم بتعديل هذا الإعداد.</string>
+    <string name="core_help_core_accurate_rsx_reservation_access" formatted="false">يفرض إيقاف RSX مؤقتًا على عمليات SPU MFC_GETLLAR وSPU MFC_PUTLLUC.</string>
+    <string name="core_help_core_accurate_spu_dma" formatted="false">يعالج بدقة عمليات SPU DMA.</string>
+    <string name="core_help_video_allow_host_gpu_labels" formatted="false">يسمح لوحدة معالجة الرسومات المضيفة بالمزامنة مع CELL مباشرة. يؤدي هذا إلى فرض عقوبة على الأداء، ولكنه يكشف الحالة الحقيقية لكائنات وحدة معالجة الرسومات لوحدة المعالجة المركزية الضيف. يمكن أن يساعد في القضاء على الضوضاء البصرية والخلل على حساب الأداء. استخدم بحذر.</string>
+    <string name="core_help_video_anisotropic_filter_override" formatted="false">تعمل القيم الأعلى على زيادة حدة الأنسجة على الأسطح المنحدرة على حساب موارد وحدة معالجة الرسومات.
+يمكن لوحدات معالجة الرسومات الحديثة التعامل مع هذا الإعداد بشكل جيد، حتى عند 16x.
+احتفظ بهذا على الوضع التلقائي إذا كنت تريد استخدام الإعداد الأصلي الذي يستخدمه جهاز PS3 حقيقي.</string>
+    <string name="core_help_video_aspect_ratio" formatted="false">اترك هذا على 16:9 إلا إذا كان لديك شاشة 4:3.</string>
+    <string name="core_help_audio_rsxaudio_avport" formatted="false">يتحكم في أي منفذ يتم استخدامه لأخذ عينات من البيانات الصوتية.</string>
+    <string name="core_help_audio_desired_audio_buffer_duration" formatted="false">مدة المخزن المؤقت الهدف بالمللي ثانية.
+تعمل القيم الأعلى على تسهيل مهمة خوارزمية التخزين المؤقت، ولكنها قد تؤدي إلى زمن وصول ملحوظ للصوت.</string>
+    <string name="core_help_audio_audio_channel_layout" formatted="false">يحدد تنسيق الصوت لـ RPCS3.
+استخدم &quot;تلقائي&quot; للسماح لـ RPCS3 بتحديد التنسيق الأفضل استنادًا إلى جهاز الصوت وتنسيق الصوت الذي تمت محاكاته.</string>
+    <string name="core_help_audio_audio_device" formatted="false">يتحكم في الجهاز الذي يتم استخدامه بواسطة الواجهة الخلفية الصوتية.</string>
+    <string name="core_help_audio_audio_format" formatted="false">يحدد تنسيق الصوت للمضاهاة.
+قم بتكوين هذا الإعداد إذا كنت تريد التبديل بين الصوت الاستريو والصوت المحيطي.
+يتطلب تغيير هذه القيم إعادة تشغيل اللعبة.
+سيستخدم الإعداد اليدوي التنسيقات التي حددتها بينما سيسمح الإعداد التلقائي للعبة بالاختيار من بين جميع التنسيقات المتاحة.</string>
+    <string name="core_help_audio_audio_formats" formatted="false">يحدد تنسيق الصوت للمضاهاة.
+قم بتكوين هذا الإعداد إذا كنت تريد التبديل بين الصوت الاستريو والصوت المحيطي.
+يتطلب تغيير هذه القيم إعادة تشغيل اللعبة.
+سيستخدم الإعداد اليدوي التنسيقات التي حددتها بينما سيسمح الإعداد التلقائي للعبة بالاختيار من بين جميع التنسيقات المتاحة.</string>
+    <string name="core_help_audio_audio_provider" formatted="false">يتحكم في واجهة برمجة التطبيقات الصوتية PS3 المستخدمة.
+تستخدم الألعاب CellAudio، بينما يتطلب VSH RSXAudio.</string>
+    <string name="core_help_audio_renderer" formatted="false">يستخدم Cubeb نهجًا مشتركًا بين الأنظمة الأساسية ويدعم التخزين المؤقت للصوت، لذا فهو الخيار الموصى به.
+إذا لم يكن متاحًا، فيمكن استخدام FAudio بدلاً من ذلك.</string>
+    <string name="core_help_input_output_background_input_enabled" formatted="false">يسمح بإدخال لوحة المفاتيح ولوحة المفاتيح عندما تكون نافذة اللعبة غير مركزة.</string>
+    <string name="core_help_net_bind_address" formatted="false">عنوان IP للواجهة المراد الارتباط به.
+متوفر فقط في التكوينات المخصصة.</string>
+    <string name="core_help_input_output_buzz_emulated_controller" formatted="false">ضجيج! يدعم.
+حدد وحدة تحكم واحدة أو اثنتين إذا كانت اللعبة تتطلب Buzz! وحدات تحكم وليس لديك وحدات تحكم حقيقية.
+حدد Null إذا كانت اللعبة تدعم DualShock أو إذا كان لديك Buzz حقيقي! وحدات تحكم.</string>
+    <string name="core_help_input_output_camera" formatted="false">حدد Qt Camera لاستخدام جهاز الكاميرا الافتراضي لنظام التشغيل الخاص بك.</string>
+    <string name="core_help_input_output_camera_flip" formatted="false">يقلب صورة الكاميرا إما أفقيًا أو رأسيًا أو على كلا المحورين.</string>
+    <string name="core_help_input_output_camera_id" formatted="false">حدد الكاميرا التي تريد استخدامها أثناء اللعب.</string>
+    <string name="core_help_input_output_camera_type" formatted="false">اعتمادًا على اللعبة، قد تحتاج إلى تحديد نوع كاميرا معين.</string>
+    <string name="core_help_core_clocks_scale" formatted="false">يغير مقياس وقت النظام الذي تمت محاكاته.
+يؤثر على البرامج التي تستخدم وقت النظام لحساب أشياء مثل الخطوات الزمنية الديناميكية.</string>
+    <string name="core_help_savestate_compatible_savestate_mode" formatted="false">عند تشغيل هذا الوضع، تعطي محاكاة SPU الأولوية لتوافق حالة الحفظ، ومع ذلك، فقد يؤدي ذلك إلى تقليل الأداء قليلاً.
+عند إيقاف تشغيل هذا الوضع، قد لا تسمح بعض الألعاب بإجراء حالة حفظ وتظهر خطأ إيقاف مؤقت لوحدة الخدمة SPU في السجل.</string>
+    <string name="core_help_system_console_time_offset_s" formatted="false">يضبط الوقت الذي سيتم استخدامه داخل وحدة التحكم. سيتم تطبيق هذا كإزاحة تتعقب وقت ساعة الحائط.
+يمكن إعادة ضبطه على وقت ساعة الحائط الحالي بالنقر فوق &quot;ضبط على الآن&quot;.</string>
+    <string name="core_help_audio_convert_to_16_bit" formatted="false">يستخدم عينات صوتية 16 بت بدلاً من النقطة العائمة الافتراضية 32 بت.
+استخدمه مع برامج تشغيل الصوت التي تجرها الدواب إذا لم يكن لديك صوت أو صوت مكسور تمامًا.</string>
+    <string name="core_help_video_custom_anaglyph_matrices_matrix_left" formatted="false">يضبط وضع عرض الاستريو ثلاثي الأبعاد (متوفر فقط في التكوينات المخصصة بدقة افتراضية تبلغ 720 بكسل).
+يستخدم Anaglyph ألوانًا مختلفة لكل عين، والتي يمكن بعد ذلك تصفيتها باستخدام نظارات معينة.
+يتم دعم ميزة Side-by-Side بشكل أكثر شيوعًا بواسطة تطبيقات عارض الواقع الافتراضي.
+يعتبر Over-Under أقرب إلى إخراج الاستريو الأصلي، ولكنه أقل دعمًا بشكل شائع.</string>
+    <string name="core_help_video_custom_anaglyph_matrices_matrix_right" formatted="false">يضبط وضع عرض الاستريو ثلاثي الأبعاد (متوفر فقط في التكوينات المخصصة بدقة افتراضية تبلغ 720 بكسل).
+يستخدم Anaglyph ألوانًا مختلفة لكل عين، والتي يمكن بعد ذلك تصفيتها باستخدام نظارات معينة.
+يتم دعم ميزة Side-by-Side بشكل أكثر شيوعًا بواسطة تطبيقات عارض الواقع الافتراضي.
+يعتبر Over-Under أقرب إلى إخراج الاستريو الأصلي، ولكنه أقل دعمًا بشكل شائع.</string>
+    <string name="core_help_system_date_format" formatted="false">حدد تنسيق التاريخ لجهاز PS3.</string>
+    <string name="core_help_core_debug_console_mode" formatted="false">يزيد من حجم ذاكرة النظام القابلة للاستخدام لتتوافق مع وحدة تحكم DECR والمزيد.
+يتسبب في عمل بعض البرامج بشكل مختلف عن أجهزة البيع بالتجزئة.</string>
+    <string name="core_help_video_debug_output" formatted="false">لتمكين وظيفة تصحيح الأخطاء المدمجة في واجهة برمجة التطبيقات المحددة.
+سوف يتسبب في تدهور شديد في الأداء خاصة مع Vulkan.
+مفيدة فقط للمطورين.
+إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
+    <string name="core_help_video_debug_overlay" formatted="false">يوفر تراكبًا رسوميًا لمعلومات تصحيح الأخطاء المختلفة.
+إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
+    <string name="core_help_net_derive_mac_from_psid" formatted="false">اشتق عنوان MAC من PSID.</string>
+    <string name="core_help_video_disable_asynchronous_memory_manager" formatted="false">فرض مكالمات إدارة ذاكرة المضيف لتكون مضمنة بدلاً من معالجتها بشكل غير متزامن.
+يمكن أن يتسبب هذا في تدهور الأداء الشديد والتباطؤ في بعض الألعاب.
+هذا الخيار مطلوب فقط من قبل المطورين لتصحيح المشكلات المتعلقة بحماية ذاكرة التخزين المؤقت للنسيج.</string>
+    <string name="core_help_video_disable_fifo_reordering" formatted="false">تعطيل تحسينات RSX FIFO بالكامل. تتم معالجة عمليات السحب بمجرد استلامها بواسطة أداة سحب DMA.</string>
+    <string name="core_help_video_disable_hardware_colorspace_remapping" formatted="false">تعطيل استخدام تنسيقات إعادة تعيين مساحة الألوان الأصلية للأجهزة مثل لاحقات _sRGB و_SNORM.
+يؤدي تعطيل هذا الخيار إلى زيادة الدقة مقارنةً بـ PS3 ولكنه قد يؤدي أيضًا إلى حدوث بعض الضوضاء بسبب كيفية عمل محاكاة البرنامج.</string>
+    <string name="core_help_video_disable_msl_fast_math" formatted="false">تعطيل Fast Math لتظليل MSL، الأمر الذي قد ينتهك معيار IEEE 754.
+قد يؤدي تعطيله إلى إصلاح بعض العيوب، خاصة على وحدات معالجة الرسومات الخاصة بشركة Apple، على حساب الأداء.</string>
+    <string name="core_help_video_disable_zcull_occlusion_queries" formatted="false">تعطيل تشغيل استعلامات الإطباق. تعزيز الأداء طفيف إلى متوسط.
+قد يؤدي إلى حدوث مشكلات تتعلق بالإطباق المكسور، على سبيل المثال فقدان الشكل الهندسي والنوافذ المنبثقة الشديدة.</string>
+    <string name="core_help_video_disable_on_disk_shader_cache" formatted="false">تعطيل تحميل وحفظ التظليل من وإلى ذاكرة التخزين المؤقت للتظليل في دليل البيانات.</string>
+    <string name="core_help_core_disable_spu_getllar_spin_optimization" formatted="false">قم بتعطيل تحسين الدوران SPU GETLLAR.
+يمكن أن يتسبب هذا في تدهور الأداء الشديد والتباطؤ في العديد من الألعاب.
+هذا الخيار مطلوب فقط لعدد محدد من الألعاب.</string>
+    <string name="core_help_video_disable_vertex_cache" formatted="false">تعطيل ذاكرة التخزين المؤقت الذروة.
+قد يحل مشكلة إخراج الرسومات المفقودة أو الوامضة.
+قد يؤدي إلى تدهور الأداء.</string>
+    <string name="core_help_video_disable_video_output" formatted="false">تعطيل جميع مخرجات الفيديو والعرض الرسومي لـ PS3.
+حالة الاستخدام الوحيدة الخاصة به هي تقييم الأداء على CELL من أجل التطوير.</string>
+    <string name="core_help_video_disable_vulkan_memory_allocator" formatted="false">تعطيل مخصص ذاكرة Vulkan المخصص والعودة إلى المكالمات المباشرة إلى VkAllocateMemory/VkFreeMemory.</string>
+    <string name="core_help_net_dns_address" formatted="false">يستخدم DNS لحل أسماء المضيفين بواسطة التطبيقات.</string>
+    <string name="core_help_video_driver_wake_up_delay" formatted="false">يتحكم في مقدار الوقت الذي يستغرقه RSX لبدء المعالجة بعد تنشيط معالج الخلية.
+تعمل زيادة تأخير التنبيه على تحسين الاستقرار، ولكن القيم العالية جدًا يمكن أن تقلل من أداء RSX/GPU.
+يوصى بضبط هذا بزيادات قدرها 20 إلى 40 درجة حتى يتم الوصول إلى أفضل قيمة لتحقيق الاستقرار الأمثل.</string>
+    <string name="core_help_audio_dump_to_file" formatted="false">يحفظ كل الصوت كملف موجة خام. إذا لم تكن متأكدًا، فاترك هذا دون تحديد.</string>
+    <string name="core_help_vfs_empty_dev_hdd0_tmp" formatted="false">مطلوب لبعض تعديلات البيرة أو الألعاب.
+إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار</string>
+    <string name="core_help_video_emulate_special_depth_comparison" formatted="false">محاكاة عمليات مقارنة العمق حيث يختلف سلوك أجهزة سطح المكتب عن PS3، وعادةً ما تكون أوضاع المقارنة متساوية.
+يعمل على إصلاح وميض الظل الزائد وقتال Z في بعض الألعاب.
+يكون هذا أكثر وضوحًا في بعض الألعاب حيث يختلف تنسيق عمق التمرير المسبق Z عن تنسيق عمق التنقيط، وهو سيناريو لن يعمل بشكل صحيح أبدًا على أجهزة سطح المكتب المتوافقة.</string>
+    <string name="core_help_audio_enable_buffering" formatted="false">لتمكين التخزين المؤقت للصوت، مما يقلل من الطقطقة/التلعثم ولكنه يزيد من زمن انتقال الصوت.</string>
+    <string name="core_help_net_clans_enabled" formatted="false">تمكين الاتصال بخادم العشائر.
+يؤثر فقط على الألعاب التي تدعم ميزة العشائر.</string>
+    <string name="core_help_core_spu_reservation_busy_waiting_enabled" formatted="false">تمكين دوران SPU RdEventStat.
+يؤدي هذا إلى زيادة استخدام وحدة المعالجة المركزية، وهذا الإعداد مفيد لوحدات المعالجة المركزية عالية الخيوط (12+) مع عدد محدد من الألعاب.</string>
+    <string name="core_help_miscellaneous_enable_gamemode" formatted="false">قم بتنشيط وضع اللعب الخاص بـ Feral Interactive.
+هذه عبارة عن سلسلة من تحسينات وحدة المعالجة المركزية ووحدة معالجة الرسومات ويمكن أن تفيد أداء اللعبة على بعض الأنظمة.</string>
+    <string name="core_help_vfs_enable_host_root" formatted="false">مطلوب لبعض البيرة المنزلية.
+إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
+    <string name="core_help_audio_enable_time_stretching" formatted="false">تمكين تمديد الوقت - يتطلب تمكين التخزين المؤقت.
+يقلل من الفرقعة/التلعثم بشكل أكبر، ولكنه قد يتسبب في انخفاض ملحوظ جدًا في جودة الصوت على وحدات المعالجة المركزية الأبطأ.</string>
+    <string name="core_help_net_upnp_enabled" formatted="false">تمكين بنب.
+سيؤدي هذا تلقائيًا إلى إعادة توجيه المنافذ المرتبطة بـ 0.0.0.0 إذا كان جهاز التوجيه الخاص بك مزودًا بتمكين UPNP.</string>
+    <string name="core_help_system_enter_button_assignment" formatted="false">الزر المستخدم للدخول/القبول/التأكيد في مربعات حوار النظام.
+قم بتغيير هذا لاستخدام زر الدائرة بدلاً من ذلك، وهو التكوين الافتراضي على الأنظمة اليابانية وفي العديد من الألعاب اليابانية.
+في هذه الحالات، قد يؤدي تعيين الزر المتقاطع في كثير من الأحيان إلى حدوث ارتباك.</string>
+    <string name="core_help_video_vulkan_exclusive_fullscreen_mode" formatted="false">يتحكم في وضع ملء الشاشة الذي يطلبه RPCS3 من برامج التشغيل عند استخدام عارض Vulkan.
+سيسمح الوضع التلقائي للسائق باختيار الوضع المناسب، بينما ستلمح الخيارات الأخرى للسائقين بشأن ما إذا كان يجب عليهم استخدام ملء الشاشة حصريًا أو بلا حدود.
+يمكن أن يساعدك استخدام خيار تفضيل ملء الشاشة بلا حدود إذا كانت لديك مشكلات في بث طريقة لعب RPCS3 أو إذا كان نظامك يقوم بتمكين وضع HDR بشكل غير صحيح عند استخدام ملء الشاشة.</string>
+    <string name="core_help_miscellaneous_exit_rpcs3_when_process_finishes" formatted="false">إغلاق RPCS3 تلقائيًا عند إغلاق اللعبة، أو عندما تغلق اللعبة نفسها.</string>
+    <string name="core_help_core_rsx_fifo_fetch_accuracy" formatted="false">&quot;سريع&quot; هو الإعداد الأقل دقة، ولا يحاكي RSX المخزن المؤقت الذري FIFO.
+يفيد &quot;Atomic&quot; الاستقرار بشكل كبير في العديد من الألعاب مع انخفاض الأداء.
+&quot;Atomic &amp; Orderer&quot; هي الأكثر دقة ولكنها الأبطأ وبدون فائدة كبيرة في الاستقرار في الألعاب.</string>
+    <string name="core_help_video_force_cpu_blit" formatted="false">يفرض مضاهاة جميع عمليات معالجة الصور والصور على وحدة المعالجة المركزية.
+يتطلب أيضًا تمكين خيار &quot;كتابة مخازن الألوان المؤقتة&quot; في معظم الحالات لتجنب فقدان الرسومات.
+يؤدي إلى انخفاض الأداء بشكل ملحوظ ولكنه أكثر دقة في بعض الحالات.
+يتجاوز هذا الإعداد خيار &quot;تحجيم نسيج وحدة معالجة الرسومات&quot;.</string>
+    <string name="core_help_video_force_high_precision_z_buffer" formatted="false">مفيد فقط عند تصحيح الاختلافات في أجهزة GPU.
+ليس من الضروري للمستخدمين العاديين.
+إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
+    <string name="core_help_video_force_hardware_msaa_resolve" formatted="false">يفرض على MSAA استخدام إمكانات حل وحدة معالجة الرسومات المضيفة لجميع عمليات أخذ العينات.
+يؤدي هذا الخيار إلى فرض عقوبات على الأداء بالإضافة إلى مخاطر التشويش المرئي، ولكن يمكن أن ينتج عنه مرئيات أكثر وضوحًا عند تمكين MSAA.</string>
+    <string name="core_help_video_framebuffer_aliasing_heuristic_bias" formatted="false">يتحكم في كيفية قيام RPCS3 بحل أهداف العرض حيث يكون اللون والعمق المستعاران لنفس الذاكرة. يوصى باستخدام الوضع التلقائي لمعظم الألعاب.
+· تلقائي هو السلوك الموجود، المتحيز نحو العمق.
+· يحتفظ الخيار Prefer Color بربط اللون عند تمكين الكتابة بالألوان وعدم تمكين الكتابة العميقة. يعمل على إصلاح الشكل الهندسي المفقود في بعض العارضين المؤجلين (مثل Starhawk) على حساب تخطي اختبار العمق لذلك السحب.
+· العمق المفضل هو نفس الوضع التلقائي في الوقت الحالي.</string>
+    <string name="core_help_video_frame_limit" formatted="false">إيقاف التشغيل هو الخيار الأسرع.
+سيؤدي استخدام محدد الإطار إلى إضافة حمل إضافي وإبطاء اللعبة. ومع ذلك، قد تتعطل بعض الألعاب إذا كان معدل الإطارات مرتفعًا جدًا.
+يجب استخدام نظام PS3 الأصلي فقط إذا كان الوضع التلقائي لا يعمل بشكل صحيح لأنه يمكن أن يسبب مشكلات في سرعة الإطار.
+يضيف Infinite حلقة ردود فعل إيجابية تضيف إشارة vblank أخرى لكل إطار مما يسمح لمزيد من الألعاب بأن تكون إطارات في الثانية بلا حدود.
+يجب على المستخدمين ذوي الخبرة الذين يحتاجون إلى حدود إطارات أخرى استخدام الإعداد &quot;Second Frame Limit&quot; في ملف التكوين.</string>
+    <string name="core_help_video_fidelityfx_cas_sharpening_intensity" formatted="false">تحكم في قوة الوضوح المطبقة بواسطة FidelityFX Supersolution. ستعطي القيم الأعلى مخرجات أكثر وضوحًا ولكنها قد تؤدي إلى ظهور خلل.</string>
+    <string name="core_help_input_output_ghltar_emulated_controller" formatted="false">دعم وحدة تحكم الجيتار Guitar Hero Live (GHL).
+حدد وحدة تحكم واحدة أو اثنتين إذا كانت اللعبة تتطلب وحدات تحكم GHL Guitar ولم يكن لديك وحدات تحكم جيتار حقيقية.
+حدد Null إذا كانت اللعبة تدعم DualShock أو إذا كان لديك وحدات تحكم جيتار حقيقية.
+يمكن استخدام وحدة تحكم الجيتار الحقيقية في نفس الوقت الذي تستخدم فيه وحدة تحكم الجيتار المحاكية.</string>
+    <string name="core_help_video_use_gpu_texture_scaling" formatted="false">فرض جميع عمليات نقل النسيج وقياسه وتحويله على وحدة معالجة الرسومات.
+قد يسبب تلف الملمس في بعض الحالات.</string>
+    <string name="core_help_video_handle_rsx_memory_tiling" formatted="false">اتبع تكوين تبليط ذاكرة RSX عند كتابة بيانات وحدة معالجة الرسومات إلى ذاكرة الجهاز الافتراضي.
+يمكن أن يؤدي ذلك إلى إصلاح تلف الرسومات الذي تمت ملاحظته عند تمكين خيارات قراءة اللون أو عمق القراءة.</string>
+    <string name="core_help_core_hook_static_functions" formatted="false">يسمح بربط بعض الوظائف مثل &quot;memcpy&quot; واستبدالها بتطبيقات عالية المستوى. قد لا يفعل شيئًا أو يكسر الأشياء. تجريبي.</string>
+    <string name="core_help_net_internet_enabled" formatted="false">إذا تم تعيينه على &quot;متصل&quot;، فسيسمح RPCS3 للبرامج باستخدام اتصالك بالإنترنت.</string>
+    <string name="core_help_input_output_io_debug_overlay" formatted="false">يوفر تراكبًا رسوميًا مع قيم إدخال اللوحة للاعب 1.
+يظهر هذا فقط إذا تم تعطيل تراكب تصحيح الأخطاء.
+إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
+    <string name="core_help_net_ip_swap_list" formatted="false">قائمة مبادلة DNS.
+متوفر فقط في التكوينات المخصصة.</string>
+    <string name="core_help_input_output_keyboard" formatted="false">تدعم بعض الألعاب إدخال لوحة المفاتيح الأصلية.
+سوف تعمل الأساسية في هذه الحالات.</string>
+    <string name="core_help_system_keyboard_type" formatted="false">يضبط تخطيط لوحة المفاتيح المستخدمة.
+حاليًا، يتم دعم التخطيطات الأمريكية واليابانية والألمانية فقط بشكل كامل في الوقت الحالي.</string>
+    <string name="core_help_system_language" formatted="false">قد يفشل تشغيل بعض الألعاب إذا لم تكن لغة النظام متوفرة في اللعبة نفسها.
+ستقوم الألعاب الأخرى بتبديل اللغة تلقائيًا إلى ما تم تحديده هنا.
+يوصى بترك هذا على لغة تدعمها اللعبة.</string>
+    <string name="core_help_system_license_area" formatted="false">تحدد منطقة وحدة التحكم منطقة ترخيص PS3.
+اعتمادًا على منطقة الترخيص، قد لا تعمل بعض الألعاب.</string>
+    <string name="core_help_vfs_limit_disk_cache_size" formatted="false">يقوم تلقائيًا بإزالة الملفات القديمة من ذاكرة التخزين المؤقت على القرص عند التمهيد إذا زاد حجمها عن القيمة المحددة.
+يمكن للألعاب استخدام مجلد ذاكرة التخزين المؤقت لتخزين البيانات مؤقتًا خارج ذاكرة النظام. لا يستخدم للتخزين على المدى الطويل.
+
+هذا الإعداد متاح فقط في التكوين العام.</string>
+    <string name="core_help_core_llvm_precompilation" formatted="false">يبحث في دليل اللعبة ويجمع مسبقًا وحدات PPU وSPU الإضافية أثناء التمهيد.
+في حالة تعطيلها، سيتم تجميع هذه الوحدات فقط عند الحاجة إليها. اعتمادًا على اللعبة، قد يؤدي هذا إلى مقاطعة اللعب بشكل غير متوقع وربما بشكل متكرر.
+قم بتعطيل هذا فقط إذا كنت تريد الدخول إلى اللعبة بسرعة أكبر.</string>
+    <string name="core_help_input_output_lock_overlay_input_to_player_one" formatted="false">تأمين إدخال التراكب الأصلي للاعب الأول.</string>
+    <string name="core_help_video_log_shader_programs" formatted="false">تفريغ تظليل اللعبة إلى الملف. مفيدة فقط للمطورين.
+إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
+    <string name="core_help_audio_master_volume" formatted="false">يتحكم في الحجم الكلي للمحاكاة.
+قد تؤدي القيم الأعلى من 100% إلى تقليل جودة الصوت.</string>
+    <string name="core_help_vfs_disk_cache_maximum_size_mb" formatted="false">يقوم تلقائيًا بإزالة الملفات القديمة من ذاكرة التخزين المؤقت على القرص عند التمهيد إذا زاد حجمها عن القيمة المحددة.
+يمكن للألعاب استخدام مجلد ذاكرة التخزين المؤقت لتخزين البيانات مؤقتًا خارج ذاكرة النظام. لا يستخدم للتخزين على المدى الطويل.
+
+هذا الإعداد متاح فقط في التكوين العام.</string>
+    <string name="core_help_core_max_llvm_compile_threads" formatted="false">يحد من الحد الأقصى لعدد مؤشرات الترابط المستخدمة في التجميع الأولي لوحدة PPU وSPU.
+قم بتقليل هذا من أجل زيادة أداء التطبيقات المفتوحة الأخرى.
+يستخدم الافتراضي جميع المواضيع المتاحة.</string>
+    <string name="core_help_core_max_cpu_preempt_count" formatted="false">يقلل من استخدام وحدة المعالجة المركزية واستهلاك الطاقة، مما يحسن عمر البطارية على الأجهزة المحمولة. (0 يعني معطل)
+تؤدي القيم الأعلى إلى تأثير أكثر وضوحًا، ولكنها قد تسبب مشكلات في الصوت أو الأداء. يوصى بقيمة 50 أو أقل.
+يفرض هذا الخيار حدًا لعدد الإطارات في الثانية لأنه يكون نشطًا عندما يكون معدل الإطارات ثابتًا.
+كلما كانت اللعبة أخف وزنًا على الجهاز، تم توفير المزيد من الطاقة بها. (حتى يتم الوصول إلى حاجز عدد الشفعة)</string>
+    <string name="core_help_core_max_spurs_threads" formatted="false">يحد من الحد الأقصى لعدد سلاسل SPURS في كل مجموعة سلاسل رسائل.
+قد يؤدي إلى تحسين الأداء في بعض الحالات، خاصة على الأنظمة ذات عدد محدود من مؤشرات ترابط الأجهزة.
+من المحتمل أن يؤدي تحديد عدد سلاسل الرسائل إلى حدوث أعطال؛ من المستحسن الاحتفاظ بهذا بالقيمة الافتراضية.</string>
+    <string name="core_help_core_mfc_commands_shuffling_limit" formatted="false">يفرض تأخير أي أمر MFC فردي، وينتظر أمرين معلقين على الأقل لتنفيذهما بترتيب عشوائي.
+يجب استخدامه مع أي من مترجمي SPU حاليًا.
+يحط بشدة الأداء! إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
+    <string name="core_help_core_mfc_debug" formatted="false">ينشئ سجلات MFC.
+مفيدة فقط للمطورين.
+لا تستخدم هذا أبدا.</string>
+    <string name="core_help_audio_microphone_devices" formatted="false">يجب استخدام المعيار لمعظم الألعاب.
+يحاكي SingStar جهاز SingStar ويجب استخدامه مع ألعاب SingStar.
+يجب استخدام Real SingStar فقط مع جهاز REAL SingStar مع ألعاب SingStar.
+يجب استخدام Rocksmith مع دونجل Rocksmith.</string>
+    <string name="core_help_audio_microphone_type" formatted="false">يجب استخدام المعيار لمعظم الألعاب.
+يحاكي SingStar جهاز SingStar ويجب استخدامه مع ألعاب SingStar.
+يجب استخدام Real SingStar فقط مع جهاز REAL SingStar مع ألعاب SingStar.
+يجب استخدام Rocksmith مع دونجل Rocksmith.</string>
+    <string name="core_help_input_output_emulated_midi_devices" formatted="false">حدد ما يصل إلى 3 أجهزة MIDI تمت محاكاتها وأنواعها.</string>
+    <string name="core_help_video_minimum_scalable_dimension" formatted="false">سيتم فقط ترقية الإطارات المؤقتة الأكبر من هذا الحجم.
+قد تؤدي زيادة هذه القيمة إلى إصلاح مشكلات الرسومات المفقودة عند الترقية، خاصة عند تمكين Write Color Buffers.
+إذا لم تكن متأكدًا، فلا تغير هذا الخيار.</string>
+    <string name="core_help_input_output_mouse_based_gyro_enabled" formatted="false">لتمكين محاكاة الجيروسكوب المستندة إلى الماوس عند بدء تشغيل اللعبة. ويمكن أيضًا تبديله في أي وقت باستخدام مفتاح التشغيل السريع المرتبط.
+اضغط مع الاستمرار على زر الماوس الأيمن لتنشيط إدخال الجيروسكوب: قم بتحريك خرائط الماوس إلى محوري الحركة X وZ، وخرائط عجلة التمرير إلى المحور Y. حرر الزر لإعادة ضبط قيم الحركة.</string>
+    <string name="core_help_input_output_mouse_debug_overlay" formatted="false">يوفر تراكبًا رسوميًا مع قيم إدخال الماوس.
+يظهر هذا فقط إذا تم تعطيل تراكبات تصحيح الأخطاء الأخرى.
+إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
+    <string name="core_help_input_output_mouse" formatted="false">تدعم بعض الألعاب إدخال الماوس الأصلي.
+سوف يعمل Basic أو Raw في هذه الحالات.</string>
+    <string name="core_help_input_output_move" formatted="false">يوصى باستخدام معالج PS Move لوحدات تحكم PS Move الرسمية.</string>
+    <string name="core_help_video_msaa" formatted="false">محاكاة تخطيط PS3 المتعدد العينات.
+يمكن إصلاح بعض الأخطاء التي يصعب حلها في الرسومات.
+أداء منخفض إلى متوسط ​​يعتمد على أجهزة GPU الخاصة بك.</string>
+    <string name="core_help_video_multithreaded_rsx" formatted="false">يقوم بإلغاء تحميل بعض عمليات RSX إلى مؤشر ترابط ثانوي.
+يحسن الأداء للمعالجات عالية النواة.
+قد يتسبب في تباطؤ في وحدات المعالجة المركزية الأضعف بسبب الحمل الإضافي لمؤشر ترابط العامل.</string>
+    <string name="core_help_audio_music_handler" formatted="false">يُستخدم حاليًا فقط لمحاكاة cellMusic.
+حدد Qt لاستخدام جهاز الإخراج الافتراضي لنظام التشغيل الخاص بك.
+قد لا يتمكن هذا من تشغيل جميع تنسيقات الصوت.</string>
+    <string name="core_help_core_ppu_threads" formatted="false">تؤثر على الحد الأقصى لعدد سلاسل PPU التي تعمل بشكل متزامن، والقيمة 1 لها توافق منخفض جدًا مع الألعاب.
+2 هو الإعداد الافتراضي، إذا لم تكن متأكدًا فلا تقم بتعديل هذا الإعداد.
+تحذير: تغيير هذه القيمة يبطل ذاكرة التخزين المؤقت PPU/SPU المترجمة. سيتم إعادة تجميع الوحدات بالكامل من الصفر عند التشغيل التالي.</string>
+    <string name="core_help_video_output_scaling_mode" formatted="false">تصفية الصور النهائية. لا يطبق الخيار الأقرب أي تصفية، ويعمل Bilinear على تنعيم الصورة، ويعمل FidelityFX Supersolution على تحسين الصور التي تمت ترقيتها.
+إذا كانت اللعبة يتم عرضها بدقة داخلية أقل من دقة نافذتك، فسوف تقوم FidelityFX بالتعامل مع الترقية.
+يمكن أن يتسبب FidelityFX في حدوث أعمال فنية مرئية.
+لا يعمل FidelityFX مع إخراج الاستريو ثلاثي الأبعاد في الوقت الحالي.</string>
+    <string name="core_help_input_output_keep_pads_connected" formatted="false">يُظهر جميع اللوحات التي تم تكوينها على أنها متصلة دائمًا باللعبة حتى لو كانت غير متصلة فعليًا.</string>
+    <string name="core_help_input_output_pad_handler_mode" formatted="false">مؤشر ترابط واحد: تعمل جميع معالجات اللوحة على نفس مؤشر الترابط بشكل تسلسلي.
+متعدد الخيوط: كل معالج وسادة له خيط خاص به.
+استخدم الخيوط المتعددة فقط إذا كان بإمكانك توفير الخيوط الإضافية.</string>
+    <string name="core_help_miscellaneous_pause_emulation_during_home_menu" formatted="false">عند التمكين، سيؤدي فتح القائمة الرئيسية أيضًا إلى إيقاف المحاكاة مؤقتًا.
+في حين أن معظم الألعاب تتوقف مؤقتًا أثناء عرض القائمة الرئيسية، فإن بعضها الآخر لا يحدث ذلك.
+في هذه الحالة قد يكون من المفيد إيقاف المحاكاة مؤقتًا عندما تكون القائمة الرئيسية مفتوحة.</string>
+    <string name="core_help_miscellaneous_pause_emulation_on_rpcs3_focus_loss" formatted="false">قم بإيقاف المحاكاة مؤقتًا تلقائيًا عندما يفقد RPCS3 تركيزه أو عندما يكون التطبيق غير نشط لتوفير الطاقة وتقليل استخدام وحدة المعالجة المركزية.
+لاحظ أن الإيقاف المؤقت للمحاكاة بشكل عام ليس مثاليًا وقد لا يكون متوافقًا مع جميع الألعاب.
+على الرغم من أنه يقوم أيضًا بإيقاف اللعب مؤقتًا حاليًا، إلا أنه لا يوصى بالاعتماد عليه حيث قد يتم تغيير هذا السلوك في المستقبل وليس هذا هو الغرض من هذا الإعداد.</string>
+    <string name="core_help_core_enable_performance_report" formatted="false">قم بقياس أحداث معينة وطباعة مخطط بعد إيقاف المحاكي. لا تقم بالتمكين إذا لم يُطلب منك ذلك.</string>
+    <string name="core_help_video_performance_overlay_center_horizontally" formatted="false">يقوم بتوسيط تراكب الأداء أفقيًا وتجاوز الهامش الأفقي.</string>
+    <string name="core_help_video_performance_overlay_center_vertically" formatted="false">يقوم بتوسيط تراكب الأداء عموديًا وتجاوز الهامش الرأسي.</string>
+    <string name="core_help_video_performance_overlay_detail_level" formatted="false">يتحكم في كمية المعلومات المعروضة على تراكب الأداء.</string>
+    <string name="core_help_video_performance_overlay_enabled" formatted="false">تمكين أو تعطيل تراكب الأداء.</string>
+    <string name="core_help_video_performance_overlay_font_size_px" formatted="false">يضبط حجم الخط لتراكب الأداء (يتم قياسه بالبكسل).</string>
+    <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">يضبط مقدار نقاط البيانات المستخدمة في الرسم البياني لمعدل الإطارات.</string>
+    <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">يتحكم في كمية المعلومات المعروضة على تراكب الأداء.</string>
+    <string name="core_help_video_performance_overlay_enable_framerate_graph" formatted="false">تمكين أو تعطيل الرسم البياني لمعدل الإطارات.</string>
+    <string name="core_help_video_performance_overlay_frametime_datapoints" formatted="false">يضبط مقدار نقاط البيانات المستخدمة في الرسم البياني للإطار الزمني.</string>
+    <string name="core_help_video_performance_overlay_frametime_graph_detail_level" formatted="false">يتحكم في كمية المعلومات المعروضة على تراكب الأداء.</string>
+    <string name="core_help_video_performance_overlay_enable_frametime_graph" formatted="false">تمكين أو تعطيل الرسم البياني لإطار الإطار.</string>
+    <string name="core_help_video_performance_overlay_horizontal_margin" formatted="false">يضبط المسافة الأفقية إلى حدود الشاشة بالنسبة لربع الشاشة (يتم قياسها بنسبة %).</string>
+    <string name="core_help_video_performance_overlay_vertical_margin" formatted="false">يضبط المسافة العمودية إلى حدود الشاشة بالنسبة لربع الشاشة (يتم قياسها بنسبة %).</string>
+    <string name="core_help_video_performance_overlay_opacity" formatted="false">يضبط عتامة تراكب الأداء (يتم قياسه بنسبة %).</string>
+    <string name="core_help_video_performance_overlay_position" formatted="false">يضبط موضع تراكب الأداء (الربع) على الشاشة.</string>
+    <string name="core_help_video_performance_overlay_metrics_update_interval_ms" formatted="false">يضبط الفاصل الزمني الذي يتم فيه تحديث تراكب الأداء (يتم قياسه بالمللي ثانية).
+سيؤدي ضبط هذا على 16 مللي ثانية إلى تحديث تراكب الأداء عند 60 هرتز تقريبًا.
+لا يؤثر معدل تحديث تراكب الأداء على إحصائيات الرسم البياني للإطار ويمكن أن يكون بالسرعة التي تسمح بها اللعبة الحالية فقط.</string>
+    <string name="core_help_video_performance_overlay_use_window_space" formatted="false">تراكب الموضع بالنسبة لسطح النافذة بالكامل، مما يتيح وضعه خارج منطقة عرض اللعبة.</string>
+    <string name="core_help_miscellaneous_play_music_during_boot_sequence" formatted="false">قم بتشغيل الموسيقى أثناء تسلسل التمهيد إذا كان ذلك متاحًا.</string>
+    <string name="core_help_core_ppu_debug" formatted="false">إنشاء سجلات PPU.
+مفيدة فقط للمطورين.
+لا تستخدم هذا أبدا.</string>
+    <string name="core_help_core_ppu_decoder" formatted="false">إعادة ترجمة رمز PPU الخاص باللعبة وتخزينه مؤقتًا باستخدام LLVM Recompiler مرة واحدة قبل تشغيله لأول مرة.
+يعد هذا الخيار الأسرع إلى حد بعيد ويجب استخدامه دائمًا.
+إذا واجهت مشكلات في التوافق، فارجع إلى أحد المترجمين الفوريين وأعد المحاولة.
+إذا لم تكن متأكدا، استخدم هذا الخيار.</string>
+    <string name="core_help_core_ppu_reservation_priority_over_spus" formatted="false">امنح وحدات PPU ميزة التنفيذ عندما تستخدم وحدات SPU الحجوزات.
+يوصى بهذا الإعداد فقط لعدد قليل من الألعاب لتحسين الأداء.
+لا تستخدمه دون أن يُنصح بذلك بسبب احتمال تدهور الأداء.</string>
+    <string name="core_help_core_ppu_vector_nan_handling" formatted="false">ينتج عن Fixup NaN تعليمات متجهة في الواجهات الخلفية لـ PPU.
+إذا لم تكن متأكدًا، فلا تقم بتعديل هذا الإعداد.</string>
+    <string name="core_help_video_accurate_zcull_stats" formatted="false">تغيير سلوك مزامنة تقرير ZCULL. قم بالتجربة للعثور على الخيار الأفضل للعبتك. يوصى بالوضع التقريبي لمعظم الألعاب.
+· الدقة هي الأكثر دقة لسلوك PS3. مطلوب للحصول على صور دقيقة في بعض العناوين مثل Demon\'s Souls وThe Darkness.
+· التقريبية هي طريقة أسرع بكثير لإنشاء بيانات الانسداد التي قد لا تتطابق دائمًا مع ما سيولده PS3. يعمل بشكل جيد مع معظم ألعاب PS3.
+· Relaxed يغير طريقة المزامنة تمامًا ويمكنه تحسين الأداء بشكل كبير في بعض الألعاب أو تعطيل ألعاب أخرى تمامًا.</string>
+    <string name="core_help_core_preferred_spu_threads" formatted="false">بعض مراحل SPU حساسة لظروف السباق والسماح لعدد محدود في كل مرة يساعد في تخفيف توقف الأداء.
+قد يؤدي تعيين هذا إلى قيمة أصغر إلى تحسين الأداء وتقليل التأتأة في بعض الألعاب.
+اترك هذا على الوضع التلقائي إذا تأثر الأداء سلبًا عند تعيين قيمة صغيرة.</string>
+    <string name="core_help_miscellaneous_prevent_display_sleep_while_running_games" formatted="false">منع الشاشة من النوم أثناء تشغيل اللعبة.
+يتطلب هذا خدمة org.freedesktop.ScreenSaver D-Bus على Linux.
+سيتم تعطيل هذا الخيار إذا كان النظام الأساسي الحالي لا يدعم التحكم في سكون العرض.</string>
+    <string name="core_help_net_psn_country" formatted="false">يغير بلد RPCN.</string>
+    <string name="core_help_net_psn_status" formatted="false">إذا تم التعيين على RPCN، فسيستخدم RPCS3 خادم RPCN كاتصال PSN إذا كانت اللعبة مدعومة.
+إذا تم تعيينه على &quot;محاكاة&quot;، فسيحاول RPCS3 تزييف اتصال PSN، ولكن أي محاولة فعلية لاستخدام وظيفة PSN قد تؤدي إلى حدوث أخطاء أو أعطال.
+المحاكاة متاحة فقط في التكوينات المخصصة.</string>
+    <string name="core_help_video_read_color_buffers" formatted="false">تهيئة عرض الذاكرة المستهدفة باستخدام ذاكرة vm.</string>
+    <string name="core_help_video_read_depth_buffer" formatted="false">تهيئة عرض الذاكرة المستهدفة باستخدام ذاكرة vm.</string>
+    <string name="core_help_video_record_with_overlays" formatted="false">تمكين التسجيل مع التراكبات.
+يؤثر هذا أيضًا على لقطات الشاشة.</string>
+    <string name="core_help_video_relaxed_zcull_sync" formatted="false">تغيير سلوك مزامنة تقرير ZCULL. قم بالتجربة للعثور على الخيار الأفضل للعبتك. يوصى بالوضع التقريبي لمعظم الألعاب.
+· الدقة هي الأكثر دقة لسلوك PS3. مطلوب للحصول على صور دقيقة في بعض العناوين مثل Demon\'s Souls وThe Darkness.
+· التقريبية هي طريقة أسرع بكثير لإنشاء بيانات الانسداد التي قد لا تتطابق دائمًا مع ما سيولده PS3. يعمل بشكل جيد مع معظم ألعاب PS3.
+· Relaxed يغير طريقة المزامنة تمامًا ويمكنه تحسين الأداء بشكل كبير في بعض الألعاب أو تعطيل ألعاب أخرى تمامًا.</string>
+    <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">يتيح استخدام مخازن OpenGL المؤقتة الكلاسيكية التي تسمح لأدوات الالتقاط بالعمل مع RPCS3، مثل RenderDoc.
+يسمح أيضًا لـ Vulkan باستخدام علامات تصحيح الأخطاء لالتقاط صور Renderdoc أجمل.
+إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
+    <string name="core_help_video_renderer" formatted="false">Vulkan هو أسرع العارضين. OpenGL هو العارض الأكثر دقة.
+إذا لم تكن متأكدا، استخدم فولكان. إذا كانت لديك أية مشكلات في التوافق، فارجع إلى OpenGL.</string>
+    <string name="core_help_video_resolution" formatted="false">سيتم تجاهل هذا الإعداد إذا تم ضبط مقياس الدقة على أي شيء آخر غير 100%!
+اترك هذا على 1280x720. كل لعبة PS3 متوافقة مع هذا القرار.
+استخدم 1920×1080 فقط إذا كانت اللعبة تدعمها.
+نادرًا ما يتم عرض بعض الألعاب بدقة منخفضة مثل 480 بكسل بسبب أخطاء المحاكاة.</string>
+    <string name="core_help_video_resolution_scale" formatted="false">يقيس دقة اللعبة بنسبة معينة.
+الدقة الأساسية هي دائمًا 1280 × 720.
+قم بتعيين هذه القيمة إلى 100% إذا كنت تريد استخدام خيارات الدقة العادية.
+عادةً لن تؤدي القيم الأقل من 100% إلى تحسين الأداء.</string>
+    <string name="core_help_video_screen_size_in_inches" formatted="false">يضبط وضع عرض الاستريو ثلاثي الأبعاد (متوفر فقط في التكوينات المخصصة بدقة افتراضية تبلغ 720 بكسل).
+يستخدم Anaglyph ألوانًا مختلفة لكل عين، والتي يمكن بعد ذلك تصفيتها باستخدام نظارات معينة.
+يتم دعم ميزة Side-by-Side بشكل أكثر شيوعًا بواسطة تطبيقات عارض الواقع الافتراضي.
+يعتبر Over-Under أقرب إلى إخراج الاستريو الأصلي، ولكنه أقل دعمًا بشكل شائع.</string>
+    <string name="core_help_input_output_load_sdl_gamecontroller_mappings" formatted="false">يقوم بتحميل قاعدة بيانات SDL GameController لتحسين توافق لوحة الألعاب. يستخدم فقط في معالج لوحة SDL.</string>
+    <string name="core_help_core_set_daz_and_ftz" formatted="false">يقوم بتعيين إشارات MXCSR خاصة لتصحيح الأخطاء في عمليات SSE.
+يعمل على تسريع أداء PPU على حساب الدقة.</string>
+    <string name="core_help_video_shader_compiler_threads" formatted="false">عدد الخيوط المستخدمة للواجهة الخلفية لمترجم التظليل.
+يكون له تأثير فقط عند ضبط وضع التظليل على أحد الأوضاع غير المتزامنة.</string>
+    <string name="core_help_video_shader_loading_dialog_blur_effect_strength" formatted="false">يغير قوة تأثير تمويه صورة الخلفية لمربع حوار تحميل التظليل الأصلي.
+يمكن استخدام هذا لتحسين إمكانية القراءة و/أو الجماليات.</string>
+    <string name="core_help_video_shader_loading_dialog_darkening_effect_strength" formatted="false">يغير قوة تأثير تعتيم صورة الخلفية لمربع حوار تحميل التظليل الأصلي.
+يمكن استخدام هذا لتحسين إمكانية القراءة و/أو الجماليات.</string>
+    <string name="core_help_video_shader_loading_dialog_allow_custom_background" formatted="false">يعرض صورة خلفية أثناء شاشة تحميل/مربع حوار تحميل التظليل الأصلي.
+بشكل افتراضي، ستكون الصورة المستخدمة هي /PS3_GAME/PIC1.PNG.</string>
+    <string name="core_help_video_shader_mode" formatted="false">هذا هو الخيار الموصى به.
+إذا لم يتم العثور على التظليل في ذاكرة التخزين المؤقت، فلن يتم عرض أي شيء لهذا التظليل حتى يتم تجميعه.
+قد تواجهك الرسومات المنبثقة.</string>
+    <string name="core_help_video_shader_precision" formatted="false">يتحكم في مستوى دقة التظليل الذي تم إنشاؤه. تؤدي الدقة المنخفضة إلى إنشاء تعليمات برمجية أسرع بكثير اعتمادًا على الأجهزة، ولكنها يمكن أن تؤدي في بعض الأحيان إلى حدوث خلل بصري بسيط أو وميض.</string>
+    <string name="core_help_miscellaneous_show_analog_limiter_toggle_hint" formatted="false">يعرض تلميح تبديل المحدد التناظري باستخدام التراكب الأصلي.</string>
+    <string name="core_help_miscellaneous_show_autosave_autoload_hint" formatted="false">يعرض تلميح الحفظ التلقائي/التحميل التلقائي باستخدام التراكب الأصلي.</string>
+    <string name="core_help_miscellaneous_show_capture_hints" formatted="false">يعرض لقطة الشاشة وتلميحات التسجيل باستخدام التراكب الأصلي.</string>
+    <string name="core_help_miscellaneous_show_fatal_error_hints" formatted="false">يُظهر تلميحات الأخطاء الفادحة باستخدام التراكب الأصلي.</string>
+    <string name="core_help_miscellaneous_show_mouse_and_keyboard_toggle_hint" formatted="false">يعرض تلميح تبديل الماوس ولوحة المفاتيح باستخدام التراكب الأصلي.</string>
+    <string name="core_help_input_output_show_move_cursor" formatted="false">يُظهر الموضع الأولي لإدخال PS Move.
+يمكن أن يكون هذا مفيدًا جدًا أثناء شاشات المعايرة.</string>
+    <string name="core_help_miscellaneous_show_ppu_compilation_hint" formatted="false">يعرض تلميح &quot;تجميع وحدات PPU&quot; باستخدام التراكب الأصلي.</string>
+    <string name="core_help_miscellaneous_show_pressure_intensity_toggle_hint" formatted="false">يُظهر تلميح تبديل شدة الضغط باستخدام التراكب الأصلي.</string>
+    <string name="core_help_miscellaneous_show_rpcn_popups" formatted="false">إظهار النوافذ المنبثقة لقائمة أصدقاء RPCN.</string>
+    <string name="core_help_miscellaneous_show_shader_compilation_hint" formatted="false">يعرض تلميح &quot;تجميع التظليل&quot; باستخدام التراكب الأصلي.</string>
+    <string name="core_help_miscellaneous_show_trophy_popups" formatted="false">إظهار النوافذ المنبثقة للكأس عند فتح الكأس.</string>
+    <string name="core_help_miscellaneous_silence_all_logs" formatted="false">توقف عن كتابة أي سجلات بعد بدء تشغيل اللعبة. لا تستخدم إلا إذا كنت تعتقد أنه ضروري.</string>
+    <string name="core_help_core_sleep_timers_accuracy" formatted="false">يغير دقة فترة النوم.
+يستخدم &quot;كمضيف&quot; الدقة الافتراضية لنظام التشغيل الأساسي، بينما يحاول &quot;All Timers&quot; تحسينها.
+&quot;Usleep Only&quot; يحد من التعديلات على usleep syscall فقط.
+يمكن أن يؤثر على الأداء بطرق غير متوقعة.</string>
+    <string name="core_help_core_spu_block_size" formatted="false">يتحكم هذا الخيار في محلل SPU، وخاصة حجم الوحدات المترجمة. قد يعمل الوضعان Mega وGiga على تحسين الأداء عن طريق ربط الوحدات الأصغر معًا، مما يقلل عدد الوحدات المترجمة ولكن يزيد حجمها.
+استخدم الوضع الآمن لتحقيق أقصى قدر من التوافق.</string>
+    <string name="core_help_core_spu_cache" formatted="false">يعيد ترجمة رمز SPU الخاص باللعبة وتخزينه مؤقتًا باستخدام LLVM Recompiler قبل التشغيل مما يضيف وقتًا إضافيًا لبدء التشغيل.
+هذا هو الخيار الأسرع مع توافق جيد جدًا.
+إذا واجهت مشاكل، استخدم ASMJIT Recompiler.</string>
+    <string name="core_help_core_spu_debug" formatted="false">ينشئ سجلات SPU.
+مفيدة فقط للمطورين.
+لا تستخدم هذا أبدا.</string>
+    <string name="core_help_core_spu_decoder" formatted="false">يعيد ترجمة رمز SPU الخاص باللعبة وتخزينه مؤقتًا باستخدام LLVM Recompiler قبل التشغيل مما يضيف وقتًا إضافيًا لبدء التشغيل.
+هذا هو الخيار الأسرع مع توافق جيد جدًا.
+إذا واجهت مشاكل، استخدم ASMJIT Recompiler.</string>
+    <string name="core_help_core_spu_loop_detection" formatted="false">حاول اكتشاف شروط الحلقة في نواة SPU واستخدامها كتلميحات للجدولة.
+يحسن الأداء ويقلل من استخدام وحدة المعالجة المركزية.
+قد يسبب التأتأة الصوتية الشديدة في حالات نادرة.</string>
+    <string name="core_help_core_spu_profiler" formatted="false">عند التمكين، يتم قياس أداء وحدة SPU في وقت التشغيل.
+يتم التمكين فقط بناءً على طلب أحد المطورين لأنه عند تمكينه فإنه يقلل الأداء قليلاً من تلقاء نفسه.</string>
+    <string name="core_help_miscellaneous_start_games_in_fullscreen_mode" formatted="false">يضع نافذة اللعبة في وضع ملء الشاشة تلقائيًا.
+انقر نقرًا مزدوجًا على نافذة اللعبة أو اضغط على Alt+Enter للتبديل بين وضع ملء الشاشة ووضع النافذة.</string>
+    <string name="core_help_miscellaneous_automatically_start_games_after_boot" formatted="false">اترك هذا ممكنًا إلا إذا كنت مطورًا.</string>
+    <string name="core_help_savestate_start_paused" formatted="false">عند تشغيل هذا الوضع، يتم تحميل حالات الحفظ وإيقافها مؤقتًا في الإطار الأول.
+يتيح ذلك للاعبين الاستعداد للعب دون الدخول في الحدث على الفور.</string>
+    <string name="core_help_video_3d_display_enabled" formatted="false">يضبط وضع عرض الاستريو ثلاثي الأبعاد (متوفر فقط في التكوينات المخصصة بدقة افتراضية تبلغ 720 بكسل).
+يستخدم Anaglyph ألوانًا مختلفة لكل عين، والتي يمكن بعد ذلك تصفيتها باستخدام نظارات معينة.
+يتم دعم ميزة Side-by-Side بشكل أكثر شيوعًا بواسطة تطبيقات عارض الواقع الافتراضي.
+يعتبر Over-Under أقرب إلى إخراج الاستريو الأصلي، ولكنه أقل دعمًا بشكل شائع.</string>
+    <string name="core_help_video_3d_display_mode" formatted="false">يضبط وضع عرض الاستريو ثلاثي الأبعاد (متوفر فقط في التكوينات المخصصة بدقة افتراضية تبلغ 720 بكسل).
+يستخدم Anaglyph ألوانًا مختلفة لكل عين، والتي يمكن بعد ذلك تصفيتها باستخدام نظارات معينة.
+يتم دعم ميزة Side-by-Side بشكل أكثر شيوعًا بواسطة تطبيقات عارض الواقع الافتراضي.
+يعتبر Over-Under أقرب إلى إخراج الاستريو الأصلي، ولكنه أقل دعمًا بشكل شائع.</string>
+    <string name="core_help_video_stretch_to_display_area" formatted="false">يتجاوز نسبة العرض إلى الارتفاع ويمتد الصورة إلى منطقة العرض الكاملة.</string>
+    <string name="core_help_video_strict_rendering_mode" formatted="false">يفرض الامتثال الصارم لمواصفات API.
+قد يؤدي إلى انخفاض الأداء في بعض الألعاب.
+يمكن حل الحالات النادرة لفقدان الرسومات والوميض.
+إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
+    <string name="core_help_video_strict_texture_flushing" formatted="false">يفرض احمرار النسيج حتى في المواقف التي لا يكون فيها ذلك ضروريًا/صحيحًا. معروف بأنه يتسبب في حدوث مؤثرات بصرية، ولكنه مفيد لتصحيح بعض مشكلات ذاكرة التخزين المؤقت للنسيج.</string>
+    <string name="core_help_savestate_suspend_emulation_savestate_mode" formatted="false">عند تشغيل هذا الوضع، يتم إنهاء المحاكاة عند الحفظ ويتم إخفاء ملف حالة الحفظ بعد تحميله، مما يمنع إعادة استخدامه بواسطة RPCS3.
+هذا الوضع يشبه إسبات المحاكاة: إذا كنت لا تريد أن تكون قادرًا على الغش باستخدام حالات الحفظ عند لعب اللعبة، ففكر في استخدام هذا الوضع.
+لاحظ أن ملف savestate لم يختفي تمامًا، بل تم تجاهله بواسطة RPCS3. ويمكنك إعادة تشغيله يدويًا إذا لزم الأمر.</string>
+    <string name="core_help_video_texture_lod_bias_addend" formatted="false">تغيير دقة أخذ عينات النسيج. (التغييرات الصغيرة لها تأثير كبير.)
+تجنب استخدام قيم خارج النطاق من -12 إلى +12 إذا لم تكن متأكدًا.
+-3 إلى +3 يكفي لمعظم حالات الاستخدام</string>
+    <string name="core_help_core_thread_scheduler_mode" formatted="false">التحكم في كيفية استخدام RPCS3 لخيوط نظامك.
+يعتمد كل خيار بشكل كبير على اللعبة وعلى وحدة المعالجة المركزية لديك. يوصى بتجربة كل خيار لمعرفة الخيار الأفضل أداءً.
+تغيير جدولة سلسلة المحادثات غير مدعوم على وحدات المعالجة المركزية (CPU) التي تحتوي على أقل من 12 سلسلة رسائل.</string>
+    <string name="core_help_system_time_format" formatted="false">حدد تنسيق الوقت لجهاز PS3.</string>
+    <string name="core_help_audio_time_stretching_threshold" formatted="false">مستوى ملء المخزن المؤقت (بالنسبة المئوية) الذي سيبدأ بعده تمديد الوقت.</string>
+    <string name="core_help_input_output_turntable_emulated_controller" formatted="false">دعم وحدة تحكم DJ Hero Turntable.
+حدد وحدة تحكم واحدة أو اثنتين إذا كانت اللعبة تتطلب وحدات تحكم DJ Hero Turntable ولم يكن لديك وحدات تحكم قرص دوار حقيقية.
+حدد Null إذا كانت اللعبة تدعم DualShock أو إذا كان لديك وحدات تحكم قرص دوار حقيقية.
+يمكن استخدام وحدة تحكم القرص الدوار الحقيقية في نفس الوقت الذي تستخدم فيه وحدة تحكم القرص الدوار التي تمت محاكاتها.</string>
+    <string name="core_help_miscellaneous_use_native_user_interface" formatted="false">يتيح استخدام شاشة HUD الأصلية داخل نافذة اللعبة والتي يمكنها التفاعل مع وحدات التحكم في الألعاب.
+عند التعطيل، يتم استخدام مربعات حوار Qt العادية بدلاً من ذلك.
+حاليًا، تدعم لوحة المفاتيح التي تظهر على الشاشة تخطيط المفاتيح باللغة الإنجليزية فقط.</string>
+    <string name="core_help_video_vulkan_use_re_bar_for_gpu_uploads" formatted="false">عند التمكين، سيحاول Vulkan استخدام مساحة عنوان شريط PCI-e القابلة لتغيير الحجم لتحميلات GPU للبيانات الحساسة للتوقيت.
+يؤدي هذا إلى فوز هائل في الأداء على بطاقات NVIDIA عندما يكون معدل الإطارات الأساسي منخفضًا.
+بالنسبة للألعاب ذات معدلات الإطارات العالية جدًا، يمكن أن يؤدي هذا الخيار إلى أداء أسوأ لجميع موردي وحدات معالجة الرسومات.</string>
+    <string name="core_help_miscellaneous_use_recursive_scan" formatted="false">لتمكين استخدام الفحص العودي على المجلدات الفرعية عند فحص الألعاب من المجلد المحدد.
+عند التعطيل، يتم فحص الألعاب في المجلد المحدد فقط.</string>
+    <string name="core_help_video_vblank_ntsc_fixup" formatted="false">ضرب معدل VBLANK في 1000/1001 لقيم مثل 59.94 هرتز.
+معروف لإصلاح لعبة الإيقاع قناة الفضاء 5 الجزء 2</string>
+    <string name="core_help_video_vblank_rate" formatted="false">يضبط تردد إشارات التقطيع الرأسية التي يرسلها المحاكي.
+يؤثر على توقيت الأحداث التي تعتمد على هذه الإشارات.</string>
+    <string name="core_help_video_vsync_mode" formatted="false">يتيح المزامنة العمودية للقضاء على التمزق.
+الوضع التكيفي - يفضل الحفاظ على الأداء. قد يتخطى الإطارات أو حتى يتمزق لتجنب تقليل معدل إطارات اللعبة.
+الوضع الكامل - لا يسمح بالتمزيق حتى لو انخفض الأداء. سيحد هذا الوضع بشكل افتراضي من معدل الإطارات الخاص بك إلى معدل تحديث الشاشة ما لم يتم تجاوزه في لوحة تحكم برنامج التشغيل.</string>
+    <string name="core_help_video_vulkan_adapter" formatted="false">في أنظمة GPU المتعددة، حدد GPU الذي سيتم استخدامه في RPCS3 عند استخدام Vulkan.
+ليس هذا ضروريًا عند استخدام OpenGL.</string>
+    <string name="core_help_video_vulkan_asynchronous_queue_scheduler" formatted="false">يحدد كيفية جدولة مهام الحوسبة غير المتزامنة لوحدة معالجة الرسومات عند استخدام الدفق غير المتزامن.
+استخدم الوضع &quot;الآمن&quot; لمزيد من السلوك المتوافق مع المواصفات على حساب بعض الحمل الزائد لوحدة المعالجة المركزية. يعمل هذا الإعداد مع جميع الأجهزة.
+استخدم &quot;سريع&quot; لاستخدام إصدار أسرع ولكنه مخترق. تم تعطيل هذا الخيار داخليًا لوحدات معالجة الرسومات NVIDIA بسبب التسبب في توقف وحدة معالجة الرسومات.</string>
+    <string name="core_help_video_vulkan_asynchronous_texture_streaming" formatted="false">دفق القوام إلى وحدة معالجة الرسومات بالتوازي مع العرض ثلاثي الأبعاد باستخدام الحساب غير المتزامن.
+يمكن تحسين الأداء على وحدات معالجة الرسومات الأكثر قوة والتي تحتوي على مساحة رأسية احتياطية.
+يعمل فقط مع عارض Vulkan ويستفيد بشكل كبير من تمكين MTRSX إذا كان لديك وحدة معالجة مركزية قادرة.</string>
+    <string name="core_help_miscellaneous_window_title_format" formatted="false">تكوين عنوان نافذة اللعبة.
+قد يؤدي تغيير هذا و/أو إضافة معدل الإطارات إلى عدم ملاحظة وجود أخطاء في برنامج التسجيل القديم أو عدم ملاحظة RPCS3.</string>
+    <string name="core_help_video_write_color_buffers" formatted="false">قم بتمكين هذا الخيار إذا فقدت الرسومات أو الإضاءة المعطلة في اللعبة.
+قد يؤدي إلى انخفاض الأداء وإحداث التأتأة في بعض الحالات.
+مطلوب لأرواح الشيطان.</string>
+    <string name="core_help_video_write_depth_buffer" formatted="false">يكتب قيم المخزن المؤقت للعمق في ذاكرة الجهاز الظاهري.</string>
+    <string name="core_help_core_spu_xfloat_accuracy" formatted="false">دقة التحكم في معالجة ناقلات تعويم SPU.
+إصلاح الأخطاء في الألعاب المختلفة على حساب الأداء.
+يتم تطبيق هذا الإعداد فقط عند ضبط SPU Decoder على Dynamic أو LLVM.</string>
+    <string name="core_label_chinese_simplified">الصينية (المبسطة)</string>
+    <string name="core_label_chinese_traditional">الصينية (التقليدية)</string>
+    <string name="core_label_chinese_keyboard_simplified">لوحة المفاتيح الصينية (المبسطة)</string>
+    <string name="core_label_chinese_keyboard_traditional">لوحة المفاتيح الصينية (التقليدية)</string>
+    <string name="core_label_danish">الدنماركية</string>
+    <string name="core_label_danish_keyboard">لوحة المفاتيح الدنماركية</string>
+    <string name="core_label_dutch">الهولندية</string>
+    <string name="core_label_dutch_keyboard">لوحة المفاتيح الهولندية</string>
+    <string name="core_label_english_uk">الإنجليزية (المملكة المتحدة)</string>
+    <string name="core_label_english_us">الإنجليزية (الولايات المتحدة)</string>
+    <string name="core_label_english_keyboard_uk_standard">لوحة المفاتيح الإنجليزية (معيار المملكة المتحدة)</string>
+    <string name="core_label_english_keyboard_us_standard">لوحة المفاتيح الإنجليزية (معيار الولايات المتحدة)</string>
+    <string name="core_label_finnish">الفنلندية</string>
+    <string name="core_label_finnish_keyboard">لوحة المفاتيح الفنلندية</string>
+    <string name="core_label_french">الفرنسية</string>
+    <string name="core_label_french_keyboard">لوحة المفاتيح الفرنسية</string>
+    <string name="core_label_french_keyboard_belgium">لوحة المفاتيح الفرنسية (بلجيكا)</string>
+    <string name="core_label_french_keyboard_canada">لوحة المفاتيح الفرنسية (كندا)</string>
+    <string name="core_label_french_keyboard_switzerland">لوحة المفاتيح الفرنسية (سويسرا)</string>
+    <string name="core_label_german">الألمانية</string>
+    <string name="core_label_german_keyboard">لوحة المفاتيح الألمانية</string>
+    <string name="core_label_german_keyboard_switzerland">لوحة المفاتيح الألمانية (سويسرا)</string>
+    <string name="core_label_italian">ايطالي</string>
+    <string name="core_label_italian_keyboard">لوحة المفاتيح الإيطالية</string>
+    <string name="core_label_japanese">اليابانية</string>
+    <string name="core_label_japanese_keyboard">لوحة المفاتيح اليابانية</string>
+    <string name="core_label_japanese_keyboard_kana_state">لوحة المفاتيح اليابانية (ولاية كانا)</string>
+    <string name="core_label_korean">الكورية</string>
+    <string name="core_label_korean_keyboard">لوحة المفاتيح الكورية</string>
+    <string name="core_label_norwegian">النرويجية</string>
+    <string name="core_label_norwegian_keyboard">لوحة المفاتيح النرويجية</string>
+    <string name="core_label_other">أخرى</string>
+    <string name="core_label_polish">البولندية</string>
+    <string name="core_label_polish_keyboard">لوحة المفاتيح البولندية</string>
+    <string name="core_label_portuguese_brazil">البرتغالية (البرازيل)</string>
+    <string name="core_label_portuguese_portugal">البرتغالية (البرتغال)</string>
+    <string name="core_label_portuguese_keyboard_brazil">لوحة المفاتيح البرتغالية (البرازيل)</string>
+    <string name="core_label_portuguese_keyboard_portugal">لوحة المفاتيح البرتغالية (البرتغال)</string>
+    <string name="core_label_russian">الروسية</string>
+    <string name="core_label_russian_keyboard">لوحة المفاتيح الروسية</string>
+    <string name="core_label_scea">SCEA</string>
+    <string name="core_label_scee">SCEE</string>
+    <string name="core_label_sceh">سيه</string>
+    <string name="core_label_scej">SCEJ</string>
+    <string name="core_label_scek">SCEK</string>
+    <string name="core_label_sch">SCH</string>
+    <string name="core_label_spanish">الاسبانية</string>
+    <string name="core_label_spanish_keyboard">لوحة المفاتيح الاسبانية</string>
+    <string name="core_label_swedish">السويدية</string>
+    <string name="core_label_swedish_keyboard">لوحة المفاتيح السويدية</string>
+    <string name="core_label_turkish">تركي</string>
+    <string name="core_label_turkish_keyboard">لوحة المفاتيح التركية</string>
+    <string name="core_help_video_display_aspect_override" formatted="false">يتجاوز نسبة العرض إلى الارتفاع النهائية للعرض بالألف (1778 = 16:9، 1333 = 4:3). اضبطه على 0 لاستخدام نسبة اللعبة. استخدم هذا فقط لتناسب شاشات الهاتف أو الجهاز اللوحي غير العادية؛ قيمة غير صحيحة تمتد الصورة.</string>
+    <string name="core_help_video_shader_preset_path" formatted="false">المسار المطلق إلى الإعداد المسبق للتظليل RetroArch .slangp المستخدم عند ضبط Output Scaling Mode على Shader chain. اتركه فارغًا للإخراج العادي. استخدم فقط إعدادًا مسبقًا متوافقًا؛ يعود المسار غير الصالح إلى صورة عادية.</string>
+
+    <string name="core_label_async_shader_recompiler">مُعيد تجميع التظليل غير المتزامن</string>
+    <string name="core_label_async_with_shader_interpreter">غير متزامن مع مترجم التظليل</string>
+    <string name="core_label_forced">إجباري</string>
+    <string name="core_label_interpreter">مترجم</string>
+    <string name="core_label_interpreter_legacy">مترجم (قديم)</string>
+    <string name="core_label_llvm_recompiler_legacy">مُعيد تجميع LLVM (قديم)</string>
+    <string name="core_label_shader_recompiler">مُعيد تجميع التظليل</string>
+    <string name="core_setting_search">البحث في الخيارات</string>
+    <string name="core_setting_no_results">لا توجد خيارات مطابقة</string>
+
+</resources>

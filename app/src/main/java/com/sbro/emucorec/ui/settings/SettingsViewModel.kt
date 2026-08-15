@@ -1,0 +1,549 @@
+package com.sbro.emucorec.ui.settings
+
+import android.app.Application
+import android.net.Uri
+import android.util.Log
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import com.jakewharton.processphoenix.ProcessPhoenix
+import com.sbro.emucorec.core.AppUpdateRelease
+import com.sbro.emucorec.core.AppUpdateRepository
+import com.sbro.emucorec.core.AndroidTouchHaptics
+import com.sbro.emucorec.core.AndroidTouchHaptics.ButtonPhase
+import com.sbro.emucorec.core.EmulatorStorage
+import com.sbro.emucorec.core.GpuDriverCatalogRepository
+import com.sbro.emucorec.core.GpuDriverManager
+import com.sbro.emucorec.core.InstallStateBus
+import com.sbro.emucorec.core.InstalledGpuDriver
+import com.sbro.emucorec.core.NativeLibraryLoader
+import com.sbro.emucorec.core.RemoteGpuDriver
+import com.sbro.emucorec.core.SettingsBackupRepository
+import com.sbro.emucorec.core.StorageMigrationProgress
+import com.sbro.emucorec.core.Ps3CoreConfig
+import com.sbro.emucorec.core.Ps3CoreConfigRepository
+import com.sbro.emucorec.core.Ps3CoreSettingOverrides
+import com.sbro.emucorec.core.Ps3StorageLocation
+import com.sbro.emucorec.core.VibrationTestController
+import com.sbro.emucorec.data.AppLanguage
+import com.sbro.emucorec.data.AppPreferences
+import com.sbro.emucorec.data.AppFont
+import com.sbro.emucorec.data.CustomizationFileStore
+import com.sbro.emucorec.data.CustomizationPreferences
+import com.sbro.emucorec.data.CustomizationSettings
+import com.sbro.emucorec.data.DrawerVisualStyle
+import com.sbro.emucorec.data.GameMenuLayoutStyle
+import com.sbro.emucorec.data.TouchControlPressEffect
+import com.sbro.emucorec.data.TouchControlVisualStyle
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+
+data class SettingsUiState(
+    val storagePath: String = "",
+    val storageLocations: List<Ps3StorageLocation> = emptyList(),
+    val coreConfig: Ps3CoreConfig = Ps3CoreConfig(),
+    val installedGpuDrivers: List<InstalledGpuDriver> = emptyList(),
+    val remoteGpuDrivers: List<RemoteGpuDriver> = emptyList(),
+    val gpuDriverCatalogLoading: Boolean = false,
+    val gpuDriverCatalogError: String? = null,
+    val gpuDriverDownloads: Map<String, Float> = emptyMap(),
+    val storageChangeInProgress: Boolean = false,
+    val storageMigration: StorageMigrationUiState = StorageMigrationUiState(),
+    val appLanguage: AppLanguage = AppLanguage.SYSTEM,
+    val customization: CustomizationSettings = CustomizationSettings(),
+    val appUpdate: AppUpdateUiState = AppUpdateUiState(),
+    val cacheSizeBytes: Long = 0L,
+    val coverCacheSizeBytes: Long = 0L,
+    val keepScreenOn: Boolean = true
+)
+
+data class StorageMigrationUiState(
+    val visible: Boolean = false,
+    val copiedFiles: Int = 0,
+    val skippedFiles: Int = 0,
+    val totalFiles: Int = 0,
+    val currentPath: String? = null,
+    val errorMessage: String? = null
+) {
+    val progress: Float
+        get() = if (totalFiles > 0) {
+            (copiedFiles + skippedFiles).toFloat() / totalFiles.toFloat()
+        } else {
+            0f
+        }
+}
+
+data class AppUpdateUiState(
+    val releaseHistory: List<AppUpdateRelease> = emptyList(),
+    val historyLoading: Boolean = false,
+    val historyErrorMessage: String? = null
+)
+
+class SettingsViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val preferences = AppPreferences(application)
+    private val customizationPreferences = CustomizationPreferences(application)
+    private val customizationFileStore = CustomizationFileStore(application)
+    private val coreConfigRepository = Ps3CoreConfigRepository(application)
+    private val gpuDriverManager = GpuDriverManager(application)
+    private val gpuDriverCatalogRepository = GpuDriverCatalogRepository(application)
+    private val appUpdateRepository = AppUpdateRepository(application)
+    private val settingsBackupRepository = SettingsBackupRepository(
+        application,
+        preferences,
+        coreConfigRepository,
+        customizationPreferences
+    )
+    private val initialCoreConfig = coreConfigRepository.ensureDefaultsPersisted()
+    private val coreSettingsSaveQueue = Channel<Ps3CoreConfig>(Channel.CONFLATED)
+    private val coreSettingsSaveJob: Job
+
+    private val _uiState = MutableStateFlow(
+        SettingsUiState(
+            storagePath = EmulatorStorage.ps3Root(application).absolutePath,
+            storageLocations = EmulatorStorage.availableStorageLocations(application),
+            coreConfig = initialCoreConfig,
+            installedGpuDrivers = gpuDriverManager.listInstalledDrivers(),
+            appLanguage = preferences.appLanguage,
+            customization = customizationPreferences.current,
+            keepScreenOn = preferences.keepScreenOn
+        )
+    )
+    val uiState: StateFlow<SettingsUiState> = _uiState.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            customizationPreferences.settings.collect { customization ->
+                _uiState.value = _uiState.value.copy(customization = customization)
+            }
+        }
+        coreSettingsSaveJob = viewModelScope.launch(Dispatchers.IO) {
+            for (config in coreSettingsSaveQueue) {
+                runCatching { coreConfigRepository.save(config) }
+                    .onFailure { error -> Log.e(TAG, "Could not persist core settings", error) }
+            }
+        }
+    }
+
+    private companion object {
+        const val TAG = "SettingsViewModel"
+    }
+
+    fun selectStorageLocation(rootPath: String) {
+        val context = getApplication<Application>()
+        if (EmulatorStorage.storageRoot(context).absolutePath == rootPath) return
+        changeStorageLocation { context, onProgress ->
+            EmulatorStorage.selectStorageRoot(
+                context = context,
+                rootPath = rootPath,
+                migrateExistingData = true,
+                onMigrationProgress = onProgress
+            )
+        }
+    }
+
+    private fun changeStorageLocation(
+        selectRoot: (Application, (StorageMigrationProgress) -> Unit) -> Unit
+    ) {
+        if (_uiState.value.storageChangeInProgress) return
+        val context = getApplication<Application>()
+        val restartRequired = NativeLibraryLoader.isNativeSessionInitialized()
+        _uiState.value = _uiState.value.copy(
+            storageChangeInProgress = true,
+            storageMigration = StorageMigrationUiState(visible = true)
+        )
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                selectRoot(context, ::updateStorageMigrationProgress)
+                val config = coreConfigRepository.ensureDefaultsPersisted()
+                _uiState.value = _uiState.value.copy(
+                    storagePath = EmulatorStorage.ps3Root(context).absolutePath,
+                    storageLocations = EmulatorStorage.availableStorageLocations(context),
+                    coreConfig = config,
+                    storageChangeInProgress = false,
+                    storageMigration = StorageMigrationUiState()
+                )
+                InstallStateBus.notifyCompleted()
+            }.onFailure {
+                _uiState.value = _uiState.value.copy(
+                    storageChangeInProgress = false,
+                    storageMigration = _uiState.value.storageMigration.copy(
+                        visible = true,
+                        errorMessage = it.message ?: "Storage migration failed"
+                    )
+                )
+            }.onSuccess {
+                if (restartRequired) {
+                    ProcessPhoenix.triggerRebirth(context.applicationContext)
+                }
+            }
+        }
+    }
+
+    fun dismissStorageMigrationDialog() {
+        if (_uiState.value.storageChangeInProgress) return
+        _uiState.value = _uiState.value.copy(storageMigration = StorageMigrationUiState())
+    }
+
+    private fun updateStorageMigrationProgress(progress: StorageMigrationProgress) {
+        _uiState.value = _uiState.value.copy(
+            storageMigration = StorageMigrationUiState(
+                visible = true,
+                copiedFiles = progress.copiedFiles,
+                skippedFiles = progress.skippedFiles,
+                totalFiles = progress.totalFiles,
+                currentPath = progress.currentPath
+            )
+        )
+    }
+
+    fun exportSettingsBackup(uri: Uri, onComplete: (Result<Unit>) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = runCatching {
+                settingsBackupRepository.exportTo(uri)
+            }
+            withContext(Dispatchers.Main) {
+                onComplete(result)
+            }
+        }
+    }
+
+    fun restoreSettingsBackup(uri: Uri, onComplete: (Result<Unit>) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = runCatching {
+                val restoredConfig = settingsBackupRepository.restoreFrom(uri)
+                val context = getApplication<Application>()
+                _uiState.value = _uiState.value.copy(
+                    storagePath = EmulatorStorage.ps3Root(context).absolutePath,
+                    storageLocations = EmulatorStorage.availableStorageLocations(context),
+                    coreConfig = restoredConfig,
+                    installedGpuDrivers = gpuDriverManager.listInstalledDrivers(),
+                    appLanguage = preferences.appLanguage
+                )
+            }
+            withContext(Dispatchers.Main) {
+                onComplete(result)
+            }
+        }
+    }
+
+    fun refreshCoreSettings() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _uiState.value = _uiState.value.copy(
+                coreConfig = coreConfigRepository.ensureDefaultsPersisted(),
+                storagePath = EmulatorStorage.ps3Root(getApplication()).absolutePath,
+                storageLocations = EmulatorStorage.availableStorageLocations(getApplication()),
+                installedGpuDrivers = gpuDriverManager.listInstalledDrivers(),
+                appLanguage = preferences.appLanguage,
+                keepScreenOn = preferences.keepScreenOn
+            )
+        }
+        refreshCacheSize()
+        refreshCoverCacheSize()
+    }
+
+    fun resetCoreSettingsToDefaults() {
+        viewModelScope.launch(Dispatchers.IO) {
+            Ps3CoreSettingOverrides.resetAllToCoreDefaults(getApplication())
+            val defaults = coreConfigRepository.resetToDefaults()
+            _uiState.value = _uiState.value.copy(coreConfig = defaults)
+        }
+    }
+
+    /**
+     * Clears regenerable caches without touching settings, saves or games.
+     */
+    fun clearCaches(onComplete: (Result<EmulatorStorage.CacheClearResult>) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = runCatching {
+                EmulatorStorage.clearCaches(getApplication())
+            }
+            refreshCacheSize()
+            refreshCoverCacheSize()
+            withContext(Dispatchers.Main) {
+                onComplete(result)
+            }
+        }
+    }
+
+    fun refreshCacheSize() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val size = runCatching {
+                EmulatorStorage.cacheSizeBytes(getApplication())
+            }.getOrDefault(0L)
+            _uiState.value = _uiState.value.copy(cacheSizeBytes = size)
+        }
+    }
+
+    fun clearCoverCache(onComplete: (Result<Long>) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = runCatching {
+                com.sbro.emucorec.ui.common.UrlImageDiskCache.clearCache(getApplication())
+            }
+            refreshCoverCacheSize()
+            refreshCacheSize()
+            withContext(Dispatchers.Main) {
+                onComplete(result)
+            }
+        }
+    }
+
+    fun refreshCoverCacheSize() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val size = runCatching {
+                com.sbro.emucorec.ui.common.UrlImageDiskCache.getCacheSizeBytes(getApplication())
+            }.getOrDefault(0L)
+            _uiState.value = _uiState.value.copy(coverCacheSizeBytes = size)
+        }
+    }
+
+    fun updateKeepScreenOn(enabled: Boolean) {
+        if (preferences.keepScreenOn == enabled) return
+        preferences.keepScreenOn = enabled
+        _uiState.value = _uiState.value.copy(keepScreenOn = enabled)
+    }
+
+    fun updateAppLanguage(language: AppLanguage) {
+        if (preferences.appLanguage == language) return
+        preferences.appLanguage = language
+        _uiState.value = _uiState.value.copy(appLanguage = language)
+        preferences.applyAppLanguage()
+    }
+
+    fun updateCoverSizePercent(value: Int) {
+        customizationPreferences.setCoverSizePercent(value)
+    }
+
+    fun updateTextSizePercent(value: Int) {
+        customizationPreferences.setTextSizePercent(value)
+    }
+
+    fun updateAppFont(font: AppFont) {
+        if (font == AppFont.CUSTOM && customizationPreferences.current.customFontPath == null) return
+        customizationPreferences.setAppFont(font)
+    }
+
+    fun updateTouchControlVisualStyle(style: TouchControlVisualStyle) {
+        customizationPreferences.setTouchControlVisualStyle(style)
+    }
+
+    fun updateTouchControlPressEffect(effect: TouchControlPressEffect) {
+        customizationPreferences.setTouchControlPressEffect(effect)
+    }
+
+    fun updateGameMenuLayoutStyle(style: GameMenuLayoutStyle) {
+        customizationPreferences.setGameMenuLayoutStyle(style)
+    }
+
+    fun updateDrawerVisualStyle(style: DrawerVisualStyle) {
+        customizationPreferences.setDrawerVisualStyle(style)
+    }
+
+    fun importCustomizationBackground(uri: Uri, onComplete: (Result<Unit>) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = runCatching {
+                val imported = customizationFileStore.importBackground(uri)
+                customizationPreferences.setBackground(imported.path, imported.mimeType)
+            }
+            withContext(Dispatchers.Main) { onComplete(result) }
+        }
+    }
+
+    fun importCustomFont(uri: Uri, onComplete: (Result<Unit>) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = runCatching {
+                val path = customizationFileStore.importFont(uri)
+                customizationPreferences.setAppFont(AppFont.CUSTOM, path)
+            }
+            withContext(Dispatchers.Main) { onComplete(result) }
+        }
+    }
+
+    fun resetCustomization() {
+        customizationFileStore.clear()
+        customizationPreferences.reset()
+    }
+
+    fun updateCoreSettings(transform: (Ps3CoreConfig) -> Ps3CoreConfig) {
+        val updated = transform(_uiState.value.coreConfig)
+        _uiState.value = _uiState.value.copy(coreConfig = updated)
+        coreSettingsSaveQueue.trySend(updated)
+    }
+
+    override fun onCleared() {
+        // Do not lose the last conflated update when the user leaves Settings
+        // before the IO consumer gets scheduled.
+        coreSettingsSaveQueue.cancel()
+        runBlocking { coreSettingsSaveJob.cancelAndJoin() }
+        runCatching { coreConfigRepository.save(_uiState.value.coreConfig) }
+            .onFailure { error -> Log.e(TAG, "Could not flush core settings", error) }
+        customizationPreferences.close()
+    }
+
+    fun testVibration(): Boolean {
+        return VibrationTestController.playTestPulse(getApplication(), _uiState.value.coreConfig)
+    }
+
+    fun testTouchHaptics() {
+        val config = _uiState.value.coreConfig
+        AndroidTouchHaptics.playButton(
+            context = getApplication(),
+            strengthPercent = config.touchHapticsStrength,
+            preset = config.touchHapticsPreset,
+            phase = ButtonPhase.PRESS
+        )
+        viewModelScope.launch {
+            delay(55)
+            AndroidTouchHaptics.playButton(
+                context = getApplication(),
+                strengthPercent = config.touchHapticsStrength,
+                preset = config.touchHapticsPreset,
+                phase = ButtonPhase.RELEASE
+            )
+        }
+    }
+
+    fun installGpuDriver(uri: Uri, applyGlobally: Boolean = true, onComplete: (Result<String>) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = runCatching {
+                val driverName = gpuDriverManager.installFromArchive(uri)
+                val installedDrivers = gpuDriverManager.listInstalledDrivers()
+                if (applyGlobally) {
+                    val updated = _uiState.value.coreConfig.copy(customDriverName = driverName)
+                    coreConfigRepository.save(updated)
+                    _uiState.value = _uiState.value.copy(
+                        coreConfig = updated,
+                        installedGpuDrivers = installedDrivers
+                    )
+                } else {
+                    _uiState.value = _uiState.value.copy(installedGpuDrivers = installedDrivers)
+                }
+                driverName
+            }
+            withContext(Dispatchers.Main) {
+                onComplete(result)
+            }
+        }
+    }
+
+    fun refreshGpuDriverCatalog() {
+        if (_uiState.value.gpuDriverCatalogLoading) return
+        viewModelScope.launch(Dispatchers.IO) {
+            _uiState.value = _uiState.value.copy(
+                gpuDriverCatalogLoading = true,
+                gpuDriverCatalogError = null
+            )
+            runCatching {
+                gpuDriverCatalogRepository.loadCatalog()
+            }.onSuccess { drivers ->
+                _uiState.value = _uiState.value.copy(
+                    remoteGpuDrivers = drivers,
+                    gpuDriverCatalogLoading = false,
+                    gpuDriverCatalogError = null
+                )
+            }.onFailure { error ->
+                _uiState.value = _uiState.value.copy(
+                    gpuDriverCatalogLoading = false,
+                    gpuDriverCatalogError = error.message ?: "Could not load GPU driver catalog"
+                )
+            }
+        }
+    }
+
+    fun installRemoteGpuDriver(driver: RemoteGpuDriver, applyGlobally: Boolean = true, onComplete: (Result<String>) -> Unit) {
+        if (_uiState.value.gpuDriverDownloads.containsKey(driver.id)) return
+        viewModelScope.launch(Dispatchers.IO) {
+            _uiState.value = _uiState.value.copy(
+                gpuDriverDownloads = _uiState.value.gpuDriverDownloads + (driver.id to 0f)
+            )
+            val result = runCatching {
+                val archive = gpuDriverCatalogRepository.downloadDriver(driver) { progress ->
+                    _uiState.value = _uiState.value.copy(
+                        gpuDriverDownloads = _uiState.value.gpuDriverDownloads + (driver.id to progress)
+                    )
+                }
+                val driverName = gpuDriverManager.installFromArchive(archive)
+                val installedDrivers = gpuDriverManager.listInstalledDrivers()
+                if (applyGlobally) {
+                    val updated = _uiState.value.coreConfig.copy(customDriverName = driverName)
+                    coreConfigRepository.save(updated)
+                    _uiState.value = _uiState.value.copy(
+                        coreConfig = updated,
+                        installedGpuDrivers = installedDrivers
+                    )
+                } else {
+                    _uiState.value = _uiState.value.copy(installedGpuDrivers = installedDrivers)
+                }
+                driverName
+            }
+            _uiState.value = _uiState.value.copy(
+                gpuDriverDownloads = _uiState.value.gpuDriverDownloads - driver.id
+            )
+            withContext(Dispatchers.Main) {
+                onComplete(result)
+            }
+        }
+    }
+
+    fun useSystemGpuDriver() {
+        updateCoreSettings { it.copy(customDriverName = "") }
+    }
+
+    fun selectGpuDriver(driverName: String) {
+        updateCoreSettings { it.copy(customDriverName = driverName) }
+    }
+
+    fun removeGpuDriver(driverName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            gpuDriverManager.remove(driverName)
+            val updated = if (_uiState.value.coreConfig.customDriverName == driverName) {
+                _uiState.value.coreConfig.copy(customDriverName = "")
+            } else {
+                _uiState.value.coreConfig
+            }
+            coreConfigRepository.save(updated)
+            _uiState.value = _uiState.value.copy(
+                coreConfig = updated,
+                installedGpuDrivers = gpuDriverManager.listInstalledDrivers()
+            )
+        }
+    }
+
+    fun loadAppReleaseHistory(showErrors: Boolean = true, forceRefresh: Boolean = false) {
+        if (_uiState.value.appUpdate.historyLoading) return
+        viewModelScope.launch(Dispatchers.IO) {
+            _uiState.value = _uiState.value.copy(
+                appUpdate = _uiState.value.appUpdate.copy(
+                    historyLoading = true,
+                    historyErrorMessage = null
+                )
+            )
+            runCatching {
+                appUpdateRepository.loadReleaseHistory(forceRefresh = forceRefresh)
+            }.onSuccess { releases ->
+                _uiState.value = _uiState.value.copy(
+                    appUpdate = _uiState.value.appUpdate.copy(
+                        releaseHistory = releases,
+                        historyLoading = false,
+                        historyErrorMessage = null
+                    )
+                )
+            }.onFailure { error ->
+                _uiState.value = _uiState.value.copy(
+                    appUpdate = _uiState.value.appUpdate.copy(
+                        historyLoading = false,
+                        historyErrorMessage = if (showErrors) error.message ?: "Could not load release history" else null
+                    )
+                )
+            }
+        }
+    }
+}

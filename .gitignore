@@ -126,3 +126,30 @@ CMakeUserPresets.json
 
 .cache/
 .lldbinit
+
+# EmuCoreC local files (not part of the repository)
+local.properties
+/IGDB/
+/workers/
+/public/
+/Profiler/
+/EmuCoreC(files)/
+.firebase/
+.firebaserc
+firebase.json
+firestore.rules
+firestore.indexes.json
+app/src/main/jniLibs/
+app/src/main/jniLibs/arm64-v8a/
+
+# Firebase
+.firebaserc
+/emucorec-tools/
+
+# EmuCoreC build intermediates
+.cxx/
+app/.cxx/
+build/
+app/build/
+.gradle/
+app/release

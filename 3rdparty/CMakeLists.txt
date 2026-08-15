@@ -237,6 +237,12 @@ if (NOT ANDROID)
 else()
 	add_library(3rdparty_openal INTERFACE)
 	target_compile_definitions(3rdparty_openal INTERFACE WITHOUT_OPENAL=1)
+	# EmuCoreC: WITHOUT_OPENAL compiles out every OpenAL *call* (cellMic.cpp
+	# guards them all) but cellMic.h still includes "alc.h" unconditionally for
+	# the ALC types in its declarations. Expose the headers so the include
+	# resolves; nothing links against OpenAL on Android.
+	target_include_directories(3rdparty_openal INTERFACE
+		"${CMAKE_CURRENT_SOURCE_DIR}/OpenAL/openal-soft/include/AL")
 endif()
 
 # FAudio

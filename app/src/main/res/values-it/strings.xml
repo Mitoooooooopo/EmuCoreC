@@ -1,0 +1,1589 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="emulation_quickbar_home_menu">Menu principale RPCS3</string>
+    <string name="onboarding_storage_title">Memoria dell\'emulatore</string>
+    <string name="onboarding_status_install_firmware">Installa il software di sistema PS3 ufficiale di Sony.</string>
+    <string name="onboarding_status_ready">Configurazione completata.</string>
+    <string name="onboarding_firmware_download">Scarica</string>
+    <string name="onboarding_firmware_cancel_download">Annulla</string>
+    <string name="onboarding_firmware_downloading">Download %1$d%%</string>
+    <string name="onboarding_firmware_download_failed">Download non riuscito. Riprova.</string>
+    <string name="onboarding_back">Indietro</string>
+    <string name="onboarding_next">Avanti</string>
+    <string name="onboarding_get_started">Inizia</string>
+    <string name="nav_setup">Giochi</string>
+    <string name="nav_library">Libreria</string>
+    <string name="nav_catalog">Catalogo</string>
+    <string name="nav_settings">Impostazioni</string>
+    <string name="library_refresh">Aggiorna</string>
+    <string name="library_search_hint">Cerca giochi installati</string>
+    <string name="library_empty_title">Nessun gioco trovato</string>
+    <string name="library_empty_body">Installa i giochi nella schermata Giochi, quindi aggiorna la libreria.</string>
+    <string name="detail_launch">Avvia gioco</string>
+    <string name="detail_delete_game">Elimina gioco</string>
+    <string name="detail_delete_game_confirm_title">Eliminare il gioco installato?</string>
+    <string name="detail_delete_game_confirm_body">Questo rimuoverà i file del gioco installato dalla tua libreria.</string>
+    <string name="detail_delete_game_failed">Impossibile eliminare il gioco.</string>
+    <string name="detail_title_id">Title ID</string>
+    <string name="detail_content_id">Content ID</string>
+    <string name="detail_version">Versione</string>
+    <string name="detail_category">Categoria</string>
+    <string name="detail_overview_title">Panoramica</string>
+    <string name="detail_catalog_meta_title">Dettagli catalogo</string>
+    <string name="detail_installed_section">Gioco installato</string>
+    <string name="detail_screenshots_title">Screenshot</string>
+    <string name="detail_videos_title">Video</string>
+    <string name="detail_release_year">Anno di uscita</string>
+    <string name="detail_rating">Valutazione</string>
+    <string name="detail_genres">Generi</string>
+    <string name="detail_empty_title">Nessun dettaglio disponibile</string>
+    <string name="detail_empty_body">Nessun dato installato o del catalogo è al momento disponibile per questo gioco.</string>
+    <string name="detail_catalog_missing_body">I dettagli del catalogo sono temporaneamente non disponibili.</string>
+    <string name="detail_igdb_source_note">Alcune descrizioni e dati di gioco in questa schermata provengono da IGDB.</string>
+    <string name="detail_compatibility_title">Compatibilità</string>
+    <string name="detail_compatibility_status">Stato</string>
+    <string name="detail_compatibility_issue">Problema</string>
+    <string name="detail_compatibility_title_id_label">Title ID abbinato</string>
+    <string name="detail_compatibility_known_serials">Title ID noti</string>
+    <string name="detail_compatibility_updated">Aggiornato</string>
+    <string name="detail_compatibility_unavailable">Il database di compatibilità ufficiale di RPCS3 non è al momento disponibile.</string>
+    <string name="detail_compatibility_unmapped">Questa voce del catalogo non ha ancora un Title ID mappato nel catalogo locale.</string>
+    <string name="detail_compatibility_missing_entry">RPCS3 non ha attualmente una voce di compatibilità per questi Title ID.</string>
+    <string name="detail_compatibility_source_note">I dati provengono dalla lista di compatibilità ufficiale di RPCS3. Segnalazione #%1$d.</string>
+    <string name="detail_show_more">Mostra di più</string>
+    <string name="detail_show_less">Mostra di meno</string>
+    <string name="detail_screenshot_saved">Screenshot salvato</string>
+    <string name="detail_screenshot_save_failed">Impossibile salvare lo screenshot</string>
+    <string name="detail_save_screenshot">Salva screenshot</string>
+    <string name="compatibility_unknown">Sconosciuto</string>
+    <string name="compatibility_nothing">Niente</string>
+    <string name="compatibility_bootable">Avviabile</string>
+    <string name="compatibility_intro">Intro</string>
+    <string name="compatibility_menu">Menu</string>
+    <string name="compatibility_ingame_less">In gioco -</string>
+    <string name="compatibility_ingame_more">In gioco +</string>
+    <string name="compatibility_playable">Giocabile</string>
+    <string name="catalog_title">Catalogo PS3</string>
+    <string name="catalog_search_hint">Cerca giochi</string>
+    <string name="catalog_search_clear">Cancella ricerca</string>
+    <string name="catalog_filters_title">Filtri</string>
+    <string name="catalog_filter_genre">Genere</string>
+    <string name="catalog_filter_year">Anno</string>
+    <string name="catalog_filter_rating">Valutazione</string>
+    <string name="catalog_filter_all_genres">Tutti i generi</string>
+    <string name="catalog_filter_all_years">Tutti gli anni</string>
+    <string name="catalog_filter_any_rating">Qualsiasi valutazione</string>
+    <string name="catalog_filters_clear">Cancella filtri</string>
+    <string name="catalog_empty_title">Database del catalogo non trovato</string>
+    <string name="catalog_empty_body">Aggiungi games.db per abilitare il catalogo PS3 locale.</string>
+    <string name="catalog_no_results_title">Nessuna corrispondenza trovata</string>
+    <string name="catalog_no_results_body">Prova con un titolo, anno o ortografia diversa.</string>
+    <string name="settings_title">Impostazioni</string>
+    <string name="settings_tab_general">Generali</string>
+    <string name="settings_tab_graphics">Grafica</string>
+    <string name="settings_tab_overlay">Sovrimpressione</string>
+    <string name="settings_tab_controls">Controlli</string>
+    <string name="settings_tab_storage">Memoria</string>
+    <string name="settings_tab_about">Info</string>
+    <string name="settings_core_overlay_opacity_label">Opacità sovrimpressione</string>
+    <string name="settings_core_overlay_opacity_value">%1$d%%</string>
+    <string name="settings_core_gamepad_overlay">Mostra sovrimpressione gamepad</string>
+    <string name="settings_core_overlay_scale_label">Scala sovrimpressione</string>
+    <string name="settings_core_overlay_scale_value">%1$.1fx</string>
+    <string name="settings_core_analog_multiplier_label">Moltiplicatore analogico</string>
+    <string name="settings_core_analog_multiplier_value">%1$.1fx</string>
+    <string name="settings_storage_title">Memoria</string>
+    <string name="settings_storage_body">I dati dell\'emulatore sono memorizzati nella radice PS3 selezionata. I giochi installati sono in config/dev_hdd0/game, i salvataggi e i trofei in config/dev_hdd0/home, mentre le cache degli shader e dei file temporanei sono in cache.</string>
+    <string name="settings_about_title">Informazioni su EmuCoreC</string>
+    <string name="settings_help_content_description">Apri la guida alle impostazioni</string>
+    <string name="settings_help_dialog_label">Guida impostazione</string>
+    <string name="settings_help_dialog_tip">Cambia una sola opzione alla volta e prova la stessa scena di gioco per capire cosa migliora davvero.</string>
+    <string name="settings_help_gamepad_overlay">Mostra i controlli a schermo quando non si utilizza un controller fisico.\n\nUsalo per rendere input touch o controller più vicino al tuo modo di giocare. Evita di cambiarlo se i controlli sono già corretti, perché valori estremi possono rendere più difficili mira, menu o funzioni touch.</string>
+    <string name="settings_help_overlay_scale">Modifica la dimensione dei controlli a schermo.\n\nUsalo per rendere input touch o controller più vicino al tuo modo di giocare. Evita di cambiarlo se i controlli sono già corretti, perché valori estremi possono rendere più difficili mira, menu o funzioni touch.</string>
+    <string name="settings_help_overlay_opacity">Modifica la trasparenza dei controlli a schermo.\n\nUsalo per rendere input touch o controller più vicino al tuo modo di giocare. Evita di cambiarlo se i controlli sono già corretti, perché valori estremi possono rendere più difficili mira, menu o funzioni touch.</string>
+    <string name="settings_help_analog_multiplier">Modifica la sensibilità della levetta analogica.\n\nUsalo per rendere input touch o controller più vicino al tuo modo di giocare. Evita di cambiarlo se i controlli sono già corretti, perché valori estremi possono rendere più difficili mira, menu o funzioni touch.</string>
+    <string name="settings_reset_toast">%1$s ripristinato ai valori predefiniti</string>
+    <string name="settings_app_language">Lingua dell\'app</string>
+    <string name="settings_app_language_system">Predefinita di sistema</string>
+    <string name="settings_app_language_english">Inglese</string>
+    <string name="settings_app_language_russian">Russo</string>
+    <string name="settings_app_language_ukrainian">Ucraino</string>
+    <string name="settings_language_picker_title">Lingua</string>
+    <string name="settings_gpu_driver">Driver GPU</string>
+    <string name="settings_gpu_driver_system">Di sistema</string>
+    <string name="settings_gpu_driver_custom">Personalizzato</string>
+    <string name="settings_gpu_driver_installed">Driver installati</string>
+    <string name="settings_help_gpu_driver">Scegli tra il driver Vulkan di sistema e un driver personalizzato.\n\nUn driver personalizzato è utile soprattutto su Adreno compatibili quando il driver Vulkan di sistema ha bug grafici o prestazioni deboli. Usa il driver di sistema su Mali, PowerVR, GPU sconosciute o se il driver personalizzato causa crash.</string>
+    <string name="settings_gpu_driver_remove">Rimuovi driver</string>
+    <string name="settings_gpu_driver_none_installed">Nessun driver GPU personalizzato ancora installato.</string>
+    <string name="settings_gpu_driver_install_failed">Installazione driver GPU non riuscita.</string>
+    <string name="settings_gpu_driver_install_success">Driver GPU installato: %1$s</string>
+    <string name="settings_gpu_driver_status_system">Il driver Vulkan di sistema è attivo</string>
+    <string name="settings_gpu_driver_status_system_desc">Nessun driver personalizzato è selezionato, quindi viene utilizzato il driver Vulkan di sistema.</string>
+    <string name="settings_gpu_driver_status_active">Driver personalizzato attivo: %1$s</string>
+    <string name="settings_gpu_driver_status_active_desc">Questo driver è pronto per l\'uso con Vulkan. Il supporto effettivo dipende ancora dalla compatibilità del dispositivo.</string>
+    <string name="settings_gpu_driver_status_renderer">Driver personalizzato selezionato, ma il renderer è %1$s</string>
+    <string name="settings_gpu_driver_status_renderer_desc">I driver GPU personalizzati funzionano solo con Vulkan. Passa il renderer a Vulkan per usare questo driver.</string>
+    <string name="settings_gpu_driver_status_broken">Archivio driver incompleto: %1$s non trovato</string>
+    <string name="settings_gpu_driver_status_broken_desc">I metadati del driver esistono, ma manca la libreria Vulkan. Reinstalla il driver.</string>
+    <string name="settings_emulation_core">Core di emulazione</string>
+    <string name="settings_based_on_rpcsx">Basato su RPCS3</string>
+    <string name="settings_developer">Sviluppatore</string>
+    <string name="settings_created_by_sbro">Creato da Sashkin Apps</string>
+    <string name="settings_play_store_profile">Profilo Play Store</string>
+    <string name="settings_core_source_code">Codice sorgente del core</string>
+    <string name="settings_core_source_description">EmuCoreC utilizza la propria interfaccia Android. Solo il core di emulazione è basato su RPCS3.</string>
+    <string name="shell_setup_section">Installazione</string>
+    <string name="shell_library_section">Libreria</string>
+    <string name="shell_tools_section">Strumenti</string>
+    <string name="shell_install_content">Installa gioco</string>
+    <string name="game_launch_failed">Impossibile avviare questo gioco.</string>
+    <string name="folder_picker_failed">Impossibile utilizzare la cartella selezionata.</string>
+    <string name="core_install_firmware_failed">Impossibile avviare l\'installazione del firmware.</string>
+    <string name="core_install_firmware_unsupported">Scegli un file firmware supportato, come .PUP.</string>
+    <string name="core_install_pkg_failed">Impossibile avviare l\'installazione dei contenuti PS3.</string>
+    <string name="game_launch_requires_firmware">Installa il firmware di base prima di avviare un gioco.</string>
+    <string name="install_dialog_title_generic">Installazione</string>
+    <string name="install_dialog_title_firmware">Installazione del firmware</string>
+    <string name="install_dialog_title_pkg">Installazione dei contenuti PS3</string>
+    <string name="install_dialog_success">Installazione completata.</string>
+    <string name="install_dialog_error">Installazione non riuscita.</string>
+    <string name="install_dialog_percent">%1$d%% completato</string>
+    <string name="install_dialog_close">Chiudi</string>
+    <string name="install_dialog_unexpected_error">Si è verificato un errore durante l\'installazione.</string>
+    <string name="install_dialog_firmware_failed">Installazione del firmware non riuscita.</string>
+    <string name="install_dialog_pkg_failed">Installazione dei contenuti PS3 non riuscita.</string>
+    <string name="install_dialog_firmware_done">Pacchetto firmware installato con successo.</string>
+    <string name="install_dialog_pkg_done">Contenuti PS3 installati con successo.</string>
+    <string name="install_dialog_extracting_archive">Estrazione di %1$s…</string>
+    <string name="install_archive_missing_volume">Mancano una o più parti dell\'archivio. Seleziona tutti i volumi, incluso il primo e l\'ultimo.</string>
+    <string name="install_archive_password_protected">Gli archivi protetti da password non sono ancora supportati. Estrai prima l\'archivio o rimuovi la password.</string>
+    <string name="install_archive_unsafe">L\'archivio contiene un percorso o collegamento non sicuro ed è stato rifiutato.</string>
+    <string name="install_archive_not_enough_space">Lo spazio libero non è sufficiente per estrarre e installare questi contenuti in sicurezza.</string>
+    <string name="install_archive_no_content">Non sono stati trovati file PS3 PKG, ISO, RAP o EDAT supportati.</string>
+    <string name="install_archive_failed">L\'archivio è danneggiato, incompleto o usa un formato non supportato.</string>
+    <string name="setup_title">Installa giochi</string>
+    <string name="common_back">Indietro</string>
+    <string name="common_not_available">Non disponibile</string>
+    <string name="common_unknown">Sconosciuto</string>
+    <string name="common_close">Chiudi</string>
+    <string name="emulation_pause">Pausa</string>
+    <string name="emulation_resume">Riprendi</string>
+    <string name="emulation_menu_title">Menu di gioco</string>
+    <string name="emulation_menu_unknown_game">Gioco in esecuzione</string>
+    <string name="emulation_menu_controls_desc">Mostra o nascondi i controlli a schermo.</string>
+    <string name="emulation_menu_hide_controls">Nascondi controlli</string>
+    <string name="emulation_menu_show_controls">Mostra controlli</string>
+    <string name="emulation_menu_edit_controls">Modifica controlli</string>
+    <string name="emulation_menu_edit_controls_desc">Sposta, ridimensiona, mostra o nascondi ogni controllo su schermo.</string>
+    <string name="emulation_menu_reset_overlay">Reimposta layout controlli</string>
+    <string name="emulation_menu_reset_overlay_desc">Ripristina scala, opacità e layout predefiniti per i controlli touch.</string>
+    <string name="emulation_controls_editor_title">Editor controlli</string>
+    <string name="emulation_controls_editor_percent">%1$d%%</string>
+    <string name="emulation_controls_editor_done">Fatto</string>
+    <string name="emulation_menu_exit_game">Esci dal gioco</string>
+    <string name="emulation_exit_confirm_title">Uscire dal gioco?</string>
+    <string name="emulation_exit_confirm_body">La sessione corrente verrà chiusa e tornerai alla libreria.</string>
+    <string name="emulation_exit_confirm_action">Esci</string>
+    <string name="emulation_exit_cancel_action">Annulla</string>
+    <string name="settings_app_language_spanish">Spagnolo</string>
+    <string name="settings_app_language_french">Francese</string>
+    <string name="settings_app_language_german">Tedesco</string>
+    <string name="settings_app_language_portuguese">Portoghese</string>
+    <string name="settings_app_language_chinese_traditional">Cinese tradizionale</string>
+    <string name="settings_app_language_hindi">Hindi</string>
+    <string name="settings_app_language_italian">Italiano</string>
+    <string name="settings_gpu_driver_manage">Gestisci driver</string>
+    <string name="settings_gpu_driver_manager_title">Driver GPU</string>
+    <string name="settings_gpu_driver_manager_subtitle">Installa, scarica, applica o rimuovi i driver Adreno.</string>
+    <string name="settings_gpu_driver_active_title">Driver attivo</string>
+    <string name="settings_gpu_driver_install_from_file">Installa da file</string>
+    <string name="settings_gpu_driver_catalog">Catalogo driver</string>
+    <string name="settings_gpu_driver_refresh">Aggiorna</string>
+    <string name="settings_gpu_driver_catalog_loading">Caricamento catalogo driver…</string>
+    <string name="settings_gpu_driver_catalog_failed">Impossibile caricare il catalogo dei driver</string>
+    <string name="settings_gpu_driver_catalog_empty">Nessun driver online ancora disponibile.</string>
+    <string name="settings_gpu_driver_download_apply">Scarica e applica</string>
+    <string name="settings_gpu_driver_downloaded">Scaricato</string>
+    <string name="settings_gpu_driver_apply">Applica</string>
+    <string name="settings_gpu_driver_applied">Applicato</string>
+    <string name="settings_gpu_driver_remove_short">Rimuovi</string>
+    <string name="settings_gpu_driver_recommended">Consigliato</string>
+    <string name="settings_gpu_driver_source">Origine</string>
+    <string name="settings_gpu_driver_search">Cerca driver</string>
+    <string name="settings_gpu_driver_filter_all">Tutti</string>
+    <string name="settings_gpu_driver_no_matches">Nessun driver corrispondente</string>
+    <string name="settings_gpu_driver_no_matches_desc">Modifica il testo di ricerca o i filtri selezionati.</string>
+    <string name="settings_app_language_turkish">Turco</string>
+    <string name="save_manager_title">Salvataggi</string>
+    <string name="save_manager_open_for_game">Salvataggi</string>
+    <string name="save_manager_search_hint">Cerca salvataggi</string>
+    <string name="save_manager_export">Esporta</string>
+    <string name="save_manager_import">Importa</string>
+    <string name="save_manager_delete">Elimina salvataggio</string>
+    <string name="save_manager_delete_confirm_title">Eliminare i dati di salvataggio?</string>
+    <string name="save_manager_delete_confirm_body">Questo rimuoverà i dati di salvataggio per %1$s.</string>
+    <string name="save_manager_delete_failed">Impossibile eliminare i dati di salvataggio.</string>
+    <string name="save_manager_export_success">Dati di salvataggio esportati.</string>
+    <string name="save_manager_export_failed">Impossibile esportare i dati di salvataggio.</string>
+    <string name="save_manager_import_success">Dati di salvataggio importati: %1$s.</string>
+    <string name="save_manager_import_failed">Impossibile importare i dati di salvataggio.</string>
+    <string name="save_manager_import_empty">L\'archivio non contiene file di salvataggio.</string>
+    <string name="save_manager_import_unsafe">L\'archivio contiene percorsi non sicuri.</string>
+    <string name="save_manager_import_unknown_target">Scegli una scheda di salvataggio del gioco prima di importare questo archivio o usa un archivio con una singola cartella di salvataggio.</string>
+    <string name="save_manager_empty_title">Nessun dato di salvataggio trovato</string>
+    <string name="save_manager_empty_body">Avvia un gioco per creare dati di salvataggio o importa un archivio di salvataggio.</string>
+    <string name="save_manager_empty_game_title">Nessun dato di salvataggio per %1$s</string>
+    <string name="save_manager_empty_game_body">Avvia questo gioco per creare dati di salvataggio o importa un archivio di salvataggio per esso.</string>
+    <string name="save_manager_orphan_save">Gioco non installato</string>
+    <string name="nav_save_manager">Salvataggi</string>
+    <string name="settings_options_content_description">Opzioni impostazioni</string>
+    <string name="settings_reset_defaults_menu">Ripristina impostazioni predefinite</string>
+    <string name="settings_reset_defaults_title">Ripristinare le impostazioni predefinite?</string>
+    <string name="settings_reset_defaults_message">Questo ripristinerà le impostazioni dell\'emulatore ai valori predefiniti consigliati. I tuoi giochi, i salvataggi, la lingua dell\'app e le cartelle selezionate rimarranno invariati.</string>
+    <string name="settings_reset_defaults_confirm">Ripristina</string>
+    <string name="settings_reset_defaults_cancel">Annulla</string>
+    <string name="settings_tab_updates">Aggiornamenti</string>
+    <string name="settings_about_version">Versione app</string>
+    <string name="settings_about_version_value">Versione %1$s</string>
+    <string name="settings_about_body_extended">EmuCoreC porta l\'emulazione PS3 su Android con un\'interfaccia mobile mirata, gestione della libreria locale e un core di emulazione basato su RPCS3.</string>
+    <string name="settings_about_community_title">Community e supporto</string>
+    <string name="settings_about_repository">Repository EmuCoreC</string>
+    <string name="settings_about_repository_desc">Visualizza il codice sorgente, segnala problemi e segui lo sviluppo su GitHub.</string>
+    <string name="settings_about_discord">Unisciti al nostro Discord</string>
+    <string name="settings_about_discord_desc">Chatta con la community, condividi feedback e ricevi aggiornamenti sul progetto.</string>
+    <string name="settings_about_support">Supporta EmuCoreC</string>
+    <string name="settings_about_support_desc">Aiuta lo sviluppo a continuare attraverso l\'abbonamento Patreon.</string>
+    <string name="settings_play_store_profile_desc">Vedi altre app Android dello sviluppatore.</string>
+    <string name="settings_rpcsx_repository_desc">Apri il repository del progetto RPCS3 originale.</string>
+    <string name="settings_updates_version_label">Versione</string>
+    <string name="settings_updates_open_release">Apri la pagina della release</string>
+    <string name="settings_updates_release_notes_title">Novità</string>
+    <string name="settings_updates_release_notes_empty">Questa versione non include note di rilascio.</string>
+    <string name="settings_updates_cancel">Annulla</string>
+    <string name="settings_backup_title">Backup delle impostazioni</string>
+    <string name="settings_backup_body">Esegui il backup delle preferenze dell\'app e delle impostazioni dell\'emulatore in un file o ripristinale da un backup precedente.</string>
+    <string name="settings_backup_create">Esegui backup impostazioni</string>
+    <string name="settings_backup_restore">Ripristina backup</string>
+    <string name="settings_backup_created">Backup delle impostazioni creato.</string>
+    <string name="settings_backup_failed">Impossibile creare il backup delle impostazioni.</string>
+    <string name="settings_backup_restored">Impostazioni ripristinate dal backup.</string>
+    <string name="settings_backup_restore_failed">Impossibile ripristinare il backup delle impostazioni.</string>
+    <string name="settings_backup_restore_title">Ripristinare il backup delle impostazioni?</string>
+    <string name="settings_backup_restore_message">Le preferenze attuali dell\'app e le impostazioni dell\'emulatore verranno sostituite con il backup selezionato.</string>
+    <string name="settings_backup_restore_confirm">Ripristina</string>
+    <string name="settings_clear_cache_title">Svuota cache</string>
+    <string name="settings_clear_cache_body">Rimuove la cache degli shader, la cache delle texture, i registri e i file temporanei di installazione. Impostazioni, salvataggi, giochi installati e firmware non vengono modificati.</string>
+    <string name="settings_clear_cache_action">Svuota cache</string>
+    <string name="settings_clear_cache_size">Dimensione cache: %1$s</string>
+    <string name="settings_clear_cache_empty">Nessun dato in cache da rimuovere.</string>
+    <string name="settings_clear_cache_confirm_title">Svuotare la cache?</string>
+    <string name="settings_clear_cache_confirm_message">Verranno liberati %1$s. I giochi potrebbero avviarsi leggermente più lentamente la prima volta, mentre gli shader vengono ricreati.</string>
+    <string name="settings_clear_cache_confirm_action">Svuota</string>
+    <string name="settings_clear_cache_done">Cache svuotata, liberati %1$s.</string>
+    <string name="settings_clear_cache_failed">Impossibile svuotare la cache.</string>
+    <string name="settings_clear_cover_cache_title">Svuota cache copertine</string>
+    <string name="settings_clear_cover_cache_body">Rimuove copertine, screenshot e banner scaricati. Verranno scaricati nuovamente se necessario.</string>
+    <string name="settings_clear_cover_cache_action">Svuota cache copertine</string>
+    <string name="settings_clear_cover_cache_size">Dimensioni cache copertine: %1$s</string>
+    <string name="settings_clear_cover_cache_empty">Nessuna cache copertine da eliminare.</string>
+    <string name="settings_clear_cover_cache_confirm_title">Svuotare cache copertine?</string>
+    <string name="settings_clear_cover_cache_confirm_message">Questo eliminerà le copertine e gli screenshot salvati nella cache, liberando %1$s.</string>
+    <string name="settings_clear_cover_cache_confirm_action">Svuota</string>
+    <string name="settings_clear_cover_cache_done">Cache copertine svuotata, %1$s liberati.</string>
+    <string name="settings_clear_cover_cache_failed">Impossibile svuotare la cache copertine.</string>
+    <string name="settings_keep_screen_on">Mantieni schermo acceso</string>
+    <string name="settings_keep_screen_on_summary">Impedisce lo spegnimento dello schermo durante l\'uso dell\'app o il gioco</string>
+    <string name="emulation_quickbar_open_menu">Apri menu</string>
+    <string name="emulation_menu_paused_badge">In pausa</string>
+    <string name="emulation_menu_badge_live">Live</string>
+    <string name="emulation_menu_badge_restart">Riavvio richiesto</string>
+    <string name="emulation_menu_section_now">Ora</string>
+    <string name="emulation_menu_section_now_desc">Le modifiche si applicano istantaneamente al gioco in esecuzione.</string>
+    <string name="emulation_menu_section_touch">Controlli touch</string>
+    <string name="emulation_menu_section_touch_desc">Gamepad a schermo. Le modifiche si applicano immediatamente.</string>
+    <string name="emulation_tab_game">Gioco</string>
+    <string name="emulation_tab_controls">Controlli</string>
+    <string name="settings_gamepad_section">Gamepad fisico</string>
+    <string name="settings_gamepad_connected">Gamepad connesso. Queste impostazioni vengono applicate in tempo reale mentre giochi.</string>
+    <string name="settings_gamepad_disconnected">Collega un gamepad fisico per abilitare queste impostazioni.</string>
+    <string name="settings_gamepad_deadzone">Zona morta levetta</string>
+    <string name="settings_gamepad_trigger_threshold">Soglia del grilletto</string>
+    <string name="settings_gamepad_percent_value">%1$d%%</string>
+    <string name="settings_gamepad_button_profile">Mappatura pulsanti</string>
+    <string name="settings_gamepad_profile_standard">Standard</string>
+    <string name="settings_gamepad_profile_swap_cross_circle">Scambia Croce/Cerchio</string>
+    <string name="settings_gamepad_profile_nintendo_face">Pulsanti azione Nintendo</string>
+    <string name="settings_gamepad_swap_sticks">Scambia levette</string>
+    <string name="settings_gamepad_invert_left_y">Inverti levetta sinistra Y</string>
+    <string name="settings_gamepad_invert_right_y">Inverti levetta destra Y</string>
+    <string name="settings_help_gamepad_deadzone">Filtra i piccoli movimenti della levetta vicino al centro per ridurre la deriva. Aumentala se la telecamera o il personaggio si muovono da soli; abbassala se la mira sembra poco reattiva.</string>
+    <string name="settings_help_gamepad_trigger_threshold">Imposta quanto devono muoversi i grilletti analogici prima che venga inviato l\'input. Aumentala per i grilletti sensibili; abbassala per i giochi di corse o i controlli sensibili alla pressione.</string>
+    <string name="settings_help_gamepad_button_profile">Rimappa i pulsanti frontali fisici prima che raggiungano l\'emulatore. Usa questa opzione quando il layout del tuo controller non corrisponde alla disposizione di Croce, Cerchio, Quadrato e Triangolo di PS3.</string>
+    <string name="settings_help_gamepad_swap_sticks">Scambia gli assi della levetta sinistra e destra. Utile per giochi o controller con configurazioni insolite delle levette.</string>
+    <string name="settings_help_gamepad_invert_x">Inverte il movimento orizzontale dello stick per sterzo o telecamera.</string>
+    <string name="settings_help_gamepad_invert_y">Inverte il movimento verticale della levetta per i controlli della telecamera o della mira.</string>
+    <string name="emulation_tab_gamepad">Gamepad</string>
+    <string name="emulation_menu_section_gamepad">Gamepad fisico</string>
+    <string name="emulation_menu_section_gamepad_desc">Zona morta, rimappatura, vibrazione e comportamento delle levette per il controller connesso.</string>
+    <string name="emulation_menu_section_gamepad_disconnected">Collega un gamepad fisico per modificare questi controlli.</string>
+    <string name="game_manager_title">Gestore giochi</string>
+    <string name="game_manager_open_for_game">Impostazioni gioco</string>
+    <string name="game_manager_empty_title">Nessun gioco installato</string>
+    <string name="game_manager_empty_body">Installa prima un gioco, quindi crea un profilo personalizzato qui.</string>
+    <string name="game_manager_choose_game">Scegli gioco</string>
+    <string name="game_manager_reset_global">Usa predefinite globali</string>
+    <string name="game_manager_invert_left_x">Inverti levetta sinistra X</string>
+    <string name="game_manager_invert_right_x">Inverti levetta destra X</string>
+    <string name="nav_game_manager">Gestore giochi</string>
+    <string name="nav_play_time">Tempo di gioco</string>
+    <string name="play_time_title">Tempo di gioco</string>
+    <string name="play_time_open_for_game">Tempo di gioco</string>
+    <string name="play_time_current_session">Sessione corrente</string>
+    <string name="play_time_filter_game">Scegli gioco</string>
+    <string name="play_time_all_games">Tutti i giochi</string>
+    <string name="play_time_total_time">Tempo totale</string>
+    <string name="play_time_sessions">Sessioni</string>
+    <string name="play_time_games_played">Giochi giocati</string>
+    <string name="play_time_daily_chart">Ultimi 14 giorni</string>
+    <string name="play_time_games_chart">Tempo per gioco</string>
+    <string name="play_time_recent_sessions">Sessioni</string>
+    <string name="play_time_no_sessions_title">Nessuna sessione di gioco per ora</string>
+    <string name="play_time_no_sessions_body">Avvia un gioco e le tue sessioni di gioco appariranno qui.</string>
+    <string name="play_time_no_game_sessions_body">Questo gioco non è ancora stato giocato. Avvialo e le sue sessioni di gioco appariranno qui.</string>
+    <string name="library_add_shortcut">Aggiungi collegamento</string>
+    <string name="library_shortcut_requested">Richiesta di collegamento inviata.</string>
+    <string name="library_shortcut_unsupported">Questo launcher non supporta i collegamenti aggiunti.</string>
+    <string name="library_shortcut_failed">Impossibile creare il collegamento.</string>
+    <string name="settings_app_language_arabic">Arabo</string>
+    <string name="play_time_today">Oggi</string>
+    <string name="play_time_yesterday">Ieri</string>
+    <string name="settings_gpu_driver_global">Usa globale</string>
+    <string name="settings_gpu_driver_status_global">Uso del driver GPU globale: %1$s</string>
+    <string name="settings_gpu_driver_status_global_system">Uso del driver GPU globale: System Vulkan</string>
+    <string name="settings_gpu_driver_status_game_system">Sovrascrittura del gioco: driver System Vulkan</string>
+    <string name="settings_gpu_driver_status_game_active">Sovrascrittura del gioco: %1$s</string>
+    <string name="settings_about_website">Sito web ufficiale</string>
+    <string name="settings_about_website_desc">Apri il sito web di EmuCoreC per download, notizie e collegamenti al progetto.</string>
+    <string name="settings_gpu_driver_status_global_desc">Questo gioco segue la selezione del driver GPU globale.</string>
+    <string name="settings_gpu_driver_game_title">Driver GPU del gioco</string>
+    <string name="install_dialog_title_license">Installazione licenza</string>
+    <string name="install_dialog_license_failed">Installazione licenza non riuscita.</string>
+    <string name="install_dialog_license_done">Licenza installata con successo.</string>
+    <string name="common_cancel">Annulla</string>
+    <string name="save_manager_backup_all_title">Backup di tutti i salvataggi</string>
+    <string name="save_manager_backup_all_body">Crea un unico backup ZIP con ogni cartella di salvataggio, o ripristina le cartelle di salvataggio da un backup completo precedente.</string>
+    <string name="save_manager_backup_all">Backup</string>
+    <string name="save_manager_restore_all">Ripristina tutto</string>
+    <string name="save_manager_backup_all_success">Backup di %1$d cartelle di salvataggio completato.</string>
+    <string name="save_manager_backup_all_failed">Impossibile eseguire il backup di tutti i salvataggi.</string>
+    <string name="save_manager_restore_all_success">%1$d cartelle di salvataggio ripristinate.</string>
+    <string name="save_manager_restore_all_failed">Impossibile ripristinare tutti i salvataggi.</string>
+    <string name="save_manager_restore_all_confirm_title">Ripristinare tutti i salvataggi?</string>
+    <string name="save_manager_restore_all_confirm_body">Le cartelle di salvataggio dal backup selezionato sostituiranno le cartelle di salvataggio corrispondenti su questo dispositivo. I salvataggi esistenti vengono mantenuti solo quando il backup non contiene quell\'ID di salvataggio.</string>
+    <string name="save_manager_restore_all_confirm">Ripristina salvataggi</string>
+    <string name="settings_change_storage">Cambia memoria</string>
+    <string name="settings_storage_location_internal">Memoria del dispositivo</string>
+    <string name="settings_storage_location_sd">Scheda SD</string>
+    <string name="settings_storage_location_external">Memoria esterna</string>
+    <string name="settings_storage_change_note">Quando cambi memoria, EmuCoreC sposta i dati mancanti dell\'emulatore nella posizione selezionata. I file già presenti nella destinazione vengono mantenuti.</string>
+    <string name="onboarding_storage_choose_title">Scegli memoria dell\'emulatore</string>
+    <string name="onboarding_storage_only_default">Android sta esponendo solo un percorso di archiviazione per le app in questo momento. Se è installata una scheda SD, assicurati che sia montata e disponibile per le app.</string>
+    <string name="nav_achievements">Obiettivi</string>
+    <string name="achievements_title">Obiettivi</string>
+    <string name="achievements_progress_count">%1$d/%2$d</string>
+    <string name="achievements_choose_game">Scegli gioco</string>
+    <string name="achievements_trophy">Trofeo</string>
+    <string name="achievements_hidden_trophy">Trofeo nascosto</string>
+    <string name="achievements_hidden_trophy_body">Sblocca questo trofeo per rivelare i suoi dettagli.</string>
+    <string name="achievements_unlocked_at">Sbloccato il %1$s</string>
+    <string name="achievements_empty_title">Nessun trofeo trovato</string>
+    <string name="achievements_empty_body">Avvia un gioco che supporta i trofei o aggiorna dopo aver installato i giochi.</string>
+    <string name="achievements_open_for_game">Obiettivi</string>
+    <string name="achievements_how_to_unlock">Come sbloccare?</string>
+    <string name="achievements_translate">Traduci</string>
+    <string name="achievements_hint_title">Come sbloccare</string>
+    <string name="achievements_translation_title">Tradotto</string>
+    <string name="achievements_assist_error">Impossibile caricare. Riprova.</string>
+    <string name="emulation_achievements_loading">Caricamento dei trofei per il gioco in esecuzione.</string>
+    <string name="emulation_achievements_empty">Nessun trofeo trovato per il gioco in esecuzione.</string>
+    <string name="emulation_achievements_empty_body">Installa un gioco che supporta i trofei o aggiorna i trofei del gioco dalla libreria.</string>
+    <string name="emulation_tab_achievements">Obiettivi</string>
+    <string name="settings_storage_migrating">Spostamento dei dati dell\'emulatore…</string>
+    <string name="settings_storage_confirm_title">Cambiare la memoria dell\'emulatore?</string>
+    <string name="settings_storage_confirm_body">EmuCoreC copierà in %1$s l\'intero file system virtuale PS3, inclusi firmware, giochi, salvataggi, trofei e configurazione del core. I file esistenti saranno mantenuti; cache rigenerabili e patch resteranno nella memoria stabile dell\'app.</string>
+    <string name="settings_storage_confirm_action">Sposta dati</string>
+    <string name="settings_storage_migration_title">Spostamento dei dati dell\'emulatore</string>
+    <string name="settings_storage_migration_body">Tieni aperto EmuCoreC mentre il file system virtuale PS3 viene copiato nella memoria selezionata.</string>
+    <string name="settings_storage_migration_count">%1$d/%2$d file controllati</string>
+    <string name="settings_storage_migration_failed">Impossibile spostare la memoria</string>
+    <string name="settings_vibration_section">Vibrazione</string>
+    <string name="settings_vibration_enable">Vibrazione</string>
+    <string name="settings_vibration_strength">Intensità vibrazione</string>
+    <string name="settings_test_vibration">Testa vibrazione</string>
+    <string name="settings_test_vibration_button">Testa</string>
+    <string name="settings_device_vibration_fallback">Usa vibrazione del dispositivo come ripiego</string>
+    <string name="settings_help_vibration_enable">Consente ai giochi supportati di inviare la vibrazione a un controller fisico o, quando il ripiego è abilitato, al corpo del dispositivo Android.</string>
+    <string name="settings_help_vibration_strength">Regola l\'intensità della vibrazione per il controller e il ripiego del dispositivo.</string>
+    <string name="settings_help_test_vibration">Riproduce un breve impulso utilizzando l\'intensità di vibrazione e il routing attuali.</string>
+    <string name="settings_help_device_vibration_fallback">Fa vibrare il telefono o il dispositivo portatile quando manca un controller fisico o non espone un motore di vibrazione.</string>
+    <string name="nav_profile">Profilo</string>
+    <string name="catalog_toggle_search">Attiva/disattiva ricerca catalogo</string>
+    <string name="catalog_toggle_filters">Attiva/disattiva filtri catalogo</string>
+    <string name="catalog_profile_menu">Elenco profilo</string>
+    <string name="catalog_profile_remove">Rimuovi dal profilo</string>
+    <string name="catalog_profile_status_title">Stato di gioco</string>
+    <string name="catalog_profile_clear_status">Cancella stato di gioco</string>
+    <string name="profile_title">Profilo</string>
+    <string name="profile_game_count">%1$d giochi salvati</string>
+    <string name="profile_refresh">Aggiorna profilo</string>
+    <string name="profile_toggle_layout">Attiva/disattiva layout profilo</string>
+    <string name="profile_section_count">%1$d</string>
+    <string name="profile_status_playing">In corso</string>
+    <string name="profile_status_want_to_play">Da giocare</string>
+    <string name="profile_status_completed">Completato</string>
+    <string name="profile_status_dropped">Abbandonato</string>
+    <string name="profile_status_favorites">Preferiti</string>
+    <string name="profile_account_title">Profilo locale</string>
+    <string name="profile_account_body">Nome, avatar, preferiti ed elenchi di giochi vengono salvati solo su questo dispositivo.</string>
+    <string name="profile_hide_backup">Nascondi profilo locale</string>
+    <string name="profile_show_backup">Mostra profilo locale</string>
+    <string name="profile_user_name">Nome visualizzato</string>
+    <string name="profile_default_name">Giocatore</string>
+    <string name="profile_change_avatar">Cambia avatar</string>
+    <string name="profile_backup">Salva</string>
+    <string name="profile_empty_title">Ancora nessun gioco nel profilo</string>
+    <string name="profile_empty_body">Apri il catalogo, tocca il menu a tre puntini su un gioco e aggiungilo a uno dei tuoi elenchi del profilo.</string>
+    <string name="settings_updates_history_title">Cronologia aggiornamenti</string>
+    <string name="settings_updates_history_body">Sfoglia le release di GitHub, le date di rilascio e i log delle modifiche.</string>
+    <string name="settings_updates_history_loading">Caricamento cronologia release</string>
+    <string name="settings_updates_history_empty">Nessuna release trovata.</string>
+    <string name="settings_updates_published_label">Pubblicato</string>
+    <string name="settings_updates_parallel_title">Versioni parallele</string>
+    <string name="settings_updates_parallel_body">Android può installare più versioni di EmuCoreC solo quando una release include un APK speciale creato con un nome pacchetto e un\'etichetta app univoci, come EmuCoreC (0.1.1). I vecchi APK normali sostituiscono o effettuano il downgrade dell\'app attuale.</string>
+    <string name="settings_updates_parallel_unavailable">L\'APK separato non è disponibile per questa release.</string>
+    <string name="settings_updates_parallel_package">Pacchetto app separato</string>
+    <string name="settings_updates_parallel_download">Scarica</string>
+    <string name="emulation_controls_editor_touch_area_mode">Area touch</string>
+    <string name="emulation_controls_editor_width">Larghezza</string>
+    <string name="emulation_controls_editor_height">Altezza</string>
+    <string name="settings_tab_customization">Personalizzazione</string>
+    <string name="customization_preview_title">Anteprima</string>
+    <string name="customization_preview_subtitle">La tua raccolta, su misura per te</string>
+    <plurals name="customization_games_per_row">
+        <item quantity="one">%1$d gioco per riga</item>
+        <item quantity="other">%1$d giochi per riga</item>
+    </plurals>
+    <string name="customization_home_background">Sfondo della schermata principale</string>
+    <string name="customization_background_select">Scegli un’immagine, una GIF o un video</string>
+    <string name="customization_background_default">Sfondo predefinito</string>
+    <string name="customization_background_selected">Sfondo personalizzato selezionato</string>
+    <string name="customization_background_imported">Sfondo aggiornato</string>
+    <string name="customization_background_failed">Impossibile usare questo file come sfondo</string>
+    <string name="customization_library_layout">Layout della raccolta</string>
+    <string name="customization_cover_size">Dimensione delle copertine</string>
+    <string name="customization_percent_value">%1$d%%</string>
+    <string name="customization_text_and_fonts">Testo e caratteri</string>
+    <string name="customization_app_font">Carattere dell’app</string>
+    <string name="customization_font_system">Predefinito di sistema</string>
+    <string name="customization_font_custom">Personalizzato</string>
+    <string name="customization_import_font">Importa un carattere personalizzato</string>
+    <string name="customization_import_font_hint">Scegli un file TTF o OTF</string>
+    <string name="customization_font_imported">Carattere importato</string>
+    <string name="customization_font_failed">Impossibile usare questo file di carattere</string>
+    <string name="customization_text_size">Dimensione del testo</string>
+    <string name="customization_reset_section">Ripristino</string>
+    <string name="customization_reset">Ripristina personalizzazione</string>
+    <string name="customization_reset_description">Ripristina sfondo, dimensione delle copertine, carattere e testo predefiniti</string>
+    <string name="customization_reset_confirm_title">Ripristinare la personalizzazione?</string>
+    <string name="customization_reset_confirm_body">Lo sfondo personalizzato e il carattere importato verranno rimossi.</string>
+    <string name="customization_reset_action">Ripristina</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Sistema</string>
+    <string name="settings_theme_light">Chiaro</string>
+    <string name="settings_theme_dark">Scuro</string>
+    <string name="settings_about_privacy_policy">Informativa sulla privacy</string>
+    <string name="settings_about_privacy_policy_desc">Apri l\'informativa sulla privacy di EmuCoreC.</string>
+    <string name="shell_discord_server">Server Discord</string>
+    <string name="settings_customization_touch_controls_section">Controlli su schermo</string>
+    <string name="settings_customization_touch_controls_style">Stile controlli</string>
+    <string name="settings_customization_touch_controls_help">Cambia l\'intero design dei controlli: gusci dei pulsanti, croce direzionale, anelli degli stick, cappucci, contorni e stati di pressione. Posizioni, aree di tocco, multi-touch e logica di input restano invariati.</string>
+    <string name="settings_customization_touch_style_classic">Classico</string>
+    <string name="settings_customization_touch_style_glass">Retrò</string>
+    <string name="settings_customization_touch_style_neon">Moderno</string>
+    <string name="settings_game_menu_tab">Menu di gioco</string>
+    <string name="settings_customization_drawer_section">Menu di navigazione</string>
+    <string name="settings_customization_touch_style_arcade">Arcade</string>
+    <string name="settings_customization_touch_style_minimal">Minimale</string>
+    <string name="settings_customization_touch_press_effect">Effetto pressione</string>
+    <string name="settings_customization_touch_press_effect_help">Scegli come risponde ogni pulsante sullo schermo, direzione del D-pad e levetta analogica mentre viene premuto. Questo modifica solo l\'animazione; le dimensioni dei comandi e i target di tocco rimangono invariati.</string>
+    <string name="settings_customization_touch_press_effect_grow">Ingrandisci</string>
+    <string name="settings_customization_touch_press_effect_shrink">Comprimi</string>
+    <string name="settings_customization_touch_press_effect_spring">Molla</string>
+    <string name="settings_customization_touch_press_effect_glow">Bagliore</string>
+    <string name="settings_drawer_style_classic">Classico</string>
+    <string name="settings_drawer_style_compact">Compatto</string>
+    <string name="settings_drawer_style_glass">Vetro</string>
+    <string name="settings_drawer_style_console">Console</string>
+    <string name="settings_game_menu_layout_help">Modifica la struttura e la navigazione del menu di gioco. Le schede, la visibilità dei contenuti, le azioni di sicurezza e i controlli del gamepad rimangono condivisi in ogni layout.</string>
+    <string name="settings_game_menu_layout_sidebar">Barra laterale</string>
+    <string name="settings_game_menu_layout_dashboard">Dashboard</string>
+    <string name="settings_game_menu_layout_command_center">Centro di comando</string>
+    <string name="settings_game_menu_layout_compact">Compatto</string>
+    <string name="feedback_title">Feedback</string>
+    <string name="feedback_subtitle">Invia feedback direttamente al team EmuCoreC</string>
+    <string name="feedback_category_title">Di cosa si tratta?</string>
+    <string name="feedback_category_compatibility">Compatibilità del gioco</string>
+    <string name="feedback_category_performance">Prestazioni o scatti</string>
+    <string name="feedback_category_graphics">Grafica o rendering</string>
+    <string name="feedback_category_audio">Audio</string>
+    <string name="feedback_category_controls">Comandi o gamepad</string>
+    <string name="feedback_category_crash">Crash o blocco</string>
+    <string name="feedback_category_feature">Richiesta di funzionalità</string>
+    <string name="feedback_category_ui">Interfaccia o usabilità</string>
+    <string name="feedback_category_other">Altro</string>
+    <string name="feedback_details_title">Dettagli</string>
+    <string name="feedback_game_label">Gioco dalla tua libreria (opzionale)</string>
+    <string name="feedback_game_placeholder">Cerca per titolo o seriale, oppure digita un gioco manualmente</string>
+    <string name="feedback_game_library_empty">Nessun gioco in cache trovato. Puoi inserire manualmente un titolo o un seriale.</string>
+    <string name="feedback_game_clear_selection">Cancella selezione del gioco</string>
+    <string name="feedback_message_label">Il tuo feedback</string>
+    <string name="feedback_message_placeholder">Raccontaci cosa è successo, cosa ti aspettavi e come possiamo riprodurlo.</string>
+    <string name="feedback_character_counter">%1$d / %2$d</string>
+    <string name="feedback_attachments_title">Allegati</string>
+    <string name="feedback_attachments_help">Aggiungi fino a %1$d foto, video, log, salvataggi o altri file. Massimo %2$d MB per file e %3$d MB in totale.</string>
+    <string name="feedback_add_attachment">Aggiungi allegato</string>
+    <string name="feedback_attachment_source_title">Scegli il tipo di allegato</string>
+    <string name="feedback_add_media">Foto o video</string>
+    <string name="feedback_add_files">File</string>
+    <string name="feedback_attachment_counter">%1$d di %2$d file selezionati</string>
+    <string name="feedback_tip_title">Suggerimenti per un feedback migliore</string>
+    <string name="feedback_tip_body">Aggiungi brevi passaggi per riprodurre il problema e allega screenshot, video, log, salvataggi o altri file utili.</string>
+    <string name="feedback_remove_attachment">Rimuovi allegato</string>
+    <string name="feedback_send">Invia feedback</string>
+    <string name="feedback_queueing">Preparazione in corso…</string>
+    <string name="feedback_queued">Feedback in coda. Verrà inviato automaticamente non appena sarà disponibile una rete.</string>
+    <string name="feedback_error_message_required">Per favore, descrivi prima il tuo feedback.</string>
+    <string name="feedback_error_too_many_files">Hai selezionato troppi file.</string>
+    <string name="feedback_error_file_too_large">Uno dei file è più grande di 49 MB.</string>
+    <string name="feedback_error_total_too_large">I file selezionati superano i 90 MB in totale.</string>
+    <string name="feedback_error_file_unreadable">Uno dei file selezionati non può essere letto.</string>
+    <string name="feedback_error_queue_failed">Impossibile preparare il feedback. Controlla i file selezionati e riprova.</string>
+    <string name="feedback_not_configured">L\'invio del feedback non è configurato in questa build. Aggiungi l\'URL del Worker e la chiave API a local.properties.</string>
+    <string name="feedback_discard_title">Eliminare il feedback?</string>
+    <string name="feedback_discard_message">Il tuo messaggio e gli allegati selezionati andranno persi.</string>
+    <string name="feedback_discard_action">Elimina</string>
+    <string name="settings_customization_drawer_style">Aspetto del cassetto</string>
+    <string name="settings_touch_haptics">Feedback aptico per controlli touch</string>
+    <string name="settings_help_touch_haptics">Aggiunge un leggero feedback aptico di Android quando viene premuto per la prima volta un pulsante sullo schermo, una direzione del D-pad o uno stick analogico. Questo influenza solo la sensazione dei controlli e non modifica la vibrazione del gioco.</string>
+    <string name="settings_touch_haptics_strength">Intensità feedback aptico</string>
+    <string name="settings_help_touch_haptics_strength">Controlla l\'intensità della vibrazione del dispositivo utilizzata per il feedback aptico dei controlli touch. Aumentala se la vibrazione è troppo leggera, oppure diminuiscila per un gioco portatile più silenzioso.</string>
+    <string name="settings_touch_haptics_test">Testa feedback aptico</string>
+    <string name="settings_help_touch_haptics_test">Riproduce lo stesso impulso aptico del dispositivo utilizzato dai controlli sullo schermo, in modo da poter regolare l\'intensità prima di avviare un gioco.</string>
+    <string name="settings_touch_haptics_preset">Feedback aptico</string>
+    <string name="settings_touch_haptics_preset_soft">Morbido</string>
+    <string name="settings_touch_haptics_preset_balanced">Bilanciato</string>
+    <string name="settings_touch_haptics_preset_crisp">Netto</string>
+    <string name="settings_touch_haptics_preset_strong">Forte</string>
+    <string name="settings_help_touch_haptics_preset">Morbido usa una pressione delicata e un rilascio molto leggero. Bilanciato fornisce una pressione chiara con un rilascio più leggero ed è l\'impostazione predefinita. Netto usa la combinazione più breve e definita per tocchi precisi. Forte usa impulsi più profondi e lunghi per telefoni con motorini di vibrazione più deboli. Il cursore dell\'intensità regola la sensazione selezionata.</string>
+    <string name="settings_gyro_mode">Controllo giroscopio</string>
+    <string name="settings_gyro_off">Disattivato</string>
+    <string name="settings_gyro_aim">Mira — levetta destra</string>
+    <string name="settings_gyro_steering">Sterzo — levetta sinistra</string>
+    <string name="settings_gyro_sensitivity">Sensibilità giroscopio</string>
+    <string name="settings_gyro_smoothing">Arrotondamento giroscopio</string>
+    <string name="settings_gyro_invert_x">Inverti giroscopio orizzontale</string>
+    <string name="settings_gyro_invert_x_desc">Inverte il movimento a destra e a sinistra.</string>
+    <string name="settings_gyro_invert_y">Inverti giroscopio verticale</string>
+    <string name="settings_gyro_invert_y_desc">Inverte il movimento di mira verso l\'alto e verso il basso.</string>
+    <string name="settings_help_gyro_mode">"Mira" converte la velocità di rotazione del telefono nella levetta analogica destra per il controllo della telecamera negli sparatutto e torna automaticamente al centro quando il telefono si ferma. "Sterzo" converte l\'inclinazione del telefono nella levetta analogica sinistra per i giochi di corsa e calibra l\'angolo corrente come centro all\'avvio del gioco. La modalità selezionata viene utilizzata solo durante l\'esecuzione di un gioco e richiede il sensore di movimento corrispondente.</string>
+    <string name="settings_help_gyro_sensitivity">Controlla la forza con cui il movimento del telefono devia la levetta analogica emulata. Si consigliano regolazioni per ogni singolo gioco poiché i titoli utilizzano curve di risposta della telecamera e dello sterzo differenti.</string>
+    <string name="settings_help_gyro_smoothing">Filtra il rumore del sensore e il tremolio della mano. Valori più bassi reagiscono più velocemente; valori più alti risultano più stabili ma aggiungono una leggera latenza.</string>
+    <string name="settings_gyro_unavailable">Questo dispositivo non dispone del sensore di movimento richiesto dalla modalità selezionata.</string>
+    <string name="settings_touch_controls_section">Controlli touch</string>
+    <string name="settings_gpu_driver_detected_device">Rilevato: %1$s · %2$s</string>
+    <string name="settings_gpu_driver_device_hint">I driver compatibili sono mostrati per primi. Tocca una scheda per vedere i chip Snapdragon supportati.</string>
+    <string name="settings_gpu_driver_compatibility">Compatibilità Snapdragon</string>
+    <string name="settings_gpu_driver_best_match">Migliore corrispondenza</string>
+    <string name="settings_gpu_driver_compatible">Compatibile</string>
+    <string name="settings_gpu_driver_other_family">Altra famiglia Adreno</string>
+    <string name="settings_gpu_driver_compatibility_a6xx">Adreno 6xx: Snapdragon 845/855/865/888 e molti modelli Snapdragon serie 6/7</string>
+    <string name="settings_gpu_driver_compatibility_a7xx">Adreno 7xx: Snapdragon 8 Gen 1/2/3, 8s Gen 3, recenti modelli Snapdragon serie 7 e 6 Gen 1/3</string>
+    <string name="settings_gpu_driver_compatibility_a8xx">Adreno 8xx: Snapdragon 8 Elite Gen 5, 8 Gen 5, 8 Elite, 8s Gen 4 e 6 Gen 4</string>
+    <string name="app_name_emucorec">EmuCoreC</string>
+    <string name="home_title">PlayStation 3</string>
+    <string name="home_subtitle">Emulatore PS3 per Android</string>
+    <string name="home_installed_count">Giochi installati: %1$d</string>
+    <string name="home_catalog_count">Giochi nel catalogo: %1$d</string>
+    <string name="home_storage_short">Pronto</string>
+    <string name="home_storage_path">Memoria: %1$s</string>
+    <string name="home_open_setup">Apri giochi</string>
+    <string name="home_open_library">Apri libreria</string>
+    <string name="home_open_catalog">Sfoglia catalogo</string>
+    <string name="home_empty_library_title">Nessun gioco ancora installato</string>
+    <string name="home_recent_titles_title">Giocati di recente</string>
+    <string name="onboarding_page_1_title">PlayStation 3 su Android</string>
+    <string name="onboarding_page_1_body">Gioca ai tuoi giochi PS3 su Android con il core RPCS3.</string>
+    <string name="onboarding_page_2_title">La tua libreria di giochi</string>
+    <string name="onboarding_page_2_body">I tuoi giochi installati sono raccolti in un\'unica libreria.</string>
+    <string name="onboarding_page_3_title">Catalogo integrato</string>
+    <string name="onboarding_page_3_body">Sfoglia copertine, screenshot, video e dettagli sui giochi in un unico posto.</string>
+    <string name="onboarding_page_4_title">Quasi pronto</string>
+    <string name="home_empty_library_body">Installa il firmware ufficiale PS3, poi aggiungi giochi PKG o licenze RAP dalla schermata Giochi.</string>
+    <string name="onboarding_page_4_body">Installa il firmware ufficiale PS3 prima di avviare i giochi.</string>
+    <string name="onboarding_firmware_title">Firmware PS3</string>
+    <string name="onboarding_firmware_desc">Scarica o seleziona il file ufficiale del software di sistema PS3UPDAT.PUP.</string>
+    <string name="onboarding_firmware_info_title">Firmware ufficiale PS3</string>
+    <string name="onboarding_firmware_info_body">Il firmware viene scaricato direttamente dai server ufficiali di aggiornamento Sony. EmuCoreC non lo ospita, duplica, modifica o ridistribuisce.</string>
+    <string name="core_install_pkg_unsupported">Seleziona file PS3 PKG/ISO o tutte le parti di un archivio ZIP/RAR.</string>
+    <string name="core_install_license_unsupported">Seleziona un file di licenza RAP PS3.</string>
+    <string name="setup_pkg_title">Installa contenuti PS3</string>
+    <string name="setup_pkg_body">Installa direttamente PKG/ISO o seleziona una o più parti ZIP/RAR. I file PKG, ISO, RAP ed EDAT contenuti vengono rilevati automaticamente.</string>
+    <string name="setup_pkg_license_step_title">Installa licenza RAP</string>
+    <string name="setup_pkg_license_step_body">Seleziona la licenza RAP del tuo gioco digitale PS3.</string>
+    <string name="setup_pkg_license_button">Scegli file RAP</string>
+    <string name="setup_pkg_button">Scegli contenuti o archivi</string>
+    <string name="setup_pkg_order_note">Alcuni giochi digitali richiedono la licenza RAP corrispondente. PKG e RAP possono essere installati in qualsiasi ordine.</string>
+    <string name="install_choice_title">Installa contenuto PS3</string>
+    <string name="install_choice_body">Scegli file PKG/ISO, archivi ZIP/RAR oppure installa una licenza RAP.</string>
+    <string name="install_choice_pkg_without_license_note">Puoi selezionare insieme tutti i volumi di un ZIP/RAR diviso. EmuCoreC lo estrae in sicurezza, trova i contenuti PS3, installa le parti in ordine naturale ed elimina i file temporanei.</string>
+    <string name="ps3_core_settings_unavailable">Non è stato possibile caricare o inizializzare il core RPCS3.</string>
+    <string name="ps3_core_setting_rejected">Il core RPCS3 ha rifiutato «%1$s».</string>
+    <string name="ps3_core_setting_default">Valore predefinito del core: %1$s</string>
+    <string name="ps3_core_setting_reset_game">Ripristina questa impostazione al valore globale</string>
+    <string name="catalog_open_for_game">Apri nel catalogo</string>
+    <string name="catalog_serial_not_found">Questo codice seriale PS3 non è presente nel catalogo locale.</string>
+    <string name="settings_rpcs3_repository_desc">Repository dell’emulatore PlayStation 3 originale RPCS3. Grazie a tutti i collaboratori per il core su cui questo progetto si basa.</string>
+    <string name="settings_tab_audio">Audio</string>
+    <string name="settings_tab_network">Rete</string>
+    <string name="settings_tab_advanced">Avanzate</string>
+    <string name="shell_launch_system_menu">Avvia PS3</string>
+    <string name="system_menu_launch_failed">Impossibile avviare il menu di sistema PS3.</string>
+    <!-- Core settings: generated from the live RPCS3 config schema. -->
+    <!-- Generated from the live RPCS3 configuration schema. -->
+    <string name="core_setting_edit">Modifica valore</string>
+    <string name="core_setting_value">Valore</string>
+    <string name="core_setting_apply">Applicare</string>
+    <string name="core_setting_cancel">Annulla</string>
+    <string name="core_setting_default_value">Predefinito: %1$s</string>
+    <string name="core_setting_no_options">In questa sezione non sono disponibili impostazioni supportate.</string>
+    <string name="core_label_1_controller">1 controllore</string>
+    <string name="core_label_120">120</string>
+    <string name="core_label_1280x1080">1280x1080</string>
+    <string name="core_label_1280x720">1280x720</string>
+    <string name="core_label_1440x1080">1440x1080</string>
+    <string name="core_label_16_9">16:9</string>
+    <string name="core_label_1600x1080">1600x1080</string>
+    <string name="core_label_1920x1080">1920x1080</string>
+    <string name="core_label_1920x1080i">1920x1080i</string>
+    <string name="core_label_2_controllers">2 controllori</string>
+    <string name="core_label_30">30</string>
+    <string name="core_label_3d_display_enabled">Visualizzazione 3D abilitata</string>
+    <string name="core_label_3d_display_mode">Modalità di visualizzazione 3D</string>
+    <string name="core_label_4_3">4:3</string>
+    <string name="core_label_50">50</string>
+    <string name="core_label_60">60</string>
+    <string name="core_label_720x480">720x480</string>
+    <string name="core_label_720x480i">720x480i</string>
+    <string name="core_label_720x576">720x576</string>
+    <string name="core_label_720x576i">720x576i</string>
+    <string name="core_label_960x1080">960x1080</string>
+    <string name="core_label_accurate">Preciso</string>
+    <string name="core_label_accurate_cache_line_stores">Archivi di linee di cache accurati</string>
+    <string name="core_label_accurate_ppu_128_byte_reservation_op_max_length">Lunghezza massima operazione di prenotazione PPU accurata da 128 byte</string>
+    <string name="core_label_accurate_rsx_reservation_access">Accesso accurato alla prenotazione RSX</string>
+    <string name="core_label_accurate_spu_dma">DMA SPU accurato</string>
+    <string name="core_label_accurate_spu_reservations">Prenotazioni SPU accurate</string>
+    <string name="core_label_accurate_zcull_stats">Statistiche ZCULL accurate</string>
+    <string name="core_label_adapter">Adattatore</string>
+    <string name="core_label_adaptive">Adattivo</string>
+    <string name="core_label_all">Tutto</string>
+    <string name="core_label_all_timers">Tutti i timer</string>
+    <string name="core_label_allow_custom_background">Consenti sfondo personalizzato</string>
+    <string name="core_label_allow_host_gpu_labels">Consenti etichette GPU host</string>
+    <string name="core_label_allow_move_hue_set_by_game">Consenti la tonalità di spostamento impostata dal gioco</string>
+    <string name="core_label_allow_rsx_cpu_preemptions">Consenti prelazioni CPU RSX</string>
+    <string name="core_label_anaglyph_amber_blue">Anaglifi Ambra-Blu</string>
+    <string name="core_label_anaglyph_custom">Anaglifi personalizzati</string>
+    <string name="core_label_anaglyph_magenta_cyan">Anaglifo Magenta-Ciano</string>
+    <string name="core_label_anaglyph_red_blue">Anaglifo Rosso-Blu</string>
+    <string name="core_label_anaglyph_red_cyan">Anaglifo Rosso-Ciano</string>
+    <string name="core_label_anaglyph_red_green">Anaglifo Rosso-Verde</string>
+    <string name="core_label_anaglyph_trioscopic">Anaglifo trioscopico</string>
+    <string name="core_label_anisotropic_filter_override">Override del filtro anisotropico</string>
+    <string name="core_label_approximate">Approssimativo</string>
+    <string name="core_label_as_host">Come ospite</string>
+    <string name="core_label_aspect_ratio">Proporzioni</string>
+    <string name="core_label_assume_external_debugger">Assumere un debugger esterno</string>
+    <string name="core_label_async_recompiler_multi_threaded">Ricompilatore asincrono (multi-thread)</string>
+    <string name="core_label_async_recompiler_with_shader_interpreter">Ricompilatore asincrono con interprete Shader</string>
+    <string name="core_label_asynchronous_queue_scheduler">Pianificatore di code asincrono</string>
+    <string name="core_label_asynchronous_texture_streaming">Streaming asincrono di texture</string>
+    <string name="core_label_atomic">Atomico</string>
+    <string name="core_label_audio">Audio</string>
+    <string name="core_label_audio_channel_layout">Disposizione dei canali audio</string>
+    <string name="core_label_audio_device">Dispositivo audio</string>
+    <string name="core_label_audio_format">Formato audio</string>
+    <string name="core_label_audio_formats">Formati audio</string>
+    <string name="core_label_audio_provider">Fornitore audio</string>
+    <string name="core_label_auto">Automatico</string>
+    <string name="core_label_automatic">Automatico</string>
+    <string name="core_label_automatically_start_games_after_boot">Avvia automaticamente i giochi dopo l\'avvio</string>
+    <string name="core_label_av_multiout">Uscita multipla AV</string>
+    <string name="core_label_background_input_enabled">Ingresso in background abilitato</string>
+    <string name="core_label_basic">Essenziale</string>
+    <string name="core_label_bilinear">Bilineare</string>
+    <string name="core_label_bind_address">Associa l\'indirizzo</string>
+    <string name="core_label_blur_effect_strength">Intensità dell\'effetto sfocato</string>
+    <string name="core_label_body_background_hex">Sfondo del corpo (esadecimale)</string>
+    <string name="core_label_body_color_hex">Colore corpo (esadecimale)</string>
+    <string name="core_label_both">Entrambi</string>
+    <string name="core_label_bottom_left">In basso a sinistra</string>
+    <string name="core_label_bottom_right">In basso a destra</string>
+    <string name="core_label_buzz_emulated_controller">Controller emulato da Buzz</string>
+    <string name="core_label_camera">Fotocamera</string>
+    <string name="core_label_camera_flip">Capovolgimento della fotocamera</string>
+    <string name="core_label_camera_id">Identificativo della fotocamera</string>
+    <string name="core_label_camera_type">Tipo di fotocamera</string>
+    <string name="core_label_cellaudio">CellAudio</string>
+    <string name="core_label_center_horizontally">Center Horizontally</string>
+    <string name="core_label_center_vertically">Centra verticalmente</string>
+    <string name="core_label_clans_enabled">Clan abilitati</string>
+    <string name="core_label_clock12">Orologio12</string>
+    <string name="core_label_clock24">Orologio24</string>
+    <string name="core_label_clocks_scale">Scala degli orologi</string>
+    <string name="core_label_compatible_savestate_mode">Modalità di salvataggio compatibile</string>
+    <string name="core_label_connected">Connesso</string>
+    <string name="core_label_consecutive_frames_to_draw">Cornici consecutive da disegnare</string>
+    <string name="core_label_consecutive_frames_to_skip">Fotogrammi consecutivi da saltare</string>
+    <string name="core_label_console_psid">PSID della console</string>
+    <string name="core_label_console_time_offset_s">Offset temporale della console (s)</string>
+    <string name="core_label_convert_to_16_bit">Converti a 16 bit</string>
+    <string name="core_label_core">Nucleo</string>
+    <string name="core_label_cubeb">Cubeb</string>
+    <string name="core_label_custom_anaglyph_matrices">Custom Anaglyph Matrices</string>
+    <string name="core_label_darkening_effect_strength">Intensità dell\'effetto oscurante</string>
+    <string name="core_label_date_format">Formato data</string>
+    <string name="core_label_ddmmyyyy">Ggmmaaaa</string>
+    <string name="core_label_debug_console_mode">Modalità console di debug</string>
+    <string name="core_label_debug_output">Uscita di debug</string>
+    <string name="core_label_debug_overlay">Sovrapposizione di debug</string>
+    <string name="core_label_debug_program_analyser">Analizzatore del programma di debug</string>
+    <string name="core_label_decr_memory_layout">Disposizione della memoria DECR</string>
+    <string name="core_label_derive_mac_from_psid">Deriva il MAC dal PSID</string>
+    <string name="core_label_desired_audio_buffer_duration">Durata del buffer audio desiderata</string>
+    <string name="core_label_detail_level">Livello di dettaglio</string>
+    <string name="core_label_disable">Disabilita</string>
+    <string name="core_label_disable_asynchronous_memory_manager">Disabilitare il gestore della memoria asincrona</string>
+    <string name="core_label_disable_fifo_reordering">Disabilita il riordino FIFO</string>
+    <string name="core_label_disable_hardware_colorspace_remapping">Disable Hardware ColorSpace Remapping</string>
+    <string name="core_label_disable_msl_fast_math">Disabilita matematica veloce MSL</string>
+    <string name="core_label_disable_on_disk_shader_cache">Disabilita la cache dello shader su disco</string>
+    <string name="core_label_disable_sampling_skip">Disabilita il salto del campionamento</string>
+    <string name="core_label_disable_spu_getllar_spin_optimization">Disabilita l\'ottimizzazione della rotazione SPU GETLLAR</string>
+    <string name="core_label_disable_vertex_cache">Disabilita cache dei vertici</string>
+    <string name="core_label_disable_video_output">Disabilita uscita video</string>
+    <string name="core_label_disable_vulkan_memory_allocator">Disabilita l\'allocatore di memoria Vulkan</string>
+    <string name="core_label_disable_zcull_occlusion_queries">Disabilita le query di occlusione ZCull</string>
+    <string name="core_label_disabled">Disabilitato</string>
+    <string name="core_label_disconnected">Disconnesso</string>
+    <string name="core_label_disk_cache_maximum_size_mb">Dimensione massima della cache del disco (MB)</string>
+    <string name="core_label_display">Visualizzazione</string>
+    <string name="core_label_display_aspect_override">Visualizza la sostituzione dell\'aspetto</string>
+    <string name="core_label_dns_address">Indirizzo DNS</string>
+    <string name="core_label_driver_recovery_timeout">Timeout ripristino driver</string>
+    <string name="core_label_driver_wake_up_delay">Ritardo sveglia conducente</string>
+    <string name="core_label_dump_to_file">Scarica su file</string>
+    <string name="core_label_empty_dev_hdd0_tmp">Vuoto /dev_hdd0/tmp/</string>
+    <string name="core_label_emulate_special_depth_comparison">Emula confronto profondità speciale</string>
+    <string name="core_label_emulated_midi_devices">Dispositivi Midi emulati</string>
+    <string name="core_label_enable">Abilita</string>
+    <string name="core_label_enable_host_root">Abilita /host_root/</string>
+    <string name="core_label_enable_buffering">Abilita buffering</string>
+    <string name="core_label_enable_frame_skip">Abilita salto fotogramma</string>
+    <string name="core_label_enable_framerate_graph">Abilita il grafico del framerate</string>
+    <string name="core_label_enable_frametime_graph">Abilita grafico frametime</string>
+    <string name="core_label_enable_gamemode">Abilita la modalità gioco</string>
+    <string name="core_label_enable_performance_report">Abilita rapporto sulle prestazioni</string>
+    <string name="core_label_enable_time_stretching">Abilita dilatazione del tempo</string>
+    <string name="core_label_enabled">Abilitato</string>
+    <string name="core_label_enter_button_assignment">Inserisci l\'assegnazione dei pulsanti</string>
+    <string name="core_label_enter_with_circle">Entra con il cerchio</string>
+    <string name="core_label_enter_with_cross">Entra con la croce</string>
+    <string name="core_label_exclusive_fullscreen_mode">Modalità a schermo intero esclusiva</string>
+    <string name="core_label_exit_rpcs3_when_process_finishes">Uscire da RPCS3 al termine del processo</string>
+    <string name="core_label_eyetoy">EyeToy</string>
+    <string name="core_label_fake">Falso</string>
+    <string name="core_label_fake_move_rotation_cone">Cono di rotazione del movimento falso</string>
+    <string name="core_label_fake_move_rotation_cone_vertical">Cono di rotazione con movimento falso (verticale)</string>
+    <string name="core_label_fast">Veloce</string>
+    <string name="core_label_faudio">FAudio</string>
+    <string name="core_label_fidelityfx_cas_sharpening_intensity">Intensità di affilatura FidelityFX CAS</string>
+    <string name="core_label_fidelityfx_super_resolution">FidelityFX Super Risoluzione</string>
+    <string name="core_label_font">Carattere</string>
+    <string name="core_label_font_size_px">Dimensione carattere (px)</string>
+    <string name="core_label_force_cpu_blit">Forza il blit della CPU</string>
+    <string name="core_label_force_hardware_msaa_resolve">Forza risoluzione MSAA hardware</string>
+    <string name="core_label_force_high_precision_z_buffer">Buffer Z Force ad alta precisione</string>
+    <string name="core_label_frame_limit">Limite del fotogramma</string>
+    <string name="core_label_framebuffer_aliasing_heuristic_bias">Distorsione euristica dell\'aliasing del framebuffer</string>
+    <string name="core_label_framerate_datapoints">Punti dati framerate</string>
+    <string name="core_label_framerate_graph_detail_level">Livello di dettaglio del grafico framerate</string>
+    <string name="core_label_frametime_datapoints">Punti dati frametime</string>
+    <string name="core_label_frametime_graph_detail_level">Livello di dettaglio del grafico frametime</string>
+    <string name="core_label_full">Pieno</string>
+    <string name="core_label_gdb_server">Server GDB</string>
+    <string name="core_label_ghltar_emulated_controller">Controller emulato GHLtar</string>
+    <string name="core_label_giga">Giga</string>
+    <string name="core_label_gun">Pistola</string>
+    <string name="core_label_handle_rsx_memory_tiling">Gestire l\'affiancamento della memoria RSX</string>
+    <string name="core_label_hdd_model_name">Nome del modello dell\'HDD</string>
+    <string name="core_label_hdd_serial_number">Numero di serie dell\'HDD</string>
+    <string name="core_label_hdmi_0">HDMI0</string>
+    <string name="core_label_hdmi_1">HDMI1</string>
+    <string name="core_label_high">Alto</string>
+    <string name="core_label_hle_lwmutex">HLE lwmutex</string>
+    <string name="core_label_hook_static_functions">Aggancio di funzioni statiche</string>
+    <string name="core_label_horizontal">Orizzontale</string>
+    <string name="core_label_horizontal_margin" formatted="false">Margine orizzontale (%)</string>
+    <string name="core_label_inaccurate">Impreciso</string>
+    <string name="core_label_infinite">Infinito</string>
+    <string name="core_label_initialize_directories">Inizializza le directory</string>
+    <string name="core_label_input_output">Ingresso/Uscita</string>
+    <string name="core_label_inspection_mode_savestates">Stati di salvataggio della modalità di ispezione</string>
+    <string name="core_label_interlaced">Interlacciato</string>
+    <string name="core_label_internet_enabled">Abilitato a Internet</string>
+    <string name="core_label_interpreter_dynamic">Interprete (dinamico)</string>
+    <string name="core_label_interpreter_static">Interprete (statico)</string>
+    <string name="core_label_io_debug_overlay">Sovrapposizione di debug IO</string>
+    <string name="core_label_ip_address">Indirizzo IP</string>
+    <string name="core_label_ip_swap_list">Elenco di scambio IP</string>
+    <string name="core_label_keep_pads_connected">Mantenere gli elettrodi collegati</string>
+    <string name="core_label_keyboard">Tastiera</string>
+    <string name="core_label_keyboard_type">Tipo di tastiera</string>
+    <string name="core_label_language">Lingua</string>
+    <string name="core_label_legacy_recompiler_single_threaded">Ricompilatore legacy (a thread singolo)</string>
+    <string name="core_label_libraries_control">Controllo delle biblioteche</string>
+    <string name="core_label_license_area">Area di licenza</string>
+    <string name="core_label_limit_disk_cache_size">Limita la dimensione della cache del disco</string>
+    <string name="core_label_llvm_precompilation">Precompilazione LLVM</string>
+    <string name="core_label_load_sdl_gamecontroller_mappings">Carica le mappature di SDL GameController</string>
+    <string name="core_label_lock_overlay_input_to_player_one">Blocca l\'input in sovrimpressione sul giocatore uno</string>
+    <string name="core_label_log">Registro</string>
+    <string name="core_label_log_shader_programs">Programmi di shader del registro</string>
+    <string name="core_label_low">Basso</string>
+    <string name="core_label_manual">Manuale</string>
+    <string name="core_label_master_volume">Volume principale</string>
+    <string name="core_label_matrix_left">Matrice a sinistra</string>
+    <string name="core_label_matrix_right">Matrice Giusto</string>
+    <string name="core_label_max_cpu_preempt_count">Conteggio massimo di preemption della CPU</string>
+    <string name="core_label_max_llvm_compile_threads">Numero massimo di thread di compilazione LLVM</string>
+    <string name="core_label_max_spurs_threads">Discussioni SPURS massime</string>
+    <string name="core_label_maximum_savestate_files">Numero massimo di file SaveState</string>
+    <string name="core_label_maximum_savestate_files_space_mib">Spazio massimo per i file SaveState (MiB)</string>
+    <string name="core_label_medium">Medio</string>
+    <string name="core_label_mega">Mega</string>
+    <string name="core_label_metrics_update_interval_ms">Intervallo di aggiornamento delle metriche (ms)</string>
+    <string name="core_label_mfc_commands_shuffling_in_steps">Comandi MFC che si mescolano gradualmente</string>
+    <string name="core_label_mfc_commands_shuffling_limit">Limite di riproduzione casuale dei comandi MFC</string>
+    <string name="core_label_mfc_commands_timeout">Timeout comandi MFC</string>
+    <string name="core_label_mfc_debug">Debug MFC</string>
+    <string name="core_label_microphone_devices">Dispositivi microfonici</string>
+    <string name="core_label_microphone_type">Tipo di microfono</string>
+    <string name="core_label_minimal">Minimo</string>
+    <string name="core_label_minimum_scalable_dimension">Dimensione minima scalabile</string>
+    <string name="core_label_miscellaneous">Varie</string>
+    <string name="core_label_mmddyyyy">Mmddyyyy</string>
+    <string name="core_label_mono">Mono</string>
+    <string name="core_label_mouse">Topo</string>
+    <string name="core_label_mouse_debug_overlay">Sovrapposizione di debug del mouse</string>
+    <string name="core_label_mouse_based_gyro_enabled">Giroscopio basato sul mouse abilitato</string>
+    <string name="core_label_move">Muoviti</string>
+    <string name="core_label_msaa">MSAA</string>
+    <string name="core_label_multi_threaded">Multi-thread</string>
+    <string name="core_label_multithreaded_rsx">RSX multithread</string>
+    <string name="core_label_music_handler">Gestore della musica</string>
+    <string name="core_label_nearest">Il più vicino</string>
+    <string name="core_label_net">Netto</string>
+    <string name="core_label_none">Nessuno</string>
+    <string name="core_label_null">Nullo</string>
+    <string name="core_label_off">Spento</string>
+    <string name="core_label_opacity" formatted="false">Opacità (%)</string>
+    <string name="core_label_opengl">OpenGL</string>
+    <string name="core_label_operating_system">Sistema operativo</string>
+    <string name="core_label_ordered_atomic">Ordinato e atomico</string>
+    <string name="core_label_output_scaling_mode">Modalità di ridimensionamento dell\'output</string>
+    <string name="core_label_over_under">Sopra-sotto</string>
+    <string name="core_label_pad_handler_mode">Modalità di gestione del pad</string>
+    <string name="core_label_pad_handler_sleep_microseconds">Sospensione del gestore del pad (microsecondi)</string>
+    <string name="core_label_paint_move_spheres">Dipingi le sfere mobili</string>
+    <string name="core_label_pause_emulation_during_home_menu">Sospendi l\'emulazione durante il menu Home</string>
+    <string name="core_label_pause_emulation_on_rpcs3_focus_loss">Sospende l\'emulazione in caso di perdita del focus RPCS3</string>
+    <string name="core_label_performance_overlay">Sovrapposizione delle prestazioni</string>
+    <string name="core_label_performance_report_threshold">Soglia del rapporto sulle prestazioni</string>
+    <string name="core_label_play_music_during_boot_sequence">Riproduci musica durante la sequenza di avvio</string>
+    <string name="core_label_position">Posizione</string>
+    <string name="core_label_ppu_accurate_non_java_mode">Modalità non Java accurata PPU</string>
+    <string name="core_label_ppu_accurate_vector_nan_values">Valori NaN vettoriali accurati PPU</string>
+    <string name="core_label_ppu_calling_history">Cronologia chiamate PPU</string>
+    <string name="core_label_ppu_debug">Debug dell\'PUPU</string>
+    <string name="core_label_ppu_decoder">Decodificatore PPU</string>
+    <string name="core_label_ppu_profiler">Profilo PPU</string>
+    <string name="core_label_ppu_reservation_priority_over_spus">Priorità di prenotazione PPU rispetto alle SPU</string>
+    <string name="core_label_ppu_set_fpcc_bits">PPU Imposta i bit FPCC</string>
+    <string name="core_label_ppu_set_saturation_bit">PPU imposta il bit di saturazione</string>
+    <string name="core_label_ppu_threads">Fili PPU</string>
+    <string name="core_label_ppu_vector_nan_handling">Gestione NaN vettoriale PPU</string>
+    <string name="core_label_precise_spu_verification">Verifica SPU precisa</string>
+    <string name="core_label_prefer_color">Preferisci il colore</string>
+    <string name="core_label_prefer_depth">Preferisci la profondità</string>
+    <string name="core_label_preferred_spu_threads">Thread SPU preferiti</string>
+    <string name="core_label_prevent_display_sleep_while_running_games">Evita la sospensione del display durante l\'esecuzione dei giochi</string>
+    <string name="core_label_process_argv">Processo ARGV</string>
+    <string name="core_label_ps_eye">PS Occhio</string>
+    <string name="core_label_ps3">PS3</string>
+    <string name="core_label_ps3_native">Nativo per PS3</string>
+    <string name="core_label_psn_country">Paese PSN</string>
+    <string name="core_label_psn_status">Stato del PSN</string>
+    <string name="core_label_qt">Qt</string>
+    <string name="core_label_quadraphonic">Quadrafonico</string>
+    <string name="core_label_quadraphonic_lfe">LFE quadrifonico</string>
+    <string name="core_label_raw">Crudo</string>
+    <string name="core_label_raw_mouse">Topo crudo</string>
+    <string name="core_label_read_color_buffers">Leggi Buffer di colore</string>
+    <string name="core_label_read_depth_buffer">Leggi il buffer di profondità</string>
+    <string name="core_label_real">Reale</string>
+    <string name="core_label_real_singstar">La vera SingStar</string>
+    <string name="core_label_recompiler_asmjit">Ricompilatore (ASMJIT)</string>
+    <string name="core_label_recompiler_llvm">Ricompilatore (LLVM)</string>
+    <string name="core_label_record_with_overlays">Registra con sovrapposizioni</string>
+    <string name="core_label_relaxed">Rilassato</string>
+    <string name="core_label_relaxed_zcull_sync">Sincronizzazione ZCULL rilassata</string>
+    <string name="core_label_renderdoc_compatibility_mode">Modalità di compatibilità Renderdoc</string>
+    <string name="core_label_renderer">Render</string>
+    <string name="core_label_resolution">Risoluzione</string>
+    <string name="core_label_resolution_scale">Scala di risoluzione</string>
+    <string name="core_label_rocksmith">Fabbro delle rocce</string>
+    <string name="core_label_rpcn">RPCN</string>
+    <string name="core_label_rpcs3_alternative_scheduler">Programmatore alternativo RPCS3</string>
+    <string name="core_label_rpcs3_scheduler">Programmatore RPCS3</string>
+    <string name="core_label_rsx_fifo_fetch_accuracy">Precisione di recupero RSX FIFO</string>
+    <string name="core_label_rsx_profiler">Profilo RSX</string>
+    <string name="core_label_rsxaudio">RSXAudio</string>
+    <string name="core_label_rsxaudio_avport">RSXAudio Avporto</string>
+    <string name="core_label_safe">Sicuro</string>
+    <string name="core_label_save_disc_game_data">Save Disc Game Data</string>
+    <string name="core_label_save_llvm_logs">Salva i registri LLVM</string>
+    <string name="core_label_savestate">Savestate</string>
+    <string name="core_label_screen_size_in_inches">Dimensioni dello schermo in pollici</string>
+    <string name="core_label_sdl">SDL</string>
+    <string name="core_label_sdl_camera_id">ID della fotocamera SDL</string>
+    <string name="core_label_second_frame_limit">Secondo limite del fotogramma</string>
+    <string name="core_label_set_daz_and_ftz">Imposta DAZ e FTZ</string>
+    <string name="core_label_shader_chain_librashader">Catena di shader (librashader)</string>
+    <string name="core_label_shader_compiler_threads">Thread del compilatore shader</string>
+    <string name="core_label_shader_interpreter_only">Solo interprete shader</string>
+    <string name="core_label_shader_loading_dialog">Finestra di dialogo di caricamento dello shader</string>
+    <string name="core_label_shader_mode">Modalità Shader</string>
+    <string name="core_label_shader_precision">Precisione dello shader</string>
+    <string name="core_label_shader_preset_path">Percorso predefinito dello shader</string>
+    <string name="core_label_show_1_and_average" formatted="false">Mostra 1% e media</string>
+    <string name="core_label_show_analog_limiter_toggle_hint">Mostra il suggerimento per l\'attivazione/disattivazione del limitatore analogico</string>
+    <string name="core_label_show_autosave_autoload_hint">Mostra suggerimento per il salvataggio/caricamento automatico</string>
+    <string name="core_label_show_capture_hints">Mostra suggerimenti per l\'acquisizione</string>
+    <string name="core_label_show_fatal_error_hints">Mostra suggerimenti per errori irreversibili</string>
+    <string name="core_label_show_min_and_max">Mostra minimo e massimo</string>
+    <string name="core_label_show_mouse_and_keyboard_toggle_hint">Mostra il suggerimento per l\'attivazione/disattivazione del mouse e della tastiera</string>
+    <string name="core_label_show_move_cursor">Mostra cursore di spostamento</string>
+    <string name="core_label_show_ppu_compilation_hint">Mostra il suggerimento per la compilazione della PPU</string>
+    <string name="core_label_show_pressure_intensity_toggle_hint">Mostra il suggerimento per attivare/disattivare l\'intensità della pressione</string>
+    <string name="core_label_show_rpcn_popups">Mostra i popup RPCN</string>
+    <string name="core_label_show_shader_compilation_hint">Mostra il suggerimento per la compilazione dello shader</string>
+    <string name="core_label_show_trophy_popups">Show trophy popups</string>
+    <string name="core_label_side_by_side">Fianco a fianco</string>
+    <string name="core_label_silence_all_logs">Silenzia tutti i registri</string>
+    <string name="core_label_simulated">Simulato</string>
+    <string name="core_label_single_threaded">A thread singolo</string>
+    <string name="core_label_singstar">SingStar</string>
+    <string name="core_label_sleep_timers_accuracy">Precisione dei timer di spegnimento</string>
+    <string name="core_label_spdif_0">SPDIF0</string>
+    <string name="core_label_spdif_1">SPDIF1</string>
+    <string name="core_label_spu_block_size">Dimensioni del blocco SPU</string>
+    <string name="core_label_spu_cache">Cache dell\'SPU</string>
+    <string name="core_label_spu_debug">Debug dell\'SPU</string>
+    <string name="core_label_spu_decoder">Decodificatore SPU</string>
+    <string name="core_label_spu_delay_penalty">Penalità ritardo SPU</string>
+    <string name="core_label_spu_getllar_busy_waiting_percentage">SPU GETLLAR Percentuale di attesa occupato</string>
+    <string name="core_label_spu_llvm_lower_bound">Limite inferiore LLVM SPU</string>
+    <string name="core_label_spu_llvm_upper_bound">SPU LLVM Limite superiore</string>
+    <string name="core_label_spu_loop_detection">SPU loop detection</string>
+    <string name="core_label_spu_profiler">Profilo SPU</string>
+    <string name="core_label_spu_reservation_busy_waiting_enabled">Attesa di prenotazione SPU occupata abilitata</string>
+    <string name="core_label_spu_reservation_busy_waiting_percentage_1">Percentuale di attesa di prenotazione SPU occupata 1</string>
+    <string name="core_label_spu_verification">Verifica SPU</string>
+    <string name="core_label_spu_wake_up_delay">Ritardo di riattivazione della SPU</string>
+    <string name="core_label_spu_wake_up_delay_thread_mask">Maschera filettata con ritardo di riattivazione SPU</string>
+    <string name="core_label_spu_xfloat_accuracy">Precisione SPU XFloat</string>
+    <string name="core_label_standard">Norma</string>
+    <string name="core_label_start_games_in_fullscreen_mode">Avvia i giochi in modalità a schermo intero</string>
+    <string name="core_label_start_paused">Inizio in pausa</string>
+    <string name="core_label_stereo">Stereo</string>
+    <string name="core_label_stereo_lfe">LFE stereo</string>
+    <string name="core_label_stretch_to_display_area">Allunga all\'area di visualizzazione</string>
+    <string name="core_label_strict_rendering_mode">Modalità di rendering rigorosa</string>
+    <string name="core_label_strict_texture_flushing">Lavaggio rigoroso della struttura</string>
+    <string name="core_label_stub_ppu_traps">Trappole Stub PPU</string>
+    <string name="core_label_surround_5_1">Circondare 5.1</string>
+    <string name="core_label_surround_7_1">Circondare 7.1</string>
+    <string name="core_label_suspend_emulation_savestate_mode">Sospende la modalità di salvataggio dell\'emulazione</string>
+    <string name="core_label_system">Sistema</string>
+    <string name="core_label_system_name">Nome del sistema</string>
+    <string name="core_label_texture_lod_bias_addend">Aggiunta bias LOD texture</string>
+    <string name="core_label_thread_scheduler_mode">Modalità di pianificazione thread</string>
+    <string name="core_label_time_format">Formato ora</string>
+    <string name="core_label_time_stretching_threshold">Soglia di dilatazione del tempo</string>
+    <string name="core_label_title_background_hex">Sfondo del titolo (esadecimale)</string>
+    <string name="core_label_title_color_hex">Colore titolo (esadecimale)</string>
+    <string name="core_label_top_left">In alto a sinistra</string>
+    <string name="core_label_top_right">In alto a destra</string>
+    <string name="core_label_turntable_emulated_controller">Controller emulato del giradischi</string>
+    <string name="core_label_ultra">Ultra</string>
+    <string name="core_label_unknown">Sconosciuto</string>
+    <string name="core_label_upnp_enabled">UPNP abilitato</string>
+    <string name="core_label_use_accurate_dfma">Utilizza DFMA accurato</string>
+    <string name="core_label_use_full_rgb_output_range">Utilizza l\'intera gamma di output RGB</string>
+    <string name="core_label_use_gpu_texture_scaling">Utilizza il ridimensionamento della trama GPU</string>
+    <string name="core_label_use_llvm_cpu">Utilizza la CPU LLVM</string>
+    <string name="core_label_use_native_user_interface">Utilizza l\'interfaccia utente nativa</string>
+    <string name="core_label_use_re_bar_for_gpu_uploads">Utilizza Re-BAR per i caricamenti su GPU</string>
+    <string name="core_label_use_recursive_scan">Utilizza la scansione ricorsiva</string>
+    <string name="core_label_use_window_space">Usa lo spazio della finestra</string>
+    <string name="core_label_usleep_only">Solo per dormire</string>
+    <string name="core_label_usleep_time_addend">Aggiunta del tempo di sonno</string>
+    <string name="core_label_uvc_1_1">UVC 1.1</string>
+    <string name="core_label_vblank_ntsc_fixup">Correzione di Vblank NTSC</string>
+    <string name="core_label_vblank_rate">Tasso di vuoto</string>
+    <string name="core_label_vertical">Verticale</string>
+    <string name="core_label_vertical_margin" formatted="false">Margine verticale (%)</string>
+    <string name="core_label_vfs">VFS</string>
+    <string name="core_label_video">Video</string>
+    <string name="core_label_vram_allocation_limit_mb">Limite di allocazione VRAM (MB)</string>
+    <string name="core_label_vsync_mode">Modalità VSync</string>
+    <string name="core_label_vulkan">Vulcano</string>
+    <string name="core_label_window_title_format">Formato del titolo della finestra</string>
+    <string name="core_label_write_color_buffers">Scrivi buffer di colore</string>
+    <string name="core_label_write_depth_buffer">Scrivi buffer di profondità</string>
+    <string name="core_label_xaudio2">XAudio2</string>
+    <string name="core_label_yyyymmdd">Aaaammgg</string>
+    <string name="core_help_core_accurate_cache_line_stores" formatted="false">Elabora accuratamente l\'istruzione PPU DCBZ.
+Inoltre, se combinati con Accurate SPU DMA, gli accessi alla linea della cache SPU PUT verranno elaborati in modo atomico.</string>
+    <string name="core_help_core_use_accurate_dfma" formatted="false">Utilizza istruzioni FMA precise a doppia precisione nei backend PPU e SPU.
+Anche se disabilitarlo potrebbe dare un discreto incremento delle prestazioni se la tua CPU non supporta FMA, potrebbe anche introdurre piccoli bug che altrimenti non si verificherebbero.
+Non dovresti disabilitarlo se la tua CPU supporta FMA.</string>
+    <string name="core_help_core_accurate_ppu_128_byte_reservation_op_max_length" formatted="false">Se abilitate, le operazioni atomiche della PPU funzioneranno sull\'intera linea di dati della cache, invece che su un singolo blocco di memoria a 64 bit quando disabilitate.
+I valori numerici controllano se abilitare o meno la versione accurata in base alla lunghezza dell\'operazione atomica.</string>
+    <string name="core_help_core_ppu_set_fpcc_bits" formatted="false">Imposta con precisione i bit FPCC nei backend PPU.
+In caso di dubbi, non modificare questa impostazione.</string>
+    <string name="core_help_core_ppu_accurate_non_java_mode" formatted="false">Rispettare i valori dei bit in modalità non Java per le operazioni vettoriali nei backend PPU.
+In caso di dubbi, non modificare questa impostazione.</string>
+    <string name="core_help_core_ppu_set_saturation_bit" formatted="false">Imposta con precisione i valori dei bit di saturazione nei backend PPU.
+In caso di dubbi, non modificare questa impostazione.</string>
+    <string name="core_help_core_ppu_accurate_vector_nan_values" formatted="false">Imposta con precisione i risultati NaN nelle istruzioni vettoriali nei backend PPU.
+In caso di dubbi, non modificare questa impostazione.</string>
+    <string name="core_help_core_accurate_rsx_reservation_access" formatted="false">Forza le pause RSX sulle operazioni SPU MFC_GETLLAR e SPU MFC_PUTLLUC.</string>
+    <string name="core_help_core_accurate_spu_dma" formatted="false">Elabora accuratamente le operazioni DMA SPU.</string>
+    <string name="core_help_video_allow_host_gpu_labels" formatted="false">Consente alla GPU host di sincronizzarsi direttamente con CELL. Ciò comporta una riduzione delle prestazioni, ma espone il vero stato degli oggetti GPU alla CPU guest. Può aiutare a eliminare il rumore visivo e i disturbi visivi a scapito delle prestazioni. Usare con cautela.</string>
+    <string name="core_help_video_anisotropic_filter_override" formatted="false">Valori più alti aumentano la nitidezza delle texture su superfici inclinate a scapito delle risorse GPU.
+Le GPU moderne possono gestire bene questa impostazione, anche a 16x.
+Mantienilo su Automatico se desideri utilizzare l\'impostazione originale utilizzata da una vera PS3.</string>
+    <string name="core_help_video_aspect_ratio" formatted="false">Lascialo su 16:9 a meno che tu non abbia un monitor 4:3.</string>
+    <string name="core_help_audio_rsxaudio_avport" formatted="false">Controlla da quale AVPORT viene utilizzato per campionare i dati audio.</string>
+    <string name="core_help_audio_desired_audio_buffer_duration" formatted="false">Durata del buffer target in millisecondi.
+Valori più alti semplificano il lavoro dell\'algoritmo di buffering, ma possono introdurre una notevole latenza audio.</string>
+    <string name="core_help_audio_audio_channel_layout" formatted="false">Determina il formato audio di RPCS3.
+Utilizzare \'Auto\' per consentire a RPCS3 di decidere il formato migliore in base al dispositivo audio e al formato audio emulato.</string>
+    <string name="core_help_audio_audio_device" formatted="false">Controlla quale dispositivo viene utilizzato dal backend audio.</string>
+    <string name="core_help_audio_audio_format" formatted="false">Determina il formato audio dell\'emulazione.
+Configura questa impostazione se desideri passare dall\'audio stereo a quello surround.
+La modifica di questi valori richiede il riavvio del gioco.
+L\'impostazione manuale utilizzerà i formati selezionati mentre l\'impostazione automatica consentirà al gioco di scegliere tra tutti i formati disponibili.</string>
+    <string name="core_help_audio_audio_formats" formatted="false">Determina il formato audio dell\'emulazione.
+Configura questa impostazione se desideri passare dall\'audio stereo a quello surround.
+La modifica di questi valori richiede il riavvio del gioco.
+L\'impostazione manuale utilizzerà i formati selezionati mentre l\'impostazione automatica consentirà al gioco di scegliere tra tutti i formati disponibili.</string>
+    <string name="core_help_audio_audio_provider" formatted="false">Controlla quale API audio PS3 viene utilizzata.
+I giochi utilizzano CellAudio, mentre VSH richiede RSXAudio.</string>
+    <string name="core_help_audio_renderer" formatted="false">Cubeb utilizza un approccio multipiattaforma e supporta il buffering audio, quindi è l\'opzione consigliata.
+Se non è disponibile, è possibile utilizzare FAudio.</string>
+    <string name="core_help_input_output_background_input_enabled" formatted="false">Consente l\'input da pad e tastiera mentre la finestra di gioco non è focalizzata.</string>
+    <string name="core_help_net_bind_address" formatted="false">Indirizzo IP dell\'interfaccia a cui associarsi.
+Disponibile solo in configurazioni personalizzate.</string>
+    <string name="core_help_input_output_buzz_emulated_controller" formatted="false">Buzz! supporto.
+Seleziona 1 o 2 controller se il gioco richiede Buzz! controller e non hai controller reali.
+Seleziona Null se il gioco supporta DualShock o se hai un vero Buzz! controllori.</string>
+    <string name="core_help_input_output_camera" formatted="false">Seleziona Qt Camera per utilizzare la fotocamera predefinita del tuo sistema operativo.</string>
+    <string name="core_help_input_output_camera_flip" formatted="false">Capovolge l\'immagine della telecamera orizzontalmente, verticalmente o su entrambi gli assi.</string>
+    <string name="core_help_input_output_camera_id" formatted="false">Seleziona la fotocamera che desideri utilizzare durante il gioco.</string>
+    <string name="core_help_input_output_camera_type" formatted="false">A seconda del gioco, potrebbe essere necessario selezionare un tipo di telecamera specifico.</string>
+    <string name="core_help_core_clocks_scale" formatted="false">Modifica la scala dell\'ora del sistema emulato.
+Influisce sul software che utilizza l\'ora del sistema per calcolare cose come i passaggi temporali dinamici.</string>
+    <string name="core_help_savestate_compatible_savestate_mode" formatted="false">Quando questa modalità è attiva, l\'emulazione SPU dà priorità alla compatibilità dello stato di salvataggio, tuttavia, potrebbe ridurre leggermente le prestazioni.
+Quando questa modalità è disattivata, alcuni giochi potrebbero non consentire la creazione di uno stato di salvataggio e mostrare un errore di pausa della SPU nel registro.</string>
+    <string name="core_help_system_console_time_offset_s" formatted="false">Imposta l\'ora da utilizzare all\'interno della console. Questo verrà applicato come offset che tiene traccia dell\'ora dell\'orologio a muro.
+Può essere ripristinato all\'ora corrente dell\'orologio a muro facendo clic su &quot;Imposta su ora&quot;.</string>
+    <string name="core_help_audio_convert_to_16_bit" formatted="false">Utilizza campioni audio a 16 bit invece del punto mobile predefinito a 32 bit.
+Utilizzare con driver audio difettosi se non si sente alcun suono o il suono è completamente rotto.</string>
+    <string name="core_help_video_custom_anaglyph_matrices_matrix_left" formatted="false">Imposta la modalità di rendering stereo 3D (disponibile solo nelle configurazioni personalizzate con una risoluzione predefinita di 720p).
+L\'anaglifo utilizza colori diversi per ciascun occhio, che possono poi essere filtrati con determinati occhiali.
+Side-by-Side è più comunemente supportato dalle app visualizzatore VR.
+Over-Under è più vicino all\'uscita stereo nativa, ma meno comunemente supportato.</string>
+    <string name="core_help_video_custom_anaglyph_matrices_matrix_right" formatted="false">Imposta la modalità di rendering stereo 3D (disponibile solo nelle configurazioni personalizzate con una risoluzione predefinita di 720p).
+L\'anaglifo utilizza colori diversi per ciascun occhio, che possono poi essere filtrati con determinati occhiali.
+Side-by-Side è più comunemente supportato dalle app visualizzatore VR.
+Over-Under è più vicino all\'uscita stereo nativa, ma meno comunemente supportato.</string>
+    <string name="core_help_system_date_format" formatted="false">Seleziona il formato della data della PS3.</string>
+    <string name="core_help_core_debug_console_mode" formatted="false">Aumenta la quantità di memoria di sistema utilizzabile per corrispondere a una console DECR e altro ancora.
+Fa sì che alcuni software si comportino diversamente rispetto all\'hardware venduto al dettaglio.</string>
+    <string name="core_help_video_debug_output" formatted="false">Abilita la funzionalità di debug integrata dell\'API selezionata.
+Causerà un grave degrado delle prestazioni soprattutto con Vulkan.
+Utile solo agli sviluppatori.
+In caso di dubbi, non utilizzare questa opzione.</string>
+    <string name="core_help_video_debug_overlay" formatted="false">Fornisce una sovrapposizione grafica di varie informazioni di debug.
+In caso di dubbi, non utilizzare questa opzione.</string>
+    <string name="core_help_net_derive_mac_from_psid" formatted="false">Ricavare l\'indirizzo MAC dal PSID.</string>
+    <string name="core_help_video_disable_asynchronous_memory_manager" formatted="false">Forza l\'incorporamento delle chiamate di gestione della memoria dell\'host anziché la gestione asincrona.
+Ciò può causare un grave degrado delle prestazioni e rallentamenti in alcuni giochi.
+Questa opzione è necessaria solo agli sviluppatori per eseguire il debug dei problemi con la protezione della memoria della cache delle texture.</string>
+    <string name="core_help_video_disable_fifo_reordering" formatted="false">Disabilita completamente le ottimizzazioni FIFO RSX. Le estrazioni vengono elaborate non appena vengono ricevute dall\'estrattore DMA.</string>
+    <string name="core_help_video_disable_hardware_colorspace_remapping" formatted="false">Disabilita l\'uso di formati di rimappatura dello spazio colore nativi dell\'hardware come i suffissi _sRGB e _SNORM.
+Disabilitare questa opzione aumenta la precisione rispetto a PS3 ma può anche introdurre del rumore dovuto al funzionamento dell\'emulazione del software.</string>
+    <string name="core_help_video_disable_msl_fast_math" formatted="false">Disabilita la matematica veloce per gli shader MSL, che potrebbero violare lo standard IEEE 754.
+Disabilitarlo potrebbe correggere alcuni artefatti, soprattutto sulle GPU Apple, a scapito delle prestazioni.</string>
+    <string name="core_help_video_disable_zcull_occlusion_queries" formatted="false">Disabilita l\'esecuzione delle query di occlusione. Aumento delle prestazioni da lieve a moderato.
+Potrebbe introdurre problemi con l\'occlusione interrotta, ad esempio geometria mancante e pop-in estremo.</string>
+    <string name="core_help_video_disable_on_disk_shader_cache" formatted="false">Disabilita il caricamento e il salvataggio degli shader da e nella cache degli shader nella directory dei dati.</string>
+    <string name="core_help_core_disable_spu_getllar_spin_optimization" formatted="false">Disabilita l\'ottimizzazione della rotazione SPU GETLLAR.
+Ciò può causare un grave degrado delle prestazioni e rallentamenti in molti giochi.
+Questa opzione è necessaria solo per un numero selezionato di giochi.</string>
+    <string name="core_help_video_disable_vertex_cache" formatted="false">Disabilita la cache dei vertici.
+Potrebbe risolvere l\'output grafico mancante o tremolante.
+Potrebbe peggiorare le prestazioni.</string>
+    <string name="core_help_video_disable_video_output" formatted="false">Disabilita tutte le uscite video e il rendering grafico PS3.
+Il suo unico caso d\'uso è valutare le prestazioni su CELL per lo sviluppo.</string>
+    <string name="core_help_video_disable_vulkan_memory_allocator" formatted="false">Disabilita l\'allocatore di memoria Vulkan personalizzato e ripristina le chiamate dirette a VkAllocateMemory/VkFreeMemory.</string>
+    <string name="core_help_net_dns_address" formatted="false">DNS utilizzato per risolvere i nomi host dalle applicazioni.</string>
+    <string name="core_help_video_driver_wake_up_delay" formatted="false">Controlla il tempo impiegato da RSX per avviare l\'elaborazione dopo il risveglio da parte del processore Cell.
+L\'aumento del ritardo di riattivazione migliora la stabilità, ma valori molto elevati possono ridurre le prestazioni RSX/GPU.
+Si consiglia di regolarlo con incrementi da 20 μs a 40 μs fino a raggiungere il valore migliore per una stabilità ottimale.</string>
+    <string name="core_help_audio_dump_to_file" formatted="false">Salva tutto l\'audio come file wave non elaborato. Se non sei sicuro, lascialo deselezionato.</string>
+    <string name="core_help_vfs_empty_dev_hdd0_tmp" formatted="false">Richiesto per alcuni Homebrew o mod di gioco.
+In caso di dubbi, non utilizzare questa opzione</string>
+    <string name="core_help_video_emulate_special_depth_comparison" formatted="false">Emula operazioni di confronto approfondito in cui il comportamento dell\'hardware desktop differisce da quello di PS3, in genere modalità di confronto UGUALI.
+Risolve l\'eccessivo sfarfallio delle ombre e il combattimento Z in alcuni giochi.
+Ciò è particolarmente evidente in alcuni giochi in cui il formato di profondità di prepass Z è diverso dal formato di profondità di rasterizzazione, uno scenario che non funzionerà mai correttamente su hardware desktop compatibile.</string>
+    <string name="core_help_audio_enable_buffering" formatted="false">Abilita il buffering audio, che riduce il crepitio/la balbuzie ma aumenta la latenza audio.</string>
+    <string name="core_help_net_clans_enabled" formatted="false">Abilita la connessione al server Clan.
+Interessa solo i giochi che supportano la funzionalità Clan.</string>
+    <string name="core_help_core_spu_reservation_busy_waiting_enabled" formatted="false">Abilita la rotazione SPU RdEventStat.
+Ciò aumenta l\'utilizzo della CPU, questa impostazione è vantaggiosa per le CPU con thread elevato (12+) con un numero selezionato di giochi.</string>
+    <string name="core_help_miscellaneous_enable_gamemode" formatted="false">Attiva la modalità gioco di Feral Interactive.
+Si tratta di una serie di ottimizzazioni di CPU e GPU e possono potenzialmente apportare benefici alle prestazioni di gioco su alcuni sistemi.</string>
+    <string name="core_help_vfs_enable_host_root" formatted="false">Necessario per alcuni Homebrew.
+In caso di dubbi, non utilizzare questa opzione.</string>
+    <string name="core_help_audio_enable_time_stretching" formatted="false">Abilita il time stretching: richiede che il buffering sia abilitato.
+Riduce ulteriormente il crepitio/la balbuzie, ma può causare una riduzione molto evidente della qualità audio su CPU più lente.</string>
+    <string name="core_help_net_upnp_enabled" formatted="false">Abilita UPNP.
+Questo inoltrerà automaticamente le porte legate a 0.0.0.0 se il tuo router ha UPNP abilitato.</string>
+    <string name="core_help_system_enter_button_assignment" formatted="false">Il pulsante utilizzato per accedere/accettare/confermare nelle finestre di dialogo del sistema.
+Modificalo per utilizzare invece il pulsante Cerchio, che è la configurazione predefinita sui sistemi giapponesi e in molti giochi giapponesi.
+In questi casi avere il pulsante croce assegnato può spesso creare confusione.</string>
+    <string name="core_help_video_vulkan_exclusive_fullscreen_mode" formatted="false">Controlla la modalità a schermo intero richiesta da RPCS3 ai driver quando si utilizza il renderer Vulkan.
+La modalità automatica consentirà al conducente di scegliere una modalità appropriata, mentre le altre opzioni suggeriranno ai conducenti se utilizzare lo schermo intero esclusivo o senza bordi.
+L\'utilizzo dell\'opzione Preferisci schermo intero senza bordi può essere utile se riscontri problemi con lo streaming del gameplay RPCS3 o se il tuo sistema abilita erroneamente la modalità HDR quando utilizzi lo schermo intero.</string>
+    <string name="core_help_miscellaneous_exit_rpcs3_when_process_finishes" formatted="false">Chiudi automaticamente RPCS3 quando chiudi un gioco o quando un gioco si chiude da solo.</string>
+    <string name="core_help_core_rsx_fifo_fetch_accuracy" formatted="false">&quot;Veloce&quot; è l\'impostazione meno precisa, RSX non emula il buffer FIFO atomico.
+&quot;Atomic&quot; migliora notevolmente la stabilità in molti giochi con una minima penalizzazione delle prestazioni.
+&quot;Atomic &amp; Ordered&quot; è il più accurato ma è il più lento e senza grandi vantaggi in termini di stabilità nei giochi.</string>
+    <string name="core_help_video_force_cpu_blit" formatted="false">Forza l\'emulazione di tutte le operazioni di blit e di manipolazione delle immagini sulla CPU.
+Richiede che anche l\'opzione \'Scrivi buffer colore\' sia abilitata nella maggior parte dei casi per evitare la perdita di grafica.
+Riduce significativamente le prestazioni ma in alcuni casi è più preciso.
+Questa impostazione sovrascrive l\'opzione &quot;Ridimensionamento texture GPU&quot;.</string>
+    <string name="core_help_video_force_high_precision_z_buffer" formatted="false">Utile solo durante il debug delle differenze nell\'hardware della GPU.
+Non necessario per gli utenti medi.
+In caso di dubbi, non utilizzare questa opzione.</string>
+    <string name="core_help_video_force_hardware_msaa_resolve" formatted="false">Forza MSAA a utilizzare le funzionalità di risoluzione della GPU host per tutte le operazioni di campionamento.
+Questa opzione comporta una riduzione delle prestazioni e il rischio di artefatti visivi, ma può produrre immagini più nitide quando MSAA è abilitato.</string>
+    <string name="core_help_video_framebuffer_aliasing_heuristic_bias" formatted="false">Controlla il modo in cui RPCS3 risolve le destinazioni di rendering in cui colore e profondità creano alias la stessa memoria. La modalità automatica è consigliata per la maggior parte dei giochi.
+· Auto è il comportamento esistente, sbilanciato verso la profondità.
+· Preferisci colore mantiene la rilegatura del colore quando la scrittura a colori è abilitata e la scrittura in profondità no. Risolve la geometria mancante in alcuni renderer differiti (ad esempio Starhawk) a costo di saltare il test di profondità per quel disegno.
+Per il momento Profondità preferita è la stessa di Auto.</string>
+    <string name="core_help_video_frame_limit" formatted="false">Disattivato è l\'opzione più veloce.
+L\'uso del limitatore di frame aggiungerà ulteriore sovraccarico e rallenterà il gioco. Tuttavia, alcuni giochi si bloccheranno se il framerate è troppo alto.
+Il nativo PS3 dovrebbe essere utilizzato solo se Auto non funziona correttamente in quanto può introdurre problemi di frame pacing.
+Infinite aggiunge un ciclo di feedback positivo che aggiunge un altro segnale vblank per frame consentendo a più giochi di avere fps illimitati.
+Gli utenti esperti che necessitano di altri limiti di frame dovrebbero utilizzare l\'impostazione &quot;Secondo limite di frame&quot; nel file di configurazione.</string>
+    <string name="core_help_video_fidelityfx_cas_sharpening_intensity" formatted="false">Controlla la forza di nitidezza applicata da FidelityFX Super Risoluzione. Valori più alti daranno un output più nitido ma potrebbero introdurre artefatti.</string>
+    <string name="core_help_input_output_ghltar_emulated_controller" formatted="false">Guitar Hero Live (GHL) Supporto per controller per chitarra.
+Seleziona 1 o 2 controller se il gioco richiede controller per chitarra GHL e non disponi di veri controller per chitarra.
+Seleziona Null se il gioco supporta DualShock o se disponi di veri controller per chitarra.
+Un vero controller per chitarra può essere utilizzato contemporaneamente a un controller per chitarra emulato.</string>
+    <string name="core_help_video_use_gpu_texture_scaling" formatted="false">Forza tutte le operazioni di trasferimento, ridimensionamento e conversione delle texture sulla GPU.
+In alcuni casi può causare la corruzione della trama.</string>
+    <string name="core_help_video_handle_rsx_memory_tiling" formatted="false">Rispettare la configurazione di affiancamento della memoria RSX durante la scrittura dei dati GPU nella memoria VM.
+Ciò può correggere il danneggiamento della grafica osservato quando sono abilitate le opzioni Leggi colore o Profondità lettura.</string>
+    <string name="core_help_core_hook_static_functions" formatted="false">Permette di agganciare alcune funzioni come \'memcpy\' sostituendole con implementazioni di alto livello. Può non fare nulla o rompere le cose. Sperimentale.</string>
+    <string name="core_help_net_internet_enabled" formatted="false">Se impostato su Connesso, RPCS3 consentirà ai programmi di utilizzare la connessione Internet.</string>
+    <string name="core_help_input_output_io_debug_overlay" formatted="false">Fornisce una sovrapposizione grafica con i valori di input del pad per il giocatore 1.
+Questo viene mostrato solo se l\'overlay di debug è disabilitato.
+In caso di dubbi, non utilizzare questa opzione.</string>
+    <string name="core_help_net_ip_swap_list" formatted="false">Elenco di scambio DNS.
+Disponibile solo in configurazioni personalizzate.</string>
+    <string name="core_help_input_output_keyboard" formatted="false">Alcuni giochi supportano l\'input da tastiera nativo.
+Basic funzionerà in questi casi.</string>
+    <string name="core_help_system_keyboard_type" formatted="false">Imposta il layout della tastiera utilizzata.
+Al momento sono completamente supportati solo i layout statunitensi, giapponesi e tedeschi.</string>
+    <string name="core_help_system_language" formatted="false">Alcuni giochi potrebbero non avviarsi se la lingua del sistema non è disponibile nel gioco stesso.
+Gli altri giochi cambieranno automaticamente la lingua in base a quella selezionata qui.
+Si consiglia di lasciarlo su una lingua supportata dal gioco.</string>
+    <string name="core_help_system_license_area" formatted="false">La regione della console definisce l\'area di licenza della PS3.
+A seconda dell\'area di licenza, alcuni giochi potrebbero non funzionare.</string>
+    <string name="core_help_vfs_limit_disk_cache_size" formatted="false">Rimuove automaticamente i file più vecchi dalla cache del disco all\'avvio se diventano più grandi del valore specificato.
+I giochi possono utilizzare la cartella cache per archiviare temporaneamente i dati al di fuori della memoria di sistema. Non viene utilizzato per la conservazione a lungo termine.
+
+Questa impostazione è disponibile solo nella configurazione globale.</string>
+    <string name="core_help_core_llvm_precompilation" formatted="false">Cerca nella directory del gioco e precompila moduli PPU e SPU aggiuntivi durante l\'avvio.
+Se disabilitati, questi moduli verranno compilati solo quando necessario. A seconda del gioco, ciò potrebbe interrompere il gioco in modo imprevisto e possibilmente frequente.
+Disabilitalo solo se vuoi entrare in gioco più velocemente.</string>
+    <string name="core_help_input_output_lock_overlay_input_to_player_one" formatted="false">Blocca l\'input dell\'overlay nativo al primo giocatore.</string>
+    <string name="core_help_video_log_shader_programs" formatted="false">Scarica gli shader del gioco nel file. Utile solo agli sviluppatori.
+In caso di dubbi, non utilizzare questa opzione.</string>
+    <string name="core_help_audio_master_volume" formatted="false">Controlla il volume generale dell\'emulazione.
+Valori superiori al 100% potrebbero ridurre la qualità audio.</string>
+    <string name="core_help_vfs_disk_cache_maximum_size_mb" formatted="false">Rimuove automaticamente i file più vecchi dalla cache del disco all\'avvio se diventano più grandi del valore specificato.
+I giochi possono utilizzare la cartella cache per archiviare temporaneamente i dati al di fuori della memoria di sistema. Non viene utilizzato per la conservazione a lungo termine.
+
+Questa impostazione è disponibile solo nella configurazione globale.</string>
+    <string name="core_help_core_max_llvm_compile_threads" formatted="false">Limita il numero massimo di thread utilizzati per la compilazione iniziale della PPU e del modulo SPU.
+Abbassarlo per aumentare le prestazioni di altre applicazioni aperte.
+L\'impostazione predefinita utilizza tutti i thread disponibili.</string>
+    <string name="core_help_core_max_cpu_preempt_count" formatted="false">Riduce l\'utilizzo della CPU e il consumo energetico, migliorando la durata della batteria sui dispositivi mobili. (0 significa disabilitato)
+Valori più alti provocano un effetto più pronunciato, ma potrebbero causare problemi di audio o prestazioni. Si consiglia un valore pari o inferiore a 50.
+Questa opzione impone un limite FPS perché è attiva quando il framerate è stabile.
+Più leggero è il gioco sull\'hardware, maggiore sarà il risparmio energetico. (fino al raggiungimento della barriera del conteggio di prelazione)</string>
+    <string name="core_help_core_max_spurs_threads" formatted="false">Limita il numero massimo di thread SPURS in ciascun gruppo di thread.
+Può migliorare le prestazioni in alcuni casi, soprattutto su sistemi con un numero limitato di thread hardware.
+Limitare il numero di thread potrebbe causare arresti anomali; si consiglia di mantenerlo al valore predefinito.</string>
+    <string name="core_help_core_mfc_commands_shuffling_limit" formatted="false">Forza il ritardo di qualsiasi comando MFC dispari, attende almeno 2 comandi pendenti per eseguirli in ordine casuale.
+Al momento deve essere utilizzato con uno degli interpreti SPU.
+Riduce gravemente le prestazioni! In caso di dubbi, non utilizzare questa opzione.</string>
+    <string name="core_help_core_mfc_debug" formatted="false">Crea registri MFC.
+Utile solo agli sviluppatori.
+Non usarlo mai.</string>
+    <string name="core_help_audio_microphone_devices" formatted="false">Lo standard dovrebbe essere utilizzato per la maggior parte dei giochi.
+SingStar emula un dispositivo SingStar e deve essere utilizzato con i giochi SingStar.
+Real SingStar deve essere utilizzato solo con un dispositivo REAL SingStar con giochi SingStar.
+Rocksmith deve essere utilizzato con un dongle Rocksmith.</string>
+    <string name="core_help_audio_microphone_type" formatted="false">Lo standard dovrebbe essere utilizzato per la maggior parte dei giochi.
+SingStar emula un dispositivo SingStar e deve essere utilizzato con i giochi SingStar.
+Real SingStar deve essere utilizzato solo con un dispositivo REAL SingStar con giochi SingStar.
+Rocksmith deve essere utilizzato con un dongle Rocksmith.</string>
+    <string name="core_help_input_output_emulated_midi_devices" formatted="false">Seleziona fino a 3 dispositivi MIDI emulati e i loro tipi.</string>
+    <string name="core_help_video_minimum_scalable_dimension" formatted="false">Verrà eseguito l\'upscaling solo dei framebuffer superiori a questa dimensione.
+L\'aumento di questo valore potrebbe risolvere i problemi relativi alla grafica mancante durante l\'upscaling, soprattutto quando è abilitata la scrittura dei buffer di colore.
+In caso di dubbi, non modificare questa opzione.</string>
+    <string name="core_help_input_output_mouse_based_gyro_enabled" formatted="false">Abilita l\'emulazione del giroscopio basato sul mouse all\'avvio del gioco. Può anche essere attivato in qualsiasi momento con il tasto di scelta rapida associato.
+Tieni premuto il pulsante destro del mouse per attivare l\'input del giroscopio: spostando il mouse si mappa sugli assi di movimento X e Z e la rotella di scorrimento si mappa sull\'asse Y. Rilasciare il pulsante per reimpostare i valori di movimento.</string>
+    <string name="core_help_input_output_mouse_debug_overlay" formatted="false">Fornisce una sovrapposizione grafica con i valori di input del mouse.
+Questo viene mostrato solo se gli altri overlay di debug sono disabilitati.
+In caso di dubbi, non utilizzare questa opzione.</string>
+    <string name="core_help_input_output_mouse" formatted="false">Alcuni giochi supportano l\'input nativo del mouse.
+Basic o Raw funzioneranno in questi casi.</string>
+    <string name="core_help_input_output_move" formatted="false">Il gestore PS Move è consigliato per i controller PS Move ufficiali.</string>
+    <string name="core_help_video_msaa" formatted="false">Emula il layout multicampionamento PS3.
+Può risolvere alcuni problemi grafici altrimenti difficili da risolvere.
+Calo delle prestazioni da basso a moderato a seconda dell\'hardware della GPU.</string>
+    <string name="core_help_video_multithreaded_rsx" formatted="false">Scarica alcune operazioni RSX su un thread secondario.
+Migliora le prestazioni per i processori high-core.
+Potrebbe causare un rallentamento nelle CPU più deboli a causa del carico aggiuntivo del thread di lavoro.</string>
+    <string name="core_help_audio_music_handler" formatted="false">Attualmente utilizzato solo per l\'emulazione cellMusic.
+Seleziona Qt per utilizzare il dispositivo di output predefinito del tuo sistema operativo.
+Potrebbe non essere possibile riprodurre tutti i formati audio.</string>
+    <string name="core_help_core_ppu_threads" formatted="false">Influisce sulla quantità massima di thread PPU in esecuzione contemporaneamente, il valore 1 ha una compatibilità molto bassa con i giochi.
+2 è l\'impostazione predefinita, in caso di dubbi non modificare questa impostazione.
+Attenzione: modificare questo valore invalida la cache PPU/SPU compilata. La compilazione completa dei moduli verra ripetuta da zero al prossimo avvio.</string>
+    <string name="core_help_video_output_scaling_mode" formatted="false">Filtraggio finale dell\'immagine. Il più vicino non applica alcun filtro, il Bilineare uniforma l\'immagine e la Super Risoluzione FidelityFX migliora le immagini ingrandite.
+Se il gioco viene renderizzato a una risoluzione interna inferiore alla risoluzione della finestra, FidelityFX gestirà l\'upscaling.
+FidelityFX può causare artefatti visivi.
+FidelityFX per ora non funziona con l\'uscita 3D stereo.</string>
+    <string name="core_help_input_output_keep_pads_connected" formatted="false">Mostra tutti i pad configurati come sempre connessi nel gioco anche se sono fisicamente disconnessi.</string>
+    <string name="core_help_input_output_pad_handler_mode" formatted="false">A thread singolo: tutti i gestori di pad vengono eseguiti sullo stesso thread in sequenza.
+Multi-thread: ogni gestore di pad ha il proprio thread.
+Utilizza il multi-thread solo se puoi risparmiare i thread extra.</string>
+    <string name="core_help_miscellaneous_pause_emulation_during_home_menu" formatted="false">Se abilitato, anche l\'apertura del menu Home metterà in pausa l\'emulazione.
+Sebbene la maggior parte dei giochi si metta in pausa mentre viene visualizzato il menu principale, altri no.
+In tal caso può essere utile mettere in pausa l\'emulazione ogni volta che è aperto il menu principale.</string>
+    <string name="core_help_miscellaneous_pause_emulation_on_rpcs3_focus_loss" formatted="false">Sospendi automaticamente l\'emulazione quando RPCS3 perde il focus o l\'applicazione è inattiva per risparmiare energia e ridurre l\'utilizzo della CPU.
+Tieni presente che la pausa dell\'emulazione in generale non è perfetta e potrebbe non essere compatibile con tutti i giochi.
+Sebbene attualmente metta in pausa anche il gioco, non è consigliabile fare affidamento su di esso poiché questo comportamento potrebbe essere modificato in futuro e non è lo scopo di questa impostazione.</string>
+    <string name="core_help_core_enable_performance_report" formatted="false">Misura determinati eventi e stampa un grafico dopo l\'arresto dell\'emulatore. Non abilitare se non richiesto.</string>
+    <string name="core_help_video_performance_overlay_center_horizontally" formatted="false">Centra la sovrapposizione delle prestazioni orizzontalmente e sovrascrive il margine orizzontale.</string>
+    <string name="core_help_video_performance_overlay_center_vertically" formatted="false">Centra verticalmente la sovrapposizione delle prestazioni e sovrascrive il margine verticale.</string>
+    <string name="core_help_video_performance_overlay_detail_level" formatted="false">Controlla la quantità di informazioni visualizzate nella sovrapposizione delle prestazioni.</string>
+    <string name="core_help_video_performance_overlay_enabled" formatted="false">Abilita o disabilita la sovrapposizione delle prestazioni.</string>
+    <string name="core_help_video_performance_overlay_font_size_px" formatted="false">Imposta la dimensione del carattere della sovrapposizione delle prestazioni (misurata in pixel).</string>
+    <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">Imposta la quantità di punti dati utilizzati nel grafico del framerate.</string>
+    <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">Controlla la quantità di informazioni visualizzate nella sovrapposizione delle prestazioni.</string>
+    <string name="core_help_video_performance_overlay_enable_framerate_graph" formatted="false">Abilita o disabilita il grafico del framerate.</string>
+    <string name="core_help_video_performance_overlay_frametime_datapoints" formatted="false">Imposta la quantità di punti dati utilizzati nel grafico frametime.</string>
+    <string name="core_help_video_performance_overlay_frametime_graph_detail_level" formatted="false">Controlla la quantità di informazioni visualizzate nella sovrapposizione delle prestazioni.</string>
+    <string name="core_help_video_performance_overlay_enable_frametime_graph" formatted="false">Abilita o disabilita il grafico del frametime.</string>
+    <string name="core_help_video_performance_overlay_horizontal_margin" formatted="false">Imposta la distanza orizzontale dal bordo dello schermo rispetto al quadrante dello schermo (misurata in %).</string>
+    <string name="core_help_video_performance_overlay_vertical_margin" formatted="false">Imposta la distanza verticale dal bordo dello schermo rispetto al quadrante dello schermo (misurata in %).</string>
+    <string name="core_help_video_performance_overlay_opacity" formatted="false">Imposta l\'opacità della sovrapposizione delle prestazioni (misurata in %).</string>
+    <string name="core_help_video_performance_overlay_position" formatted="false">Imposta la posizione sullo schermo (quadrante) della sovrapposizione delle prestazioni.</string>
+    <string name="core_help_video_performance_overlay_metrics_update_interval_ms" formatted="false">Imposta l\'intervallo di tempo in cui viene aggiornata la sovrapposizione delle prestazioni (misurato in millisecondi).
+Impostandolo su 16 millisecondi si aggiornerà la sovrapposizione delle prestazioni a circa 60 Hz.
+La frequenza di aggiornamento della sovrapposizione delle prestazioni non influisce sulle statistiche del grafico dei fotogrammi e può essere veloce solo quanto consentito dal gioco corrente.</string>
+    <string name="core_help_video_performance_overlay_use_window_space" formatted="false">Posiziona la sovrapposizione rispetto all\'intera superficie della finestra, consentendo il posizionamento all\'esterno dell\'area di rendering del gioco.</string>
+    <string name="core_help_miscellaneous_play_music_during_boot_sequence" formatted="false">Riproduci musica durante la sequenza di avvio, se disponibile.</string>
+    <string name="core_help_core_ppu_debug" formatted="false">Crea log PPU.
+Utile solo agli sviluppatori.
+Non usarlo mai.</string>
+    <string name="core_help_core_ppu_decoder" formatted="false">Ricompila e memorizza nella cache il codice PPU del gioco utilizzando il ricompilatore LLVM una volta prima di eseguirlo per la prima volta.
+Questa è di gran lunga l\'opzione più veloce e dovrebbe essere sempre utilizzata.
+Se dovessi riscontrare problemi di compatibilità, rivolgiti a uno degli interpreti e riprova.
+Se non sei sicuro, usa questa opzione.</string>
+    <string name="core_help_core_ppu_reservation_priority_over_spus" formatted="false">Concedere alle PPU un vantaggio di esecuzione quando le SPU utilizzano le prenotazioni.
+Questa impostazione è consigliata solo per alcuni giochi per migliorare le prestazioni.
+NON utilizzarlo senza essere avvisato a causa del potenziale degrado delle prestazioni.</string>
+    <string name="core_help_core_ppu_vector_nan_handling" formatted="false">La correzione di NaN produce istruzioni vettoriali nei backend PPU.
+In caso di dubbi, non modificare questa impostazione.</string>
+    <string name="core_help_video_accurate_zcull_stats" formatted="false">Modifica il comportamento di sincronizzazione dei report ZCULL. Sperimenta per trovare l\'opzione migliore per il tuo gioco. Per la maggior parte dei giochi è consigliata la modalità approssimativa.
+· Preciso è il comportamento più accurato su PS3. Necessario per immagini accurate in alcuni titoli come Demon\'s Souls e The Darkness.
+· Approssimato è un modo molto più veloce per generare dati di occlusione che potrebbero non corrispondere sempre a quelli generati dalla PS3. Funziona bene con la maggior parte dei giochi PS3.
+· Relaxed cambia completamente il metodo di sincronizzazione e può migliorare notevolmente le prestazioni in alcuni giochi o interromperne completamente altri.</string>
+    <string name="core_help_core_preferred_spu_threads" formatted="false">Alcune fasi SPU sono sensibili alle condizioni di gara e consentirne un numero limitato alla volta aiuta ad alleviare gli stalli delle prestazioni.
+Impostarlo su un valore inferiore potrebbe migliorare le prestazioni e ridurre lo stuttering in alcuni giochi.
+Lasciarlo su automatico se le prestazioni vengono influenzate negativamente quando si imposta un valore basso.</string>
+    <string name="core_help_miscellaneous_prevent_display_sleep_while_running_games" formatted="false">Evita che il display vada in stop mentre un gioco è in esecuzione.
+Ciò richiede il servizio D-Bus org.freedesktop.ScreenSaver su Linux.
+Questa opzione sarà disabilitata se la piattaforma attuale non supporta il controllo della sospensione del display.</string>
+    <string name="core_help_net_psn_country" formatted="false">Cambia il paese RPCN.</string>
+    <string name="core_help_net_psn_status" formatted="false">Se impostato su RPCN, RPCS3 utilizzerà il server RPCN come connessione PSN se il gioco è supportato.
+Se impostato su Simulato, RPCS3 proverà a simulare la connessione PSN, ma qualsiasi tentativo effettivo di utilizzare la funzionalità PSN potrebbe causare errori o arresti anomali.
+La simulazione è disponibile solo nelle configurazioni personalizzate.</string>
+    <string name="core_help_video_read_color_buffers" formatted="false">Inizializza la memoria di destinazione del rendering utilizzando la memoria VM.</string>
+    <string name="core_help_video_read_depth_buffer" formatted="false">Inizializza la memoria di destinazione del rendering utilizzando la memoria VM.</string>
+    <string name="core_help_video_record_with_overlays" formatted="false">Abilita la registrazione con sovrapposizioni.
+Ciò influisce anche sugli screenshot.</string>
+    <string name="core_help_video_relaxed_zcull_sync" formatted="false">Modifica il comportamento di sincronizzazione dei report ZCULL. Sperimenta per trovare l\'opzione migliore per il tuo gioco. Per la maggior parte dei giochi è consigliata la modalità approssimativa.
+· Preciso è il comportamento più accurato su PS3. Necessario per immagini accurate in alcuni titoli come Demon\'s Souls e The Darkness.
+· Approssimato è un modo molto più veloce per generare dati di occlusione che potrebbero non corrispondere sempre a quelli generati dalla PS3. Funziona bene con la maggior parte dei giochi PS3.
+· Relaxed cambia completamente il metodo di sincronizzazione e può migliorare notevolmente le prestazioni in alcuni giochi o interromperne completamente altri.</string>
+    <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">Consente l\'uso dei classici buffer OpenGL che consentono agli strumenti di acquisizione di funzionare con RPCS3, ad esempio RenderDoc.
+Consente inoltre a Vulkan di utilizzare marcatori di debug per acquisizioni Renderdoc più belle.
+In caso di dubbi, non utilizzare questa opzione.</string>
+    <string name="core_help_video_renderer" formatted="false">Vulkan è il renderer più veloce. OpenGL è il renderer più accurato.
+Se non sei sicuro, usa Vulkan. In caso di problemi di compatibilità, ricorrere a OpenGL.</string>
+    <string name="core_help_video_resolution" formatted="false">Questa impostazione verrà ignorata se la scala di risoluzione è impostata su un valore diverso dal 100%!
+Lascialo su 1280x720. Ogni gioco per PS3 è compatibile con questa risoluzione.
+Utilizza 1920x1080 solo se il gioco lo supporta.
+Raramente, a causa di bug di emulazione, alcuni giochi verranno renderizzati solo a basse risoluzioni come 480p.</string>
+    <string name="core_help_video_resolution_scale" formatted="false">Ridimensiona la risoluzione del gioco in base alla percentuale specificata.
+La risoluzione base è sempre 1280x720.
+Imposta questo valore al 100% se desideri utilizzare le normali opzioni di Risoluzione.
+Valori inferiori al 100% solitamente non migliorano le prestazioni.</string>
+    <string name="core_help_video_screen_size_in_inches" formatted="false">Imposta la modalità di rendering stereo 3D (disponibile solo nelle configurazioni personalizzate con una risoluzione predefinita di 720p).
+L\'anaglifo utilizza colori diversi per ciascun occhio, che possono poi essere filtrati con determinati occhiali.
+Side-by-Side è più comunemente supportato dalle app visualizzatore VR.
+Over-Under è più vicino all\'uscita stereo nativa, ma meno comunemente supportato.</string>
+    <string name="core_help_input_output_load_sdl_gamecontroller_mappings" formatted="false">Carica il database SDL GameController per una migliore compatibilità del gamepad. Utilizzato solo nel gestore pad SDL.</string>
+    <string name="core_help_core_set_daz_and_ftz" formatted="false">Imposta speciali flag MXCSR per eseguire il debug degli errori nelle operazioni SSE.
+Accelera le prestazioni della PPU a scapito della precisione.</string>
+    <string name="core_help_video_shader_compiler_threads" formatted="false">Numero di thread da utilizzare per il backend del compilatore shader.
+Ha un impatto solo quando la modalità shader è impostata su una delle modalità asincrone.</string>
+    <string name="core_help_video_shader_loading_dialog_blur_effect_strength" formatted="false">Modifica l\'intensità dell\'effetto sfocatura dell\'immagine di sfondo della finestra di dialogo di caricamento dello shader nativo.
+Questo può essere utilizzato per migliorare la leggibilità e/o l\'estetica.</string>
+    <string name="core_help_video_shader_loading_dialog_darkening_effect_strength" formatted="false">Modifica la forza dell\'effetto di oscuramento dell\'immagine di sfondo della finestra di dialogo di caricamento dello shader nativo.
+Questo può essere utilizzato per migliorare la leggibilità e/o l\'estetica.</string>
+    <string name="core_help_video_shader_loading_dialog_allow_custom_background" formatted="false">Mostra un\'immagine di sfondo durante la finestra di dialogo/schermata di caricamento dello shader nativo.
+Per impostazione predefinita, l\'immagine utilizzata sarà /PS3_GAME/PIC1.PNG.</string>
+    <string name="core_help_video_shader_mode" formatted="false">Questa è l\'opzione consigliata.
+Se uno shader non viene trovato nella cache, non verrà renderizzato nulla per questo shader finché non sarà compilato.
+Potrebbe verificarsi un pop-in della grafica.</string>
+    <string name="core_help_video_shader_precision" formatted="false">Controlla il livello di precisione degli shader generati. La bassa precisione genera codice molto più veloce a seconda dell\'hardware, ma a volte può generare piccoli problemi visivi o sfarfallio.</string>
+    <string name="core_help_miscellaneous_show_analog_limiter_toggle_hint" formatted="false">Mostra il suggerimento di attivazione/disattivazione del limitatore analogico utilizzando l\'overlay nativo.</string>
+    <string name="core_help_miscellaneous_show_autosave_autoload_hint" formatted="false">Mostra il suggerimento per il salvataggio/caricamento automatico utilizzando l\'overlay nativo.</string>
+    <string name="core_help_miscellaneous_show_capture_hints" formatted="false">Mostra screenshot e suggerimenti per la registrazione utilizzando la sovrapposizione nativa.</string>
+    <string name="core_help_miscellaneous_show_fatal_error_hints" formatted="false">Mostra suggerimenti per errori irreversibili utilizzando l\'overlay nativo.</string>
+    <string name="core_help_miscellaneous_show_mouse_and_keyboard_toggle_hint" formatted="false">Mostra il suggerimento per l\'attivazione/disattivazione del mouse e della tastiera utilizzando l\'overlay nativo.</string>
+    <string name="core_help_input_output_show_move_cursor" formatted="false">Mostra la posizione grezza dell\'input PS Move.
+Questo può essere molto utile durante le schermate di calibrazione.</string>
+    <string name="core_help_miscellaneous_show_ppu_compilation_hint" formatted="false">Mostra il suggerimento &quot;Compilazione moduli PPU&quot; utilizzando l\'overlay nativo.</string>
+    <string name="core_help_miscellaneous_show_pressure_intensity_toggle_hint" formatted="false">Mostra il suggerimento per attivare/disattivare l\'intensità della pressione utilizzando la sovrapposizione nativa.</string>
+    <string name="core_help_miscellaneous_show_rpcn_popups" formatted="false">Mostra i popup dell\'elenco degli amici RPCN.</string>
+    <string name="core_help_miscellaneous_show_shader_compilation_hint" formatted="false">Mostra il suggerimento &quot;Compilazione shader&quot; utilizzando l\'overlay nativo.</string>
+    <string name="core_help_miscellaneous_show_trophy_popups" formatted="false">Mostra i popup dei trofei quando un trofeo viene sbloccato.</string>
+    <string name="core_help_miscellaneous_silence_all_logs" formatted="false">Smetti di scrivere eventuali log dopo l\'avvio del gioco. Non utilizzare a meno che non si ritenga necessario.</string>
+    <string name="core_help_core_sleep_timers_accuracy" formatted="false">Modifica la precisione del periodo di sonno.
+&quot;Come host&quot; utilizza la precisione predefinita del sistema operativo sottostante, mentre &quot;Tutti i timer&quot; tenta di migliorarla.
+\'Solo Usleep\' limita le regolazioni solo alla chiamata di sistema usleep.
+Può influenzare le prestazioni in modi imprevisti.</string>
+    <string name="core_help_core_spu_block_size" formatted="false">Questa opzione controlla l\'analizzatore SPU, in particolare la dimensione delle unità compilate. Le modalità Mega e Giga possono migliorare le prestazioni unendo insieme unità più piccole, diminuendo il numero di unità compilate ma aumentandone le dimensioni.
+Utilizza la modalità provvisoria per la massima compatibilità.</string>
+    <string name="core_help_core_spu_cache" formatted="false">Ricompila e memorizza nella cache il codice SPU del gioco utilizzando il ricompilatore LLVM prima dell\'esecuzione, il che aggiunge ulteriore tempo di avvio.
+Questa è l\'opzione più veloce con un\'ottima compatibilità.
+Se riscontri problemi, utilizza il ricompilatore ASMJIT.</string>
+    <string name="core_help_core_spu_debug" formatted="false">Crea log SPU.
+Utile solo agli sviluppatori.
+Non usarlo mai.</string>
+    <string name="core_help_core_spu_decoder" formatted="false">Ricompila e memorizza nella cache il codice SPU del gioco utilizzando il ricompilatore LLVM prima dell\'esecuzione, il che aggiunge ulteriore tempo di avvio.
+Questa è l\'opzione più veloce con un\'ottima compatibilità.
+Se riscontri problemi, utilizza il ricompilatore ASMJIT.</string>
+    <string name="core_help_core_spu_loop_detection" formatted="false">Prova a rilevare le condizioni del loop nei kernel SPU e usali come suggerimenti per la pianificazione.
+Migliora le prestazioni e riduce l\'utilizzo della CPU.
+In rari casi può causare gravi balbettii dell\'audio.</string>
+    <string name="core_help_core_spu_profiler" formatted="false">Se abilitato, le prestazioni della SPU vengono misurate in fase di esecuzione.
+Abilitalo solo su richiesta dello sviluppatore perché quando abilitato riduce un po\' le prestazioni da solo.</string>
+    <string name="core_help_miscellaneous_start_games_in_fullscreen_mode" formatted="false">Mette automaticamente la finestra di gioco a schermo intero.
+Fai doppio clic sulla finestra del gioco o premi Alt+Invio per attivare la modalità a schermo intero e a finestra.</string>
+    <string name="core_help_miscellaneous_automatically_start_games_after_boot" formatted="false">Lascialo abilitato a meno che tu non sia uno sviluppatore.</string>
+    <string name="core_help_savestate_start_paused" formatted="false">Quando questa modalità è attiva, gli stati di salvataggio vengono caricati e messi in pausa sul primo fotogramma.
+Ciò consente ai giocatori di prepararsi al gioco senza essere catapultati immediatamente nell\'azione.</string>
+    <string name="core_help_video_3d_display_enabled" formatted="false">Imposta la modalità di rendering stereo 3D (disponibile solo nelle configurazioni personalizzate con una risoluzione predefinita di 720p).
+L\'anaglifo utilizza colori diversi per ciascun occhio, che possono poi essere filtrati con determinati occhiali.
+Side-by-Side è più comunemente supportato dalle app visualizzatore VR.
+Over-Under è più vicino all\'uscita stereo nativa, ma meno comunemente supportato.</string>
+    <string name="core_help_video_3d_display_mode" formatted="false">Imposta la modalità di rendering stereo 3D (disponibile solo nelle configurazioni personalizzate con una risoluzione predefinita di 720p).
+L\'anaglifo utilizza colori diversi per ciascun occhio, che possono poi essere filtrati con determinati occhiali.
+Side-by-Side è più comunemente supportato dalle app visualizzatore VR.
+Over-Under è più vicino all\'uscita stereo nativa, ma meno comunemente supportato.</string>
+    <string name="core_help_video_stretch_to_display_area" formatted="false">Sostituisce le proporzioni e allunga l\'immagine su tutta l\'area di visualizzazione.</string>
+    <string name="core_help_video_strict_rendering_mode" formatted="false">Impone una rigorosa conformità alle specifiche API.
+Potrebbe comportare un peggioramento delle prestazioni in alcuni giochi.
+Può risolvere rari casi di grafica mancante e sfarfallio.
+In caso di dubbi, non utilizzare questa opzione.</string>
+    <string name="core_help_video_strict_texture_flushing" formatted="false">Forza lo svuotamento delle texture anche nelle situazioni in cui non è necessario/corretto. Noto per causare artefatti visivi, ma utile per il debug di alcuni problemi della cache delle texture.</string>
+    <string name="core_help_savestate_suspend_emulation_savestate_mode" formatted="false">Quando questa modalità è attiva, l\'emulazione termina durante il salvataggio e il file di stato di salvataggio viene nascosto dopo il caricamento, impedendone il riutilizzo da parte di RPCS3.
+Questa modalità è come l\'ibernazione dell\'emulazione: se non vuoi poter imbrogliare utilizzando i salvataggi durante il gioco, considera l\'utilizzo di questa modalità.
+Tieni presente che il file di salvataggio non è scomparso completamente, ma semplicemente ignorato da RPCS3. Se necessario, puoi riavviarlo manualmente.</string>
+    <string name="core_help_video_texture_lod_bias_addend" formatted="false">Modifica la precisione del campionamento delle texture. (Piccoli cambiamenti hanno un grande effetto.)
+Se non sei sicuro, evita di utilizzare valori non compresi nell\'intervallo compreso tra -12 e +12.
+Da -3 a +3 è sufficiente per la maggior parte dei casi d\'uso</string>
+    <string name="core_help_core_thread_scheduler_mode" formatted="false">Controlla il modo in cui RPCS3 utilizza i thread del tuo sistema.
+Ogni opzione dipende fortemente dal gioco e dalla CPU. Si consiglia di provare ciascuna opzione per scoprire quale offre le migliori prestazioni.
+La modifica dello scheduler dei thread non è supportata sulle CPU con meno di 12 thread.</string>
+    <string name="core_help_system_time_format" formatted="false">Seleziona il formato dell\'ora della PS3.</string>
+    <string name="core_help_audio_time_stretching_threshold" formatted="false">Livello di riempimento del buffer (in percentuale) al di sotto del quale avrà inizio la modifica del tempo.</string>
+    <string name="core_help_input_output_turntable_emulated_controller" formatted="false">Supporto per il controller del giradischi DJ Hero.
+Seleziona 1 o 2 controller se il gioco richiede controller per giradischi DJ Hero e non disponi di controller per giradischi reali.
+Seleziona Null se il gioco supporta DualShock o se disponi di controller per giradischi reali.
+Un vero controller per giradischi può essere utilizzato contemporaneamente a un controller per giradischi emulato.</string>
+    <string name="core_help_miscellaneous_use_native_user_interface" formatted="false">Abilita l\'uso dell\'HUD nativo all\'interno della finestra di gioco che può interagire con i controller di gioco.
+Quando disabilitato, vengono invece utilizzate le normali finestre di dialogo Qt.
+Attualmente, la tastiera su schermo supporta solo il layout dei tasti inglese.</string>
+    <string name="core_help_video_vulkan_use_re_bar_for_gpu_uploads" formatted="false">Se abilitato, Vulkan proverà a utilizzare lo spazio degli indirizzi della barra ridimensionabile PCI-e per i caricamenti su GPU di dati sensibili al tempo.
+Ciò produce un enorme vantaggio in termini di prestazioni sulle schede NVIDIA quando il framerate di base è basso.
+Per i giochi con framerate molto elevati, questa opzione può comportare prestazioni peggiori per tutti i fornitori di GPU.</string>
+    <string name="core_help_miscellaneous_use_recursive_scan" formatted="false">Abilita l\'uso della scansione ricorsiva sulle sottocartelle durante la scansione dei giochi dalla cartella selezionata.
+Quando disabilitato, i giochi vengono scansionati solo nella cartella selezionata.</string>
+    <string name="core_help_video_vblank_ntsc_fixup" formatted="false">Moltiplica la frequenza di VBLANK per 1000/1001 per valori come 59,94 Hz.
+Noto per aver sistemato il gioco ritmico Space Channel 5 Parte 2</string>
+    <string name="core_help_video_vblank_rate" formatted="false">Regola la frequenza dei segnali di cancellazione verticale inviati dall\'emulatore.
+Influisce sulla tempistica degli eventi che si basano su questi segnali.</string>
+    <string name="core_help_video_vsync_mode" formatted="false">Consente la sincronizzazione verticale per eliminare lo strappo.
+Modalità adattiva: preferisce mantenere le prestazioni. Potrebbe saltare fotogrammi o addirittura strapparsi per evitare di ridurre il framerate del gioco.
+Modalità completa: non è consentito lo strappo anche se le prestazioni sono ridotte. Questa modalità limiterà per impostazione predefinita il framerate alla frequenza di aggiornamento del display, a meno che non venga ignorata nel pannello di controllo del driver.</string>
+    <string name="core_help_video_vulkan_adapter" formatted="false">Sui sistemi multi GPU seleziona quale GPU utilizzare in RPCS3 quando si utilizza Vulkan.
+Ciò non è necessario quando si utilizza OpenGL.</string>
+    <string name="core_help_video_vulkan_asynchronous_queue_scheduler" formatted="false">Determina come pianificare i processi di calcolo asincrono della GPU quando si utilizza lo streaming asincrono.
+Utilizzare la modalità \'Sicura\' per un comportamento più conforme alle specifiche al costo di un sovraccarico della CPU. Questa impostazione funziona con tutti i dispositivi.
+Utilizza &quot;Veloce&quot; per utilizzare una versione più veloce ma complicata. Questa opzione è disabilitata internamente per le GPU NVIDIA a causa del blocco della GPU.</string>
+    <string name="core_help_video_vulkan_asynchronous_texture_streaming" formatted="false">Trasmetti le texture alla GPU in parallelo con il rendering 3D utilizzando il calcolo asincrono.
+Può migliorare le prestazioni su GPU più potenti che dispongono di margine di riserva.
+Funziona solo con il renderer Vulkan e trae grandi vantaggi dall\'avere MTRSX abilitato se disponi di una CPU capace.</string>
+    <string name="core_help_miscellaneous_window_title_format" formatted="false">Configura il titolo della finestra di gioco.
+La modifica di questo valore e/o l\'aggiunta del framerate potrebbe far sì che il software di registrazione difettoso o obsoleto non si accorga di RPCS3.</string>
+    <string name="core_help_video_write_color_buffers" formatted="false">Abilita questa opzione se ti manca la grafica o l\'illuminazione non funziona nel gioco.
+Potrebbe peggiorare le prestazioni e introdurre balbuzie in alcuni casi.
+Richiesto per Anime del demone.</string>
+    <string name="core_help_video_write_depth_buffer" formatted="false">Scrive i valori del buffer di profondità nella memoria VM.</string>
+    <string name="core_help_core_spu_xfloat_accuracy" formatted="false">Controlla la precisione dell\'elaborazione dei vettori float SPU.
+Risolve bug in vari giochi a scapito delle prestazioni.
+Questa impostazione viene applicata solo quando il decodificatore SPU è impostato su Dinamico o LLVM.</string>
+    <string name="core_label_chinese_simplified">Cinese (semplificato)</string>
+    <string name="core_label_chinese_traditional">Cinese (tradizionale)</string>
+    <string name="core_label_chinese_keyboard_simplified">Tastiera cinese (semplificata)</string>
+    <string name="core_label_chinese_keyboard_traditional">Tastiera cinese (tradizionale)</string>
+    <string name="core_label_danish">Danese</string>
+    <string name="core_label_danish_keyboard">Tastiera danese</string>
+    <string name="core_label_dutch">Olandese</string>
+    <string name="core_label_dutch_keyboard">Tastiera olandese</string>
+    <string name="core_label_english_uk">Inglese (Regno Unito)</string>
+    <string name="core_label_english_us">Inglese (Stati Uniti)</string>
+    <string name="core_label_english_keyboard_uk_standard">Tastiera inglese (standard britannico)</string>
+    <string name="core_label_english_keyboard_us_standard">Tastiera inglese (standard americano)</string>
+    <string name="core_label_finnish">Finlandese</string>
+    <string name="core_label_finnish_keyboard">Tastiera finlandese</string>
+    <string name="core_label_french">Francese</string>
+    <string name="core_label_french_keyboard">Tastiera francese</string>
+    <string name="core_label_french_keyboard_belgium">Tastiera francese (Belgio)</string>
+    <string name="core_label_french_keyboard_canada">Tastiera francese (Canada)</string>
+    <string name="core_label_french_keyboard_switzerland">Tastiera francese (Svizzera)</string>
+    <string name="core_label_german">Tedesco</string>
+    <string name="core_label_german_keyboard">Tastiera tedesca</string>
+    <string name="core_label_german_keyboard_switzerland">Tastiera tedesca (Svizzera)</string>
+    <string name="core_label_italian">Italiano</string>
+    <string name="core_label_italian_keyboard">Tastiera italiana</string>
+    <string name="core_label_japanese">Giapponese</string>
+    <string name="core_label_japanese_keyboard">Tastiera giapponese</string>
+    <string name="core_label_japanese_keyboard_kana_state">Tastiera giapponese (stato Kana)</string>
+    <string name="core_label_korean">Coreano</string>
+    <string name="core_label_korean_keyboard">Tastiera coreana</string>
+    <string name="core_label_norwegian">Norvegese</string>
+    <string name="core_label_norwegian_keyboard">Tastiera norvegese</string>
+    <string name="core_label_other">Altro</string>
+    <string name="core_label_polish">Polacco</string>
+    <string name="core_label_polish_keyboard">Tastiera polacca</string>
+    <string name="core_label_portuguese_brazil">Portoghese (Brasile)</string>
+    <string name="core_label_portuguese_portugal">Portoghese (Portogallo)</string>
+    <string name="core_label_portuguese_keyboard_brazil">Tastiera portoghese (Brasile)</string>
+    <string name="core_label_portuguese_keyboard_portugal">Tastiera portoghese (Portogallo)</string>
+    <string name="core_label_russian">Russo</string>
+    <string name="core_label_russian_keyboard">Tastiera russa</string>
+    <string name="core_label_scea">SCEA</string>
+    <string name="core_label_scee">SCEE</string>
+    <string name="core_label_sceh">SCEH</string>
+    <string name="core_label_scej">SCEJ</string>
+    <string name="core_label_scek">SCEC</string>
+    <string name="core_label_sch">SCH</string>
+    <string name="core_label_spanish">Spagnolo</string>
+    <string name="core_label_spanish_keyboard">Tastiera spagnola</string>
+    <string name="core_label_swedish">Svedese</string>
+    <string name="core_label_swedish_keyboard">Tastiera svedese</string>
+    <string name="core_label_turkish">Turco</string>
+    <string name="core_label_turkish_keyboard">Tastiera turca</string>
+    <string name="core_help_video_display_aspect_override" formatted="false">Sostituisce le proporzioni di visualizzazione finali in millesimi (1778 = 16:9, 1333 = 4:3). Impostalo su 0 per utilizzare il rapporto di gioco. Utilizzalo solo per adattarsi a display insoliti di telefoni o tablet; un valore errato allunga l\'immagine.</string>
+    <string name="core_help_video_shader_preset_path" formatted="false">Percorso assoluto per una preimpostazione shader .slangp RetroArch utilizzata quando la modalità di ridimensionamento dell\'output è impostata su catena shader. Lasciarlo vuoto per l\'output normale. Utilizza solo una preimpostazione compatibile; un percorso non valido rientra in un\'immagine semplice.</string>
+
+    <string name="core_label_async_shader_recompiler">Ricompilatore shader asincrono</string>
+    <string name="core_label_async_with_shader_interpreter">Asincrono con interprete shader</string>
+    <string name="core_label_forced">Forzato</string>
+    <string name="core_label_interpreter">Interprete</string>
+    <string name="core_label_interpreter_legacy">Interprete (legacy)</string>
+    <string name="core_label_llvm_recompiler_legacy">Ricompilatore LLVM (legacy)</string>
+    <string name="core_label_shader_recompiler">Ricompilatore shader</string>
+    <string name="core_setting_search">Cerca opzioni</string>
+    <string name="core_setting_no_results">Nessuna opzione corrispondente</string>
+
+
+    <plurals name="library_game_count" tools:ignore="MissingQuantity,MissingTranslation">
+        <item quantity="one">%1$d gioco in totale</item>
+        <item quantity="other">%1$d giochi in totale</item>
+    </plurals>
+
+<plurals name="install_dialog_items_progress" tools:ignore="MissingQuantity,MissingTranslation">
+        <item quantity="one">Completato %1$d di %2$d elemento</item>
+        <item quantity="other">Completato %1$d di %2$d elementi</item>
+    </plurals>
+
+</resources>

@@ -13,11 +13,13 @@ namespace vk
 	{
 		VkSurfaceKHR result = VK_NULL_HANDLE;
 
-		VkWin32SurfaceCreateInfoKHR createInfo = {};
+		// EmuCoreC: upstream had VkWin32SurfaceCreateInfoKHR (a copy-paste slip
+		// that never compiled on Android -- desktop CI cannot see this file).
+		VkAndroidSurfaceCreateInfoKHR createInfo = {};
 		createInfo.sType = VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
 		createInfo.window = std::get<ANativeWindow *>(window_handle);
 
-		CHECK_RESULT(vkCreateAndroidSurfaceKHR(this->m_instance, &createInfo, nullptr, &result));
+		CHECK_RESULT(vkCreateAndroidSurfaceKHR(vk_instance, &createInfo, nullptr, &result));
 		return result;
 	}
 #endif

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "util/types.hpp"
 #include <map>
 #include <string>

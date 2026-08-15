@@ -1,0 +1,1595 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="emulation_quickbar_home_menu">Домашнє меню RPCS3</string>
+    <string name="onboarding_storage_title">Сховище емулятора</string>
+    <string name="onboarding_status_install_firmware">Встановіть офіційне системне програмне забезпечення PS3 від Sony.</string>
+    <string name="onboarding_status_ready">Налаштування завершено.</string>
+    <string name="onboarding_firmware_download">Завантажити</string>
+    <string name="onboarding_firmware_cancel_download">Скасувати</string>
+    <string name="onboarding_firmware_downloading">Завантаження %1$d%%</string>
+    <string name="onboarding_firmware_download_failed">Не вдалося завантажити. Спробуйте ще раз.</string>
+    <string name="onboarding_back">Назад</string>
+    <string name="onboarding_next">Далі</string>
+    <string name="onboarding_get_started">Розпочати</string>
+    <string name="nav_setup">Ігри</string>
+    <string name="nav_library">Бібліотека</string>
+    <string name="nav_catalog">Каталог</string>
+    <string name="nav_settings">Налаштування</string>
+    <string name="library_refresh">Оновити</string>
+    <string name="library_search_hint">Пошук встановлених ігор</string>
+    <string name="library_empty_title">Ігри не знайдено</string>
+    <string name="library_empty_body">Встановіть ігри на екрані «Ігри», а потім оновіть бібліотеку.</string>
+    <string name="detail_launch">Запустити гру</string>
+    <string name="detail_delete_game">Видалити гру</string>
+    <string name="detail_delete_game_confirm_title">Видалити встановлену гру?</string>
+    <string name="detail_delete_game_confirm_body">Ця дія видалить файли встановленої гри з вашої бібліотеки.</string>
+    <string name="detail_delete_game_failed">Не вдалося видалити гру.</string>
+    <string name="detail_title_id">Title ID</string>
+    <string name="detail_content_id">Content ID</string>
+    <string name="detail_version">Версія</string>
+    <string name="detail_category">Категорія</string>
+    <string name="detail_overview_title">Огляд</string>
+    <string name="detail_catalog_meta_title">Дані каталогу</string>
+    <string name="detail_installed_section">Встановлена гра</string>
+    <string name="detail_screenshots_title">Скріншоти</string>
+    <string name="detail_videos_title">Відео</string>
+    <string name="detail_release_year">Рік випуску</string>
+    <string name="detail_rating">Рейтинг</string>
+    <string name="detail_genres">Жанри</string>
+    <string name="detail_empty_title">Немає доступних деталей</string>
+    <string name="detail_empty_body">Для цієї гри зараз немає даних про встановлення або даних каталогу.</string>
+    <string name="detail_catalog_missing_body">Дані каталогу тимчасово недоступні.</string>
+    <string name="detail_igdb_source_note">Деякі описи та дані про ігри на цьому екрані взяті з IGDB.</string>
+    <string name="detail_compatibility_title">Сумісність</string>
+    <string name="detail_compatibility_status">Статус</string>
+    <string name="detail_compatibility_issue">Проблема</string>
+    <string name="detail_compatibility_title_id_label">Співпадаючий Title ID</string>
+    <string name="detail_compatibility_known_serials">Відомі Title ID</string>
+    <string name="detail_compatibility_updated">Оновлено</string>
+    <string name="detail_compatibility_unavailable">Офіційна база даних сумісності RPCS3 зараз недоступна.</string>
+    <string name="detail_compatibility_unmapped">Цей запис каталогу ще не має зіставленого Title ID у локальному каталозі.</string>
+    <string name="detail_compatibility_missing_entry">У RPCS3 наразі немає запису про сумісність для цих Title ID.</string>
+    <string name="detail_compatibility_source_note">Дані взято з офіційного списку сумісності RPCS3. Звіт #%1$d.</string>
+    <string name="detail_show_more">Показати більше</string>
+    <string name="detail_show_less">Показати менше</string>
+    <string name="detail_screenshot_saved">Скріншот збережено</string>
+    <string name="detail_screenshot_save_failed">Не вдалося зберегти скріншот</string>
+    <string name="detail_save_screenshot">Зберегти скріншот</string>
+    <string name="compatibility_unknown">Невідомо</string>
+    <string name="compatibility_nothing">Не працює (Nothing)</string>
+    <string name="compatibility_bootable">Запускається (Bootable)</string>
+    <string name="compatibility_intro">Інтро (Intro)</string>
+    <string name="compatibility_menu">Меню (Menu)</string>
+    <string name="compatibility_ingame_less">У грі -</string>
+    <string name="compatibility_ingame_more">У грі +</string>
+    <string name="compatibility_playable">Іграбельно (Playable)</string>
+    <string name="catalog_title">Каталог PS3</string>
+    <string name="catalog_search_hint">Пошук ігор</string>
+    <string name="catalog_search_clear">Очистити пошук</string>
+    <string name="catalog_filters_title">Фільтри</string>
+    <string name="catalog_filter_genre">Жанр</string>
+    <string name="catalog_filter_year">Рік</string>
+    <string name="catalog_filter_rating">Рейтинг</string>
+    <string name="catalog_filter_all_genres">Усі жанри</string>
+    <string name="catalog_filter_all_years">Усі роки</string>
+    <string name="catalog_filter_any_rating">Будь-який рейтинг</string>
+    <string name="catalog_filters_clear">Скинути фільтри</string>
+    <string name="catalog_empty_title">Базу даних каталогу не знайдено</string>
+    <string name="catalog_empty_body">Додайте games.db, щоб увімкнути локальний каталог PS3.</string>
+    <string name="catalog_no_results_title">Збігів не знайдено</string>
+    <string name="catalog_no_results_body">Спробуйте іншу назву, рік або написання.</string>
+    <string name="settings_title">Налаштування</string>
+    <string name="settings_tab_general">Загальні</string>
+    <string name="settings_tab_graphics">Графіка</string>
+    <string name="settings_tab_overlay">Оверлей</string>
+    <string name="settings_tab_controls">Керування</string>
+    <string name="settings_tab_storage">Сховище</string>
+    <string name="settings_tab_about">Про додаток</string>
+    <string name="settings_core_overlay_opacity_label">Прозорість оверлея</string>
+    <string name="settings_core_overlay_opacity_value">%1$d%%</string>
+    <string name="settings_core_gamepad_overlay">Показувати оверлей геймпада</string>
+    <string name="settings_core_overlay_scale_label">Масштаб оверлея</string>
+    <string name="settings_core_overlay_scale_value">%1$.1fx</string>
+    <string name="settings_core_analog_multiplier_label">Множник аналогових стіків</string>
+    <string name="settings_core_analog_multiplier_value">%1$.1fx</string>
+    <string name="settings_storage_title">Сховище</string>
+    <string name="settings_storage_body">Дані емулятора зберігаються у вибраному кореневому каталозі PS3. Встановлені ігри знаходяться в config/dev_hdd0/game, збереження й трофеї — у config/dev_hdd0/home, а кеш шейдерів і тимчасові файли — у cache.</string>
+    <string name="settings_about_title">Про EmuCoreC</string>
+    <string name="settings_help_content_description">Відкрити довідку з налаштування</string>
+    <string name="settings_help_dialog_label">Підказка налаштування</string>
+    <string name="settings_help_dialog_tip">Змінюйте по одній настройці й перевіряйте ту саму сцену гри, щоб точно бачити, що стало краще.</string>
+    <string name="settings_help_gamepad_overlay">Показує екранні елементи керування, коли ви не використовуєте фізичний контролер.\n\nВикористовуйте це, щоб сенсорне або геймпадне керування краще підходило під ваш стиль гри. Не змінюйте без потреби, якщо керування вже зручне: занадто сильні значення можуть ускладнити прицілювання, меню або сенсорні функції.</string>
+    <string name="settings_help_overlay_scale">Змінює розмір екранних елементів керування.\n\nВикористовуйте це, щоб сенсорне або геймпадне керування краще підходило під ваш стиль гри. Не змінюйте без потреби, якщо керування вже зручне: занадто сильні значення можуть ускладнити прицілювання, меню або сенсорні функції.</string>
+    <string name="settings_help_overlay_opacity">Змінює прозорість екранних елементів керування.\n\nВикористовуйте це, щоб сенсорне або геймпадне керування краще підходило під ваш стиль гри. Не змінюйте без потреби, якщо керування вже зручне: занадто сильні значення можуть ускладнити прицілювання, меню або сенсорні функції.</string>
+    <string name="settings_help_analog_multiplier">Змінює чутливість аналогових стіків.\n\nВикористовуйте це, щоб сенсорне або геймпадне керування краще підходило під ваш стиль гри. Не змінюйте без потреби, якщо керування вже зручне: занадто сильні значення можуть ускладнити прицілювання, меню або сенсорні функції.</string>
+    <string name="settings_reset_toast">%1$s скинуто до стандартного значення</string>
+    <string name="settings_app_language">Мова додатка</string>
+    <string name="settings_app_language_system">Системна за замовчуванням</string>
+    <string name="settings_app_language_english">Англійська</string>
+    <string name="settings_app_language_russian">Російська</string>
+    <string name="settings_app_language_ukrainian">Українська</string>
+    <string name="settings_language_picker_title">Мова</string>
+    <string name="settings_gpu_driver">Драйвер GPU</string>
+    <string name="settings_gpu_driver_system">Системний</string>
+    <string name="settings_gpu_driver_custom">Власний</string>
+    <string name="settings_gpu_driver_installed">Встановлені драйвери</string>
+    <string name="settings_help_gpu_driver">Виберіть між системним драйвером Vulkan та власним драйвером.\n\nКористувацький драйвер має сенс переважно на сумісних Adreno, коли системний Vulkan дає графічні помилки або слабку швидкість. Залишайте системний драйвер для Mali, PowerVR, невідомих GPU або якщо кастомний драйвер викликає вильоти.</string>
+    <string name="settings_gpu_driver_remove">Видалити драйвер</string>
+    <string name="settings_gpu_driver_none_installed">Власні драйвери GPU ще не встановлені.</string>
+    <string name="settings_gpu_driver_install_failed">Не вдалося встановити драйвер GPU.</string>
+    <string name="settings_gpu_driver_install_success">Встановлено драйвер GPU: %1$s</string>
+    <string name="settings_gpu_driver_status_system">Активний системний драйвер Vulkan</string>
+    <string name="settings_gpu_driver_status_system_desc">Власний драйвер не вибрано, тому використовується системний драйвер Vulkan.</string>
+    <string name="settings_gpu_driver_status_active">Активний власний драйвер: %1$s</string>
+    <string name="settings_gpu_driver_status_active_desc">Цей драйвер готовий до використання з Vulkan. Фактична підтримка все ще залежить від сумісності пристрою.</string>
+    <string name="settings_gpu_driver_status_renderer">Власний драйвер вибрано, але рендер — %1$s</string>
+    <string name="settings_gpu_driver_status_renderer_desc">Власні драйвери GPU працюють лише з Vulkan. Перемкніть рендер на Vulkan, щоб використовувати цей драйвер.</string>
+    <string name="settings_gpu_driver_status_broken">Архів драйвера неповний: %1$s не знайдено</string>
+    <string name="settings_gpu_driver_status_broken_desc">Метадані драйвера існують, але бібліотека Vulkan відсутня. Перевстановіть драйвер.</string>
+    <string name="settings_emulation_core">Ядро емуляції</string>
+    <string name="settings_based_on_rpcsx">На базі RPCS3</string>
+    <string name="settings_developer">Розробник</string>
+    <string name="settings_created_by_sbro">Створено Sashkin Apps</string>
+    <string name="settings_play_store_profile">Профіль Play Маркет</string>
+    <string name="settings_core_source_code">Вихідний код ядра</string>
+    <string name="settings_core_source_description">EmuCoreC використовує власний інтерфейс Android. На RPCS3 базується тільки емуляційне ядро.</string>
+    <string name="shell_setup_section">Встановлення</string>
+    <string name="shell_library_section">Бібліотека</string>
+    <string name="shell_tools_section">Інструменти</string>
+    <string name="shell_install_content">Встановити гру</string>
+    <string name="game_launch_failed">Не вдалося запустити цю гру.</string>
+    <string name="folder_picker_failed">Не вдалося використати вибрану папку.</string>
+    <string name="core_install_firmware_failed">Не вдалося розпочати встановлення прошивки.</string>
+    <string name="core_install_firmware_unsupported">Виберіть підтримуваний файл прошивки, наприклад .PUP.</string>
+    <string name="core_install_pkg_failed">Не вдалося розпочати встановлення вмісту PS3.</string>
+    <string name="game_launch_requires_firmware">Встановіть базову прошивку перед запуском гри.</string>
+    <string name="install_dialog_title_generic">Встановлення</string>
+    <string name="install_dialog_title_firmware">Встановлення прошивки</string>
+    <string name="install_dialog_title_pkg">Встановлення вмісту PS3</string>
+    <string name="install_dialog_success">Встановлення завершено.</string>
+    <string name="install_dialog_error">Встановлення не вдалося.</string>
+    <string name="install_dialog_percent">Завершено на %1$d%%</string>
+    <string name="install_dialog_close">Закрити</string>
+    <string name="install_dialog_unexpected_error">Щось пішло не так під час встановлення.</string>
+    <string name="install_dialog_firmware_failed">Встановлення прошивки не вдалося.</string>
+    <string name="install_dialog_pkg_failed">Не вдалося встановити вміст PS3.</string>
+    <string name="install_dialog_firmware_done">Пакет прошивки успішно встановлено.</string>
+    <string name="install_dialog_pkg_done">Вміст PS3 успішно встановлено.</string>
+    <string name="install_dialog_extracting_archive">Розпакування %1$s…</string>
+    <string name="install_archive_missing_volume">Бракує однієї або кількох частин архіву. Виберіть усі томи, зокрема перший і останній.</string>
+    <string name="install_archive_password_protected">Архіви з паролем поки не підтримуються. Спочатку розпакуйте архів або приберіть пароль.</string>
+    <string name="install_archive_unsafe">Архів містить небезпечний шлях або посилання, тому його відхилено.</string>
+    <string name="install_archive_not_enough_space">Недостатньо вільного місця для безпечного розпакування та встановлення цього вмісту.</string>
+    <string name="install_archive_no_content">Підтримуваних файлів PS3 PKG, ISO, RAP або EDAT не знайдено.</string>
+    <string name="install_archive_failed">Архів пошкоджений, неповний або має непідтримуваний формат.</string>
+    <string name="setup_title">Встановлення ігор</string>
+    <string name="common_back">Назад</string>
+    <string name="common_not_available">Недоступно</string>
+    <string name="common_unknown">Невідомо</string>
+    <string name="common_close">Закрити</string>
+    <string name="emulation_pause">Пауза</string>
+    <string name="emulation_resume">Продовжити</string>
+    <string name="emulation_menu_title">Меню гри</string>
+    <string name="emulation_menu_unknown_game">Запущена гра</string>
+    <string name="emulation_menu_controls_desc">Показати або сховати екранні елементи керування.</string>
+    <string name="emulation_menu_hide_controls">Сховати керування</string>
+    <string name="emulation_menu_show_controls">Показати керування</string>
+    <string name="emulation_menu_edit_controls">Редагувати керування</string>
+    <string name="emulation_menu_edit_controls_desc">Пересувайте, змінюйте розмір, показуйте або ховайте кожну екранну кнопку.</string>
+    <string name="emulation_menu_reset_overlay">Скинути макет керування</string>
+    <string name="emulation_menu_reset_overlay_desc">Відновити масштаб, прозорість та макет для сенсорного керування за замовчуванням.</string>
+    <string name="emulation_controls_editor_title">Редактор керування</string>
+    <string name="emulation_controls_editor_percent">%1$d%%</string>
+    <string name="emulation_controls_editor_done">Готово</string>
+    <string name="emulation_menu_exit_game">Вийти з гри</string>
+    <string name="emulation_exit_confirm_title">Вийти з гри?</string>
+    <string name="emulation_exit_confirm_body">Поточна сесія буде закрита, і ви повернетеся до бібліотеки.</string>
+    <string name="emulation_exit_confirm_action">Вийти</string>
+    <string name="emulation_exit_cancel_action">Скасувати</string>
+    <string name="settings_app_language_spanish">Іспанська</string>
+    <string name="settings_app_language_french">Французька</string>
+    <string name="settings_app_language_german">Німецька</string>
+    <string name="settings_app_language_portuguese">Португальська</string>
+    <string name="settings_app_language_chinese_traditional">Китайська (традиційна)</string>
+    <string name="settings_app_language_hindi">Гінді</string>
+    <string name="settings_app_language_italian">Італійська</string>
+    <string name="settings_gpu_driver_manage">Керування драйверами</string>
+    <string name="settings_gpu_driver_manager_title">Драйвери GPU</string>
+    <string name="settings_gpu_driver_manager_subtitle">Встановлення, завантаження, застосування або видалення драйверів Adreno.</string>
+    <string name="settings_gpu_driver_active_title">Активний драйвер</string>
+    <string name="settings_gpu_driver_install_from_file">Встановити з файлу</string>
+    <string name="settings_gpu_driver_catalog">Каталог драйверів</string>
+    <string name="settings_gpu_driver_refresh">Оновити</string>
+    <string name="settings_gpu_driver_catalog_loading">Завантаження каталогу драйверів…</string>
+    <string name="settings_gpu_driver_catalog_failed">Не вдалося завантажити каталог драйверів</string>
+    <string name="settings_gpu_driver_catalog_empty">Онлайн-драйвери поки недоступні.</string>
+    <string name="settings_gpu_driver_download_apply">Завантажити та застосувати</string>
+    <string name="settings_gpu_driver_downloaded">Завантажено</string>
+    <string name="settings_gpu_driver_apply">Застосувати</string>
+    <string name="settings_gpu_driver_applied">Застосовано</string>
+    <string name="settings_gpu_driver_remove_short">Видалити</string>
+    <string name="settings_gpu_driver_recommended">Рекомендовано</string>
+    <string name="settings_gpu_driver_source">Джерело</string>
+    <string name="settings_gpu_driver_search">Пошук драйверів</string>
+    <string name="settings_gpu_driver_filter_all">Усі</string>
+    <string name="settings_gpu_driver_no_matches">Немає відповідних драйверів</string>
+    <string name="settings_gpu_driver_no_matches_desc">Змініть текст пошуку або вибрані фільтри.</string>
+    <string name="settings_app_language_turkish">Турецька</string>
+    <string name="save_manager_title">Збереження</string>
+    <string name="save_manager_open_for_game">Збереження</string>
+    <string name="save_manager_search_hint">Пошук збережень</string>
+    <string name="save_manager_export">Експорт</string>
+    <string name="save_manager_import">Імпорт</string>
+    <string name="save_manager_delete">Видалити збереження</string>
+    <string name="save_manager_delete_confirm_title">Видалити дані збереження?</string>
+    <string name="save_manager_delete_confirm_body">Це призведе до видалення даних збереження для %1$s.</string>
+    <string name="save_manager_delete_failed">Не вдалося видалити дані збереження.</string>
+    <string name="save_manager_export_success">Дані збереження експортовано.</string>
+    <string name="save_manager_export_failed">Не вдалося експортувати дані збереження.</string>
+    <string name="save_manager_import_success">Дані збереження імпортовано: %1$s.</string>
+    <string name="save_manager_import_failed">Не вдалося імпортувати дані збереження.</string>
+    <string name="save_manager_import_empty">Архів не містить файлів збережень.</string>
+    <string name="save_manager_import_unsafe">Архів містить небезпечні шляхи.</string>
+    <string name="save_manager_import_unknown_target">Виберіть картку збережень гри перед імпортом цього архіву, або використовуйте архів з однією папкою збереження.</string>
+    <string name="save_manager_empty_title">Даних збережень не знайдено</string>
+    <string name="save_manager_empty_body">Запустіть гру, щоб створити дані збереження, або імпортуйте архів збережень.</string>
+    <string name="save_manager_empty_game_title">Немає даних збереження для %1$s</string>
+    <string name="save_manager_empty_game_body">Запустіть цю гру, щоб створити дані збереження, або імпортуйте архів збережень для неї.</string>
+    <string name="save_manager_orphan_save">Гра не встановлена</string>
+    <string name="nav_save_manager">Збереження</string>
+    <string name="settings_options_content_description">Параметри налаштувань</string>
+    <string name="settings_reset_defaults_menu">Відновити налаштування за замовчуванням</string>
+    <string name="settings_reset_defaults_title">Відновити налаштування за замовчуванням?</string>
+    <string name="settings_reset_defaults_message">Це скине налаштування емулятора до рекомендованих значень за замовчуванням. Ваші ігри, збереження, мова застосунку та вибрані папки залишаться без змін.</string>
+    <string name="settings_reset_defaults_confirm">Відновити</string>
+    <string name="settings_reset_defaults_cancel">Скасувати</string>
+    <string name="settings_tab_updates">Оновлення</string>
+    <string name="settings_about_version">Версія додатка</string>
+    <string name="settings_about_version_value">Версія %1$s</string>
+    <string name="settings_about_body_extended">EmuCoreC переносить емуляцію PS3 на Android, пропонуючи зручний мобільний інтерфейс, керування локальною бібліотекою та ядро емуляції на базі RPCS3.</string>
+    <string name="settings_about_community_title">Спільнота та підтримка</string>
+    <string name="settings_about_repository">Репозиторій EmuCoreC</string>
+    <string name="settings_about_repository_desc">Переглядайте вихідний код, повідомляйте про помилки та слідкуйте за розробкою на GitHub.</string>
+    <string name="settings_about_discord">Приєднуйтесь до нашого Discord</string>
+    <string name="settings_about_discord_desc">Спілкуйтеся зі спільнотою, діліться відгуками та отримуйте новини про проєкт.</string>
+    <string name="settings_about_support">Підтримайте EmuCoreC</string>
+    <string name="settings_about_support_desc">Допоможіть продовжити розробку, оформивши підписку на Patreon.</string>
+    <string name="settings_play_store_profile_desc">Переглянути інші Android-додатки від розробника.</string>
+    <string name="settings_rpcsx_repository_desc">Відкрити репозиторій оригінального проєкту RPCS3.</string>
+    <string name="settings_updates_version_label">Версія</string>
+    <string name="settings_updates_open_release">Відкрити сторінку релізу</string>
+    <string name="settings_updates_release_notes_title">Що нового</string>
+    <string name="settings_updates_release_notes_empty">Цей реліз не містить списку змін.</string>
+    <string name="settings_updates_cancel">Скасувати</string>
+    <string name="settings_backup_title">Резервна копія налаштувань</string>
+    <string name="settings_backup_body">Створіть резервну копію налаштувань додатка та емулятора у файл або відновіть їх із попередньої копії.</string>
+    <string name="settings_backup_create">Зробити резервну копію</string>
+    <string name="settings_backup_restore">Відновити з копії</string>
+    <string name="settings_backup_created">Резервну копію налаштувань створено.</string>
+    <string name="settings_backup_failed">Не вдалося створити резервну копію налаштувань.</string>
+    <string name="settings_backup_restored">Налаштування відновлено з резервної копії.</string>
+    <string name="settings_backup_restore_failed">Не вдалося відновити резервну копію налаштувань.</string>
+    <string name="settings_backup_restore_title">Відновити налаштування?</string>
+    <string name="settings_backup_restore_message">Поточні налаштування додатка та емулятора будуть замінені вибраною резервною копією.</string>
+    <string name="settings_backup_restore_confirm">Відновити</string>
+    <string name="settings_clear_cache_title">Очистити кеш</string>
+    <string name="settings_clear_cache_body">Видаляє кеш шейдерів, кеш текстур, журнали та тимчасові файли встановлення. Налаштування, збереження, встановлені ігри та прошивка не змінюються.</string>
+    <string name="settings_clear_cache_action">Очистити кеш</string>
+    <string name="settings_clear_cache_size">Розмір кешу: %1$s</string>
+    <string name="settings_clear_cache_empty">Немає кешованих даних для видалення.</string>
+    <string name="settings_clear_cache_confirm_title">Очистити кеш?</string>
+    <string name="settings_clear_cache_confirm_message">Це звільнить %1$s. Перший запуск ігор може бути трохи довшим, поки шейдери створюються заново.</string>
+    <string name="settings_clear_cache_confirm_action">Очистити</string>
+    <string name="settings_clear_cache_done">Кеш очищено, звільнено %1$s.</string>
+    <string name="settings_clear_cache_failed">Не вдалося очистити кеш.</string>
+    <string name="settings_clear_cover_cache_title">Очистити кеш обкладинок</string>
+    <string name="settings_clear_cover_cache_body">Видаляє завантажені обкладинки, скріншоти та банери. За потреби вони завантажаться знову.</string>
+    <string name="settings_clear_cover_cache_action">Очистити кеш обкладинок</string>
+    <string name="settings_clear_cover_cache_size">Розмір кешу обкладинок: %1$s</string>
+    <string name="settings_clear_cover_cache_empty">Немає збереженого кешу обкладинок.</string>
+    <string name="settings_clear_cover_cache_confirm_title">Очистити кеш обкладинок?</string>
+    <string name="settings_clear_cover_cache_confirm_message">Це видалить збережені обкладинки та скріншоти і звільнить %1$s. Зображення завантажаться повторно під час перегляду.</string>
+    <string name="settings_clear_cover_cache_confirm_action">Очистити</string>
+    <string name="settings_clear_cover_cache_done">Кеш обкладинок очищено, звільнено %1$s.</string>
+    <string name="settings_clear_cover_cache_failed">Не вдалося очистити кеш обкладинок.</string>
+    <string name="settings_keep_screen_on">Не вимикати екран</string>
+    <string name="settings_keep_screen_on_summary">Запобігає вимкненню екрана під час користування додатком та під час гри</string>
+    <string name="emulation_quickbar_open_menu">Відкрити меню</string>
+    <string name="emulation_menu_paused_badge">На паузі</string>
+    <string name="emulation_menu_badge_live">Наживо</string>
+    <string name="emulation_menu_badge_restart">Потрібен перезапуск</string>
+    <string name="emulation_menu_section_now">Зараз</string>
+    <string name="emulation_menu_section_now_desc">Зміни миттєво застосовуються до запущеної гри.</string>
+    <string name="emulation_menu_section_touch">Сенсорне керування</string>
+    <string name="emulation_menu_section_touch_desc">Екранний геймпад. Зміни застосовуються відразу.</string>
+    <string name="emulation_tab_game">Гра</string>
+    <string name="emulation_tab_controls">Керування</string>
+    <string name="settings_gamepad_section">Фізичний геймпад</string>
+    <string name="settings_gamepad_connected">Геймпад підключено. Ці налаштування застосовуються наживо під час гри.</string>
+    <string name="settings_gamepad_disconnected">Підключіть фізичний геймпад, щоб увімкнути ці налаштування.</string>
+    <string name="settings_gamepad_deadzone">Мертва зона стіка</string>
+    <string name="settings_gamepad_trigger_threshold">Поріг спрацьовування тригера</string>
+    <string name="settings_gamepad_percent_value">%1$d%%</string>
+    <string name="settings_gamepad_button_profile">Перепризначення кнопок</string>
+    <string name="settings_gamepad_profile_standard">Стандартне</string>
+    <string name="settings_gamepad_profile_swap_cross_circle">Поміняти місцями Хрест/Коло</string>
+    <string name="settings_gamepad_profile_nintendo_face">Кнопки в стилі Nintendo</string>
+    <string name="settings_gamepad_swap_sticks">Поміняти стіки місцями</string>
+    <string name="settings_gamepad_invert_left_y">Інвертувати лівий стік по осі Y</string>
+    <string name="settings_gamepad_invert_right_y">Інвертувати правий стік по осі Y</string>
+    <string name="settings_help_gamepad_deadzone">Фільтрує невеликі рухи стіка поблизу центру для зменшення дрифту. Збільште значення, якщо камера або персонаж рухаються самі по собі; зменште, якщо прицілювання здається нечутливим.</string>
+    <string name="settings_help_gamepad_trigger_threshold">Встановлює, наскільки мають зміститися аналогові тригери до надсилання введення. Збільште для чутливих тригерів; зменште для перегонів або керування, чутливого до сили натискання.</string>
+    <string name="settings_help_gamepad_button_profile">Перепризначає фізичні кнопки до того, як вони досягнуть емулятора. Використовуйте це, якщо розкладка вашого контролера не збігається з розташуванням кнопок Хрест, Коло, Квадрат і Трикутник на PS3.</string>
+    <string name="settings_help_gamepad_swap_sticks">Міняє місцями осі лівого та правого стіків. Корисно для ігор або контролерів із незвичайною поведінкою стіків.</string>
+    <string name="settings_help_gamepad_invert_x">Змінює напрямок горизонтального руху стіка для керування або камери.</string>
+    <string name="settings_help_gamepad_invert_y">Перевертає вертикальний рух стіка для керування камерою або прицілюванням.</string>
+    <string name="emulation_tab_gamepad">Геймпад</string>
+    <string name="emulation_menu_section_gamepad">Фізичний геймпад</string>
+    <string name="emulation_menu_section_gamepad_desc">Мертва зона, перепризначення, вібрація та поведінка стіків для підключеного контролера.</string>
+    <string name="emulation_menu_section_gamepad_disconnected">Підключіть фізичний геймпад, щоб змінити ці налаштування керування.</string>
+    <string name="game_manager_title">Менеджер ігор</string>
+    <string name="game_manager_open_for_game">Налаштування гри</string>
+    <string name="game_manager_empty_title">Немає встановлених ігор</string>
+    <string name="game_manager_empty_body">Спочатку встановіть гру, а потім створіть для неї власний профіль тут.</string>
+    <string name="game_manager_choose_game">Вибрати гру</string>
+    <string name="game_manager_reset_global">Використовувати глобальні за замовчуванням</string>
+    <string name="game_manager_invert_left_x">Інвертувати лівий стік по осі X</string>
+    <string name="game_manager_invert_right_x">Інвертувати правий стік по осі X</string>
+    <string name="nav_game_manager">Менеджер ігор</string>
+    <string name="nav_play_time">Час у грі</string>
+    <string name="play_time_title">Час у грі</string>
+    <string name="play_time_open_for_game">Час у грі</string>
+    <string name="play_time_current_session">Поточний сеанс</string>
+    <string name="play_time_filter_game">Вибрати гру</string>
+    <string name="play_time_all_games">Усі ігри</string>
+    <string name="play_time_total_time">Загальний час</string>
+    <string name="play_time_sessions">Сеанси</string>
+    <string name="play_time_games_played">Ігор зіграно</string>
+    <string name="play_time_daily_chart">Останні 14 днів</string>
+    <string name="play_time_games_chart">Час за іграми</string>
+    <string name="play_time_recent_sessions">Сеанси</string>
+    <string name="play_time_no_sessions_title">Ігрових сеансів ще немає</string>
+    <string name="play_time_no_sessions_body">Запустіть гру, і ваші ігрові сеанси з\'являться тут.</string>
+    <string name="play_time_no_game_sessions_body">У цю гру ще не грали. Запустіть її, і її ігрові сеанси з\'являться тут.</string>
+    <string name="library_add_shortcut">Додати ярлик</string>
+    <string name="library_shortcut_requested">Запит на створення ярлика надіслано.</string>
+    <string name="library_shortcut_unsupported">Цей лаунчер не підтримує закріплені ярлики.</string>
+    <string name="library_shortcut_failed">Не вдалося створити ярлик.</string>
+    <string name="settings_app_language_arabic">Арабська</string>
+    <string name="play_time_today">Сьогодні</string>
+    <string name="play_time_yesterday">Вчора</string>
+    <string name="settings_gpu_driver_global">Використовувати глобальний</string>
+    <string name="settings_gpu_driver_status_global">Використовується глобальний драйвер GPU: %1$s</string>
+    <string name="settings_gpu_driver_status_global_system">Використовується глобальний драйвер GPU: системний Vulkan</string>
+    <string name="settings_gpu_driver_status_game_system">Перевизначення гри: драйвер System Vulkan</string>
+    <string name="settings_gpu_driver_status_game_active">Перевизначення гри: %1$s</string>
+    <string name="settings_about_website">Офіційний сайт</string>
+    <string name="settings_about_website_desc">Відкрийте сайт EmuCoreC для завантажень, новин та посилань на проєкти.</string>
+    <string name="settings_gpu_driver_status_global_desc">Ця гра використовує глобальний вибір драйвера GPU.</string>
+    <string name="settings_gpu_driver_game_title">Драйвер GPU для гри</string>
+    <string name="install_dialog_title_license">Встановлення ліцензії</string>
+    <string name="install_dialog_license_failed">Помилка встановлення ліцензії.</string>
+    <string name="install_dialog_license_done">Ліцензію успішно встановлено.</string>
+    <string name="common_cancel">Скасувати</string>
+    <string name="save_manager_backup_all_title">Резервне копіювання всіх збережень</string>
+    <string name="save_manager_backup_all_body">Створіть одну резервну копію у форматі ZIP з усіма папками збережень або відновіть папки збережень з попередньої повної резервної копії.</string>
+    <string name="save_manager_backup_all">Резервна копія</string>
+    <string name="save_manager_restore_all">Відновити все</string>
+    <string name="save_manager_backup_all_success">Створено резервну копію %1$d папок збережень.</string>
+    <string name="save_manager_backup_all_failed">Не вдалося створити резервну копію всіх збережень.</string>
+    <string name="save_manager_restore_all_success">Відновлено %1$d папок збережень.</string>
+    <string name="save_manager_restore_all_failed">Не вдалося відновити всі збереження.</string>
+    <string name="save_manager_restore_all_confirm_title">Відновити всі збереження?</string>
+    <string name="save_manager_restore_all_confirm_body">Папки збережень з вибраної резервної копії замінять відповідні папки збережень на цьому пристрої. Існуючі збереження зберігаються лише тоді, коли резервна копія не містить такого ID збереження.</string>
+    <string name="save_manager_restore_all_confirm">Відновити збереження</string>
+    <string name="settings_change_storage">Змінити сховище</string>
+    <string name="settings_storage_location_internal">Пам\'ять пристрою</string>
+    <string name="settings_storage_location_sd">SD-картка</string>
+    <string name="settings_storage_location_external">Зовнішній накопичувач</string>
+    <string name="settings_storage_change_note">Під час зміни сховища EmuCoreC переносить відсутні дані емулятора у вибране місце. Наявні файли в новому сховищі зберігаються.</string>
+    <string name="onboarding_storage_choose_title">Вибрати сховище емулятора</string>
+    <string name="onboarding_storage_only_default">Наразі Android надає лише одне місце для зберігання даних додатків. Якщо встановлено SD-картку, переконайтеся, що вона змонтована та доступна для додатків.</string>
+    <string name="nav_achievements">Досягнення</string>
+    <string name="achievements_title">Досягнення</string>
+    <string name="achievements_progress_count">%1$d/%2$d</string>
+    <string name="achievements_choose_game">Вибрати гру</string>
+    <string name="achievements_trophy">Трофей</string>
+    <string name="achievements_hidden_trophy">Прихований трофей</string>
+    <string name="achievements_hidden_trophy_body">Розблокуйте цей трофей, щоб дізнатися його деталі.</string>
+    <string name="achievements_unlocked_at">Розблоковано: %1$s</string>
+    <string name="achievements_empty_title">Трофеї не знайдено</string>
+    <string name="achievements_empty_body">Запустіть гру з підтримкою трофеїв або оновіть список після встановлення ігор.</string>
+    <string name="achievements_open_for_game">Досягнення</string>
+    <string name="achievements_how_to_unlock">Як розблокувати?</string>
+    <string name="achievements_translate">Перекласти</string>
+    <string name="achievements_hint_title">Як розблокувати</string>
+    <string name="achievements_translation_title">Перекладено</string>
+    <string name="achievements_assist_error">Не вдалося завантажити. Спробуйте ще раз.</string>
+    <string name="emulation_achievements_loading">Завантаження трофеїв для запущеної гри.</string>
+    <string name="emulation_achievements_empty">Трофеїв для запущеної гри не знайдено.</string>
+    <string name="emulation_achievements_empty_body">Встановіть гру з підтримкою трофеїв або оновіть трофеї гри з бібліотеки.</string>
+    <string name="emulation_tab_achievements">Досягнення</string>
+    <string name="settings_storage_migrating">Переміщення даних емулятора…</string>
+    <string name="settings_storage_confirm_title">Змінити сховище емулятора?</string>
+    <string name="settings_storage_confirm_body">EmuCoreC скопіює у %1$s всю віртуальну файлову систему PS3: прошивку, ігри, збереження, трофеї та конфігурацію ядра. Наявні файли призначення буде збережено. Відновлюваний кеш і патчі залишаться у стабільному сховищі додатка.</string>
+    <string name="settings_storage_confirm_action">Перемістити дані</string>
+    <string name="settings_storage_migration_title">Переміщення даних емулятора</string>
+    <string name="settings_storage_migration_body">Тримайте EmuCoreC відкритим, поки віртуальна файлова система PS3 копіюється у вибране сховище.</string>
+    <string name="settings_storage_migration_count">Перевірено файлів: %1$d/%2$d</string>
+    <string name="settings_storage_migration_failed">Не вдалося перемістити сховище</string>
+    <string name="settings_vibration_section">Вібрація</string>
+    <string name="settings_vibration_enable">Вібрація</string>
+    <string name="settings_vibration_strength">Сила вібрації</string>
+    <string name="settings_test_vibration">Перевірити вібрацію</string>
+    <string name="settings_test_vibration_button">Перевірити</string>
+    <string name="settings_device_vibration_fallback">Використовувати вібрацію пристрою як резерв</string>
+    <string name="settings_help_vibration_enable">Дозволяє підтримуваним іграм надсилати вібрацію на фізичний контролер або, якщо увімкнено резервний варіант, на корпус пристрою Android.</string>
+    <string name="settings_help_vibration_strength">Масштабує інтенсивність вібрації для віддачі геймпада та резервного варіанту пристрою.</string>
+    <string name="settings_help_test_vibration">Відтворює короткий імпульс із використанням поточної сили вібрації та маршрутизації.</string>
+    <string name="settings_help_device_vibration_fallback">Викликає вібрацію телефону або портативного пристрою, якщо фізичний контролер відсутній або не має вібромотора.</string>
+    <string name="nav_profile">Профіль</string>
+    <string name="catalog_toggle_search">Перемкнути пошук у каталозі</string>
+    <string name="catalog_toggle_filters">Перемкнути фільтри каталогу</string>
+    <string name="catalog_profile_menu">Список профілю</string>
+    <string name="catalog_profile_remove">Видалити з профілю</string>
+    <string name="catalog_profile_status_title">Статус гри</string>
+    <string name="catalog_profile_clear_status">Очистити статус гри</string>
+    <string name="profile_title">Профіль</string>
+    <string name="profile_game_count">Збережено ігор: %1$d</string>
+    <string name="profile_refresh">Оновити профіль</string>
+    <string name="profile_toggle_layout">Змінити вигляд профілю</string>
+    <string name="profile_section_count">%1$d</string>
+    <string name="profile_status_playing">Зараз граю</string>
+    <string name="profile_status_want_to_play">Хочу зіграти</string>
+    <string name="profile_status_completed">Пройдено</string>
+    <string name="profile_status_dropped">Покинуто</string>
+    <string name="profile_status_favorites">Улюблені</string>
+    <string name="profile_account_title">Локальний профіль</string>
+    <string name="profile_account_body">Ваше ім’я, аватар, обране та списки ігор зберігаються лише на цьому пристрої.</string>
+    <string name="profile_hide_backup">Сховати локальний профіль</string>
+    <string name="profile_show_backup">Показати локальний профіль</string>
+    <string name="profile_user_name">Ім’я гравця</string>
+    <string name="profile_default_name">Гравець</string>
+    <string name="profile_change_avatar">Змінити аватар</string>
+    <string name="profile_backup">Зберегти</string>
+    <string name="profile_empty_title">У профілі поки немає ігор</string>
+    <string name="profile_empty_body">Відкрийте каталог, торкніться меню з трьома крапками на грі та додайте її до одного зі списків вашого профілю.</string>
+    <string name="settings_updates_history_title">Історія оновлень</string>
+    <string name="settings_updates_history_body">Переглядайте релізи GitHub, дати випуску та списки змін.</string>
+    <string name="settings_updates_history_loading">Завантаження історії релізів</string>
+    <string name="settings_updates_history_empty">Релізи не знайдено.</string>
+    <string name="settings_updates_published_label">Опубліковано</string>
+    <string name="settings_updates_parallel_title">Паралельні версії</string>
+    <string name="settings_updates_parallel_body">Android може встановити кілька версій EmuCoreC лише в тому випадку, якщо реліз містить спеціальний APK, зібраний з унікальним іменем пакета та міткою програми, наприклад EmuCoreC (0.1.1). Звичайні старі APK замінюють або знижують версію поточної програми.</string>
+    <string name="settings_updates_parallel_unavailable">Окремий APK недоступний для цього релізу.</string>
+    <string name="settings_updates_parallel_package">Окремий пакет застосунку</string>
+    <string name="settings_updates_parallel_download">Завантажити</string>
+    <string name="emulation_controls_editor_touch_area_mode">Сенсорна область</string>
+    <string name="emulation_controls_editor_width">Ширина</string>
+    <string name="emulation_controls_editor_height">Висота</string>
+    <string name="settings_tab_customization">Кастомізація</string>
+    <string name="customization_preview_title">Попередній перегляд</string>
+    <string name="customization_preview_subtitle">Ваша бібліотека, налаштована для вас</string>
+    <plurals name="customization_games_per_row">
+        <item quantity="one">%1$d гра в ряд</item>
+        <item quantity="few">%1$d гри в ряд</item>
+        <item quantity="many">%1$d ігор у ряд</item>
+        <item quantity="other">%1$d гри в ряд</item>
+    </plurals>
+    <string name="customization_home_background">Фон головного екрана</string>
+    <string name="customization_background_select">Вибрати зображення, GIF або відео</string>
+    <string name="customization_background_default">Стандартний фон</string>
+    <string name="customization_background_selected">Вибрано власний фон</string>
+    <string name="customization_background_imported">Фон оновлено</string>
+    <string name="customization_background_failed">Не вдалося використати цей файл фону</string>
+    <string name="customization_library_layout">Макет бібліотеки</string>
+    <string name="customization_cover_size">Розмір обкладинки гри</string>
+    <string name="customization_percent_value">%1$d%%</string>
+    <string name="customization_text_and_fonts">Текст і шрифти</string>
+    <string name="customization_app_font">Шрифт застосунку</string>
+    <string name="customization_font_system">Системний за замовчуванням</string>
+    <string name="customization_font_custom">Власний</string>
+    <string name="customization_import_font">Імпортувати власний шрифт</string>
+    <string name="customization_import_font_hint">Виберіть файл TTF або OTF</string>
+    <string name="customization_font_imported">Шрифт імпортовано</string>
+    <string name="customization_font_failed">Не вдалося використати цей файл шрифту</string>
+    <string name="customization_text_size">Розмір тексту</string>
+    <string name="customization_reset_section">Скидання</string>
+    <string name="customization_reset">Скинути налаштування кастомізації</string>
+    <string name="customization_reset_description">Відновити стандартний фон, розмір обкладинок, шрифт і розмір тексту</string>
+    <string name="customization_reset_confirm_title">Скинути кастомізацію?</string>
+    <string name="customization_reset_confirm_body">Власний фон та імпортований шрифт буде видалено.</string>
+    <string name="customization_reset_action">Скинути</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_theme_system">Системна</string>
+    <string name="settings_theme_light">Світла</string>
+    <string name="settings_theme_dark">Темна</string>
+    <string name="settings_about_privacy_policy">Політика конфіденційності</string>
+    <string name="settings_about_privacy_policy_desc">Відкрити політику конфіденційності EmuCoreC.</string>
+    <string name="shell_discord_server">Сервер Discord</string>
+    <string name="settings_customization_touch_controls_section">Наекранні елементи керування</string>
+    <string name="settings_customization_touch_controls_style">Стиль керування</string>
+    <string name="settings_customization_touch_controls_help">Повністю змінює дизайн керування: корпуси кнопок, D-pad, кільця стіків, накладки, контури та стани натискання. Позиції, зони натискання, мультитач і логіка вводу залишаються незмінними.</string>
+    <string name="settings_customization_touch_style_classic">Класичний</string>
+    <string name="settings_customization_touch_style_glass">Ретро</string>
+    <string name="settings_customization_touch_style_neon">Сучасний</string>
+    <string name="settings_game_menu_tab">Ігрове меню</string>
+    <string name="settings_customization_drawer_section">Бокове меню</string>
+    <string name="settings_customization_touch_style_arcade">Аркадний</string>
+    <string name="settings_customization_touch_style_minimal">Мінімалістичний</string>
+    <string name="settings_customization_touch_press_effect">Ефект натискання</string>
+    <string name="settings_customization_touch_press_effect_help">Виберіть, як кожна екранна кнопка, напрямок хрестовини (D-pad) та аналоговий стік реагуватимуть на натискання. Це змінює лише анімацію; розмір елементів керування та сенсорні зони залишаються без змін.</string>
+    <string name="settings_customization_touch_press_effect_grow">Збільшення</string>
+    <string name="settings_customization_touch_press_effect_shrink">Стиснення</string>
+    <string name="settings_customization_touch_press_effect_spring">Пружина</string>
+    <string name="settings_customization_touch_press_effect_glow">Світіння</string>
+    <string name="settings_drawer_style_classic">Класичний</string>
+    <string name="settings_drawer_style_compact">Компактний</string>
+    <string name="settings_drawer_style_glass">Скло</string>
+    <string name="settings_drawer_style_console">Консоль</string>
+    <string name="settings_game_menu_layout_help">Змінює структуру та навігацію внутрішньоігрового меню. Вкладки, видимість контенту, дії щодо безпеки та елементи керування геймпада залишаються спільними для кожного макета.</string>
+    <string name="settings_game_menu_layout_sidebar">Бічна панель</string>
+    <string name="settings_game_menu_layout_dashboard">Панель керування</string>
+    <string name="settings_game_menu_layout_command_center">Командний центр</string>
+    <string name="settings_game_menu_layout_compact">Компактний</string>
+    <string name="feedback_title">Відгук</string>
+    <string name="feedback_subtitle">Надішліть відгук безпосередньо команді EmuCoreC</string>
+    <string name="feedback_category_title">Про що йтиме мова?</string>
+    <string name="feedback_category_compatibility">Сумісність ігор</string>
+    <string name="feedback_category_performance">Продуктивність або лаги</string>
+    <string name="feedback_category_graphics">Графіка або рендеринг</string>
+    <string name="feedback_category_audio">Аудіо</string>
+    <string name="feedback_category_controls">Керування або геймпад</string>
+    <string name="feedback_category_crash">Виліт або зависання</string>
+    <string name="feedback_category_feature">Запит функції</string>
+    <string name="feedback_category_ui">Інтерфейс або зручність</string>
+    <string name="feedback_category_other">Інше</string>
+    <string name="feedback_details_title">Деталі</string>
+    <string name="feedback_game_label">Гра з вашої бібліотеки (необов\'язково)</string>
+    <string name="feedback_game_placeholder">Шукайте за назвою або серійним номером, чи введіть гру вручну</string>
+    <string name="feedback_game_library_empty">Кешованих ігор не знайдено. Ви можете ввести назву або серійний номер гри вручну.</string>
+    <string name="feedback_game_clear_selection">Очистити вибір гри</string>
+    <string name="feedback_message_label">Ваш відгук</string>
+    <string name="feedback_message_placeholder">Розкажіть нам, що сталося, чого ви очікували і як ми можемо це відтворити.</string>
+    <string name="feedback_character_counter">%1$d / %2$d</string>
+    <string name="feedback_attachments_title">Вкладення</string>
+    <string name="feedback_attachments_help">Додайте до %1$d фотографій, відео, логів, файлів збереження або інших файлів. Максимум %2$d МБ на файл і %3$d МБ загалом.</string>
+    <string name="feedback_add_attachment">Додати вкладення</string>
+    <string name="feedback_attachment_source_title">Виберіть тип вкладення</string>
+    <string name="feedback_add_media">Фото або відео</string>
+    <string name="feedback_add_files">Файл</string>
+    <string name="feedback_attachment_counter">Вибрано %1$d з %2$d файлів</string>
+    <string name="feedback_tip_title">Поради для кращого відгуку</string>
+    <string name="feedback_tip_body">Додайте короткі кроки для відтворення проблеми та прикріпіть знімки екрана, відео, логи, збереження або інші корисні файли.</string>
+    <string name="feedback_remove_attachment">Видалити вкладення</string>
+    <string name="feedback_send">Надіслати відгук</string>
+    <string name="feedback_queueing">Підготовка…</string>
+    <string name="feedback_queued">Відгук додано в чергу. Його буде надіслано автоматично за наявності мережі.</string>
+    <string name="feedback_error_message_required">Будь ласка, спочатку опишіть свій відгук.</string>
+    <string name="feedback_error_too_many_files">Ви вибрали забагато файлів.</string>
+    <string name="feedback_error_file_too_large">Один із файлів більший за 49 МБ.</string>
+    <string name="feedback_error_total_too_large">Загальний розмір вибраних файлів перевищує 90 МБ.</string>
+    <string name="feedback_error_file_unreadable">Один із вибраних файлів неможливо прочитати.</string>
+    <string name="feedback_error_queue_failed">Не вдалося підготувати відгук. Перевірте вибрані файли та спробуйте знову.</string>
+    <string name="feedback_not_configured">Надсилання відгуків не налаштовано в цій збірці. Додайте Worker URL та API ключ у local.properties.</string>
+    <string name="feedback_discard_title">Скинути відгук?</string>
+    <string name="feedback_discard_message">Ваше повідомлення та вибрані вкладення будуть втрачені.</string>
+    <string name="feedback_discard_action">Скинути</string>
+    <string name="settings_customization_drawer_style">Вигляд меню</string>
+    <string name="settings_touch_haptics">Тактильна віддача сенсорного керування</string>
+    <string name="settings_help_touch_haptics">Додає легку тактильну віддачу Android при першому натисканні екранної кнопки, напрямку хрестовини або аналогового стіка. Це впливає лише на відчуття від керування і не змінює вібрацію в грі.</string>
+    <string name="settings_touch_haptics_strength">Сила тактильної віддачі</string>
+    <string name="settings_help_touch_haptics_strength">Керує силою вібрації пристрою для тактильної віддачі сенсорного керування. Збільште її, якщо віддача надто слабка, або зменште для тихішої гри в портативному режимі.</string>
+    <string name="settings_touch_haptics_test">Перевірка тактильної віддачі</string>
+    <string name="settings_help_touch_haptics_test">Відтворює той самий тактильний імпульс пристрою, що й екранні елементи керування, щоб ви могли налаштувати силу віддачі перед запуском гри.</string>
+    <string name="settings_touch_haptics_preset">Тактильний відгук</string>
+    <string name="settings_touch_haptics_preset_soft">М\'який</string>
+    <string name="settings_touch_haptics_preset_balanced">Збалансований</string>
+    <string name="settings_touch_haptics_preset_crisp">Чіткий</string>
+    <string name="settings_touch_haptics_preset_strong">Сильний</string>
+    <string name="settings_help_touch_haptics_preset">«М\'який» використовує ніжне натискання та дуже легке відпускання. «Збалансований» дає чітке натискання з легшим відпусканням і є стандартним. «Чіткий» використовує найкоротшу та найрізкішу пару для точних дотиків. «Сильний» використовує глибші та довші імпульси для телефонів зі слабкішими вібромоторами. Повзунок сили налаштовує вибране відчуття.</string>
+    <string name="settings_gyro_mode">Керування гіроскопом</string>
+    <string name="settings_gyro_off">Вимк.</string>
+    <string name="settings_gyro_aim">Прицілювання — правий стік</string>
+    <string name="settings_gyro_steering">Кермо — лівий стік</string>
+    <string name="settings_gyro_sensitivity">Чутливість гіроскопа</string>
+    <string name="settings_gyro_smoothing">Згладжування гіроскопа</string>
+    <string name="settings_gyro_invert_x">Інвертувати гіроскоп по горизонталі</string>
+    <string name="settings_gyro_invert_x_desc">Міняє місцями рухи вліво та вправо.</string>
+    <string name="settings_gyro_invert_y">Інвертувати гіроскоп по вертикалі</string>
+    <string name="settings_gyro_invert_y_desc">Міняє місцями рух прицілювання вгору та вниз.</string>
+    <string name="settings_help_gyro_mode">«Прицілювання» перетворює швидкість обертання телефону на рух правого аналогового стіка для керування камерою в шутерах і автоматично повертається в центр, коли телефон перестає рухатися. «Кермо» перетворює нахил телефону на рух лівого аналогового стіка для гоночних ігор і калібрує поточний кут як центральний на початку гри. Вибраний режим використовується лише під час роботи гри і вимагає наявності відповідного датчика руху.</string>
+    <string name="settings_help_gyro_sensitivity">Керує тим, наскільки сильно рух телефону відхиляє емульований аналоговий стік. Рекомендується налаштовувати цей параметр для кожної гри окремо, оскільки ігри використовують різні криві відгуку для камери та кермування.</string>
+    <string name="settings_help_gyro_smoothing">Фільтрує шум датчика та тремтіння рук. Менші значення реагують швидше; більші значення здаються стабільнішими, але додають невелику затримку.</string>
+    <string name="settings_gyro_unavailable">Цей пристрій не має датчика руху, необхідного для вибраного режиму.</string>
+    <string name="settings_touch_controls_section">Сенсорне керування</string>
+    <string name="settings_gpu_driver_detected_device">Виявлено: %1$s · %2$s</string>
+    <string name="settings_gpu_driver_device_hint">Сумісні драйвери показано першими. Натисніть картку драйвера, щоб переглянути підтримувані чипи Snapdragon.</string>
+    <string name="settings_gpu_driver_compatibility">Сумісність зі Snapdragon</string>
+    <string name="settings_gpu_driver_best_match">Найкращий вибір</string>
+    <string name="settings_gpu_driver_compatible">Сумісний</string>
+    <string name="settings_gpu_driver_other_family">Інше покоління Adreno</string>
+    <string name="settings_gpu_driver_compatibility_a6xx">Adreno 6xx: Snapdragon 845/855/865/888 і багато моделей серій Snapdragon 6/7</string>
+    <string name="settings_gpu_driver_compatibility_a7xx">Adreno 7xx: Snapdragon 8 Gen 1/2/3, 8s Gen 3, нові моделі серії Snapdragon 7 та 6 Gen 1/3</string>
+    <string name="settings_gpu_driver_compatibility_a8xx">Adreno 8xx: Snapdragon 8 Elite Gen 5, 8 Gen 5, 8 Elite, 8s Gen 4 та 6 Gen 4</string>
+    <string name="app_name_emucorec">EmuCoreC</string>
+    <string name="home_title">PlayStation 3</string>
+    <string name="home_subtitle">Емулятор PS3 для Android</string>
+    <string name="home_installed_count">Встановлено ігор: %1$d</string>
+    <string name="home_catalog_count">Ігор у каталозі: %1$d</string>
+    <string name="home_storage_short">Готово</string>
+    <string name="home_storage_path">Сховище: %1$s</string>
+    <string name="home_open_setup">Відкрити ігри</string>
+    <string name="home_open_library">Відкрити бібліотеку</string>
+    <string name="home_open_catalog">Переглянути каталог</string>
+    <string name="home_empty_library_title">Ігри ще не встановлені</string>
+    <string name="home_recent_titles_title">Нещодавно запущені</string>
+    <string name="onboarding_page_1_title">PlayStation 3 на Android</string>
+    <string name="onboarding_page_1_body">Грайте в ігри PS3 на Android за допомогою ядра RPCS3.</string>
+    <string name="onboarding_page_2_title">Ваша бібліотека ігор</string>
+    <string name="onboarding_page_2_body">Ваші встановлені ігри зібрані в одній бібліотеці.</string>
+    <string name="onboarding_page_3_title">Вбудований каталог</string>
+    <string name="onboarding_page_3_body">Переглядайте обкладинки, скріншоти, відео та інформацію про ігри в одному місці.</string>
+    <string name="onboarding_page_4_title">Майже готово</string>
+    <string name="home_empty_library_body">Встановіть офіційну прошивку PS3, а потім додавайте PKG-ігри або RAP-ліцензії з екрана Ігри.</string>
+    <string name="onboarding_page_4_body">Встановіть офіційну прошивку PS3 перед запуском ігор.</string>
+    <string name="onboarding_firmware_title">Прошивка PS3</string>
+    <string name="onboarding_firmware_desc">Завантажте або виберіть офіційний файл системного ПЗ PS3UPDAT.PUP.</string>
+    <string name="onboarding_firmware_info_title">Офіційна прошивка PS3</string>
+    <string name="onboarding_firmware_info_body">Прошивка завантажується безпосередньо з офіційних серверів оновлень Sony. EmuCoreC не зберігає, не дзеркалює, не змінює та не поширює її.</string>
+    <string name="core_install_pkg_unsupported">Виберіть файли PS3 PKG/ISO або всі частини архіву ZIP/RAR.</string>
+    <string name="core_install_license_unsupported">Виберіть файл ліцензії RAP для PS3.</string>
+    <string name="setup_pkg_title">Встановити вміст PS3</string>
+    <string name="setup_pkg_body">Встановіть PKG/ISO напряму або виберіть одну чи кілька частин архіву ZIP/RAR. Файли PKG, ISO, RAP та EDAT усередині визначаються автоматично.</string>
+    <string name="setup_pkg_license_step_title">Встановити ліцензію RAP</string>
+    <string name="setup_pkg_license_step_body">Виберіть ліцензію RAP, що належить вашій цифровій грі PS3.</string>
+    <string name="setup_pkg_license_button">Вибрати файл RAP</string>
+    <string name="setup_pkg_button">Вибрати вміст або архіви</string>
+    <string name="setup_pkg_order_note">Для деяких цифрових ігор потрібна відповідна ліцензія RAP. PKG і RAP можна встановлювати в будь-якому порядку.</string>
+    <string name="install_choice_title">Встановити вміст PS3</string>
+    <string name="install_choice_body">Виберіть файли PKG/ISO, архіви ZIP/RAR або встановіть ліцензію RAP.</string>
+    <string name="install_choice_pkg_without_license_note">Можна одночасно вибрати всі томи багаточастинного ZIP/RAR. EmuCoreC безпечно розпакує архів, знайде вміст PS3, встановить частини пакетів у природному порядку та видалить тимчасові файли.</string>
+    <string name="ps3_core_settings_unavailable">Не вдалося завантажити або ініціалізувати ядро RPCS3.</string>
+    <string name="ps3_core_setting_rejected">Ядро RPCS3 відхилило «%1$s».</string>
+    <string name="ps3_core_setting_default">Типове значення ядра: %1$s</string>
+    <string name="ps3_core_setting_reset_game">Скинути це налаштування до глобального значення</string>
+    <string name="catalog_open_for_game">Відкрити в каталозі</string>
+    <string name="catalog_serial_not_found">Цей серійний код PS3 не знайдено в локальному каталозі.</string>
+    <string name="settings_rpcs3_repository_desc">Репозиторій оригінального емулятора PlayStation 3 RPCS3. Дякуємо всім учасникам RPCS3 за ядро, на якому зрештою працює цей проєкт.</string>
+    <string name="settings_tab_audio">Аудіо</string>
+    <string name="settings_tab_network">Мережа</string>
+    <string name="settings_tab_advanced">Розширені</string>
+    <string name="shell_launch_system_menu">Запустити PS3</string>
+    <string name="system_menu_launch_failed">Не вдалося запустити системне меню PS3.</string>
+    <!-- Core settings: generated from the live RPCS3 config schema. -->
+    <!-- Generated from the live RPCS3 configuration schema. -->
+    <string name="core_setting_edit">Редагувати значення</string>
+    <string name="core_setting_value">Значення</string>
+    <string name="core_setting_apply">Застосувати</string>
+    <string name="core_setting_cancel">Скасувати</string>
+    <string name="core_setting_default_value">За замовчуванням: %1$s</string>
+    <string name="core_setting_no_options">У цьому розділі немає підтримуваних налаштувань.</string>
+    <string name="core_label_1_controller">1 контролер</string>
+    <string name="core_label_120">120</string>
+    <string name="core_label_1280x1080">1280x1080</string>
+    <string name="core_label_1280x720">1280x720</string>
+    <string name="core_label_1440x1080">1440x1080</string>
+    <string name="core_label_16_9">16:9</string>
+    <string name="core_label_1600x1080">1600x1080</string>
+    <string name="core_label_1920x1080">1920x1080</string>
+    <string name="core_label_1920x1080i">1920x1080i</string>
+    <string name="core_label_2_controllers">2 контролера</string>
+    <string name="core_label_30">30</string>
+    <string name="core_label_3d_display_enabled">Тривимірний дисплей увімкнено</string>
+    <string name="core_label_3d_display_mode">Режим відображення 3D</string>
+    <string name="core_label_4_3">4:3</string>
+    <string name="core_label_50">50</string>
+    <string name="core_label_60">60</string>
+    <string name="core_label_720x480">720x480</string>
+    <string name="core_label_720x480i">720x480i</string>
+    <string name="core_label_720x576">720x576</string>
+    <string name="core_label_720x576i">720x576i</string>
+    <string name="core_label_960x1080">960x1080</string>
+    <string name="core_label_accurate">Точний</string>
+    <string name="core_label_accurate_cache_line_stores">Точні кеш-лінії</string>
+    <string name="core_label_accurate_ppu_128_byte_reservation_op_max_length">Точна максимальна довжина операції резервування 128 байт PPU</string>
+    <string name="core_label_accurate_rsx_reservation_access">Точний доступ до бронювання RSX</string>
+    <string name="core_label_accurate_spu_dma">Точний SPU DMA</string>
+    <string name="core_label_accurate_spu_reservations">Точне бронювання SPU</string>
+    <string name="core_label_accurate_zcull_stats">Точна статистика ZCULL</string>
+    <string name="core_label_adapter">Перехідник</string>
+    <string name="core_label_adaptive">Адаптивний</string>
+    <string name="core_label_all">Все</string>
+    <string name="core_label_all_timers">Усі таймери</string>
+    <string name="core_label_allow_custom_background">Дозволити спеціальний фон</string>
+    <string name="core_label_allow_host_gpu_labels">Дозволити мітки хост-графічного процесора</string>
+    <string name="core_label_allow_move_hue_set_by_game">Дозволити переміщення відтінку, встановленого грою</string>
+    <string name="core_label_allow_rsx_cpu_preemptions">Дозволити випередження ЦП RSX</string>
+    <string name="core_label_anaglyph_amber_blue">Анагліф Янтарно-блакитний</string>
+    <string name="core_label_anaglyph_custom">Користувальницькі анагліфи</string>
+    <string name="core_label_anaglyph_magenta_cyan">Анагліф пурпурно-блакитний</string>
+    <string name="core_label_anaglyph_red_blue">Анагліф червоно-синій</string>
+    <string name="core_label_anaglyph_red_cyan">Анагліф червоно-блакитний</string>
+    <string name="core_label_anaglyph_red_green">Анагліф червоно-зелений</string>
+    <string name="core_label_anaglyph_trioscopic">Анагліф тріоскопічний</string>
+    <string name="core_label_anisotropic_filter_override">Перевизначення анізотропного фільтра</string>
+    <string name="core_label_approximate">Приблизний</string>
+    <string name="core_label_as_host">Як господар</string>
+    <string name="core_label_aspect_ratio">Співвідношення сторін</string>
+    <string name="core_label_assume_external_debugger">Припустимо зовнішній налагоджувач</string>
+    <string name="core_label_async_recompiler_multi_threaded">Асинхронний рекомпілятор (багатопотоковий)</string>
+    <string name="core_label_async_recompiler_with_shader_interpreter">Асинхронний рекомпілятор з інтерпретатором шейдерів</string>
+    <string name="core_label_asynchronous_queue_scheduler">Асинхронний планувальник черги</string>
+    <string name="core_label_asynchronous_texture_streaming">Асинхронна потокова передача текстур</string>
+    <string name="core_label_atomic">Атомний</string>
+    <string name="core_label_audio">Аудіо</string>
+    <string name="core_label_audio_channel_layout">Макет аудіоканалу</string>
+    <string name="core_label_audio_device">Аудіопристрій</string>
+    <string name="core_label_audio_format">Аудіоформат</string>
+    <string name="core_label_audio_formats">Аудіоформати</string>
+    <string name="core_label_audio_provider">Постачальник звуку</string>
+    <string name="core_label_auto">Авто</string>
+    <string name="core_label_automatic">Автоматичний</string>
+    <string name="core_label_automatically_start_games_after_boot">Автоматичний запуск ігор після завантаження</string>
+    <string name="core_label_av_multiout">Мультивихід AV</string>
+    <string name="core_label_background_input_enabled">Увімкнено фоновий ввід</string>
+    <string name="core_label_basic">Базовий</string>
+    <string name="core_label_bilinear">Білінійний</string>
+    <string name="core_label_bind_address">Прив\'язати адресу</string>
+    <string name="core_label_blur_effect_strength">Сила ефекту розмиття</string>
+    <string name="core_label_body_background_hex">Тло тіла (шістнадцяткове)</string>
+    <string name="core_label_body_color_hex">Колір корпусу (шістнадцятковий)</string>
+    <string name="core_label_both">Обидва</string>
+    <string name="core_label_bottom_left">Внизу зліва</string>
+    <string name="core_label_bottom_right">Внизу праворуч</string>
+    <string name="core_label_buzz_emulated_controller">Емульований контролер Buzz</string>
+    <string name="core_label_camera">Камера</string>
+    <string name="core_label_camera_flip">Переворот камери</string>
+    <string name="core_label_camera_id">ID камери</string>
+    <string name="core_label_camera_type">Тип камери</string>
+    <string name="core_label_cellaudio">CellAudio</string>
+    <string name="core_label_center_horizontally">По центру по горизонталі</string>
+    <string name="core_label_center_vertically">По центру по вертикалі</string>
+    <string name="core_label_clans_enabled">Клани ввімкнено</string>
+    <string name="core_label_clock12">Годинник12</string>
+    <string name="core_label_clock24">Годинник24</string>
+    <string name="core_label_clocks_scale">Шкала годинника</string>
+    <string name="core_label_compatible_savestate_mode">Сумісний режим Savestate</string>
+    <string name="core_label_connected">Підключено</string>
+    <string name="core_label_consecutive_frames_to_draw">Послідовні кадри для малювання</string>
+    <string name="core_label_consecutive_frames_to_skip">Послідовні кадри для пропуску</string>
+    <string name="core_label_console_psid">PSID консолі</string>
+    <string name="core_label_console_time_offset_s">Зміщення часу консолі (с)</string>
+    <string name="core_label_convert_to_16_bit">Перетворити на 16 біт</string>
+    <string name="core_label_core">Ядро</string>
+    <string name="core_label_cubeb">Кубеб</string>
+    <string name="core_label_custom_anaglyph_matrices">Спеціальні анагліфні матриці</string>
+    <string name="core_label_darkening_effect_strength">Сила ефекту затемнення</string>
+    <string name="core_label_date_format">Формат дати</string>
+    <string name="core_label_ddmmyyyy">Ддмміррр</string>
+    <string name="core_label_debug_console_mode">Режим консолі налагодження</string>
+    <string name="core_label_debug_output">Вихід налагодження</string>
+    <string name="core_label_debug_overlay">Налагодження накладання</string>
+    <string name="core_label_debug_program_analyser">Аналізатор програм налагодження</string>
+    <string name="core_label_decr_memory_layout">Схема пам\'яті DECR</string>
+    <string name="core_label_derive_mac_from_psid">Отримайте MAC з PSID</string>
+    <string name="core_label_desired_audio_buffer_duration">Бажана тривалість звукового буфера</string>
+    <string name="core_label_detail_level">Рівень деталізації</string>
+    <string name="core_label_disable">Вимкнути</string>
+    <string name="core_label_disable_asynchronous_memory_manager">Вимкніть диспетчер асинхронної пам\'яті</string>
+    <string name="core_label_disable_fifo_reordering">Вимкнути перевпорядкування FIFO</string>
+    <string name="core_label_disable_hardware_colorspace_remapping">Вимкніть апаратне перевідображення ColorSpace</string>
+    <string name="core_label_disable_msl_fast_math">Вимкніть MSL Fast Math</string>
+    <string name="core_label_disable_on_disk_shader_cache">Вимкнути кеш шейдерів на диску</string>
+    <string name="core_label_disable_sampling_skip">Вимкнути пропуск вибірки</string>
+    <string name="core_label_disable_spu_getllar_spin_optimization">Вимкніть SPU GETLLAR Spin Optimization</string>
+    <string name="core_label_disable_vertex_cache">Вимкнути Vertex Cache</string>
+    <string name="core_label_disable_video_output">Вимкнути відеовихід</string>
+    <string name="core_label_disable_vulkan_memory_allocator">Вимкнути Vulkan Memory Allocator</string>
+    <string name="core_label_disable_zcull_occlusion_queries">Вимкнути ZCull Occlusion Queries</string>
+    <string name="core_label_disabled">Вимкнено</string>
+    <string name="core_label_disconnected">Відключено</string>
+    <string name="core_label_disk_cache_maximum_size_mb">Максимальний розмір дискового кешу (МБ)</string>
+    <string name="core_label_display">Дисплей</string>
+    <string name="core_label_display_aspect_override">Перевизначення формату дисплея</string>
+    <string name="core_label_dns_address">DNS-адреса</string>
+    <string name="core_label_driver_recovery_timeout">Час очікування відновлення драйвера</string>
+    <string name="core_label_driver_wake_up_delay">Затримка пробудження водія</string>
+    <string name="core_label_dump_to_file">Дамп у файл</string>
+    <string name="core_label_empty_dev_hdd0_tmp">Порожній /dev_hdd0/tmp/</string>
+    <string name="core_label_emulate_special_depth_comparison">Емуляція спеціального порівняння глибини</string>
+    <string name="core_label_emulated_midi_devices">Емульовані пристрої Midi</string>
+    <string name="core_label_enable">Увімкнути</string>
+    <string name="core_label_enable_host_root">Увімкнути /host_root/</string>
+    <string name="core_label_enable_buffering">Увімкнути буферизацію</string>
+    <string name="core_label_enable_frame_skip">Увімкнути пропуск кадрів</string>
+    <string name="core_label_enable_framerate_graph">Увімкнути графік частоти кадрів</string>
+    <string name="core_label_enable_frametime_graph">Увімкнути Frametime Graph</string>
+    <string name="core_label_enable_gamemode">Увімкніть GameMode</string>
+    <string name="core_label_enable_performance_report">Увімкнути звіт про продуктивність</string>
+    <string name="core_label_enable_time_stretching">Увімкнути розтягування часу</string>
+    <string name="core_label_enabled">Увімкнено</string>
+    <string name="core_label_enter_button_assignment">Введіть призначення кнопки</string>
+    <string name="core_label_enter_with_circle">Введіть коло</string>
+    <string name="core_label_enter_with_cross">Вхід з хрестом</string>
+    <string name="core_label_exclusive_fullscreen_mode">Ексклюзивний повноекранний режим</string>
+    <string name="core_label_exit_rpcs3_when_process_finishes">Вийдіть із RPCS3, коли процес завершиться</string>
+    <string name="core_label_eyetoy">EyeToy</string>
+    <string name="core_label_fake">Підробка</string>
+    <string name="core_label_fake_move_rotation_cone">Підроблений конус обертання</string>
+    <string name="core_label_fake_move_rotation_cone_vertical">Фальшивий конус обертання руху (вертикальний)</string>
+    <string name="core_label_fast">Швидко</string>
+    <string name="core_label_faudio">FAudio</string>
+    <string name="core_label_fidelityfx_cas_sharpening_intensity">Інтенсивність різкості FidelityFX CAS</string>
+    <string name="core_label_fidelityfx_super_resolution">Супер роздільна здатність FidelityFX</string>
+    <string name="core_label_font">Шрифт</string>
+    <string name="core_label_font_size_px">Розмір шрифту (px)</string>
+    <string name="core_label_force_cpu_blit">Примусово загасити CPU</string>
+    <string name="core_label_force_hardware_msaa_resolve">Примусове апаратне вирішення MSAA</string>
+    <string name="core_label_force_high_precision_z_buffer">Примусовий Z-буфер високої точності</string>
+    <string name="core_label_frame_limit">Обмеження кадрів</string>
+    <string name="core_label_framebuffer_aliasing_heuristic_bias">Евристичний зсув буфера кадрів</string>
+    <string name="core_label_framerate_datapoints">Точки частоти кадрів</string>
+    <string name="core_label_framerate_graph_detail_level">Рівень деталізації графіка частоти кадрів</string>
+    <string name="core_label_frametime_datapoints">Точки кадрового часу</string>
+    <string name="core_label_frametime_graph_detail_level">Рівень деталізації кадрового графіка</string>
+    <string name="core_label_full">Повний</string>
+    <string name="core_label_gdb_server">Сервер GDB</string>
+    <string name="core_label_ghltar_emulated_controller">Емульований контролер GHLtar</string>
+    <string name="core_label_giga">Гіга</string>
+    <string name="core_label_gun">Пістолет</string>
+    <string name="core_label_handle_rsx_memory_tiling">Ручка RSX Memory Tiling</string>
+    <string name="core_label_hdd_model_name">Назва моделі HDD</string>
+    <string name="core_label_hdd_serial_number">Серійний номер HDD</string>
+    <string name="core_label_hdmi_0">HDMI 0</string>
+    <string name="core_label_hdmi_1">HDMI 1</string>
+    <string name="core_label_high">Високий</string>
+    <string name="core_label_hle_lwmutex">HLE lwmutex</string>
+    <string name="core_label_hook_static_functions">Хук статичних функцій</string>
+    <string name="core_label_horizontal">Горизонтальний</string>
+    <string name="core_label_horizontal_margin" formatted="false">Горизонтальна маржа (%)</string>
+    <string name="core_label_inaccurate">Неточно</string>
+    <string name="core_label_infinite">Нескінченна</string>
+    <string name="core_label_initialize_directories">Ініціалізація каталогів</string>
+    <string name="core_label_input_output">Вхід/Вихід</string>
+    <string name="core_label_inspection_mode_savestates">Збереження режиму перевірки</string>
+    <string name="core_label_interlaced">Переплетені</string>
+    <string name="core_label_internet_enabled">Інтернет включений</string>
+    <string name="core_label_interpreter_dynamic">Перекладач (динамічний)</string>
+    <string name="core_label_interpreter_static">Інтерпретатор (статичний)</string>
+    <string name="core_label_io_debug_overlay">IO Debug накладання</string>
+    <string name="core_label_ip_address">IP адреса</string>
+    <string name="core_label_ip_swap_list">Список обміну IP</string>
+    <string name="core_label_keep_pads_connected">Тримайте колодки підключеними</string>
+    <string name="core_label_keyboard">Клавіатура</string>
+    <string name="core_label_keyboard_type">Тип клавіатури</string>
+    <string name="core_label_language">Мова</string>
+    <string name="core_label_legacy_recompiler_single_threaded">Застарілий рекомпілятор (однопотоковий)</string>
+    <string name="core_label_libraries_control">Контроль бібліотек</string>
+    <string name="core_label_license_area">Ліцензійна зона</string>
+    <string name="core_label_limit_disk_cache_size">Обмеження розміру дискового кешу</string>
+    <string name="core_label_llvm_precompilation">Попередня компіляція LLVM</string>
+    <string name="core_label_load_sdl_gamecontroller_mappings">Завантажте відображення SDL GameController</string>
+    <string name="core_label_lock_overlay_input_to_player_one">Заблокувати введення накладання для першого гравця</string>
+    <string name="core_label_log">Журнал</string>
+    <string name="core_label_log_shader_programs">Програми шейдерів журналів</string>
+    <string name="core_label_low">Низький</string>
+    <string name="core_label_manual">Інструкція</string>
+    <string name="core_label_master_volume">Основний обсяг</string>
+    <string name="core_label_matrix_left">Матриця зліва</string>
+    <string name="core_label_matrix_right">Матриця справа</string>
+    <string name="core_label_max_cpu_preempt_count">Максимальна кількість CPU Preempt</string>
+    <string name="core_label_max_llvm_compile_threads">Максимум потоків компіляції LLVM</string>
+    <string name="core_label_max_spurs_threads">Максимум потоків SPURS</string>
+    <string name="core_label_maximum_savestate_files">Максимальна кількість файлів SaveState</string>
+    <string name="core_label_maximum_savestate_files_space_mib">Максимальний обсяг файлів SaveState (МіБ)</string>
+    <string name="core_label_medium">Середній</string>
+    <string name="core_label_mega">Мега</string>
+    <string name="core_label_metrics_update_interval_ms">Інтервал оновлення показників (мс)</string>
+    <string name="core_label_mfc_commands_shuffling_in_steps">Перетасування команд MFC покроково</string>
+    <string name="core_label_mfc_commands_shuffling_limit">Обмеження перетасування команд MFC</string>
+    <string name="core_label_mfc_commands_timeout">Час очікування команд MFC</string>
+    <string name="core_label_mfc_debug">Налагодження MFC</string>
+    <string name="core_label_microphone_devices">Мікрофонні пристрої</string>
+    <string name="core_label_microphone_type">Тип мікрофона</string>
+    <string name="core_label_minimal">Мінімальний</string>
+    <string name="core_label_minimum_scalable_dimension">Мінімальний масштабований розмір</string>
+    <string name="core_label_miscellaneous">Різне</string>
+    <string name="core_label_mmddyyyy">Mmddyyyy</string>
+    <string name="core_label_mono">Моно</string>
+    <string name="core_label_mouse">Миша</string>
+    <string name="core_label_mouse_debug_overlay">Накладення налагодження миші</string>
+    <string name="core_label_mouse_based_gyro_enabled">Увімкнено гіроскоп на основі миші</string>
+    <string name="core_label_move">Рухатися</string>
+    <string name="core_label_msaa">MSAA</string>
+    <string name="core_label_multi_threaded">Багатопотоковий</string>
+    <string name="core_label_multithreaded_rsx">Багатопотоковий RSX</string>
+    <string name="core_label_music_handler">Обробник музики</string>
+    <string name="core_label_nearest">Найближчий</string>
+    <string name="core_label_net">Чистий</string>
+    <string name="core_label_none">Жодного</string>
+    <string name="core_label_null">Null</string>
+    <string name="core_label_off">Вимкнено</string>
+    <string name="core_label_opacity" formatted="false">Непрозорість (%)</string>
+    <string name="core_label_opengl">OpenGL</string>
+    <string name="core_label_operating_system">Операційна система</string>
+    <string name="core_label_ordered_atomic">Упорядкований і атомний</string>
+    <string name="core_label_output_scaling_mode">Режим масштабування виводу</string>
+    <string name="core_label_over_under">Над-під</string>
+    <string name="core_label_pad_handler_mode">Режим обробника геймпада</string>
+    <string name="core_label_pad_handler_sleep_microseconds">Сон обробника геймпада (мікросекунди)</string>
+    <string name="core_label_paint_move_spheres">Фарба рух сфери</string>
+    <string name="core_label_pause_emulation_during_home_menu">Призупинити емуляцію під час головного меню</string>
+    <string name="core_label_pause_emulation_on_rpcs3_focus_loss">Призупинити емуляцію при втраті фокусу RPCS3</string>
+    <string name="core_label_performance_overlay">Перекриття продуктивності</string>
+    <string name="core_label_performance_report_threshold">Порогове значення звіту про ефективність</string>
+    <string name="core_label_play_music_during_boot_sequence">Відтворення музики під час послідовності завантаження</string>
+    <string name="core_label_position">Позиція</string>
+    <string name="core_label_ppu_accurate_non_java_mode">Режим PPU Accurate Non-Java</string>
+    <string name="core_label_ppu_accurate_vector_nan_values">PPU Точні векторні значення NaN</string>
+    <string name="core_label_ppu_calling_history">Історія викликів PPU</string>
+    <string name="core_label_ppu_debug">Налагодження PPU</string>
+    <string name="core_label_ppu_decoder">Декодер PPU</string>
+    <string name="core_label_ppu_profiler">PPU Profiler</string>
+    <string name="core_label_ppu_reservation_priority_over_spus">Пріоритет резервування PPU над SPU</string>
+    <string name="core_label_ppu_set_fpcc_bits">PPU Set FPCC Bits</string>
+    <string name="core_label_ppu_set_saturation_bit">PPU Set Saturation Bit</string>
+    <string name="core_label_ppu_threads">Потоки PPU</string>
+    <string name="core_label_ppu_vector_nan_handling">PPU Vector NaN Handling</string>
+    <string name="core_label_precise_spu_verification">Точна перевірка SPU</string>
+    <string name="core_label_prefer_color">Віддайте перевагу кольору</string>
+    <string name="core_label_prefer_depth">Віддайте перевагу глибині</string>
+    <string name="core_label_preferred_spu_threads">Бажані потоки SPU</string>
+    <string name="core_label_prevent_display_sleep_while_running_games">Запобігання сну дисплея під час запуску ігор</string>
+    <string name="core_label_process_argv">Обробити ARGV</string>
+    <string name="core_label_ps_eye">PS Око</string>
+    <string name="core_label_ps3">PS3</string>
+    <string name="core_label_ps3_native">Рідна PS3</string>
+    <string name="core_label_psn_country">Країна PSN</string>
+    <string name="core_label_psn_status">Статус PSN</string>
+    <string name="core_label_qt">Qt</string>
+    <string name="core_label_quadraphonic">Квадрафонічний</string>
+    <string name="core_label_quadraphonic_lfe">Квадрафонічні LFE</string>
+    <string name="core_label_raw">Сирий</string>
+    <string name="core_label_raw_mouse">Raw Mouse</string>
+    <string name="core_label_read_color_buffers">Читайте буфери кольорів</string>
+    <string name="core_label_read_depth_buffer">Буфер глибини читання</string>
+    <string name="core_label_real">Справжня</string>
+    <string name="core_label_real_singstar">Справжня SingStar</string>
+    <string name="core_label_recompiler_asmjit">Рекомпілятор (ASMJIT)</string>
+    <string name="core_label_recompiler_llvm">Рекомпілятор (LLVM)</string>
+    <string name="core_label_record_with_overlays">Запис із накладаннями</string>
+    <string name="core_label_relaxed">Розслаблений</string>
+    <string name="core_label_relaxed_zcull_sync">Розслаблена синхронізація ZCULL</string>
+    <string name="core_label_renderdoc_compatibility_mode">Режим сумісності Renderdoc</string>
+    <string name="core_label_renderer">Рендерер</string>
+    <string name="core_label_resolution">Роздільна здатність</string>
+    <string name="core_label_resolution_scale">Шкала роздільної здатності</string>
+    <string name="core_label_rocksmith">Скеляр</string>
+    <string name="core_label_rpcn">RPCN</string>
+    <string name="core_label_rpcs3_alternative_scheduler">Альтернативний планувальник RPCS3</string>
+    <string name="core_label_rpcs3_scheduler">Планувальник RPCS3</string>
+    <string name="core_label_rsx_fifo_fetch_accuracy">Точність вибірки RSX FIFO</string>
+    <string name="core_label_rsx_profiler">Профайлер RSX</string>
+    <string name="core_label_rsxaudio">RSXAudio</string>
+    <string name="core_label_rsxaudio_avport">RSXAudio Avport</string>
+    <string name="core_label_safe">Безпечний</string>
+    <string name="core_label_save_disc_game_data">Зберегти дані гри на диску</string>
+    <string name="core_label_save_llvm_logs">Збережіть журнали LLVM</string>
+    <string name="core_label_savestate">Savestate</string>
+    <string name="core_label_screen_size_in_inches">Розмір екрану в дюймах</string>
+    <string name="core_label_sdl">SDL</string>
+    <string name="core_label_sdl_camera_id">ID камери SDL</string>
+    <string name="core_label_second_frame_limit">Ліміт другого кадру</string>
+    <string name="core_label_set_daz_and_ftz">Набір DAZ і FTZ</string>
+    <string name="core_label_shader_chain_librashader">Ланцюжок шейдерів (librashader)</string>
+    <string name="core_label_shader_compiler_threads">Потоки компілятора шейдерів</string>
+    <string name="core_label_shader_interpreter_only">Тільки інтерпретатор шейдерів</string>
+    <string name="core_label_shader_loading_dialog">Діалогове вікно завантаження шейдера</string>
+    <string name="core_label_shader_mode">Режим шейдера</string>
+    <string name="core_label_shader_precision">Точність шейдерів</string>
+    <string name="core_label_shader_preset_path">Попередній шлях шейдера</string>
+    <string name="core_label_show_1_and_average" formatted="false">Показати 1% і середнє значення</string>
+    <string name="core_label_show_analog_limiter_toggle_hint">Показати підказку перемикання аналогового обмежувача</string>
+    <string name="core_label_show_autosave_autoload_hint">Показати підказку щодо автозбереження/автозавантаження</string>
+    <string name="core_label_show_capture_hints">Показати підказки для захоплення</string>
+    <string name="core_label_show_fatal_error_hints">Показати підказки про фатальну помилку</string>
+    <string name="core_label_show_min_and_max">Показати мін. і макс</string>
+    <string name="core_label_show_mouse_and_keyboard_toggle_hint">Показати підказку щодо перемикання миші та клавіатури</string>
+    <string name="core_label_show_move_cursor">Показати курсор переміщення</string>
+    <string name="core_label_show_ppu_compilation_hint">Показати підказку щодо компіляції PPU</string>
+    <string name="core_label_show_pressure_intensity_toggle_hint">Показати підказку перемикання інтенсивності тиску</string>
+    <string name="core_label_show_rpcn_popups">Показати спливаючі вікна RPCN</string>
+    <string name="core_label_show_shader_compilation_hint">Показати підказку щодо компіляції шейдера</string>
+    <string name="core_label_show_trophy_popups">Показати спливаючі вікна з трофеями</string>
+    <string name="core_label_side_by_side">Пліч-о-пліч</string>
+    <string name="core_label_silence_all_logs">Вимкнути всі журнали</string>
+    <string name="core_label_simulated">Імітація</string>
+    <string name="core_label_single_threaded">Однопотоковий</string>
+    <string name="core_label_singstar">SingStar</string>
+    <string name="core_label_sleep_timers_accuracy">Точність таймерів сну</string>
+    <string name="core_label_spdif_0">SPDIF 0</string>
+    <string name="core_label_spdif_1">SPDIF 1</string>
+    <string name="core_label_spu_block_size">Розмір блоку SPU</string>
+    <string name="core_label_spu_cache">Кеш SPU</string>
+    <string name="core_label_spu_debug">Налагодження SPU</string>
+    <string name="core_label_spu_decoder">Декодер SPU</string>
+    <string name="core_label_spu_delay_penalty">Штраф за затримку СПУ</string>
+    <string name="core_label_spu_getllar_busy_waiting_percentage">SPU GETLLAR Відсоток очікування зайнятості</string>
+    <string name="core_label_spu_llvm_lower_bound">Нижня межа SPU LLVM</string>
+    <string name="core_label_spu_llvm_upper_bound">SPU LLVM Верхня межа</string>
+    <string name="core_label_spu_loop_detection">Виявлення петлі SPU</string>
+    <string name="core_label_spu_profiler">SPU Profiler</string>
+    <string name="core_label_spu_reservation_busy_waiting_enabled">SPU Reservation Busy Waiting Enabled</string>
+    <string name="core_label_spu_reservation_busy_waiting_percentage_1">Бронювання SPU Відсоток очікування зайнятості 1</string>
+    <string name="core_label_spu_verification">Перевірка SPU</string>
+    <string name="core_label_spu_wake_up_delay">Затримка пробудження SPU</string>
+    <string name="core_label_spu_wake_up_delay_thread_mask">SPU Wake-Up Delay Thread Mask</string>
+    <string name="core_label_spu_xfloat_accuracy">Точність SPU XFloat</string>
+    <string name="core_label_standard">Стандартний</string>
+    <string name="core_label_start_games_in_fullscreen_mode">Запускайте ігри в повноекранному режимі</string>
+    <string name="core_label_start_paused">Початок призупинено</string>
+    <string name="core_label_stereo">Стерео</string>
+    <string name="core_label_stereo_lfe">Стерео LFE</string>
+    <string name="core_label_stretch_to_display_area">Розтягнути до області відображення</string>
+    <string name="core_label_strict_rendering_mode">Строгий режим візуалізації</string>
+    <string name="core_label_strict_texture_flushing">Суворе змивання текстури</string>
+    <string name="core_label_stub_ppu_traps">Заглушка PPU Пастки</string>
+    <string name="core_label_surround_5_1">Оточення 5.1</string>
+    <string name="core_label_surround_7_1">Оточення 7.1</string>
+    <string name="core_label_suspend_emulation_savestate_mode">Призупинити режим емуляції Savestate</string>
+    <string name="core_label_system">Система</string>
+    <string name="core_label_system_name">Назва системи</string>
+    <string name="core_label_texture_lod_bias_addend">Texture LOD Bias Addend</string>
+    <string name="core_label_thread_scheduler_mode">Режим планувальника потоків</string>
+    <string name="core_label_time_format">Формат часу</string>
+    <string name="core_label_time_stretching_threshold">Поріг розтягування часу</string>
+    <string name="core_label_title_background_hex">Тло заголовка (шістнадцяткове)</string>
+    <string name="core_label_title_color_hex">Колір заголовка (шістнадцятковий)</string>
+    <string name="core_label_top_left">Зліва вгорі</string>
+    <string name="core_label_top_right">Верхній правий</string>
+    <string name="core_label_turntable_emulated_controller">Контролер емуляції вертушки</string>
+    <string name="core_label_ultra">Ультра</string>
+    <string name="core_label_unknown">Невідомий</string>
+    <string name="core_label_upnp_enabled">UPNP увімкнено</string>
+    <string name="core_label_use_accurate_dfma">Використовуйте Accurate DFMA</string>
+    <string name="core_label_use_full_rgb_output_range">Використовуйте повний вихідний діапазон RGB</string>
+    <string name="core_label_use_gpu_texture_scaling">Використовуйте масштабування текстур GPU</string>
+    <string name="core_label_use_llvm_cpu">Використовуйте процесор LLVM</string>
+    <string name="core_label_use_native_user_interface">Використовуйте рідний інтерфейс користувача</string>
+    <string name="core_label_use_re_bar_for_gpu_uploads">Використовуйте Re-BAR для завантажень GPU</string>
+    <string name="core_label_use_recursive_scan">Використовуйте рекурсивне сканування</string>
+    <string name="core_label_use_window_space">Використовуйте віконний простір</string>
+    <string name="core_label_usleep_only">Usleep Only</string>
+    <string name="core_label_usleep_time_addend">Додавання часу сну</string>
+    <string name="core_label_uvc_1_1">UVC 1.1</string>
+    <string name="core_label_vblank_ntsc_fixup">Виправлення Vblank NTSC</string>
+    <string name="core_label_vblank_rate">Vblank Rate</string>
+    <string name="core_label_vertical">Вертикальний</string>
+    <string name="core_label_vertical_margin" formatted="false">Вертикальна маржа (%)</string>
+    <string name="core_label_vfs">VFS</string>
+    <string name="core_label_video">Відео</string>
+    <string name="core_label_vram_allocation_limit_mb">Ліміт розподілу VRAM (МБ)</string>
+    <string name="core_label_vsync_mode">Режим VSync</string>
+    <string name="core_label_vulkan">Вулкан</string>
+    <string name="core_label_window_title_format">Формат заголовка вікна</string>
+    <string name="core_label_write_color_buffers">Напишіть буфери кольорів</string>
+    <string name="core_label_write_depth_buffer">Буфер глибини запису</string>
+    <string name="core_label_xaudio2">XAudio2</string>
+    <string name="core_label_yyyymmdd">Ррррммдд</string>
+    <string name="core_help_core_accurate_cache_line_stores" formatted="false">Акуратно опрацьовує інструкцію ППУ ДКБЗ.
+Крім того, у поєднанні з Accurate SPU DMA доступи до лінії кешу SPU PUT оброблятимуться атомарно.</string>
+    <string name="core_help_core_use_accurate_dfma" formatted="false">Використовуйте точні інструкції FMA подвійної точності в PPU та SPU.
+Хоча його вимкнення може дати пристойний приріст продуктивності, якщо ваш ЦП не підтримує FMA, це також може викликати незначні помилки, які інакше не виникають.
+Ви не повинні вимикати його, якщо ваш процесор підтримує FMA.</string>
+    <string name="core_help_core_accurate_ppu_128_byte_reservation_op_max_length" formatted="false">Якщо ввімкнено, атомарні операції PPU працюватимуть із усіма даними рядка кешу, на відміну від окремого 64-бітного блоку пам’яті, якщо вимкнено.
+Числові значення визначають, чи вмикати точну версію на основі тривалості атомарної операції.</string>
+    <string name="core_help_core_ppu_set_fpcc_bits" formatted="false">Точно встановлені біти FPCC у серверних процесорах PPU.
+Якщо не впевнені, не змінюйте цей параметр.</string>
+    <string name="core_help_core_ppu_accurate_non_java_mode" formatted="false">Дотримуйтесь бітових значень режиму не в режимі Java для векторних операцій у серверних процесорах PPU.
+Якщо не впевнені, не змінюйте цей параметр.</string>
+    <string name="core_help_core_ppu_set_saturation_bit" formatted="false">Точно встановіть значення Saturation Bit у серверних процесорах PPU.
+Якщо не впевнені, не змінюйте цей параметр.</string>
+    <string name="core_help_core_ppu_accurate_vector_nan_values" formatted="false">Точне налаштування NaN призводить до векторних інструкцій у серверних частинах PPU.
+Якщо не впевнені, не змінюйте цей параметр.</string>
+    <string name="core_help_core_accurate_rsx_reservation_access" formatted="false">Примусово призупиняє RSX операції SPU MFC_GETLLAR і SPU MFC_PUTLLUC.</string>
+    <string name="core_help_core_accurate_spu_dma" formatted="false">Точно обробляє операції SPU DMA.</string>
+    <string name="core_help_video_allow_host_gpu_labels" formatted="false">Дозволяє головному GPU безпосередньо синхронізуватися з CELL. Це призводить до зниження продуктивності, але відкриває справжній стан об’єктів GPU гостьовому ЦП. Може допомогти усунути візуальний шум і збої за рахунок продуктивності. Використовуйте з обережністю.</string>
+    <string name="core_help_video_anisotropic_filter_override" formatted="false">Вищі значення збільшують чіткість текстур на похилих поверхнях за рахунок ресурсів GPU.
+Сучасні графічні процесори чудово справляються з цим параметром, навіть при 16x.
+Зберігайте це значення Automatic, якщо ви хочете використовувати оригінальне налаштування, яке використовується справжньою PS3.</string>
+    <string name="core_help_video_aspect_ratio" formatted="false">Залиште це на 16:9, якщо у вас немає монітора 4:3.</string>
+    <string name="core_help_audio_rsxaudio_avport" formatted="false">Контролює, з якого порту використовується вибірка аудіоданих.</string>
+    <string name="core_help_audio_desired_audio_buffer_duration" formatted="false">Тривалість цільового буфера в мілісекундах.
+Вищі значення полегшують роботу алгоритму буферизації, але можуть викликати помітну затримку звуку.</string>
+    <string name="core_help_audio_audio_channel_layout" formatted="false">Визначає звуковий формат RPCS3.
+Використовуйте «Авто», щоб дозволити RPCS3 вибрати найкращий формат на основі аудіопристрою та емульованого аудіоформату.</string>
+    <string name="core_help_audio_audio_device" formatted="false">Контролює, який пристрій використовується аудіосистемою.</string>
+    <string name="core_help_audio_audio_format" formatted="false">Визначає звуковий формат емуляції.
+Налаштуйте цей параметр, якщо ви хочете переключатися між стереозвуком і об’ємним звуком.
+Зміна цих значень вимагає перезапуску гри.
+Ручне налаштування використовуватиме вибрані формати, а автоматичне налаштування дозволить грі вибрати з усіх доступних форматів.</string>
+    <string name="core_help_audio_audio_formats" formatted="false">Визначає звуковий формат емуляції.
+Налаштуйте цей параметр, якщо ви хочете переключатися між стереозвуком і об’ємним звуком.
+Зміна цих значень вимагає перезапуску гри.
+Ручне налаштування використовуватиме вибрані формати, а автоматичне налаштування дозволить грі вибрати з усіх доступних форматів.</string>
+    <string name="core_help_audio_audio_provider" formatted="false">Контролює, який API аудіо PS3 використовується.
+Ігри використовують CellAudio, тоді як VSH вимагає RSXAudio.</string>
+    <string name="core_help_audio_renderer" formatted="false">Cubeb використовує кросплатформний підхід і підтримує буферизацію аудіо, тому це рекомендований варіант.
+Якщо він недоступний, замість нього можна використовувати FAudio.</string>
+    <string name="core_help_input_output_background_input_enabled" formatted="false">Дозволяє вводити дані з панелі та клавіатури, коли вікно гри розфокусовано.</string>
+    <string name="core_help_net_bind_address" formatted="false">IP-адреса інтерфейсу для прив’язки.
+Доступно лише в індивідуальних конфігураціях.</string>
+    <string name="core_help_input_output_buzz_emulated_controller" formatted="false">Buzz! підтримка.
+Виберіть 1 або 2 контролери, якщо для гри потрібен Buzz! контролери, і у вас немає справжніх контролерів.
+Виберіть Null, якщо гра підтримує DualShock або якщо у вас справжній Buzz! контролери.</string>
+    <string name="core_help_input_output_camera" formatted="false">Виберіть Qt Camera, щоб використовувати камеру за замовчуванням у вашій операційній системі.</string>
+    <string name="core_help_input_output_camera_flip" formatted="false">Перевертає зображення камери по горизонталі, вертикалі або по обох осях.</string>
+    <string name="core_help_input_output_camera_id" formatted="false">Виберіть камеру, яку ви хочете використовувати під час гри.</string>
+    <string name="core_help_input_output_camera_type" formatted="false">Залежно від гри вам може знадобитися вибрати певний тип камери.</string>
+    <string name="core_help_core_clocks_scale" formatted="false">Змінює масштаб емульованого системного часу.
+Впливає на програмне забезпечення, яке використовує системний час для обчислення таких речей, як динамічні часові кроки.</string>
+    <string name="core_help_savestate_compatible_savestate_mode" formatted="false">Коли цей режим увімкнено, емуляція SPU надає пріоритет сумісності savestate, однак це може дещо знизити продуктивність.
+Коли цей режим вимкнено, деякі ігри можуть не дозволяти робити savestate та відображати в журналі помилку паузи SPU.</string>
+    <string name="core_help_system_console_time_offset_s" formatted="false">Встановлює час для використання в консолі. Це буде застосовано як зсув, який відстежує час настінного годинника.
+Можна скинути поточний час настінного годинника, натиснувши «Установити зараз».</string>
+    <string name="core_help_audio_convert_to_16_bit" formatted="false">Використовує 16-бітні зразки звуку замість стандартного 32-бітного числа з плаваючою комою.
+Використовуйте з помилковими аудіодрайверами, якщо у вас немає звуку або він повністю зламаний.</string>
+    <string name="core_help_video_custom_anaglyph_matrices_matrix_left" formatted="false">Встановлює режим 3D-стереорендерінгу (доступний лише в настроюваних конфігураціях із роздільною здатністю за замовчуванням 720p).
+Anaglyph використовує різні кольори для кожного ока, які потім можна фільтрувати за допомогою певних окулярів.
+Side-by-Side частіше підтримується програмами перегляду VR.
+Over-Under ближче до рідного стереовиходу, але підтримується рідше.</string>
+    <string name="core_help_video_custom_anaglyph_matrices_matrix_right" formatted="false">Встановлює режим 3D-стереорендерінгу (доступний лише в настроюваних конфігураціях із роздільною здатністю за замовчуванням 720p).
+Anaglyph використовує різні кольори для кожного ока, які потім можна фільтрувати за допомогою певних окулярів.
+Side-by-Side частіше підтримується програмами перегляду VR.
+Over-Under ближче до рідного стереовиходу, але підтримується рідше.</string>
+    <string name="core_help_system_date_format" formatted="false">Виберіть формат дати PS3.</string>
+    <string name="core_help_core_debug_console_mode" formatted="false">Збільшує обсяг використовуваної системної пам\'яті відповідно до консолі DECR тощо.
+Спричиняє іншу поведінку програмного забезпечення, ніж роздрібне обладнання.</string>
+    <string name="core_help_video_debug_output" formatted="false">Вмикає вбудовану функцію налагодження вибраного API.
+Викличе серйозне зниження продуктивності, особливо з Vulkan.
+Корисно лише розробникам.
+Якщо не впевнені, не використовуйте цю опцію.</string>
+    <string name="core_help_video_debug_overlay" formatted="false">Забезпечує графічне накладання різноманітної інформації про налагодження.
+Якщо не впевнені, не використовуйте цю опцію.</string>
+    <string name="core_help_net_derive_mac_from_psid" formatted="false">Отримайте MAC-адресу з PSID.</string>
+    <string name="core_help_video_disable_asynchronous_memory_manager" formatted="false">Примусово вбудовувати виклики керування пам’яттю хоста замість асинхронної обробки.
+Це може спричинити серйозне зниження продуктивності та заїкання в деяких іграх.
+Ця опція потрібна лише розробникам для усунення проблем із захистом пам’яті кешу текстур.</string>
+    <string name="core_help_video_disable_fifo_reordering" formatted="false">Повністю вимикає оптимізацію RSX FIFO. Розіграші обробляються по мірі отримання знімачем DMA.</string>
+    <string name="core_help_video_disable_hardware_colorspace_remapping" formatted="false">Disables use of hardware-native color-space remapping formats such as _sRGB and _SNORM suffixes.
+Вимкнення цієї опції підвищує точність порівняно з PS3, але також може створювати певний шум через роботу програмної емуляції.</string>
+    <string name="core_help_video_disable_msl_fast_math" formatted="false">Вимикає Fast Math для шейдерів MSL, які можуть порушувати стандарт IEEE 754.
+Його вимкнення може виправити деякі артефакти, особливо на графічних процесорах Apple, за рахунок зниження продуктивності.</string>
+    <string name="core_help_video_disable_zcull_occlusion_queries" formatted="false">Вимикає виконання запитів на оклюзію. Від незначного до помірного підвищення продуктивності.
+Можуть виникнути проблеми з порушенням оклюзії, наприклад відсутність геометрії та надмірне спливаюче вікно.</string>
+    <string name="core_help_video_disable_on_disk_shader_cache" formatted="false">Вимикає завантаження та збереження шейдерів із кешу шейдерів у каталозі даних і до нього.</string>
+    <string name="core_help_core_disable_spu_getllar_spin_optimization" formatted="false">Вимкніть оптимізацію обертання SPU GETLLAR.
+This can cause severe performance degradation and stuttering in many games.
+Ця опція потрібна лише для певної кількості ігор.</string>
+    <string name="core_help_video_disable_vertex_cache" formatted="false">Вимикає кеш вершин.
+Може усунути відсутність або мерехтіння графічного виводу.
+May degrade performance.</string>
+    <string name="core_help_video_disable_video_output" formatted="false">Вимикає весь вихід відео та графічний рендеринг PS3.
+Його єдиний варіант використання — це оцінка продуктивності CELL для розробки.</string>
+    <string name="core_help_video_disable_vulkan_memory_allocator" formatted="false">Вимикає настроюваний розподільник пам’яті Vulkan і повертається до прямих викликів VkAllocateMemory/VkFreeMemory.</string>
+    <string name="core_help_net_dns_address" formatted="false">DNS використовується для визначення імен хостів програмами.</string>
+    <string name="core_help_video_driver_wake_up_delay" formatted="false">Controls how much time it takes for RSX to start processing after waking up by the Cell processor.
+Increasing wakeup delay improves stability, but very high values can lower RSX/GPU performance.
+It is recommend to adjust this at 20µs to 40µs increments until the best value for optimal stability is reached.</string>
+    <string name="core_help_audio_dump_to_file" formatted="false">Зберігає весь аудіофайл як необроблений хвильовий файл. Якщо не впевнені, не встановлюйте цей прапорець.</string>
+    <string name="core_help_vfs_empty_dev_hdd0_tmp" formatted="false">Необхідний для деяких модів Homebrew або ігор.
+Якщо не впевнені, не використовуйте цю опцію</string>
+    <string name="core_help_video_emulate_special_depth_comparison" formatted="false">Емулюйте операції порівняння глибини, де поведінка апаратного забезпечення робочого столу відрізняється від PS3, як правило, режими порівняння EQUAL.
+Fixes excessive shadow flickering and Z-fighting in some games.
+Це найбільш очевидно в деяких іграх, де формат глибини перед проходом Z відрізняється від формату глибини растеризації, сценарій, який ніколи не працюватиме належним чином на сумісному обладнанні настільного комп’ютера.</string>
+    <string name="core_help_audio_enable_buffering" formatted="false">Enables audio buffering, which reduces crackle/stutter but increases audio latency.</string>
+    <string name="core_help_net_clans_enabled" formatted="false">Увімкніть підключення до сервера Clans.
+Впливає лише на ігри, які підтримують функцію кланів.</string>
+    <string name="core_help_core_spu_reservation_busy_waiting_enabled" formatted="false">Увімкнути обертання SPU RdEventStat.
+This increases CPU usage, this setting is beneficial for high-threaded CPUs (12+) with select number of games.</string>
+    <string name="core_help_miscellaneous_enable_gamemode" formatted="false">Активуйте GameMode Feral Interactive.
+Це низка оптимізацій центрального та графічного процесорів, які потенційно можуть покращити продуктивність гри на деяких системах.</string>
+    <string name="core_help_vfs_enable_host_root" formatted="false">Необхідний для деяких Homebrew.
+Якщо не впевнені, не використовуйте цю опцію.</string>
+    <string name="core_help_audio_enable_time_stretching" formatted="false">Enables time stretching - requires buffering to be enabled.
+Reduces crackle/stutter further, but may cause a very noticeable reduction in audio quality on slower CPUs.</string>
+    <string name="core_help_net_upnp_enabled" formatted="false">Увімкніть UPNP.
+This will automatically forward ports bound on 0.0.0.0 if your router has UPNP enabled.</string>
+    <string name="core_help_system_enter_button_assignment" formatted="false">The button used for enter/accept/confirm in system dialogs.
+Change this to use the Circle button instead, which is the default configuration on Japanese systems and in many Japanese games.
+In these cases having the cross button assigned can often lead to confusion.</string>
+    <string name="core_help_video_vulkan_exclusive_fullscreen_mode" formatted="false">Контролює, який повноекранний режим запитує RPCS3 у драйверів під час використання рендерера Vulkan.
+Автоматично дозволить водієві вибрати відповідний режим, тоді як інші параметри підкажуть водіям, чи варто їм використовувати ексклюзивний або безрамковий повноекранний режим.
+Використання опції «Віддавати перевагу безрамковому повноекранному режиму» може допомогти, якщо у вас виникають проблеми з потоковою трансляцією гри RPCS3 або якщо ваша система неправильно вмикає режим HDR під час повноекранного режиму.</string>
+    <string name="core_help_miscellaneous_exit_rpcs3_when_process_finishes" formatted="false">Автоматично закривати RPCS3 під час закриття гри або коли гра закривається сама.</string>
+    <string name="core_help_core_rsx_fifo_fetch_accuracy" formatted="false">«Швидкий» є найменш точним параметром, RSX не емулює атомарний буфер FIFO.
+&quot;Atomic&quot; значно покращує стабільність у багатьох іграх з невеликим погіршенням продуктивності.
+&quot;Atomic &amp; Ordered&quot; є найточнішим, але найповільнішим і без особливих переваг у стабільності в іграх.</string>
+    <string name="core_help_video_force_cpu_blit" formatted="false">Примусова емуляція всіх блітів і операцій обробки зображень на ЦП.
+У більшості випадків потрібно також увімкнути опцію «Записати буфери кольорів», щоб уникнути пропуску графіки.
+Значно погіршує продуктивність, але в деяких випадках більш точний.
+Цей параметр перевизначає опцію «Масштабування текстури GPU».</string>
+    <string name="core_help_video_force_high_precision_z_buffer" formatted="false">Корисно лише під час усунення відмінностей у апаратному забезпеченні GPU.
+Звичайним користувачам не потрібно.
+Якщо не впевнені, не використовуйте цю опцію.</string>
+    <string name="core_help_video_force_hardware_msaa_resolve" formatted="false">Змушує MSAA використовувати можливості вирішення головного графічного процесора для всіх операцій вибірки.
+Цей параметр призводить до зниження продуктивності, а також до ризику візуальних артефактів, але може давати чіткіші візуальні ефекти, якщо ввімкнено MSAA.</string>
+    <string name="core_help_video_framebuffer_aliasing_heuristic_bias" formatted="false">Керує тим, як RPCS3 розпізнає цілі візуалізації, де колір і глибина є псевдонімами тієї самої пам’яті. Авто рекомендовано для більшості ігор.
+· Авто — це існуюча поведінка, упереджена в бік глибини.
+· Prefer Color зберігає прив’язку кольорів, коли кольоровий запис увімкнено, а глибинний запис — ні. Виправляє відсутню геометрію в деяких відкладених рендерерах (наприклад, Starhawk) за рахунок пропуску перевірки глибини для цього малюнка.
+· Переважна глибина наразі така сама, як Авто.</string>
+    <string name="core_help_video_frame_limit" formatted="false">Вимкнути – найшвидший варіант.
+Використання обмежувача кадрів додасть додаткових витрат і сповільнить гру. Однак деякі ігри виходять з ладу, якщо частота кадрів занадто висока.
+Нативну версію PS3 слід використовувати, лише якщо Auto не працює належним чином, оскільки це може спричинити проблеми з кадровою частотою.
+Infinite додає цикл позитивного зворотного зв’язку, який додає ще один сигнал vblank на кадр, що дозволяє більше ігор мати необмежену кількість кадрів в секунду.
+Досвідчені користувачі, яким потрібні інші обмеження кадрів, повинні використовувати параметр «Обмеження другого кадру» у файлі конфігурації.</string>
+    <string name="core_help_video_fidelityfx_cas_sharpening_intensity" formatted="false">Контролюйте силу різкості, що застосовує FidelityFX Super Resolution. Вищі значення дадуть чіткіші результати, але можуть викликати артефакти.</string>
+    <string name="core_help_input_output_ghltar_emulated_controller" formatted="false">Підтримка гітарного контролера Guitar Hero Live (GHL).
+Виберіть 1 або 2 контролери, якщо для гри потрібні контролери GHL Guitar, а у вас немає справжніх контролерів для гітари.
+Виберіть Null, якщо гра підтримує DualShock або якщо у вас є справжні гітарні контролери.
+Справжній гітарний контролер можна використовувати одночасно з емульованим гітарним контролером.</string>
+    <string name="core_help_video_use_gpu_texture_scaling" formatted="false">Примусове виконання всіх операцій передачі текстур, масштабування та перетворення на GPU.
+У деяких випадках може призвести до пошкодження текстури.</string>
+    <string name="core_help_video_handle_rsx_memory_tiling" formatted="false">Дотримуйтеся конфігурації мозаїки пам’яті RSX під час запису даних GPU у пам’ять vm.
+Це може виправити пошкодження графіки, які спостерігаються, коли ввімкнено параметри Read Color або Read Depth.</string>
+    <string name="core_help_core_hook_static_functions" formatted="false">Дозволяє підключити деякі функції, такі як \'memcpy\', замінюючи їх реалізаціями високого рівня. Може нічого не робити або щось ламати. Експериментальний.</string>
+    <string name="core_help_net_internet_enabled" formatted="false">Якщо встановлено значення Connected, RPCS3 дозволить програмам використовувати ваше підключення до Інтернету.</string>
+    <string name="core_help_input_output_io_debug_overlay" formatted="false">Забезпечує графічне накладання зі значеннями введення для гравця 1.
+Це відображається, лише якщо накладення налагодження вимкнено.
+Якщо не впевнені, не використовуйте цю опцію.</string>
+    <string name="core_help_net_ip_swap_list" formatted="false">Список обміну DNS.
+Доступно лише в індивідуальних конфігураціях.</string>
+    <string name="core_help_input_output_keyboard" formatted="false">Деякі ігри підтримують введення з рідної клавіатури.
+Базовий буде працювати в цих випадках.</string>
+    <string name="core_help_system_keyboard_type" formatted="false">Встановлює використовувану розкладку клавіатури.
+На даний момент повністю підтримуються лише макети США, Японії та Німеччини.</string>
+    <string name="core_help_system_language" formatted="false">Деякі ігри можуть не завантажуватися, якщо мова системи недоступна в самій грі.
+Інші ігри автоматично перемикатимуть мову на вибрану тут.
+Рекомендовано залишити це мовою, яка підтримується грою.</string>
+    <string name="core_help_system_license_area" formatted="false">Область консолі визначає ліцензійну область PS3.
+Залежно від ліцензійної зони деякі ігри можуть не працювати.</string>
+    <string name="core_help_vfs_limit_disk_cache_size" formatted="false">Автоматично видаляє старіші файли з кешу диска під час завантаження, якщо він стає більшим за вказане значення.
+Ігри можуть використовувати папку кешу для тимчасового зберігання даних поза межами системної пам’яті. Для тривалого зберігання не використовується.
+
+Цей параметр доступний лише в глобальній конфігурації.</string>
+    <string name="core_help_core_llvm_precompilation" formatted="false">Шукає в каталозі гри та попередньо компілює додаткові модулі PPU та SPU під час завантаження.
+Якщо вимкнено, ці модулі збиратимуться лише за потреби. Залежно від гри це може несподівано та часто переривати ігровий процес.
+Вимкніть це, лише якщо ви хочете швидше потрапити в гру.</string>
+    <string name="core_help_input_output_lock_overlay_input_to_player_one" formatted="false">Блокує власне введення накладання для першого гравця.</string>
+    <string name="core_help_video_log_shader_programs" formatted="false">Скинути ігрові шейдери у файл. Корисно лише розробникам.
+Якщо не впевнені, не використовуйте цю опцію.</string>
+    <string name="core_help_audio_master_volume" formatted="false">Керує загальною гучністю емуляції.
+Значення понад 100% можуть погіршити якість звуку.</string>
+    <string name="core_help_vfs_disk_cache_maximum_size_mb" formatted="false">Автоматично видаляє старіші файли з кешу диска під час завантаження, якщо він стає більшим за вказане значення.
+Ігри можуть використовувати папку кешу для тимчасового зберігання даних поза межами системної пам’яті. Для тривалого зберігання не використовується.
+
+Цей параметр доступний лише в глобальній конфігурації.</string>
+    <string name="core_help_core_max_llvm_compile_threads" formatted="false">Обмежує максимальну кількість потоків, які використовуються для початкової компіляції модулів PPU та SPU.
+Знизьте це значення, щоб підвищити продуктивність інших відкритих програм.
+За умовчанням використовуються всі доступні потоки.</string>
+    <string name="core_help_core_max_cpu_preempt_count" formatted="false">Зменшує використання процесора та енергоспоживання, подовжуючи час роботи акумулятора на мобільних пристроях. (0 означає вимкнено)
+Вищі значення спричиняють більш виражений ефект, але можуть спричинити проблеми зі звуком або продуктивністю. Рекомендується значення 50 або менше.
+Цей параметр примусово встановлює обмеження FPS, оскільки він активний, коли частота кадрів стабільна.
+Чим легша гра на апаратному забезпеченні, тим більше енергії вона економить. (доки не буде досягнуто бар\'єру підрахунку випередження)</string>
+    <string name="core_help_core_max_spurs_threads" formatted="false">Обмежує максимальну кількість потоків SPURS у кожній групі потоків.
+У деяких випадках може покращити продуктивність, особливо в системах з обмеженою кількістю апаратних потоків.
+Обмеження кількості потоків може призвести до збоїв; рекомендується залишити це значення за замовчуванням.</string>
+    <string name="core_help_core_mfc_commands_shuffling_limit" formatted="false">Примусово затримує будь-яку непарну команду MFC, очікує принаймні 2 очікуваних команд, щоб виконати їх у довільному порядку.
+На даний момент має використовуватися з будь-яким інтерпретатором SPU.
+Сильно погіршує продуктивність! Якщо не впевнені, не використовуйте цю опцію.</string>
+    <string name="core_help_core_mfc_debug" formatted="false">Створює журнали MFC.
+Корисно лише розробникам.
+Ніколи не використовуйте це.</string>
+    <string name="core_help_audio_microphone_devices" formatted="false">Для більшості ігор слід використовувати стандарт.
+SingStar емулює пристрій SingStar і його слід використовувати з іграми SingStar.
+Real SingStar слід використовувати лише зі СПРАВЖНІМ пристроєм SingStar з іграми SingStar.
+Rocksmith слід використовувати з ключем Rocksmith.</string>
+    <string name="core_help_audio_microphone_type" formatted="false">Для більшості ігор слід використовувати стандарт.
+SingStar емулює пристрій SingStar і його слід використовувати з іграми SingStar.
+Real SingStar слід використовувати лише зі СПРАВЖНІМ пристроєм SingStar з іграми SingStar.
+Rocksmith слід використовувати з ключем Rocksmith.</string>
+    <string name="core_help_input_output_emulated_midi_devices" formatted="false">Виберіть до 3 емульованих пристроїв MIDI та їх типи.</string>
+    <string name="core_help_video_minimum_scalable_dimension" formatted="false">Лише кадрові буфери, розмір яких перевищує цей розмір, будуть розширені.
+Збільшення цього значення може вирішити проблеми з відсутньою графікою під час масштабування, особливо якщо ввімкнено запис буферів кольорів.
+Якщо не впевнені, не змінюйте цей параметр.</string>
+    <string name="core_help_input_output_mouse_based_gyro_enabled" formatted="false">Вмикає емуляцію гіроскопа на основі миші під час запуску гри. Його також можна будь-коли перемикати за допомогою відповідної гарячої клавіші.
+Утримуйте праву кнопку миші, щоб активувати введення гіроскопа: переміщення карт миші до осей руху X і Z, а колесо прокрутки – до осі Y. Відпустіть кнопку, щоб скинути значення руху.</string>
+    <string name="core_help_input_output_mouse_debug_overlay" formatted="false">Забезпечує графічне накладання значень, введених мишею.
+Це відображається, лише якщо інші накладення налагодження вимкнено.
+Якщо не впевнені, не використовуйте цю опцію.</string>
+    <string name="core_help_input_output_mouse" formatted="false">Деякі ігри підтримують власний ввід мишею.
+У цих випадках працюватиме Basic або Raw.</string>
+    <string name="core_help_input_output_move" formatted="false">Обробник PS Move рекомендовано для офіційних контролерів PS Move.</string>
+    <string name="core_help_video_msaa" formatted="false">Емуляція макета мультисемплінгу PS3.
+Може виправити деякі графічні збої, які важко вирішити.
+Від низького до помірного зниження продуктивності залежно від апаратного забезпечення графічного процесора.</string>
+    <string name="core_help_video_multithreaded_rsx" formatted="false">Перевантажує деякі операції RSX у вторинний потік.
+Покращує продуктивність високоядерних процесорів.
+Може спричинити уповільнення слабших ЦП через додаткове навантаження робочого потоку.</string>
+    <string name="core_help_audio_music_handler" formatted="false">Наразі використовується лише для емуляції cellMusic.
+Виберіть Qt, щоб використовувати пристрій виведення за замовчуванням у вашій операційній системі.
+Це може не відтворювати всі аудіоформати.</string>
+    <string name="core_help_core_ppu_threads" formatted="false">Впливає на максимальну кількість потоків PPU, що працюють одночасно, значення 1 має дуже низьку сумісність з іграми.
+2 є значенням за замовчуванням, якщо не впевнені, не змінюйте цей параметр.
+Увага: зміна цього значення скасовує скомпільований кеш PPU/SPU. При наступному запуску компіляція модулів буде виконана повторно з нуля.</string>
+    <string name="core_help_video_output_scaling_mode" formatted="false">Кінцева фільтрація зображення. Найближче не застосовує фільтрації, Bilinear згладжує зображення, а FidelityFX Super Resolution покращує масштабовані зображення.
+Якщо гра відображається із внутрішньою роздільною здатністю, нижчою за роздільну здатність вашого вікна, FidelityFX впорається з високою роздільною здатністю.
+FidelityFX може викликати візуальні артефакти.
+FidelityFX наразі не працює зі стереозвуком 3D.</string>
+    <string name="core_help_input_output_keep_pads_connected" formatted="false">Показує всі налаштовані панелі як завжди підключені в грі, навіть якщо вони фізично відключені.</string>
+    <string name="core_help_input_output_pad_handler_mode" formatted="false">Однопотоковий: усі обробники колодок виконуються в одному потоці послідовно.
+Багатопотоковий: кожен обробник панелі має власний потік.
+Використовуйте багатопотоковість, лише якщо ви можете заощадити додаткові потоки.</string>
+    <string name="core_help_miscellaneous_pause_emulation_during_home_menu" formatted="false">Якщо ввімкнено, відкриття головного меню призведе до призупинення емуляції.
+У той час як більшість ігор призупиняються самі, поки відображається головне меню, деякі цього не роблять.
+У цьому випадку може бути корисно призупиняти емуляцію кожного разу, коли відкрито головне меню.</string>
+    <string name="core_help_miscellaneous_pause_emulation_on_rpcs3_focus_loss" formatted="false">Автоматично призупиняти емуляцію, коли RPCS3 втрачає фокус або програма неактивна, щоб заощадити енергію та зменшити використання ЦП.
+Зверніть увагу, що призупинення емуляції загалом не є ідеальним і може бути несумісним з усіма іграми.
+Хоча зараз він також призупиняє ігровий процес, не рекомендується покладатися на нього, оскільки така поведінка може змінитися в майбутньому, і це не є метою цього налаштування.</string>
+    <string name="core_help_core_enable_performance_report" formatted="false">Вимірюйте певні події та роздрукуйте діаграму після зупинки емулятора. Не вмикати, якщо не буде запропоновано.</string>
+    <string name="core_help_video_performance_overlay_center_horizontally" formatted="false">Центрує накладення продуктивності горизонтально та перекриває горизонтальне поле.</string>
+    <string name="core_help_video_performance_overlay_center_vertically" formatted="false">Центрує накладення продуктивності по вертикалі та перекриває вертикальне поле.</string>
+    <string name="core_help_video_performance_overlay_detail_level" formatted="false">Контролює кількість інформації, що відображається на накладенні продуктивності.</string>
+    <string name="core_help_video_performance_overlay_enabled" formatted="false">Вмикає або вимикає накладення продуктивності.</string>
+    <string name="core_help_video_performance_overlay_font_size_px" formatted="false">Встановлює розмір шрифту накладання продуктивності (вимірюється в пікселях).</string>
+    <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">Встановлює кількість точок даних, які використовуються на графіку частоти кадрів.</string>
+    <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">Контролює кількість інформації, що відображається на накладенні продуктивності.</string>
+    <string name="core_help_video_performance_overlay_enable_framerate_graph" formatted="false">Вмикає або вимикає графік частоти кадрів.</string>
+    <string name="core_help_video_performance_overlay_frametime_datapoints" formatted="false">Встановлює кількість точок даних, які використовуються на графіку часу кадру.</string>
+    <string name="core_help_video_performance_overlay_frametime_graph_detail_level" formatted="false">Контролює кількість інформації, що відображається на накладенні продуктивності.</string>
+    <string name="core_help_video_performance_overlay_enable_frametime_graph" formatted="false">Вмикає або вимикає графік часу кадру.</string>
+    <string name="core_help_video_performance_overlay_horizontal_margin" formatted="false">Встановлює відстань по горизонталі до межі екрана відносно квадранта екрана (вимірюється у %).</string>
+    <string name="core_help_video_performance_overlay_vertical_margin" formatted="false">Встановлює відстань по вертикалі до межі екрана відносно квадранта екрана (вимірюється у %).</string>
+    <string name="core_help_video_performance_overlay_opacity" formatted="false">Встановлює непрозорість накладання продуктивності (вимірюється у %).</string>
+    <string name="core_help_video_performance_overlay_position" formatted="false">Встановлює позицію на екрані (квадрант) накладання продуктивності.</string>
+    <string name="core_help_video_performance_overlay_metrics_update_interval_ms" formatted="false">Встановлює інтервал часу, протягом якого накладення продуктивності оновлюється (вимірюється в мілісекундах).
+Якщо встановити значення 16 мілісекунд, накладення продуктивності оновлюватиметься приблизно на 60 Гц.
+Частота оновлення продуктивності накладання не впливає на статистику графіка кадрів і може бути настільки швидкою, наскільки це дозволяє поточна гра.</string>
+    <string name="core_help_video_performance_overlay_use_window_space" formatted="false">Розташуйте накладання відносно повної поверхні вікна, дозволяючи розміщувати за межами зони візуалізації гри.</string>
+    <string name="core_help_miscellaneous_play_music_during_boot_sequence" formatted="false">Відтворювати музику під час послідовності завантаження, якщо доступно.</string>
+    <string name="core_help_core_ppu_debug" formatted="false">Створює журнали PPU.
+Корисно лише розробникам.
+Ніколи не використовуйте це.</string>
+    <string name="core_help_core_ppu_decoder" formatted="false">Перекомпілює та кешує код PPU гри за допомогою рекомпілятора LLVM один раз перед першим запуском.
+Це, безумовно, найшвидший варіант, яким завжди слід користуватися.
+Якщо у вас виникнуть проблеми з сумісністю, поверніться до одного з інтерпретаторів і повторіть спробу.
+Якщо не впевнені, скористайтеся цією опцією.</string>
+    <string name="core_help_core_ppu_reservation_priority_over_spus" formatted="false">Надайте PPU перевагу у виконанні, коли SPU використовують резервування.
+Це налаштування рекомендовано лише для кількох ігор для покращення продуктивності.
+НЕ використовуйте його без попередньої поради через можливе погіршення продуктивності.</string>
+    <string name="core_help_core_ppu_vector_nan_handling" formatted="false">Fixup NaN призводить до векторних інструкцій у серверних частинах PPU.
+Якщо не впевнені, не змінюйте цей параметр.</string>
+    <string name="core_help_video_accurate_zcull_stats" formatted="false">Змінює поведінку синхронізації звіту ZCULL. Експериментуйте, щоб знайти найкращий варіант для вашої гри. Орієнтовний режим рекомендований для більшості ігор.
+· Precise є найточнішим для поведінки PS3. Необхідний для точного зображення в деяких назвах, таких як Demon\'s Souls і The Darkness.
+· Приблизно — це набагато швидший спосіб генерувати дані оклюзії, які не завжди можуть збігатися з тими, що генерує PS3. Добре працює з більшістю ігор для PS3.
+· Relaxed повністю змінює метод синхронізації та може значно підвищити продуктивність в одних іграх або повністю зламати інші.</string>
+    <string name="core_help_core_preferred_spu_threads" formatted="false">Деякі етапи SPU чутливі до умов перегонів, тому дозволити обмежену кількість одночасно допомагає зменшити зупинки продуктивності.
+Встановлення цього значення на менше значення може покращити продуктивність і зменшити заїкання в деяких іграх.
+Залиште це значення автоматично, якщо встановлення невеликого значення негативно впливає на продуктивність.</string>
+    <string name="core_help_miscellaneous_prevent_display_sleep_while_running_games" formatted="false">Запобігання переходу дисплея в режим сну під час гри.
+Для цього потрібна служба D-Bus org.freedesktop.ScreenSaver у Linux.
+Цей параметр буде вимкнено, якщо поточна платформа не підтримує контроль сну дисплея.</string>
+    <string name="core_help_net_psn_country" formatted="false">Змінює країну RPCN.</string>
+    <string name="core_help_net_psn_status" formatted="false">Якщо встановлено RPCN, RPCS3 використовуватиме сервер RPCN як з’єднання PSN, якщо гра підтримується.
+Якщо встановлено Симуляція, RPCS3 намагатиметься підробити з’єднання PSN, але будь-яка фактична спроба використання функцій PSN може призвести до помилок або збоїв.
+Симуляція доступна лише в настроюваних конфігураціях.</string>
+    <string name="core_help_video_read_color_buffers" formatted="false">Ініціалізує цільову пам\'ять візуалізації за допомогою пам\'яті vm.</string>
+    <string name="core_help_video_read_depth_buffer" formatted="false">Ініціалізує цільову пам\'ять візуалізації за допомогою пам\'яті vm.</string>
+    <string name="core_help_video_record_with_overlays" formatted="false">Дозволяє записувати з накладаннями.
+Це також впливає на скріншоти.</string>
+    <string name="core_help_video_relaxed_zcull_sync" formatted="false">Змінює поведінку синхронізації звіту ZCULL. Експериментуйте, щоб знайти найкращий варіант для вашої гри. Орієнтовний режим рекомендований для більшості ігор.
+· Precise є найточнішим для поведінки PS3. Необхідний для точного зображення в деяких назвах, таких як Demon\'s Souls і The Darkness.
+· Приблизно — це набагато швидший спосіб генерувати дані оклюзії, які не завжди можуть збігатися з тими, що генерує PS3. Добре працює з більшістю ігор для PS3.
+· Relaxed повністю змінює метод синхронізації та може значно підвищити продуктивність в одних іграх або повністю зламати інші.</string>
+    <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">Дозволяє використовувати класичні буфери OpenGL, що дозволяє інструментам захоплення працювати з RPCS3, наприклад RenderDoc.
+Також дозволяє Vulkan використовувати маркери налагодження для кращих записів Renderdoc.
+Якщо не впевнені, не використовуйте цю опцію.</string>
+    <string name="core_help_video_renderer" formatted="false">Vulkan — найшвидший рендерер. OpenGL є найточнішим рендерером.
+Якщо не впевнені, використовуйте Vulkan. Якщо у вас виникнуть проблеми із сумісністю, поверніться до OpenGL.</string>
+    <string name="core_help_video_resolution" formatted="false">Цей параметр ігноруватиметься, якщо для шкали роздільної здатності встановлено значення, відмінне від 100%!
+Залиште це на 1280x720. Кожна гра для PS3 сумісна з цією роздільною здатністю.
+Використовуйте лише 1920x1080, якщо гра це підтримує.
+Рідко через помилки емуляції деякі ігри відображатимуться лише з низькою роздільною здатністю, наприклад 480p.</string>
+    <string name="core_help_video_resolution_scale" formatted="false">Збільшує роздільну здатність гри на заданий відсоток.
+Базова роздільна здатність завжди 1280x720.
+Встановіть це значення на 100%, якщо ви хочете використовувати звичайні параметри роздільної здатності.
+Значення, нижчі за 100%, зазвичай не покращують продуктивність.</string>
+    <string name="core_help_video_screen_size_in_inches" formatted="false">Встановлює режим 3D-стереорендерінгу (доступний лише в настроюваних конфігураціях із роздільною здатністю за замовчуванням 720p).
+Anaglyph використовує різні кольори для кожного ока, які потім можна фільтрувати за допомогою певних окулярів.
+Side-by-Side частіше підтримується програмами перегляду VR.
+Over-Under ближче до рідного стереовиходу, але підтримується рідше.</string>
+    <string name="core_help_input_output_load_sdl_gamecontroller_mappings" formatted="false">Завантажує базу даних SDL GameController для покращеної сумісності геймпада. Використовується лише в обробнику панелі SDL.</string>
+    <string name="core_help_core_set_daz_and_ftz" formatted="false">Встановлює спеціальні позначки MXCSR для налагодження помилок в операціях SSE.
+Прискорює продуктивність PPU ціною точності.</string>
+    <string name="core_help_video_shader_compiler_threads" formatted="false">Кількість потоків, які слід використовувати для серверної частини компілятора шейдерів.
+Впливає лише тоді, коли для режиму шейдера встановлено один із асинхронних режимів.</string>
+    <string name="core_help_video_shader_loading_dialog_blur_effect_strength" formatted="false">Змінює силу ефекту розмиття фонового зображення діалогового вікна завантаження рідного шейдера.
+Це може бути використано для покращення читабельності та/або естетики.</string>
+    <string name="core_help_video_shader_loading_dialog_darkening_effect_strength" formatted="false">Змінює силу ефекту затемнення фонового зображення у діалоговому вікні завантаження рідного шейдера.
+Це може бути використано для покращення читабельності та/або естетики.</string>
+    <string name="core_help_video_shader_loading_dialog_allow_custom_background" formatted="false">Показує фонове зображення під час діалогового вікна/екрану завантаження рідного шейдера.
+За замовчуванням використовуваним зображенням буде /PS3_GAME/PIC1.PNG.</string>
+    <string name="core_help_video_shader_mode" formatted="false">Це рекомендований варіант.
+Якщо шейдер не знайдено в кеші, нічого не буде відтворено для цього шейдера, доки він не буде скомпільований.
+У вас може виникнути спливаюче вікно графіки.</string>
+    <string name="core_help_video_shader_precision" formatted="false">Контролює рівень точності згенерованих шейдерів. Низька точність генерує набагато швидший код залежно від апаратного забезпечення, але іноді може генерувати незначні візуальні збої або мерехтіння.</string>
+    <string name="core_help_miscellaneous_show_analog_limiter_toggle_hint" formatted="false">Показує підказку перемикання аналогового обмежувача за допомогою рідного накладання.</string>
+    <string name="core_help_miscellaneous_show_autosave_autoload_hint" formatted="false">Показує підказку автозбереження/автозавантаження за допомогою власного накладання.</string>
+    <string name="core_help_miscellaneous_show_capture_hints" formatted="false">Показує знімок екрана та підказки щодо запису за допомогою власного накладання.</string>
+    <string name="core_help_miscellaneous_show_fatal_error_hints" formatted="false">Показує підказки про фатальну помилку за допомогою власного накладання.</string>
+    <string name="core_help_miscellaneous_show_mouse_and_keyboard_toggle_hint" formatted="false">Показує підказку щодо перемикання миші та клавіатури за допомогою рідного накладання.</string>
+    <string name="core_help_input_output_show_move_cursor" formatted="false">Показує необроблену позицію введення PS Move.
+Це може бути дуже корисним під час екранів калібрування.</string>
+    <string name="core_help_miscellaneous_show_ppu_compilation_hint" formatted="false">Показує підказку «Компіляція модулів PPU» за допомогою власного накладання.</string>
+    <string name="core_help_miscellaneous_show_pressure_intensity_toggle_hint" formatted="false">Показує підказку щодо перемикання інтенсивності тиску за допомогою рідного накладання.</string>
+    <string name="core_help_miscellaneous_show_rpcn_popups" formatted="false">Показувати спливаючі вікна списку друзів RPCN.</string>
+    <string name="core_help_miscellaneous_show_shader_compilation_hint" formatted="false">Показує підказку «Компіляція шейдерів» за допомогою власного накладання.</string>
+    <string name="core_help_miscellaneous_show_trophy_popups" formatted="false">Показувати спливаючі вікна трофеїв, коли трофей розблоковано.</string>
+    <string name="core_help_miscellaneous_silence_all_logs" formatted="false">Припиніть писати журнали після запуску гри. Не використовуйте, якщо не вважаєте, що це необхідно.</string>
+    <string name="core_help_core_sleep_timers_accuracy" formatted="false">Змінює точність періоду сну.
+«Як хост» використовує стандартну точність базової операційної системи, тоді як «Усі таймери» намагається її покращити.
+«Лише Usleep» обмежує налаштування лише системним викликом usleep.
+Може вплинути на продуктивність несподіваним чином.</string>
+    <string name="core_help_core_spu_block_size" formatted="false">Цей параметр керує аналізатором SPU, зокрема розміром скомпільованих одиниць. Режими Mega та Giga можуть підвищити продуктивність шляхом об’єднання менших одиниць, зменшення кількості скомпільованих одиниць, але збільшення їх розміру.
+Використовуйте безпечний режим для максимальної сумісності.</string>
+    <string name="core_help_core_spu_cache" formatted="false">Перекомпілює та кешує SPU-код гри за допомогою рекомпілятора LLVM перед запуском, що додає додатковий час запуску.
+Це найшвидший варіант із дуже хорошою сумісністю.
+Якщо у вас виникли проблеми, скористайтеся рекомпілятором ASMJIT.</string>
+    <string name="core_help_core_spu_debug" formatted="false">Створює журнали SPU.
+Корисно лише розробникам.
+Ніколи не використовуйте це.</string>
+    <string name="core_help_core_spu_decoder" formatted="false">Перекомпілює та кешує SPU-код гри за допомогою рекомпілятора LLVM перед запуском, що додає додатковий час запуску.
+Це найшвидший варіант із дуже хорошою сумісністю.
+Якщо у вас виникли проблеми, скористайтеся рекомпілятором ASMJIT.</string>
+    <string name="core_help_core_spu_loop_detection" formatted="false">Спробуйте виявити умови циклу в ядрах SPU і використовувати їх як підказки щодо планування.
+Покращує продуктивність і зменшує використання ЦП.
+У рідкісних випадках може викликати серйозне заїкання звуку.</string>
+    <string name="core_help_core_spu_profiler" formatted="false">Якщо ввімкнено, продуктивність SPU вимірюється під час виконання.
+Увімкніть лише за запитом розробника, оскільки коли ввімкнено, це само по собі трохи знижує продуктивність.</string>
+    <string name="core_help_miscellaneous_start_games_in_fullscreen_mode" formatted="false">Автоматично переводить вікно гри в повноекранний режим.
+Двічі клацніть вікно гри або натисніть Alt+Enter, щоб переключитися між повноекранним і віконним режимами.</string>
+    <string name="core_help_miscellaneous_automatically_start_games_after_boot" formatted="false">Залиште це ввімкненим, якщо ви не розробник.</string>
+    <string name="core_help_savestate_start_paused" formatted="false">Коли цей режим увімкнено, стани збереження завантажуються та призупиняються на першому кадрі.
+Це дозволяє гравцям підготуватися до гри, не занурюючись у дію одразу.</string>
+    <string name="core_help_video_3d_display_enabled" formatted="false">Встановлює режим 3D-стереорендерінгу (доступний лише в настроюваних конфігураціях із роздільною здатністю за замовчуванням 720p).
+Anaglyph використовує різні кольори для кожного ока, які потім можна фільтрувати за допомогою певних окулярів.
+Side-by-Side частіше підтримується програмами перегляду VR.
+Over-Under ближче до рідного стереовиходу, але підтримується рідше.</string>
+    <string name="core_help_video_3d_display_mode" formatted="false">Встановлює режим 3D-стереорендерінгу (доступний лише в настроюваних конфігураціях із роздільною здатністю за замовчуванням 720p).
+Anaglyph використовує різні кольори для кожного ока, які потім можна фільтрувати за допомогою певних окулярів.
+Side-by-Side частіше підтримується програмами перегляду VR.
+Over-Under ближче до рідного стереовиходу, але підтримується рідше.</string>
+    <string name="core_help_video_stretch_to_display_area" formatted="false">Перевизначає співвідношення сторін і розтягує зображення на всю область відображення.</string>
+    <string name="core_help_video_strict_rendering_mode" formatted="false">Забезпечує сувору відповідність специфікації API.
+Може призвести до зниження продуктивності в деяких іграх.
+Може вирішити рідкісні випадки відсутності графіки та мерехтіння.
+Якщо не впевнені, не використовуйте цю опцію.</string>
+    <string name="core_help_video_strict_texture_flushing" formatted="false">Примусове змивання текстури навіть у ситуаціях, коли це не потрібно/правильно. Відомо, що викликає візуальні артефакти, але корисно для налагодження певних проблем кешу текстур.</string>
+    <string name="core_help_savestate_suspend_emulation_savestate_mode" formatted="false">Коли цей режим увімкнено, емуляція завершується під час збереження, а файл savestate приховується після завантаження, запобігаючи повторному використанню RPCS3.
+Цей режим схожий на сплячий режим емуляції: якщо ви не хочете мати можливість шахраювати за допомогою savestates під час гри, подумайте про використання цього режиму.
+Зауважте, що файл savestate не зник повністю, а просто проігнорований RPCS3. За потреби ви можете перезапустити його вручну.</string>
+    <string name="core_help_video_texture_lod_bias_addend" formatted="false">Змінює точність вибірки текстури. (Невеликі зміни мають великий ефект.)
+Уникайте використання значень за межами діапазону від -12 до +12, якщо ви не впевнені.
+Від -3 до +3 достатньо для більшості випадків використання</string>
+    <string name="core_help_core_thread_scheduler_mode" formatted="false">Контролюйте, як RPCS3 використовує потоки вашої системи.
+Кожен параметр значною мірою залежить від гри та вашого ЦП. Рекомендується спробувати кожен варіант, щоб з’ясувати, який з них працює найкраще.
+Зміна планувальника потоків не підтримується на ЦП з менш ніж 12 потоками.</string>
+    <string name="core_help_system_time_format" formatted="false">Виберіть формат часу PS3.</string>
+    <string name="core_help_audio_time_stretching_threshold" formatted="false">Рівень заповнення буфера (у відсотках), нижче якого почнеться розтягування часу.</string>
+    <string name="core_help_input_output_turntable_emulated_controller" formatted="false">Підтримка контролера DJ Hero Turntable.
+Виберіть 1 або 2 контролери, якщо для гри потрібні контролери DJ Hero Turntable, а у вас немає справжніх контролерів програвача.
+Виберіть Null, якщо гра підтримує DualShock або якщо у вас є справжні контролери вертушки.
+Справжній контролер вертушки можна використовувати одночасно з емульованим контролером вертушки.</string>
+    <string name="core_help_miscellaneous_use_native_user_interface" formatted="false">Дозволяє використовувати рідний HUD у вікні гри, який може взаємодіяти з ігровими контролерами.
+Якщо вимкнено, натомість використовуються звичайні діалогові вікна Qt.
+Наразі екранна клавіатура підтримує лише англійську розкладку клавіш.</string>
+    <string name="core_help_video_vulkan_use_re_bar_for_gpu_uploads" formatted="false">Якщо ввімкнено, Vulkan намагатиметься використовувати адресний простір панелі зі змінним розміром PCI-e для завантаження чутливих до часу даних у GPU.
+Це дає суттєвий приріст продуктивності на картах NVIDIA, коли базова частота кадрів низька.
+Для ігор із дуже високою частотою кадрів цей параметр може призвести до гіршої продуктивності для всіх постачальників GPU.</string>
+    <string name="core_help_miscellaneous_use_recursive_scan" formatted="false">Вмикає рекурсивне сканування вкладених папок під час сканування ігор із вибраної папки.
+Якщо вимкнено, ігри скануються лише у вибраній папці.</string>
+    <string name="core_help_video_vblank_ntsc_fixup" formatted="false">Множить швидкість VBLANK на 1000/1001 для таких значень, як 59,94 Гц.
+Відома фіксація ритму гри Space Channel 5 Part 2</string>
+    <string name="core_help_video_vblank_rate" formatted="false">Налаштовує частоту сигналів вертикального гасіння, які надсилає емулятор.
+Впливає на час подій, які залежать від цих сигналів.</string>
+    <string name="core_help_video_vsync_mode" formatted="false">Забезпечує вертикальну синхронізацію для усунення розривів.
+Адаптивний режим - надає перевагу підтримці продуктивності. Він може пропускати кадри або навіть розриватися, щоб уникнути зниження частоти кадрів гри.
+Повний режим - розрив заборонено, навіть якщо продуктивність знижена. Цей режим за замовчуванням обмежує вашу частоту кадрів до частоти оновлення дисплея, якщо її не змінити на панелі керування драйвера.</string>
+    <string name="core_help_video_vulkan_adapter" formatted="false">У системах із кількома GPU виберіть, який GPU використовувати в RPCS3 під час використання Vulkan.
+Це не потрібно, якщо використовується OpenGL.</string>
+    <string name="core_help_video_vulkan_asynchronous_queue_scheduler" formatted="false">Визначає, як планувати завдання асинхронних обчислень графічного процесора під час використання асинхронної потокової передачі.
+Використовуйте «Безпечний» режим для більшої сумісності зі специфікаціями за рахунок певних витрат ЦП. Цей параметр працює з усіма пристроями.
+Використовуйте «Швидко», щоб використовувати швидшу, але хакерську версію. Ця опція внутрішньо вимкнена для графічних процесорів NVIDIA через спричинення зависань графічного процесора.</string>
+    <string name="core_help_video_vulkan_asynchronous_texture_streaming" formatted="false">Передайте текстури на GPU паралельно з 3D-рендерінгом за допомогою асинхронних обчислень.
+Може підвищити продуктивність потужніших графічних процесорів із запасом запасу.
+Працює лише з рендерером Vulkan і має значну користь від увімкнення MTRSX, якщо у вас потужний ЦП.</string>
+    <string name="core_help_miscellaneous_window_title_format" formatted="false">Налаштуйте назву вікна гри.
+Зміна цього та/або додавання частоти кадрів може призвести до того, що застаріле програмне забезпечення для запису не помітить RPCS3 із помилками.</string>
+    <string name="core_help_video_write_color_buffers" formatted="false">Увімкніть цю опцію, якщо у грі відсутня графіка або пошкоджене освітлення.
+У деяких випадках може погіршити продуктивність і викликати заїкання.
+Необхідний для Demon\'s Souls.</string>
+    <string name="core_help_video_write_depth_buffer" formatted="false">Записує значення буфера глибини до пам’яті vm.</string>
+    <string name="core_help_core_spu_xfloat_accuracy" formatted="false">Контроль точності обробки плаваючих векторів SPU.
+Виправляє помилки в різних іграх за рахунок підвищення продуктивності.
+Цей параметр застосовується, лише якщо для декодера SPU встановлено значення Dynamic або LLVM.</string>
+    <string name="core_label_chinese_simplified">Китайська (спрощена)</string>
+    <string name="core_label_chinese_traditional">Китайська (традиційна)</string>
+    <string name="core_label_chinese_keyboard_simplified">Китайська клавіатура (спрощена)</string>
+    <string name="core_label_chinese_keyboard_traditional">Китайська клавіатура (традиційна)</string>
+    <string name="core_label_danish">Датська</string>
+    <string name="core_label_danish_keyboard">Датська клавіатура</string>
+    <string name="core_label_dutch">Голландська</string>
+    <string name="core_label_dutch_keyboard">Голландська клавіатура</string>
+    <string name="core_label_english_uk">Англійська (Великобританія)</string>
+    <string name="core_label_english_us">Англійська (США)</string>
+    <string name="core_label_english_keyboard_uk_standard">Англійська клавіатура (стандарт Великобританії)</string>
+    <string name="core_label_english_keyboard_us_standard">Англійська клавіатура (стандарт США)</string>
+    <string name="core_label_finnish">Фінська</string>
+    <string name="core_label_finnish_keyboard">Фінська клавіатура</string>
+    <string name="core_label_french">Французька</string>
+    <string name="core_label_french_keyboard">Французька клавіатура</string>
+    <string name="core_label_french_keyboard_belgium">Французька клавіатура (Бельгія)</string>
+    <string name="core_label_french_keyboard_canada">Французька клавіатура (Канада)</string>
+    <string name="core_label_french_keyboard_switzerland">Французька клавіатура (Швейцарія)</string>
+    <string name="core_label_german">Німецький</string>
+    <string name="core_label_german_keyboard">Німецька клавіатура</string>
+    <string name="core_label_german_keyboard_switzerland">Німецька клавіатура (Швейцарія)</string>
+    <string name="core_label_italian">Італійська</string>
+    <string name="core_label_italian_keyboard">Італійська клавіатура</string>
+    <string name="core_label_japanese">Японський</string>
+    <string name="core_label_japanese_keyboard">Японська клавіатура</string>
+    <string name="core_label_japanese_keyboard_kana_state">Японська клавіатура (штат Кана)</string>
+    <string name="core_label_korean">Корейська</string>
+    <string name="core_label_korean_keyboard">Корейська клавіатура</string>
+    <string name="core_label_norwegian">Норвезька</string>
+    <string name="core_label_norwegian_keyboard">Норвезька клавіатура</string>
+    <string name="core_label_other">Інше</string>
+    <string name="core_label_polish">Польський</string>
+    <string name="core_label_polish_keyboard">Польська клавіатура</string>
+    <string name="core_label_portuguese_brazil">Португальська (Бразилія)</string>
+    <string name="core_label_portuguese_portugal">Португальська (Португалія)</string>
+    <string name="core_label_portuguese_keyboard_brazil">Португальська клавіатура (Бразилія)</string>
+    <string name="core_label_portuguese_keyboard_portugal">Португальська клавіатура (Португалія)</string>
+    <string name="core_label_russian">Російська</string>
+    <string name="core_label_russian_keyboard">Російська клавіатура</string>
+    <string name="core_label_scea">SCEA</string>
+    <string name="core_label_scee">SCEE</string>
+    <string name="core_label_sceh">SCEH</string>
+    <string name="core_label_scej">SCEJ</string>
+    <string name="core_label_scek">SCEK</string>
+    <string name="core_label_sch">SCH</string>
+    <string name="core_label_spanish">Іспанська</string>
+    <string name="core_label_spanish_keyboard">Іспанська клавіатура</string>
+    <string name="core_label_swedish">Шведська</string>
+    <string name="core_label_swedish_keyboard">Шведська клавіатура</string>
+    <string name="core_label_turkish">Турецька</string>
+    <string name="core_label_turkish_keyboard">Турецька клавіатура</string>
+    <string name="core_help_video_display_aspect_override" formatted="false">Перевизначає остаточне співвідношення сторін дисплея в тисячних частках (1778 = 16:9, 1333 = 4:3). Встановіть його на 0, щоб використовувати коефіцієнт гри. Використовуйте це лише для встановлення незвичайних дисплеїв телефонів або планшетів; неправильне значення розтягує зображення.</string>
+    <string name="core_help_video_shader_preset_path" formatted="false">Абсолютний шлях до стилю шейдера RetroArch .slangp, який використовується, коли для режиму масштабування виведення встановлено значення Ланцюжок шейдерів. Залиште його порожнім для нормального виведення. Використовуйте лише сумісний пресет; недійсний шлях повертається до простого зображення.</string>
+
+    <string name="core_label_async_shader_recompiler">Асинхронний рекомпілятор шейдерів</string>
+    <string name="core_label_async_with_shader_interpreter">Асинхронно з інтерпретатором шейдерів</string>
+    <string name="core_label_forced">Примусово</string>
+    <string name="core_label_interpreter">Інтерпретатор</string>
+    <string name="core_label_interpreter_legacy">Інтерпретатор (застарілий)</string>
+    <string name="core_label_llvm_recompiler_legacy">LLVM-рекомпілятор (застарілий)</string>
+    <string name="core_label_shader_recompiler">Рекомпілятор шейдерів</string>
+    <string name="core_setting_search">Пошук параметрів</string>
+    <string name="core_setting_no_results">Нічого не знайдено</string>
+
+
+    <plurals name="library_game_count">
+        <item quantity="one">Усього %1$d гра</item>
+        <item quantity="few">Усього %1$d гри</item>
+        <item quantity="many">Усього %1$d ігор</item>
+        <item quantity="other">Усього %1$d гри</item>
+    </plurals>
+
+<plurals name="install_dialog_items_progress">
+        <item quantity="one">Завершено %1$d з %2$d елемента</item>
+        <item quantity="few">Завершено %1$d з %2$d елементів</item>
+        <item quantity="many">Завершено %1$d з %2$d елементів</item>
+        <item quantity="other">Завершено %1$d з %2$d елементів</item>
+    </plurals>
+
+</resources>

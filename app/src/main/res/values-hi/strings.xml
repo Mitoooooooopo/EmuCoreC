@@ -1,0 +1,1589 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="emulation_quickbar_home_menu">RPCS3 होम मेनू</string>
+    <string name="onboarding_storage_title">एमुलेटर स्टोरेज</string>
+    <string name="onboarding_status_install_firmware">Sony का आधिकारिक PS3 सिस्टम सॉफ़्टवेयर इंस्टॉल करें।</string>
+    <string name="onboarding_status_ready">सेटअप पूरा हुआ।</string>
+    <string name="onboarding_firmware_download">डाउनलोड करें</string>
+    <string name="onboarding_firmware_cancel_download">रद्द करें</string>
+    <string name="onboarding_firmware_downloading">डाउनलोड हो रहा है %1$d%%</string>
+    <string name="onboarding_firmware_download_failed">डाउनलोड विफल रहा। फिर कोशिश करें।</string>
+    <string name="onboarding_back">पीछे</string>
+    <string name="onboarding_next">आगे</string>
+    <string name="onboarding_get_started">शुरू करें</string>
+    <string name="nav_setup">गेम</string>
+    <string name="nav_library">लाइब्रेरी</string>
+    <string name="nav_catalog">कैटलॉग</string>
+    <string name="nav_settings">सेटिंग्स</string>
+    <string name="library_refresh">रिफ्रेश करें</string>
+    <string name="library_search_hint">इंस्टॉल किए गए गेम खोजें</string>
+    <string name="library_empty_title">कोई गेम नहीं मिला</string>
+    <string name="library_empty_body">गेम स्क्रीन पर गेम इंस्टॉल करें, फिर लाइब्रेरी को रिफ्रेश करें।</string>
+    <string name="detail_launch">गेम शुरू करें</string>
+    <string name="detail_delete_game">गेम हटाएं</string>
+    <string name="detail_delete_game_confirm_title">इंस्टॉल किया गया गेम हटाएं?</string>
+    <string name="detail_delete_game_confirm_body">इससे आपकी लाइब्रेरी से इंस्टॉल की गई गेम फ़ाइलें हट जाएंगी।</string>
+    <string name="detail_delete_game_failed">गेम हटाने में विफल।</string>
+    <string name="detail_title_id">शीर्षक ID</string>
+    <string name="detail_content_id">सामग्री ID</string>
+    <string name="detail_version">संस्करण</string>
+    <string name="detail_category">श्रेणी</string>
+    <string name="detail_overview_title">अवलोकन</string>
+    <string name="detail_catalog_meta_title">कैटलॉग विवरण</string>
+    <string name="detail_installed_section">इंस्टॉल किया गया गेम</string>
+    <string name="detail_screenshots_title">स्क्रीनशॉट</string>
+    <string name="detail_videos_title">वीडियो</string>
+    <string name="detail_release_year">रिलीज़ का वर्ष</string>
+    <string name="detail_rating">रेटिंग</string>
+    <string name="detail_genres">शैलियां</string>
+    <string name="detail_empty_title">कोई विवरण उपलब्ध नहीं</string>
+    <string name="detail_empty_body">इस गेम के लिए अभी कोई इंस्टॉल किया गया डेटा या कैटलॉग डेटा उपलब्ध नहीं है।</string>
+    <string name="detail_catalog_missing_body">कैटलॉग विवरण अस्थायी रूप से अनुपलब्ध हैं।</string>
+    <string name="detail_igdb_source_note">इस स्क्रीन पर कुछ विवरण और गेम डेटा IGDB से आते हैं।</string>
+    <string name="detail_compatibility_title">अनुकूलता</string>
+    <string name="detail_compatibility_status">स्थिति</string>
+    <string name="detail_compatibility_issue">समस्या</string>
+    <string name="detail_compatibility_title_id_label">मिलान किया गया शीर्षक ID</string>
+    <string name="detail_compatibility_known_serials">ज्ञात शीर्षक ID</string>
+    <string name="detail_compatibility_updated">अपडेट किया गया</string>
+    <string name="detail_compatibility_unavailable">आधिकारिक RPCS3 अनुकूलता डेटाबेस अभी अनुपलब्ध है।</string>
+    <string name="detail_compatibility_unmapped">इस कैटलॉग प्रविष्टि के पास अभी तक स्थानीय कैटलॉग में मैप किया गया शीर्षक ID नहीं है।</string>
+    <string name="detail_compatibility_missing_entry">RPCS3 के पास वर्तमान में इन शीर्षक ID के लिए कोई अनुकूलता प्रविष्टि नहीं है।</string>
+    <string name="detail_compatibility_source_note">अनुकूलता डेटा आधिकारिक RPCS3 सूची से आता है। रिपोर्ट #%1$d.</string>
+    <string name="detail_show_more">और दिखाएं</string>
+    <string name="detail_show_less">कम दिखाएं</string>
+    <string name="detail_screenshot_saved">स्क्रीनशॉट सहेजा गया</string>
+    <string name="detail_screenshot_save_failed">स्क्रीनशॉट सहेजने में असमर्थ</string>
+    <string name="detail_save_screenshot">स्क्रीनशॉट सहेजें</string>
+    <string name="compatibility_unknown">अज्ञात</string>
+    <string name="compatibility_nothing">कुछ नहीं</string>
+    <string name="compatibility_bootable">बूट करने योग्य</string>
+    <string name="compatibility_intro">परिचय</string>
+    <string name="compatibility_menu">मेनू</string>
+    <string name="compatibility_ingame_less">गेम में -</string>
+    <string name="compatibility_ingame_more">गेम में +</string>
+    <string name="compatibility_playable">खेलने योग्य</string>
+    <string name="catalog_title">PS3 कैटलॉग</string>
+    <string name="catalog_search_hint">गेम खोजें</string>
+    <string name="catalog_search_clear">खोज साफ़ करें</string>
+    <string name="catalog_filters_title">फ़िल्टर</string>
+    <string name="catalog_filter_genre">शैली</string>
+    <string name="catalog_filter_year">वर्ष</string>
+    <string name="catalog_filter_rating">रेटिंग</string>
+    <string name="catalog_filter_all_genres">सभी शैलियां</string>
+    <string name="catalog_filter_all_years">सभी वर्ष</string>
+    <string name="catalog_filter_any_rating">कोई भी रेटिंग</string>
+    <string name="catalog_filters_clear">फ़िल्टर साफ़ करें</string>
+    <string name="catalog_empty_title">कैटलॉग डेटाबेस नहीं मिला</string>
+    <string name="catalog_empty_body">स्थानीय PS3 कैटलॉग सक्षम करने के लिए games.db जोड़ें।</string>
+    <string name="catalog_no_results_title">कोई मिलान नहीं मिला</string>
+    <string name="catalog_no_results_body">एक अलग शीर्षक, वर्ष या वर्तनी आज़माएं।</string>
+    <string name="settings_title">सेटिंग्स</string>
+    <string name="settings_tab_general">सामान्य</string>
+    <string name="settings_tab_graphics">ग्राफ़िक्स</string>
+    <string name="settings_tab_overlay">ओवरले</string>
+    <string name="settings_tab_controls">कंट्रोल</string>
+    <string name="settings_tab_storage">स्टोरेज</string>
+    <string name="settings_tab_about">के बारे में</string>
+    <string name="settings_core_overlay_opacity_label">ओवरले अपारदर्शिता</string>
+    <string name="settings_core_overlay_opacity_value">%1$d%%</string>
+    <string name="settings_core_gamepad_overlay">गेमपैड ओवरले दिखाएं</string>
+    <string name="settings_core_overlay_scale_label">ओवरले स्केल</string>
+    <string name="settings_core_overlay_scale_value">%1$.1fx</string>
+    <string name="settings_core_analog_multiplier_label">एनालॉग मल्टीप्लायर</string>
+    <string name="settings_core_analog_multiplier_value">%1$.1fx</string>
+    <string name="settings_storage_title">स्टोरेज</string>
+    <string name="settings_storage_body">एमुलेटर डेटा चुने गए PS3 रूट में संग्रहीत होता है। इंस्टॉल किए गए गेम config/dev_hdd0/game में, सेव और ट्रॉफ़ियां config/dev_hdd0/home में, तथा शेडर और अस्थायी कैश cache में होते हैं।</string>
+    <string name="settings_about_title">EmuCoreC के बारे में</string>
+    <string name="settings_help_content_description">सेटिंग सहायता खोलें</string>
+    <string name="settings_help_dialog_label">सेटिंग गाइड</string>
+    <string name="settings_help_dialog_tip">एक बार में केवल एक विकल्प बदलें, फिर उसी गेम सीन को टेस्ट करें ताकि असली सुधार साफ दिखे।</string>
+    <string name="settings_help_gamepad_overlay">जब आप भौतिक कंट्रोलर का उपयोग नहीं कर रहे हों तो ऑन-स्क्रीन कंट्रोल दिखाता है।\n\nTouch या controller input को अपने खेलने के तरीके के करीब करने के लिए इस्तेमाल करें। अगर controls पहले से सही लगते हैं तो न बदलें, क्योंकि extreme values aiming, menus या touch features को मुश्किल बना सकती हैं।</string>
+    <string name="settings_help_overlay_scale">ऑन-स्क्रीन कंट्रोल का आकार बदलता है।\n\nTouch या controller input को अपने खेलने के तरीके के करीब करने के लिए इस्तेमाल करें। अगर controls पहले से सही लगते हैं तो न बदलें, क्योंकि extreme values aiming, menus या touch features को मुश्किल बना सकती हैं।</string>
+    <string name="settings_help_overlay_opacity">बदलता है कि ऑन-स्क्रीन कंट्रोल कितने पारदर्शी हैं।\n\nTouch या controller input को अपने खेलने के तरीके के करीब करने के लिए इस्तेमाल करें। अगर controls पहले से सही लगते हैं तो न बदलें, क्योंकि extreme values aiming, menus या touch features को मुश्किल बना सकती हैं।</string>
+    <string name="settings_help_analog_multiplier">एनालॉग स्टिक संवेदनशीलता को बदलता है।\n\nTouch या controller input को अपने खेलने के तरीके के करीब करने के लिए इस्तेमाल करें। अगर controls पहले से सही लगते हैं तो न बदलें, क्योंकि extreme values aiming, menus या touch features को मुश्किल बना सकती हैं।</string>
+    <string name="settings_reset_toast">%1$s डिफ़ॉल्ट पर रीसेट हो गया</string>
+    <string name="settings_app_language">ऐप की भाषा</string>
+    <string name="settings_app_language_system">सिस्टम डिफ़ॉल्ट</string>
+    <string name="settings_app_language_english">अंग्रेज़ी</string>
+    <string name="settings_app_language_russian">रूसी</string>
+    <string name="settings_app_language_ukrainian">यूक्रेनी</string>
+    <string name="settings_language_picker_title">भाषा</string>
+    <string name="settings_gpu_driver">GPU ड्राइवर</string>
+    <string name="settings_gpu_driver_system">सिस्टम</string>
+    <string name="settings_gpu_driver_custom">कस्टम</string>
+    <string name="settings_gpu_driver_installed">इंस्टॉल किए गए ड्राइवर</string>
+    <string name="settings_help_gpu_driver">सिस्टम Vulkan ड्राइवर और कस्टम ड्राइवर के बीच चुनें।\n\nCustom driver मुख्य रूप से compatible Adreno devices पर उपयोगी है जब system Vulkan driver में graphics bugs या weak performance हो। Mali, PowerVR, unknown GPUs या custom driver crashes में system driver रखें।</string>
+    <string name="settings_gpu_driver_remove">ड्राइवर हटाएं</string>
+    <string name="settings_gpu_driver_none_installed">अभी तक कोई कस्टम GPU ड्राइवर इंस्टॉल नहीं किया गया है।</string>
+    <string name="settings_gpu_driver_install_failed">GPU ड्राइवर इंस्टॉलेशन विफल रहा।</string>
+    <string name="settings_gpu_driver_install_success">इंस्टॉल किया गया GPU ड्राइवर: %1$s</string>
+    <string name="settings_gpu_driver_status_system">सिस्टम Vulkan ड्राइवर सक्रिय है</string>
+    <string name="settings_gpu_driver_status_system_desc">कोई कस्टम ड्राइवर नहीं चुना गया है, इसलिए सिस्टम Vulkan ड्राइवर का उपयोग किया जा रहा है।</string>
+    <string name="settings_gpu_driver_status_active">कस्टम ड्राइवर सक्रिय है: %1$s</string>
+    <string name="settings_gpu_driver_status_active_desc">यह ड्राइवर Vulkan के साथ उपयोग के लिए तैयार है। वास्तविक समर्थन अभी भी डिवाइस संगतता पर निर्भर करता है।</string>
+    <string name="settings_gpu_driver_status_renderer">कस्टम ड्राइवर चुना गया है, लेकिन रेंडरर %1$s है</string>
+    <string name="settings_gpu_driver_status_renderer_desc">कस्टम GPU ड्राइवर केवल Vulkan के साथ काम करते हैं। इस ड्राइवर का उपयोग करने के लिए रेंडरर को Vulkan पर स्विच करें।</string>
+    <string name="settings_gpu_driver_status_broken">ड्राइवर आर्काइव अपूर्ण है: %1$s नहीं मिला</string>
+    <string name="settings_gpu_driver_status_broken_desc">ड्राइवर मेटाडेटा मौजूद है, लेकिन Vulkan लाइब्रेरी गायब है। ड्राइवर को फिर से इंस्टॉल करें।</string>
+    <string name="settings_emulation_core">एमुलेशन कोर</string>
+    <string name="settings_based_on_rpcsx">RPCS3 पर आधारित</string>
+    <string name="settings_developer">डेवलपर</string>
+    <string name="settings_created_by_sbro">Sashkin Apps द्वारा निर्मित</string>
+    <string name="settings_play_store_profile">Play Store प्रोफ़ाइल</string>
+    <string name="settings_core_source_code">कोर सोर्स कोड</string>
+    <string name="settings_core_source_description">EmuCoreC अपना Android इंटरफ़ेस उपयोग करता है। केवल एमुलेशन कोर RPCS3 पर आधारित है।</string>
+    <string name="shell_setup_section">इंस्टॉलेशन</string>
+    <string name="shell_library_section">लाइब्रेरी</string>
+    <string name="shell_tools_section">उपकरण</string>
+    <string name="shell_install_content">गेम इंस्टॉल करें</string>
+    <string name="game_launch_failed">इस गेम को लॉन्च करने में विफल।</string>
+    <string name="folder_picker_failed">चयनित फ़ोल्डर का उपयोग करने में विफल।</string>
+    <string name="core_install_firmware_failed">फ़र्मवेयर इंस्टॉलेशन शुरू करने में विफल।</string>
+    <string name="core_install_firmware_unsupported">समर्थित फ़र्मवेयर फ़ाइल चुनें, जैसे .PUP।</string>
+    <string name="core_install_pkg_failed">PS3 सामग्री का इंस्टॉलेशन शुरू नहीं हो सका।</string>
+    <string name="game_launch_requires_firmware">गेम लॉन्च करने से पहले बेस फ़र्मवेयर इंस्टॉल करें।</string>
+    <string name="install_dialog_title_generic">इंस्टॉलेशन</string>
+    <string name="install_dialog_title_firmware">फ़र्मवेयर इंस्टॉल हो रहा है</string>
+    <string name="install_dialog_title_pkg">PS3 सामग्री इंस्टॉल हो रही है</string>
+    <string name="install_dialog_success">इंस्टॉलेशन पूरा हुआ।</string>
+    <string name="install_dialog_error">इंस्टॉलेशन विफल रहा।</string>
+    <string name="install_dialog_percent">%1$d%% पूरा हुआ</string>
+    <string name="install_dialog_close">बंद करें</string>
+    <string name="install_dialog_unexpected_error">इंस्टॉलेशन के दौरान कुछ गलत हो गया।</string>
+    <string name="install_dialog_firmware_failed">फ़र्मवेयर इंस्टॉलेशन विफल रहा।</string>
+    <string name="install_dialog_pkg_failed">PS3 सामग्री का इंस्टॉलेशन विफल रहा।</string>
+    <string name="install_dialog_firmware_done">फ़र्मवेयर पैकेज सफलतापूर्वक इंस्टॉल हो गया।</string>
+    <string name="install_dialog_pkg_done">PS3 सामग्री सफलतापूर्वक इंस्टॉल हो गई।</string>
+    <string name="install_dialog_extracting_archive">%1$s निकाला जा रहा है…</string>
+    <string name="install_archive_missing_volume">आर्काइव के एक या अधिक भाग गायब हैं। पहले और अंतिम भाग सहित सभी वॉल्यूम चुनें।</string>
+    <string name="install_archive_password_protected">पासवर्ड से सुरक्षित आर्काइव अभी समर्थित नहीं हैं। पहले आर्काइव निकालें या पासवर्ड हटाएँ।</string>
+    <string name="install_archive_unsafe">आर्काइव में असुरक्षित पथ या लिंक है, इसलिए इसे अस्वीकार कर दिया गया।</string>
+    <string name="install_archive_not_enough_space">इस सामग्री को सुरक्षित रूप से निकालने और इंस्टॉल करने के लिए पर्याप्त खाली स्थान नहीं है।</string>
+    <string name="install_archive_no_content">कोई समर्थित PS3 PKG, ISO, RAP या EDAT फ़ाइल नहीं मिली।</string>
+    <string name="install_archive_failed">आर्काइव क्षतिग्रस्त, अधूरा या असमर्थित फ़ॉर्मेट में है।</string>
+    <string name="setup_title">गेम इंस्टॉल करें</string>
+    <string name="common_back">पीछे</string>
+    <string name="common_not_available">उपलब्ध नहीं है</string>
+    <string name="common_unknown">अज्ञात</string>
+    <string name="common_close">बंद करें</string>
+    <string name="emulation_pause">रोकें</string>
+    <string name="emulation_resume">फिर से शुरू करें</string>
+    <string name="emulation_menu_title">गेम मेनू</string>
+    <string name="emulation_menu_unknown_game">चल रहा गेम</string>
+    <string name="emulation_menu_controls_desc">ऑन-स्क्रीन कंट्रोल दिखाएं या छिपाएं।</string>
+    <string name="emulation_menu_hide_controls">कंट्रोल छिपाएं</string>
+    <string name="emulation_menu_show_controls">कंट्रोल दिखाएं</string>
+    <string name="emulation_menu_edit_controls">कंट्रोल संपादित करें</string>
+    <string name="emulation_menu_edit_controls_desc">हर ऑन-स्क्रीन कंट्रोल को खिसकाएँ, आकार बदलें, दिखाएँ या छिपाएँ।</string>
+    <string name="emulation_menu_reset_overlay">कंट्रोल लेआउट रीसेट करें</string>
+    <string name="emulation_menu_reset_overlay_desc">टच कंट्रोल के लिए डिफ़ॉल्ट स्केल, अपारदर्शिता और लेआउट पुनर्स्थापित करें।</string>
+    <string name="emulation_controls_editor_title">कंट्रोल संपादक</string>
+    <string name="emulation_controls_editor_percent">%1$d%%</string>
+    <string name="emulation_controls_editor_done">पूर्ण</string>
+    <string name="emulation_menu_exit_game">गेम से बाहर निकलें</string>
+    <string name="emulation_exit_confirm_title">गेम से बाहर निकलें?</string>
+    <string name="emulation_exit_confirm_body">वर्तमान सत्र बंद कर दिया जाएगा और आप लाइब्रेरी में वापस आ जाएंगे।</string>
+    <string name="emulation_exit_confirm_action">बाहर निकलें</string>
+    <string name="emulation_exit_cancel_action">रद्द करें</string>
+    <string name="settings_app_language_spanish">स्पेनिश</string>
+    <string name="settings_app_language_french">फ्रेंच</string>
+    <string name="settings_app_language_german">जर्मन</string>
+    <string name="settings_app_language_portuguese">पुर्तगाली</string>
+    <string name="settings_app_language_chinese_traditional">पारंपरिक चीनी</string>
+    <string name="settings_app_language_hindi">हिंदी</string>
+    <string name="settings_app_language_italian">इतालवी</string>
+    <string name="settings_gpu_driver_manage">ड्राइवर प्रबंधित करें</string>
+    <string name="settings_gpu_driver_manager_title">GPU ड्राइवर</string>
+    <string name="settings_gpu_driver_manager_subtitle">Adreno ड्राइवर इंस्टॉल, डाउनलोड, लागू या निकालें।</string>
+    <string name="settings_gpu_driver_active_title">सक्रिय ड्राइवर</string>
+    <string name="settings_gpu_driver_install_from_file">फ़ाइल से इंस्टॉल करें</string>
+    <string name="settings_gpu_driver_catalog">ड्राइवर कैटलॉग</string>
+    <string name="settings_gpu_driver_refresh">रीफ़्रेश करें</string>
+    <string name="settings_gpu_driver_catalog_loading">ड्राइवर कैटलॉग लोड हो रहा है…</string>
+    <string name="settings_gpu_driver_catalog_failed">ड्राइवर कैटलॉग लोड नहीं किया जा सका</string>
+    <string name="settings_gpu_driver_catalog_empty">अभी तक कोई ऑनलाइन ड्राइवर उपलब्ध नहीं हैं।</string>
+    <string name="settings_gpu_driver_download_apply">डाउनलोड करें और लागू करें</string>
+    <string name="settings_gpu_driver_downloaded">डाउनलोड किया गया</string>
+    <string name="settings_gpu_driver_apply">लागू करें</string>
+    <string name="settings_gpu_driver_applied">लागू किया गया</string>
+    <string name="settings_gpu_driver_remove_short">निकालें</string>
+    <string name="settings_gpu_driver_recommended">अनुशंसित</string>
+    <string name="settings_gpu_driver_source">स्रोत</string>
+    <string name="settings_gpu_driver_search">ड्राइवर खोजें</string>
+    <string name="settings_gpu_driver_filter_all">सभी</string>
+    <string name="settings_gpu_driver_no_matches">कोई मेल खाने वाला ड्राइवर नहीं</string>
+    <string name="settings_gpu_driver_no_matches_desc">खोज टेक्स्ट या चयनित फ़िल्टर बदलें।</string>
+    <string name="settings_app_language_turkish">तुर्की</string>
+    <string name="save_manager_title">सेव</string>
+    <string name="save_manager_open_for_game">सेव</string>
+    <string name="save_manager_search_hint">सेव खोजें</string>
+    <string name="save_manager_export">एक्सपोर्ट</string>
+    <string name="save_manager_import">इंपोर्ट</string>
+    <string name="save_manager_delete">सेव डिलीट करें</string>
+    <string name="save_manager_delete_confirm_title">सेव डेटा डिलीट करें?</string>
+    <string name="save_manager_delete_confirm_body">यह %1$s के लिए सेव डेटा हटा देगा।</string>
+    <string name="save_manager_delete_failed">सेव डेटा डिलीट करने में विफल।</string>
+    <string name="save_manager_export_success">सेव डेटा एक्सपोर्ट किया गया।</string>
+    <string name="save_manager_export_failed">सेव डेटा एक्सपोर्ट करने में विफल।</string>
+    <string name="save_manager_import_success">सेव डेटा इंपोर्ट किया गया: %1$s।</string>
+    <string name="save_manager_import_failed">सेव डेटा इंपोर्ट करने में विफल।</string>
+    <string name="save_manager_import_empty">आर्काइव में कोई सेव फ़ाइल नहीं है।</string>
+    <string name="save_manager_import_unsafe">आर्काइव में असुरक्षित पाथ हैं।</string>
+    <string name="save_manager_import_unknown_target">इस आर्काइव को इंपोर्ट करने से पहले एक गेम सेव कार्ड चुनें, या सिंगल सेव फ़ोल्डर वाले आर्काइव का उपयोग करें।</string>
+    <string name="save_manager_empty_title">कोई सेव डेटा नहीं मिला</string>
+    <string name="save_manager_empty_body">सेव डेटा बनाने के लिए कोई गेम लॉन्च करें, या सेव आर्काइव इंपोर्ट करें।</string>
+    <string name="save_manager_empty_game_title">%1$s के लिए कोई सेव डेटा नहीं</string>
+    <string name="save_manager_empty_game_body">सेव डेटा बनाने के लिए इस गेम को लॉन्च करें, या इसके लिए सेव आर्काइव इंपोर्ट करें।</string>
+    <string name="save_manager_orphan_save">गेम इंस्टॉल नहीं है</string>
+    <string name="nav_save_manager">सेव</string>
+    <string name="settings_options_content_description">सेटिंग विकल्प</string>
+    <string name="settings_reset_defaults_menu">डिफ़ॉल्ट सेटिंग्स रीस्टोर करें</string>
+    <string name="settings_reset_defaults_title">डिफ़ॉल्ट सेटिंग्स रीस्टोर करें?</string>
+    <string name="settings_reset_defaults_message">यह एमुलेटर सेटिंग्स को उनके अनुशंसित डिफ़ॉल्ट पर रीसेट कर देगा। आपके गेम, सेव, ऐप की भाषा और चयनित फ़ोल्डर अपरिवर्तित रहेंगे।</string>
+    <string name="settings_reset_defaults_confirm">रीस्टोर करें</string>
+    <string name="settings_reset_defaults_cancel">रद्द करें</string>
+    <string name="settings_tab_updates">अपडेट</string>
+    <string name="settings_about_version">ऐप का वर्ज़न</string>
+    <string name="settings_about_version_value">वर्ज़न %1$s</string>
+    <string name="settings_about_body_extended">EmuCoreC, PS3 एमुलेशन को Android पर एक फोकस मोबाइल इंटरफ़ेस, लोकल लाइब्रेरी मैनेजमेंट और RPCS3-आधारित एमुलेशन कोर के साथ लाता है।</string>
+    <string name="settings_about_community_title">कम्युनिटी और सपोर्ट</string>
+    <string name="settings_about_repository">EmuCoreC रिपॉजिटरी</string>
+    <string name="settings_about_repository_desc">सोर्स कोड देखें, समस्याएँ रिपोर्ट करें और GitHub पर डेवलपमेंट को फ़ॉलो करें।</string>
+    <string name="settings_about_discord">हमारा Discord जॉइन करें</string>
+    <string name="settings_about_discord_desc">कम्युनिटी के साथ चैट करें, फ़ीडबैक शेयर करें और प्रोजेक्ट अपडेट प्राप्त करें।</string>
+    <string name="settings_about_support">EmuCoreC को सपोर्ट करें</string>
+    <string name="settings_about_support_desc">Patreon मेंबरशिप के ज़रिए डेवलपमेंट को जारी रखने में मदद करें।</string>
+    <string name="settings_play_store_profile_desc">डेवलपर के और Android ऐप देखें।</string>
+    <string name="settings_rpcsx_repository_desc">अपस्ट्रीम RPCS3 प्रोजेक्ट रिपॉजिटरी खोलें।</string>
+    <string name="settings_updates_version_label">वर्ज़न</string>
+    <string name="settings_updates_open_release">रिलीज़ पेज खोलें</string>
+    <string name="settings_updates_release_notes_title">नया क्या है</string>
+    <string name="settings_updates_release_notes_empty">इस रिलीज़ में रिलीज़ नोट्स शामिल नहीं हैं।</string>
+    <string name="settings_updates_cancel">रद्द करें</string>
+    <string name="settings_backup_title">सेटिंग्स बैकअप</string>
+    <string name="settings_backup_body">एक फ़ाइल में ऐप प्रेफरेंस और एमुलेटर सेटिंग्स का बैकअप लें, या उन्हें पिछले बैकअप से रीस्टोर करें।</string>
+    <string name="settings_backup_create">सेटिंग्स का बैकअप लें</string>
+    <string name="settings_backup_restore">बैकअप रीस्टोर करें</string>
+    <string name="settings_backup_created">सेटिंग्स बैकअप बन गया।</string>
+    <string name="settings_backup_failed">सेटिंग्स बैकअप बनाने में विफल।</string>
+    <string name="settings_backup_restored">बैकअप से सेटिंग्स रीस्टोर हो गईं।</string>
+    <string name="settings_backup_restore_failed">सेटिंग्स बैकअप रीस्टोर करने में विफल।</string>
+    <string name="settings_backup_restore_title">सेटिंग्स बैकअप रीस्टोर करें?</string>
+    <string name="settings_backup_restore_message">मौजूदा ऐप प्रेफरेंस और एमुलेटर सेटिंग्स को चुने गए बैकअप से बदल दिया जाएगा।</string>
+    <string name="settings_backup_restore_confirm">रीस्टोर करें</string>
+    <string name="settings_clear_cache_title">कैश साफ़ करें</string>
+    <string name="settings_clear_cache_body">शेडर कैश, टेक्सचर कैश, लॉग और अस्थायी इंस्टॉल फ़ाइलें हटाता है। आपकी सेटिंग्स, सेव, इंस्टॉल किए गए गेम और फ़र्मवेयर प्रभावित नहीं होते।</string>
+    <string name="settings_clear_cache_action">कैश साफ़ करें</string>
+    <string name="settings_clear_cache_size">कैश आकार: %1$s</string>
+    <string name="settings_clear_cache_empty">हटाने के लिए कोई कैश डेटा नहीं है।</string>
+    <string name="settings_clear_cache_confirm_title">कैश साफ़ करें?</string>
+    <string name="settings_clear_cache_confirm_message">इससे %1$s खाली होगा। शेडर दोबारा बनने तक गेम पहली बार शुरू होने में थोड़ा अधिक समय ले सकते हैं।</string>
+    <string name="settings_clear_cache_confirm_action">साफ़ करें</string>
+    <string name="settings_clear_cache_done">कैश साफ़ हो गया, %1$s खाली हुआ।</string>
+    <string name="settings_clear_cache_failed">कैश साफ़ नहीं किया जा सका।</string>
+    <string name="settings_clear_cover_cache_title">कवर कैश साफ़ करें</string>
+    <string name="settings_clear_cover_cache_body">डाउनलोड किए गए गेम कवर, स्क्रीनशॉट और बैनर हटाता है। ज़रूरत पड़ने पर वे दोबारा डाउनलोड होंगे।</string>
+    <string name="settings_clear_cover_cache_action">कवर कैश साफ़ करें</string>
+    <string name="settings_clear_cover_cache_size">कवर कैश आकार: %1$s</string>
+    <string name="settings_clear_cover_cache_empty">हटाने के लिए कोई कवर कैश डेटा नहीं है।</string>
+    <string name="settings_clear_cover_cache_confirm_title">कवर कैश साफ़ करें?</string>
+    <string name="settings_clear_cover_cache_confirm_message">यह कैश किए गए कवर और स्क्रीनशॉट हटा देगा और %1$s खाली करेगा।</string>
+    <string name="settings_clear_cover_cache_confirm_action">साफ़ करें</string>
+    <string name="settings_clear_cover_cache_done">कवर कैश साफ़ हो गया, %1$s खाली हुआ।</string>
+    <string name="settings_clear_cover_cache_failed">कवर कैश साफ़ नहीं किया जा सका।</string>
+    <string name="settings_keep_screen_on">स्क्रीन चालू रखें</string>
+    <string name="settings_keep_screen_on_summary">ऐप का उपयोग करने या गेम खेलने के दौरान स्क्रीन को बंद होने से रोकें</string>
+    <string name="emulation_quickbar_open_menu">मेनू खोलें</string>
+    <string name="emulation_menu_paused_badge">रोका गया</string>
+    <string name="emulation_menu_badge_live">लाइव</string>
+    <string name="emulation_menu_badge_restart">पुनरारंभ आवश्यक है</string>
+    <string name="emulation_menu_section_now">अभी</string>
+    <string name="emulation_menu_section_now_desc">परिवर्तन चल रहे गेम पर तुरंत लागू होते हैं।</string>
+    <string name="emulation_menu_section_touch">टच नियंत्रण</string>
+    <string name="emulation_menu_section_touch_desc">ऑन-स्क्रीन गेमपैड। परिवर्तन तुरंत लागू होते हैं।</string>
+    <string name="emulation_tab_game">गेम</string>
+    <string name="emulation_tab_controls">नियंत्रण</string>
+    <string name="settings_gamepad_section">भौतिक गेमपैड</string>
+    <string name="settings_gamepad_connected">गेमपैड कनेक्ट हो गया। खेलते समय ये सेटिंग्स लाइव लागू होती हैं।</string>
+    <string name="settings_gamepad_disconnected">इन सेटिंग्स को सक्षम करने के लिए भौतिक गेमपैड कनेक्ट करें।</string>
+    <string name="settings_gamepad_deadzone">स्टिक डेड ज़ोन</string>
+    <string name="settings_gamepad_trigger_threshold">ट्रिगर थ्रेशोल्ड</string>
+    <string name="settings_gamepad_percent_value">%1$d%%</string>
+    <string name="settings_gamepad_button_profile">बटन रीमैप</string>
+    <string name="settings_gamepad_profile_standard">मानक</string>
+    <string name="settings_gamepad_profile_swap_cross_circle">क्रॉस/सर्कल स्वैप करें</string>
+    <string name="settings_gamepad_profile_nintendo_face">निनटेंडो फेस बटन</string>
+    <string name="settings_gamepad_swap_sticks">स्टिक स्वैप करें</string>
+    <string name="settings_gamepad_invert_left_y">लेफ्ट स्टिक Y उल्टा करें</string>
+    <string name="settings_gamepad_invert_right_y">राइट स्टिक Y उल्टा करें</string>
+    <string name="settings_help_gamepad_deadzone">ड्रिफ्ट को कम करने के लिए केंद्र के पास छोटे स्टिक मूवमेंट को फ़िल्टर करता है। यदि कैमरा या पात्र अपने आप चलता है तो इसे बढ़ाएं; यदि लक्ष्य करना धीमा लगता है तो इसे कम करें।</string>
+    <string name="settings_help_gamepad_trigger_threshold">सेट करता है कि इनपुट भेजे जाने से पहले एनालॉग ट्रिगर को कितना आगे बढ़ना चाहिए। संवेदनशील ट्रिगर के लिए इसे बढ़ाएं; रेसिंग या दबाव-संवेदनशील नियंत्रण के लिए इसे कम करें।</string>
+    <string name="settings_help_gamepad_button_profile">एमुलेटर तक पहुंचने से पहले भौतिक फेस बटन को रीमैप करता है। इसका उपयोग तब करें जब आपका नियंत्रक लेआउट वीटा क्रॉस, सर्कल, स्क्वायर और त्रिभुज प्लेसमेंट से मेल नहीं खाता है।</string>
+    <string name="settings_help_gamepad_swap_sticks">बाएँ और दाएँ स्टिक अक्ष को स्वैप करता है। असामान्य स्टिक रूटिंग वाले गेम या नियंत्रकों के लिए उपयोगी।</string>
+    <string name="settings_help_gamepad_invert_x">स्टीयरिंग या कैमरा नियंत्रण के लिए स्टिक की क्षैतिज गति उलटता है।</string>
+    <string name="settings_help_gamepad_invert_y">कैमरा या लक्ष्यीकरण नियंत्रण के लिए लंबवत स्टिक गति को फ़्लिप करता है।</string>
+    <string name="emulation_tab_gamepad">गेमपैड</string>
+    <string name="emulation_menu_section_gamepad">भौतिक गेमपैड</string>
+    <string name="emulation_menu_section_gamepad_desc">जुड़े हुए कंट्रोलर के लिए डेड ज़ोन, रीमैप, कंपन और स्टिक व्यवहार।</string>
+    <string name="emulation_menu_section_gamepad_disconnected">इन नियंत्रणों को बदलने के लिए एक भौतिक गेमपैड कनेक्ट करें।</string>
+    <string name="game_manager_title">गेम मैनेजर</string>
+    <string name="game_manager_open_for_game">गेम सेटिंग्स</string>
+    <string name="game_manager_empty_title">कोई गेम इंस्टॉल नहीं है</string>
+    <string name="game_manager_empty_body">पहले एक गेम इंस्टॉल करें, फिर यहां उसके लिए एक कस्टम प्रोफ़ाइल बनाएं।</string>
+    <string name="game_manager_choose_game">गेम चुनें</string>
+    <string name="game_manager_reset_global">वैश्विक डिफ़ॉल्ट का उपयोग करें</string>
+    <string name="game_manager_invert_left_x">लेफ्ट स्टिक X उल्टा करें</string>
+    <string name="game_manager_invert_right_x">राइट स्टिक X उल्टा करें</string>
+    <string name="nav_game_manager">गेम मैनेजर</string>
+    <string name="nav_play_time">खेलने का समय</string>
+    <string name="play_time_title">खेलने का समय</string>
+    <string name="play_time_open_for_game">खेलने का समय</string>
+    <string name="play_time_current_session">वर्तमान सत्र</string>
+    <string name="play_time_filter_game">गेम चुनें</string>
+    <string name="play_time_all_games">सभी गेम</string>
+    <string name="play_time_total_time">कुल समय</string>
+    <string name="play_time_sessions">सत्र</string>
+    <string name="play_time_games_played">खेले गए गेम</string>
+    <string name="play_time_daily_chart">पिछले 14 दिन</string>
+    <string name="play_time_games_chart">गेम के अनुसार समय</string>
+    <string name="play_time_recent_sessions">सत्र</string>
+    <string name="play_time_no_sessions_title">अभी तक कोई खेल सत्र नहीं</string>
+    <string name="play_time_no_sessions_body">एक गेम लॉन्च करें और आपके खेलने के सत्र यहां दिखाई देंगे।</string>
+    <string name="play_time_no_game_sessions_body">यह गेम अभी तक नहीं खेला गया है। इसे लॉन्च करें और इसके खेलने के सत्र यहां दिखाई देंगे।</string>
+    <string name="library_add_shortcut">शॉर्टकट जोड़ें</string>
+    <string name="library_shortcut_requested">शॉर्टकट अनुरोध भेजा गया।</string>
+    <string name="library_shortcut_unsupported">यह लॉन्चर पिन किए गए शॉर्टकट का समर्थन नहीं करता है।</string>
+    <string name="library_shortcut_failed">शॉर्टकट बनाने में विफल।</string>
+    <string name="settings_app_language_arabic">अरबी</string>
+    <string name="play_time_today">आज</string>
+    <string name="play_time_yesterday">कल</string>
+    <string name="settings_gpu_driver_global">ग्लोबल का उपयोग करें</string>
+    <string name="settings_gpu_driver_status_global">ग्लोबल GPU ड्राइवर का उपयोग कर रहा है: %1$s</string>
+    <string name="settings_gpu_driver_status_global_system">ग्लोबल GPU ड्राइवर का उपयोग कर रहा है: सिस्टम Vulkan</string>
+    <string name="settings_gpu_driver_status_game_system">गेम ओवरराइड: सिस्टम Vulkan ड्राइवर</string>
+    <string name="settings_gpu_driver_status_game_active">गेम ओवरराइड: %1$s</string>
+    <string name="settings_about_website">आधिकारिक वेबसाइट</string>
+    <string name="settings_about_website_desc">डाउनलोड, समाचार और प्रोजेक्ट लिंक के लिए EmuCoreC वेबसाइट खोलें।</string>
+    <string name="settings_gpu_driver_status_global_desc">यह गेम ग्लोबल GPU ड्राइवर चयन का अनुसरण करता है।</string>
+    <string name="settings_gpu_driver_game_title">गेम GPU ड्राइवर</string>
+    <string name="install_dialog_title_license">लाइसेंस इंस्टॉल हो रहा है</string>
+    <string name="install_dialog_license_failed">लाइसेंस इंस्टॉलेशन विफल रहा।</string>
+    <string name="install_dialog_license_done">लाइसेंस सफलतापूर्वक इंस्टॉल हो गया।</string>
+    <string name="common_cancel">रद्द करें</string>
+    <string name="save_manager_backup_all_title">सभी सेव का बैकअप</string>
+    <string name="save_manager_backup_all_body">प्रत्येक सेव फ़ोल्डर के साथ एक ज़िप (ZIP) बैकअप बनाएं, या पिछले पूर्ण बैकअप से सेव फ़ोल्डर्स को रीस्टोर करें।</string>
+    <string name="save_manager_backup_all">बैकअप</string>
+    <string name="save_manager_restore_all">सभी को रीस्टोर करें</string>
+    <string name="save_manager_backup_all_success">%1$d सेव फ़ोल्डर का बैकअप लिया गया।</string>
+    <string name="save_manager_backup_all_failed">सभी सेव का बैकअप लेने में विफल।</string>
+    <string name="save_manager_restore_all_success">%1$d सेव फ़ोल्डर रीस्टोर किए गए。</string>
+    <string name="save_manager_restore_all_failed">सभी सेव को रीस्टोर करने में विफल।</string>
+    <string name="save_manager_restore_all_confirm_title">सभी सेव रीस्टोर करें?</string>
+    <string name="save_manager_restore_all_confirm_body">चयनित बैकअप के सेव फ़ोल्डर इस डिवाइस पर मेल खाने वाले सेव फ़ोल्डरों को बदल देंगे। मौजूदा सेव तभी रखे जाते हैं जब बैकअप में वह सेव आईडी (ID) न हो।</string>
+    <string name="save_manager_restore_all_confirm">सेव रीस्टोर करें</string>
+    <string name="settings_change_storage">स्टोरेज बदलें</string>
+    <string name="settings_storage_location_internal">डिवाइस स्टोरेज</string>
+    <string name="settings_storage_location_sd">SD कार्ड</string>
+    <string name="settings_storage_location_external">बाहरी स्टोरेज</string>
+    <string name="settings_storage_change_note">स्टोरेज बदलने पर EmuCoreC एमुलेटर का अनुपलब्ध डेटा चुनी गई जगह पर ले जाता है। गंतव्य में मौजूद फाइलें सुरक्षित रहती हैं।</string>
+    <string name="onboarding_storage_choose_title">एमुलेटर स्टोरेज चुनें</string>
+    <string name="onboarding_storage_only_default">Android अभी केवल एक ऐप स्टोरेज स्थान प्रदर्शित कर रहा है। यदि SD कार्ड इंस्टॉल है, तो सुनिश्चित करें कि यह माउंट किया गया है और ऐप्स के लिए उपलब्ध है।</string>
+    <string name="nav_achievements">उपलब्धियां</string>
+    <string name="achievements_title">उपलब्धियां</string>
+    <string name="achievements_progress_count">%1$d/%2$d</string>
+    <string name="achievements_choose_game">गेम चुनें</string>
+    <string name="achievements_trophy">ट्रॉफी</string>
+    <string name="achievements_hidden_trophy">छिपी हुई ट्रॉफी</string>
+    <string name="achievements_hidden_trophy_body">इसका विवरण देखने के लिए इस ट्रॉफी को अनलॉक करें।</string>
+    <string name="achievements_unlocked_at">%1$s को अनलॉक किया गया</string>
+    <string name="achievements_empty_title">कोई ट्रॉफी नहीं मिली</string>
+    <string name="achievements_empty_body">ट्रॉफी समर्थन वाला गेम लॉन्च करें या गेम इंस्टॉल करने के बाद रीफ्रेश करें।</string>
+    <string name="achievements_open_for_game">उपलब्धियां</string>
+    <string name="achievements_how_to_unlock">कैसे अनलॉक करें?</string>
+    <string name="achievements_translate">अनुवाद करें</string>
+    <string name="achievements_hint_title">कैसे अनलॉक करें</string>
+    <string name="achievements_translation_title">अनुवादित</string>
+    <string name="achievements_assist_error">लोड नहीं किया जा सका। पुनः प्रयास करें।</string>
+    <string name="emulation_achievements_loading">चल रहे गेम के लिए ट्रॉफियां लोड हो रही हैं।</string>
+    <string name="emulation_achievements_empty">चल रहे गेम के लिए कोई ट्रॉफी नहीं मिली।</string>
+    <string name="emulation_achievements_empty_body">ट्रॉफी समर्थन वाला गेम इंस्टॉल करें या लाइब्रेरी से गेम ट्रॉफियों को रीफ्रेश करें।</string>
+    <string name="emulation_tab_achievements">उपलब्धियां</string>
+    <string name="settings_storage_migrating">एमुलेटर डेटा स्थानांतरित किया जा रहा है…</string>
+    <string name="settings_storage_confirm_title">एमुलेटर स्टोरेज बदलें?</string>
+    <string name="settings_storage_confirm_body">EmuCoreC पूरे वर्चुअल PS3 फ़ाइल सिस्टम—फ़र्मवेयर, गेम, सेव, ट्रॉफ़ियां और कोर कॉन्फ़िगरेशन—को %1$s पर कॉपी करेगा। मौजूदा गंतव्य फ़ाइलें सुरक्षित रहेंगी; दोबारा बनाए जा सकने वाले कैश और पैच स्थिर ऐप स्टोरेज में रहेंगे।</string>
+    <string name="settings_storage_confirm_action">डेटा स्थानांतरित करें</string>
+    <string name="settings_storage_migration_title">एमुलेटर डेटा स्थानांतरित किया जा रहा है</string>
+    <string name="settings_storage_migration_body">वर्चुअल PS3 फ़ाइल सिस्टम के चयनित स्टोरेज में कॉपी होने तक EmuCoreC खुला रखें।</string>
+    <string name="settings_storage_migration_count">%1$d/%2$d फ़ाइलें जांची गईं</string>
+    <string name="settings_storage_migration_failed">स्टोरेज स्थानांतरित नहीं किया जा सका</string>
+    <string name="settings_vibration_section">कंपन</string>
+    <string name="settings_vibration_enable">कंपन</string>
+    <string name="settings_vibration_strength">कंपन की ताकत</string>
+    <string name="settings_test_vibration">कंपन का परीक्षण करें</string>
+    <string name="settings_test_vibration_button">परीक्षण करें</string>
+    <string name="settings_device_vibration_fallback">फ़ॉलबैक के रूप में डिवाइस के कंपन का उपयोग करें</string>
+    <string name="settings_help_vibration_enable">समर्थित गेम को भौतिक कंट्रोलर में या, जब फ़ॉलबैक सक्षम हो, Android डिवाइस के मुख्य भाग में कंपन भेजने की अनुमति देता है।</string>
+    <string name="settings_help_vibration_strength">गेमपैड रंबल और डिवाइस फ़ॉलबैक के लिए कंपन की तीव्रता को मापता है。</string>
+    <string name="settings_help_test_vibration">वर्तमान कंपन शक्ति और रूटिंग का उपयोग करके एक छोटी पल्स बजाता है।</string>
+    <string name="settings_help_device_vibration_fallback">भौतिक कंट्रोलर गुम होने या रंबल मोटर न होने पर फ़ोन या हैंडहेल्ड डिवाइस को कंपाता है।</string>
+    <string name="nav_profile">प्रोफ़ाइल</string>
+    <string name="catalog_toggle_search">कैटलॉग खोज टॉगल करें</string>
+    <string name="catalog_toggle_filters">कैटलॉग फ़िल्टर टॉगल करें</string>
+    <string name="catalog_profile_menu">प्रोफ़ाइल सूची</string>
+    <string name="catalog_profile_remove">प्रोफ़ाइल से हटाएं</string>
+    <string name="catalog_profile_status_title">खेलने की स्थिति</string>
+    <string name="catalog_profile_clear_status">खेलने की स्थिति साफ़ करें</string>
+    <string name="profile_title">प्रोफ़ाइल</string>
+    <string name="profile_game_count">%1$d गेम सहेजे गए</string>
+    <string name="profile_refresh">प्रोफ़ाइल रीफ़्रेश करें</string>
+    <string name="profile_toggle_layout">प्रोफ़ाइल लेआउट टॉगल करें</string>
+    <string name="profile_section_count">%1$d</string>
+    <string name="profile_status_playing">अभी खेल रहे हैं</string>
+    <string name="profile_status_want_to_play">खेलना चाहते हैं</string>
+    <string name="profile_status_completed">पूरा हो गया</string>
+    <string name="profile_status_dropped">छोड़ दिया</string>
+    <string name="profile_status_favorites">पसंदीदा</string>
+    <string name="profile_account_title">स्थानीय प्रोफ़ाइल</string>
+    <string name="profile_account_body">आपका नाम, अवतार, पसंदीदा और गेम सूचियां केवल इस डिवाइस पर संग्रहीत होती हैं।</string>
+    <string name="profile_hide_backup">स्थानीय प्रोफ़ाइल छिपाएं</string>
+    <string name="profile_show_backup">स्थानीय प्रोफ़ाइल दिखाएं</string>
+    <string name="profile_user_name">प्रदर्शन नाम</string>
+    <string name="profile_default_name">खिलाड़ी</string>
+    <string name="profile_change_avatar">अवतार बदलें</string>
+    <string name="profile_backup">सहेजें</string>
+    <string name="profile_empty_title">अभी तक कोई प्रोफ़ाइल गेम नहीं है</string>
+    <string name="profile_empty_body">कैटलॉग खोलें, किसी गेम पर तीन-बिंदु वाले मेनू को टैप करें, और उसे अपनी किसी प्रोफ़ाइल सूची में जोड़ें।</string>
+    <string name="settings_updates_history_title">अपडेट इतिहास</string>
+    <string name="settings_updates_history_body">GitHub रिलीज़, रिलीज़ की तारीख़ें और चैंजलॉग ब्राउज़ करें।</string>
+    <string name="settings_updates_history_loading">रिलीज़ इतिहास लोड हो रहा है</string>
+    <string name="settings_updates_history_empty">कोई रिलीज़ नहीं मिली।</string>
+    <string name="settings_updates_published_label">प्रकाशित</string>
+    <string name="settings_updates_parallel_title">समानांतर संस्करण</string>
+    <string name="settings_updates_parallel_body">Android कई EmuCoreC संस्करणों को केवल तभी इंस्टॉल कर सकता है जब किसी रिलीज़ में एक अद्वितीय पैकेज नाम और ऐप लेबल के साथ बनाया गया एक विशेष APK शामिल हो, जैसे EmuCoreC (0.1.1)। सामान्य पुराने APK वर्तमान ऐप को बदल देते हैं या डाउनग्रेड कर देते हैं।</string>
+    <string name="settings_updates_parallel_unavailable">इस रिलीज़ के लिए अलग APK उपलब्ध नहीं है。</string>
+    <string name="settings_updates_parallel_package">अलग ऐप पैकेज</string>
+    <string name="settings_updates_parallel_download">डाउनलोड करें</string>
+    <string name="emulation_controls_editor_touch_area_mode">टच एरिया</string>
+    <string name="emulation_controls_editor_width">चौड़ाई</string>
+    <string name="emulation_controls_editor_height">ऊंचाई</string>
+    <string name="settings_tab_customization">मनपसंद बनाना</string>
+    <string name="customization_preview_title">पूर्वावलोकन</string>
+    <string name="customization_preview_subtitle">आपके अनुसार बनाई गई आपकी लाइब्रेरी</string>
+    <plurals name="customization_games_per_row">
+        <item quantity="one">हर पंक्ति में %1$d गेम</item>
+        <item quantity="other">हर पंक्ति में %1$d गेम</item>
+    </plurals>
+    <string name="customization_home_background">होम स्क्रीन की पृष्ठभूमि</string>
+    <string name="customization_background_select">चित्र, GIF या वीडियो चुनें</string>
+    <string name="customization_background_default">डिफ़ॉल्ट पृष्ठभूमि</string>
+    <string name="customization_background_selected">कस्टम पृष्ठभूमि चुनी गई</string>
+    <string name="customization_background_imported">पृष्ठभूमि अपडेट हुई</string>
+    <string name="customization_background_failed">इस पृष्ठभूमि फ़ाइल का उपयोग नहीं हो सका</string>
+    <string name="customization_library_layout">लाइब्रेरी लेआउट</string>
+    <string name="customization_cover_size">गेम कवर का आकार</string>
+    <string name="customization_percent_value">%1$d%%</string>
+    <string name="customization_text_and_fonts">टेक्स्ट और फ़ॉन्ट</string>
+    <string name="customization_app_font">ऐप फ़ॉन्ट</string>
+    <string name="customization_font_system">सिस्टम डिफ़ॉल्ट</string>
+    <string name="customization_font_custom">कस्टम</string>
+    <string name="customization_import_font">कस्टम फ़ॉन्ट आयात करें</string>
+    <string name="customization_import_font_hint">TTF या OTF फ़ाइल चुनें</string>
+    <string name="customization_font_imported">फ़ॉन्ट आयात हुआ</string>
+    <string name="customization_font_failed">इस फ़ॉन्ट फ़ाइल का उपयोग नहीं हो सका</string>
+    <string name="customization_text_size">टेक्स्ट का आकार</string>
+    <string name="customization_reset_section">रीसेट</string>
+    <string name="customization_reset">मनपसंद सेटिंग रीसेट करें</string>
+    <string name="customization_reset_description">डिफ़ॉल्ट पृष्ठभूमि, कवर आकार, फ़ॉन्ट और टेक्स्ट आकार वापस लाएँ</string>
+    <string name="customization_reset_confirm_title">मनपसंद सेटिंग रीसेट करें?</string>
+    <string name="customization_reset_confirm_body">कस्टम पृष्ठभूमि और आयात किया गया फ़ॉन्ट हटा दिया जाएगा।</string>
+    <string name="customization_reset_action">रीसेट</string>
+    <string name="settings_theme">थीम</string>
+    <string name="settings_theme_system">सिस्टम</string>
+    <string name="settings_theme_light">लाइट</string>
+    <string name="settings_theme_dark">डार्क</string>
+    <string name="settings_about_privacy_policy">गोपनीयता नीति</string>
+    <string name="settings_about_privacy_policy_desc">EmuCoreC गोपनीयता नीति खोलें।</string>
+    <string name="shell_discord_server">Discord सर्वर</string>
+    <string name="settings_customization_touch_controls_section">ऑन-स्क्रीन कंट्रोल्स</string>
+    <string name="settings_customization_touch_controls_style">कंट्रोल स्टाइल</string>
+    <string name="settings_customization_touch_controls_help">कंट्रोल का पूरा डिज़ाइन बदलता है: बटन शेल, D-pad, स्टिक रिंग, थंब कैप, आउटलाइन और दबाए गए स्टेट। पोज़िशन, टच एरिया, मल्टी-टच और इनपुट लॉजिक नहीं बदलते।</string>
+    <string name="settings_customization_touch_style_classic">क्लासिक</string>
+    <string name="settings_customization_touch_style_glass">लीगेसी</string>
+    <string name="settings_customization_touch_style_neon">मॉडर्न</string>
+    <string name="settings_game_menu_tab">गेम मेनू</string>
+    <string name="settings_customization_drawer_section">नेविगेशन ड्रावर</string>
+    <string name="settings_customization_touch_style_arcade">आर्केड</string>
+    <string name="settings_customization_touch_style_minimal">न्यूनतम</string>
+    <string name="settings_customization_touch_press_effect">प्रेस प्रभाव</string>
+    <string name="settings_customization_touch_press_effect_help">चुनें कि दबाए जाने पर हर ऑन-स्क्रीन बटन, डी-पैड दिशा और एनालॉग स्टिक कैसे प्रतिक्रिया करता है। यह केवल एनीमेशन बदलता है; नियंत्रण का आकार और स्पर्श लक्ष्य अपरिवर्तित रहते हैं।</string>
+    <string name="settings_customization_touch_press_effect_grow">बड़ा करें</string>
+    <string name="settings_customization_touch_press_effect_shrink">सिकोड़ें</string>
+    <string name="settings_customization_touch_press_effect_spring">स्प्रिंग</string>
+    <string name="settings_customization_touch_press_effect_glow">चमक</string>
+    <string name="settings_drawer_style_classic">क्लासिक</string>
+    <string name="settings_drawer_style_compact">कॉम्पैक्ट</string>
+    <string name="settings_drawer_style_glass">ग्लास</string>
+    <string name="settings_drawer_style_console">कंसोल</string>
+    <string name="settings_game_menu_layout_help">इन-गेम मेनू की संरचना और नेविगेशन को बदलता है। टैब, सामग्री दृश्यता, सुरक्षा कार्रवाइयां, और गेमपैड नियंत्रण हर लेआउट के बीच साझा रहते हैं।</string>
+    <string name="settings_game_menu_layout_sidebar">साइडबार</string>
+    <string name="settings_game_menu_layout_dashboard">डैशबोर्ड</string>
+    <string name="settings_game_menu_layout_command_center">कमांड सेंटर</string>
+    <string name="settings_game_menu_layout_compact">कॉम्पैक्ट</string>
+    <string name="feedback_title">प्रतिक्रिया</string>
+    <string name="feedback_subtitle">EmuCoreC टीम को सीधे फीडबैक भेजें</string>
+    <string name="feedback_category_title">यह किस बारे में है?</string>
+    <string name="feedback_category_compatibility">गेम संगतता</string>
+    <string name="feedback_category_performance">प्रदर्शन या हकलाना (Stutter)</string>
+    <string name="feedback_category_graphics">ग्राफिक्स या रेंडरिंग</string>
+    <string name="feedback_category_audio">ऑडियो</string>
+    <string name="feedback_category_controls">नियंत्रण या गेमपैड</string>
+    <string name="feedback_category_crash">क्रैश या फ़्रीज़</string>
+    <string name="feedback_category_feature">सुविधा का अनुरोध</string>
+    <string name="feedback_category_ui">इंटरफ़ेस या उपयोगिता</string>
+    <string name="feedback_category_other">अन्य</string>
+    <string name="feedback_details_title">विवरण</string>
+    <string name="feedback_game_label">आपकी लाइब्रेरी से गेम (वैकल्पिक)</string>
+    <string name="feedback_game_placeholder">शीर्षक या सीरियल से खोजें, या मैन्युअल रूप से एक गेम टाइप करें</string>
+    <string name="feedback_game_library_empty">कोई कैश्ड गेम नहीं मिला। आप मैन्युअल रूप से गेम का शीर्षक या सीरियल दर्ज कर सकते हैं।</string>
+    <string name="feedback_game_clear_selection">गेम चयन साफ़ करें</string>
+    <string name="feedback_message_label">आपका फीडबैक</string>
+    <string name="feedback_message_placeholder">हमें बताएं कि क्या हुआ, आपको क्या उम्मीद थी, और हम इसे कैसे पुन: उत्पन्न (reproduce) कर सकते हैं।</string>
+    <string name="feedback_character_counter">%1$d / %2$d</string>
+    <string name="feedback_attachments_title">अटैचमेंट</string>
+    <string name="feedback_attachments_help">%1$d फ़ोटो, वीडियो, लॉग, सेव फ़ाइलें, या अन्य फ़ाइलें जोड़ें। अधिकतम %2$d MB प्रति फ़ाइल और कुल %3$d MB।</string>
+    <string name="feedback_add_attachment">अटैचमेंट जोड़ें</string>
+    <string name="feedback_attachment_source_title">अटैचमेंट का प्रकार चुनें</string>
+    <string name="feedback_add_media">फ़ोटो या वीडियो</string>
+    <string name="feedback_add_files">फ़ाइल</string>
+    <string name="feedback_attachment_counter">%2$d में से %1$d फ़ाइलें चयनित</string>
+    <string name="feedback_tip_title">बेहतर फीडबैक के लिए टिप्स</string>
+    <string name="feedback_tip_body">समस्या को फिर से उत्पन्न करने के लिए छोटे चरण जोड़ें और स्क्रीनशॉट, वीडियो, लॉग, सेव या अन्य उपयोगी फ़ाइलें संलग्न करें।</string>
+    <string name="feedback_remove_attachment">अटैचमेंट हटाएं</string>
+    <string name="feedback_send">फीडबैक भेजें</string>
+    <string name="feedback_queueing">तैयार किया जा रहा है…</string>
+    <string name="feedback_queued">फीडबैक कतारबद्ध कर दिया गया है। नेटवर्क उपलब्ध होने पर यह स्वचालित रूप से भेज दिया जाएगा।</string>
+    <string name="feedback_error_message_required">कृपया पहले अपना फीडबैक वर्णित करें।</string>
+    <string name="feedback_error_too_many_files">आपने बहुत अधिक फ़ाइलें चुन ली हैं।</string>
+    <string name="feedback_error_file_too_large">फ़ाइलों में से एक 49 MB से बड़ी है।</string>
+    <string name="feedback_error_total_too_large">चयनित फ़ाइलें कुल मिलाकर 90 MB से बड़ी हैं।</string>
+    <string name="feedback_error_file_unreadable">चयनित फ़ाइलों में से एक को पढ़ा नहीं जा सकता।</string>
+    <string name="feedback_error_queue_failed">फीडबैक तैयार नहीं किया जा सका। चयनित फ़ाइलों की जांच करें और पुनः प्रयास करें।</string>
+    <string name="feedback_not_configured">इस बिल्ड में फीडबैक डिलीवरी कॉन्फ़िगर नहीं की गई है। local.properties में वर्कर URL और API कुंजी जोड़ें।</string>
+    <string name="feedback_discard_title">फीडबैक छोड़ें?</string>
+    <string name="feedback_discard_message">आपका संदेश और चयनित अटैचमेंट खो जाएंगे।</string>
+    <string name="feedback_discard_action">छोड़ें</string>
+    <string name="settings_customization_drawer_style">ड्रॉअर की दिखावट</string>
+    <string name="settings_touch_haptics">टच कंट्रोल हैप्टिक्स</string>
+    <string name="settings_help_touch_haptics">जब कोई ऑन-स्क्रीन बटन, डी-पैड दिशा, या एनालॉग स्टिक पहली बार दबाया जाता है, तो हल्का Android हैप्टिक फीडबैक जोड़ता है। यह केवल नियंत्रण महसूस को प्रभावित करता है और इन-गेम रंबल को नहीं बदलता है。</string>
+    <string name="settings_touch_haptics_strength">टच हैप्टिक की शक्ति</string>
+    <string name="settings_help_touch_haptics_strength">टच कंट्रोल हैप्टिक्स के लिए उपयोग की जाने वाली डिवाइस कंपन शक्ति को नियंत्रित करता है। यदि टिक बहुत हल्का है तो इसे बढ़ाएं, या शांत हैंडहेल्ड खेलने के लिए इसे कम करें।</string>
+    <string name="settings_touch_haptics_test">टच हैप्टिक्स का परीक्षण करें</string>
+    <string name="settings_help_touch_haptics_test">ऑन-स्क्रीन नियंत्रणों द्वारा उपयोग किए जाने वाले समान डिवाइस हैप्टिक पल्स को प्ले करता है, जिससे आप गेम लॉन्च करने से पहले शक्ति को ट्यून कर सकते हैं。</string>
+    <string name="settings_touch_haptics_preset">हैप्टिक अहसास</string>
+    <string name="settings_touch_haptics_preset_soft">कोमल</string>
+    <string name="settings_touch_haptics_preset_balanced">संतुलित</string>
+    <string name="settings_touch_haptics_preset_crisp">स्पष्ट</string>
+    <string name="settings_touch_haptics_preset_strong">मजबूत</string>
+    <string name="settings_help_touch_haptics_preset">कोमल एक हल्के दबाव और बहुत हल्के रिलीज़ का उपयोग करता है। संतुलित हल्के रिलीज़ के साथ स्पष्ट दबाव देता है और डिफ़ॉल्ट है। स्पष्ट सटीक टैप के लिए सबसे छोटे, सबसे तेज़ जोड़े का उपयोग करता है। मजबूत कमज़ोर कंपन मोटर वाले फ़ोन के लिए गहरे, लंबे पल्स का उपयोग करता है। तीव्रता स्लाइडर चुने गए अहसास को मापता है。</string>
+    <string name="settings_gyro_mode">जाइरोस्कोप नियंत्रण</string>
+    <string name="settings_gyro_off">बंद</string>
+    <string name="settings_gyro_aim">निशाना — राइट स्टिक</string>
+    <string name="settings_gyro_steering">स्टीयरिंग — लेफ्ट स्टिक</string>
+    <string name="settings_gyro_sensitivity">जाइरोस्कोप संवेदनशीलता</string>
+    <string name="settings_gyro_smoothing">जाइरोस्कोप स्मूथिंग</string>
+    <string name="settings_gyro_invert_x">क्षैतिज जाइरो को उल्टा करें</string>
+    <string name="settings_gyro_invert_x_desc">बाएँ और दाएँ गति को उलट देता है।</string>
+    <string name="settings_gyro_invert_y">लंबवत जाइरो को उल्टा करें</string>
+    <string name="settings_gyro_invert_y_desc">ऊपर और नीचे निशाना लगाने की गति को उलट देता है。</string>
+    <string name="settings_help_gyro_mode">"निशाना" शूटर गेम में कैमरा नियंत्रण के लिए फ़ोन के घूमने की गति को दाएँ एनालॉग स्टिक में बदल देता है और फ़ोन के रुकने पर स्वचालित रूप से केंद्र में वापस आ जाता है। "स्टीयरिंग" रेसिंग गेम के लिए फ़ोन के झुकाव को बाएँ एनालॉग स्टिक में बदल देता है और गेमप्ले शुरू होने पर वर्तमान कोण को केंद्र के रूप में कैलिब्रेट करता है। चुना गया मोड केवल गेम चलने के दौरान उपयोग किया जाता है और इसके लिए संबंधित मोशन सेंसर की आवश्यकता होती है。</string>
+    <string name="settings_help_gyro_sensitivity">यह नियंत्रित करता है कि फ़ोन की गति एम्यूलेटेड एनालॉग स्टिक को कितनी मजबूती से विक्षेपित करती है। प्रति-गेम सेटिंग की अनुशंसा की जाती है क्योंकि गेम अलग-अलग कैमरा और स्टीयरिंग रिस्पॉन्स कर्व्स का उपयोग करते हैं。</string>
+    <string name="settings_help_gyro_smoothing">सेंसर शोर और हाथ के कांपने को फ़िल्टर करता है। कम मान तेज़ी से प्रतिक्रिया करते हैं; उच्च मान अधिक स्थिर महसूस होते हैं लेकिन थोड़ी सी देरी (लेटेंसी) जोड़ते हैं。</string>
+    <string name="settings_gyro_unavailable">यह डिवाइस चुने गए मोड के लिए आवश्यक मोशन सेंसर प्रदान नहीं करता है。</string>
+    <string name="settings_touch_controls_section">टच कंट्रोल्स</string>
+    <string name="settings_gpu_driver_detected_device">पता चला: %1$s · %2$s</string>
+    <string name="settings_gpu_driver_device_hint">संगत ड्राइवर पहले दिखाए जाते हैं। समर्थित Snapdragon चिप देखने के लिए ड्राइवर कार्ड पर टैप करें।</string>
+    <string name="settings_gpu_driver_compatibility">Snapdragon संगतता</string>
+    <string name="settings_gpu_driver_best_match">सबसे अच्छा मेल</string>
+    <string name="settings_gpu_driver_compatible">संगत</string>
+    <string name="settings_gpu_driver_other_family">अलग Adreno परिवार</string>
+    <string name="settings_gpu_driver_compatibility_a6xx">Adreno 6xx: Snapdragon 845/855/865/888 और Snapdragon 6/7 सीरीज़ के कई मॉडल</string>
+    <string name="settings_gpu_driver_compatibility_a7xx">Adreno 7xx: Snapdragon 8 Gen 1/2/3, 8s Gen 3, नए Snapdragon 7 सीरीज़ मॉडल और 6 Gen 1/3</string>
+    <string name="settings_gpu_driver_compatibility_a8xx">Adreno 8xx: Snapdragon 8 Elite Gen 5, 8 Gen 5, 8 Elite, 8s Gen 4 और 6 Gen 4</string>
+    <string name="app_name_emucorec">EmuCoreC</string>
+    <string name="home_title">PlayStation 3</string>
+    <string name="home_subtitle">Android के लिए PS3 एमुलेटर</string>
+    <string name="home_installed_count">इंस्टॉल किए गए गेम: %1$d</string>
+    <string name="home_catalog_count">कैटलॉग गेम: %1$d</string>
+    <string name="home_storage_short">तैयार</string>
+    <string name="home_storage_path">स्टोरेज: %1$s</string>
+    <string name="home_open_setup">गेम खोलें</string>
+    <string name="home_open_library">लाइब्रेरी खोलें</string>
+    <string name="home_open_catalog">कैटलॉग ब्राउज़ करें</string>
+    <string name="home_empty_library_title">अभी तक कोई गेम इंस्टॉल नहीं हुआ है</string>
+    <string name="home_recent_titles_title">हाल ही में खेले गए</string>
+    <string name="onboarding_page_1_title">Android पर PlayStation 3</string>
+    <string name="onboarding_page_1_body">RPCS3 कोर के साथ Android पर अपने PS3 गेम खेलें।</string>
+    <string name="onboarding_page_2_title">आपकी गेम लाइब्रेरी</string>
+    <string name="onboarding_page_2_body">आपके इंस्टॉल किए गए गेम एक लाइब्रेरी में एकत्र किए जाते हैं।</string>
+    <string name="onboarding_page_3_title">इन-बिल्ट कैटलॉग</string>
+    <string name="onboarding_page_3_body">कवर, स्क्रीनशॉट, वीडियो और गेम विवरण एक ही स्थान पर ब्राउज़ करें।</string>
+    <string name="onboarding_page_4_title">लगभग तैयार</string>
+    <string name="home_empty_library_body">आधिकारिक PS3 फर्मवेयर इंस्टॉल करें, फिर गेम स्क्रीन से PKG गेम या RAP लाइसेंस जोड़ें।</string>
+    <string name="onboarding_page_4_body">गेम शुरू करने से पहले आधिकारिक PS3 फर्मवेयर इंस्टॉल करें।</string>
+    <string name="onboarding_firmware_title">PS3 फर्मवेयर</string>
+    <string name="onboarding_firmware_desc">आधिकारिक PS3 सिस्टम सॉफ्टवेयर फ़ाइल PS3UPDAT.PUP डाउनलोड करें या चुनें।</string>
+    <string name="onboarding_firmware_info_title">आधिकारिक PS3 फर्मवेयर</string>
+    <string name="onboarding_firmware_info_body">फर्मवेयर सीधे Sony के आधिकारिक अपडेट सर्वर से डाउनलोड होता है। EmuCoreC इसे होस्ट, मिरर, संशोधित या पुनर्वितरित नहीं करता।</string>
+    <string name="core_install_pkg_unsupported">PS3 PKG/ISO फ़ाइलें या ZIP/RAR आर्काइव के सभी भाग चुनें।</string>
+    <string name="core_install_license_unsupported">PS3 RAP लाइसेंस फ़ाइल चुनें।</string>
+    <string name="setup_pkg_title">PS3 सामग्री इंस्टॉल करें</string>
+    <string name="setup_pkg_body">PKG/ISO सीधे इंस्टॉल करें या ZIP/RAR के एक या अधिक भाग चुनें। अंदर की PKG, ISO, RAP और EDAT फ़ाइलें अपने आप पहचानी जाती हैं।</string>
+    <string name="setup_pkg_license_step_title">RAP लाइसेंस इंस्टॉल करें</string>
+    <string name="setup_pkg_license_step_body">अपने डिजिटल PS3 गेम का RAP लाइसेंस चुनें।</string>
+    <string name="setup_pkg_license_button">RAP फ़ाइल चुनें</string>
+    <string name="setup_pkg_button">सामग्री या आर्काइव चुनें</string>
+    <string name="setup_pkg_order_note">कुछ डिजिटल गेम को मिलान वाला RAP लाइसेंस चाहिए। PKG और RAP किसी भी क्रम में इंस्टॉल किए जा सकते हैं।</string>
+    <string name="install_choice_title">PS3 सामग्री इंस्टॉल करें</string>
+    <string name="install_choice_body">PKG/ISO फ़ाइलें, ZIP/RAR आर्काइव चुनें या RAP लाइसेंस इंस्टॉल करें।</string>
+    <string name="install_choice_pkg_without_license_note">आप मल्टी-पार्ट ZIP/RAR के सभी वॉल्यूम एक साथ चुन सकते हैं। EmuCoreC उसे सुरक्षित रूप से निकालता है, PS3 सामग्री ढूँढता है, पैकेज भागों को प्राकृतिक क्रम में इंस्टॉल करता है और अस्थायी फ़ाइलें हटा देता है।</string>
+    <string name="ps3_core_settings_unavailable">RPCS3 कोर लोड या आरंभ नहीं किया जा सका।</string>
+    <string name="ps3_core_setting_rejected">RPCS3 कोर ने “%1$s” को अस्वीकार किया।</string>
+    <string name="ps3_core_setting_default">कोर डिफ़ॉल्ट: %1$s</string>
+    <string name="ps3_core_setting_reset_game">इस सेटिंग को वैश्विक मान पर रीसेट करें</string>
+    <string name="catalog_open_for_game">कैटलॉग में खोलें</string>
+    <string name="catalog_serial_not_found">यह PS3 सीरियल स्थानीय कैटलॉग में नहीं मिला।</string>
+    <string name="settings_rpcs3_repository_desc">मूल PlayStation 3 एमुलेटर RPCS3 का रिपॉज़िटरी। इस परियोजना के आधार कोर के लिए सभी RPCS3 योगदानकर्ताओं का धन्यवाद।</string>
+    <string name="settings_tab_audio">ऑडियो</string>
+    <string name="settings_tab_network">नेटवर्क</string>
+    <string name="settings_tab_advanced">उन्नत</string>
+    <string name="shell_launch_system_menu">PS3 शुरू करें</string>
+    <string name="system_menu_launch_failed">PS3 सिस्टम मेनू शुरू नहीं किया जा सका।</string>
+    <!-- Core settings: generated from the live RPCS3 config schema. -->
+    <!-- Generated from the live RPCS3 configuration schema. -->
+    <string name="core_setting_edit">मान संपादित करें</string>
+    <string name="core_setting_value">मूल्य</string>
+    <string name="core_setting_apply">आवेदन करें</string>
+    <string name="core_setting_cancel">रद्द करें</string>
+    <string name="core_setting_default_value">डिफ़ॉल्ट: %1$s</string>
+    <string name="core_setting_no_options">इस अनुभाग में कोई समर्थित सेटिंग उपलब्ध नहीं है.</string>
+    <string name="core_label_1_controller">1 नियंत्रक</string>
+    <string name="core_label_120">120</string>
+    <string name="core_label_1280x1080">1280x1080</string>
+    <string name="core_label_1280x720">1280x720</string>
+    <string name="core_label_1440x1080">1440x1080</string>
+    <string name="core_label_16_9">16:9</string>
+    <string name="core_label_1600x1080">1600x1080</string>
+    <string name="core_label_1920x1080">1920x1080</string>
+    <string name="core_label_1920x1080i">1920x1080i</string>
+    <string name="core_label_2_controllers">2 नियंत्रक</string>
+    <string name="core_label_30">30</string>
+    <string name="core_label_3d_display_enabled">3डी डिस्प्ले सक्षम</string>
+    <string name="core_label_3d_display_mode">3डी डिस्प्ले मोड</string>
+    <string name="core_label_4_3">4:3</string>
+    <string name="core_label_50">50</string>
+    <string name="core_label_60">60</string>
+    <string name="core_label_720x480">720x480</string>
+    <string name="core_label_720x480i">720x480i</string>
+    <string name="core_label_720x576">720x576</string>
+    <string name="core_label_720x576i">720x576i</string>
+    <string name="core_label_960x1080">960x1080</string>
+    <string name="core_label_accurate">सटीक</string>
+    <string name="core_label_accurate_cache_line_stores">सटीक कैश लाइन स्टोर</string>
+    <string name="core_label_accurate_ppu_128_byte_reservation_op_max_length">सटीक पीपीयू 128-बाइट आरक्षण ऑप अधिकतम लंबाई</string>
+    <string name="core_label_accurate_rsx_reservation_access">सटीक आरएसएक्स आरक्षण पहुंच</string>
+    <string name="core_label_accurate_spu_dma">सटीक एसपीयू डीएमए</string>
+    <string name="core_label_accurate_spu_reservations">सटीक एसपीयू आरक्षण</string>
+    <string name="core_label_accurate_zcull_stats">सटीक ZCULL आँकड़े</string>
+    <string name="core_label_adapter">एडाप्टर</string>
+    <string name="core_label_adaptive">अनुकूली</string>
+    <string name="core_label_all">सब</string>
+    <string name="core_label_all_timers">सभी टाइमर</string>
+    <string name="core_label_allow_custom_background">कस्टम पृष्ठभूमि की अनुमति दें</string>
+    <string name="core_label_allow_host_gpu_labels">होस्ट GPU लेबल की अनुमति दें</string>
+    <string name="core_label_allow_move_hue_set_by_game">खेल के अनुसार रंग निर्धारित करने की अनुमति दें</string>
+    <string name="core_label_allow_rsx_cpu_preemptions">आरएसएक्स सीपीयू छूट की अनुमति दें</string>
+    <string name="core_label_anaglyph_amber_blue">एनाग्लिफ़ एम्बर-नीला</string>
+    <string name="core_label_anaglyph_custom">एनाग्लिफ़ कस्टम</string>
+    <string name="core_label_anaglyph_magenta_cyan">एनाग्लिफ़ मैजेंटा-सियान</string>
+    <string name="core_label_anaglyph_red_blue">एनाग्लिफ़ लाल-नीला</string>
+    <string name="core_label_anaglyph_red_cyan">एनाग्लिफ़ रेड-सियान</string>
+    <string name="core_label_anaglyph_red_green">एनाग्लिफ़ लाल-हरा</string>
+    <string name="core_label_anaglyph_trioscopic">एनाग्लिफ़ ट्रायोस्कोपिक</string>
+    <string name="core_label_anisotropic_filter_override">अनिसोट्रोपिक फ़िल्टर ओवरराइड</string>
+    <string name="core_label_approximate">अनुमानित</string>
+    <string name="core_label_as_host">मेजबान के रूप में</string>
+    <string name="core_label_aspect_ratio">पहलू अनुपात</string>
+    <string name="core_label_assume_external_debugger">बाह्य डिबगर मान लें</string>
+    <string name="core_label_async_recompiler_multi_threaded">Async रीकंपाइलर (बहु-थ्रेडेड)</string>
+    <string name="core_label_async_recompiler_with_shader_interpreter">शेडर इंटरप्रेटर के साथ एसिंक रीकंपाइलर</string>
+    <string name="core_label_asynchronous_queue_scheduler">अतुल्यकालिक कतार अनुसूचक</string>
+    <string name="core_label_asynchronous_texture_streaming">अतुल्यकालिक बनावट स्ट्रीमिंग</string>
+    <string name="core_label_atomic">परमाणु</string>
+    <string name="core_label_audio">ऑडियो</string>
+    <string name="core_label_audio_channel_layout">ऑडियो चैनल लेआउट</string>
+    <string name="core_label_audio_device">ऑडियो डिवाइस</string>
+    <string name="core_label_audio_format">ऑडियो प्रारूप</string>
+    <string name="core_label_audio_formats">ऑडियो प्रारूप</string>
+    <string name="core_label_audio_provider">ऑडियो प्रदाता</string>
+    <string name="core_label_auto">ऑटो</string>
+    <string name="core_label_automatic">स्वचालित</string>
+    <string name="core_label_automatically_start_games_after_boot">बूट के बाद स्वचालित रूप से गेम प्रारंभ करें</string>
+    <string name="core_label_av_multiout">एवी मल्टीआउट</string>
+    <string name="core_label_background_input_enabled">पृष्ठभूमि इनपुट सक्षम</string>
+    <string name="core_label_basic">बुनियादी</string>
+    <string name="core_label_bilinear">द्विरेखीय</string>
+    <string name="core_label_bind_address">बाइंड पता</string>
+    <string name="core_label_blur_effect_strength">धुंधला प्रभाव शक्ति</string>
+    <string name="core_label_body_background_hex">शारीरिक पृष्ठभूमि (हेक्स)</string>
+    <string name="core_label_body_color_hex">शरीर का रंग (हेक्स)</string>
+    <string name="core_label_both">दोनों</string>
+    <string name="core_label_bottom_left">निचला बाएँ</string>
+    <string name="core_label_bottom_right">नीचे दाएँ</string>
+    <string name="core_label_buzz_emulated_controller">बज़ अनुकरणीय नियंत्रक</string>
+    <string name="core_label_camera">कैमरा</string>
+    <string name="core_label_camera_flip">कैमरा पलटा</string>
+    <string name="core_label_camera_id">कैमरा आईडी</string>
+    <string name="core_label_camera_type">कैमरा प्रकार</string>
+    <string name="core_label_cellaudio">सेलऑडियो</string>
+    <string name="core_label_center_horizontally">क्षैतिज रूप से केन्द्रित करें</string>
+    <string name="core_label_center_vertically">लंबवत केंद्र</string>
+    <string name="core_label_clans_enabled">कबीले सक्षम</string>
+    <string name="core_label_clock12">घड़ी12</string>
+    <string name="core_label_clock24">घड़ी24</string>
+    <string name="core_label_clocks_scale">घड़ियों का पैमाना</string>
+    <string name="core_label_compatible_savestate_mode">संगत सेवस्टेट मोड</string>
+    <string name="core_label_connected">जुड़ा हुआ</string>
+    <string name="core_label_consecutive_frames_to_draw">लगातार फ़्रेम बनाने के लिए</string>
+    <string name="core_label_consecutive_frames_to_skip">छोड़ने के लिए लगातार फ़्रेम</string>
+    <string name="core_label_console_psid">कंसोल पीएसआईडी</string>
+    <string name="core_label_console_time_offset_s">कंसोल समय ऑफसेट</string>
+    <string name="core_label_convert_to_16_bit">16 बिट में कनवर्ट करें</string>
+    <string name="core_label_core">कोर</string>
+    <string name="core_label_cubeb">क्यूबब</string>
+    <string name="core_label_custom_anaglyph_matrices">कस्टम एनाग्लिफ़ मैट्रिसेस</string>
+    <string name="core_label_darkening_effect_strength">अंधेरा प्रभाव शक्ति</string>
+    <string name="core_label_date_format">दिनांक प्रारूप</string>
+    <string name="core_label_ddmmyyyy">Ddmmyyy</string>
+    <string name="core_label_debug_console_mode">डिबग कंसोल मोड</string>
+    <string name="core_label_debug_output">डिबग आउटपुट</string>
+    <string name="core_label_debug_overlay">डिबग ओवरले</string>
+    <string name="core_label_debug_program_analyser">डिबग प्रोग्राम विश्लेषक</string>
+    <string name="core_label_decr_memory_layout">DECR मेमोरी लेआउट</string>
+    <string name="core_label_derive_mac_from_psid">PSID से MAC प्राप्त करें</string>
+    <string name="core_label_desired_audio_buffer_duration">वांछित ऑडियो बफ़र अवधि</string>
+    <string name="core_label_detail_level">विवरण स्तर</string>
+    <string name="core_label_disable">अक्षम करें</string>
+    <string name="core_label_disable_asynchronous_memory_manager">एसिंक्रोनस मेमोरी मैनेजर को अक्षम करें</string>
+    <string name="core_label_disable_fifo_reordering">फीफो पुनर्क्रमण अक्षम करें</string>
+    <string name="core_label_disable_hardware_colorspace_remapping">हार्डवेयर कलरस्पेस रीमैपिंग अक्षम करें</string>
+    <string name="core_label_disable_msl_fast_math">एमएसएल फास्ट गणित अक्षम करें</string>
+    <string name="core_label_disable_on_disk_shader_cache">ऑन-डिस्क शेडर कैश अक्षम करें</string>
+    <string name="core_label_disable_sampling_skip">नमूनाकरण छोड़ें अक्षम करें</string>
+    <string name="core_label_disable_spu_getllar_spin_optimization">SPU GETLLAR स्पिन अनुकूलन अक्षम करें</string>
+    <string name="core_label_disable_vertex_cache">वर्टेक्स कैश अक्षम करें</string>
+    <string name="core_label_disable_video_output">वीडियो आउटपुट अक्षम करें</string>
+    <string name="core_label_disable_vulkan_memory_allocator">वल्कन मेमोरी एलोकेटर को अक्षम करें</string>
+    <string name="core_label_disable_zcull_occlusion_queries">ZCull अवरोधन क्वेरीज़ अक्षम करें</string>
+    <string name="core_label_disabled">विकलांग</string>
+    <string name="core_label_disconnected">विच्छेदित</string>
+    <string name="core_label_disk_cache_maximum_size_mb">डिस्क कैश अधिकतम आकार (एमबी)</string>
+    <string name="core_label_display">प्रदर्शन</string>
+    <string name="core_label_display_aspect_override">प्रदर्शन पहलू ओवरराइड</string>
+    <string name="core_label_dns_address">डीएनएस पता</string>
+    <string name="core_label_driver_recovery_timeout">ड्राइवर पुनर्प्राप्ति समयबाह्य</string>
+    <string name="core_label_driver_wake_up_delay">ड्राइवर के जागने में देरी</string>
+    <string name="core_label_dump_to_file">फ़ाइल करने के लिए डंप करें</string>
+    <string name="core_label_empty_dev_hdd0_tmp">खाली /dev_hdd0/tmp/</string>
+    <string name="core_label_emulate_special_depth_comparison">विशेष गहराई तुलना का अनुकरण करें</string>
+    <string name="core_label_emulated_midi_devices">अनुकरणीय मिडी उपकरण</string>
+    <string name="core_label_enable">सक्षम करें</string>
+    <string name="core_label_enable_host_root">/host_root/ सक्षम करें</string>
+    <string name="core_label_enable_buffering">बफ़रिंग सक्षम करें</string>
+    <string name="core_label_enable_frame_skip">फ़्रेम स्किप सक्षम करें</string>
+    <string name="core_label_enable_framerate_graph">फ़्रेमरेट ग्राफ़ सक्षम करें</string>
+    <string name="core_label_enable_frametime_graph">फ़्रेमटाइम ग्राफ़ सक्षम करें</string>
+    <string name="core_label_enable_gamemode">गेममोड सक्षम करें</string>
+    <string name="core_label_enable_performance_report">प्रदर्शन रिपोर्ट सक्षम करें</string>
+    <string name="core_label_enable_time_stretching">टाइम स्ट्रेचिंग सक्षम करें</string>
+    <string name="core_label_enabled">सक्षम</string>
+    <string name="core_label_enter_button_assignment">बटन असाइनमेंट दर्ज करें</string>
+    <string name="core_label_enter_with_circle">वृत्त सहित प्रवेश करें</string>
+    <string name="core_label_enter_with_cross">क्रॉस के साथ प्रवेश करें</string>
+    <string name="core_label_exclusive_fullscreen_mode">विशेष फ़ुलस्क्रीन मोड</string>
+    <string name="core_label_exit_rpcs3_when_process_finishes">प्रक्रिया समाप्त होने पर RPCS3 से बाहर निकलें</string>
+    <string name="core_label_eyetoy">आँख का खिलौना</string>
+    <string name="core_label_fake">नकली</string>
+    <string name="core_label_fake_move_rotation_cone">नकली चाल रोटेशन शंकु</string>
+    <string name="core_label_fake_move_rotation_cone_vertical">नकली चाल रोटेशन शंकु (ऊर्ध्वाधर)</string>
+    <string name="core_label_fast">तेज</string>
+    <string name="core_label_faudio">FAudio</string>
+    <string name="core_label_fidelityfx_cas_sharpening_intensity">फिडेलिटीएफएक्स सीएएस शार्पनिंग इंटेंसिटी</string>
+    <string name="core_label_fidelityfx_super_resolution">फिडेलिटीएफएक्स सुपर रेजोल्यूशन</string>
+    <string name="core_label_font">फ़ॉन्ट</string>
+    <string name="core_label_font_size_px">फ़ॉन्ट आकार (px)</string>
+    <string name="core_label_force_cpu_blit">फोर्स सीपीयू ब्लिट</string>
+    <string name="core_label_force_hardware_msaa_resolve">फ़ोर्स हार्डवेयर MSAA रिज़ॉल्व</string>
+    <string name="core_label_force_high_precision_z_buffer">उच्च परिशुद्धता Z बफ़र को बाध्य करें</string>
+    <string name="core_label_frame_limit">फ़्रेम सीमा</string>
+    <string name="core_label_framebuffer_aliasing_heuristic_bias">फ़्रेमबफ़र अलियासिंग अनुमानी पूर्वाग्रह</string>
+    <string name="core_label_framerate_datapoints">फ़्रेमरेट डेटापॉइंट</string>
+    <string name="core_label_framerate_graph_detail_level">फ़्रेमरेट ग्राफ़ विवरण स्तर</string>
+    <string name="core_label_frametime_datapoints">फ़्रेमटाइम डेटाप्वाइंट</string>
+    <string name="core_label_frametime_graph_detail_level">फ़्रेमटाइम ग्राफ़ विवरण स्तर</string>
+    <string name="core_label_full">पूर्ण</string>
+    <string name="core_label_gdb_server">जीडीबी सर्वर</string>
+    <string name="core_label_ghltar_emulated_controller">GHLtar अनुकरणित नियंत्रक</string>
+    <string name="core_label_giga">गीगा</string>
+    <string name="core_label_gun">बंदूक</string>
+    <string name="core_label_handle_rsx_memory_tiling">आरएसएक्स मेमोरी टाइलिंग को संभालें</string>
+    <string name="core_label_hdd_model_name">एचडीडी मॉडल का नाम</string>
+    <string name="core_label_hdd_serial_number">एचडीडी सीरियल नंबर</string>
+    <string name="core_label_hdmi_0">एचडीएमआई 0</string>
+    <string name="core_label_hdmi_1">एचडीएमआई 1</string>
+    <string name="core_label_high">ऊँचा</string>
+    <string name="core_label_hle_lwmutex">एचएलई एलडब्लूम्यूटेक्स</string>
+    <string name="core_label_hook_static_functions">हुक स्थिर कार्य</string>
+    <string name="core_label_horizontal">क्षैतिज</string>
+    <string name="core_label_horizontal_margin" formatted="false">क्षैतिज मार्जिन (%)</string>
+    <string name="core_label_inaccurate">ग़लत</string>
+    <string name="core_label_infinite">अनंत</string>
+    <string name="core_label_initialize_directories">निर्देशिकाएँ प्रारंभ करें</string>
+    <string name="core_label_input_output">इनपुट/आउटपुट</string>
+    <string name="core_label_inspection_mode_savestates">निरीक्षण मोड सेवस्टेट्स</string>
+    <string name="core_label_interlaced">इंटरलेस्ड</string>
+    <string name="core_label_internet_enabled">इंटरनेट सक्षम</string>
+    <string name="core_label_interpreter_dynamic">दुभाषिया (गतिशील)</string>
+    <string name="core_label_interpreter_static">दुभाषिया (स्थैतिक)</string>
+    <string name="core_label_io_debug_overlay">आईओ डीबग ओवरले</string>
+    <string name="core_label_ip_address">आईपी पता</string>
+    <string name="core_label_ip_swap_list">आईपी स्वैप सूची</string>
+    <string name="core_label_keep_pads_connected">पैड्स को कनेक्ट रखें</string>
+    <string name="core_label_keyboard">कीबोर्ड</string>
+    <string name="core_label_keyboard_type">कीबोर्ड प्रकार</string>
+    <string name="core_label_language">भाषा</string>
+    <string name="core_label_legacy_recompiler_single_threaded">लीगेसी रीकंपाइलर (एकल-थ्रेडेड)</string>
+    <string name="core_label_libraries_control">पुस्तकालय नियंत्रण</string>
+    <string name="core_label_license_area">लाइसेंस क्षेत्र</string>
+    <string name="core_label_limit_disk_cache_size">डिस्क कैश आकार सीमित करें</string>
+    <string name="core_label_llvm_precompilation">एलएलवीएम प्रीकंपिलेशन</string>
+    <string name="core_label_load_sdl_gamecontroller_mappings">एसडीएल गेमकंट्रोलर मैपिंग लोड करें</string>
+    <string name="core_label_lock_overlay_input_to_player_one">प्लेयर एक पर ओवरले इनपुट लॉक करें</string>
+    <string name="core_label_log">लॉग करें</string>
+    <string name="core_label_log_shader_programs">शेडर प्रोग्राम लॉग करें</string>
+    <string name="core_label_low">नीचा</string>
+    <string name="core_label_manual">मैनुअल</string>
+    <string name="core_label_master_volume">मास्टर वॉल्यूम</string>
+    <string name="core_label_matrix_left">मैट्रिक्स वाम</string>
+    <string name="core_label_matrix_right">मैट्रिक्स सही</string>
+    <string name="core_label_max_cpu_preempt_count">अधिकतम सीपीयू प्रीमेप्ट गणना</string>
+    <string name="core_label_max_llvm_compile_threads">मैक्स एलएलवीएम कंपाइल थ्रेड्स</string>
+    <string name="core_label_max_spurs_threads">मैक्स स्पर्स थ्रेड्स</string>
+    <string name="core_label_maximum_savestate_files">अधिकतम सेवस्टेट फ़ाइलें</string>
+    <string name="core_label_maximum_savestate_files_space_mib">अधिकतम सेवस्टेट फ़ाइल स्थान (MiB)</string>
+    <string name="core_label_medium">मध्यम</string>
+    <string name="core_label_mega">मेगा</string>
+    <string name="core_label_metrics_update_interval_ms">मेट्रिक्स अद्यतन अंतराल (एमएस)</string>
+    <string name="core_label_mfc_commands_shuffling_in_steps">एमएफसी चरणों में फेरबदल का आदेश देता है</string>
+    <string name="core_label_mfc_commands_shuffling_limit">एमएफसी शफ़लिंग सीमा का आदेश देता है</string>
+    <string name="core_label_mfc_commands_timeout">एमएफसी कमांड टाइमआउट</string>
+    <string name="core_label_mfc_debug">एमएफसी डीबग</string>
+    <string name="core_label_microphone_devices">माइक्रोफ़ोन उपकरण</string>
+    <string name="core_label_microphone_type">माइक्रोफ़ोन प्रकार</string>
+    <string name="core_label_minimal">न्यूनतम</string>
+    <string name="core_label_minimum_scalable_dimension">न्यूनतम स्केलेबल आयाम</string>
+    <string name="core_label_miscellaneous">विविध</string>
+    <string name="core_label_mmddyyyy">Mmddyyyy</string>
+    <string name="core_label_mono">मोनो</string>
+    <string name="core_label_mouse">चूहा</string>
+    <string name="core_label_mouse_debug_overlay">माउस डिबग ओवरले</string>
+    <string name="core_label_mouse_based_gyro_enabled">माउस-आधारित जाइरो सक्षम</string>
+    <string name="core_label_move">हटो</string>
+    <string name="core_label_msaa">एमएसएए</string>
+    <string name="core_label_multi_threaded">बहु-थ्रेडेड</string>
+    <string name="core_label_multithreaded_rsx">मल्टीथ्रेडेड आरएसएक्स</string>
+    <string name="core_label_music_handler">संगीत संचालक</string>
+    <string name="core_label_nearest">निकटतम</string>
+    <string name="core_label_net">नेट</string>
+    <string name="core_label_none">कोई नहीं</string>
+    <string name="core_label_null">शून्य</string>
+    <string name="core_label_off">बंद</string>
+    <string name="core_label_opacity" formatted="false">अपारदर्शिता (%)</string>
+    <string name="core_label_opengl">ओपनजीएल</string>
+    <string name="core_label_operating_system">ऑपरेटिंग सिस्टम</string>
+    <string name="core_label_ordered_atomic">आदेशित और परमाणु</string>
+    <string name="core_label_output_scaling_mode">आउटपुट स्केलिंग मोड</string>
+    <string name="core_label_over_under">ऊपर-नीचे</string>
+    <string name="core_label_pad_handler_mode">पैड हैंडलर मोड</string>
+    <string name="core_label_pad_handler_sleep_microseconds">पैड हैंडलर नींद (माइक्रोसेकंड)</string>
+    <string name="core_label_paint_move_spheres">पेंट चाल क्षेत्रों</string>
+    <string name="core_label_pause_emulation_during_home_menu">होम मेनू के दौरान अनुकरण रोकें</string>
+    <string name="core_label_pause_emulation_on_rpcs3_focus_loss">RPCS3 फोकस हानि पर अनुकरण रोकें</string>
+    <string name="core_label_performance_overlay">प्रदर्शन ओवरले</string>
+    <string name="core_label_performance_report_threshold">प्रदर्शन रिपोर्ट सीमा</string>
+    <string name="core_label_play_music_during_boot_sequence">बूट क्रम के दौरान संगीत बजाएं</string>
+    <string name="core_label_position">पद</string>
+    <string name="core_label_ppu_accurate_non_java_mode">पीपीयू सटीक गैर-जावा मोड</string>
+    <string name="core_label_ppu_accurate_vector_nan_values">पीपीयू सटीक वेक्टर NaN मान</string>
+    <string name="core_label_ppu_calling_history">पीपीयू कॉलिंग इतिहास</string>
+    <string name="core_label_ppu_debug">पीपीयू डिबग</string>
+    <string name="core_label_ppu_decoder">पीपीयू डिकोडर</string>
+    <string name="core_label_ppu_profiler">पीपीयू प्रोफाइलर</string>
+    <string name="core_label_ppu_reservation_priority_over_spus">एसपीयू पर पीपीयू आरक्षण को प्राथमिकता</string>
+    <string name="core_label_ppu_set_fpcc_bits">पीपीयू सेट एफपीसीसी बिट्स</string>
+    <string name="core_label_ppu_set_saturation_bit">पीपीयू सेट संतृप्ति बिट</string>
+    <string name="core_label_ppu_threads">पीपीयू धागे</string>
+    <string name="core_label_ppu_vector_nan_handling">पीपीयू वेक्टर NaN हैंडलिंग</string>
+    <string name="core_label_precise_spu_verification">सटीक एसपीयू सत्यापन</string>
+    <string name="core_label_prefer_color">रंग को प्राथमिकता दें</string>
+    <string name="core_label_prefer_depth">गहराई को प्राथमिकता दें</string>
+    <string name="core_label_preferred_spu_threads">पसंदीदा एसपीयू थ्रेड्स</string>
+    <string name="core_label_prevent_display_sleep_while_running_games">गेम चलाते समय डिस्प्ले स्लीप को रोकें</string>
+    <string name="core_label_process_argv">प्रक्रिया एआरजीवी</string>
+    <string name="core_label_ps_eye">पीएस आई</string>
+    <string name="core_label_ps3">PS3</string>
+    <string name="core_label_ps3_native">PS3 मूल निवासी</string>
+    <string name="core_label_psn_country">पीएसएन देश</string>
+    <string name="core_label_psn_status">पीएसएन स्थिति</string>
+    <string name="core_label_qt">क्यूटी</string>
+    <string name="core_label_quadraphonic">चतुष्कोणीय</string>
+    <string name="core_label_quadraphonic_lfe">क्वाड्राफ़ोनिक एलएफई</string>
+    <string name="core_label_raw">कच्चा</string>
+    <string name="core_label_raw_mouse">कच्चा चूहा</string>
+    <string name="core_label_read_color_buffers">कलर बफ़र्स पढ़ें</string>
+    <string name="core_label_read_depth_buffer">गहराई बफ़र पढ़ें</string>
+    <string name="core_label_real">असली</string>
+    <string name="core_label_real_singstar">रियल सिंगस्टार</string>
+    <string name="core_label_recompiler_asmjit">पुनः कंपाइलर (एएसएमजेआईटी)</string>
+    <string name="core_label_recompiler_llvm">पुनः कंपाइलर (एलएलवीएम)</string>
+    <string name="core_label_record_with_overlays">ओवरले के साथ रिकॉर्ड करें</string>
+    <string name="core_label_relaxed">आराम से</string>
+    <string name="core_label_relaxed_zcull_sync">आरामदेह ZCULL सिंक</string>
+    <string name="core_label_renderdoc_compatibility_mode">रेंडरडॉक संगतता मोड</string>
+    <string name="core_label_renderer">प्रस्तुतकर्ता</string>
+    <string name="core_label_resolution">संकल्प</string>
+    <string name="core_label_resolution_scale">संकल्प पैमाना</string>
+    <string name="core_label_rocksmith">रॉकस्मिथ</string>
+    <string name="core_label_rpcn">आरपीसीएन</string>
+    <string name="core_label_rpcs3_alternative_scheduler">RPCS3 वैकल्पिक अनुसूचक</string>
+    <string name="core_label_rpcs3_scheduler">RPCS3 शेड्यूलर</string>
+    <string name="core_label_rsx_fifo_fetch_accuracy">आरएसएक्स फीफो फ़ेच सटीकता</string>
+    <string name="core_label_rsx_profiler">आरएसएक्स प्रोफाइलर</string>
+    <string name="core_label_rsxaudio">आरएसएक्सऑडियो</string>
+    <string name="core_label_rsxaudio_avport">आरएसएक्सऑडियो एवपोर्ट</string>
+    <string name="core_label_safe">सुरक्षित</string>
+    <string name="core_label_save_disc_game_data">डिस्क गेम डेटा सहेजें</string>
+    <string name="core_label_save_llvm_logs">एलएलवीएम लॉग सहेजें</string>
+    <string name="core_label_savestate">सेवस्टेट</string>
+    <string name="core_label_screen_size_in_inches">स्क्रीन का आकार इंच में</string>
+    <string name="core_label_sdl">एसडीएल</string>
+    <string name="core_label_sdl_camera_id">एसडीएल कैमरा आईडी</string>
+    <string name="core_label_second_frame_limit">दूसरी फ़्रेम सीमा</string>
+    <string name="core_label_set_daz_and_ftz">DAZ और FTZ सेट करें</string>
+    <string name="core_label_shader_chain_librashader">शेडर चेन (लाइब्राशेडर)</string>
+    <string name="core_label_shader_compiler_threads">शेडर कंपाइलर थ्रेड्स</string>
+    <string name="core_label_shader_interpreter_only">केवल शेडर दुभाषिया</string>
+    <string name="core_label_shader_loading_dialog">शेडर लोडिंग डायलॉग</string>
+    <string name="core_label_shader_mode">शेडर मोड</string>
+    <string name="core_label_shader_precision">शेडर परिशुद्धता</string>
+    <string name="core_label_shader_preset_path">शेडर प्रीसेट पथ</string>
+    <string name="core_label_show_1_and_average" formatted="false">1% और औसत दिखाएँ</string>
+    <string name="core_label_show_analog_limiter_toggle_hint">एनालॉग लिमिटर टॉगल संकेत दिखाएँ</string>
+    <string name="core_label_show_autosave_autoload_hint">स्वतः सहेजें/स्वचालित लोड संकेत दिखाएँ</string>
+    <string name="core_label_show_capture_hints">कैप्चर संकेत दिखाएँ</string>
+    <string name="core_label_show_fatal_error_hints">घातक त्रुटि संकेत दिखाएँ</string>
+    <string name="core_label_show_min_and_max">न्यूनतम और अधिकतम दिखाएँ</string>
+    <string name="core_label_show_mouse_and_keyboard_toggle_hint">माउस और कीबोर्ड टॉगल संकेत दिखाएँ</string>
+    <string name="core_label_show_move_cursor">मूव कर्सर दिखाएँ</string>
+    <string name="core_label_show_ppu_compilation_hint">पीपीयू संकलन संकेत दिखाएँ</string>
+    <string name="core_label_show_pressure_intensity_toggle_hint">दबाव तीव्रता टॉगल संकेत दिखाएँ</string>
+    <string name="core_label_show_rpcn_popups">आरपीसीएन पॉपअप दिखाएँ</string>
+    <string name="core_label_show_shader_compilation_hint">शेडर संकलन संकेत दिखाएँ</string>
+    <string name="core_label_show_trophy_popups">ट्रॉफी पॉपअप दिखाएं</string>
+    <string name="core_label_side_by_side">अगल-बगल</string>
+    <string name="core_label_silence_all_logs">सभी लॉग को मौन करें</string>
+    <string name="core_label_simulated">नकली</string>
+    <string name="core_label_single_threaded">सिंगल-थ्रेडेड</string>
+    <string name="core_label_singstar">सिंगस्टार</string>
+    <string name="core_label_sleep_timers_accuracy">स्लीप टाइमर की सटीकता</string>
+    <string name="core_label_spdif_0">एसपीडीआईएफ 0</string>
+    <string name="core_label_spdif_1">एसपीडीआईएफ 1</string>
+    <string name="core_label_spu_block_size">एसपीयू ब्लॉक का आकार</string>
+    <string name="core_label_spu_cache">एसपीयू कैश</string>
+    <string name="core_label_spu_debug">एसपीयू डिबग</string>
+    <string name="core_label_spu_decoder">एसपीयू डिकोडर</string>
+    <string name="core_label_spu_delay_penalty">एसपीयू विलंब दंड</string>
+    <string name="core_label_spu_getllar_busy_waiting_percentage">एसपीयू गेटलर व्यस्त प्रतीक्षा प्रतिशत</string>
+    <string name="core_label_spu_llvm_lower_bound">एसपीयू एलएलवीएम लोअर बाउंड</string>
+    <string name="core_label_spu_llvm_upper_bound">एसपीयू एलएलवीएम ऊपरी सीमा</string>
+    <string name="core_label_spu_loop_detection">एसपीयू लूप का पता लगाना</string>
+    <string name="core_label_spu_profiler">एसपीयू प्रोफाइलर</string>
+    <string name="core_label_spu_reservation_busy_waiting_enabled">एसपीयू आरक्षण व्यस्त प्रतीक्षा सक्षम</string>
+    <string name="core_label_spu_reservation_busy_waiting_percentage_1">एसपीयू आरक्षण व्यस्त प्रतीक्षा प्रतिशत 1</string>
+    <string name="core_label_spu_verification">एसपीयू सत्यापन</string>
+    <string name="core_label_spu_wake_up_delay">एसपीयू वेक-अप विलंब</string>
+    <string name="core_label_spu_wake_up_delay_thread_mask">एसपीयू वेक-अप डिले थ्रेड मास्क</string>
+    <string name="core_label_spu_xfloat_accuracy">एसपीयू एक्सफ्लोट सटीकता</string>
+    <string name="core_label_standard">मानक</string>
+    <string name="core_label_start_games_in_fullscreen_mode">फ़ुलस्क्रीन मोड में गेम प्रारंभ करें</string>
+    <string name="core_label_start_paused">प्रारंभ रोका गया</string>
+    <string name="core_label_stereo">स्टीरियो</string>
+    <string name="core_label_stereo_lfe">स्टीरियो एलएफई</string>
+    <string name="core_label_stretch_to_display_area">प्रदर्शन क्षेत्र तक खिंचाव</string>
+    <string name="core_label_strict_rendering_mode">सख्त रेंडरिंग मोड</string>
+    <string name="core_label_strict_texture_flushing">सख्त बनावट फ्लशिंग</string>
+    <string name="core_label_stub_ppu_traps">स्टब पीपीयू ट्रैप</string>
+    <string name="core_label_surround_5_1">चारों ओर 5.1</string>
+    <string name="core_label_surround_7_1">चारों ओर 7.1</string>
+    <string name="core_label_suspend_emulation_savestate_mode">इम्यूलेशन सेवस्टेट मोड को निलंबित करें</string>
+    <string name="core_label_system">सिस्टम</string>
+    <string name="core_label_system_name">सिस्टम का नाम</string>
+    <string name="core_label_texture_lod_bias_addend">बनावट एलओडी पूर्वाग्रह परिशिष्ट</string>
+    <string name="core_label_thread_scheduler_mode">थ्रेड शेड्यूलर मोड</string>
+    <string name="core_label_time_format">समय प्रारूप</string>
+    <string name="core_label_time_stretching_threshold">समय विस्तार सीमा</string>
+    <string name="core_label_title_background_hex">शीर्षक पृष्ठभूमि (हेक्स)</string>
+    <string name="core_label_title_color_hex">शीर्षक रंग (हेक्स)</string>
+    <string name="core_label_top_left">शीर्ष बाएँ</string>
+    <string name="core_label_top_right">शीर्ष दाएँ</string>
+    <string name="core_label_turntable_emulated_controller">टर्नटेबल अनुकरणीय नियंत्रक</string>
+    <string name="core_label_ultra">अल्ट्रा</string>
+    <string name="core_label_unknown">अज्ञात</string>
+    <string name="core_label_upnp_enabled">यूपीएनपी सक्षम</string>
+    <string name="core_label_use_accurate_dfma">सटीक डीएफएमए का प्रयोग करें</string>
+    <string name="core_label_use_full_rgb_output_range">पूर्ण आरजीबी आउटपुट रेंज का उपयोग करें</string>
+    <string name="core_label_use_gpu_texture_scaling">GPU बनावट स्केलिंग का उपयोग करें</string>
+    <string name="core_label_use_llvm_cpu">एलएलवीएम सीपीयू का प्रयोग करें</string>
+    <string name="core_label_use_native_user_interface">मूल उपयोगकर्ता इंटरफ़ेस का उपयोग करें</string>
+    <string name="core_label_use_re_bar_for_gpu_uploads">जीपीयू अपलोड के लिए री-बार का उपयोग करें</string>
+    <string name="core_label_use_recursive_scan">पुनरावर्ती स्कैन का प्रयोग करें</string>
+    <string name="core_label_use_window_space">विंडो स्पेस का उपयोग करें</string>
+    <string name="core_label_usleep_only">केवल हम सोएं</string>
+    <string name="core_label_usleep_time_addend">सोने का समय जोड़ें</string>
+    <string name="core_label_uvc_1_1">यूवीसी 1.1</string>
+    <string name="core_label_vblank_ntsc_fixup">वीब्लैंक एनटीएससी फिक्सअप</string>
+    <string name="core_label_vblank_rate">Vरिक्त दर</string>
+    <string name="core_label_vertical">लंबवत</string>
+    <string name="core_label_vertical_margin" formatted="false">लंबवत मार्जिन (%)</string>
+    <string name="core_label_vfs">वी.एफ.एस</string>
+    <string name="core_label_video">वीडियो</string>
+    <string name="core_label_vram_allocation_limit_mb">वीआरएएम आवंटन सीमा (एमबी)</string>
+    <string name="core_label_vsync_mode">वीसिंक मोड</string>
+    <string name="core_label_vulkan">वल्कन</string>
+    <string name="core_label_window_title_format">विंडो शीर्षक प्रारूप</string>
+    <string name="core_label_write_color_buffers">कलर बफ़र्स लिखें</string>
+    <string name="core_label_write_depth_buffer">गहराई बफ़र लिखें</string>
+    <string name="core_label_xaudio2">XAudio2</string>
+    <string name="core_label_yyyymmdd">Yyyymmdd</string>
+    <string name="core_help_core_accurate_cache_line_stores" formatted="false">पीपीयू डीसीबीजेड निर्देश को सटीक रूप से संसाधित करता है।
+इसके अलावा, सटीक एसपीयू डीएमए के साथ संयुक्त होने पर, एसपीयू पुट कैश लाइन एक्सेस को परमाणु रूप से संसाधित किया जाएगा।</string>
+    <string name="core_help_core_use_accurate_dfma" formatted="false">पीपीयू और एसपीयू बैकएंड में सटीक डबल-प्रिसिजन एफएमए निर्देशों का उपयोग करें।
+यदि आपका सीपीयू एफएमए का समर्थन नहीं करता है तो इसे अक्षम करने से अच्छा प्रदर्शन बढ़ सकता है, लेकिन यह सूक्ष्म बग भी पेश कर सकता है जो अन्यथा उत्पन्न नहीं होते हैं।
+यदि आपका सीपीयू एफएमए का समर्थन करता है तो आपको इसे अक्षम नहीं करना चाहिए।</string>
+    <string name="core_help_core_accurate_ppu_128_byte_reservation_op_max_length" formatted="false">सक्षम होने पर, पीपीयू परमाणु संचालन संपूर्ण कैश लाइन डेटा पर काम करेगा, अक्षम होने पर मेमोरी के एकल 64 बिट ब्लॉक के विपरीत।
+संख्यात्मक मान नियंत्रित करते हैं कि परमाणु संचालन की लंबाई के आधार पर सटीक संस्करण को सक्षम किया जाए या नहीं।</string>
+    <string name="core_help_core_ppu_set_fpcc_bits" formatted="false">पीपीयू बैकएंड में एफपीसीसी बिट्स को सटीक रूप से सेट करें।
+यदि अनिश्चित हो, तो इस सेटिंग को संशोधित न करें।</string>
+    <string name="core_help_core_ppu_accurate_non_java_mode" formatted="false">पीपीयू बैकएंड में वेक्टर ऑप्स के लिए गैर-जावा मोड बिट मानों का सम्मान करें।
+यदि अनिश्चित हो, तो इस सेटिंग को संशोधित न करें।</string>
+    <string name="core_help_core_ppu_set_saturation_bit" formatted="false">पीपीयू बैकएंड में संतृप्ति बिट मानों को सटीक रूप से सेट करें।
+यदि अनिश्चित हो, तो इस सेटिंग को संशोधित न करें।</string>
+    <string name="core_help_core_ppu_accurate_vector_nan_values" formatted="false">PPU बैकएंड में वेक्टर निर्देशों में NaN परिणामों को सटीक रूप से सेट करें।
+यदि अनिश्चित हो, तो इस सेटिंग को संशोधित न करें।</string>
+    <string name="core_help_core_accurate_rsx_reservation_access" formatted="false">मजबूरन RSX ने SPU MFC_GETLLAR और SPU MFC_PUTLLUC संचालन को रोक दिया।</string>
+    <string name="core_help_core_accurate_spu_dma" formatted="false">एसपीयू डीएमए संचालन को सटीकता से संसाधित करता है।</string>
+    <string name="core_help_video_allow_host_gpu_labels" formatted="false">होस्ट GPU को सीधे सेल के साथ सिंक्रनाइज़ करने की अनुमति देता है। इससे प्रदर्शन जुर्माना लगता है, लेकिन अतिथि सीपीयू के सामने जीपीयू ऑब्जेक्ट की वास्तविक स्थिति उजागर हो जाती है। प्रदर्शन की कीमत पर दृश्य शोर और गड़बड़ी को खत्म करने में मदद मिल सकती है। सावधानी के साथ प्रयोग करें.</string>
+    <string name="core_help_video_anisotropic_filter_override" formatted="false">उच्च मान GPU संसाधनों की कीमत पर ढलान वाली सतहों पर बनावट की तीक्ष्णता को बढ़ाते हैं।
+आधुनिक जीपीयू इस सेटिंग को 16x पर भी ठीक से संभाल सकते हैं।
+यदि आप वास्तविक PS3 द्वारा उपयोग की जाने वाली मूल सेटिंग का उपयोग करना चाहते हैं तो इसे स्वचालित पर रखें।</string>
+    <string name="core_help_video_aspect_ratio" formatted="false">इसे 16:9 पर छोड़ दें जब तक कि आपके पास 4:3 मॉनिटर न हो।</string>
+    <string name="core_help_audio_rsxaudio_avport" formatted="false">नियंत्रित करता है कि ऑडियो डेटा का नमूना लेने के लिए किस एवीपोर्ट का उपयोग किया जाता है।</string>
+    <string name="core_help_audio_desired_audio_buffer_duration" formatted="false">लक्ष्य बफ़र अवधि मिलीसेकंड में.
+उच्च मान बफ़रिंग एल्गोरिदम के काम को आसान बनाते हैं, लेकिन ध्यान देने योग्य ऑडियो विलंबता ला सकते हैं।</string>
+    <string name="core_help_audio_audio_channel_layout" formatted="false">RPCS3 का ध्वनि प्रारूप निर्धारित करता है।
+RPCS3 को ऑडियो डिवाइस और अनुकरणित ऑडियो प्रारूप के आधार पर सर्वोत्तम प्रारूप तय करने देने के लिए \'ऑटो\' का उपयोग करें।</string>
+    <string name="core_help_audio_audio_device" formatted="false">नियंत्रित करता है कि ऑडियो बैकएंड द्वारा किस डिवाइस का उपयोग किया जाता है।</string>
+    <string name="core_help_audio_audio_format" formatted="false">अनुकरण का ध्वनि प्रारूप निर्धारित करता है।
+यदि आप स्टीरियो और सराउंड साउंड के बीच स्विच करना चाहते हैं तो इस सेटिंग को कॉन्फ़िगर करें।
+इन मानों को बदलने के लिए गेम को पुनः आरंभ करना आवश्यक है।
+मैन्युअल सेटिंग आपके चयनित प्रारूपों का उपयोग करेगी जबकि स्वचालित सेटिंग गेम को सभी उपलब्ध प्रारूपों में से चुनने देगी।</string>
+    <string name="core_help_audio_audio_formats" formatted="false">अनुकरण का ध्वनि प्रारूप निर्धारित करता है।
+यदि आप स्टीरियो और सराउंड साउंड के बीच स्विच करना चाहते हैं तो इस सेटिंग को कॉन्फ़िगर करें।
+इन मानों को बदलने के लिए गेम को पुनः आरंभ करना आवश्यक है।
+मैन्युअल सेटिंग आपके चयनित प्रारूपों का उपयोग करेगी जबकि स्वचालित सेटिंग गेम को सभी उपलब्ध प्रारूपों में से चुनने देगी।</string>
+    <string name="core_help_audio_audio_provider" formatted="false">नियंत्रित करता है कि किस PS3 ऑडियो API का उपयोग किया जाए।
+गेम्स सेलऑडियो का उपयोग करते हैं, जबकि वीएसएच को आरएसएक्सऑडियो की आवश्यकता होती है।</string>
+    <string name="core_help_audio_renderer" formatted="false">क्यूबेब एक क्रॉस-प्लेटफ़ॉर्म दृष्टिकोण का उपयोग करता है और ऑडियो बफरिंग का समर्थन करता है, इसलिए यह अनुशंसित विकल्प है।
+यदि यह उपलब्ध नहीं है, तो इसके स्थान पर FAudio का उपयोग किया जा सकता है।</string>
+    <string name="core_help_input_output_background_input_enabled" formatted="false">गेम विंडो अनफोकस्ड होने पर पैड और कीबोर्ड इनपुट की अनुमति देता है।</string>
+    <string name="core_help_net_bind_address" formatted="false">बाइंड करने के लिए इंटरफ़ेस IP पता.
+केवल कस्टम कॉन्फ़िगरेशन में उपलब्ध है.</string>
+    <string name="core_help_input_output_buzz_emulated_controller" formatted="false">चर्चा! सहायता।
+यदि गेम को बज़ की आवश्यकता है तो 1 या 2 नियंत्रकों का चयन करें! नियंत्रक और आपके पास वास्तविक नियंत्रक नहीं हैं।
+यदि गेम में डुअलशॉक का समर्थन है या यदि आपके पास वास्तविक बज़ है तो नल का चयन करें! नियंत्रक.</string>
+    <string name="core_help_input_output_camera" formatted="false">अपने ऑपरेटिंग सिस्टम के डिफ़ॉल्ट कैमरा डिवाइस का उपयोग करने के लिए Qt कैमरा का चयन करें।</string>
+    <string name="core_help_input_output_camera_flip" formatted="false">कैमरे की छवि को क्षैतिज, लंबवत या दोनों अक्षों पर फ़्लिप करता है।</string>
+    <string name="core_help_input_output_camera_id" formatted="false">वह कैमरा चुनें जिसे आप गेमप्ले के दौरान उपयोग करना चाहते हैं।</string>
+    <string name="core_help_input_output_camera_type" formatted="false">खेल के आधार पर, आपको एक विशिष्ट कैमरा प्रकार का चयन करने की आवश्यकता हो सकती है।</string>
+    <string name="core_help_core_clocks_scale" formatted="false">अनुकरणित सिस्टम समय के पैमाने को बदलता है।
+सॉफ़्टवेयर को प्रभावित करता है जो डायनामिक टाइमस्टेप्स जैसी चीज़ों की गणना करने के लिए सिस्टम समय का उपयोग करता है।</string>
+    <string name="core_help_savestate_compatible_savestate_mode" formatted="false">जब यह मोड चालू होता है, तो एसपीयू इम्यूलेशन सेवस्टेट संगतता को प्राथमिकता देता है, हालांकि, यह प्रदर्शन को थोड़ा कम कर सकता है।
+जब यह मोड बंद होता है, तो कुछ गेम सेवस्टेट बनाने की अनुमति नहीं दे सकते हैं और लॉग में एसपीयू पॉज़ त्रुटि दिखा सकते हैं।</string>
+    <string name="core_help_system_console_time_offset_s" formatted="false">कंसोल के भीतर उपयोग किए जाने वाले समय को सेट करता है। इसे एक ऑफसेट के रूप में लागू किया जाएगा जो दीवार घड़ी के समय को ट्रैक करता है।
+&quot;अभी सेट करें&quot; पर क्लिक करके वर्तमान दीवार घड़ी के समय को रीसेट किया जा सकता है।</string>
+    <string name="core_help_audio_convert_to_16_bit" formatted="false">डिफ़ॉल्ट 32-बिट फ़्लोटिंग पॉइंट के बजाय 16-बिट ऑडियो नमूने का उपयोग करता है।
+यदि आपके पास कोई ध्वनि नहीं है या पूरी तरह से टूटी हुई ध्वनि है तो खराब ऑडियो ड्राइवरों के साथ प्रयोग करें।</string>
+    <string name="core_help_video_custom_anaglyph_matrices_matrix_left" formatted="false">3डी स्टीरियो रेंडरिंग मोड सेट करता है (केवल 720p के डिफ़ॉल्ट रिज़ॉल्यूशन के साथ कस्टम कॉन्फ़िगरेशन में उपलब्ध है)।
+एनाग्लिफ़ प्रत्येक आंख के लिए अलग-अलग रंगों का उपयोग करता है, जिसे बाद में कुछ चश्मे से फ़िल्टर किया जा सकता है।
+साइड-बाय-साइड आमतौर पर वीआर व्यूअर ऐप्स द्वारा समर्थित है।
+ओवर-अंडर मूल स्टीरियो आउटपुट के करीब है, लेकिन आमतौर पर कम समर्थित है।</string>
+    <string name="core_help_video_custom_anaglyph_matrices_matrix_right" formatted="false">3डी स्टीरियो रेंडरिंग मोड सेट करता है (केवल 720p के डिफ़ॉल्ट रिज़ॉल्यूशन के साथ कस्टम कॉन्फ़िगरेशन में उपलब्ध है)।
+एनाग्लिफ़ प्रत्येक आंख के लिए अलग-अलग रंगों का उपयोग करता है, जिसे बाद में कुछ चश्मे से फ़िल्टर किया जा सकता है।
+साइड-बाय-साइड आमतौर पर वीआर व्यूअर ऐप्स द्वारा समर्थित है।
+ओवर-अंडर मूल स्टीरियो आउटपुट के करीब है, लेकिन आमतौर पर कम समर्थित है।</string>
+    <string name="core_help_system_date_format" formatted="false">PS3 का दिनांक स्वरूप चुनें.</string>
+    <string name="core_help_core_debug_console_mode" formatted="false">DECR कंसोल और अन्य से मेल खाने के लिए प्रयोग करने योग्य सिस्टम मेमोरी की मात्रा बढ़ाता है।
+कुछ सॉफ़्टवेयर के कारण खुदरा हार्डवेयर की तुलना में भिन्न व्यवहार होता है।</string>
+    <string name="core_help_video_debug_output" formatted="false">चयनित एपीआई की इनबिल्ट डिबगिंग कार्यक्षमता को सक्षम करता है।
+विशेष रूप से वल्कन के साथ प्रदर्शन में गंभीर गिरावट आएगी।
+केवल डेवलपर्स के लिए उपयोगी.
+यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
+    <string name="core_help_video_debug_overlay" formatted="false">विभिन्न डिबगिंग जानकारी का ग्राफिकल ओवरले प्रदान करता है।
+यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
+    <string name="core_help_net_derive_mac_from_psid" formatted="false">PSID से MAC पता प्राप्त करें.</string>
+    <string name="core_help_video_disable_asynchronous_memory_manager" formatted="false">होस्ट मेमोरी प्रबंधन कॉल को एसिंक्रोनस रूप से प्रबंधित करने के बजाय इनलाइन करने के लिए बाध्य करें।
+इससे कुछ खेलों में प्रदर्शन में गंभीर गिरावट और हकलाहट हो सकती है।
+इस विकल्प की आवश्यकता केवल डेवलपर्स को टेक्सचर कैश मेमोरी सुरक्षा के साथ समस्याओं को डीबग करने के लिए होती है।</string>
+    <string name="core_help_video_disable_fifo_reordering" formatted="false">आरएसएक्स फीफो अनुकूलन को पूरी तरह से अक्षम कर देता है। ड्रॉ की प्रक्रिया डीएमए पुलर द्वारा प्राप्त होते ही की जाती है।</string>
+    <string name="core_help_video_disable_hardware_colorspace_remapping" formatted="false">_sRGB और _SNORM प्रत्यय जैसे हार्डवेयर-देशी रंग-स्पेस रीमैपिंग प्रारूपों का उपयोग अक्षम करता है।
+इस विकल्प को अक्षम करने से PS3 की तुलना में सटीकता बढ़ जाती है, लेकिन सॉफ़्टवेयर इम्यूलेशन कैसे काम करता है, इसके कारण कुछ शोर भी हो सकता है।</string>
+    <string name="core_help_video_disable_msl_fast_math" formatted="false">एमएसएल शेडर्स के लिए फास्ट मैथ को अक्षम करता है, जो आईईईई 754 मानक का उल्लंघन कर सकता है।
+इसे अक्षम करने से प्रदर्शन की कीमत पर, विशेष रूप से Apple GPU पर कुछ कलाकृतियाँ ठीक हो सकती हैं।</string>
+    <string name="core_help_video_disable_zcull_occlusion_queries" formatted="false">रोड़ा क्वेरी चलाने को अक्षम करता है। मामूली से मध्यम प्रदर्शन में वृद्धि।
+टूटे हुए अवरोधन जैसे गुम ज्यामिति और अत्यधिक पॉप-इन के साथ समस्याएं पेश हो सकती हैं।</string>
+    <string name="core_help_video_disable_on_disk_shader_cache" formatted="false">डेटा निर्देशिका में शेडर कैश से शेडर की लोडिंग और सेविंग को अक्षम करता है।</string>
+    <string name="core_help_core_disable_spu_getllar_spin_optimization" formatted="false">SPU GETLLAR स्पिन अनुकूलन अक्षम करें।
+इससे कई खेलों में प्रदर्शन में गंभीर गिरावट और हकलाहट हो सकती है।
+यह विकल्प केवल कुछ चुनिंदा खेलों के लिए आवश्यक है।</string>
+    <string name="core_help_video_disable_vertex_cache" formatted="false">वर्टेक्स कैश को अक्षम करता है.
+गुम या टिमटिमाते ग्राफ़िक्स आउटपुट का समाधान हो सकता है।
+प्रदर्शन ख़राब हो सकता है.</string>
+    <string name="core_help_video_disable_video_output" formatted="false">सभी वीडियो आउटपुट और PS3 ग्राफिकल रेंडरिंग को अक्षम कर देता है।
+इसका एकमात्र उपयोग मामला विकास के लिए सेल पर प्रदर्शन का मूल्यांकन करना है।</string>
+    <string name="core_help_video_disable_vulkan_memory_allocator" formatted="false">कस्टम वल्कन मेमोरी एलोकेटर को अक्षम कर देता है और VkAllocateMemory/VkFreeMemory पर सीधे कॉल पर वापस आ जाता है।</string>
+    <string name="core_help_net_dns_address" formatted="false">DNS का उपयोग अनुप्रयोगों द्वारा होस्टनामों को हल करने के लिए किया जाता है।</string>
+    <string name="core_help_video_driver_wake_up_delay" formatted="false">यह नियंत्रित करता है कि सेल प्रोसेसर द्वारा सक्रिय होने के बाद आरएसएक्स को प्रसंस्करण शुरू करने में कितना समय लगता है।
+वेकअप विलंब बढ़ने से स्थिरता में सुधार होता है, लेकिन बहुत अधिक मान आरएसएक्स/जीपीयू प्रदर्शन को कम कर सकते हैं।
+इष्टतम स्थिरता के लिए सर्वोत्तम मूल्य तक पहुंचने तक इसे 20µs से 40µs की वृद्धि पर समायोजित करने की अनुशंसा की जाती है।</string>
+    <string name="core_help_audio_dump_to_file" formatted="false">सभी ऑडियो को रॉ वेव फ़ाइल के रूप में सहेजता है। यदि निश्चित नहीं है तो इसे अनियंत्रित छोड़ दें।</string>
+    <string name="core_help_vfs_empty_dev_hdd0_tmp" formatted="false">कुछ होमब्रू या गेम मॉड के लिए आवश्यक।
+यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें</string>
+    <string name="core_help_video_emulate_special_depth_comparison" formatted="false">गहराई तुलना संचालन का अनुकरण करें जहां डेस्कटॉप हार्डवेयर व्यवहार PS3 से भिन्न होता है, आमतौर पर समान तुलना मोड।
+कुछ खेलों में अत्यधिक छाया झिलमिलाहट और Z-फाइटिंग को ठीक करता है।
+यह कुछ खेलों में सबसे स्पष्ट है जहां Z प्रीपास डेप्थ फॉर्मेट रैस्टराइज़ेशन डेप्थ फॉर्मेट से भिन्न है, एक ऐसा परिदृश्य जो कभी भी संगत डेस्कटॉप हार्डवेयर पर सही ढंग से काम नहीं करेगा।</string>
+    <string name="core_help_audio_enable_buffering" formatted="false">ऑडियो बफ़रिंग सक्षम करता है, जो क्रैकल/हकलाना को कम करता है लेकिन ऑडियो विलंबता को बढ़ाता है।</string>
+    <string name="core_help_net_clans_enabled" formatted="false">क्लैन्स सर्वर से कनेक्शन सक्षम करें।
+केवल क्लैन्स सुविधा का समर्थन करने वाले खेलों को प्रभावित करता है।</string>
+    <string name="core_help_core_spu_reservation_busy_waiting_enabled" formatted="false">SPU RdEventStat स्पिन सक्षम करें।
+इससे सीपीयू का उपयोग बढ़ता है, यह सेटिंग चुनिंदा गेम वाले हाई-थ्रेडेड सीपीयू (12+) के लिए फायदेमंद है।</string>
+    <string name="core_help_miscellaneous_enable_gamemode" formatted="false">फ़रल इंटरएक्टिव के गेममोड को सक्रिय करें।
+यह सीपीयू और जीपीयू अनुकूलन की एक श्रृंखला है और संभावित रूप से कुछ सिस्टम पर गेम प्रदर्शन को लाभ पहुंचा सकती है।</string>
+    <string name="core_help_vfs_enable_host_root" formatted="false">कुछ होमब्रू के लिए आवश्यक है।
+यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
+    <string name="core_help_audio_enable_time_stretching" formatted="false">टाइम स्ट्रेचिंग सक्षम करता है - बफरिंग सक्षम करने की आवश्यकता है।
+कर्कशता/हकलाना को और भी कम कर देता है, लेकिन धीमे सीपीयू पर ऑडियो गुणवत्ता में बहुत उल्लेखनीय कमी हो सकती है।</string>
+    <string name="core_help_net_upnp_enabled" formatted="false">यूपीएनपी सक्षम करें।
+यदि आपके राउटर में UPNP सक्षम है तो यह स्वचालित रूप से 0.0.0.0 पर बंधे पोर्ट को अग्रेषित कर देगा।</string>
+    <string name="core_help_system_enter_button_assignment" formatted="false">सिस्टम संवादों में प्रवेश/स्वीकार/पुष्टि के लिए उपयोग किया जाने वाला बटन।
+इसके बजाय सर्कल बटन का उपयोग करने के लिए इसे बदलें, जो जापानी सिस्टम और कई जापानी खेलों में डिफ़ॉल्ट कॉन्फ़िगरेशन है।
+इन मामलों में क्रॉस बटन निर्दिष्ट होने से अक्सर भ्रम की स्थिति पैदा हो सकती है।</string>
+    <string name="core_help_video_vulkan_exclusive_fullscreen_mode" formatted="false">वल्कन रेंडरर का उपयोग करते समय यह नियंत्रित करता है कि RPCS3 ड्राइवरों से कौन सा फुलस्क्रीन मोड अनुरोध करता है।
+ऑटोमैटिक ड्राइवर को एक उपयुक्त मोड चुनने देगा, जबकि अन्य विकल्प ड्राइवरों को संकेत देंगे कि उन्हें एक्सक्लूसिव या बॉर्डरलेस फ़ुलस्क्रीन का उपयोग करना चाहिए या नहीं।
+यदि आपको आरपीसीएस3 गेमप्ले स्ट्रीमिंग में समस्या आ रही है या यदि आपका सिस्टम फुलस्क्रीन का उपयोग करते समय गलत तरीके से एचडीआर मोड को सक्षम करता है, तो प्रेफर बॉर्डरलेस फुलस्क्रीन विकल्प का उपयोग करने से मदद मिल सकती है।</string>
+    <string name="core_help_miscellaneous_exit_rpcs3_when_process_finishes" formatted="false">किसी गेम को बंद करते समय, या जब कोई गेम अपने आप बंद हो जाए तो RPCS3 को स्वचालित रूप से बंद कर दें।</string>
+    <string name="core_help_core_rsx_fifo_fetch_accuracy" formatted="false">&quot;फास्ट&quot; सबसे कम सटीक सेटिंग है, आरएसएक्स परमाणु फीफो बफर का अनुकरण नहीं करता है।
+&quot;परमाणु&quot; कम प्रदर्शन दंड के साथ कई खेलों में स्थिरता को बहुत लाभ पहुंचाता है।
+&quot;एटॉमिक एंड ऑर्डर्ड&quot; सबसे सटीक है लेकिन यह खेलों में सबसे धीमा और बिना अधिक स्थिरता वाला लाभ है।</string>
+    <string name="core_help_video_force_cpu_blit" formatted="false">सीपीयू पर सभी ब्लिट और छवि हेरफेर परिचालनों का अनुकरण करने के लिए बाध्य करता है।
+अधिकांश मामलों में गायब ग्राफ़िक्स से बचने के लिए \'कलर बफ़र्स लिखें\' विकल्प को भी सक्षम करना आवश्यक है।
+प्रदर्शन में काफ़ी गिरावट आती है लेकिन कुछ मामलों में यह अधिक सटीक होता है।
+यह सेटिंग \'जीपीयू टेक्सचर स्केलिंग\' विकल्प को ओवरराइड करती है।</string>
+    <string name="core_help_video_force_high_precision_z_buffer" formatted="false">केवल GPU हार्डवेयर में अंतर को डीबग करते समय उपयोगी।
+औसत उपयोगकर्ताओं के लिए आवश्यक नहीं है.
+यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
+    <string name="core_help_video_force_hardware_msaa_resolve" formatted="false">MSAA को सभी नमूनाकरण कार्यों के लिए होस्ट GPU की रिज़ॉल्यूशन क्षमताओं का उपयोग करने के लिए बाध्य करता है।
+इस विकल्प पर प्रदर्शन दंड के साथ-साथ दृश्य कलाकृतियों का जोखिम भी लगता है, लेकिन MSAA सक्षम होने पर स्पष्ट दृश्य प्राप्त हो सकते हैं।</string>
+    <string name="core_help_video_framebuffer_aliasing_heuristic_bias" formatted="false">यह नियंत्रित करता है कि RPCS3 उन रेंडर लक्ष्यों को कैसे हल करता है जहां रंग और गहराई समान मेमोरी को उपनाम देते हैं। अधिकांश खेलों के लिए ऑटो की अनुशंसा की जाती है.
+· ऑटो मौजूदा व्यवहार है, जो गहराई की ओर पक्षपाती है।
+· जब रंग-लेखन सक्षम होता है और गहराई-लेखन सक्षम नहीं होता है तो प्रेफर कलर रंग को बाइंडिंग रखता है। उस ड्रॉ के लिए गहराई परीक्षण को छोड़ने की कीमत पर कुछ स्थगित रेंडरर्स (उदाहरण के लिए स्टारहॉक) में लापता ज्यामिति को ठीक करता है।
+· प्रेफ़र डेप्थ अभी ऑटो के समान ही है।</string>
+    <string name="core_help_video_frame_limit" formatted="false">ऑफ सबसे तेज़ विकल्प है.
+फ़्रेम लिमिटर का उपयोग करने से अतिरिक्त ओवरहेड जुड़ जाएगा और गेम धीमा हो जाएगा। हालाँकि, यदि फ़्रेमरेट बहुत अधिक है तो कुछ गेम क्रैश हो जाएंगे।
+PS3 नेटिव का उपयोग केवल तभी किया जाना चाहिए जब ऑटो सही ढंग से काम नहीं कर रहा हो क्योंकि इससे फ्रेम-पेसिंग संबंधी समस्याएं आ सकती हैं।
+इनफिनिट एक सकारात्मक फीडबैक लूप जोड़ता है जो प्रति फ्रेम एक और वीब्लैंक सिग्नल जोड़ता है जिससे अधिक गेम एफपीएस असीमित हो जाते हैं।
+अन्य फ़्रेम सीमाओं की आवश्यकता वाले अनुभवी उपयोगकर्ताओं को कॉन्फ़िगरेशन फ़ाइल में &quot;दूसरी फ़्रेम सीमा&quot; सेटिंग का उपयोग करना चाहिए।</string>
+    <string name="core_help_video_fidelityfx_cas_sharpening_intensity" formatted="false">फिडेलिटीएफएक्स सुपर रेजोल्यूशन द्वारा लागू शार्पनिंग ताकत को नियंत्रित करें। उच्च मान तेज़ आउटपुट देंगे लेकिन कलाकृतियाँ पेश कर सकते हैं।</string>
+    <string name="core_help_input_output_ghltar_emulated_controller" formatted="false">गिटार हीरो लाइव (जीएचएल) गिटार नियंत्रक समर्थन।
+यदि गेम को जीएचएल गिटार नियंत्रकों की आवश्यकता है और आपके पास वास्तविक गिटार नियंत्रक नहीं हैं, तो 1 या 2 नियंत्रकों का चयन करें।
+यदि गेम में डुअलशॉक के लिए समर्थन है या यदि आपके पास वास्तविक गिटार नियंत्रक हैं तो नल का चयन करें।
+एक वास्तविक गिटार नियंत्रक का उपयोग एक नकली गिटार नियंत्रक के रूप में एक ही समय में किया जा सकता है।</string>
+    <string name="core_help_video_use_gpu_texture_scaling" formatted="false">सभी बनावट स्थानांतरण, स्केलिंग और रूपांतरण कार्यों को GPU पर बाध्य करें।
+कुछ मामलों में बनावट में भ्रष्टाचार हो सकता है।</string>
+    <string name="core_help_video_handle_rsx_memory_tiling" formatted="false">वीएम मेमोरी में जीपीयू डेटा लिखते समय आरएसएक्स मेमोरी टाइलिंग कॉन्फ़िगरेशन का पालन करें।
+यह रीड कलर या रीड डेप्थ विकल्प सक्षम होने पर देखे गए ग्राफ़िक्स भ्रष्टाचार को ठीक कर सकता है।</string>
+    <string name="core_help_core_hook_static_functions" formatted="false">\'memcpy\' जैसे कुछ कार्यों को उच्च-स्तरीय कार्यान्वयन के साथ बदलने की अनुमति देता है। कुछ नहीं कर सकता या चीज़ों को तोड़ सकता है। प्रायोगिक.</string>
+    <string name="core_help_net_internet_enabled" formatted="false">यदि कनेक्टेड पर सेट किया गया है, तो RPCS3 प्रोग्रामों को आपके इंटरनेट कनेक्शन का उपयोग करने की अनुमति देगा।</string>
+    <string name="core_help_input_output_io_debug_overlay" formatted="false">प्लेयर 1 के लिए पैड इनपुट मानों के साथ एक ग्राफ़िकल ओवरले प्रदान करता है।
+यह केवल तभी दिखाया जाता है जब डिबग ओवरले अक्षम हो।
+यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
+    <string name="core_help_net_ip_swap_list" formatted="false">डीएनएस स्वैप सूची.
+केवल कस्टम कॉन्फ़िगरेशन में उपलब्ध है.</string>
+    <string name="core_help_input_output_keyboard" formatted="false">कुछ गेम देशी कीबोर्ड इनपुट का समर्थन करते हैं।
+इन मामलों में बेसिक काम करेगा.</string>
+    <string name="core_help_system_keyboard_type" formatted="false">प्रयुक्त कीबोर्ड लेआउट सेट करता है।
+फिलहाल केवल यूएस, जापानी और जर्मन लेआउट ही इस समय पूरी तरह से समर्थित हैं।</string>
+    <string name="core_help_system_language" formatted="false">यदि गेम में सिस्टम भाषा उपलब्ध नहीं है तो कुछ गेम बूट होने में विफल हो सकते हैं।
+अन्य गेम स्वचालित रूप से यहां चुनी गई भाषा में भाषा बदल देंगे।
+इसे गेम द्वारा समर्थित भाषा पर छोड़ने की अनुशंसा की जाती है।</string>
+    <string name="core_help_system_license_area" formatted="false">कंसोल क्षेत्र PS3 के लाइसेंस क्षेत्र को परिभाषित करता है।
+लाइसेंस क्षेत्र के आधार पर, कुछ गेम काम नहीं कर सकते हैं।</string>
+    <string name="core_help_vfs_limit_disk_cache_size" formatted="false">यदि यह निर्दिष्ट मान से बड़ी हो जाती है तो बूट पर डिस्क कैश से पुरानी फ़ाइलों को स्वचालित रूप से हटा देता है।
+गेम सिस्टम मेमोरी के बाहर डेटा को अस्थायी रूप से संग्रहीत करने के लिए कैश फ़ोल्डर का उपयोग कर सकते हैं। इसका उपयोग दीर्घकालिक भंडारण के लिए नहीं किया जाता है।
+
+यह सेटिंग केवल वैश्विक कॉन्फ़िगरेशन में उपलब्ध है.</string>
+    <string name="core_help_core_llvm_precompilation" formatted="false">गेम की निर्देशिका खोजता है और बूट के दौरान अतिरिक्त पीपीयू और एसपीयू मॉड्यूल को प्रीकंपाइल करता है।
+यदि अक्षम किया गया है, तो ये मॉड्यूल केवल आवश्यकता होने पर ही संकलित किए जाएंगे। गेम के आधार पर, यह गेमप्ले को अप्रत्याशित रूप से और संभवतः बार-बार बाधित कर सकता है।
+यदि आप गेम में अधिक तेज़ी से प्रवेश करना चाहते हैं तो इसे केवल अक्षम करें।</string>
+    <string name="core_help_input_output_lock_overlay_input_to_player_one" formatted="false">पहले प्लेयर में मूल ओवरले इनपुट को लॉक करता है।</string>
+    <string name="core_help_video_log_shader_programs" formatted="false">फ़ाइल करने के लिए गेम शेडर्स को डंप करें। केवल डेवलपर्स के लिए उपयोगी.
+यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
+    <string name="core_help_audio_master_volume" formatted="false">अनुकरण की समग्र मात्रा को नियंत्रित करता है।
+100% से ऊपर के मान ऑडियो गुणवत्ता को कम कर सकते हैं।</string>
+    <string name="core_help_vfs_disk_cache_maximum_size_mb" formatted="false">यदि यह निर्दिष्ट मान से बड़ी हो जाती है तो बूट पर डिस्क कैश से पुरानी फ़ाइलों को स्वचालित रूप से हटा देता है।
+गेम सिस्टम मेमोरी के बाहर डेटा को अस्थायी रूप से संग्रहीत करने के लिए कैश फ़ोल्डर का उपयोग कर सकते हैं। इसका उपयोग दीर्घकालिक भंडारण के लिए नहीं किया जाता है।
+
+यह सेटिंग केवल वैश्विक कॉन्फ़िगरेशन में उपलब्ध है.</string>
+    <string name="core_help_core_max_llvm_compile_threads" formatted="false">प्रारंभिक पीपीयू और एसपीयू मॉड्यूल संकलन के लिए उपयोग किए जाने वाले थ्रेड्स की अधिकतम संख्या को सीमित करता है।
+अन्य खुले अनुप्रयोगों का प्रदर्शन बढ़ाने के लिए इसे कम करें।
+डिफ़ॉल्ट सभी उपलब्ध थ्रेड्स का उपयोग करता है।</string>
+    <string name="core_help_core_max_cpu_preempt_count" formatted="false">सीपीयू उपयोग और बिजली की खपत को कम करता है, मोबाइल उपकरणों पर बैटरी जीवन में सुधार करता है। (0 का मतलब अक्षम है)
+उच्च मान अधिक स्पष्ट प्रभाव पैदा करते हैं, लेकिन ऑडियो या प्रदर्शन संबंधी समस्याएं पैदा कर सकते हैं। 50 या उससे कम का मान अनुशंसित है।
+यह विकल्प FPS सीमा को बाध्य करता है क्योंकि फ़्रेमरेट स्थिर होने पर यह सक्रिय होता है।
+गेम का हार्डवेयर जितना हल्का होगा, उससे उतनी अधिक बिजली की बचत होगी। (जब तक प्रीएम्प्शन काउंट बैरियर नहीं पहुंच जाता)</string>
+    <string name="core_help_core_max_spurs_threads" formatted="false">प्रत्येक थ्रेड समूह में SPURS थ्रेड्स की अधिकतम संख्या सीमित करता है।
+कुछ मामलों में प्रदर्शन में सुधार हो सकता है, विशेष रूप से सीमित संख्या में हार्डवेयर थ्रेड वाले सिस्टम पर।
+थ्रेड्स की संख्या सीमित करने से क्रैश होने की संभावना है; इसे डिफ़ॉल्ट मान पर रखने की अनुशंसा की जाती है।</string>
+    <string name="core_help_core_mfc_commands_shuffling_limit" formatted="false">किसी भी विषम एमएफसी कमांड को विलंबित करने के लिए बल, यादृच्छिक क्रम में उन्हें निष्पादित करने के लिए कम से कम 2 लंबित कमांड की प्रतीक्षा करता है।
+वर्तमान में किसी भी एसपीयू दुभाषिए के साथ उपयोग किया जाना चाहिए।
+प्रदर्शन में गंभीर गिरावट! यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
+    <string name="core_help_core_mfc_debug" formatted="false">एमएफसी लॉग बनाता है।
+केवल डेवलपर्स के लिए उपयोगी.
+इसका प्रयोग कदापि न करें.</string>
+    <string name="core_help_audio_microphone_devices" formatted="false">अधिकांश खेलों के लिए मानक का उपयोग किया जाना चाहिए।
+सिंगस्टार एक सिंगस्टार डिवाइस का अनुकरण करता है और इसका उपयोग सिंगस्टार गेम्स के साथ किया जाना चाहिए।
+रियल सिंगस्टार का उपयोग केवल सिंगस्टार गेम्स वाले रियल सिंगस्टार डिवाइस के साथ ही किया जाना चाहिए।
+रॉकस्मिथ का उपयोग रॉकस्मिथ डोंगल के साथ किया जाना चाहिए।</string>
+    <string name="core_help_audio_microphone_type" formatted="false">अधिकांश खेलों के लिए मानक का उपयोग किया जाना चाहिए।
+सिंगस्टार एक सिंगस्टार डिवाइस का अनुकरण करता है और इसका उपयोग सिंगस्टार गेम्स के साथ किया जाना चाहिए।
+रियल सिंगस्टार का उपयोग केवल सिंगस्टार गेम्स वाले रियल सिंगस्टार डिवाइस के साथ ही किया जाना चाहिए।
+रॉकस्मिथ का उपयोग रॉकस्मिथ डोंगल के साथ किया जाना चाहिए।</string>
+    <string name="core_help_input_output_emulated_midi_devices" formatted="false">अधिकतम 3 अनुकरणीय MIDI डिवाइस और उनके प्रकार चुनें।</string>
+    <string name="core_help_video_minimum_scalable_dimension" formatted="false">केवल इस आकार से बड़े फ़्रेमबफ़र्स को अपग्रेड किया जाएगा।
+इस मान को बढ़ाने से अपस्केलिंग करते समय गायब ग्राफ़िक्स की समस्याएँ ठीक हो सकती हैं, विशेषकर जब राइट कलर बफ़र्स सक्षम हो।
+यदि अनिश्चित हो तो इस विकल्प को न बदलें।</string>
+    <string name="core_help_input_output_mouse_based_gyro_enabled" formatted="false">गेम स्टार्टअप पर माउस-आधारित जाइरो इम्यूलेशन सक्षम करता है। इसे संबंधित हॉटकी के साथ किसी भी समय टॉगल किया जा सकता है।
+जाइरो इनपुट को सक्रिय करने के लिए दायां माउस बटन दबाए रखें: माउस मैप्स को एक्स और जेड मोशन एक्सिस पर ले जाएं, और स्क्रॉल व्हील मैप्स को वाई एक्सिस पर ले जाएं। गति मान रीसेट करने के लिए बटन छोड़ें।</string>
+    <string name="core_help_input_output_mouse_debug_overlay" formatted="false">माउस इनपुट मानों के साथ ग्राफ़िकल ओवरले प्रदान करता है।
+यह केवल तभी दिखाया जाता है जब अन्य डिबग ओवरले अक्षम हों।
+यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
+    <string name="core_help_input_output_mouse" formatted="false">कुछ गेम देशी माउस इनपुट का समर्थन करते हैं।
+इन मामलों में बेसिक या रॉ काम करेगा।</string>
+    <string name="core_help_input_output_move" formatted="false">आधिकारिक पीएस मूव नियंत्रकों के लिए पीएस मूव हैंडलर की अनुशंसा की जाती है।</string>
+    <string name="core_help_video_msaa" formatted="false">PS3 मल्टीसैंपलिंग लेआउट का अनुकरण करें।
+कुछ अन्य कठिन ग्राफ़िक्स गड़बड़ियों को ठीक कर सकता है।
+आपके GPU हार्डवेयर के आधार पर निम्न से मध्यम प्रदर्शन हिट।</string>
+    <string name="core_help_video_multithreaded_rsx" formatted="false">कुछ RSX परिचालनों को द्वितीयक थ्रेड पर ऑफ़लोड करता है।
+हाई-कोर प्रोसेसर के प्रदर्शन में सुधार करता है।
+अतिरिक्त वर्कर थ्रेड लोड के कारण कमजोर सीपीयू में मंदी आ सकती है।</string>
+    <string name="core_help_audio_music_handler" formatted="false">वर्तमान में केवल सेलम्यूजिक अनुकरण के लिए उपयोग किया जाता है।
+अपने ऑपरेटिंग सिस्टम के डिफ़ॉल्ट आउटपुट डिवाइस का उपयोग करने के लिए Qt का चयन करें।
+यह सभी ऑडियो प्रारूपों को चलाने में सक्षम नहीं हो सकता है।</string>
+    <string name="core_help_core_ppu_threads" formatted="false">समवर्ती रूप से चलने वाले पीपीयू थ्रेड की अधिकतम मात्रा को प्रभावित करता है, 1 का मान गेम के साथ बहुत कम अनुकूलता रखता है।
+2 डिफ़ॉल्ट है, यदि अनिश्चित है तो इस सेटिंग को संशोधित न करें।
+चेतावनी: इस मान को बदलने से संकलित PPU/SPU कैश अमान्य हो जाता है। अगले लॉन्च पर मॉड्यूल का पूर्ण संकलन शून्य से दोहराया जाएगा।</string>
+    <string name="core_help_video_output_scaling_mode" formatted="false">अंतिम छवि फ़िल्टरिंग. निकटतम कोई फ़िल्टरिंग लागू नहीं करता है, बिलिनियर छवि को सुचारू बनाता है, और फिडेलिटीएफएक्स सुपर रिज़ॉल्यूशन अपस्केल की गई छवियों को बढ़ाता है।
+यदि गेम आपके विंडो रिज़ॉल्यूशन से कम आंतरिक रिज़ॉल्यूशन पर प्रस्तुत हो रहा है, तो फिडेलिटीएफएक्स अपस्केल को संभाल लेगा।
+फिडेलिटीएफएक्स दृश्य कलाकृतियों का कारण बन सकता है।
+फिडेलिटीएफएक्स अभी स्टीरियो 3डी आउटपुट के साथ काम नहीं करता है।</string>
+    <string name="core_help_input_output_keep_pads_connected" formatted="false">सभी कॉन्फ़िगर किए गए पैड को गेम में हमेशा कनेक्टेड की तरह दिखाता है, भले ही वे भौतिक रूप से डिस्कनेक्ट हों।</string>
+    <string name="core_help_input_output_pad_handler_mode" formatted="false">सिंगल-थ्रेडेड: सभी पैड हैंडलर क्रमिक रूप से एक ही थ्रेड पर चलते हैं।
+मल्टी-थ्रेडेड: प्रत्येक पैड हैंडलर का अपना थ्रेड होता है।
+यदि आप अतिरिक्त धागे छोड़ सकते हैं तो केवल मल्टी-थ्रेडेड का उपयोग करें।</string>
+    <string name="core_help_miscellaneous_pause_emulation_during_home_menu" formatted="false">सक्षम होने पर, होम मेनू खोलने से अनुकरण भी रुक जाएगा।
+जबकि अधिकांश गेम होम मेनू दिखाए जाने पर अपने आप रुक जाते हैं, कुछ नहीं।
+उस स्थिति में जब भी होम मेनू खुला हो तो अनुकरण को रोकना मददगार हो सकता है।</string>
+    <string name="core_help_miscellaneous_pause_emulation_on_rpcs3_focus_loss" formatted="false">जब आरपीसीएस3 अपना फोकस खो देता है या बिजली बचाने और सीपीयू उपयोग को कम करने के लिए एप्लिकेशन निष्क्रिय हो जाता है तो स्वचालित रूप से अनुकरण रोक देता है।
+ध्यान दें कि अनुकरण को सामान्यतः रोकना सही नहीं है और यह सभी खेलों के साथ संगत नहीं हो सकता है।
+हालाँकि यह वर्तमान में गेमप्ले को भी रोकता है, लेकिन इस पर भरोसा करने की अनुशंसा नहीं की जाती है क्योंकि यह व्यवहार भविष्य में बदला जा सकता है और यह इस सेटिंग का उद्देश्य नहीं है।</string>
+    <string name="core_help_core_enable_performance_report" formatted="false">एमुलेटर बंद होने के बाद कुछ घटनाओं को मापें और एक चार्ट प्रिंट करें। यदि न कहा जाए तो सक्षम न करें.</string>
+    <string name="core_help_video_performance_overlay_center_horizontally" formatted="false">प्रदर्शन ओवरले को क्षैतिज रूप से केन्द्रित करता है और क्षैतिज मार्जिन को ओवरराइड करता है।</string>
+    <string name="core_help_video_performance_overlay_center_vertically" formatted="false">प्रदर्शन ओवरले को लंबवत रूप से केन्द्रित करता है और ऊर्ध्वाधर मार्जिन को ओवरराइड करता है।</string>
+    <string name="core_help_video_performance_overlay_detail_level" formatted="false">प्रदर्शन ओवरले पर प्रदर्शित जानकारी की मात्रा को नियंत्रित करता है।</string>
+    <string name="core_help_video_performance_overlay_enabled" formatted="false">प्रदर्शन ओवरले को सक्षम या अक्षम करता है।</string>
+    <string name="core_help_video_performance_overlay_font_size_px" formatted="false">प्रदर्शन ओवरले का फ़ॉन्ट आकार सेट करता है (पिक्सेल में मापा जाता है)।</string>
+    <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">फ़्रेमरेट ग्राफ़ में उपयोग किए गए डेटापॉइंट की मात्रा निर्धारित करता है।</string>
+    <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">प्रदर्शन ओवरले पर प्रदर्शित जानकारी की मात्रा को नियंत्रित करता है।</string>
+    <string name="core_help_video_performance_overlay_enable_framerate_graph" formatted="false">फ़्रेमरेट ग्राफ़ को सक्षम या अक्षम करता है।</string>
+    <string name="core_help_video_performance_overlay_frametime_datapoints" formatted="false">फ़्रेमटाइम ग्राफ़ में उपयोग किए गए डेटापॉइंट की मात्रा निर्धारित करता है।</string>
+    <string name="core_help_video_performance_overlay_frametime_graph_detail_level" formatted="false">प्रदर्शन ओवरले पर प्रदर्शित जानकारी की मात्रा को नियंत्रित करता है।</string>
+    <string name="core_help_video_performance_overlay_enable_frametime_graph" formatted="false">फ़्रेमटाइम ग्राफ़ को सक्षम या अक्षम करता है।</string>
+    <string name="core_help_video_performance_overlay_horizontal_margin" formatted="false">स्क्रीन क्वाड्रेंट के सापेक्ष स्क्रीन बॉर्डर की क्षैतिज दूरी सेट करता है (% में मापा जाता है)।</string>
+    <string name="core_help_video_performance_overlay_vertical_margin" formatted="false">स्क्रीन क्वाड्रेंट के सापेक्ष स्क्रीन बॉर्डर की ऊर्ध्वाधर दूरी सेट करता है (% में मापा जाता है)।</string>
+    <string name="core_help_video_performance_overlay_opacity" formatted="false">प्रदर्शन ओवरले की अस्पष्टता सेट करता है (% में मापा जाता है)।</string>
+    <string name="core_help_video_performance_overlay_position" formatted="false">प्रदर्शन ओवरले की ऑन-स्क्रीन स्थिति (चतुर्थांश) सेट करता है।</string>
+    <string name="core_help_video_performance_overlay_metrics_update_interval_ms" formatted="false">वह समय अंतराल सेट करता है जिसमें प्रदर्शन ओवरले अद्यतन किया जा रहा है (मिलीसेकंड में मापा जाता है)।
+इसे 16 मिलीसेकंड पर सेट करने से प्रदर्शन ओवरले लगभग 60Hz पर ताज़ा हो जाएगा।
+प्रदर्शन ओवरले ताज़ा दर फ़्रेम ग्राफ़ आँकड़ों को प्रभावित नहीं करती है और केवल उतनी ही तेज़ हो सकती है जितनी वर्तमान गेम अनुमति देता है।</string>
+    <string name="core_help_video_performance_overlay_use_window_space" formatted="false">संपूर्ण विंडो सतह के सापेक्ष स्थिति ओवरले, गेम के रेंडर क्षेत्र के बाहर प्लेसमेंट को सक्षम बनाता है।</string>
+    <string name="core_help_miscellaneous_play_music_during_boot_sequence" formatted="false">यदि उपलब्ध हो तो बूट अनुक्रम के दौरान संगीत चलाएं।</string>
+    <string name="core_help_core_ppu_debug" formatted="false">पीपीयू लॉग बनाता है।
+केवल डेवलपर्स के लिए उपयोगी.
+इसका प्रयोग कदापि न करें.</string>
+    <string name="core_help_core_ppu_decoder" formatted="false">पहली बार चलाने से पहले एक बार एलएलवीएम रीकंपाइलर का उपयोग करके गेम के पीपीयू कोड को पुन: संकलित और कैश करता है।
+यह अब तक का सबसे तेज़ विकल्प है और इसका हमेशा उपयोग किया जाना चाहिए।
+यदि आपको संगतता संबंधी समस्याओं का सामना करना पड़े, तो दुभाषियों में से किसी एक के पास वापस जाएँ और पुनः प्रयास करें।
+यदि अनिश्चित हो तो इस विकल्प का उपयोग करें।</string>
+    <string name="core_help_core_ppu_reservation_priority_over_spus" formatted="false">जब एसपीयू आरक्षण का उपयोग कर रहे हों तो पीपीयू को निष्पादन लाभ दें।
+प्रदर्शन में सुधार के लिए यह सेटिंग केवल कुछ गेम के लिए अनुशंसित है।
+प्रदर्शन में संभावित गिरावट के कारण बिना सलाह दिए इसका उपयोग न करें।</string>
+    <string name="core_help_core_ppu_vector_nan_handling" formatted="false">फिक्सअप NaN के परिणामस्वरूप PPU बैकएंड में वेक्टर निर्देश मिलते हैं।
+यदि अनिश्चित हो, तो इस सेटिंग को संशोधित न करें।</string>
+    <string name="core_help_video_accurate_zcull_stats" formatted="false">ZCULL रिपोर्ट सिंक्रनाइज़ेशन व्यवहार को बदलता है। अपने खेल के लिए सर्वोत्तम विकल्प खोजने के लिए प्रयोग करें। अधिकांश खेलों के लिए अनुमानित मोड की अनुशंसा की जाती है.
+· सटीक PS3 व्यवहार के लिए सबसे सटीक है। डेमन्स सोल्स और द डार्कनेस जैसे कुछ शीर्षकों में सटीक दृश्यों के लिए आवश्यक है।
+· एप्रोक्सिमेट रोड़ा डेटा उत्पन्न करने का एक बहुत तेज़ तरीका है जो हमेशा PS3 द्वारा उत्पन्न डेटा से मेल नहीं खा सकता है। अधिकांश PS3 गेम्स के साथ अच्छा काम करता है।
+· रिलैक्स्ड सिंक्रोनाइज़ेशन विधि को पूरी तरह से बदल देता है और कुछ खेलों में प्रदर्शन में काफी सुधार कर सकता है या दूसरों को पूरी तरह से तोड़ सकता है।</string>
+    <string name="core_help_core_preferred_spu_threads" formatted="false">कुछ एसपीयू चरण दौड़ की स्थितियों के प्रति संवेदनशील होते हैं और एक समय में सीमित संख्या की अनुमति देने से प्रदर्शन संबंधी रुकावटों को कम करने में मदद मिलती है।
+इसे छोटे मान पर सेट करने से प्रदर्शन में सुधार हो सकता है और कुछ खेलों में हकलाना कम हो सकता है।
+यदि छोटा मान सेट करते समय प्रदर्शन नकारात्मक रूप से प्रभावित होता है तो इसे ऑटो पर छोड़ दें।</string>
+    <string name="core_help_miscellaneous_prevent_display_sleep_while_running_games" formatted="false">गेम चलने के दौरान डिस्प्ले को निष्क्रिय होने से रोकें।
+इसके लिए Linux पर org.freedesktop.ScreenSaver D-Bus सेवा की आवश्यकता है।
+यदि वर्तमान प्लेटफ़ॉर्म डिस्प्ले स्लीप नियंत्रण का समर्थन नहीं करता है तो यह विकल्प अक्षम कर दिया जाएगा।</string>
+    <string name="core_help_net_psn_country" formatted="false">आरपीसीएन देश बदलता है।</string>
+    <string name="core_help_net_psn_status" formatted="false">यदि आरपीसीएन पर सेट किया जाता है, तो गेम समर्थित होने पर आरपीसीएस3 पीएसएन कनेक्शन के रूप में आरपीसीएन सर्वर का उपयोग करेगा।
+यदि सिम्युलेटेड पर सेट किया जाता है, तो आरपीसीएस3 पीएसएन कनेक्शन को नकली बनाने का प्रयास करेगा, लेकिन पीएसएन कार्यक्षमता का उपयोग करने के किसी भी वास्तविक प्रयास के परिणामस्वरूप त्रुटियां या क्रैश हो सकते हैं।
+सिम्युलेटेड केवल कस्टम कॉन्फ़िगरेशन में उपलब्ध है।</string>
+    <string name="core_help_video_read_color_buffers" formatted="false">वीएम मेमोरी का उपयोग करके लक्ष्य मेमोरी को प्रस्तुत करना आरंभ करता है।</string>
+    <string name="core_help_video_read_depth_buffer" formatted="false">वीएम मेमोरी का उपयोग करके लक्ष्य मेमोरी को प्रस्तुत करना आरंभ करता है।</string>
+    <string name="core_help_video_record_with_overlays" formatted="false">ओवरले के साथ रिकॉर्डिंग सक्षम करता है।
+इसका असर स्क्रीनशॉट पर भी पड़ता है.</string>
+    <string name="core_help_video_relaxed_zcull_sync" formatted="false">ZCULL रिपोर्ट सिंक्रनाइज़ेशन व्यवहार को बदलता है। अपने खेल के लिए सर्वोत्तम विकल्प खोजने के लिए प्रयोग करें। अधिकांश खेलों के लिए अनुमानित मोड की अनुशंसा की जाती है.
+· सटीक PS3 व्यवहार के लिए सबसे सटीक है। डेमन्स सोल्स और द डार्कनेस जैसे कुछ शीर्षकों में सटीक दृश्यों के लिए आवश्यक है।
+· एप्रोक्सिमेट रोड़ा डेटा उत्पन्न करने का एक बहुत तेज़ तरीका है जो हमेशा PS3 द्वारा उत्पन्न डेटा से मेल नहीं खा सकता है। अधिकांश PS3 गेम्स के साथ अच्छा काम करता है।
+· रिलैक्स्ड सिंक्रोनाइज़ेशन विधि को पूरी तरह से बदल देता है और कुछ खेलों में प्रदर्शन में काफी सुधार कर सकता है या दूसरों को पूरी तरह से तोड़ सकता है।</string>
+    <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">क्लासिक ओपनजीएल बफ़र्स के उपयोग को सक्षम करता है जो कैप्चरिंग टूल को आरपीसीएस3 जैसे रेंडरडॉक के साथ काम करने की अनुमति देता है।
+वल्कन को अच्छे रेंडरडॉक कैप्चर के लिए डिबग मार्कर का उपयोग करने की भी अनुमति देता है।
+यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
+    <string name="core_help_video_renderer" formatted="false">वल्कन सबसे तेज़ रेंडरर है। ओपनजीएल सबसे सटीक रेंडरर है।
+यदि अनिश्चित हो, तो वल्कन का उपयोग करें। यदि आपके पास कोई संगतता समस्या है, तो OpenGL पर वापस जाएँ।</string>
+    <string name="core_help_video_resolution" formatted="false">यदि रिज़ॉल्यूशन स्केल 100% के अलावा किसी अन्य पर सेट है तो इस सेटिंग को अनदेखा कर दिया जाएगा!
+इसे 1280x720 पर छोड़ें। प्रत्येक PS3 गेम इस रिज़ॉल्यूशन के अनुकूल है।
+1920x1080 का उपयोग केवल तभी करें जब गेम इसका समर्थन करता हो।
+इम्यूलेशन बग के कारण शायद ही कभी कुछ गेम केवल 480p जैसे कम रिज़ॉल्यूशन पर ही प्रस्तुत होंगे।</string>
+    <string name="core_help_video_resolution_scale" formatted="false">गेम के रिज़ॉल्यूशन को दिए गए प्रतिशत के आधार पर मापता है।
+आधार रिज़ॉल्यूशन हमेशा 1280x720 होता है।
+यदि आप सामान्य रिज़ॉल्यूशन विकल्पों का उपयोग करना चाहते हैं तो इस मान को 100% पर सेट करें।
+100% से कम मान आमतौर पर प्रदर्शन में सुधार नहीं करेंगे।</string>
+    <string name="core_help_video_screen_size_in_inches" formatted="false">3डी स्टीरियो रेंडरिंग मोड सेट करता है (केवल 720p के डिफ़ॉल्ट रिज़ॉल्यूशन के साथ कस्टम कॉन्फ़िगरेशन में उपलब्ध है)।
+एनाग्लिफ़ प्रत्येक आंख के लिए अलग-अलग रंगों का उपयोग करता है, जिसे बाद में कुछ चश्मे से फ़िल्टर किया जा सकता है।
+साइड-बाय-साइड आमतौर पर वीआर व्यूअर ऐप्स द्वारा समर्थित है।
+ओवर-अंडर मूल स्टीरियो आउटपुट के करीब है, लेकिन आमतौर पर कम समर्थित है।</string>
+    <string name="core_help_input_output_load_sdl_gamecontroller_mappings" formatted="false">बेहतर गेमपैड संगतता के लिए एसडीएल गेमकंट्रोलर डेटाबेस लोड करता है। केवल एसडीएल पैड हैंडलर में उपयोग किया जाता है।</string>
+    <string name="core_help_core_set_daz_and_ftz" formatted="false">एसएसई संचालन में त्रुटियों को डीबग करने के लिए विशेष एमएक्ससीएसआर झंडे सेट करता है।
+सटीकता की कीमत पर पीपीयू प्रदर्शन में तेजी लाता है।</string>
+    <string name="core_help_video_shader_compiler_threads" formatted="false">शेडर कंपाइलर बैकएंड के लिए उपयोग किए जाने वाले थ्रेड्स की संख्या।
+केवल तभी प्रभाव पड़ता है जब शेडर मोड को एसिंक्रोनस मोड में से एक पर सेट किया जाता है।</string>
+    <string name="core_help_video_shader_loading_dialog_blur_effect_strength" formatted="false">नेटिव शेडर लोडिंग डायलॉग की पृष्ठभूमि छवि धुंधला प्रभाव शक्ति को बदलता है।
+इसका उपयोग पठनीयता और/या सौंदर्यशास्त्र में सुधार के लिए किया जा सकता है।</string>
+    <string name="core_help_video_shader_loading_dialog_darkening_effect_strength" formatted="false">नेटिव शेडर लोडिंग डायलॉग की बैकग्राउंड इमेज डार्कनिंग इफ़ेक्ट स्ट्रेंथ को बदल देता है।
+इसका उपयोग पठनीयता और/या सौंदर्यशास्त्र में सुधार के लिए किया जा सकता है।</string>
+    <string name="core_help_video_shader_loading_dialog_allow_custom_background" formatted="false">नेटिव शेडर लोडिंग डायलॉग/लोडिंग स्क्रीन के दौरान एक पृष्ठभूमि छवि दिखाता है।
+डिफ़ॉल्ट रूप से प्रयुक्त छवि /PS3_GAME/PIC1.PNG होगी।</string>
+    <string name="core_help_video_shader_mode" formatted="false">यह अनुशंसित विकल्प है.
+यदि कैश में कोई शेडर नहीं मिलता है, तो इस शेडर के संकलित होने तक उसके लिए कुछ भी प्रस्तुत नहीं किया जाएगा।
+आपको ग्राफ़िक्स पॉप-इन का अनुभव हो सकता है.</string>
+    <string name="core_help_video_shader_precision" formatted="false">उत्पन्न शेडर्स के परिशुद्धता स्तर को नियंत्रित करता है। कम परिशुद्धता हार्डवेयर के आधार पर बहुत तेज़ कोड उत्पन्न करती है, लेकिन कभी-कभी मामूली दृश्य गड़बड़ियां या झिलमिलाहट उत्पन्न कर सकती है।</string>
+    <string name="core_help_miscellaneous_show_analog_limiter_toggle_hint" formatted="false">नेटिव ओवरले का उपयोग करके एनालॉग लिमिटर टॉगल संकेत दिखाता है।</string>
+    <string name="core_help_miscellaneous_show_autosave_autoload_hint" formatted="false">नेटिव ओवरले का उपयोग करके ऑटोसेव/ऑटोलोड संकेत दिखाता है।</string>
+    <string name="core_help_miscellaneous_show_capture_hints" formatted="false">मूल ओवरले का उपयोग करके स्क्रीनशॉट और रिकॉर्डिंग संकेत दिखाता है।</string>
+    <string name="core_help_miscellaneous_show_fatal_error_hints" formatted="false">मूल ओवरले का उपयोग करके घातक त्रुटि संकेत दिखाता है।</string>
+    <string name="core_help_miscellaneous_show_mouse_and_keyboard_toggle_hint" formatted="false">देशी ओवरले का उपयोग करके माउस और कीबोर्ड टॉगल संकेत दिखाता है।</string>
+    <string name="core_help_input_output_show_move_cursor" formatted="false">पीएस मूव इनपुट की कच्ची स्थिति दिखाता है।
+यह कैलिब्रेशन स्क्रीन के दौरान बहुत मददगार हो सकता है।</string>
+    <string name="core_help_miscellaneous_show_ppu_compilation_hint" formatted="false">देशी ओवरले का उपयोग करके \'पीपीयू मॉड्यूल संकलित करना\' संकेत दिखाता है।</string>
+    <string name="core_help_miscellaneous_show_pressure_intensity_toggle_hint" formatted="false">देशी ओवरले का उपयोग करके दबाव की तीव्रता टॉगल संकेत दिखाता है।</string>
+    <string name="core_help_miscellaneous_show_rpcn_popups" formatted="false">आरपीसीएन मित्र सूची पॉप-अप दिखाएं।</string>
+    <string name="core_help_miscellaneous_show_shader_compilation_hint" formatted="false">देशी ओवरले का उपयोग करके \'संकलन शेडर्स\' संकेत दिखाता है।</string>
+    <string name="core_help_miscellaneous_show_trophy_popups" formatted="false">ट्रॉफी अनलॉक होने पर ट्रॉफी पॉप-अप दिखाएं।</string>
+    <string name="core_help_miscellaneous_silence_all_logs" formatted="false">गेम शुरू होने के बाद कोई भी लॉग लिखना बंद करें। जब तक आपको विश्वास न हो कि यह आवश्यक है तब तक इसका उपयोग न करें।</string>
+    <string name="core_help_core_sleep_timers_accuracy" formatted="false">नींद की अवधि की सटीकता बदल जाती है।
+\'एज़ होस्ट\' अंतर्निहित ऑपरेटिंग सिस्टम की डिफ़ॉल्ट सटीकता का उपयोग करता है, जबकि \'ऑल टाइमर्स\' इसे सुधारने का प्रयास करता है।
+\'केवल यूस्लीप\' समायोजन को केवल यूस्लीप सिस्कल तक सीमित करता है।
+अप्रत्याशित तरीकों से प्रदर्शन को प्रभावित कर सकता है.</string>
+    <string name="core_help_core_spu_block_size" formatted="false">यह विकल्प एसपीयू विश्लेषक को नियंत्रित करता है, विशेष रूप से संकलित इकाइयों के आकार को। मेगा और गीगा मोड छोटी इकाइयों को एक साथ जोड़कर, संकलित इकाइयों की संख्या को कम करके लेकिन उनके आकार को बढ़ाकर प्रदर्शन में सुधार कर सकते हैं।
+अधिकतम अनुकूलता के लिए सुरक्षित मोड का उपयोग करें.</string>
+    <string name="core_help_core_spu_cache" formatted="false">चलाने से पहले एलएलवीएम रीकंपाइलर का उपयोग करके गेम के एसपीयू कोड को पुन: संकलित और कैश करता है जो अतिरिक्त स्टार्ट-अप समय जोड़ता है।
+यह बहुत अच्छी अनुकूलता वाला सबसे तेज़ विकल्प है।
+यदि आप समस्याओं का अनुभव करते हैं, तो ASMJIT रीकंपाइलर का उपयोग करें।</string>
+    <string name="core_help_core_spu_debug" formatted="false">एसपीयू लॉग बनाता है।
+केवल डेवलपर्स के लिए उपयोगी.
+इसका प्रयोग कदापि न करें.</string>
+    <string name="core_help_core_spu_decoder" formatted="false">चलाने से पहले एलएलवीएम रीकंपाइलर का उपयोग करके गेम के एसपीयू कोड को पुन: संकलित और कैश करता है जो अतिरिक्त स्टार्ट-अप समय जोड़ता है।
+यह बहुत अच्छी अनुकूलता वाला सबसे तेज़ विकल्प है।
+यदि आप समस्याओं का अनुभव करते हैं, तो ASMJIT रीकंपाइलर का उपयोग करें।</string>
+    <string name="core_help_core_spu_loop_detection" formatted="false">एसपीयू कर्नेल में लूप स्थितियों का पता लगाने का प्रयास करें और उन्हें शेड्यूलिंग संकेत के रूप में उपयोग करें।
+प्रदर्शन में सुधार करता है और CPU उपयोग को कम करता है।
+दुर्लभ मामलों में गंभीर ऑडियो हकलाहट का कारण बन सकता है।</string>
+    <string name="core_help_core_spu_profiler" formatted="false">सक्षम होने पर, एसपीयू प्रदर्शन को रनटाइम पर मापा जाता है।
+केवल डेवलपर के अनुरोध पर ही सक्षम करें क्योंकि सक्षम होने पर यह अपने आप ही प्रदर्शन को थोड़ा कम कर देता है।</string>
+    <string name="core_help_miscellaneous_start_games_in_fullscreen_mode" formatted="false">स्वचालित रूप से गेम विंडो को फ़ुलस्क्रीन में रखता है।
+फ़ुलस्क्रीन और विंडो मोड को टॉगल करने के लिए गेम विंडो पर डबल क्लिक करें या Alt+Enter दबाएँ।</string>
+    <string name="core_help_miscellaneous_automatically_start_games_after_boot" formatted="false">जब तक आप डेवलपर न हों, इसे सक्षम रहने दें।</string>
+    <string name="core_help_savestate_start_paused" formatted="false">जब यह मोड चालू होता है, तो सेवस्टेट्स को पहले फ्रेम पर लोड और रोका जाता है।
+यह खिलाड़ियों को तुरंत एक्शन में आए बिना गेमप्ले के लिए तैयारी करने की अनुमति देता है।</string>
+    <string name="core_help_video_3d_display_enabled" formatted="false">3डी स्टीरियो रेंडरिंग मोड सेट करता है (केवल 720p के डिफ़ॉल्ट रिज़ॉल्यूशन के साथ कस्टम कॉन्फ़िगरेशन में उपलब्ध है)।
+एनाग्लिफ़ प्रत्येक आंख के लिए अलग-अलग रंगों का उपयोग करता है, जिसे बाद में कुछ चश्मे से फ़िल्टर किया जा सकता है।
+साइड-बाय-साइड आमतौर पर वीआर व्यूअर ऐप्स द्वारा समर्थित है।
+ओवर-अंडर मूल स्टीरियो आउटपुट के करीब है, लेकिन आमतौर पर कम समर्थित है।</string>
+    <string name="core_help_video_3d_display_mode" formatted="false">3डी स्टीरियो रेंडरिंग मोड सेट करता है (केवल 720p के डिफ़ॉल्ट रिज़ॉल्यूशन के साथ कस्टम कॉन्फ़िगरेशन में उपलब्ध है)।
+एनाग्लिफ़ प्रत्येक आंख के लिए अलग-अलग रंगों का उपयोग करता है, जिसे बाद में कुछ चश्मे से फ़िल्टर किया जा सकता है।
+साइड-बाय-साइड आमतौर पर वीआर व्यूअर ऐप्स द्वारा समर्थित है।
+ओवर-अंडर मूल स्टीरियो आउटपुट के करीब है, लेकिन आमतौर पर कम समर्थित है।</string>
+    <string name="core_help_video_stretch_to_display_area" formatted="false">पहलू अनुपात को ओवरराइड करता है और छवि को पूर्ण प्रदर्शन क्षेत्र तक फैलाता है।</string>
+    <string name="core_help_video_strict_rendering_mode" formatted="false">एपीआई विनिर्देश का कड़ाई से अनुपालन लागू करता है।
+इसके परिणामस्वरूप कुछ खेलों में प्रदर्शन में गिरावट आ सकती है।
+गायब ग्राफिक्स और झिलमिलाहट के दुर्लभ मामलों को हल कर सकता है।
+यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
+    <string name="core_help_video_strict_texture_flushing" formatted="false">उन स्थितियों में भी बनावट को नष्ट करने पर मजबूर करता है जहां यह आवश्यक/सही नहीं है। दृश्य कलाकृतियों के कारण जाना जाता है, लेकिन कुछ बनावट कैश समस्याओं को डीबग करने के लिए उपयोगी है।</string>
+    <string name="core_help_savestate_suspend_emulation_savestate_mode" formatted="false">जब यह मोड चालू होता है, तो सहेजते समय इम्यूलेशन बाहर निकल जाता है और सेवस्टेट फ़ाइल लोड होने के बाद छिप जाती है, जिससे RPCS3 द्वारा पुन: उपयोग को रोका जा सकता है।
+यह मोड इम्यूलेशन के हाइबरनेशन की तरह है: यदि आप गेम खेलते समय सेवस्टेट्स का उपयोग करके धोखा देने में सक्षम नहीं होना चाहते हैं, तो इस मोड का उपयोग करने पर विचार करें।
+ध्यान दें कि सेवस्टेट फ़ाइल पूरी तरह से ख़त्म नहीं हुई है, बस RPCS3 द्वारा अनदेखा कर दिया गया है। यदि आवश्यक हो तो आप इसे मैन्युअल रूप से पुनः लॉन्च कर सकते हैं।</string>
+    <string name="core_help_video_texture_lod_bias_addend" formatted="false">बनावट नमूनाकरण सटीकता बदलता है। (छोटे बदलावों का बड़ा असर होता है।)
+यदि आप अनिश्चित हैं तो -12 से +12 की सीमा के बाहर मानों का उपयोग करने से बचें।
+अधिकांश उपयोग के मामलों के लिए -3 से +3 काफी है</string>
+    <string name="core_help_core_thread_scheduler_mode" formatted="false">नियंत्रित करें कि RPCS3 आपके सिस्टम के थ्रेड्स का उपयोग कैसे करता है।
+प्रत्येक विकल्प काफी हद तक गेम और आपके सीपीयू पर निर्भर करता है। यह पता लगाने के लिए कि कौन सा विकल्प सबसे अच्छा प्रदर्शन करता है, प्रत्येक विकल्प को आज़माने की अनुशंसा की जाती है।
+12 थ्रेड से कम वाले सीपीयू पर थ्रेड शेड्यूलर को बदलना समर्थित नहीं है।</string>
+    <string name="core_help_system_time_format" formatted="false">PS3 का समय प्रारूप चुनें।</string>
+    <string name="core_help_audio_time_stretching_threshold" formatted="false">बफर भरण स्तर (प्रतिशत में) जिसके नीचे टाइम स्ट्रेचिंग शुरू हो जाएगी।</string>
+    <string name="core_help_input_output_turntable_emulated_controller" formatted="false">डीजे हीरो टर्नटेबल नियंत्रक समर्थन।
+यदि गेम को डीजे हीरो टर्नटेबल नियंत्रकों की आवश्यकता है और आपके पास वास्तविक टर्नटेबल नियंत्रक नहीं हैं, तो 1 या 2 नियंत्रकों का चयन करें।
+यदि गेम में डुअलशॉक के लिए समर्थन है या यदि आपके पास वास्तविक टर्नटेबल नियंत्रक हैं तो नल का चयन करें।
+एक वास्तविक टर्नटेबल नियंत्रक का उपयोग एक अनुकरणीय टर्नटेबल नियंत्रक के रूप में एक ही समय में किया जा सकता है।</string>
+    <string name="core_help_miscellaneous_use_native_user_interface" formatted="false">गेम विंडो के भीतर देशी HUD के उपयोग को सक्षम बनाता है जो गेम नियंत्रकों के साथ इंटरैक्ट कर सकता है।
+अक्षम होने पर, इसके स्थान पर नियमित Qt संवाद का उपयोग किया जाता है।
+वर्तमान में, ऑन-स्क्रीन कीबोर्ड केवल अंग्रेजी कुंजी लेआउट का समर्थन करता है।</string>
+    <string name="core_help_video_vulkan_use_re_bar_for_gpu_uploads" formatted="false">सक्षम होने पर, वल्कन समय-संवेदनशील डेटा के जीपीयू अपलोड के लिए पीसीआई-ई आकार बदलने योग्य बार एड्रेस स्पेस का उपयोग करने का प्रयास करेगा।
+बेस फ़्रेमरेट कम होने पर यह NVIDIA कार्ड पर बड़े पैमाने पर प्रदर्शन जीतता है।
+बहुत अधिक फ़्रेमरेट वाले गेम के लिए, इस विकल्प के परिणामस्वरूप सभी GPU विक्रेताओं का प्रदर्शन ख़राब हो सकता है।</string>
+    <string name="core_help_miscellaneous_use_recursive_scan" formatted="false">चयनित फ़ोल्डर से गेम स्कैन करते समय सबफ़ोल्डर्स पर पुनरावर्ती स्कैन का उपयोग सक्षम बनाता है।
+अक्षम होने पर, गेम केवल चयनित फ़ोल्डर पर स्कैन किए जाते हैं।</string>
+    <string name="core_help_video_vblank_ntsc_fixup" formatted="false">59.94Hz जैसे मानों के लिए VBLANK की दर को 1000/1001 से गुणा करता है।
+रिदम गेम स्पेस चैनल 5 भाग 2 को ठीक करने के लिए जाना जाता है</string>
+    <string name="core_help_video_vblank_rate" formatted="false">एमुलेटर द्वारा भेजे जाने वाले वर्टिकल ब्लैंकिंग सिग्नल की आवृत्ति को समायोजित करता है।
+घटनाओं के समय को प्रभावित करता है जो इन संकेतों पर निर्भर करता है।</string>
+    <string name="core_help_video_vsync_mode" formatted="false">फटने को खत्म करने के लिए लंबवत सिंक्रनाइज़ेशन सक्षम करता है।
+अनुकूली मोड - प्रदर्शन को बनाए रखना पसंद करता है। गेम के फ़्रेमरेट को कम करने से बचने के लिए यह फ़्रेम को छोड़ सकता है या फाड़ भी सकता है।
+पूर्ण मोड - प्रदर्शन कम होने पर भी फाड़ने की अनुमति नहीं है। यह मोड डिफ़ॉल्ट रूप से आपके फ़्रेमरेट को डिस्प्ले की ताज़ा दर तक सीमित कर देगा जब तक कि ड्राइवर नियंत्रण कक्ष में ओवरराइड न हो जाए।</string>
+    <string name="core_help_video_vulkan_adapter" formatted="false">मल्टी जीपीयू सिस्टम पर वल्कन का उपयोग करते समय आरपीसीएस3 में किस जीपीयू का उपयोग करना है इसका चयन करें।
+ओपनजीएल का उपयोग करते समय इसकी आवश्यकता नहीं है।</string>
+    <string name="core_help_video_vulkan_asynchronous_queue_scheduler" formatted="false">यह निर्धारित करता है कि एसिंक्रोनस स्ट्रीमिंग का उपयोग करते समय GPU एसिंक कंप्यूट नौकरियों को कैसे शेड्यूल किया जाए।
+कुछ सीपीयू ओवरहेड की कीमत पर अधिक विशिष्टता अनुरूप व्यवहार के लिए \'सुरक्षित\' मोड का उपयोग करें। यह सेटिंग सभी डिवाइस के साथ काम करती है.
+तेज़ लेकिन हैकी संस्करण का उपयोग करने के लिए \'फास्ट\' का उपयोग करें। GPU हैंग होने के कारण यह विकल्प NVIDIA GPU के लिए आंतरिक रूप से अक्षम है।</string>
+    <string name="core_help_video_vulkan_asynchronous_texture_streaming" formatted="false">एसिंक्रोनस कंप्यूट का उपयोग करके 3डी रेंडरिंग के समानांतर जीपीयू में टेक्सचर स्ट्रीम करें।
+अतिरिक्त हेडरूम वाले अधिक शक्तिशाली जीपीयू पर प्रदर्शन में सुधार कर सकते हैं।
+केवल वल्कन रेंडरर के साथ काम करता है और यदि आपके पास एक सक्षम सीपीयू है तो एमटीआरएसएक्स सक्षम होने से बहुत लाभ होता है।</string>
+    <string name="core_help_miscellaneous_window_title_format" formatted="false">गेम विंडो शीर्षक कॉन्फ़िगर करें.
+इसे बदलने और/या फ़्रेमरेट जोड़ने से खराब या पुराने रिकॉर्डिंग सॉफ़्टवेयर को RPCS3 पर ध्यान नहीं दिया जा सकता है।</string>
+    <string name="core_help_video_write_color_buffers" formatted="false">यदि आपको गेम में गायब ग्राफिक्स या टूटी हुई रोशनी मिलती है तो इस विकल्प को सक्षम करें।
+प्रदर्शन ख़राब हो सकता है और कुछ मामलों में हकलाहट आ सकती है।
+राक्षसों की आत्माओं के लिए आवश्यक.</string>
+    <string name="core_help_video_write_depth_buffer" formatted="false">वीएम मेमोरी में गहराई बफर मान लिखता है।</string>
+    <string name="core_help_core_spu_xfloat_accuracy" formatted="false">एसपीयू फ्लोट वैक्टर प्रोसेसिंग की सटीकता को नियंत्रित करें।
+प्रदर्शन की कीमत पर विभिन्न खेलों में बग ठीक करता है।
+यह सेटिंग केवल तभी लागू होती है जब SPU डिकोडर को डायनामिक या LLVM पर सेट किया जाता है।</string>
+    <string name="core_label_chinese_simplified">चीनी (सरलीकृत)</string>
+    <string name="core_label_chinese_traditional">चीनी (पारंपरिक)</string>
+    <string name="core_label_chinese_keyboard_simplified">चीनी कीबोर्ड (सरलीकृत)</string>
+    <string name="core_label_chinese_keyboard_traditional">चीनी कीबोर्ड (पारंपरिक)</string>
+    <string name="core_label_danish">डेनिश</string>
+    <string name="core_label_danish_keyboard">डेनिश कीबोर्ड</string>
+    <string name="core_label_dutch">डच</string>
+    <string name="core_label_dutch_keyboard">डच कीबोर्ड</string>
+    <string name="core_label_english_uk">अंग्रेज़ी (यूके)</string>
+    <string name="core_label_english_us">अंग्रेज़ी (यूएस)</string>
+    <string name="core_label_english_keyboard_uk_standard">अंग्रेजी कीबोर्ड (यूके मानक)</string>
+    <string name="core_label_english_keyboard_us_standard">अंग्रेजी कीबोर्ड (यूएस मानक)</string>
+    <string name="core_label_finnish">फ़िनिश</string>
+    <string name="core_label_finnish_keyboard">फिनिश कीबोर्ड</string>
+    <string name="core_label_french">फ़्रेंच</string>
+    <string name="core_label_french_keyboard">फ़्रेंच कीबोर्ड</string>
+    <string name="core_label_french_keyboard_belgium">फ़्रेंच कीबोर्ड (बेल्जियम)</string>
+    <string name="core_label_french_keyboard_canada">फ़्रेंच कीबोर्ड (कनाडा)</string>
+    <string name="core_label_french_keyboard_switzerland">फ़्रेंच कीबोर्ड (स्विट्ज़रलैंड)</string>
+    <string name="core_label_german">जर्मन</string>
+    <string name="core_label_german_keyboard">जर्मन कीबोर्ड</string>
+    <string name="core_label_german_keyboard_switzerland">जर्मन कीबोर्ड (स्विट्जरलैंड)</string>
+    <string name="core_label_italian">इटालियन</string>
+    <string name="core_label_italian_keyboard">इतालवी कीबोर्ड</string>
+    <string name="core_label_japanese">जापानी</string>
+    <string name="core_label_japanese_keyboard">जापानी कीबोर्ड</string>
+    <string name="core_label_japanese_keyboard_kana_state">जापानी कीबोर्ड (काना राज्य)</string>
+    <string name="core_label_korean">कोरियाई</string>
+    <string name="core_label_korean_keyboard">कोरियाई कीबोर्ड</string>
+    <string name="core_label_norwegian">नॉर्वेजियन</string>
+    <string name="core_label_norwegian_keyboard">नॉर्वेजियन कीबोर्ड</string>
+    <string name="core_label_other">अन्य</string>
+    <string name="core_label_polish">पोलिश</string>
+    <string name="core_label_polish_keyboard">पोलिश कीबोर्ड</string>
+    <string name="core_label_portuguese_brazil">पुर्तगाली (ब्राजील)</string>
+    <string name="core_label_portuguese_portugal">पुर्तगाली (पुर्तगाल)</string>
+    <string name="core_label_portuguese_keyboard_brazil">पुर्तगाली कीबोर्ड (ब्राज़ील)</string>
+    <string name="core_label_portuguese_keyboard_portugal">पुर्तगाली कीबोर्ड (पुर्तगाल)</string>
+    <string name="core_label_russian">रूसी</string>
+    <string name="core_label_russian_keyboard">रूसी कीबोर्ड</string>
+    <string name="core_label_scea">एससीईए</string>
+    <string name="core_label_scee">एससीईई</string>
+    <string name="core_label_sceh">एससीईएच</string>
+    <string name="core_label_scej">एससीईजे</string>
+    <string name="core_label_scek">एससीईके</string>
+    <string name="core_label_sch">एस.सी.एच</string>
+    <string name="core_label_spanish">स्पैनिश</string>
+    <string name="core_label_spanish_keyboard">स्पैनिश कीबोर्ड</string>
+    <string name="core_label_swedish">स्वीडिश</string>
+    <string name="core_label_swedish_keyboard">स्वीडिश कीबोर्ड</string>
+    <string name="core_label_turkish">तुर्की</string>
+    <string name="core_label_turkish_keyboard">तुर्की कीबोर्ड</string>
+    <string name="core_help_video_display_aspect_override" formatted="false">अंतिम प्रदर्शन पक्षानुपात को हज़ारवें भाग में ओवरराइड करता है (1778 = 16:9, 1333 = 4:3)। गेम अनुपात का उपयोग करने के लिए इसे 0 पर सेट करें। इसका उपयोग केवल असामान्य फोन या टैबलेट डिस्प्ले को फिट करने के लिए करें; गलत मान छवि को फैलाता है.</string>
+    <string name="core_help_video_shader_preset_path" formatted="false">रेट्रोआर्च .slangp शेडर प्रीसेट के लिए पूर्ण पथ का उपयोग तब किया जाता है जब आउटपुट स्केलिंग मोड को शेडर श्रृंखला पर सेट किया जाता है। सामान्य आउटपुट के लिए इसे खाली छोड़ दें। केवल संगत प्रीसेट का उपयोग करें; एक अमान्य पथ एक सादे छवि पर वापस आ जाता है।</string>
+
+    <string name="core_label_async_shader_recompiler">एसिंक्रोनस शेडर रीकंपाइलर</string>
+    <string name="core_label_async_with_shader_interpreter">शेडर इंटरप्रेटर के साथ एसिंक्रोनस</string>
+    <string name="core_label_forced">अनिवार्य</string>
+    <string name="core_label_interpreter">इंटरप्रेटर</string>
+    <string name="core_label_interpreter_legacy">इंटरप्रेटर (पुराना)</string>
+    <string name="core_label_llvm_recompiler_legacy">LLVM रीकंपाइलर (पुराना)</string>
+    <string name="core_label_shader_recompiler">शेडर रीकंपाइलर</string>
+    <string name="core_setting_search">विकल्प खोजें</string>
+    <string name="core_setting_no_results">कोई मिलता-जुलता विकल्प नहीं</string>
+
+
+    <plurals name="library_game_count" tools:ignore="MissingTranslation">
+        <item quantity="one">कुल %1$d गेम</item>
+        <item quantity="other">कुल %1$d गेम</item>
+    </plurals>
+
+<plurals name="install_dialog_items_progress" tools:ignore="MissingTranslation">
+        <item quantity="one">%2$d में से %1$d आइटम पूरा हुआ</item>
+        <item quantity="other">%2$d में से %1$d आइटम पूरे हुए</item>
+    </plurals>
+
+</resources>
