@@ -34,6 +34,7 @@
 #include "Emu/system_progress.hpp"
 #include "Emu/system_utils.hpp"
 #include "Emu/vfs_config.h"
+#include "Emu/VFS.h"
 #include "Input/ds3_pad_handler.h"
 #include "Input/ds4_pad_handler.h"
 #include "Input/dualsense_pad_handler.h"
@@ -2049,6 +2050,37 @@ private:
     // Load() calls this immediately before ppu_load_exec for the same reason.
     vm::init();
     auto rootPath = std::filesystem::path(workload.path);
+
+    // The previous workload ended with g_fxo->reset(), which destroyed the
+    // vfs_manager along with everything else; the vsh workload of a fresh
+    // install is the first thing to run, so it only worked by accident (the
+    // manager was still alive from core startup). vfs::mount() lazily
+    // re-creates it, so re-mount the standard devices the way
+    // Emulator::Init() does, or ppu_load_exec's vfs::get("/dev_flash/")
+    // check in ppu_check_patch_spu_images aborts the process.
+    {
+      const std::string emu_dir = rpcs3::utils::get_emu_dir();
+      const std::string dev_hdd0 = g_cfg_vfs.get(g_cfg_vfs.dev_hdd0, emu_dir);
+      const std::string dev_flash = g_cfg_vfs.get_dev_flash();
+
+      vfs::mount("/dev_hdd0", dev_hdd0);
+      vfs::mount("/dev_flash", dev_flash);
+      vfs::mount("/dev_flash2", g_cfg_vfs.get_dev_flash2());
+      vfs::mount("/dev_flash3", g_cfg_vfs.get_dev_flash3());
+      vfs::mount("/app_home",
+                 g_cfg_vfs.app_home.to_string().empty()
+                     ? rootPath.string() + "/"
+                     : g_cfg_vfs.get(g_cfg_vfs.app_home, emu_dir));
+      vfs::mount("/dev_bdvd", g_cfg_vfs.get(g_cfg_vfs.dev_bdvd, emu_dir));
+
+      for (const auto &[key, value] : g_cfg_vfs.dev_usb.get_map()) {
+        const cfg::device_info usb_info =
+            g_cfg_vfs.get_device(g_cfg_vfs.dev_usb, key, emu_dir);
+        if (fs::is_dir(usb_info.path)) {
+          vfs::mount(key, usb_info.path);
+        }
+      }
+    }
 
     if (is_vsh) {
       rootPath = g_cfg_vfs.get_dev_flash() + "sys/external/";
