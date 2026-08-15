@@ -3496,7 +3496,65 @@ struct jit_core_allocator
 
 	static s16 limit()
 	{
-		return static_cast<s16>(std::min<s32>(0x7fff, utils::get_thread_count()));
+		const s32 by_cores = std::min<s32>(0x7fff, utils::get_thread_count());
+
+#ifdef __ANDROID__
+		// Bound the compile workers by RAM as well as by core count.
+		//
+		// Each LLVM PPU compile worker carries its own context, module and relocation
+		// buffers, which run to hundreds of MB on a large module. Upstream sizes this
+		// purely on thread count, which is correct on a desktop and an out-of-memory
+		// abort on a handheld: eight workers on a 7 GB device died in
+		// llvm::report_bad_alloc_error partway through compiling a big title, taking
+		// the whole process with it (SIGABRT, no recovery).
+		//
+		// Roughly one worker per 1.5 GB of physical memory, never below one. The
+		// emulator still needs several GB of that for the PS3 address space, the RSX
+		// and its caches, so this is deliberately conservative. A user who wants more
+		// can still raise Max LLVM Compile Threads; this only caps the automatic
+		// "use every core" default.
+		// Budgeted against free memory where the platform reports it, not just total.
+		//
+		// One worker per 1.5GB of total RAM was still too many. A 7.3GB device sat at
+		// 76MB free with the emulator resident, and clearing the shader cache forces every
+		// module to recompile at once: four workers died in scudo with "internal map
+		// failure (NO MEMORY) requesting 4KB" inside RuntimeDyldELF relocation processing,
+		// aborting the process outright.
+		//
+		// Total memory says nothing about what is actually available on a phone that is
+		// also holding the launcher, the browser and whatever else. Where meminfo can be
+		// read, size against that and keep a 1.5GB floor for the emulator itself; fall back
+		// to a more conservative slice of total otherwise.
+		if (const u64 avail_mem = utils::get_avail_memory())
+		{
+			// Reserve for the emulator first, then budget what is left per worker.
+			//
+			// Both numbers were too optimistic before. Skate 3 still aborted in
+			// llvm::report_bad_alloc_error with 4.6GB reported available, where the previous
+			// figures allowed three workers: a single large PPU module can take well over a
+			// gigabyte through MCJIT and relocation processing, and the reading is taken
+			// before the emulator has mapped the PS3 address space, so the memory counted
+			// here is partly already spoken for.
+			//
+			// 2GB reserved, 1.5GB per worker. On a 7GB phone with 4.6GB free that is one
+			// worker, which compiles more slowly but finishes; three was fast right up until
+			// it killed the process, and a user cannot boot the game at all in that state.
+			constexpr u64 emulator_reserve = 2048ull * 1024 * 1024;
+			constexpr u64 per_worker = 1536ull * 1024 * 1024;
+
+			const u64 spare = (avail_mem > emulator_reserve) ? avail_mem - emulator_reserve : 0;
+			const s32 by_memory = static_cast<s32>(spare / per_worker);
+			return static_cast<s16>(std::max<s32>(1, std::min<s32>(by_cores, by_memory)));
+		}
+
+		if (const u64 total_mem = utils::get_total_memory())
+		{
+			const s32 by_memory = static_cast<s32>(total_mem / (3072ull * 1024 * 1024));
+			return static_cast<s16>(std::max<s32>(1, std::min<s32>(by_cores, by_memory)));
+		}
+#endif
+
+		return static_cast<s16>(by_cores);
 	}
 };
 
@@ -4721,7 +4779,62 @@ bool ppu_initialize(const ppu_module<lv2_obj>& info, bool check_only, u64 file_s
 	// each additional split of JIT instance results in a downgraded version of around (100% / N-1th) - (100% / Nth) percent of instructions
 	// where N is the total amunt of JIT instances
 	// Subject to change
+#ifdef __ANDROID__
+	// Lowered here, because the memory this trades away is the difference between booting
+	// a large title and being killed partway through compiling it.
+	//
+	// The module part carrying jit_bounds also builds the symbol resolver, and that spans
+	// every function across its whole JIT instance, not just its own: one LLVM Function
+	// declaration and one constant-array entry each, then a relocation per entry through
+	// MCJIT. Batman: Arkham City analyses to roughly 457k functions, and at 100 modules per
+	// instance the first resolver covered all of them in a single module. It added 2.3GB in
+	// seventeen seconds on top of a 4GB baseline (RAM 4010MB -> 6323MB, log ending
+	// mid-compile with no tombstone) and the kernel took the process on a 7GB device. Every
+	// other module in that run reported between 2800 and 4900 functions.
+	//
+	// The resolver's cost is linear in the functions it spans, so splitting the group splits
+	// the peak. The cost is the disadvantage described above and nothing else, so the group
+	// is kept as large as the device can afford rather than lowered across the board:
+	// splitting a title that was never going to run out of memory buys nothing and gives up
+	// reachable branches for it.
+	//
+	// Two thresholds matter. A title whose parts all fit in one group gets a single JIT
+	// instance at any setting at or above its part count, so anything below the limit is
+	// completely unaffected: same instances, same codegen. And when there is memory to
+	// spare this stays at upstream's 100, so a device with room behaves exactly as before.
+	const u32 c_moudles_per_jit = []() -> u32
+	{
+		// Measured on the Arkham City run: 2.3GB across roughly 457k functions, so about
+		// 5KB of LLVM per function once the declaration, the constant-array entry and the
+		// relocation are counted. Module parts in that same run held 2800 to 4900 functions
+		// each, so 4000 is the figure used to turn a function budget into a module count.
+		constexpr u64 c_resolver_bytes_per_func = 5120;
+		constexpr u64 c_funcs_per_module = 4000;
+
+		const u64 avail_mem = utils::get_avail_memory();
+
+		if (!avail_mem)
+		{
+			// No reading to size against. Take the conservative group rather than assume.
+			return 25;
+		}
+
+		// A quarter of what is free. The emulator still needs the rest for the PS3 address
+		// space, the RSX and the modules already compiled, and the reading is taken before
+		// most of that is mapped.
+		//
+		// The ceiling is what a full group of 100 costs, so a device with memory to spare
+		// lands on upstream's value and is not split at all; there is no point budgeting
+		// past the point where nothing would be split anyway.
+		constexpr u64 c_full_group_cost = 100 * c_funcs_per_module * c_resolver_bytes_per_func;
+		const u64 budget = std::min<u64>(avail_mem / 4, c_full_group_cost);
+		const u64 by_memory = budget / c_resolver_bytes_per_func / c_funcs_per_module;
+
+		return static_cast<u32>(std::clamp<u64>(by_memory, 8, 100));
+	}();
+#else
 	constexpr u32 c_moudles_per_jit = 100;
+#endif
 
 	std::shared_ptr<std::pair<u32, u32>> local_jit_bounds = std::make_shared<std::pair<u32, u32>>(u32{umax}, 0);
 
@@ -5421,6 +5534,13 @@ bool ppu_initialize(const ppu_module<lv2_obj>& info, bool check_only, u64 file_s
 					{
 						ppu_log.success("LLVM: Compiled module %s", obj_name);
 					}
+					else
+					{
+						// Not fatal on purpose. The loop increment below still runs, so this module
+						// is accounted for in the progress total and the boot completes; its
+						// functions simply have no compiled code and fall back to the interpreter.
+						ppu_log.error("LLVM: Module %s did not compile; its functions will be interpreted", obj_name);
+					}
 				}
 
 				core_lock.unlock();
@@ -5492,7 +5612,7 @@ bool ppu_initialize(const ppu_module<lv2_obj>& info, bool check_only, u64 file_s
 		jit_mod.symbol_resolvers.resize(jits.size());
 	}
 
-	bool failed_to_load = false;
+	usz failed_module_count = 0;
 	{
 		if (!is_being_used_in_emulation || (cpu ? cpu->state.all_of(cpu_flag::exit) : Emu.IsStopped()))
 		{
@@ -5520,21 +5640,29 @@ bool ppu_initialize(const ppu_module<lv2_obj>& info, bool check_only, u64 file_s
 				break;
 			}
 
-			if (!failed_to_load && !jits[mod_index / c_moudles_per_jit]->add(cache_path + obj_name))
+			// One module failing no longer abandons the rest.
+			//
+			// This flag used to be sticky and also gated the add() above, so the FIRST object that
+			// would not load stopped every later module from even being attempted. With the
+			// compile side now surviving a module LLVM cannot codegen, that turned one bad module
+			// into a nearly-uncompiled game: Saint Seiya's failure sits at index 6 of 134, so 128
+			// modules were skipped and the title ran slower with the recompiler than with the
+			// interpreter (6fps vs 23fps reported on issue #25) -- the per-function fallback costs
+			// more than interpreting outright.
+			//
+			// Skipping only the module that failed is safe for the same reason excluded_funcs is:
+			// a guest function with no compiled code keeps its dispatcher entry and is interpreted.
+			// So the cost of a bad module is its own functions, not the whole executable.
+			if (!jits[mod_index / c_moudles_per_jit]->add(cache_path + obj_name))
 			{
-				ppu_log.error("LLVM: Failed to load module %s", obj_name);
-				failed_to_load = true;
+				ppu_log.error("LLVM: Failed to load module %s; its functions will be interpreted", obj_name);
+				failed_module_count++;
 			}
 
 			if (mod_index % increment_link_count_at == (link_workload.size() - 1) % increment_link_count_at)
 			{
 				// Incremenet 'pdone' Nth times where N is link workload size ceil-divided by increment_link_count_at
 				g_progr_pdone++;
-			}
-
-			if (failed_to_load)
-			{
-				continue;
 			}
 
 			if (!is_compiled)
@@ -5544,7 +5672,23 @@ bool ppu_initialize(const ppu_module<lv2_obj>& info, bool check_only, u64 file_s
 		}
 	}
 
-	if (failed_to_load || !is_being_used_in_emulation || (cpu ? cpu->state.all_of(cpu_flag::exit) : Emu.IsStopped()))
+	// Deliberately NOT bailing on a load failure any more.
+	//
+	// Everything below is what makes the modules that DID load usable: jit->fin() finalises them
+	// and the symbol resolvers are what wire the guest function table to the compiled code.
+	// Returning here left all of them loaded but unfinalised, so ONE module that could not be read
+	// cost the entire executable its recompiled code, not just its own functions. That is why
+	// Saint Seiya measured slower on the recompiler than on the interpreter.
+	//
+	// A module that failed is already absent from its jit, and its functions keep the dispatcher
+	// entry that interprets them, so finalising the rest is both correct and the whole point.
+	if (failed_module_count)
+	{
+		ppu_log.error("LLVM: %u of %u modules could not be loaded; those functions will be "
+			"interpreted, the rest are compiled as usual", failed_module_count, link_workload.size());
+	}
+
+	if (!is_being_used_in_emulation || (cpu ? cpu->state.all_of(cpu_flag::exit) : Emu.IsStopped()))
 	{
 		return compiled_new;
 	}

@@ -92,6 +92,22 @@ public:
 	atomic_t<u8> cached = false;
 	atomic_t<u8> logged = false;
 
+	// LLVM compilation ownership for this item.
+	//
+	// add_empty() returns an existing item when an identical program is re-registered,
+	// and the entry-point dedup in spu_llvm_recompiler::compile() passes when the
+	// entry is also identical. Without this state, N SPU threads hitting the same
+	// uncached code at the same address all compile the same item concurrently with
+	// independent LLVM instances, racing the `compiled` publication and trampoline
+	// rebuilds (observed wedging SPURS bring-up on cold boots).
+	//
+	// 0 = unclaimed, 1 = compiling, 2 = complete, 3 = failed.
+	// The first LLVM compiler claims 0 -> 1; late arrivals wait while 1, then return
+	// `compiled` (or null on failure). An item pre-inserted by spu_fast is still
+	// claimable by the first LLVM worker, preserving the asynchronous optimized
+	// replacement path on x86-64. u32: atomic wait/notify needs a 32-bit type here.
+	atomic_t<u32> llvm_compile_state = 0;
+
 	spu_item(spu_program&& data)
 		: data(std::move(data))
 	{
@@ -110,6 +126,12 @@ class spu_runtime
 
 	// Debug module output location
 	std::string m_cache_path;
+
+	// Directory backing the persistent SPU LLVM object cache. Empty when disabled.
+	// The directory NAME is the entire safety mechanism: llvm::ObjectCache matches purely
+	// on module name (the per-block program hash) and validates nothing else, so every input
+	// that can change emitted code must be folded into this path. See the spu_runtime ctor.
+	std::string m_obj_cache_path;
 
 public:
 	// Trampoline to spu_recompiler_base::dispatch
@@ -134,6 +156,13 @@ public:
 	const std::string& get_cache_path() const
 	{
 		return m_cache_path;
+	}
+
+	// Empty when the persistent object cache is off; callers must fall back to an
+	// uncached jit add() in that case.
+	const std::string& get_obj_cache_path() const
+	{
+		return m_obj_cache_path;
 	}
 
 	// Rebuild ubertrampoline for given identifier (first instruction)

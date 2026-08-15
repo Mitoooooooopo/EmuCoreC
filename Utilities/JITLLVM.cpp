@@ -238,6 +238,11 @@ struct MemoryManager1 : llvm::RTDyldMemoryManager
 	// May be a memory container internally
 	std::function<u64(const std::string&)> m_symbols_cement;
 
+#if defined(ARCH_ARM64)
+	// Code ranges allocated since the last finalizeMemory(), for icache maintenance
+	std::vector<std::pair<u8*, uptr>> m_code_ranges;
+#endif
+
 	MemoryManager1(std::function<u64(const std::string&)> symbols_cement = {}) noexcept
 		: m_symbols_cement(std::move(symbols_cement))
 	{
@@ -346,7 +351,17 @@ struct MemoryManager1 : llvm::RTDyldMemoryManager
 
 	u8* allocateCodeSection(uptr size, uint align, uint /*sec_id*/, llvm::StringRef /*sec_name*/) override
 	{
-		return allocate(code_ptr, m_code_mems, size, align, utils::protection::wx);
+		u8* const p = allocate(code_ptr, m_code_mems, size, align, utils::protection::wx);
+
+#if defined(ARCH_ARM64)
+		// Track for instruction-cache maintenance in finalizeMemory()
+		if (p)
+		{
+			m_code_ranges.emplace_back(p, size);
+		}
+#endif
+
+		return p;
 	}
 
 	u8* allocateDataSection(uptr size, uint align, uint /*sec_id*/, llvm::StringRef /*sec_name*/, bool is_ro) override
@@ -362,6 +377,16 @@ struct MemoryManager1 : llvm::RTDyldMemoryManager
 
 	bool finalizeMemory(std::string* = nullptr) override
 	{
+#if defined(ARCH_ARM64)
+		// See MemoryManager2::finalizeMemory(): RuntimeDyld relies on this callback
+		// for instruction-cache maintenance of freshly written code sections.
+		for (const auto& [p, size] : m_code_ranges)
+		{
+			asmjit::VirtMem::flushInstructionCache(p, size);
+		}
+
+		m_code_ranges.clear();
+#endif
 		return false;
 	}
 
@@ -380,6 +405,11 @@ struct MemoryManager2 : llvm::RTDyldMemoryManager
 	// First fallback for non-existing symbols
 	// May be a memory container internally
 	std::function<u64(const std::string&)> m_symbols_cement;
+
+#if defined(ARCH_ARM64)
+	// Code ranges allocated since the last finalizeMemory(), for icache maintenance
+	std::vector<std::pair<u8*, uptr>> m_code_ranges;
+#endif
 
 	MemoryManager2(std::function<u64(const std::string&)> symbols_cement = {}) noexcept
 		: m_symbols_cement(std::move(symbols_cement))
@@ -414,7 +444,17 @@ struct MemoryManager2 : llvm::RTDyldMemoryManager
 
 	u8* allocateCodeSection(uptr size, uint align, uint /*sec_id*/, llvm::StringRef /*sec_name*/) override
 	{
-		return jit_runtime::alloc(size, align, true);
+		u8* const p = jit_runtime::alloc(size, align, true);
+
+#if defined(ARCH_ARM64)
+		// Track for instruction-cache maintenance in finalizeMemory()
+		if (p)
+		{
+			m_code_ranges.emplace_back(p, size);
+		}
+#endif
+
+		return p;
 	}
 
 	u8* allocateDataSection(uptr size, uint align, uint /*sec_id*/, llvm::StringRef /*sec_name*/, bool /*is_ro*/) override
@@ -424,6 +464,19 @@ struct MemoryManager2 : llvm::RTDyldMemoryManager
 
 	bool finalizeMemory(std::string* = nullptr) override
 	{
+#if defined(ARCH_ARM64)
+		// RuntimeDyld calls finalizeMemory() after writing code and relies on it for
+		// instruction-cache maintenance. This was a no-op: freshly emitted code was
+		// never flushed, so other cores could execute stale icache contents for it.
+		// x86 has a coherent instruction cache and never noticed. The asmjit helper
+		// performs the required DC CVAU / IC IVAU broadcast sequence.
+		for (const auto& [p, size] : m_code_ranges)
+		{
+			asmjit::VirtMem::flushInstructionCache(p, size);
+		}
+
+		m_code_ranges.clear();
+#endif
 		return false;
 	}
 
@@ -565,6 +618,22 @@ std::string jit_compiler::cpu(std::string_view _cpu)
 			m_cpu = fallback_cpu_detection();
 		}
 
+#ifdef ARCH_ARM64
+		// Detection reads the MIDR of whichever core happens to be running, so on big.LITTLE it
+		// can name a small in-order core. JIT'd code runs on every core, so scheduling for the
+		// smallest one is the wrong default -- fall back to the same wide out-of-order baseline
+		// used when detection fails outright. Only the schedule/cost model is affected: the
+		// instruction set still comes from setMAttrs (HWCAP-gated), so this can never emit an
+		// illegal instruction. Ported from ouroboros420/rpcsx (cc3a18e29), widened to the
+		// A5xx little cores that modern SoCs actually ship.
+		if (m_cpu == "cortex-a34" || m_cpu == "cortex-a35" || m_cpu == "cortex-a53" ||
+			m_cpu == "cortex-a55" || m_cpu == "cortex-a510" || m_cpu == "cortex-a520")
+		{
+			jit_log.notice("CPU detection named a little core ('%s'); using cortex-a78 as the schedule baseline.", m_cpu);
+			m_cpu = "cortex-a78";
+		}
+#endif
+
 		if (m_cpu == "sandybridge" ||
 			m_cpu == "ivybridge" ||
 			m_cpu == "haswell" ||
@@ -701,6 +770,29 @@ jit_compiler::jit_compiler(const std::unordered_map<std::string, u64>& _link, st
 			fmt::throw_exception("LLVM Emergency Exit Invoked: '%s'", out);
 		}, nullptr);
 
+		// A separate handler from the fatal one -- LLVM installs and dispatches the two
+		// independently. Without this, an allocation failure inside LLVM (SmallVector growth
+		// while codegenning the enormous PPU symbol-resolver module, say) writes "LLVM ERROR:
+		// out of memory" to fd 2 -- which goes nowhere in an Android app -- and calls abort():
+		// a signal-6 death with nothing whatsoever in the log. Route it through the same
+		// recoverable path as the fatal handler, so a guarded compile survives and anything
+		// else at least says why it died. Allocating inside a bad-alloc handler is
+		// best-effort, but the failures here are huge single allocations, so a short log
+		// string still succeeds. Ported from ouroboros420/rpcsx (39a6a4c36).
+		llvm::remove_bad_alloc_error_handler();
+		llvm::install_bad_alloc_error_handler([](void*, const char* msg, bool)
+		{
+			const std::string_view out = msg ? msg : "";
+
+			if (g_llvm_fatal_message)
+			{
+				*g_llvm_fatal_message = out;
+				thread_ctrl::silent_exit();
+			}
+
+			fmt::throw_exception("LLVM Out Of Memory: '%s'", out);
+		}, nullptr);
+
 		return true;
 	}();
 
@@ -819,17 +911,26 @@ jit_compiler& jit_compiler::operator=(thread_state s) noexcept
 
 jit_compiler::~jit_compiler() noexcept
 {
+	if (m_poisoned)
+	{
+		jit_log.error("Abandoning poisoned LLVM execution engine (leaked to avoid a deadlock in ~MCJIT)");
+		static_cast<void>(m_engine.release());
+		static_cast<void>(m_context.release());
+	}
 }
 
 void jit_compiler::add(std::unique_ptr<llvm::Module> _module, const std::string& path)
 {
 	ObjectCache cache{path, this};
+
+	m_poisoned = true;
 	m_engine->setObjectCache(&cache);
 
 	const auto ptr = _module.get();
 	m_engine->addModule(std::move(_module));
 	m_engine->generateCodeForModule(ptr);
 	m_engine->setObjectCache(nullptr);
+	m_poisoned = false;
 
 	for (auto& func : ptr->functions())
 	{
@@ -851,10 +952,12 @@ bool jit_compiler::try_add(std::unique_ptr<llvm::Module> _module, const std::str
 		m_engine->generateCodeForModule(ptr);
 	}, error))
 	{
+		m_poisoned = true;
 		return false;
 	}
 
 	m_engine->setObjectCache(nullptr);
+	m_poisoned = false;
 
 	for (auto& func : ptr->functions())
 	{
@@ -868,8 +971,11 @@ bool jit_compiler::try_add(std::unique_ptr<llvm::Module> _module, const std::str
 void jit_compiler::add(std::unique_ptr<llvm::Module> _module)
 {
 	const auto ptr = _module.get();
+
+	m_poisoned = true;
 	m_engine->addModule(std::move(_module));
 	m_engine->generateCodeForModule(ptr);
+	m_poisoned = false;
 
 	for (auto& func : ptr->functions())
 	{
@@ -888,8 +994,11 @@ bool jit_compiler::try_add(std::unique_ptr<llvm::Module> _module, std::string& e
 		m_engine->generateCodeForModule(ptr);
 	}, error))
 	{
+		m_poisoned = true;
 		return false;
 	}
+
+	m_poisoned = false;
 
 	for (auto& func : ptr->functions())
 	{
@@ -948,15 +1057,24 @@ void jit_compiler::update_global_mapping(const std::string& name, u64 addr)
 
 void jit_compiler::fin()
 {
+	m_poisoned = true;
 	m_engine->finalizeObject();
+	m_poisoned = false;
 }
 
 bool jit_compiler::try_fin(std::string& error)
 {
-	return run_recoverable_llvm([&]()
+	if (!run_recoverable_llvm([&]()
 	{
 		m_engine->finalizeObject();
-	}, error);
+	}, error))
+	{
+		m_poisoned = true;
+		return false;
+	}
+
+	m_poisoned = false;
+	return true;
 }
 
 u64 jit_compiler::get(const std::string& name)
@@ -1033,13 +1151,13 @@ const char * fallback_cpu_detection()
 #ifdef ANDROID
 	static std::string s_result = []() -> std::string
 	{
+		// get_cpu_name() already returns a canonical LLVM processor name
 		std::string result = aarch64::get_cpu_name();
 		if (result.empty())
 		{
 			return "cortex-a78";
 		}
 
-		std::transform(result.begin(), result.end(), result.begin(), ::tolower);
 		return result;
 	}();
 
