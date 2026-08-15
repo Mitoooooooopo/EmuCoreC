@@ -78,8 +78,16 @@ class GameManagerViewModel(application: Application) : AndroidViewModel(applicat
     fun refresh(preferredTitleId: String? = _uiState.value.selectedTitleId) {
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
-            val games = gameRepository.loadInstalledGames(context)
-            val installedGpuDrivers = gpuDriverManager.listInstalledDrivers()
+            val games = runCatching { gameRepository.loadInstalledGames(context) }
+                .getOrElse { error ->
+                    Log.e(TAG, "Game library scan failed", error)
+                    emptyList()
+                }
+            val installedGpuDrivers = runCatching { gpuDriverManager.listInstalledDrivers() }
+                .getOrElse { error ->
+                    Log.e(TAG, "GPU driver list failed", error)
+                    emptyList()
+                }
             val selected = preferredTitleId
                 ?.takeIf { id -> games.any { it.titleId == id } }
                 ?: games.firstOrNull()?.titleId

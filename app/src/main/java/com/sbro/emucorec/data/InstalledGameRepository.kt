@@ -1,12 +1,27 @@
 package com.sbro.emucorec.data
 
 import android.content.Context
+import android.util.Log
 import com.sbro.emucorec.core.EmulatorStorage
 import com.sbro.emucorec.core.Ps3SfoParser
 import java.io.File
 
 class InstalledGameRepository {
     fun loadInstalledGames(context: Context): List<InstalledPs3Game> {
+        // The library scan walks user-picked folders and parses their contents.
+        // Any of those steps can throw on garbage input (unreadable files,
+        // malformed metadata, permission flips mid-walk), and an uncaught
+        // exception here would take the whole app down from a background scan
+        // coroutine. Never propagate: log and fall back to an empty library.
+        return runCatching {
+            loadInstalledGamesUnsafe(context)
+        }.getOrElse { error ->
+            Log.e("InstalledGameRepository", "Game library scan failed", error)
+            emptyList()
+        }
+    }
+
+    private fun loadInstalledGamesUnsafe(context: Context): List<InstalledPs3Game> {
         val customFolders = AppPreferences(context).gameDirectories.mapNotNull { raw ->
             val resolved = com.sbro.emucorec.core.DocumentPathResolver.resolveDirectoryPath(context, raw)
                 ?: com.sbro.emucorec.core.DocumentPathResolver.resolveFilePath(context, raw)
@@ -18,11 +33,11 @@ class InstalledGameRepository {
             if (findParamSfo(folder) != null) {
                 listOf(folder)
             } else {
-                val directChildren = folder.listFiles().orEmpty().filter { it.isDirectory }.toList()
+                val directChildren = safeListFiles(folder).filter { it.isDirectory }
                 val directMatches = directChildren.filter { findParamSfo(it) != null }
                 val nestedMatches = directChildren.flatMap { child ->
                     if (findParamSfo(child) != null) emptyList()
-                    else child.listFiles().orEmpty().filter { it.isDirectory && findParamSfo(it) != null }
+                    else safeListFiles(child).filter { it.isDirectory && findParamSfo(it) != null }
                 }
                 val allFound = directMatches + nestedMatches
                 if (allFound.isNotEmpty()) allFound else if (findParamSfo(folder) != null) listOf(folder) else emptyList()
@@ -30,9 +45,9 @@ class InstalledGameRepository {
         }
 
         val customIsoGames = customFolders.flatMap { folder ->
-            val directFiles = folder.listFiles().orEmpty().filter { it.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(it) }.toList()
-            val nestedFiles = folder.listFiles().orEmpty().filter { it.isDirectory }.flatMap { sub ->
-                sub.listFiles().orEmpty().filter { it.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(it) }
+            val directFiles = safeListFiles(folder).filter { it.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(it) }
+            val nestedFiles = safeListFiles(folder).filter { it.isDirectory }.flatMap { sub ->
+                safeListFiles(sub).filter { it.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(it) }
             }
             (directFiles + nestedFiles).mapNotNull { isoFile ->
                 com.sbro.emucorec.core.Ps3IsoParser.parse(context, isoFile)
@@ -71,7 +86,7 @@ class InstalledGameRepository {
         ).distinctBy { it.absolutePath }
 
         val candidateGameDirs = searchRoots
-            .flatMap { root -> root.listFiles().orEmpty().filter { it.isDirectory || FolderGames.isLink(it) }.toList() }
+            .flatMap { root -> safeListFiles(root).filter { it.isDirectory || FolderGames.isLink(it) } }
             .plus(customGameDirs)
             .distinctBy { it.absolutePath }
 
@@ -158,6 +173,14 @@ class InstalledGameRepository {
                File(fileOrDir, "PS3_GAME/USRDIR/EBOOT.BIN").isFile
     }
 
+    /** listFiles() throws SecurityException on directories the app lost access to mid-scan. */
+    private fun safeListFiles(directory: File): List<File> =
+        runCatching { directory.listFiles()?.toList() ?: emptyList() }
+            .getOrElse { error ->
+                Log.w("InstalledGameRepository", "Could not list ${directory.absolutePath}", error)
+                emptyList()
+            }
+
     private fun findParamSfo(directory: File): File? {
         val direct = File(directory, "PARAM.SFO")
         if (direct.isFile) return direct
@@ -186,7 +209,7 @@ class InstalledGameRepository {
         return EmulatorStorage.knownStorageRoots(context)
             .flatMap { storageRoot -> searchSubdirs.map { File(storageRoot, it) } }
             .plus(listOf(FolderGames.linkRoot(context)))
-            .flatMap { appRoot -> appRoot.listFiles().orEmpty().filter { it.isDirectory || FolderGames.isLink(it) } }
+            .flatMap { appRoot -> safeListFiles(appRoot).filter { it.isDirectory || FolderGames.isLink(it) } }
             .filter { directory ->
                 directory.name.equals(titleId, ignoreCase = true) ||
                     findParamSfo(directory)?.let(Ps3SfoParser::parse)?.titleId

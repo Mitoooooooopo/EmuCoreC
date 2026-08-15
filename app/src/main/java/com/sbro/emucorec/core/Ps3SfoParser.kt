@@ -21,6 +21,16 @@ object Ps3SfoParser {
     }
 
     fun parse(bytes: ByteArray): Ps3SfoData {
+        // A malformed file must never take the library scan down: offsets and
+        // counts in the header are attacker/garbage-controlled, and the
+        // ByteBuffer accessors below throw BufferUnderflowException when they
+        // run past the end. Return an empty result instead.
+        return runCatching {
+            parseUnsafe(bytes)
+        }.getOrDefault(Ps3SfoData())
+    }
+
+    private fun parseUnsafe(bytes: ByteArray): Ps3SfoData {
         if (bytes.size < 20) return Ps3SfoData()
 
         val buffer = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN)

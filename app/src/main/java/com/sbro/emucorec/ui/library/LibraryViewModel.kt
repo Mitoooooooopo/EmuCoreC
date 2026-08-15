@@ -1,6 +1,7 @@
 package com.sbro.emucorec.ui.library
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.sbro.emucorec.R
@@ -42,7 +43,11 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(isLoading = true)
-            allItems = repository.loadInstalledGames(context)
+            allItems = runCatching { repository.loadInstalledGames(context) }
+                .getOrElse { error ->
+                    Log.e("LibraryViewModel", "Game library scan failed", error)
+                    allItems
+                }
             publishState()
         }
     }
@@ -50,9 +55,17 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
     fun deleteInstalledGame(titleId: String, onComplete: (Boolean) -> Unit) {
         val context = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
-            val deleted = repository.deleteByTitleId(context, titleId)
+            val deleted = runCatching { repository.deleteByTitleId(context, titleId) }
+                .getOrElse { error ->
+                    Log.e("LibraryViewModel", "Game deletion failed", error)
+                    false
+                }
             if (deleted) {
-                allItems = repository.loadInstalledGames(context)
+                allItems = runCatching { repository.loadInstalledGames(context) }
+                    .getOrElse { error ->
+                        Log.e("LibraryViewModel", "Game library scan failed", error)
+                        allItems
+                    }
                 publishState()
                 InstallStateBus.notifyCompleted()
             }
@@ -94,7 +107,11 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
                 )
             }
 
-            allItems = repository.loadInstalledGames(context)
+            allItems = runCatching { repository.loadInstalledGames(context) }
+                .getOrElse { error ->
+                    Log.e("LibraryViewModel", "Game library scan failed", error)
+                    allItems
+                }
             publishState()
             InstallStateBus.notifyCompleted()
 
