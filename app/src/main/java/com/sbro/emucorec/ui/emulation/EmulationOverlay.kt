@@ -1567,11 +1567,9 @@ private fun buildDefaultTouchLayout(
         element(TouchControlIds.DPAD_RIGHT, sidePaddingPx + dpadStep * 2f, dpadY + dpadCenter, dpadButton, dpadButton),
         element(TouchControlIds.LEFT_STICK, leftAnalogX, leftAnalogY, analogSize, analogSize),
         element(TouchControlIds.RIGHT_STICK, rightGroupX, rightAnalogY, analogSize, analogSize),
-        // L3 gets a much wider berth from SELECT than R3 gets from START: the
-        // centre cluster reads left-to-right, so a thumb reaching for L3
-        // otherwise grazes the Select button edge. Three centre-gaps of
-        // clearance keep it clearly separated on large screens.
-        element(TouchControlIds.L3, centerX - centerGap * 3f - stickClickSize, centerY, stickClickSize, stickClickSize),
+        // L3 keeps the same centre-gap clearance from SELECT that R3 has from
+        // START, so the pair is symmetric.
+        element(TouchControlIds.L3, centerX - centerGap - stickClickSize, centerY, stickClickSize, stickClickSize),
         element(TouchControlIds.R3, centerX + centerGroupWidth + centerGap, centerY, stickClickSize, stickClickSize),
         element(TouchControlIds.TRIANGLE, actionX + actionCenter, actionY, actionButton, actionButton),
         element(TouchControlIds.CROSS, actionX + actionCenter, actionY + actionStep, actionButton, actionButton),
