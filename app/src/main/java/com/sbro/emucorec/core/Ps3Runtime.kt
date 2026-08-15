@@ -38,7 +38,7 @@ object Ps3Runtime {
         val appContext = context.applicationContext
         EmulatorStorage.prepareRuntime(appContext)
         val nativeDir = appContext.applicationInfo.nativeLibraryDir
-        val core = File(nativeDir, "librpcsx-core.so")
+        val core = File(nativeDir, "libemucorec-core.so")
         if (!core.isFile) {
             Log.e(TAG, "RPCS3 core is missing: ${core.absolutePath}")
             return false

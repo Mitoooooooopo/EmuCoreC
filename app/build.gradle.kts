@@ -10,13 +10,13 @@ plugins {
 }
 
 // ---------------------------------------------------------------------------
-// Build librpcsx-core.so from C++ sources automatically before every build.
+// Build libemucorec-core.so from C++ sources automatically before every build.
 //
 // The .so lives in jniLibs/arm64-v8a/ as a prebuilt, but the core sources live
 // IN THIS REPOSITORY (this repo is a fork of RPCS3/rpcs3; the android/ CMake
 // subdirectory, added to the root CMake project behind if(ANDROID), builds the
 // core). This task uses the NDK's own CMake + Ninja to compile the library
-// (target rpcsx-android) and copies the result into jniLibs so Android Studio
+// (target emucorec-core) and copies the result into jniLibs so Android Studio
 // always picks up the latest binary. The recipe mirrors android/configure.sh.
 // ---------------------------------------------------------------------------
 val androidSdkRoot: String = run {
@@ -43,7 +43,7 @@ val ninjaExe  = if (org.gradle.internal.os.OperatingSystem.current().isWindows)
 // The RPCS3 root CMake project (this repo is a fork of RPCS3/rpcs3; the
 // android/ subdirectory is added behind if(ANDROID)).
 val rpcs3Root  = rootProject.layout.projectDirectory.asFile.absolutePath
-val buildDir2  = layout.buildDirectory.dir("rpcsx-core-build").get().asFile
+val buildDir2  = layout.buildDirectory.dir("emucorec-core-build").get().asFile
 
 // ---------------------------------------------------------------------------
 // Build FFmpeg 8.x for Android (aarch64) from source: the RPCS3 submodule only
@@ -68,14 +68,14 @@ val buildFfmpeg by tasks.registering(Exec::class) {
     }
 }
 
-val configureRpcsxCore by tasks.registering(Exec::class) {
-    description = "Configure librpcsx-core.so CMake project"
+val configureEmuCorecCore by tasks.registering(Exec::class) {
+    description = "Configure libemucorec-core.so CMake project"
     group = "build"
     dependsOn(buildFfmpeg)
 
     // Re-run configure if build.ninja is missing (e.g. first run, or after a failed/interrupted configure).
     // Skip entirely when the core sources are not present: the app then builds
-    // with whatever librpcsx-core.so is already staged in jniLibs.
+    // with whatever libemucorec-core.so is already staged in jniLibs.
     onlyIf {
         val sourceCmake = File(rpcs3Root, "android/CMakeLists.txt")
         if (!sourceCmake.exists()) {
@@ -101,27 +101,27 @@ val configureRpcsxCore by tasks.registering(Exec::class) {
     )
 }
 
-val buildRpcsxCore by tasks.registering(Exec::class) {
-    description = "Compile librpcsx-core.so from C++ sources using NDK CMake/Ninja"
+val buildEmuCorecCore by tasks.registering(Exec::class) {
+    description = "Compile libemucorec-core.so from C++ sources using NDK CMake/Ninja"
     group = "build"
-    dependsOn(configureRpcsxCore)
+    dependsOn(configureEmuCorecCore)
 
     val mingwBin = "${System.getenv("LOCALAPPDATA")?.replace("\\", "/")}/mingw/mingw64/bin"
     environment("PATH", "$mingwBin;${System.getenv("PATH")}")
 
     workingDir = buildDir2
-    commandLine(ninjaExe, "-C", buildDir2.absolutePath, "rpcsx-android")
+    commandLine(ninjaExe, "-C", buildDir2.absolutePath, "emucorec-core")
 
     doLast {
-        val builtSo = File(buildDir2, "android/librpcsx-core.so")
+        val builtSo = File(buildDir2, "android/libemucorec-core.so")
         if (!builtSo.exists()) {
-            throw GradleException("Build succeeded but librpcsx-core.so not found at ${builtSo.absolutePath}")
+            throw GradleException("Build succeeded but libemucorec-core.so not found at ${builtSo.absolutePath}")
         }
         // Strip like the official builds, shrinking the unstripped artifact with
         // static LLVM to the release size.
         val stripExe = "$ndkDir/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-strip"
             .let { if (org.gradle.internal.os.OperatingSystem.current().isWindows) "$it.exe" else it }
-        val stripped = File(buildDir2, "librpcsx-core-stripped.so")
+        val stripped = File(buildDir2, "libemucorec-core-stripped.so")
         val strip = ProcessBuilder(stripExe, "-o", stripped.absolutePath, builtSo.absolutePath)
             .redirectErrorStream(true)
             .start()
@@ -130,9 +130,9 @@ val buildRpcsxCore by tasks.registering(Exec::class) {
         }
         val jniLibsDir = File(projectDir, "src/main/jniLibs/arm64-v8a")
         jniLibsDir.mkdirs()
-        stripped.copyTo(File(jniLibsDir, "librpcsx-core.so"), overwrite = true)
+        stripped.copyTo(File(jniLibsDir, "libemucorec-core.so"), overwrite = true)
         stripped.delete()
-        println("Successfully built and copied librpcsx-core.so to jniLibs/arm64-v8a")
+        println("Successfully built and copied libemucorec-core.so to jniLibs/arm64-v8a")
     }
 }
 
@@ -172,7 +172,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
-            // RPCSX currently supports ARM64 only.
             //noinspection ChromeOsAbiSupport
             abiFilters += "arm64-v8a"
         }
@@ -275,10 +274,8 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
 
-// Wire buildRpcsxCore into every Android build variant's preBuild task.
-// This runs BEFORE the app is packaged, so jniLibs always has the latest .so.
 afterEvaluate {
     tasks.matching { it.name.startsWith("preBuild") }.configureEach {
-        dependsOn(buildRpcsxCore)
+        dependsOn(buildEmuCorecCore)
     }
 }

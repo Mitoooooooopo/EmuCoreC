@@ -1,7 +1,7 @@
-# EmuCoreC: the Android shared library, built on UPSTREAM RPCS3.
+﻿# EmuCoreC: the Android shared library, built on UPSTREAM RPCS3.
 #
 # NOTE ON LAYOUT (this is the important part):
-# RPCSX makes android/ the top-level CMake project and does
+# The RPCSX lineage used to make android/ the top-level CMake project and do
 # `add_subdirectory(..)` to pull the emulator in. That does not work against
 # upstream, because upstream assumes CMAKE_SOURCE_DIR == repo root in at least
 # four places -- buildfiles/cmake/FindWolfSSL.cmake, buildfiles/cmake/FindZLIB.cmake,
@@ -51,7 +51,7 @@ set(EMUCOREC_INPUT_SOURCES
     ${CMAKE_SOURCE_DIR}/rpcs3/Input/virtual_pad_handler.cpp
 )
 
-add_library(rpcsx-android SHARED
+add_library(emucorec-core SHARED
     src/rpcsx-android.cpp
     ${EMUCOREC_INPUT_SOURCES}
     # rpcs3::get_version() and friends. Like Input/, this is compiled into the
@@ -59,17 +59,16 @@ add_library(rpcsx-android SHARED
     ${CMAKE_SOURCE_DIR}/rpcs3/rpcs3_version.cpp
 )
 
-# Ship as librpcsx-core.so, which is the name the app calls
-# System.loadLibrary("rpcsx-core") for. Setting OUTPUT_NAME (rather than
-# renaming the file after the fact) also fixes the SONAME, so the file name and
-# the name the dynamic linker registers it under agree -- a mismatch there works
-# by luck for a plain dlopen and stops working the moment anything resolves it
-# by soname.
-set_target_properties(rpcsx-android PROPERTIES OUTPUT_NAME rpcsx-core)
+# Ship as libemucorec-core.so, which is the name the app loads
+# (see Ps3Runtime). Setting OUTPUT_NAME (rather than renaming the file after
+# the fact) also fixes the SONAME, so the file name and the name the dynamic
+# linker registers it under agree -- a mismatch there works by luck for a
+# plain dlopen and stops working the moment anything resolves it by soname.
+set_target_properties(emucorec-core PROPERTIES OUTPUT_NAME emucorec-core)
 
-target_compile_features(rpcsx-android PRIVATE cxx_std_23)
+target_compile_features(emucorec-core PRIVATE cxx_std_23)
 
-target_include_directories(rpcsx-android PRIVATE
+target_include_directories(emucorec-core PRIVATE
     ${CMAKE_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/rpcs3
     # rpcsx-android.cpp pulls in Input/hid_pad_handler.h (DS3/DS4/DualSense
@@ -83,7 +82,7 @@ target_include_directories(rpcsx-android PRIVATE
     ${CMAKE_SOURCE_DIR}/3rdparty/yaml-cpp/yaml-cpp/include
 )
 
-target_link_libraries(rpcsx-android
+target_link_libraries(emucorec-core
     rpcs3_emu
     # ps_move_tracker/ps_move_calibration use the Fusion AHRS solver. rpcs3_lib
     # links this upstream; we build those Input sources ourselves, so we need it.
@@ -100,7 +99,7 @@ target_link_libraries(rpcsx-android
 # Profile-guided optimisation
 # ---------------------------------------------------------------------------
 #
-# Scoped to rpcs3_emu and rpcsx-android deliberately, NOT to the whole build.
+# Scoped to rpcs3_emu and emucorec-core deliberately, NOT to the whole build.
 # 3rdparty is mostly LLVM, which is only hot while compiling guest code; adding
 # instrumentation to it would multiply an already 1.2GB unstripped artifact for
 # a payoff in compile speed rather than in frame time. What we measured as hot
@@ -120,7 +119,7 @@ set(EMUCOREC_PGO_PROFILE "" CACHE FILEPATH "Merged .profdata, required when EMUC
 if(EMUCOREC_PGO STREQUAL "generate")
     # -fprofile-generate on BOTH compile and link: the link is what pulls in the
     # profile runtime that writes the file.
-    foreach(pgo_target rpcs3_emu rpcsx-android)
+    foreach(pgo_target rpcs3_emu emucorec-core)
         target_compile_options(${pgo_target} PRIVATE -fprofile-generate)
         target_link_options(${pgo_target} PRIVATE -fprofile-generate)
     endforeach()
@@ -129,9 +128,9 @@ if(EMUCOREC_PGO STREQUAL "generate")
     # actually write, and to flush it when the app goes to the background.
     # Without that the runtime writes to the process CWD, which on Android is /
     # and is not writable, so a whole play session produces nothing.
-    target_compile_definitions(rpcsx-android PRIVATE EMUCOREC_PGO_GENERATE=1)
+    target_compile_definitions(emucorec-core PRIVATE EMUCOREC_PGO_GENERATE=1)
 
-    message(STATUS "EmuCoreC: PGO instrumentation ON for rpcs3_emu and rpcsx-android")
+    message(STATUS "EmuCoreC: PGO instrumentation ON for rpcs3_emu and emucorec-core")
 elseif(EMUCOREC_PGO STREQUAL "use")
     if(NOT EMUCOREC_PGO_PROFILE)
         message(FATAL_ERROR "EMUCOREC_PGO=use requires -DEMUCOREC_PGO_PROFILE=<absolute .profdata>")
@@ -140,7 +139,7 @@ elseif(EMUCOREC_PGO STREQUAL "use")
         message(FATAL_ERROR "EMUCOREC_PGO_PROFILE does not exist: ${EMUCOREC_PGO_PROFILE}")
     endif()
 
-    foreach(pgo_target rpcs3_emu rpcsx-android)
+    foreach(pgo_target rpcs3_emu emucorec-core)
         # Drift is tolerated rather than fatal: the profile ages the moment the
         # code changes, and a warning per stale function would otherwise turn
         # into thousands of errors under -Werror. Stale enough to matter shows up
@@ -157,3 +156,4 @@ elseif(EMUCOREC_PGO STREQUAL "use")
 
     message(STATUS "EmuCoreC: PGO optimising against ${EMUCOREC_PGO_PROFILE}")
 endif()
+
