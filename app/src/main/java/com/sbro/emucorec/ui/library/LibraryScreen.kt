@@ -30,7 +30,7 @@ import androidx.compose.foundation.layout.statusBarsIgnoringVisibility
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ViewList
@@ -186,12 +186,13 @@ fun LibraryScreen(
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
                 top = topInset + 8.dp,
                 bottom = ScreenContentBottomPadding
-            ),
-            verticalArrangement = Arrangement.spacedBy(14.dp)
+            )
         ) {
             item {
                 ScreenTopBarSurface(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 7.dp)
                 ) {
                     Row(
                         modifier = Modifier
@@ -251,7 +252,8 @@ fun LibraryScreen(
             AnimatedVisibility(
                 visible = searchExpanded,
                 enter = fadeIn() + expandVertically(),
-                exit = fadeOut() + shrinkVertically()
+                exit = fadeOut() + shrinkVertically(),
+                modifier = Modifier.padding(bottom = 14.dp)
             ) {
                 OutlinedTextField(
                     value = uiState.query,
@@ -275,7 +277,8 @@ fun LibraryScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 48.dp),
+                        .padding(vertical = 48.dp)
+                        .padding(bottom = 14.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     EmuCoreLoadingAnimation()
@@ -286,7 +289,8 @@ fun LibraryScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .heightIn(min = 360.dp),
+                        .heightIn(min = 360.dp)
+                        .padding(bottom = 14.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     Column(
@@ -314,12 +318,12 @@ fun LibraryScreen(
                 }
             }
         } else if (layoutMode == LibraryLayoutMode.LIST) {
-            itemsIndexed(uiState.items, key = { _, game -> game.titleId }) { index, game ->
+            items(uiState.items, key = { it.titleId }) { game ->
                 val selectGameClick = rememberDebouncedClick { onLaunchGame(game.titleId) }
                 val shape = RoundedCornerShape(24.dp)
                 var menuExpanded by remember(game.titleId) { mutableStateOf(false) }
                 Box(
-                    modifier = if (index == 0) Modifier.padding(top = (-7).dp) else Modifier
+                    modifier = Modifier.padding(bottom = 14.dp)
                 ) {
                     Surface(
                         modifier = Modifier
@@ -469,14 +473,14 @@ fun LibraryScreen(
                 }
             }
         } else {
-            itemsIndexed(
+            items(
                 items = uiState.items.chunked(gridColumns),
-                key = { _, row -> row.firstOrNull()?.titleId ?: row.hashCode().toString() }
-            ) { index, rowItems ->
+                key = { row -> row.firstOrNull()?.titleId ?: row.hashCode().toString() }
+            ) { rowItems ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .then(if (index == 0) Modifier.padding(top = (-7).dp) else Modifier),
+                        .padding(bottom = 14.dp),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     rowItems.forEach { game ->
@@ -701,6 +705,7 @@ private fun LibraryGameArtwork(
         }
     }
 }
+
 
 
 
