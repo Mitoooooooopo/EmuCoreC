@@ -16,7 +16,7 @@
 #endif
 
 struct RPCSXApi {
-  bool (*overlayPadData)(int digital1, int digital2, int leftStickX,
+  bool (*overlayPadData)(int port, int digital1, int digital2, int leftStickX,
                          int leftStickY, int rightStickX, int rightStickY);
   bool (*initialize)(std::string_view rootDir, std::string_view user);
   bool (*processCompilationQueue)(JNIEnv *env);
@@ -152,7 +152,12 @@ Java_net_rpcsx_RPCSX_getLibraryVersion(JNIEnv *env, jobject, jstring path) {
 extern "C" JNIEXPORT jboolean JNICALL Java_net_rpcsx_RPCSX_overlayPadData(
     JNIEnv *, jobject, jint digital1, jint digital2, jint leftStickX,
     jint leftStickY, jint rightStickX, jint rightStickY) {
-  return rpcsxLib.overlayPadData(digital1, digital2, leftStickX, leftStickY,
+  // The core export takes a port as its first argument; the JNI surface has
+  // never exposed one (player 1 is the only pad the app drives). Passing
+  // digital1 in that slot shifted every value by one: dpad presses landed in
+  // the port check and were dropped, face buttons were interpreted as dpad,
+  // and the sticks read each other's values.
+  return rpcsxLib.overlayPadData(0, digital1, digital2, leftStickX, leftStickY,
                                  rightStickX, rightStickY);
 }
 
