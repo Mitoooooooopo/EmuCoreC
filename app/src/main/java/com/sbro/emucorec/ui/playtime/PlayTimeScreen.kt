@@ -23,6 +23,8 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import com.sbro.emucorec.ui.settings.animateScrollToCenterItem
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.QueryStats
@@ -217,6 +219,19 @@ private fun GameSelector(
     showAllGames: Boolean,
     onSelect: (String?) -> Unit
 ) {
+    val listState = rememberLazyListState()
+    LaunchedEffect(selectedTitleId, games) {
+        val selectedIndex = if (selectedTitleId == null) {
+            if (showAllGames) 0 else -1
+        } else {
+            val gameIndex = games.indexOfFirst { it.titleId.equals(selectedTitleId, ignoreCase = true) }
+            if (gameIndex >= 0) if (showAllGames) gameIndex + 1 else gameIndex else -1
+        }
+        if (selectedIndex >= 0) {
+            listState.animateScrollToCenterItem(selectedIndex)
+        }
+    }
+
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(
             text = stringResource(R.string.play_time_filter_game),
@@ -225,6 +240,7 @@ private fun GameSelector(
             modifier = Modifier.padding(horizontal = ScreenHorizontalPadding)
         )
         LazyRow(
+            state = listState,
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             contentPadding = PaddingValues(horizontal = ScreenHorizontalPadding)
         ) {
@@ -237,7 +253,7 @@ private fun GameSelector(
                             selectedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
                             selectedLabelColor = MaterialTheme.colorScheme.onSecondaryContainer
                         ),
-                        label = { Text(stringResource(R.string.play_time_all_games)) },
+                        label = { Text(stringResource(R.string.play_time_all_games), maxLines = 1, softWrap = false) },
                         leadingIcon = {
                             Icon(Icons.Rounded.QueryStats, contentDescription = null)
                         }
@@ -287,17 +303,19 @@ private fun GameSelectorCard(
                     modifier = Modifier.fillMaxSize()
                 )
             }
-            Column(modifier = Modifier.widthIn(min = 150.dp, max = 190.dp)) {
+            Column(modifier = Modifier.widthIn(min = 120.dp)) {
                 Text(
                     text = game.title,
                     style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold),
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    softWrap = false
                 )
                 Text(
                     text = formatDuration(game.totalMs),
                     style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    softWrap = false
                 )
             }
         }

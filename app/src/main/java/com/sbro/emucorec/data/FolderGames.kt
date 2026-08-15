@@ -11,7 +11,7 @@ object FolderGames {
     private val linkName = Regex("^[A-Za-z0-9_-]{4,32}$")
 
     fun linkRoot(context: Context): File {
-        return File(EmulatorStorage.ps3Root(context), LINK_DIR)
+        return File(context.filesDir, LINK_DIR).apply { mkdirs() }
     }
 
     fun isLink(file: File): Boolean = runCatching {

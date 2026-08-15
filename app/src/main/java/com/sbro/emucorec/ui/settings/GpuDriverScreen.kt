@@ -35,6 +35,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CloudDownload
@@ -441,7 +442,15 @@ private fun FilterChipRow(
     selected: String,
     onSelected: (String) -> Unit
 ) {
+    val listState = rememberLazyListState()
+    LaunchedEffect(selected, filters) {
+        val selectedIndex = filters.indexOf(selected)
+        if (selectedIndex >= 0) {
+            listState.animateScrollToCenterItem(selectedIndex)
+        }
+    }
     LazyRow(
+        state = listState,
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(horizontal = 14.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -450,7 +459,7 @@ private fun FilterChipRow(
             FilterChip(
                 selected = selected == filter,
                 onClick = { onSelected(filter) },
-                label = { Text(if (filter == GPU_DRIVER_FILTER_ALL) stringResource(R.string.settings_gpu_driver_filter_all) else filter) }
+                label = { Text(if (filter == GPU_DRIVER_FILTER_ALL) stringResource(R.string.settings_gpu_driver_filter_all) else filter, maxLines = 1, softWrap = false) }
             )
         }
     }

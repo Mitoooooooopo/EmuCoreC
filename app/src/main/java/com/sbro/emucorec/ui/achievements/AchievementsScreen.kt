@@ -25,6 +25,8 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import com.sbro.emucorec.ui.settings.animateScrollToCenterItem
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.animation.core.RepeatMode
@@ -207,6 +209,16 @@ private fun TrophySetSelector(
     selectedCommunicationId: String?,
     onSelect: (String) -> Unit
 ) {
+    val listState = rememberLazyListState()
+    LaunchedEffect(selectedCommunicationId, sets) {
+        val selectedIndex = sets.indexOfFirst {
+            it.communicationId.equals(selectedCommunicationId, ignoreCase = true)
+        }
+        if (selectedIndex >= 0) {
+            listState.animateScrollToCenterItem(selectedIndex)
+        }
+    }
+
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(
             text = stringResource(R.string.achievements_choose_game),
@@ -215,6 +227,7 @@ private fun TrophySetSelector(
             modifier = Modifier.padding(horizontal = ScreenHorizontalPadding)
         )
         LazyRow(
+            state = listState,
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             contentPadding = PaddingValues(horizontal = ScreenHorizontalPadding)
         ) {
@@ -231,8 +244,7 @@ private fun TrophySetSelector(
                         Text(
                             text = set.gameTitle,
                             maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            modifier = Modifier.widthIn(max = 190.dp)
+                            softWrap = false
                         )
                     },
                     leadingIcon = {

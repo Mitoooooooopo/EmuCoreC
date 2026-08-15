@@ -19,9 +19,12 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsIgnoringVisibility
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import com.sbro.emucorec.ui.settings.animateScrollToCenterItem
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.RestartAlt
@@ -38,6 +41,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -215,11 +219,18 @@ private fun GameManagerTabs(
     selectedTab: GameManagerTab,
     onSelected: (GameManagerTab) -> Unit
 ) {
+    val tabs = remember { GameManagerTab.entries.toList() }
+    val listState = rememberLazyListState()
+    LaunchedEffect(selectedTab) {
+        val selectedIndex = tabs.indexOf(selectedTab).coerceAtLeast(0)
+        listState.animateScrollToCenterItem(selectedIndex)
+    }
     LazyRow(
+        state = listState,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = ScreenHorizontalPadding)
     ) {
-        items(GameManagerTab.entries, key = { it.name }) { tab ->
+        items(tabs, key = { it.name }) { tab ->
             FilterChip(
                 selected = selectedTab == tab,
                 onClick = { onSelected(tab) },
@@ -236,7 +247,9 @@ private fun GameManagerTabs(
                             GameManagerTab.Controls -> stringResource(R.string.settings_tab_controls)
                             GameManagerTab.Network -> stringResource(R.string.settings_tab_network)
                             GameManagerTab.Advanced -> stringResource(R.string.settings_tab_advanced)
-                        }
+                        },
+                        maxLines = 1,
+                        softWrap = false
                     )
                 }
             )
@@ -319,7 +332,15 @@ private fun GamePicker(
                 )
             }
         }
+        val listState = rememberLazyListState()
+        LaunchedEffect(selectedTitleId, games) {
+            val selectedIndex = games.indexOfFirst { it.titleId.equals(selectedTitleId, ignoreCase = true) }
+            if (selectedIndex >= 0) {
+                listState.animateScrollToCenterItem(selectedIndex)
+            }
+        }
         LazyRow(
+            state = listState,
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = ScreenHorizontalPadding)
         ) {
@@ -352,19 +373,19 @@ private fun GamePicker(
                                 modifier = Modifier.fillMaxSize()
                             )
                         }
-                        Column(modifier = Modifier.size(width = 178.dp, height = 46.dp)) {
+                        Column(modifier = Modifier.widthIn(min = 120.dp).height(46.dp)) {
                             Text(
                                 text = game.title,
                                 style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold),
                                 maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
+                                softWrap = false
                             )
                             Text(
                                 text = game.titleId,
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
+                                softWrap = false
                             )
                         }
                     }

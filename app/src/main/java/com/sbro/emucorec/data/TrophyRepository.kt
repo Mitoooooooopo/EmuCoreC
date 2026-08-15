@@ -55,7 +55,7 @@ class TrophyRepository {
     fun list(context: Context): List<Ps3TrophySet> {
         val installedGames = InstalledGameRepository().loadInstalledGames(context)
         val installedPackages = installedGames.flatMap { game ->
-            game.trophyPackages().mapNotNull { packageDir ->
+            game.trophyPackages(context).mapNotNull { packageDir ->
                 val trp = File(packageDir, TROPHY_TRP_NAME).takeIf { it.isFile } ?: return@mapNotNull null
                 val commId = packageDir.name.takeIf { it.isLikelyTrophyCommunicationId() }
                     ?: TrpArchive(trp).readTextEntry(TROPCONF_NAME)?.let(::parseCommunicationId)
@@ -166,7 +166,7 @@ class TrophyRepository {
             g.titleId.equals(commId, ignoreCase = true) ||
                 (details.setName.isNotBlank() && g.title.equals(details.setName, ignoreCase = true)) ||
                 (details.setName.isNotBlank() && (g.title.contains(details.setName, ignoreCase = true) || details.setName.contains(g.title, ignoreCase = true))) ||
-                g.trophyPackages().any { it.name.equals(commId, ignoreCase = true) }
+                g.trophyPackages(context).any { it.name.equals(commId, ignoreCase = true) }
         }
 
         val fallbackName = game?.title ?: details.setName.takeIf(String::isNotBlank) ?: commId
@@ -250,12 +250,15 @@ class TrophyRepository {
         return outputDir.takeIf { it.listFiles().orEmpty().any(File::isFile) }
     }
 
-    private fun InstalledPs3Game.trophyPackages(): List<File> {
+    private fun InstalledPs3Game.trophyPackages(context: Context): List<File> {
         val root = File(installPath)
+        if (root.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(root)) {
+            return com.sbro.emucorec.core.Ps3IsoParser.extractTrophyPackages(context, root)
+        }
         if (!root.isDirectory) return emptyList()
         return root.walkTopDown()
-            .maxDepth(5)
-            .filter { it.isFile && it.name.equals(TROPHY_TRP_NAME, ignoreCase = true) }
+            .maxDepth(6)
+            .filter { it.isFile && (it.name.equals(TROPHY_TRP_NAME, ignoreCase = true) || it.name.endsWith(".TRP", ignoreCase = true)) }
             .mapNotNull { it.parentFile }
             .distinctBy { it.absolutePath }
             .toList()

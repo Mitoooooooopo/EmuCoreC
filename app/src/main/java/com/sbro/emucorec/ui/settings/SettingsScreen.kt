@@ -474,7 +474,7 @@ private fun SettingsTabRow(
                     selectedLabelColor = MaterialTheme.colorScheme.onSecondaryContainer,
                     selectedLeadingIconColor = MaterialTheme.colorScheme.onSecondaryContainer
                 ),
-                label = { Text(stringResource(tab.titleRes)) },
+                label = { Text(stringResource(tab.titleRes), maxLines = 1, softWrap = false) },
                 leadingIcon = {
                     Icon(
                         imageVector = tab.icon,

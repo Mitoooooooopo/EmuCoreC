@@ -192,6 +192,72 @@ object Ps3IsoParser {
         return records
     }
 
+    fun extractTrophyPackages(context: Context, file: File): List<File> {
+        if (!file.isFile) return emptyList()
+        val titleId = extractTitleIdFromFilename(file.name) ?: generateFallbackTitleId(file.name)
+        val cacheRoot = File(context.cacheDir, "iso_trophies/$titleId")
+        if (cacheRoot.isDirectory && cacheRoot.walkTopDown().any { it.isFile && it.name.equals("TROPHY.TRP", ignoreCase = true) }) {
+            return cacheRoot.walkTopDown()
+                .filter { it.isFile && it.name.equals("TROPHY.TRP", ignoreCase = true) }
+                .mapNotNull { it.parentFile }
+                .distinctBy { it.absolutePath }
+                .toList()
+        }
+
+        return runCatching {
+            RandomAccessFile(file, "r").use { raf ->
+                val pvdOffset = 16L * 2048L
+                if (raf.length() < pvdOffset + 2048) return@use emptyList()
+
+                raf.seek(pvdOffset)
+                val pvd = ByteArray(2048)
+                raf.readFully(pvd)
+
+                if (pvd[1].toInt() != 0x43 || pvd[2].toInt() != 0x44 || pvd[3].toInt() != 0x30 ||
+                    pvd[4].toInt() != 0x30 || pvd[5].toInt() != 0x31) {
+                    return@use emptyList()
+                }
+
+                val rootRecord = ByteBuffer.wrap(pvd, 156, 34).order(ByteOrder.LITTLE_ENDIAN)
+                val rootRecordLen = rootRecord.get().toInt() and 0xFF
+                if (rootRecordLen < 34) return@use emptyList()
+                rootRecord.get()
+                val rootLba = rootRecord.getInt()
+                rootRecord.getInt()
+                val rootDataLen = rootRecord.getInt()
+
+                val rootDirEntries = readDirectoryRecords(raf, rootLba.toLong() * 2048L, rootDataLen.toLong())
+                val ps3GameEntry = rootDirEntries.firstOrNull { it.name.equals("PS3_GAME", ignoreCase = true) }
+                    ?: return@use emptyList()
+
+                val ps3GameDirEntries = readDirectoryRecords(raf, ps3GameEntry.lba.toLong() * 2048L, ps3GameEntry.dataLength.toLong())
+                val tropDirEntry = ps3GameDirEntries.firstOrNull { it.name.equals("TROPDIR", ignoreCase = true) }
+                    ?: return@use emptyList()
+
+                val tropDirEntries = readDirectoryRecords(raf, tropDirEntry.lba.toLong() * 2048L, tropDirEntry.dataLength.toLong())
+                val results = mutableListOf<File>()
+
+                tropDirEntries.filter { it.isDirectory }.forEach { commEntry ->
+                    val npEntries = readDirectoryRecords(raf, commEntry.lba.toLong() * 2048L, commEntry.dataLength.toLong())
+                    val trpEntry = npEntries.firstOrNull { it.name.startsWith("TROPHY.TRP", ignoreCase = true) || it.name.endsWith(".TRP", ignoreCase = true) }
+                    if (trpEntry != null && trpEntry.dataLength in 1..20971520) {
+                        val outDir = File(cacheRoot, commEntry.name).apply { mkdirs() }
+                        val outFile = File(outDir, "TROPHY.TRP")
+                        raf.seek(trpEntry.lba.toLong() * 2048L)
+                        val bytes = ByteArray(trpEntry.dataLength)
+                        raf.readFully(bytes)
+                        outFile.writeBytes(bytes)
+                        if (outFile.isFile) {
+                            results.add(outDir)
+                        }
+                    }
+                }
+
+                results
+            }
+        }.getOrDefault(emptyList())
+    }
+
     private fun scanForSfoBytes(raf: RandomAccessFile): ByteArray? {
         val maxScan = 64L * 1024L * 1024L // 64 MB
         val limit = raf.length().coerceAtMost(maxScan).toInt()
