@@ -299,13 +299,30 @@ class Emulator : ComponentActivity(), InputManager.InputDeviceListener {
         if (event.keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_UP) {
             if (overlayBackHandler?.invoke() == true) return true
         }
-        val control = keyCodeToControl(event.keyCode)
-        val gamepadEvent = event.source and GAMEPAD_SOURCES != 0
-        if (gamepadEvent && control != null && event.repeatCount == 0) {
-            inputOverlay.setPhysicalButton(control, event.action == KeyEvent.ACTION_DOWN)
-            return true
-        }
         return super.dispatchKeyEvent(event)
+    }
+
+    // Physical gamepad input, delivered exactly like ARMSX3/PS3Native do it:
+    // Activity-level onKeyDown/onKeyUp with a persistent pad state pushed on
+    // every event. Not routed through the Compose tree, not gated on the touch
+    // overlay, so a pad works regardless of overlay visibility or classifier
+    // heuristics.
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (event == null || (event.source and GAMEPAD_SOURCES) == 0 || event.repeatCount != 0) {
+            return super.onKeyDown(keyCode, event)
+        }
+        val control = keyCodeToControl(keyCode) ?: return super.onKeyDown(keyCode, event)
+        inputOverlay.setPhysicalButton(control, true)
+        return true
+    }
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        if (event == null || (event.source and GAMEPAD_SOURCES) == 0) {
+            return super.onKeyUp(keyCode, event)
+        }
+        val control = keyCodeToControl(keyCode) ?: return super.onKeyUp(keyCode, event)
+        inputOverlay.setPhysicalButton(control, false)
+        return true
     }
 
     override fun onGenericMotionEvent(event: MotionEvent): Boolean {

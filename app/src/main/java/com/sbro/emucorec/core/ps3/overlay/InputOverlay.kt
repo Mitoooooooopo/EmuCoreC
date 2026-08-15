@@ -1,6 +1,7 @@
 package com.sbro.emucorec.core.ps3.overlay
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
@@ -28,6 +29,7 @@ class InputOverlay(context: Context) {
     // must not leave input dead. ARMSX3 pushes unconditionally from the activity;
     // this mirrors that, gated only on the emulator being initialised.
     private var physicalInputSeen = false
+    private var pushFailureLogged = false
     private val lock = Any()
 
     private var attached = false
@@ -246,9 +248,18 @@ class InputOverlay(context: Context) {
 
     private fun pushLocked(): Boolean {
         if (!attached || !RPCSX.initialized) return false
-        return runCatching {
+        val pushed = runCatching {
             RPCSX.instance.overlayPadData(digital1, digital2, leftX, leftY, rightX, rightY)
         }.getOrDefault(false)
+        if (!pushed && !pushFailureLogged) {
+            pushFailureLogged = true
+            Log.w(
+                "InputOverlay",
+                "overlayPadData rejected by the core: the virtual pad for this port was not created. " +
+                    "Check the core log for 'Pad 0 ...' and the player 1 pad handler in config."
+            )
+        }
+        return pushed
     }
 
     private fun Int.withBit(bit: Int, enabled: Boolean): Int = when {
