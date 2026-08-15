@@ -40,6 +40,11 @@ object Ps3CoreSettingOverrides {
     val RECOMMENDED_DEFAULTS = mapOf(
         "Core@@Max LLVM Compile Threads" to "2",
         "Video@@Shader Mode" to "\"Async Recompiler (multi-threaded)\"",
+        // Colour buffer readback/writeback avoid black screens on mobile drivers.
+        "Video@@Write Color Buffers" to "true",
+        "Video@@Read Color Buffers" to "true",
+        // Match the console cadence instead of running uncapped.
+        "Video@@Frame limit" to "\"PS3 Native\"",
     )
 
     fun recordGlobal(context: Context, path: String, encodedValue: String) {

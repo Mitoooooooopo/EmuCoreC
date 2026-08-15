@@ -125,7 +125,9 @@ struct cfg_root : cfg::node
 
 		cfg::_enum<video_resolution> resolution{ this, "Resolution", video_resolution::_720p };
 		cfg::_enum<video_aspect> aspect_ratio{ this, "Aspect ratio", video_aspect::_16_9 };
-		cfg::_enum<frame_limit_type> frame_limit{ this, "Frame limit", frame_limit_type::_auto, true };
+		// Frame limit matches the console cadence by default (59.94/60Hz)
+		// instead of letting the emulator run uncapped.
+		cfg::_enum<frame_limit_type> frame_limit{ this, "Frame limit", frame_limit_type::_ps3, true };
 		cfg::_float<0, 1000> second_frame_limit{ this, "Second Frame Limit", 0, true }; // 0 disables its effect
 		cfg::_enum<msaa_level> antialiasing_level{ this, "MSAA", msaa_level::_auto };
 #ifdef __ANDROID__
@@ -142,9 +144,11 @@ struct cfg_root : cfg::node
 		cfg::_enum<gpu_preset_level> shader_precision{ this, "Shader Precision", gpu_preset_level::high };
 		cfg::_enum<vsync_mode> vsync{ this, "VSync Mode", vsync_mode::off, true };
 
-		cfg::_bool write_color_buffers{ this, "Write Color Buffers" };
+		// Color buffer readback/writeback ON by default: some titles render
+		// nothing (black screen) without them on mobile drivers.
+		cfg::_bool write_color_buffers{ this, "Write Color Buffers", true };
 		cfg::_bool write_depth_buffer{ this, "Write Depth Buffer" };
-		cfg::_bool read_color_buffers{ this, "Read Color Buffers" };
+		cfg::_bool read_color_buffers{ this, "Read Color Buffers", true };
 		cfg::_bool read_depth_buffer{ this, "Read Depth Buffer" };
 		cfg::_bool handle_tiled_memory{ this, "Handle RSX Memory Tiling", false, true };
 		cfg::_bool log_programs{ this, "Log shader programs" };
