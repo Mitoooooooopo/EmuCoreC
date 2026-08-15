@@ -19,9 +19,24 @@ object Ps3CoreSettingOverrides {
     private const val GAME_PREFIX = "game."
     private const val TAG = "EmuCoreC-CoreConfig"
 
-    /** Recommended performance defaults for ARM64 Android hardware (e.g. multi-core LLVM compilation). */
+    /**
+     * Recommended performance defaults for ARM64 Android hardware.
+     *
+     * "Max LLVM Compile Threads = 0" is the core default (auto).
+     *
+     * "Shader Mode = Async Recompiler" skips the GPU shader-interpreter precompile
+     * ("Precompiling interpreter variants") that otherwise runs on every first boot
+     * with a cold shader cache and can take minutes on a mobile driver. ARMSX3
+     * effectively ships this behaviour: its GLES path auto-downgrades the mode when
+     * bindless textures are unsupported, and the precompile never runs there. The
+     * cost is losing the interpreter safety net for shaders a driver cannot compile
+     * natively -- rare games may show artifacts or a black screen where they would
+     * otherwise fall back. Per-title, users can flip "Video@@Shader Mode" back in
+     * the settings screen.
+     */
     val RECOMMENDED_DEFAULTS = mapOf(
         "Core@@Max LLVM Compile Threads" to "0", // 0 = Auto: compiles across all available CPU cores
+        "Video@@Shader Mode" to "\"Async Recompiler (multi-threaded)\"",
     )
 
     fun recordGlobal(context: Context, path: String, encodedValue: String) {

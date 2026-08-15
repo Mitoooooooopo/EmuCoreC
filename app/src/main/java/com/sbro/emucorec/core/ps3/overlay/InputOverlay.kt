@@ -22,6 +22,12 @@ class InputOverlay(context: Context) {
     private var latestConfig = repository.loadEffective(emulator?.currentGameIdOrIntent().orEmpty())
     private var touchControlsRuntimeActive by mutableStateOf(true)
     private var physicalControllerPresent = false
+    // Set the first time ANY physical gamepad event arrives. The classifier-based
+    // controller presence probe is only a hint for the UI; a pad it fails to
+    // recognise (or one connected mid-session without an InputManager callback)
+    // must not leave input dead. ARMSX3 pushes unconditionally from the activity;
+    // this mirrors that, gated only on the emulator being initialised.
+    private var physicalInputSeen = false
     private val lock = Any()
 
     private var attached = false
@@ -123,6 +129,8 @@ class InputOverlay(context: Context) {
 
     /** Applies the per-game physical-pad profile before sending an axis to RPCS3. */
     fun setPhysicalAxis(axis: Int, value: Short) {
+        physicalInputSeen = true
+        syncControllerAttachment()
         val target = when {
             !latestConfig.gamepadSwapSticks -> axis
             axis == ControlId.axis_left_x -> ControlId.axis_right_x
@@ -159,10 +167,14 @@ class InputOverlay(context: Context) {
     }
 
     fun setPhysicalTrigger(button: Int, value: Float) {
+        physicalInputSeen = true
+        syncControllerAttachment()
         setButton(button, value.coerceIn(0f, 1f) > latestConfig.gamepadTriggerThreshold)
     }
 
     fun setPhysicalButton(button: Int, value: Boolean) {
+        physicalInputSeen = true
+        syncControllerAttachment()
         val mapped = when (latestConfig.gamepadButtonProfile) {
             Ps3CoreConfig.GAMEPAD_PROFILE_SWAP_CROSS_CIRCLE -> when (button) {
                 ControlId.a -> ControlId.b
@@ -221,7 +233,11 @@ class InputOverlay(context: Context) {
     }
 
     private fun syncControllerAttachment() {
-        if (physicalControllerPresent || effectiveOverlayMask != 0) attachController() else detachController()
+        if (physicalControllerPresent || physicalInputSeen || effectiveOverlayMask != 0) {
+            attachController()
+        } else {
+            detachController()
+        }
     }
 
     private fun buildDisplayMask(config: Ps3CoreConfig): Int {
