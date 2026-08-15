@@ -15,6 +15,9 @@
 #ifdef HAVE_SDL3
 #include "sdl_pad_handler.h"
 #endif
+#ifdef ANDROID
+#include "virtual_pad_handler.h"
+#endif
 #ifndef ANDROID
 #include "keyboard_pad_handler.h"
 #endif
@@ -872,6 +875,10 @@ std::shared_ptr<PadHandlerBase> pad_thread::GetHandler(pad_handler type)
 		return std::make_shared<skateboard_pad_handler>();
 	case pad_handler::move:
 		return std::make_shared<ps_move_handler>();
+#ifdef ANDROID
+	case pad_handler::virtual_pad:
+		return std::make_shared<virtual_pad_handler>();
+#endif
 #ifdef _WIN32
 	case pad_handler::xinput:
 		return std::make_shared<xinput_pad_handler>();
