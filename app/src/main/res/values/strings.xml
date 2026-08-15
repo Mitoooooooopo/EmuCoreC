@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+﻿<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="emulation_quickbar_home_menu">RPCS3 home menu</string>
     <string name="onboarding_storage_title">Emulator storage</string>
     <string name="onboarding_storage_choose_title">Choose emulator storage</string>
@@ -918,7 +918,7 @@
     <string name="core_label_paint_move_spheres">Paint move spheres</string>
     <string name="core_label_pause_emulation_during_home_menu">Pause Emulation During Home Menu</string>
     <string name="core_label_pause_emulation_on_rpcs3_focus_loss">Pause emulation on RPCS3 focus loss</string>
-    <string name="core_label_performance_overlay">Performance Overlay</string>
+    <string name="core_label_performance_overlay">Performance Monitoring</string>
     <string name="core_label_performance_report_threshold">Performance Report Threshold</string>
     <string name="core_label_play_music_during_boot_sequence">Play music during boot sequence</string>
     <string name="core_label_position">Position</string>

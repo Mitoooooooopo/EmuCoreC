@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+﻿<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="emulation_quickbar_home_menu">RPCS3 ana menüsü</string>
     <string name="onboarding_storage_title">Emülatör depolama alanı</string>
     <string name="onboarding_status_install_firmware">Sony\'nin resmi PS3 sistem yazılımını yükleyin.</string>
@@ -918,7 +918,7 @@
     <string name="core_label_paint_move_spheres">Hareket eden küreleri boya</string>
     <string name="core_label_pause_emulation_during_home_menu">Ana Menü Sırasında Emülasyonu Duraklat</string>
     <string name="core_label_pause_emulation_on_rpcs3_focus_loss">RPCS3 odak kaybında emülasyonu duraklatın</string>
-    <string name="core_label_performance_overlay">Performans Yerleşimi</string>
+    <string name="core_label_performance_overlay">Performans İzleme</string>
     <string name="core_label_performance_report_threshold">Performans Raporu Eşiği</string>
     <string name="core_label_play_music_during_boot_sequence">Önyükleme sırasında müzik çal</string>
     <string name="core_label_position">Pozisyon</string>

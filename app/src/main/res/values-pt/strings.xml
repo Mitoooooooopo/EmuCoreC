@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+﻿<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="emulation_quickbar_home_menu">Menu inicial do RPCS3</string>
     <string name="onboarding_storage_title">Armazenamento do emulador</string>
     <string name="onboarding_status_install_firmware">Instale o software de sistema PS3 oficial da Sony.</string>
@@ -918,7 +918,7 @@
     <string name="core_label_paint_move_spheres">Pintar mover esferas</string>
     <string name="core_label_pause_emulation_during_home_menu">Pausar a emulação durante o menu inicial</string>
     <string name="core_label_pause_emulation_on_rpcs3_focus_loss">Pausar a emulação na perda de foco do RPCS3</string>
-    <string name="core_label_performance_overlay">Sobreposição de desempenho</string>
+    <string name="core_label_performance_overlay">Monitoramento de desempenho</string>
     <string name="core_label_performance_report_threshold">Limite do relatório de desempenho</string>
     <string name="core_label_play_music_during_boot_sequence">Tocar música durante a sequência de inicialização</string>
     <string name="core_label_position">Posição</string>

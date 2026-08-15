@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+﻿<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="emulation_quickbar_home_menu">Домашнее меню RPCS3</string>
     <string name="onboarding_storage_title">Хранилище эмулятора</string>
     <string name="onboarding_status_install_firmware">Установите официальное системное ПО PS3 от Sony.</string>
@@ -920,7 +920,7 @@
     <string name="core_label_paint_move_spheres">Краска движущихся сфер</string>
     <string name="core_label_pause_emulation_during_home_menu">Приостановить эмуляцию во время главного меню</string>
     <string name="core_label_pause_emulation_on_rpcs3_focus_loss">Приостановить эмуляцию при потере фокуса RPCS3</string>
-    <string name="core_label_performance_overlay">Performance Overlay</string>
+    <string name="core_label_performance_overlay">Мониторинг производительности</string>
     <string name="core_label_performance_report_threshold">Порог отчета о производительности</string>
     <string name="core_label_play_music_during_boot_sequence">Воспроизведение музыки во время загрузки</string>
     <string name="core_label_position">Позиция</string>

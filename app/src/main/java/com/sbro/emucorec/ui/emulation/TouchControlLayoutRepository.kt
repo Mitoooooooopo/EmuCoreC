@@ -88,7 +88,9 @@ class TouchControlLayoutRepository(context: Context) {
 
     private companion object {
         const val PREFS_NAME = "touch_control_layout"
-        const val KEY_LAYOUT = "layout_v1"
+        // Bumped when a default-layout change must reach devices that already
+        // saved a stale copy of the previous default (e.g. L3's position).
+        const val KEY_LAYOUT = "layout_v2"
         const val MIN_ELEMENT_SIZE = 0.035f
         const val MAX_ELEMENT_SIZE = 0.5f
     }

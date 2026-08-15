@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+﻿<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="emulation_quickbar_home_menu">RPCS3 主選單</string>
     <string name="onboarding_storage_title">模擬器儲存空間</string>
     <string name="onboarding_status_install_firmware">安装 Sony 官方 PS3 系统软件。</string>
@@ -917,7 +917,7 @@
     <string name="core_label_paint_move_spheres">绘制移动球体</string>
     <string name="core_label_pause_emulation_during_home_menu">在主菜单期间暂停仿真</string>
     <string name="core_label_pause_emulation_on_rpcs3_focus_loss">RPCS3 焦点丢失时暂停仿真</string>
-    <string name="core_label_performance_overlay">性能叠加</string>
+    <string name="core_label_performance_overlay">性能监控</string>
     <string name="core_label_performance_report_threshold">绩效报告阈值</string>
     <string name="core_label_play_music_during_boot_sequence">在启动过程中播放音乐</string>
     <string name="core_label_position">职位</string>

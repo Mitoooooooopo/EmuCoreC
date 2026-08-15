@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+﻿<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="emulation_quickbar_home_menu">قائمة RPCS3 الرئيسية</string>
     <string name="onboarding_storage_title">مساحة تخزين المحاكي</string>
     <string name="onboarding_status_install_firmware">ثبّت برنامج نظام PS3 الرسمي من Sony.</string>
@@ -922,7 +922,7 @@
     <string name="core_label_paint_move_spheres">طلاء المجالات المتحركة</string>
     <string name="core_label_pause_emulation_during_home_menu">إيقاف المحاكاة مؤقتًا أثناء القائمة الرئيسية</string>
     <string name="core_label_pause_emulation_on_rpcs3_focus_loss">إيقاف المحاكاة مؤقتًا عند فقدان تركيز RPCS3</string>
-    <string name="core_label_performance_overlay">تراكب الأداء</string>
+    <string name="core_label_performance_overlay">مراقبة الأداء</string>
     <string name="core_label_performance_report_threshold">عتبة تقرير الأداء</string>
     <string name="core_label_play_music_during_boot_sequence">قم بتشغيل الموسيقى أثناء تسلسل التمهيد</string>
     <string name="core_label_position">الموقف</string>
