@@ -34,7 +34,12 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
         refresh()
         viewModelScope.launch {
             InstallStateBus.events.collect {
-                refresh()
+                // Skip the replayed event that arrives right after creation:
+                // init's refresh already covers that state, and re-scanning
+                // immediately would duplicate the initial load.
+                if (_uiState.value.hasLoadedOnce) {
+                    refresh()
+                }
             }
         }
     }
@@ -49,6 +54,18 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
                     allItems
                 }
             publishState()
+            // The first scan after onboarding can run before the picked folder
+            // (or a storage migration) has settled. Retry once if it came back
+            // empty; the UI shows the retry's result when it lands.
+            if (allItems.isEmpty() && !_uiState.value.hasLoadedOnce) {
+                kotlinx.coroutines.delay(1_200)
+                allItems = runCatching { repository.loadInstalledGames(context) }
+                    .getOrElse { error ->
+                        Log.e("LibraryViewModel", "Game library scan retry failed", error)
+                        allItems
+                    }
+                publishState()
+            }
         }
     }
 

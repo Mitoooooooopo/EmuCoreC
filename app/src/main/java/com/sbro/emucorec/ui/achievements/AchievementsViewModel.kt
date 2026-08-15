@@ -61,7 +61,11 @@ class AchievementsViewModel(application: Application) : AndroidViewModel(applica
         refresh()
         viewModelScope.launch {
             InstallStateBus.events.collect {
-                refresh()
+                // Skip the replayed event that arrives right after creation:
+                // the refresh above already covers that state.
+                if (_uiState.value.hasLoadedOnce) {
+                    refresh()
+                }
             }
         }
     }

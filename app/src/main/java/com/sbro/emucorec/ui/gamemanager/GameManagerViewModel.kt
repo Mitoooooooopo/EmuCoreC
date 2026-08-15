@@ -70,7 +70,11 @@ class GameManagerViewModel(application: Application) : AndroidViewModel(applicat
         refresh()
         viewModelScope.launch {
             InstallStateBus.events.collect {
-                refresh(_uiState.value.selectedTitleId)
+                // Skip the replayed event that arrives right after creation:
+                // the refresh above already covers that state.
+                if (_uiState.value.hasLoadedOnce) {
+                    refresh(_uiState.value.selectedTitleId)
+                }
             }
         }
     }

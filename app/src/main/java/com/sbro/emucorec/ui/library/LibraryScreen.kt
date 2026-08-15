@@ -1,4 +1,4 @@
-package com.sbro.emucorec.ui.library
+﻿package com.sbro.emucorec.ui.library
 
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -697,3 +697,6 @@ private fun LibraryGameArtwork(
         }
     }
 }
+
+
+
