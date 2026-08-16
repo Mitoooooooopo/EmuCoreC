@@ -325,18 +325,11 @@ private fun CustomizationPreview(settings: CustomizationSettings) {
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.app_name_emucorec),
-                            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
-                        )
-                        Text(
-                            text = stringResource(R.string.customization_preview_subtitle),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
+                    Text(
+                        text = stringResource(R.string.app_name_emucorec),
+                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                        modifier = Modifier.weight(1f)
+                    )
                     Surface(
                         shape = RoundedCornerShape(50),
                         color = MaterialTheme.colorScheme.primaryContainer
@@ -353,6 +346,12 @@ private fun CustomizationPreview(settings: CustomizationSettings) {
                         )
                     }
                 }
+                Text(
+                    text = stringResource(R.string.customization_preview_subtitle),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
                 Row(
                     modifier = Modifier
                         .weight(1f)
@@ -443,9 +442,8 @@ private fun CustomizationActionRow(
 ) {
     val accent = if (selected) Color(0xFF4FC3A1) else MaterialTheme.colorScheme.primary
     Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick),
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(22.dp),
         color = if (selected) {
             accent.copy(alpha = 0.12f)

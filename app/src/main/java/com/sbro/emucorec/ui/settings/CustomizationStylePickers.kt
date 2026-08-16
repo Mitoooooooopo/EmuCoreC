@@ -142,10 +142,10 @@ internal fun StylePreviewCard(
     preview: @Composable () -> Unit
 ) {
     Surface(
+        onClick = onClick,
         modifier = Modifier
             .width(176.dp)
-            .height(132.dp)
-            .clickable(onClick = onClick),
+            .height(132.dp),
         shape = RoundedCornerShape(20.dp),
         color = if (selected) {
             MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.58f)

@@ -79,6 +79,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sbro.emucorec.R
+import com.sbro.emucorec.data.LibraryLayoutPreferences
 import com.sbro.emucorec.data.Ps3CatalogRepository
 import com.sbro.emucorec.ui.common.LocalImage
 import com.sbro.emucorec.ui.common.UrlImage
@@ -120,7 +121,13 @@ fun LibraryScreen(
     val density = LocalDensity.current
     val customization = LocalCustomizationSettings.current
     val refreshClick = rememberDebouncedClick(onClick = viewModel::refresh)
-    var layoutMode by rememberSaveable { mutableStateOf(LibraryLayoutMode.LIST) }
+    val layoutPreferences = remember(context) { LibraryLayoutPreferences(context) }
+    var layoutMode by rememberSaveable {
+        mutableStateOf(
+            LibraryLayoutMode.entries.firstOrNull { it.name == layoutPreferences.layoutMode }
+                ?: LibraryLayoutMode.LIST
+        )
+    }
     var searchExpanded by rememberSaveable { mutableStateOf(false) }
     var deleteGameId by remember { mutableStateOf<String?>(null) }
 
@@ -186,13 +193,12 @@ fun LibraryScreen(
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
                 top = topInset + 8.dp,
                 bottom = ScreenContentBottomPadding
-            )
+            ),
+            verticalArrangement = Arrangement.spacedBy(7.dp)
         ) {
             item {
                 ScreenTopBarSurface(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 7.dp)
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     Row(
                         modifier = Modifier.weight(1f),
@@ -230,7 +236,10 @@ fun LibraryScreen(
                                 tint = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
-                        IconButton(onClick = { layoutMode = if (layoutMode == LibraryLayoutMode.LIST) LibraryLayoutMode.GRID else LibraryLayoutMode.LIST }) {
+                        IconButton(onClick = {
+                            layoutMode = if (layoutMode == LibraryLayoutMode.LIST) LibraryLayoutMode.GRID else LibraryLayoutMode.LIST
+                            layoutPreferences.layoutMode = layoutMode.name
+                        }) {
                             Icon(
                                 imageVector = if (layoutMode == LibraryLayoutMode.LIST) Icons.Rounded.ViewModule else Icons.AutoMirrored.Rounded.ViewList,
                                 contentDescription = null,
@@ -252,8 +261,7 @@ fun LibraryScreen(
             AnimatedVisibility(
                 visible = searchExpanded,
                 enter = fadeIn() + expandVertically(),
-                exit = fadeOut() + shrinkVertically(),
-                modifier = Modifier.padding(bottom = 14.dp)
+                exit = fadeOut() + shrinkVertically()
             ) {
                 OutlinedTextField(
                     value = uiState.query,
@@ -277,8 +285,7 @@ fun LibraryScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 48.dp)
-                        .padding(bottom = 14.dp),
+                        .padding(vertical = 48.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     EmuCoreLoadingAnimation()
@@ -289,8 +296,7 @@ fun LibraryScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .heightIn(min = 360.dp)
-                        .padding(bottom = 14.dp),
+                        .heightIn(min = 360.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     Column(
@@ -322,9 +328,7 @@ fun LibraryScreen(
                 val selectGameClick = rememberDebouncedClick { onLaunchGame(game.titleId) }
                 val shape = RoundedCornerShape(24.dp)
                 var menuExpanded by remember(game.titleId) { mutableStateOf(false) }
-                Box(
-                    modifier = Modifier.padding(bottom = 14.dp)
-                ) {
+                Box {
                     Surface(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -478,9 +482,7 @@ fun LibraryScreen(
                 key = { row -> row.firstOrNull()?.titleId ?: row.hashCode().toString() }
             ) { rowItems ->
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 14.dp),
+                    modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     rowItems.forEach { game ->
@@ -705,8 +707,6 @@ private fun LibraryGameArtwork(
         }
     }
 }
-
-
 
 
 

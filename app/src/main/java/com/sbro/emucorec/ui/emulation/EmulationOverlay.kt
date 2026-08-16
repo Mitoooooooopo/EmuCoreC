@@ -36,6 +36,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsIgnoringVisibility
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -389,8 +390,6 @@ fun EmulationOverlayHost(
             modifier = Modifier.align(Alignment.TopCenter)
         ) {
             EmulationQuickBar(
-                paused = effectivePaused,
-                onPauseToggle = menuCallbacks.onPauseToggle,
                 onOpenCoreHomeMenu = { activity.openCoreHomeMenu() },
                 onOpenMenu = {
                     menuOpen = !menuOpen
@@ -422,7 +421,17 @@ fun EmulationOverlayHost(
             } else {
                 androidx.compose.animation.slideOutVertically(targetOffsetY = { it }) + fadeOut(tween(180))
             },
-            modifier = Modifier.align(if (useSidePanel) Alignment.CenterEnd else Alignment.BottomCenter)
+            modifier = Modifier
+                .align(if (useSidePanel) Alignment.CenterEnd else Alignment.BottomCenter)
+                .then(
+                    if (useSidePanel) {
+                        // The game runs immersive so system bar insets read zero;
+                        // give the floating panel its own margin from the edge.
+                        Modifier.padding(horizontal = 12.dp, vertical = 12.dp)
+                    } else {
+                        Modifier.windowInsetsPadding(WindowInsets.navigationBars)
+                    }
+                )
         ) {
             EmulationGameMenu(
                 gameTitle = gameTitle,

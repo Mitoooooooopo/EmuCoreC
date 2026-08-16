@@ -117,13 +117,12 @@ private fun emulationMenuPalette(): EmulationMenuPalette {
 }
 
 /**
- * Floating toolbar shown above the game when the user invokes the pause UI.
+ * Floating toolbar shown above the game when the user taps an empty spot.
  * Stays compact so it doesn't cover important on-screen UI.
+ * Pause is intentionally absent: the core has no working pause implementation.
  */
 @Composable
 fun EmulationQuickBar(
-    paused: Boolean,
-    onPauseToggle: () -> Unit,
     onOpenCoreHomeMenu: () -> Unit,
     onOpenMenu: () -> Unit,
     modifier: Modifier = Modifier
@@ -142,14 +141,6 @@ fun EmulationQuickBar(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            QuickBarButton(
-                icon = if (paused) Icons.Rounded.PlayArrow else Icons.Rounded.Pause,
-                contentDescription = stringResource(
-                    if (paused) R.string.emulation_resume else R.string.emulation_pause
-                ),
-                onClick = onPauseToggle,
-                palette = palette
-            )
             QuickBarButton(
                 icon = Icons.Rounded.Home,
                 contentDescription = stringResource(R.string.emulation_quickbar_home_menu),
@@ -210,9 +201,9 @@ fun EmulationGameMenu(
     } else {
         when (effectiveStyle) {
             GameMenuLayoutStyle.DASHBOARD,
-            GameMenuLayoutStyle.COMMAND_CENTER -> RoundedCornerShape(24.dp)
-            GameMenuLayoutStyle.COMPACT -> RoundedCornerShape(topStart = 16.dp, bottomStart = 16.dp)
-            GameMenuLayoutStyle.SIDEBAR -> RoundedCornerShape(topStart = 24.dp, bottomStart = 24.dp)
+            GameMenuLayoutStyle.COMMAND_CENTER,
+            GameMenuLayoutStyle.SIDEBAR -> RoundedCornerShape(24.dp)
+            GameMenuLayoutStyle.COMPACT -> RoundedCornerShape(16.dp)
         }
     }
     Surface(
