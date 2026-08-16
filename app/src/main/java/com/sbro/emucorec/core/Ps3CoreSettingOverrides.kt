@@ -165,7 +165,9 @@ object Ps3CoreSettingOverrides {
         val baseline = read(prefs.getString(KEY_BASELINE, null))
         val global = read(prefs.getString(KEY_GLOBAL, null))
         val restored = global[path] ?: baseline[path] ?: coreDefaultEncodedValue
-        return runCatching { RPCSX.instance.settingsSet(path, restored) }.getOrDefault(false)
+        val applied = runCatching { RPCSX.instance.settingsSet(path, restored) }.getOrDefault(false)
+        if (applied) CoreSettingsTreeCache.invalidateTree()
+        return applied
     }
 
     /** Restore every live RPCS3 setting to the default reported by this core build. */
@@ -185,6 +187,8 @@ object Ps3CoreSettingOverrides {
                 Log.w(TAG, "RPCS3 rejected default for $path")
             }
         }
+        // Invalidate even on partial failure: some values may have changed.
+        CoreSettingsTreeCache.invalidateTree()
         prefs(context).edit().clear().apply()
         return accepted
     }
@@ -210,6 +214,7 @@ object Ps3CoreSettingOverrides {
 
     private fun set(path: String, value: String, tier: String) {
         val applied = runCatching { RPCSX.instance.settingsSet(path, value) }.getOrDefault(false)
+        if (applied) CoreSettingsTreeCache.invalidateTree()
         if (!applied) Log.w(TAG, "RPCS3 rejected [$tier] $path")
     }
 

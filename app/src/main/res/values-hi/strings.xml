@@ -419,6 +419,8 @@
     <string name="settings_vibration_section">कंपन</string>
     <string name="settings_vibration_enable">कंपन</string>
     <string name="settings_vibration_strength">कंपन की ताकत</string>
+    <string name="settings_edit_touch_controls">नियंत्रण संपादित करें</string>
+    <string name="settings_help_edit_touch_controls">ऑन-स्क्रीन गेमपैड बटन को स्थानांतरित और आकार बदलें। परिवर्तन उन सभी गेमों पर लागू होते हैं जिनका अपना कस्टम लेआउट नहीं है।</string>
     <string name="settings_test_vibration">कंपन का परीक्षण करें</string>
     <string name="settings_test_vibration_button">परीक्षण करें</string>
     <string name="settings_device_vibration_fallback">फ़ॉलबैक के रूप में डिवाइस के कंपन का उपयोग करें</string>

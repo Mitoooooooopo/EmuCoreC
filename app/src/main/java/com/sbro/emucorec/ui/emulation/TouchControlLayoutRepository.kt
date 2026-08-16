@@ -1,9 +1,10 @@
 package com.sbro.emucorec.ui.emulation
 
 import android.content.Context
+import androidx.core.content.edit
 import org.json.JSONArray
 import org.json.JSONObject
-import androidx.core.content.edit
+import java.util.Locale
 
 data class TouchControlElement(
     val id: String,
@@ -29,32 +30,24 @@ enum class TouchAnalogMode(val storageValue: String) {
 class TouchControlLayoutRepository(context: Context) {
     private val preferences = context.applicationContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-    fun load(): List<TouchControlElement>? {
-        val raw = preferences.getString(KEY_LAYOUT, null) ?: return null
-        return runCatching {
-            val array = JSONArray(raw)
-            buildList {
-                for (index in 0 until array.length()) {
-                    val item = array.getJSONObject(index)
-                    add(
-                        TouchControlElement(
-                            id = item.getString("id"),
-                            x = item.getDouble("x").toFloat(),
-                            y = item.getDouble("y").toFloat(),
-                            width = item.getDouble("width").toFloat(),
-                            height = item.getDouble("height").toFloat(),
-                            visible = item.optBoolean("visible", true),
-                            analogMode = TouchAnalogMode.fromStorage(
-                                if (item.has("analogMode")) item.optString("analogMode") else null
-                            )
-                        ).coerceToCanvas()
-                    )
-                }
-            }
-        }.getOrNull()
+    /**
+     * Loads the layout for a game: a custom per-game layout when one exists,
+     * otherwise the global default. Null or blank gameId reads the global default.
+     */
+    fun load(gameId: String? = null): List<TouchControlElement>? {
+        val key = gameId?.takeIf(String::isNotBlank)?.let(::perGameKey)
+        val raw = key?.let { preferences.getString(it, null) }
+            ?: preferences.getString(KEY_LAYOUT, null)
+            ?: return null
+        return parse(raw)
     }
 
-    fun save(elements: List<TouchControlElement>) {
+    /** True when the game has its own custom layout saved. */
+    fun hasCustomLayout(gameId: String): Boolean =
+        gameId.isNotBlank() && preferences.contains(perGameKey(gameId))
+
+    /** Saves a per-game layout when gameId is provided, the global default otherwise. */
+    fun save(gameId: String? = null, elements: List<TouchControlElement>) {
         val array = JSONArray()
         elements.forEach { element ->
             array.put(
@@ -68,11 +61,43 @@ class TouchControlLayoutRepository(context: Context) {
                     .put("analogMode", element.analogMode.storageValue)
             )
         }
-        preferences.edit { putString(KEY_LAYOUT, array.toString()) }
+        val key = gameId?.takeIf(String::isNotBlank)?.let(::perGameKey) ?: KEY_LAYOUT
+        preferences.edit { putString(key, array.toString()) }
     }
 
-    fun reset() {
-        preferences.edit {remove(KEY_LAYOUT)}
+    /** Removes a per-game layout when gameId is provided, the global default otherwise. */
+    fun reset(gameId: String? = null) {
+        val key = gameId?.takeIf(String::isNotBlank)?.let(::perGameKey) ?: KEY_LAYOUT
+        preferences.edit { remove(key) }
+    }
+
+    private fun parse(raw: String): List<TouchControlElement>? = runCatching {
+        val array = JSONArray(raw)
+        buildList {
+            for (index in 0 until array.length()) {
+                val item = array.getJSONObject(index)
+                add(
+                    TouchControlElement(
+                        id = item.getString("id"),
+                        x = item.getDouble("x").toFloat(),
+                        y = item.getDouble("y").toFloat(),
+                        width = item.getDouble("width").toFloat(),
+                        height = item.getDouble("height").toFloat(),
+                        visible = item.optBoolean("visible", true),
+                        analogMode = TouchAnalogMode.fromStorage(
+                            if (item.has("analogMode")) item.optString("analogMode") else null
+                        )
+                    ).coerceToCanvas()
+                )
+            }
+        }
+    }.getOrNull()
+
+    private fun perGameKey(gameId: String): String {
+        // The intent-carried and the core-reported title IDs can differ in
+        // case/whitespace; normalize so save and load always hit the same key.
+        val safe = gameId.trim().uppercase(Locale.ROOT).filter { it.isLetterOrDigit() }.take(64)
+        return "layout_v2_game_$safe"
     }
 
     private fun TouchControlElement.coerceToCanvas(): TouchControlElement {

@@ -120,7 +120,7 @@ fun EmulationOverlayHost(
     val customization by customizationPreferences.settings.collectAsState()
     val overlayBridge = remember(activity) { activity.getmOverlay() }
     var config by remember(activity, gameId) { mutableStateOf(repository.loadEffective(gameId)) }
-    var controlLayout by remember(activity) { mutableStateOf(controlLayoutRepository.load()) }
+    var controlLayout by remember(activity, gameId) { mutableStateOf(controlLayoutRepository.load(gameId)) }
     var controlsEditMode by remember { mutableStateOf(false) }
     var menuOpen by remember { mutableStateOf(false) }
     var menuButtonVisible by remember { mutableStateOf(true) }
@@ -304,14 +304,14 @@ fun EmulationOverlayHost(
                 savedLayout = controlLayout,
                 onLayoutChange = { updated ->
                     controlLayout = updated
-                    controlLayoutRepository.save(updated)
+                    controlLayoutRepository.save(gameId, updated)
                 },
                 onEditDone = {
                     controlsEditMode = false
                     overlayBridge.setIsInEditMode(false)
                 },
                 onEditReset = {
-                    controlLayoutRepository.reset()
+                    controlLayoutRepository.reset(gameId)
                     controlLayout = null
                     persistConfig { it.copy(overlayScale = 0.9f, overlayOpacity = 100) }
                 },
@@ -349,7 +349,7 @@ fun EmulationOverlayHost(
                 persistConfig { it.copy(enableGamepadOverlay = !it.enableGamepadOverlay) }
             },
             onResetOverlay = {
-                controlLayoutRepository.reset()
+                controlLayoutRepository.reset(gameId)
                 controlLayout = null
                 persistConfig {
                     it.copy(
@@ -478,7 +478,7 @@ fun EmulationOverlayHost(
 
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
-private fun OnScreenControls(
+internal fun OnScreenControls(
     overlayScale: Float,
     overlayOpacity: Int,
     visualStyle: TouchControlVisualStyle,

@@ -4887,7 +4887,15 @@ static void emit_cfg_json(const cfg::_base *node, std::string &out) {
     out += ']';
   }
 
-  // EmuCoreC: modern cfg::_base has no min/max accessors; the app treats them as optional.
+  // Numeric entries expose their range so the app can render sliders.
+  // Note: cfg::_float registers as cfg::type::_int (upstream quirk), which is
+  // exactly the set of types that carry a numeric range here.
+  if (node->get_type() == cfg::type::_int || node->get_type() == cfg::type::uint) {
+    out += ",\"min\":";
+    out += std::to_string(node->get_min());
+    out += ",\"max\":";
+    out += std::to_string(node->get_max());
+  }
 
   out += '}';
 }

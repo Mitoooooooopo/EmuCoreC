@@ -91,6 +91,10 @@ namespace cfg
 		// Get dynamic property for reloading configs during games
 		bool get_is_dynamic() const { return m_dynamic; }
 
+		// Get numeric value range (optional; 0,0 means unbounded)
+		virtual s64 get_min() const { return 0; }
+		virtual s64 get_max() const { return 0; }
+
 		// Reset defaults
 		virtual void from_default() = 0;
 
@@ -344,6 +348,9 @@ namespace cfg
 		static constexpr s64 max = Max;
 		static constexpr s64 min = Min;
 
+		s64 get_min() const override { return Min; }
+		s64 get_max() const override { return Max; }
+
 		_int(node* owner, const std::string& name, int_type def = std::min<int_type>(Max, std::max<int_type>(Min, 0)), bool dynamic = false)
 			: _base(type::_int, owner, name, dynamic)
 			, m_value(def)
@@ -422,6 +429,9 @@ namespace cfg
 		// Expose range
 		static constexpr float_type max = Max;
 		static constexpr float_type min = Min;
+
+		s64 get_min() const override { return Min; }
+		s64 get_max() const override { return Max; }
 
 		_float(node* owner, const std::string& name, float_type def = std::min<float_type>(Max, std::max<float_type>(Min, 0)), bool dynamic = false)
 			: _base(type::_int, owner, name, dynamic)
@@ -521,6 +531,9 @@ namespace cfg
 		// Expose range
 		static constexpr u64 max = Max;
 		static constexpr u64 min = Min;
+
+		s64 get_min() const override { return static_cast<s64>(Min); }
+		s64 get_max() const override { return static_cast<s64>(Max); }
 
 		uint(node* owner, const std::string& name, int_type def = std::max<int_type>(Min, 0), bool dynamic = false)
 			: _base(type::uint, owner, name, dynamic)

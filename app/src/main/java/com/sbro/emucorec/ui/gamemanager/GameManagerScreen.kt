@@ -27,6 +27,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import com.sbro.emucorec.ui.settings.animateScrollToCenterItem
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.material.icons.rounded.SportsEsports
 import androidx.compose.material3.FilterChip
@@ -85,6 +86,7 @@ fun GameManagerScreen(
     onMenuClick: (() -> Unit)? = null,
     onBackClick: (() -> Unit)? = null,
     onOpenGpuDriverManager: (String?) -> Unit = {},
+    onOpenTouchControlsEditor: (String?) -> Unit = {},
     viewModel: GameManagerViewModel = viewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -177,7 +179,14 @@ fun GameManagerScreen(
                     }
                     GameManagerTab.Audio -> GameCoreSettings(Ps3CoreSettingsCategory.Audio, uiState.selectedTitleId, viewModel::refreshCustomProfileFlag)
                     GameManagerTab.Controls -> {
-                        GamepadProfileSection(uiState.config, uiState.defaults, viewModel::updateSelected)
+                        GamepadProfileSection(
+                            uiState.config,
+                            uiState.defaults,
+                            viewModel::updateSelected,
+                            onOpenTouchControlsEditor = {
+                                onOpenTouchControlsEditor(uiState.selectedTitleId)
+                            }
+                        )
                         GameCoreSettings(Ps3CoreSettingsCategory.Controls, uiState.selectedTitleId, viewModel::refreshCustomProfileFlag)
                     }
                     GameManagerTab.Network -> GameCoreSettings(Ps3CoreSettingsCategory.Network, uiState.selectedTitleId, viewModel::refreshCustomProfileFlag)
@@ -496,9 +505,37 @@ private fun GpuDriverChoiceRow(
 private fun GamepadProfileSection(
     config: Ps3CoreConfig,
     defaults: Ps3CoreConfig,
-    onUpdate: ((Ps3CoreConfig) -> Ps3CoreConfig) -> Unit
+    onUpdate: ((Ps3CoreConfig) -> Ps3CoreConfig) -> Unit,
+    onOpenTouchControlsEditor: () -> Unit
 ) {
     SectionCard(title = stringResource(R.string.settings_touch_controls_section)) {
+        TouchControlsEditRow(onOpenTouchControlsEditor)
+        ToggleRow(
+            stringResource(R.string.settings_core_gamepad_overlay),
+            config.enableGamepadOverlay,
+            stringResource(R.string.settings_help_gamepad_overlay),
+            { onUpdate { it.copy(enableGamepadOverlay = defaults.enableGamepadOverlay) } }
+        ) { enabled -> onUpdate { it.copy(enableGamepadOverlay = enabled) } }
+        SliderRow(
+            title = stringResource(R.string.settings_core_overlay_scale_label),
+            description = stringResource(R.string.settings_help_overlay_scale),
+            valueText = stringResource(R.string.settings_core_overlay_scale_value, config.overlayScale),
+            value = config.overlayScale,
+            valueRange = 0.5f..2f,
+            steps = 14,
+            onReset = { onUpdate { it.copy(overlayScale = defaults.overlayScale) } },
+            onChange = { value -> onUpdate { it.copy(overlayScale = (value * 10).roundToInt() / 10f) } }
+        )
+        SliderRow(
+            title = stringResource(R.string.settings_core_overlay_opacity_label),
+            description = stringResource(R.string.settings_help_overlay_opacity),
+            valueText = stringResource(R.string.settings_core_overlay_opacity_value, config.overlayOpacity),
+            value = config.overlayOpacity.toFloat(),
+            valueRange = 10f..100f,
+            steps = 8,
+            onReset = { onUpdate { it.copy(overlayOpacity = defaults.overlayOpacity) } },
+            onChange = { value -> onUpdate { it.copy(overlayOpacity = value.roundToInt()) } }
+        )
         ToggleRow(
             stringResource(R.string.settings_touch_haptics),
             config.touchHaptics,
@@ -693,6 +730,43 @@ private fun IntChoiceRow(
                     label = { Text(label) }
                 )
             }
+        }
+    }
+}
+
+@Composable
+private fun TouchControlsEditRow(onClick: () -> Unit) {
+    Surface(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(18.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+        tonalElevation = 1.dp,
+        shadowElevation = 2.dp,
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.62f))
+    ) {
+        Row(
+            modifier = Modifier.padding(CardContentPadding),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Text(
+                    text = stringResource(R.string.settings_edit_touch_controls),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = stringResource(R.string.settings_help_edit_touch_controls),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Icon(
+                imageVector = Icons.Rounded.ChevronRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary
+            )
         }
     }
 }

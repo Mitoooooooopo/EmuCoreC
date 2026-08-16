@@ -419,6 +419,8 @@
     <string name="settings_vibration_section">الاهتزاز</string>
     <string name="settings_vibration_enable">الاهتزاز</string>
     <string name="settings_vibration_strength">قوة الاهتزاز</string>
+    <string name="settings_edit_touch_controls">تحرير عناصر التحكم</string>
+    <string name="settings_help_edit_touch_controls">انقل أزرار لوحة اللعب على الشاشة وغيّر حجمها. تنطبق التغييرات على جميع الألعاب التي لا تحتوي على تخطيط مخصص خاص بها.</string>
     <string name="settings_test_vibration">اختبار الاهتزاز</string>
     <string name="settings_test_vibration_button">اختبار</string>
     <string name="settings_device_vibration_fallback">استخدام اهتزاز الجهاز كبديل</string>

@@ -57,6 +57,7 @@ import com.sbro.emucorec.ui.settings.GpuDriverScreen
 import com.sbro.emucorec.ui.settings.SettingsScreen
 import com.sbro.emucorec.ui.settings.SettingsTab
 import com.sbro.emucorec.ui.settings.SettingsViewModel
+import com.sbro.emucorec.ui.settings.TouchControlsEditorScreen
 import com.sbro.emucorec.ui.settings.settingsTabFromRoute
 import com.sbro.emucorec.ui.setup.InstallGameChoiceDialog
 import com.sbro.emucorec.ui.setup.SetupInstallDialog
@@ -81,6 +82,8 @@ private const val ROUTE_FEEDBACK = "feedback"
 private const val ROUTE_SETTINGS_WITH_TAB = "settings/{tab}"
 private const val ROUTE_APP_LANGUAGE = "app-language"
 private const val ROUTE_GPU_DRIVER = "gpu-driver"
+private const val ROUTE_TOUCH_CONTROLS_EDITOR = "touch-controls-editor"
+private const val ROUTE_TOUCH_CONTROLS_EDITOR_WITH_TITLE = "touch-controls-editor/{titleId}"
 private const val ROUTE_GPU_DRIVER_WITH_TITLE = "gpu-driver/{titleId}"
 private const val ROUTE_DETAIL_PREFIX = "detail"
 private const val ROUTE_CATALOG_DETAIL_PREFIX = "catalog-detail"
@@ -390,6 +393,9 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
                         onOpenGpuDriverSettings = {
                             navController.navigate(ROUTE_GPU_DRIVER) { launchSingleTop = true }
                         },
+                        onOpenTouchControlsEditor = {
+                            navController.navigate(ROUTE_TOUCH_CONTROLS_EDITOR) { launchSingleTop = true }
+                        },
                         viewModel = settingsViewModel
                     )
                 }
@@ -434,6 +440,9 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
                         onOpenGpuDriverSettings = {
                             navController.navigate(ROUTE_GPU_DRIVER) { launchSingleTop = true }
                         },
+                        onOpenTouchControlsEditor = {
+                            navController.navigate(ROUTE_TOUCH_CONTROLS_EDITOR) { launchSingleTop = true }
+                        },
                         viewModel = settingsViewModel
                     )
                 }
@@ -448,6 +457,17 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
                 GpuDriverScreen(
                     onBackClick = { navController.popBackStack() },
                     viewModel = settingsViewModel
+                )
+            }
+            composable(ROUTE_TOUCH_CONTROLS_EDITOR) {
+                TouchControlsEditorScreen(
+                    onExit = { navController.popBackStack() }
+                )
+            }
+            composable(ROUTE_TOUCH_CONTROLS_EDITOR_WITH_TITLE) { entry ->
+                TouchControlsEditorScreen(
+                    onExit = { navController.popBackStack() },
+                    titleId = entry.arguments?.getString("titleId")
                 )
             }
             composable(ROUTE_GPU_DRIVER_WITH_TITLE) { entry ->
@@ -700,6 +720,12 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
                         onBackClick = navigateHome,
                         onOpenGpuDriverManager = {
                             navController.navigate(gpuDriverRoute(it)) { launchSingleTop = true }
+                        },
+                        onOpenTouchControlsEditor = { titleId ->
+                            navController.navigate(
+                                if (titleId.isNullOrBlank()) ROUTE_TOUCH_CONTROLS_EDITOR
+                                else "$ROUTE_TOUCH_CONTROLS_EDITOR/${Uri.encode(titleId)}"
+                            ) { launchSingleTop = true }
                         }
                     )
                 }
@@ -711,6 +737,12 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
                     onBackClick = { navController.popBackStack() },
                     onOpenGpuDriverManager = {
                         navController.navigate(gpuDriverRoute(it)) { launchSingleTop = true }
+                    },
+                    onOpenTouchControlsEditor = { titleId ->
+                        navController.navigate(
+                            if (titleId.isNullOrBlank()) ROUTE_TOUCH_CONTROLS_EDITOR
+                            else "$ROUTE_TOUCH_CONTROLS_EDITOR/${Uri.encode(titleId)}"
+                        ) { launchSingleTop = true }
                     }
                 )
             }

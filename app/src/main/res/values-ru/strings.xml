@@ -419,6 +419,8 @@
     <string name="settings_vibration_section">Вибрация</string>
     <string name="settings_vibration_enable">Вибрация</string>
     <string name="settings_vibration_strength">Сила вибрации</string>
+    <string name="settings_edit_touch_controls">Редактировать управление</string>
+    <string name="settings_help_edit_touch_controls">Перемещайте и изменяйте размер кнопок сенсорного геймпада. Изменения применяются ко всем играм без собственного макета.</string>
     <string name="settings_test_vibration">Проверить вибрацию</string>
     <string name="settings_test_vibration_button">Проверить</string>
     <string name="settings_device_vibration_fallback">Использовать вибрацию устройства как запасной вариант</string>

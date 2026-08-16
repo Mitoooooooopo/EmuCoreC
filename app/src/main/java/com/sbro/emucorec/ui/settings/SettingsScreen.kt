@@ -5,14 +5,6 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.SizeTransform
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -123,6 +115,7 @@ fun SettingsScreen(
     onBackClick: () -> Unit,
     onOpenLanguageSettings: () -> Unit,
     onOpenGpuDriverSettings: () -> Unit = {},
+    onOpenTouchControlsEditor: () -> Unit = {},
     viewModel: SettingsViewModel = viewModel()
 ) {
     val context = LocalContext.current
@@ -208,43 +201,22 @@ fun SettingsScreen(
                     .padding(top = 12.dp, bottom = 110.dp),
                 verticalArrangement = Arrangement.spacedBy(18.dp)
             ) {
-                AnimatedContent(
-                    targetState = selectedTab,
-                    transitionSpec = {
-                        val forward = targetState.ordinal > initialState.ordinal
-                        val direction = if (forward) 1 else -1
-                        (
-                            fadeIn(animationSpec = tween(160)) +
-                                slideInHorizontally(
-                                    animationSpec = tween(240),
-                                    initialOffsetX = { width -> (width * 0.08f * direction).toInt() }
-                                )
-                            ).togetherWith(
-                            fadeOut(animationSpec = tween(120)) +
-                                slideOutHorizontally(
-                                    animationSpec = tween(200),
-                                    targetOffsetX = { width -> -(width * 0.05f * direction).toInt() }
-                                )
-                        ).using(SizeTransform(clip = false))
-                    },
-                    label = "settings-tab-content"
-                ) { targetTab ->
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalArrangement = Arrangement.spacedBy(18.dp)
-                    ) {
-                        SettingsTabContent(
-                            selectedTab = targetTab,
-                            uiState = uiState,
-                            defaults = defaults,
-                            viewModel = viewModel,
-                            onOpenLanguageSettings = onOpenLanguageSettings,
-                            onOpenGpuDriverSettings = onOpenGpuDriverSettings,
-                            onAddGameFolder = { gameFolderLauncher.launch(null) },
-                            createBackupClick = createBackupClick,
-                            restoreBackupClick = { showRestoreBackupDialog = true }
-                        )
-                    }
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(18.dp)
+                ) {
+                    SettingsTabContent(
+                        selectedTab = selectedTab,
+                        uiState = uiState,
+                        defaults = defaults,
+                        viewModel = viewModel,
+                        onOpenLanguageSettings = onOpenLanguageSettings,
+                        onOpenGpuDriverSettings = onOpenGpuDriverSettings,
+                        onOpenTouchControlsEditor = onOpenTouchControlsEditor,
+                        onAddGameFolder = { gameFolderLauncher.launch(null) },
+                        createBackupClick = createBackupClick,
+                        restoreBackupClick = { showRestoreBackupDialog = true }
+                    )
                 }
             }
         }

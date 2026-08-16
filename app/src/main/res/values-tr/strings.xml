@@ -419,6 +419,8 @@
     <string name="settings_vibration_section">Titreşim</string>
     <string name="settings_vibration_enable">Titreşim</string>
     <string name="settings_vibration_strength">Titreşim gücü</string>
+    <string name="settings_edit_touch_controls">Kontrolleri düzenle</string>
+    <string name="settings_help_edit_touch_controls">Ekrandaki oyun kumandası düğmelerini taşıyın ve yeniden boyutlandırın. Değişiklikler, kendi özel düzenine sahip olmayan tüm oyunlar için geçerlidir.</string>
     <string name="settings_test_vibration">Titreşimi test et</string>
     <string name="settings_test_vibration_button">Test et</string>
     <string name="settings_device_vibration_fallback">Yedek olarak cihaz titreşimini kullan</string>

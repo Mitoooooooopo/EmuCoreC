@@ -419,6 +419,8 @@
     <string name="settings_vibration_section">Vibration</string>
     <string name="settings_vibration_enable">Vibration</string>
     <string name="settings_vibration_strength">Force de la vibration</string>
+    <string name="settings_edit_touch_controls">Modifier les commandes</string>
+    <string name="settings_help_edit_touch_controls">Déplacez et redimensionnez les boutons du pavé à l\'écran. Les modifications s\'appliquent à tous les jeux sans disposition personnalisée.</string>
     <string name="settings_test_vibration">Tester la vibration</string>
     <string name="settings_test_vibration_button">Tester</string>
     <string name="settings_device_vibration_fallback">Utiliser la vibration de l\'appareil comme solution de secours</string>

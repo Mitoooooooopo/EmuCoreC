@@ -43,6 +43,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.sbro.emucorec.R
 import com.sbro.emucorec.core.Ps3CoreSettingOverrides
+import com.sbro.emucorec.core.CoreSettingsTreeCache
 import com.sbro.emucorec.core.Ps3Runtime
 import com.sbro.emucorec.ui.common.SectionCard
 import kotlinx.coroutines.Dispatchers
@@ -108,7 +109,7 @@ fun Ps3CoreSettingsSection(
         val result = withContext(Dispatchers.IO) {
             runCatching {
                 check(Ps3Runtime.ensureInitialized(context))
-                val raw = RPCSX.instance.settingsGet("")
+                val raw = CoreSettingsTreeCache.tree { RPCSX.instance.settingsGet("") }
                 val gameOverrides = if (
                     scope == Ps3CoreSettingsScope.Game && !titleId.isNullOrBlank()
                 ) {
@@ -163,6 +164,7 @@ fun Ps3CoreSettingsSection(
                     } else {
                         Ps3CoreSettingOverrides.recordGlobal(context, setting.path, encoded)
                     }
+                    CoreSettingsTreeCache.invalidateTree()
                     onOverridesChanged()
                     revision++
                 } else {
@@ -183,6 +185,7 @@ fun Ps3CoreSettingsSection(
             )
             withContext(Dispatchers.Main) {
                 if (restored) {
+                    CoreSettingsTreeCache.invalidateTree()
                     onOverridesChanged()
                     revision++
                 }
@@ -200,11 +203,13 @@ fun Ps3CoreSettingsSection(
     }
     val userFacingSettings = remember(filtered) {
         filtered.filter { setting ->
-            resources.getIdentifier(
-                coreHelpResourceName(setting.path),
-                "string",
-                context.packageName,
-            ) != 0
+            CoreSettingsTreeCache.resourceId(coreHelpResourceName(setting.path)) {
+                resources.getIdentifier(
+                    coreHelpResourceName(setting.path),
+                    "string",
+                    context.packageName,
+                )
+            } != 0
         }
     }
 
@@ -300,6 +305,17 @@ private val GAME_PROFILE_NETWORK_KEYS = setOf(
     "core_help_net_clans_enabled",
 )
 
+// Ranges for RPCS3 numeric settings whose min/max are not exposed by the core
+// JSON; lets the app render them as sliders instead of free-text inputs.
+private val CORE_NUMERIC_RANGES: Map<String, Pair<Double, Double>> = mapOf(
+    "Core@@PPU Threads" to (1.0 to 8.0),
+    "Core@@Max LLVM Compile Threads" to (0.0 to 1024.0),
+)
+
+private fun coreNumericRange(setting: Ps3CoreSetting): Pair<Double, Double>? =
+    setting.min?.let { min -> setting.max?.let { max -> min to max } }
+        ?: CORE_NUMERIC_RANGES[setting.path]
+
 private val IN_GAME_SETTING_KEYS = setOf(
     "core_help_video_resolution_scale",
     "core_help_video_output_scaling_mode",
@@ -341,32 +357,37 @@ private fun Ps3CoreSettingRow(
 
         setting.variants.isNotEmpty() -> CoreEnumRow(setting, title, description, onWrite, onReset)
 
-        setting.type in setOf("int", "uint", "float") &&
-            setting.min != null && setting.max != null &&
-            setting.max > setting.min && setting.max - setting.min <= 100_000.0 -> {
-            val value = (setting.value.toDoubleOrNull() ?: setting.min).coerceIn(setting.min, setting.max)
-            var sliderValue by remember(setting.path, setting.value) {
-                mutableFloatStateOf(value.toFloat())
-            }
-            val displayValue = if (setting.path == "Core@@Max LLVM Compile Threads" && sliderValue.toInt() == 0) {
-                "0 (Auto)"
+        setting.type in setOf("int", "uint", "float") -> {
+            val range = coreNumericRange(setting)
+            // Everything numeric gets a slider on touch devices; only absurdly
+            // wide ranges (millions) fall back to manual input.
+            if (range != null && range.second > range.first && range.second - range.first <= 5_000_000.0) {
+                val value = (setting.value.toDoubleOrNull() ?: range.first).coerceIn(range.first, range.second)
+                var sliderValue by remember(setting.path, setting.value) {
+                    mutableFloatStateOf(value.toFloat())
+                }
+                val displayValue = if (setting.path == "Core@@Max LLVM Compile Threads" && sliderValue.toInt() == 0) {
+                    "0 (Auto)"
+                } else {
+                    formatCoreNumber(setting.type, sliderValue)
+                }
+                val isIntegerStep = setting.type in setOf("int", "uint") && (range.second - range.first) <= 64
+                SettingSliderRow(
+                    title = title,
+                    description = description,
+                    valueText = displayValue,
+                    onResetDefault = onReset,
+                ) {
+                    Slider(
+                        value = sliderValue,
+                        onValueChange = { sliderValue = it },
+                        onValueChangeFinished = { onWrite(formatCoreNumber(setting.type, sliderValue)) },
+                        valueRange = range.first.toFloat()..range.second.toFloat(),
+                        steps = if (isIntegerStep) ((range.second - range.first).toInt() - 1).coerceAtLeast(0) else 0,
+                    )
+                }
             } else {
-                formatCoreNumber(setting.type, sliderValue)
-            }
-            val isIntegerStep = setting.type in setOf("int", "uint") && (setting.max - setting.min) <= 64
-            SettingSliderRow(
-                title = title,
-                description = description,
-                valueText = displayValue,
-                onResetDefault = onReset,
-            ) {
-                Slider(
-                    value = sliderValue,
-                    onValueChange = { sliderValue = it },
-                    onValueChangeFinished = { onWrite(formatCoreNumber(setting.type, sliderValue)) },
-                    valueRange = setting.min.toFloat()..setting.max.toFloat(),
-                    steps = if (isIntegerStep) ((setting.max - setting.min).toInt() - 1).coerceAtLeast(0) else 0,
-                )
+                CoreTextRow(setting, title, description, onWrite, onReset)
             }
         }
 
@@ -489,7 +510,9 @@ private fun localizedCoreLabel(raw: String): String {
     val context = LocalContext.current
     val resourceName = remember(raw) { coreLabelResourceName(raw) }
     val resourceId = remember(resourceName) {
-        context.resources.getIdentifier(resourceName, "string", context.packageName)
+        CoreSettingsTreeCache.resourceId(resourceName) {
+            context.resources.getIdentifier(resourceName, "string", context.packageName)
+        }
     }
     if (resourceId == 0) return raw.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
     val localized = stringResource(resourceId)
@@ -503,7 +526,9 @@ private fun localizedCoreHelp(path: String): String {
     val context = LocalContext.current
     val resourceName = remember(path) { coreHelpResourceName(path) }
     val resourceId = remember(resourceName) {
-        context.resources.getIdentifier(resourceName, "string", context.packageName)
+        CoreSettingsTreeCache.resourceId(resourceName) {
+            context.resources.getIdentifier(resourceName, "string", context.packageName)
+        }
     }
     check(resourceId != 0) { "Missing localized RPCS3 help for $path" }
     return stringResource(resourceId)

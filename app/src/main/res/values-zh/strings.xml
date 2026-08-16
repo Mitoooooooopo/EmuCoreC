@@ -419,6 +419,8 @@
     <string name="settings_vibration_section">震动</string>
     <string name="settings_vibration_enable">震动</string>
     <string name="settings_vibration_strength">震动强度</string>
+    <string name="settings_edit_touch_controls">编辑控制</string>
+    <string name="settings_help_edit_touch_controls">移动并调整屏幕游戏手柄按钮的大小。更改适用于所有没有自定义布局的游戏。</string>
     <string name="settings_test_vibration">测试震动</string>
     <string name="settings_test_vibration_button">测试</string>
     <string name="settings_device_vibration_fallback">使用设备震动作为后备</string>

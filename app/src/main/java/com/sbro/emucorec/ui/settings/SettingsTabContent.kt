@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Favorite
@@ -96,6 +97,7 @@ fun SettingsTabContent(
     viewModel: SettingsViewModel,
     onOpenLanguageSettings: () -> Unit,
     onOpenGpuDriverSettings: () -> Unit = {},
+    onOpenTouchControlsEditor: () -> Unit = {},
     onAddGameFolder: () -> Unit = {},
     createBackupClick: () -> Unit,
     restoreBackupClick: () -> Unit
@@ -113,13 +115,15 @@ fun SettingsTabContent(
             GraphicsTab(uiState, defaults, viewModel, onOpenGpuDriverSettings)
             Ps3CoreSettingsSection(Ps3CoreSettingsCategory.Graphics, scope = Ps3CoreSettingsScope.Global)
         }
-        SettingsTab.Overlay -> {
-            OverlayTab(uiState, defaults, viewModel)
-            Ps3CoreSettingsSection(Ps3CoreSettingsCategory.Overlay, scope = Ps3CoreSettingsScope.Global)
-        }
+        SettingsTab.Overlay -> Ps3CoreSettingsSection(Ps3CoreSettingsCategory.Overlay, scope = Ps3CoreSettingsScope.Global)
         SettingsTab.Audio -> Ps3CoreSettingsSection(Ps3CoreSettingsCategory.Audio, scope = Ps3CoreSettingsScope.Global)
         SettingsTab.Controls -> {
-            ControlsTab(uiState, defaults, viewModel)
+            ControlsTab(
+                uiState = uiState,
+                defaults = defaults,
+                viewModel = viewModel,
+                onOpenTouchControlsEditor = onOpenTouchControlsEditor
+            )
             Ps3CoreSettingsSection(Ps3CoreSettingsCategory.Controls, scope = Ps3CoreSettingsScope.Global)
         }
         SettingsTab.Storage -> {
@@ -254,20 +258,12 @@ private fun GpuDriverStatus(
 }
 
 @Composable
-private fun OverlayTab(uiState: SettingsUiState, defaults: Ps3CoreConfig, viewModel: SettingsViewModel) {
-    SectionCard(title = stringResource(R.string.settings_tab_overlay), contentPadding = androidx.compose.foundation.layout.PaddingValues(SettingsSectionContentPadding)) {
-        Toggle(stringResource(R.string.settings_core_gamepad_overlay), stringResource(R.string.settings_help_gamepad_overlay), uiState.coreConfig.enableGamepadOverlay, { enabled -> viewModel.updateCoreSettings { it.copy(enableGamepadOverlay = enabled) } }, { viewModel.updateCoreSettings { it.copy(enableGamepadOverlay = defaults.enableGamepadOverlay) } })
-        SliderRow(stringResource(R.string.settings_core_overlay_scale_label), stringResource(R.string.settings_help_overlay_scale), stringResource(R.string.settings_core_overlay_scale_value, uiState.coreConfig.overlayScale), { viewModel.updateCoreSettings { it.copy(overlayScale = defaults.overlayScale) } }) {
-            Slider(value = uiState.coreConfig.overlayScale, onValueChange = { value -> viewModel.updateCoreSettings { it.copy(overlayScale = (value * 10).roundToInt() / 10f) } }, valueRange = 0.5f..2f, steps = 14)
-        }
-        SliderRow(stringResource(R.string.settings_core_overlay_opacity_label), stringResource(R.string.settings_help_overlay_opacity), stringResource(R.string.settings_core_overlay_opacity_value, uiState.coreConfig.overlayOpacity), { viewModel.updateCoreSettings { it.copy(overlayOpacity = defaults.overlayOpacity) } }) {
-            Slider(value = uiState.coreConfig.overlayOpacity.toFloat(), onValueChange = { value -> viewModel.updateCoreSettings { it.copy(overlayOpacity = value.roundToInt()) } }, valueRange = 10f..100f, steps = 8)
-        }
-    }
-}
-
-@Composable
-private fun ControlsTab(uiState: SettingsUiState, defaults: Ps3CoreConfig, viewModel: SettingsViewModel) {
+private fun ControlsTab(
+    uiState: SettingsUiState,
+    defaults: Ps3CoreConfig,
+    viewModel: SettingsViewModel,
+    onOpenTouchControlsEditor: () -> Unit
+) {
     val context = LocalContext.current
     val gamepadConnected = remember {
         InputDevice.getDeviceIds().any { id ->
@@ -280,6 +276,18 @@ private fun ControlsTab(uiState: SettingsUiState, defaults: Ps3CoreConfig, viewM
         }
     }
     SectionCard(title = stringResource(R.string.settings_touch_controls_section), contentPadding = androidx.compose.foundation.layout.PaddingValues(SettingsSectionContentPadding)) {
+        ActionRow(
+            title = stringResource(R.string.settings_edit_touch_controls),
+            description = stringResource(R.string.settings_help_edit_touch_controls),
+            onClick = onOpenTouchControlsEditor
+        )
+        Toggle(stringResource(R.string.settings_core_gamepad_overlay), stringResource(R.string.settings_help_gamepad_overlay), uiState.coreConfig.enableGamepadOverlay, { enabled -> viewModel.updateCoreSettings { it.copy(enableGamepadOverlay = enabled) } }, { viewModel.updateCoreSettings { it.copy(enableGamepadOverlay = defaults.enableGamepadOverlay) } })
+        SliderRow(stringResource(R.string.settings_core_overlay_scale_label), stringResource(R.string.settings_help_overlay_scale), stringResource(R.string.settings_core_overlay_scale_value, uiState.coreConfig.overlayScale), { viewModel.updateCoreSettings { it.copy(overlayScale = defaults.overlayScale) } }) {
+            Slider(value = uiState.coreConfig.overlayScale, onValueChange = { value -> viewModel.updateCoreSettings { it.copy(overlayScale = (value * 10).roundToInt() / 10f) } }, valueRange = 0.5f..2f, steps = 14)
+        }
+        SliderRow(stringResource(R.string.settings_core_overlay_opacity_label), stringResource(R.string.settings_help_overlay_opacity), stringResource(R.string.settings_core_overlay_opacity_value, uiState.coreConfig.overlayOpacity), { viewModel.updateCoreSettings { it.copy(overlayOpacity = defaults.overlayOpacity) } }) {
+            Slider(value = uiState.coreConfig.overlayOpacity.toFloat(), onValueChange = { value -> viewModel.updateCoreSettings { it.copy(overlayOpacity = value.roundToInt()) } }, valueRange = 10f..100f, steps = 8)
+        }
         Toggle(
             stringResource(R.string.settings_touch_haptics),
             stringResource(R.string.settings_help_touch_haptics),
@@ -1097,6 +1105,47 @@ private fun Chips(title: String, description: String, onResetDefault: () -> Unit
 @Composable
 private fun SliderRow(title: String, description: String, valueText: String, onResetDefault: () -> Unit, content: @Composable () -> Unit) =
     SettingSliderRow(title = title, description = description, valueText = valueText, onResetDefault = onResetDefault, slider = content)
+
+@Composable
+private fun ActionRow(
+    title: String,
+    description: String,
+    onClick: () -> Unit
+) {
+    Surface(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(18.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+        tonalElevation = 1.dp,
+        shadowElevation = 2.dp,
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.62f))
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = SettingsCardInnerPadding, vertical = SettingsCardInnerPadding),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Icon(
+                imageVector = Icons.Rounded.ChevronRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary
+            )
+        }
+    }
+}
 
 @Composable
 private fun VibrationTestRow(

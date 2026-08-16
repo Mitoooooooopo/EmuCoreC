@@ -419,6 +419,8 @@
     <string name="settings_vibration_section">Vibración</string>
     <string name="settings_vibration_enable">Vibración</string>
     <string name="settings_vibration_strength">Fuerza de vibración</string>
+    <string name="settings_edit_touch_controls">Editar controles</string>
+    <string name="settings_help_edit_touch_controls">Mueve y redimensiona los botones del gamepad en pantalla. Los cambios se aplican a todos los juegos sin un diseño personalizado propio.</string>
     <string name="settings_test_vibration">Probar vibración</string>
     <string name="settings_test_vibration_button">Probar</string>
     <string name="settings_device_vibration_fallback">Usar la vibración del dispositivo como alternativa</string>
