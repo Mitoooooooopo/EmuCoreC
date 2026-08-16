@@ -991,6 +991,7 @@
     <string name="core_label_show_autosave_autoload_hint">Mostrar dica de salvamento automático/carregamento automático</string>
     <string name="core_label_show_capture_hints">Mostrar dicas de captura</string>
     <string name="core_label_show_fatal_error_hints">Mostrar dicas de erros fatais</string>
+    <string name="core_label_show_header">Mostrar cabeçalho</string>
     <string name="core_label_show_min_and_max">Mostrar mínimo e máximo</string>
     <string name="core_label_show_mouse_and_keyboard_toggle_hint">Mostrar dica de alternância de mouse e teclado</string>
     <string name="core_label_show_move_cursor">Mostrar cursor de movimento</string>
@@ -1329,6 +1330,7 @@ Embora atualmente também pause o jogo, não é recomendado confiar nele, pois e
     <string name="core_help_video_performance_overlay_center_vertically" formatted="false">Centraliza a sobreposição de desempenho verticalmente e substitui a margem vertical.</string>
     <string name="core_help_video_performance_overlay_detail_level" formatted="false">Controla a quantidade de informações exibidas na sobreposição de desempenho.</string>
     <string name="core_help_video_performance_overlay_enabled" formatted="false">Ativa ou desativa a sobreposição de desempenho.</string>
+    <string name="core_help_video_performance_overlay_show_header" formatted="false">Mostra a versão do aplicativo, da compilação e do núcleo no topo e as linhas de CPU e GPU na parte inferior da sobreposição de desempenho.</string>
     <string name="core_help_video_performance_overlay_font_size_px" formatted="false">Define o tamanho da fonte da sobreposição de desempenho (medido em pixels).</string>
     <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">Define a quantidade de pontos de dados usados no gráfico de taxa de quadros.</string>
     <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">Controla a quantidade de informações exibidas na sobreposição de desempenho.</string>

@@ -8,6 +8,19 @@ namespace rsx
 {
 	namespace overlays
 	{
+		// One colored fragment of a perf overlay line (e.g. the "FPS:" label).
+		struct perf_text_run
+		{
+			std::string text;
+			color4f color;
+		};
+
+		// One line of the perf overlay, composed of colored runs.
+		struct perf_text_line
+		{
+			std::vector<perf_text_run> runs;
+		};
+
 		struct perf_metrics_overlay : overlay
 		{
 		private:
@@ -23,7 +36,6 @@ namespace rsx
 			positioni m_position{};
 
 			label m_body{};
-			label m_titles{};
 
 			bool m_framerate_graph_enabled{};
 			bool m_frametime_graph_enabled{};
@@ -47,19 +59,12 @@ namespace rsx
 			bool m_center_x{}; // center the overlay horizontally
 			bool m_center_y{}; // center the overlay vertically
 
-			std::string m_color_body;
-			std::string m_background_body;
-
-			std::string m_color_title;
-			std::string m_background_title;
-
 			bool m_force_update{}; // Used to update the overlay metrics without changing the data
 			bool m_force_repaint{};
 			bool m_is_initialised{};
+			bool m_show_header{};
 
-			const std::string title1_medium{ "CPU Utilization:" };
-			const std::string title1_high{ "Host Utilization (CPU):" };
-			const std::string title2{ "Guest Utilization (PS3):" };
+			std::vector<perf_text_line> m_body_lines;
 
 			f32 m_fps{0};
 			f32 m_frametime{0};
@@ -83,7 +88,9 @@ namespace rsx
 			void reset_transform(label& elm) const;
 			void reset_transforms();
 			void reset_body();
-			void reset_titles();
+			void build_body_lines();
+			void measure_body_lines(u16& width, u16& height) const;
+			void render_body(compiled_resource& out) const;
 
 		public:
 			void init();
@@ -100,8 +107,7 @@ namespace rsx
 			void set_font_size(u16 font_size);
 			void set_margins(f32 margin_x, f32 margin_y, bool center_x, bool center_y);
 			void set_opacity(f32 opacity);
-			void set_body_colors(std::string color, std::string background);
-			void set_title_colors(std::string color, std::string background);
+			void set_show_header(bool enabled);
 			void force_next_update();
 			void set_render_viewport(u16 width, u16 height) override;
 			u16 get_virtual_width() const override { return m_virtual_width; }
@@ -113,5 +119,8 @@ namespace rsx
 		};
 
 		void reset_performance_overlay();
+
+		// App/build/device identity for the overlay header (provided by the host app via JNI).
+		void set_app_info(std::string version, std::string build, std::string device);
 	}
 }

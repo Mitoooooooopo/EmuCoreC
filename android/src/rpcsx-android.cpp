@@ -1057,6 +1057,8 @@ static std::pair<std::string, std::u32string> g_strings[] = {
     MAKE_STRING(HOME_MENU_SETTINGS_PERFORMANCE_OVERLAY, "Performance Overlay"),
     MAKE_STRING(HOME_MENU_SETTINGS_PERFORMANCE_OVERLAY_ENABLE,
                 "Enable Performance Overlay"),
+    MAKE_STRING(HOME_MENU_SETTINGS_PERFORMANCE_OVERLAY_SHOW_HEADER,
+                "Show Header"),
     MAKE_STRING(HOME_MENU_SETTINGS_PERFORMANCE_OVERLAY_ENABLE_FRAMERATE_GRAPH,
                 "Enable Framerate Graph"),
     MAKE_STRING(HOME_MENU_SETTINGS_PERFORMANCE_OVERLAY_ENABLE_FRAMETIME_GRAPH,
@@ -4908,6 +4910,7 @@ extern "C" std::string _rpcsx_settingsGet(std::string_view path) {
 namespace rsx::overlays {
 extern void reset_performance_overlay();
 extern void reset_debug_overlay();
+extern void set_app_info(std::string version, std::string build, std::string device);
 } // namespace rsx::overlays
 
 // Settings batching.
@@ -5023,6 +5026,15 @@ extern "C" bool _rpcsx_settingsSet(std::string_view path,
 
 extern "C" std::string _rpcsx_getVersion() {
   return rpcs3::get_version().to_string();
+}
+
+// Identity strings for the performance overlay header (app version, build and
+// device name). Called by the app once the core is loaded.
+extern "C" void _rpcsx_setAppInfo(std::string_view version,
+                                  std::string_view build,
+                                  std::string_view device) {
+  rsx::overlays::set_app_info(std::string(version), std::string(build),
+                              std::string(device));
 }
 
 // Custom Vulkan driver (adrenotools).

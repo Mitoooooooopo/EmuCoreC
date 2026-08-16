@@ -991,6 +991,7 @@
     <string name="core_label_show_autosave_autoload_hint">Afficher l\'indice de sauvegarde/chargement automatique</string>
     <string name="core_label_show_capture_hints">Afficher les conseils de capture</string>
     <string name="core_label_show_fatal_error_hints">Afficher les conseils d\'erreur fatale</string>
+    <string name="core_label_show_header">Afficher l\'en-tête</string>
     <string name="core_label_show_min_and_max">Afficher le minimum et le maximum</string>
     <string name="core_label_show_mouse_and_keyboard_toggle_hint">Afficher l\'indice de basculement de la souris et du clavier</string>
     <string name="core_label_show_move_cursor">Afficher le curseur de déplacement</string>
@@ -1329,6 +1330,7 @@ Bien qu\'il mette actuellement également le jeu en pause, il n\'est pas recomma
     <string name="core_help_video_performance_overlay_center_vertically" formatted="false">Centre la superposition de performances verticalement et remplace la marge verticale.</string>
     <string name="core_help_video_performance_overlay_detail_level" formatted="false">Contrôle la quantité d’informations affichées sur la superposition de performances.</string>
     <string name="core_help_video_performance_overlay_enabled" formatted="false">Active ou désactive la superposition de performances.</string>
+    <string name="core_help_video_performance_overlay_show_header" formatted="false">Affiche la version de l\'application, de la build et du noyau en haut, et les lignes CPU et GPU en bas de la superposition de performances.</string>
     <string name="core_help_video_performance_overlay_font_size_px" formatted="false">Définit la taille de la police de la superposition de performances (mesurée en pixels).</string>
     <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">Définit la quantité de points de données utilisés dans le graphique de fréquence d\'images.</string>
     <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">Contrôle la quantité d’informations affichées sur la superposition de performances.</string>

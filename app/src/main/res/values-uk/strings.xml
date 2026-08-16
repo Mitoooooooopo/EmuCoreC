@@ -993,6 +993,7 @@
     <string name="core_label_show_autosave_autoload_hint">Показати підказку щодо автозбереження/автозавантаження</string>
     <string name="core_label_show_capture_hints">Показати підказки для захоплення</string>
     <string name="core_label_show_fatal_error_hints">Показати підказки про фатальну помилку</string>
+    <string name="core_label_show_header">Показати заголовок</string>
     <string name="core_label_show_min_and_max">Показати мін. і макс</string>
     <string name="core_label_show_mouse_and_keyboard_toggle_hint">Показати підказку щодо перемикання миші та клавіатури</string>
     <string name="core_label_show_move_cursor">Показати курсор переміщення</string>
@@ -1331,6 +1332,7 @@ FidelityFX наразі не працює зі стереозвуком 3D.</str
     <string name="core_help_video_performance_overlay_center_vertically" formatted="false">Центрує накладення продуктивності по вертикалі та перекриває вертикальне поле.</string>
     <string name="core_help_video_performance_overlay_detail_level" formatted="false">Контролює кількість інформації, що відображається на накладенні продуктивності.</string>
     <string name="core_help_video_performance_overlay_enabled" formatted="false">Вмикає або вимикає накладення продуктивності.</string>
+    <string name="core_help_video_performance_overlay_show_header" formatted="false">Показує версію додатку, збірки та ядра зверху, а також рядки CPU та GPU внизу накладання продуктивності.</string>
     <string name="core_help_video_performance_overlay_font_size_px" formatted="false">Встановлює розмір шрифту накладання продуктивності (вимірюється в пікселях).</string>
     <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">Встановлює кількість точок даних, які використовуються на графіку частоти кадрів.</string>
     <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">Контролює кількість інформації, що відображається на накладенні продуктивності.</string>

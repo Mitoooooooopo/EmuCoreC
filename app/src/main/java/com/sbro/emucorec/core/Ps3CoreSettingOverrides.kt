@@ -45,6 +45,15 @@ object Ps3CoreSettingOverrides {
         "Video@@Read Color Buffers" to "true",
         // Match the console cadence instead of running uncapped.
         "Video@@Frame limit" to "\"PS3 Native\"",
+        // EmuCoreC overlay look: mobile-friendly bold text on the right side.
+        // The font is the standard PS3 bold system font from the installed
+        // firmware (Rodin Bold); applied on every boot so config files saved
+        // with the old defaults are upgraded. The user can still change both.
+        "Video@@Performance Overlay@@Font size (px)" to "18",
+        "Video@@Performance Overlay@@Position" to "\"Top Right\"",
+        "Video@@Performance Overlay@@Font" to "\"SCE-PS3-RD-B-LATIN.TTF\"",
+        // Near-opaque overlay text for readability.
+        "Video@@Performance Overlay@@Opacity (%)" to "97",
     )
 
     fun recordGlobal(context: Context, path: String, encodedValue: String) {

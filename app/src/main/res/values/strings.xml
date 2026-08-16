@@ -991,6 +991,7 @@
     <string name="core_label_show_autosave_autoload_hint">Show autosave/autoload hint</string>
     <string name="core_label_show_capture_hints">Show capture hints</string>
     <string name="core_label_show_fatal_error_hints">Show fatal error hints</string>
+    <string name="core_label_show_header">Show header</string>
     <string name="core_label_show_min_and_max">Show min and max</string>
     <string name="core_label_show_mouse_and_keyboard_toggle_hint">Show mouse and keyboard toggle hint</string>
     <string name="core_label_show_move_cursor">Show move cursor</string>
@@ -1329,6 +1330,7 @@ Although it currently also pauses gameplay, it is not recommended to rely on it 
     <string name="core_help_video_performance_overlay_center_vertically" formatted="false">Centers the performance overlay vertically and overrides the vertical margin.</string>
     <string name="core_help_video_performance_overlay_detail_level" formatted="false">Controls the amount of information displayed on the performance overlay.</string>
     <string name="core_help_video_performance_overlay_enabled" formatted="false">Enables or disables the performance overlay.</string>
+    <string name="core_help_video_performance_overlay_show_header" formatted="false">Shows the app, build and core version at the top, and the CPU and GPU rows at the bottom of the performance overlay.</string>
     <string name="core_help_video_performance_overlay_font_size_px" formatted="false">Sets the font size of the performance overlay (measured in pixels).</string>
     <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">Sets the amount of datapoints used in the framerate graph.</string>
     <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">Controls the amount of information displayed on the performance overlay.</string>

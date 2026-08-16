@@ -10,84 +10,135 @@
 #include <utility>
 
 #include "util/cpu_stats.hpp"
+#include "Utilities/StrUtil.h"
+
+#ifdef HAVE_VULKAN
+#include "Emu/RSX/VK/vkutils/device.h"
+#endif
+
+// The GL renderer is only built on desktop (see rpcs3/Emu/CMakeLists.txt).
+#if !defined(__ANDROID__) && !defined(__APPLE__)
+#define EMUCOREC_HAS_GL_RENDERER 1
+#include "Emu/RSX/GL/OpenGL.h"
+#endif
+
+#include "rpcs3_version.h"
 
 namespace rsx
 {
 	namespace overlays
 	{
-		inline color4f convert_color_code(std::string hex_color, f32 opacity = 1.0f)
+		namespace
 		{
-			if (hex_color.length() > 0 && hex_color[0] == '#')
-			{
-				hex_color.erase(0, 1);
-			}
+			// Identity strings for the overlay header, supplied by the host app
+			// (EmuCoreC Android app via JNI). Empty on desktop.
+			std::string g_app_version;
+			std::string g_app_build;
+			std::string g_device_name;
 
-			unsigned hexval = 0;
-			const auto len = hex_color.length();
+			bool g_gpu_name_queried = false;
+			std::string g_gpu_name;
 
-			if (len != 6 && len != 8)
-			{
-				rsx_log.error("Incompatible color code: '%s' has wrong length: %d", hex_color, len);
-				return color4f(0.0f, 0.0f, 0.0f, 0.0f);
-			}
-			else
-			{
-				// auto&& [ptr, ec] = std::from_chars(hex_color.c_str(), hex_color.c_str() + len, &hexval, 16);
+			// Overlay palette: parameter names light blue, values white.
+			// Text is near-opaque (0.97 alpha) with a black glow shadow.
+			const color4f label_color{ 0x9D / 255.f, 0xD7 / 255.f, 0xFF / 255.f, 1.f };
+			const color4f value_color{ 1.f, 1.f, 1.f, 1.f };
 
-				// if (ptr != hex_color.c_str() + len || ec)
-				// {
-				// 	rsx_log.error("Overlays: tried to convert incompatible color code: '%s'", hex_color);
-				// 	return color4f(0.0f, 0.0f, 0.0f, 0.0f);
-				// }
-				for (u32 i = 0; i < len; i++)
+			// Fake the soft black shadow with a few hard offsets.
+			constexpr std::array<f32, 3> shadow_steps{ 1.f, 2.f, 3.f };
+
+			void push_line(std::vector<perf_text_line>& lines, const std::string& label_text, const std::string& value_text, f32 opacity)
+			{
+				perf_text_line line;
+
+				if (!label_text.empty())
 				{
-					hexval <<= 4;
-
-					switch (char c = hex_color[i])
-					{
-					case '0':
-					case '1':
-					case '2':
-					case '3':
-					case '4':
-					case '5':
-					case '6':
-					case '7':
-					case '8':
-					case '9':
-						hexval |= (c - '0');
-						break;
-					case 'a':
-					case 'b':
-					case 'c':
-					case 'd':
-					case 'e':
-					case 'f':
-						hexval |= (c - 'a' + 10);
-						break;
-					case 'A':
-					case 'B':
-					case 'C':
-					case 'D':
-					case 'E':
-					case 'F':
-						hexval |= (c - 'A' + 10);
-						break;
-					default:
-					{
-						rsx_log.error("Overlays: invalid characters in color code: '%s'", hex_color);
-						return color4f(0.0f, 0.0f, 0.0f, 0.0f);
-					}
-					}
+					line.runs.push_back({ label_text, color4f{ label_color.r, label_color.g, label_color.b, opacity } });
 				}
+
+				if (!value_text.empty())
+				{
+					line.runs.push_back({ value_text, color4f{ value_color.r, value_color.g, value_color.b, opacity } });
+				}
+
+				lines.push_back(std::move(line));
 			}
 
-			const int r = (len == 8 ? (hexval >> 24) : (hexval >> 16)) & 0xff;
-			const int g = (len == 8 ? (hexval >> 16) : (hexval >> 8)) & 0xff;
-			const int b = (len == 8 ? (hexval >> 8) : (hexval >> 0)) & 0xff;
-			const int a = len == 8 ? ((hexval >> 0) & 0xff) : 255;
+			std::string get_gpu_name()
+			{
+				if (g_gpu_name_queried)
+				{
+					return g_gpu_name;
+				}
 
-			return color4f(r / 255.f, g / 255.f, b / 255.f, a / 255.f * opacity);
+				g_gpu_name_queried = true;
+
+				std::string name;
+
+				switch (g_cfg.video.renderer)
+				{
+				case video_renderer::vulkan:
+				{
+#ifdef HAVE_VULKAN
+					if (const auto* device = vk::g_render_device)
+					{
+						name = device->gpu().get_name();
+					}
+#endif
+					break;
+				}
+				case video_renderer::opengl:
+				{
+#ifdef EMUCOREC_HAS_GL_RENDERER
+					if (const auto* renderer = reinterpret_cast<const char*>(glGetString(GL_RENDERER)))
+					{
+						name = renderer;
+					}
+#endif
+					break;
+				}
+				default:
+					break;
+				}
+
+				// Compact vendor noise from GPU names.
+				if (!name.empty())
+				{
+					name = fmt::replace_all(name, "Qualcomm ", "");
+					name = fmt::replace_all(name, "(TM)", "");
+					name = fmt::replace_all(name, "(R)", "");
+
+					// Collapse consecutive whitespace.
+					std::string compact;
+					compact.reserve(name.size());
+					bool in_space = false;
+					for (const char c : name)
+					{
+						if (c == ' ' || c == '\t')
+						{
+							in_space = true;
+							continue;
+						}
+						if (in_space && !compact.empty())
+						{
+							compact += ' ';
+						}
+						in_space = false;
+						compact += c;
+					}
+					name = std::move(compact);
+				}
+
+				g_gpu_name = std::move(name);
+				return g_gpu_name;
+			}
+		}
+
+		void set_app_info(std::string version, std::string build, std::string device)
+		{
+			g_app_version = std::move(version);
+			g_app_build = std::move(build);
+			g_device_name = std::move(device);
 		}
 
 		void perf_metrics_overlay::reset_transform(label& elm) const
@@ -189,12 +240,10 @@ namespace rsx
 			if (m_force_repaint)
 			{
 				reset_body();
-				reset_titles();
 			}
 			else
 			{
 				reset_transform(m_body);
-				reset_transform(m_titles);
 			}
 
 			if (m_framerate_graph_enabled || m_frametime_graph_enabled)
@@ -240,28 +289,11 @@ namespace rsx
 		void perf_metrics_overlay::reset_body()
 		{
 			m_body.set_font(m_font.c_str(), m_font_size);
-			m_body.fore_color = convert_color_code(m_color_body, m_opacity);
-			m_body.back_color = convert_color_code(m_background_body, m_opacity);
+			// EmuCoreC: text is rendered manually with per-run colors; the label
+			// is transparent and only serves as a layout anchor.
+			m_body.fore_color = color4f(1.f, 1.f, 1.f, m_opacity);
+			m_body.back_color = color4f(0.f, 0.f, 0.f, 0.f);
 			reset_transform(m_body);
-		}
-
-		void perf_metrics_overlay::reset_titles()
-		{
-			m_titles.set_font(m_font.c_str(), m_font_size);
-			m_titles.fore_color = convert_color_code(m_color_title, m_opacity);
-			m_titles.back_color = convert_color_code(m_background_title, m_opacity);
-			reset_transform(m_titles);
-
-			switch (m_detail)
-			{
-			case detail_level::none: [[fallthrough]];
-			case detail_level::minimal: [[fallthrough]];
-			case detail_level::low: m_titles.set_text(""); break;
-			case detail_level::medium: m_titles.set_text(fmt::format("\n\n%s", title1_medium)); break;
-			case detail_level::high: m_titles.set_text(fmt::format("\n\n%s\n\n\n\n\n\n%s", title1_high, title2)); break;
-			}
-			m_titles.auto_resize();
-			m_titles.refresh();
 		}
 
 		void perf_metrics_overlay::init()
@@ -288,6 +320,276 @@ namespace rsx
 			visible = true;
 		}
 
+		void perf_metrics_overlay::build_body_lines()
+		{
+			m_body_lines.clear();
+
+			if (m_show_header && m_detail != detail_level::none)
+			{
+				// Identity: app version, build, core version, CPU (SoC), GPU.
+				// Versions on top, device rows at the bottom.
+				const std::string version_tail = rpcs3::get_version().to_string(true);
+
+				std::string app_tail;
+				if (!g_app_version.empty())
+				{
+					fmt::append(app_tail, "-%s", g_app_version);
+					if (!g_app_build.empty())
+					{
+						fmt::append(app_tail, " | %s", g_app_build);
+					}
+					fmt::append(app_tail, " | %s", version_tail);
+				}
+				else
+				{
+					fmt::append(app_tail, " | %s", version_tail);
+				}
+
+				push_line(m_body_lines, "EmuCoreC", app_tail, m_opacity);
+			}
+
+			switch (m_detail)
+			{
+			case detail_level::none:
+			{
+				break;
+			}
+			case detail_level::minimal:
+			{
+				push_line(m_body_lines, "FPS:", fmt::format(" %.2f", m_fps), m_opacity);
+				break;
+			}
+			case detail_level::low:
+			{
+				push_line(m_body_lines, "FPS:", fmt::format(" %.2f", m_fps), m_opacity);
+				push_line(m_body_lines, "CPU:", fmt::format(" %.1f %%", m_cpu_usage), m_opacity);
+				break;
+			}
+			case detail_level::medium:
+			{
+				push_line(m_body_lines, "FPS:", fmt::format(" %.2f", m_fps), m_opacity);
+				push_line(m_body_lines, "PPU:", fmt::format(" %.1f %%", m_ppu_usage), m_opacity);
+				push_line(m_body_lines, "SPU:", fmt::format(" %.1f %%", m_spu_usage), m_opacity);
+				push_line(m_body_lines, "RSX:", fmt::format(" %.1f %%", m_rsx_usage), m_opacity);
+				push_line(m_body_lines, "Total:", fmt::format(" %.1f %%", m_cpu_usage), m_opacity);
+				break;
+			}
+			case detail_level::high:
+			{
+				push_line(m_body_lines, "FPS:", fmt::format(" %.2f (%.1fms)", m_fps, m_frametime), m_opacity);
+				push_line(m_body_lines, "PPU:", fmt::format(" %.1f %% (%u)", m_ppu_usage, m_ppus), m_opacity);
+				push_line(m_body_lines, "SPU:", fmt::format(" %.1f %% (%u)", m_spu_usage, m_spus), m_opacity);
+				push_line(m_body_lines, "RSX:", fmt::format(" %.1f %% (1)", m_rsx_usage), m_opacity);
+				push_line(m_body_lines, "RSX Load:", fmt::format(" %u %%", m_rsx_load), m_opacity);
+				push_line(m_body_lines, "Total:", fmt::format(" %.1f %% (%u)", m_cpu_usage, m_total_threads), m_opacity);
+				break;
+			}
+			}
+
+			if (m_show_header && m_detail != detail_level::none)
+			{
+				// Device rows at the bottom: CPU first, then GPU.
+				// The GPU row also carries the renderer and internal resolution.
+				if (!g_device_name.empty())
+				{
+					push_line(m_body_lines, "CPU:", fmt::format(" %s", g_device_name), m_opacity);
+				}
+
+				const std::string gpu_name = get_gpu_name();
+				if (!gpu_name.empty())
+				{
+					std::string renderer_name = "Null";
+					switch (g_cfg.video.renderer)
+					{
+					case video_renderer::vulkan: renderer_name = "Vulkan"; break;
+					case video_renderer::opengl: renderer_name = "OpenGL"; break;
+					default: break;
+					}
+
+					u32 res_w = 0;
+					u32 res_h = 0;
+					if (auto* avconfig = g_fxo->try_get<rsx::avconf>())
+					{
+						res_w = avconfig->resolution_x;
+						res_h = avconfig->resolution_y;
+
+						const u16 scale = g_cfg.video.resolution_scale_percent;
+						if (scale != 100)
+						{
+							res_w = res_w * scale / 100;
+							res_h = res_h * scale / 100;
+						}
+					}
+
+					if (res_w > 0 && res_h > 0)
+					{
+						push_line(m_body_lines, "GPU:", fmt::format(" %s | %s | %ux%u", gpu_name, renderer_name, res_w, res_h), m_opacity);
+					}
+					else
+					{
+						push_line(m_body_lines, "GPU:", fmt::format(" %s | %s", gpu_name, renderer_name), m_opacity);
+					}
+				}
+			}
+		}
+
+		void perf_metrics_overlay::measure_body_lines(u16& width, u16& height) const
+		{
+			width = 0;
+			height = 0;
+
+			if (m_body_lines.empty())
+			{
+				return;
+			}
+
+			font* f = m_body.get_font();
+			const f32 size_px = f->get_size_px();
+
+			u32 line_count = 0;
+
+			for (const auto& line : m_body_lines)
+			{
+				f32 line_width = 0.f;
+
+				for (const auto& run : line.runs)
+				{
+					if (run.text.empty())
+					{
+						continue;
+					}
+
+					const std::u32string str = utf8_to_u32string(run.text);
+					const auto verts = f->render_text(str.c_str());
+					if (!verts.empty())
+					{
+						line_width += verts.back().values[0];
+					}
+				}
+
+				width = std::max<u16>(width, static_cast<u16>(std::ceil(line_width)));
+				line_count++;
+			}
+
+			height = static_cast<u16>(size_px + (line_count - 1) * (size_px + 2.f));
+		}
+
+		void perf_metrics_overlay::render_body(compiled_resource& out) const
+		{
+			if (m_body_lines.empty())
+			{
+				return;
+			}
+
+			font* f = m_body.get_font();
+			const f32 size_px = f->get_size_px();
+			const f32 line_height = size_px + 2.f;
+
+			const u16 pad_left = m_padding;
+			const u16 pad_top = m_padding - std::min<u32>(4, m_padding);
+			const u16 pad_right = m_padding;
+			const u16 text_region_w = m_body.w > pad_left + pad_right ? m_body.w - pad_left - pad_right : 0;
+
+			const f32 base_x = m_body.x + pad_left;
+			const f32 base_y = m_body.y + pad_top + size_px;
+
+			const bool right_aligned = !m_center_x && (m_quadrant == screen_quadrant::top_right || m_quadrant == screen_quadrant::bottom_right);
+
+			compiled_resource text_res;
+			std::vector<vertex> shadow_verts;
+
+			f32 y = base_y;
+
+			for (const auto& line : m_body_lines)
+			{
+				// Render each run once, measure it from the produced vertices.
+				struct rendered_run
+				{
+					std::vector<vertex> verts;
+					f32 width;
+					color4f color;
+				};
+
+				std::vector<rendered_run> runs;
+				f32 line_width = 0.f;
+
+				for (const auto& run : line.runs)
+				{
+					if (run.text.empty())
+					{
+						continue;
+					}
+
+					const std::u32string str = utf8_to_u32string(run.text);
+					auto verts = f->render_text(str.c_str());
+					const f32 width = verts.empty() ? 0.f : verts.back().x();
+					line_width += width;
+					runs.push_back({ std::move(verts), width, run.color });
+				}
+
+				if (runs.empty())
+				{
+					y += line_height;
+					continue;
+				}
+
+				f32 line_x = base_x;
+				if (m_center_x)
+				{
+					line_x += (text_region_w - line_width) * 0.5f;
+				}
+				else if (right_aligned)
+				{
+					line_x += text_region_w - line_width;
+				}
+
+				f32 x = line_x;
+
+				for (auto& run : runs)
+				{
+					if (!run.verts.empty())
+					{
+						for (auto& v : run.verts)
+						{
+							v.x() += x;
+							v.y() += y;
+						}
+
+						auto& cmd = text_res.append({});
+						cmd.config.set_font(f);
+						cmd.config.color = run.color;
+						cmd.verts = std::move(run.verts);
+
+						// Black glow shadow underneath the text.
+						for (const f32 step : shadow_steps)
+						{
+							for (const auto& v : cmd.verts)
+							{
+								vertex sv = v;
+								sv.x() += step;
+								sv.y() += step;
+								shadow_verts.push_back(sv);
+							}
+						}
+					}
+
+					x += run.width;
+				}
+
+				y += line_height;
+			}
+
+			if (!shadow_verts.empty())
+			{
+				auto& shadow_cmd = out.append({});
+				shadow_cmd.config.set_font(f);
+				shadow_cmd.config.color = color4f(0.f, 0.f, 0.f, 0.45f);
+				shadow_cmd.verts = std::move(shadow_verts);
+			}
+
+			out.add(text_res);
+		}
+
 		void perf_metrics_overlay::set_framerate_graph_enabled(bool enabled)
 		{
 			if (m_framerate_graph_enabled == enabled)
@@ -299,7 +601,7 @@ namespace rsx
 			{
 				m_fps_graph.set_title("Framerate: 00.0");
 				m_fps_graph.set_font_size(static_cast<u16>(m_font_size * 0.8));
-				m_fps_graph.set_color(convert_color_code(m_color_body, m_opacity));
+				m_fps_graph.set_color(color4f(1.f, 1.f, 1.f, m_opacity));
 				m_fps_graph.set_guide_interval(10);
 			}
 
@@ -317,7 +619,7 @@ namespace rsx
 			{
 				m_frametime_graph.set_title("Frametime: 0.0");
 				m_frametime_graph.set_font_size(static_cast<u16>(m_font_size * 0.8));
-				m_frametime_graph.set_color(convert_color_code(m_color_body, m_opacity));
+				m_frametime_graph.set_color(color4f(1.f, 1.f, 1.f, m_opacity));
 				m_frametime_graph.set_guide_interval(8);
 			}
 
@@ -424,24 +726,12 @@ namespace rsx
 			m_force_repaint = true;
 		}
 
-		void perf_metrics_overlay::set_body_colors(std::string color, std::string background)
+		void perf_metrics_overlay::set_show_header(bool enabled)
 		{
-			if (m_color_body == color && m_background_body == background)
+			if (m_show_header == enabled)
 				return;
 
-			m_color_body = std::move(color);
-			m_background_body = std::move(background);
-
-			m_force_repaint = true;
-		}
-
-		void perf_metrics_overlay::set_title_colors(std::string color, std::string background)
-		{
-			if (m_color_title == color && m_background_title == background)
-				return;
-
-			m_color_title = std::move(color);
-			m_background_title = std::move(background);
+			m_show_header = enabled;
 
 			m_force_repaint = true;
 		}
@@ -577,69 +867,21 @@ namespace rsx
 					}
 				}
 
-				// 2. Format output string
-				std::string perf_text;
+				// 2. Build the overlay text (colored runs) and size the body to it.
+				build_body_lines();
 
-				switch (m_detail)
-				{
-				case detail_level::none:
-				{
-					break;
-				}
-				case detail_level::minimal:
-				{
-					fmt::append(perf_text, "FPS : %05.2f", m_fps);
-					break;
-				}
-				case detail_level::low:
-				{
-					fmt::append(perf_text, "FPS : %05.2f\n"
-					                         "CPU : %04.1f %%",
-					    m_fps, m_cpu_usage);
-					break;
-				}
-				case detail_level::medium:
-				{
-					fmt::append(perf_text, "FPS : %05.2f\n\n"
-					                         "%s\n"
-					                         " PPU   : %04.1f %%\n"
-					                         " SPU   : %04.1f %%\n"
-					                         " RSX   : %04.1f %%\n"
-					                         " Total : %04.1f %%",
-					    m_fps, std::string(title1_medium.size(), ' '), m_ppu_usage, m_spu_usage, m_rsx_usage, m_cpu_usage, std::string(title2.size(), ' '));
-					break;
-				}
-				case detail_level::high:
-				{
-					fmt::append(perf_text, "FPS : %05.2f (%03.1fms)\n\n"
-					                         "%s\n"
-					                         " PPU   : %04.1f %% (%2u)\n"
-					                         " SPU   : %04.1f %% (%2u)\n"
-					                         " RSX   : %04.1f %% ( 1)\n"
-					                         " Total : %04.1f %% (%2u)\n\n"
-					                         "%s\n"
-					                         " RSX   : %02u %%",
-					    m_fps, m_frametime, std::string(title1_high.size(), ' '), m_ppu_usage, m_ppus, m_spu_usage, m_spus, m_rsx_usage, m_cpu_usage, m_total_threads, std::string(title2.size(), ' '), m_rsx_load);
-					break;
-				}
-				}
+				u16 text_w = 0;
+				u16 text_h = 0;
+				measure_body_lines(text_w, text_h);
 
-				m_body.set_text(perf_text);
+				const u16 body_w = text_w == 0 ? 0 : static_cast<u16>(text_w + m_padding * 2);
+				const u16 body_h = text_h == 0 ? 0 : static_cast<u16>(text_h + (m_padding - std::min<u32>(4, m_padding)) + m_padding);
 
-				if (perf_text.empty())
+				if (m_body.w != body_w || m_body.h != body_h)
 				{
-					if (m_body.w > 0 || m_body.h > 0)
-					{
-						m_body.set_size(0, 0);
-						reset_transforms();
-					}
-				}
-				else if (m_body.auto_resize())
-				{
+					m_body.set_size(body_w, body_h);
 					reset_transforms();
 				}
-
-				m_body.refresh();
 
 				if (!m_force_update)
 				{
@@ -670,9 +912,9 @@ namespace rsx
 				return {};
 			}
 
-			compiled_resource compiled_resources = m_body.get_compiled();
+			compiled_resource compiled_resources;
 
-			compiled_resources.add(m_titles.get_compiled());
+			render_body(compiled_resources);
 
 			if (m_framerate_graph_enabled)
 			{
@@ -951,8 +1193,7 @@ namespace rsx
 					perf_overlay->set_margins(static_cast<f32>(perf_settings.margin_x.get()), static_cast<f32>(perf_settings.margin_y.get()), perf_settings.center_x.get(), perf_settings.center_y.get());
 					perf_overlay->use_window_space = perf_settings.use_window_space.get();
 					perf_overlay->set_opacity(perf_settings.opacity / 100.f);
-					perf_overlay->set_body_colors(perf_settings.color_body, perf_settings.background_body);
-					perf_overlay->set_title_colors(perf_settings.color_title, perf_settings.background_title);
+					perf_overlay->set_show_header(perf_settings.show_header.get());
 					perf_overlay->set_framerate_datapoint_count(perf_settings.framerate_datapoint_count);
 					perf_overlay->set_frametime_datapoint_count(perf_settings.frametime_datapoint_count);
 					perf_overlay->set_framerate_graph_enabled(perf_settings.framerate_graph_enabled.get());

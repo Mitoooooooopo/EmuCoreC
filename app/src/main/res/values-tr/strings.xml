@@ -991,6 +991,7 @@
     <string name="core_label_show_autosave_autoload_hint">Otomatik kaydetme/otomatik yükleme ipucunu göster</string>
     <string name="core_label_show_capture_hints">Yakalama ipuçlarını göster</string>
     <string name="core_label_show_fatal_error_hints">Önemli hata ipuçlarını göster</string>
+    <string name="core_label_show_header">Başlığı göster</string>
     <string name="core_label_show_min_and_max">Min. ve maksimumu göster</string>
     <string name="core_label_show_mouse_and_keyboard_toggle_hint">Fare ve klavye geçiş ipucunu göster</string>
     <string name="core_label_show_move_cursor">Taşıma imlecini göster</string>
@@ -1329,6 +1330,7 @@ Bu durumda, ana menü her açıldığında öykünmeyi duraklatmak yararlı olab
     <string name="core_help_video_performance_overlay_center_vertically" formatted="false">Performans katmanını dikey olarak ortalar ve dikey kenar boşluğunu geçersiz kılar.</string>
     <string name="core_help_video_performance_overlay_detail_level" formatted="false">Performans katmanında görüntülenen bilgi miktarını kontrol eder.</string>
     <string name="core_help_video_performance_overlay_enabled" formatted="false">Performans katmanını etkinleştirir veya devre dışı bırakır.</string>
+    <string name="core_help_video_performance_overlay_show_header" formatted="false">Uygulama, derleme ve çekirdek sürümünü üstte, CPU ve GPU satırlarını ise performans katmanının altında gösterir.</string>
     <string name="core_help_video_performance_overlay_font_size_px" formatted="false">Performans katmanının yazı tipi boyutunu ayarlar (piksel cinsinden ölçülür).</string>
     <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">Kare hızı grafiğinde kullanılan veri noktalarının miktarını ayarlar.</string>
     <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">Performans katmanında görüntülenen bilgi miktarını kontrol eder.</string>

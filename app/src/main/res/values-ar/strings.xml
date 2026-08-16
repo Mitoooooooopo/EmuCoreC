@@ -995,6 +995,7 @@
     <string name="core_label_show_autosave_autoload_hint">إظهار تلميح الحفظ التلقائي/التحميل التلقائي</string>
     <string name="core_label_show_capture_hints">إظهار تلميحات الالتقاط</string>
     <string name="core_label_show_fatal_error_hints">إظهار تلميحات الخطأ الفادح</string>
+    <string name="core_label_show_header">إظهار الترويسة</string>
     <string name="core_label_show_min_and_max">عرض الحد الأدنى والحد الأقصى</string>
     <string name="core_label_show_mouse_and_keyboard_toggle_hint">إظهار تلميح تبديل الماوس ولوحة المفاتيح</string>
     <string name="core_label_show_move_cursor">إظهار تحرك المؤشر</string>
@@ -1333,6 +1334,7 @@
     <string name="core_help_video_performance_overlay_center_vertically" formatted="false">يقوم بتوسيط تراكب الأداء عموديًا وتجاوز الهامش الرأسي.</string>
     <string name="core_help_video_performance_overlay_detail_level" formatted="false">يتحكم في كمية المعلومات المعروضة على تراكب الأداء.</string>
     <string name="core_help_video_performance_overlay_enabled" formatted="false">تمكين أو تعطيل تراكب الأداء.</string>
+    <string name="core_help_video_performance_overlay_show_header" formatted="false">يعرض إصدار التطبيق والبناء والنواة في الأعلى، وصفّي CPU وGPU في أسفل تراكب الأداء.</string>
     <string name="core_help_video_performance_overlay_font_size_px" formatted="false">يضبط حجم الخط لتراكب الأداء (يتم قياسه بالبكسل).</string>
     <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">يضبط مقدار نقاط البيانات المستخدمة في الرسم البياني لمعدل الإطارات.</string>
     <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">يتحكم في كمية المعلومات المعروضة على تراكب الأداء.</string>

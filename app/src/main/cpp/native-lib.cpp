@@ -44,6 +44,8 @@ struct RPCSXApi {
   std::string (*settingsGet)(std::string_view path);
   bool (*settingsSet)(std::string_view path, std::string_view valueString);
   std::string (*getVersion)();
+  void (*setAppInfo)(std::string_view version, std::string_view build,
+                     std::string_view device);
   void *(*setCustomDriver)(void *driverHandle);
 };
 
@@ -106,6 +108,7 @@ struct RPCSXLibrary : RPCSXApi {
     result.settingsGet = reinterpret_cast<decltype(settingsGet)>(dlsym(handle, "_rpcsx_settingsGet"));
     result.settingsSet = reinterpret_cast<decltype(settingsSet)>(dlsym(handle, "_rpcsx_settingsSet"));
     result.getVersion = reinterpret_cast<decltype(getVersion)>(dlsym(handle, "_rpcsx_getVersion"));
+    result.setAppInfo = reinterpret_cast<decltype(setAppInfo)>(dlsym(handle, "_rpcsx_setAppInfo"));
     result.setCustomDriver = reinterpret_cast<decltype(setCustomDriver)>(dlsym(handle, "_rpcsx_setCustomDriver"));
     // clang-format on
 
@@ -286,6 +289,15 @@ Java_net_rpcsx_RPCSX_supportsCustomDriverLoading(JNIEnv *env,
 extern "C" JNIEXPORT jstring JNICALL
 Java_net_rpcsx_RPCSX_getVersion(JNIEnv *env, jobject) {
   return wrap(env, rpcsxLib.getVersion());
+}
+
+extern "C" JNIEXPORT void JNICALL Java_net_rpcsx_RPCSX_setAppInfo(
+    JNIEnv *env, jobject, jstring jversion, jstring jbuild, jstring jdevice) {
+  if (rpcsxLib.setAppInfo == nullptr) {
+    return;
+  }
+  rpcsxLib.setAppInfo(unwrap(env, jversion), unwrap(env, jbuild),
+                      unwrap(env, jdevice));
 }
 
 extern "C" JNIEXPORT jboolean JNICALL

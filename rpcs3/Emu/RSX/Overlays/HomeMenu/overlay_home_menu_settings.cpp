@@ -240,6 +240,7 @@ namespace rsx
 			: home_menu_settings_page(x, y, width, height, use_separators, parent, get_localized_string(localized_string_id::HOME_MENU_SETTINGS_PERFORMANCE_OVERLAY))
 		{
 			add_checkbox(&g_cfg.video.perf_overlay.enabled, localized_string_id::HOME_MENU_SETTINGS_PERFORMANCE_OVERLAY_ENABLE);
+			add_checkbox(&g_cfg.video.perf_overlay.show_header, localized_string_id::HOME_MENU_SETTINGS_PERFORMANCE_OVERLAY_SHOW_HEADER);
 			add_checkbox(&g_cfg.video.perf_overlay.framerate_graph_enabled, localized_string_id::HOME_MENU_SETTINGS_PERFORMANCE_OVERLAY_ENABLE_FRAMERATE_GRAPH);
 			add_checkbox(&g_cfg.video.perf_overlay.frametime_graph_enabled, localized_string_id::HOME_MENU_SETTINGS_PERFORMANCE_OVERLAY_ENABLE_FRAMETIME_GRAPH);
 

@@ -991,6 +991,7 @@
     <string name="core_label_show_autosave_autoload_hint">Mostrar sugerencia de guardado/carga automática</string>
     <string name="core_label_show_capture_hints">Mostrar sugerencias de captura</string>
     <string name="core_label_show_fatal_error_hints">Mostrar sugerencias de errores fatales</string>
+    <string name="core_label_show_header">Mostrar encabezado</string>
     <string name="core_label_show_min_and_max">Mostrar mínimo y máximo</string>
     <string name="core_label_show_mouse_and_keyboard_toggle_hint">Mostrar sugerencia para alternar el mouse y el teclado</string>
     <string name="core_label_show_move_cursor">Mostrar mover cursor</string>
@@ -1329,6 +1330,7 @@ Aunque actualmente también pausa el juego, no se recomienda confiar en él ya q
     <string name="core_help_video_performance_overlay_center_vertically" formatted="false">Centra la superposición de rendimiento verticalmente y anula el margen vertical.</string>
     <string name="core_help_video_performance_overlay_detail_level" formatted="false">Controla la cantidad de información que se muestra en la superposición de rendimiento.</string>
     <string name="core_help_video_performance_overlay_enabled" formatted="false">Habilita o deshabilita la superposición de rendimiento.</string>
+    <string name="core_help_video_performance_overlay_show_header" formatted="false">Muestra la versión de la aplicación, de la compilación y del núcleo arriba, y las filas de CPU y GPU abajo en la superposición de rendimiento.</string>
     <string name="core_help_video_performance_overlay_font_size_px" formatted="false">Establece el tamaño de fuente de la superposición de rendimiento (medido en píxeles).</string>
     <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">Establece la cantidad de puntos de datos utilizados en el gráfico de velocidad de fotogramas.</string>
     <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">Controla la cantidad de información que se muestra en la superposición de rendimiento.</string>

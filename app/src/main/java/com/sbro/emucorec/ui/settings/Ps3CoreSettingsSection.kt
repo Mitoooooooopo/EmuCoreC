@@ -310,6 +310,7 @@ private val IN_GAME_SETTING_KEYS = setOf(
     "core_help_video_vsync_mode",
     "core_help_video_anisotropic_filter_override",
     "core_help_video_performance_overlay_enabled",
+    "core_help_video_performance_overlay_show_header",
     "core_help_video_performance_overlay_position",
     "core_help_video_performance_overlay_detail_level",
     "core_help_video_performance_overlay_font_size_px",

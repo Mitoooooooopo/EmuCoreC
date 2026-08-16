@@ -217,6 +217,7 @@ struct cfg_root : cfg::node
 			node_perf_overlay(cfg::node* _this) : cfg::node(_this, "Performance Overlay") {}
 
 			cfg::_bool enabled{ this, "Enabled", false, true };
+			cfg::_bool show_header{ this, "Show Header", true, true };
 			cfg::_bool framerate_graph_enabled{ this, "Enable Framerate Graph", false, true };
 			cfg::_bool frametime_graph_enabled{ this, "Enable Frametime Graph", false, true };
 			cfg::uint<2, 6000> framerate_datapoint_count{ this, "Framerate datapoints", 50, true };
@@ -225,18 +226,14 @@ struct cfg_root : cfg::node
 			cfg::_enum<perf_graph_detail_level> framerate_graph_detail_level{ this, "Framerate graph detail level", perf_graph_detail_level::show_all, true };
 			cfg::_enum<perf_graph_detail_level> frametime_graph_detail_level{ this, "Frametime graph detail level", perf_graph_detail_level::show_all, true };
 			cfg::uint<1, 1000> update_interval{ this, "Metrics update interval (ms)", 350, true };
-			cfg::uint<4, 36> font_size{ this, "Font size (px)", 10, true };
-			cfg::_enum<screen_quadrant> position{ this, "Position", screen_quadrant::top_left, true };
-			cfg::string font{ this, "Font", "n023055ms.ttf", true };
+			cfg::uint<4, 36> font_size{ this, "Font size (px)", 18, true };
+			cfg::_enum<screen_quadrant> position{ this, "Position", screen_quadrant::top_right, true };
+			cfg::string font{ this, "Font", "SCE-PS3-RD-B-LATIN.TTF", true };
 			cfg::_float<0, 100> margin_x{ this, "Horizontal Margin (%)", 4, true }; // horizontal distance to the window border relative to the screen_quadrant in percent of the window width
 			cfg::_float<0, 100> margin_y{ this, "Vertical Margin (%)", 7, true }; // vertical distance to the window border relative to the screen_quadrant in percent of the window height
 			cfg::_bool center_x{ this, "Center Horizontally", false, true };
 			cfg::_bool center_y{ this, "Center Vertically", false, true };
-			cfg::uint<0, 100> opacity{ this, "Opacity (%)", 70, true };
-			cfg::string color_body{ this, "Body Color (hex)", "#FFE138FF", true };
-			cfg::string background_body{ this, "Body Background (hex)", "#002339FF", true };
-			cfg::string color_title{ this, "Title Color (hex)", "#F26C24FF", true };
-			cfg::string background_title{ this, "Title Background (hex)", "#00000000", true };
+			cfg::uint<0, 100> opacity{ this, "Opacity (%)", 97, true };
 			cfg::_bool use_window_space{this, "Use Window Space", false, true};
 
 		} perf_overlay{ this };

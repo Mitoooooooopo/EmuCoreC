@@ -991,6 +991,7 @@
     <string name="core_label_show_autosave_autoload_hint">Hinweis zum automatischen Speichern/automatischen Laden anzeigen</string>
     <string name="core_label_show_capture_hints">Aufnahmehinweise anzeigen</string>
     <string name="core_label_show_fatal_error_hints">Hinweise zu schwerwiegenden Fehlern anzeigen</string>
+    <string name="core_label_show_header">Kopfzeile anzeigen</string>
     <string name="core_label_show_min_and_max">Min. und Max. anzeigen</string>
     <string name="core_label_show_mouse_and_keyboard_toggle_hint">Hinweis zum Umschalten von Maus und Tastatur anzeigen</string>
     <string name="core_label_show_move_cursor">Bewegungscursor anzeigen</string>
@@ -1329,6 +1330,7 @@ Obwohl es derzeit auch das Spiel pausiert, wird nicht empfohlen, sich darauf zu 
     <string name="core_help_video_performance_overlay_center_vertically" formatted="false">Zentriert die Leistungsüberlagerung vertikal und überschreibt den vertikalen Rand.</string>
     <string name="core_help_video_performance_overlay_detail_level" formatted="false">Steuert die Menge der auf dem Leistungs-Overlay angezeigten Informationen.</string>
     <string name="core_help_video_performance_overlay_enabled" formatted="false">Aktiviert oder deaktiviert das Leistungs-Overlay.</string>
+    <string name="core_help_video_performance_overlay_show_header" formatted="false">Zeigt die App-, Build- und Kernversion oben sowie die CPU- und GPU-Zeilen unten im Leistungs-Overlay an.</string>
     <string name="core_help_video_performance_overlay_font_size_px" formatted="false">Legt die Schriftgröße des Leistungs-Overlays fest (gemessen in Pixel).</string>
     <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">Legt die Anzahl der im Framerate-Diagramm verwendeten Datenpunkte fest.</string>
     <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">Steuert die Menge der auf dem Leistungs-Overlay angezeigten Informationen.</string>

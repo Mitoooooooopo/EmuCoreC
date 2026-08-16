@@ -11,6 +11,7 @@ import net.rpcsx.FirmwareRepository
 import net.rpcsx.GameRepository
 import net.rpcsx.ProgressRepository
 import net.rpcsx.RPCSX
+import com.sbro.emucorec.BuildConfig
 import java.io.File
 import java.io.FileInputStream
 import java.nio.file.Files
@@ -48,6 +49,16 @@ object Ps3Runtime {
         if (RPCSX.activeLibrary.value == null && !RPCSX.openLibrary(core.absolutePath)) {
             Log.e(TAG, "Could not load RPCS3 core: ${core.absolutePath}")
             return false
+        }
+
+        // Feed the core the identity strings shown in the performance overlay header
+        // (app version | build | core version, plus the device name).
+        runCatching {
+            RPCSX.instance.setAppInfo(
+                BuildConfig.VERSION_NAME,
+                BuildConfig.VERSION_CODE.toString(),
+                MobileSocNameMapper.currentDeviceName(),
+            )
         }
 
         val root = EmulatorStorage.ps3Root(appContext).absolutePath.trimEnd('/') + "/"

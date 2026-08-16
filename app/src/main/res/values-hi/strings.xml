@@ -991,6 +991,7 @@
     <string name="core_label_show_autosave_autoload_hint">स्वतः सहेजें/स्वचालित लोड संकेत दिखाएँ</string>
     <string name="core_label_show_capture_hints">कैप्चर संकेत दिखाएँ</string>
     <string name="core_label_show_fatal_error_hints">घातक त्रुटि संकेत दिखाएँ</string>
+    <string name="core_label_show_header">हेडर दिखाएँ</string>
     <string name="core_label_show_min_and_max">न्यूनतम और अधिकतम दिखाएँ</string>
     <string name="core_label_show_mouse_and_keyboard_toggle_hint">माउस और कीबोर्ड टॉगल संकेत दिखाएँ</string>
     <string name="core_label_show_move_cursor">मूव कर्सर दिखाएँ</string>
@@ -1329,6 +1330,7 @@ PS3 नेटिव का उपयोग केवल तभी किया �
     <string name="core_help_video_performance_overlay_center_vertically" formatted="false">प्रदर्शन ओवरले को लंबवत रूप से केन्द्रित करता है और ऊर्ध्वाधर मार्जिन को ओवरराइड करता है।</string>
     <string name="core_help_video_performance_overlay_detail_level" formatted="false">प्रदर्शन ओवरले पर प्रदर्शित जानकारी की मात्रा को नियंत्रित करता है।</string>
     <string name="core_help_video_performance_overlay_enabled" formatted="false">प्रदर्शन ओवरले को सक्षम या अक्षम करता है।</string>
+    <string name="core_help_video_performance_overlay_show_header" formatted="false">प्रदर्शन ओवरले में ऐप, बिल्ड और कोर संस्करण शीर्ष पर तथा CPU और GPU पंक्तियाँ नीचे दिखाता है।</string>
     <string name="core_help_video_performance_overlay_font_size_px" formatted="false">प्रदर्शन ओवरले का फ़ॉन्ट आकार सेट करता है (पिक्सेल में मापा जाता है)।</string>
     <string name="core_help_video_performance_overlay_framerate_datapoints" formatted="false">फ़्रेमरेट ग्राफ़ में उपयोग किए गए डेटापॉइंट की मात्रा निर्धारित करता है।</string>
     <string name="core_help_video_performance_overlay_framerate_graph_detail_level" formatted="false">प्रदर्शन ओवरले पर प्रदर्शित जानकारी की मात्रा को नियंत्रित करता है।</string>
