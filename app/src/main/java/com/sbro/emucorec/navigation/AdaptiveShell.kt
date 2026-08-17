@@ -30,6 +30,7 @@ import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.EmojiEvents
 import androidx.compose.material.icons.rounded.Feedback
 import androidx.compose.material.icons.rounded.Forum
+import androidx.compose.material.icons.rounded.Build
 import androidx.compose.material.icons.rounded.Games
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Inventory2
@@ -76,7 +77,7 @@ import com.sbro.emucorec.ui.theme.shouldUseExpandedShell
 import kotlinx.coroutines.launch
 
 enum class PrimaryDestination {
-    Library, Setup, GameManager, PlayTime, Achievements, SaveData, Search, Settings, Profile, Feedback
+    Library, Setup, GameManager, Patches, PlayTime, Achievements, SaveData, Search, Settings, Profile, Feedback
 }
 
 private enum class MobileLeadingAction {
@@ -94,6 +95,7 @@ fun AdaptiveShell(
     onNavigateSetup: () -> Unit,
     onNavigateLibrary: () -> Unit,
     onNavigateGameManager: () -> Unit,
+    onNavigatePatches: () -> Unit,
     onNavigatePlayTime: () -> Unit,
     onNavigateAchievements: () -> Unit,
     onNavigateSaveData: () -> Unit,
@@ -114,6 +116,7 @@ fun AdaptiveShell(
             onNavigateSetup = onNavigateSetup,
             onNavigateLibrary = onNavigateLibrary,
             onNavigateGameManager = onNavigateGameManager,
+            onNavigatePatches = onNavigatePatches,
             onNavigatePlayTime = onNavigatePlayTime,
             onNavigateAchievements = onNavigateAchievements,
             onNavigateSaveData = onNavigateSaveData,
@@ -165,6 +168,7 @@ fun AdaptiveShell(
             onNavigateSetup = onNavigateSetup,
             onNavigateLibrary = onNavigateLibrary,
             onNavigateGameManager = onNavigateGameManager,
+            onNavigatePatches = onNavigatePatches,
             onNavigatePlayTime = onNavigatePlayTime,
             onNavigateAchievements = onNavigateAchievements,
             onNavigateSaveData = onNavigateSaveData,
@@ -190,6 +194,7 @@ private fun CompactAdaptiveShell(
     onNavigateSetup: () -> Unit,
     onNavigateLibrary: () -> Unit,
     onNavigateGameManager: () -> Unit,
+    onNavigatePatches: () -> Unit,
     onNavigatePlayTime: () -> Unit,
     onNavigateAchievements: () -> Unit,
     onNavigateSaveData: () -> Unit,
@@ -273,6 +278,7 @@ private fun CompactAdaptiveShell(
                     onNavigateSetup = onNavigateSetup,
                     onNavigateLibrary = onNavigateLibrary,
                     onNavigateGameManager = onNavigateGameManager,
+                    onNavigatePatches = onNavigatePatches,
                     onNavigatePlayTime = onNavigatePlayTime,
                     onNavigateAchievements = onNavigateAchievements,
                     onNavigateSaveData = onNavigateSaveData,
@@ -306,6 +312,7 @@ private fun SideNavigation(
     onNavigateSetup: () -> Unit,
     onNavigateLibrary: () -> Unit,
     onNavigateGameManager: () -> Unit,
+    onNavigatePatches: () -> Unit,
     onNavigatePlayTime: () -> Unit,
     onNavigateAchievements: () -> Unit,
     onNavigateSaveData: () -> Unit,
@@ -350,6 +357,10 @@ private fun SideNavigation(
     val navigateGameManager = rememberDebouncedClick {
         onCloseDrawer()
         onNavigateGameManager()
+    }
+    val navigatePatches = rememberDebouncedClick {
+        onCloseDrawer()
+        onNavigatePatches()
     }
     val navigatePlayTime = rememberDebouncedClick {
         onCloseDrawer()
@@ -520,6 +531,12 @@ private fun SideNavigation(
                     label = stringResource(R.string.nav_game_manager),
                     selected = selected == PrimaryDestination.GameManager,
                     onClick = navigateGameManager
+                )
+                ShellItem(
+                    icon = Icons.Rounded.Build,
+                    label = stringResource(R.string.nav_patches),
+                    selected = selected == PrimaryDestination.Patches,
+                    onClick = navigatePatches
                 )
                 ShellItem(
                     icon = Icons.Rounded.QueryStats,

@@ -39,6 +39,7 @@ import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.EmojiEvents
 import androidx.compose.material.icons.rounded.FolderOpen
 import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Build
 import androidx.compose.material.icons.rounded.QueryStats
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Save
@@ -107,6 +108,7 @@ fun LibraryScreen(
     onLaunchGame: (String) -> Unit,
     onOpenSaveManager: (String) -> Unit,
     onOpenGameManager: (String) -> Unit,
+    onOpenPatches: (String) -> Unit,
     onOpenPlayTime: (String) -> Unit,
     onOpenAchievements: (String) -> Unit,
     onOpenCatalogEntry: (Long) -> Unit,
@@ -140,6 +142,7 @@ fun LibraryScreen(
     val deleteGameLabel = stringResource(R.string.detail_delete_game)
     val manageSaveDataLabel = stringResource(R.string.save_manager_open_for_game)
     val manageGameSettingsLabel = stringResource(R.string.game_manager_open_for_game)
+    val patchesLabel = stringResource(R.string.patches_open_for_game)
     val playTimeLabel = stringResource(R.string.play_time_open_for_game)
     val achievementsLabel = stringResource(R.string.achievements_open_for_game)
     val openCatalogLabel = stringResource(R.string.catalog_open_for_game)
@@ -422,6 +425,19 @@ fun LibraryScreen(
                             }
                         )
                         DropdownMenuItem(
+                            text = { Text(patchesLabel) },
+                            onClick = {
+                                onOpenPatches(game.titleId)
+                                menuExpanded = false
+                            },
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Rounded.Build,
+                                    contentDescription = null
+                                )
+                            }
+                        )
+                        DropdownMenuItem(
                             text = { Text(playTimeLabel) },
                             onClick = {
                                 onOpenPlayTime(game.titleId)
@@ -575,6 +591,19 @@ fun LibraryScreen(
                                     leadingIcon = {
                                         Icon(
                                             imageVector = Icons.Rounded.Tune,
+                                            contentDescription = null
+                                        )
+                                    }
+                                )
+                                DropdownMenuItem(
+                                    text = { Text(patchesLabel) },
+                                    onClick = {
+                                        onOpenPatches(game.titleId)
+                                        menuExpanded = false
+                                    },
+                                    leadingIcon = {
+                                        Icon(
+                                            imageVector = Icons.Rounded.Build,
                                             contentDescription = null
                                         )
                                     }

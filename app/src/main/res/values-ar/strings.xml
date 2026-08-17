@@ -13,6 +13,7 @@
     <string name="nav_setup">الألعاب</string>
     <string name="nav_library">المكتبة</string>
     <string name="nav_game_manager">مدير الألعاب</string>
+    <string name="nav_patches">الترقيات</string>
     <string name="nav_play_time">وقت اللعب</string>
     <string name="nav_save_manager">ملفات الحفظ</string>
     <string name="nav_catalog">الكتالوج</string>
@@ -59,6 +60,19 @@
     <string name="game_manager_reset_global">استخدام الافتراضيات العامة</string>
     <string name="game_manager_invert_left_x">عكس المحور X للعصا اليسرى</string>
     <string name="game_manager_invert_right_x">عكس المحور X للعصا اليمنى</string>
+    <string name="patches_title">الترقيات</string>
+    <string name="patches_open_for_game">الترقيات</string>
+    <string name="patches_choose_game">اختر اللعبة</string>
+    <string name="patches_empty_title">لا توجد ترقيات متاحة</string>
+    <string name="patches_empty_body">قم بتثبيت الألعاب أولاً، ثم حمّل الترقيات هنا.</string>
+    <string name="patches_no_patches_for_game">لم يتم العثور على ترقيات لهذه اللعبة.</string>
+    <string name="patches_update">تحديث الترقيات</string>
+    <string name="patches_up_to_date">الترقيات محدثة بالفعل.</string>
+    <string name="patches_import_success">تم استيراد %1$d ترقيات.</string>
+    <string name="patches_import_error">خطأ: %1$s</string>
+    <string name="patches_hint_update">اضغط على الزر أعلاه لتحميل ترقيات هذه اللعبة.</string>
+    <string name="patches_version">v%1$s</string>
+    <string name="patches_app_version">التطبيق %1$s</string>
     <string name="play_time_title">وقت اللعب</string>
     <string name="play_time_open_for_game">وقت اللعب</string>
     <string name="play_time_current_session">الجلسة الحالية</string>

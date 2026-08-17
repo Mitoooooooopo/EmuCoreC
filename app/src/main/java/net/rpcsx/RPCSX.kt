@@ -99,6 +99,10 @@ class RPCSX {
     external fun getVersion(): String
     external fun setCustomDriver(path: String, libraryName: String, hookDir: String): Boolean
     external fun setAppInfo(version: String, build: String, device: String)
+    external fun patchEngineVersion(): String
+    external fun patchesImport(content: String): Int
+    external fun patchesList(serial: String): String
+    external fun patchSetEnabled(hash: String, description: String, serial: String, appVersion: String, enabled: Boolean): Boolean
 
 
     companion object {

@@ -15,6 +15,7 @@
     <string name="nav_setup">Games</string>
     <string name="nav_library">Library</string>
     <string name="nav_game_manager">Game Manager</string>
+    <string name="nav_patches">Patches</string>
     <string name="nav_play_time">Play Time</string>
     <string name="nav_achievements">Achievements</string>
     <string name="nav_save_manager">Saves</string>
@@ -74,6 +75,19 @@
     <string name="game_manager_reset_global">Use global defaults</string>
     <string name="game_manager_invert_left_x">Invert left stick X</string>
     <string name="game_manager_invert_right_x">Invert right stick X</string>
+    <string name="patches_title">Patches</string>
+    <string name="patches_open_for_game">Patches</string>
+    <string name="patches_choose_game">Choose game</string>
+    <string name="patches_empty_title">No patches available</string>
+    <string name="patches_empty_body">Install games first, then download patches for them here.</string>
+    <string name="patches_no_patches_for_game">No patches found for this game.</string>
+    <string name="patches_update">Update patches</string>
+    <string name="patches_up_to_date">Patches are already up to date.</string>
+    <string name="patches_import_success">Imported %1$d patches successfully.</string>
+    <string name="patches_import_error">Error: %1$s</string>
+    <string name="patches_hint_update">Press the download button above to get patches for this game.</string>
+    <string name="patches_version">v%1$s</string>
+    <string name="patches_app_version">App %1$s</string>
     <string name="play_time_title">Play Time</string>
     <string name="play_time_open_for_game">Play time</string>
     <string name="play_time_current_session">Current session</string>

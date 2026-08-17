@@ -79,3 +79,14 @@ data class ProfileCatalogGame(
     val profile: ProfileGameListEntry,
     val catalog: Ps3CatalogEntry
 )
+
+data class Ps3PatchInfo(
+    val hash: String,
+    val name: String,
+    val author: String,
+    val notes: String,
+    val version: String,
+    val appVersion: String,
+    val game: String,
+    val enabled: Boolean
+)

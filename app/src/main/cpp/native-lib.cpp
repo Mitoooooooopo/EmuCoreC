@@ -47,6 +47,12 @@ struct RPCSXApi {
   void (*setAppInfo)(std::string_view version, std::string_view build,
                      std::string_view device);
   void *(*setCustomDriver)(void *driverHandle);
+  std::string (*patchEngineVersion)();
+  int (*patchesImport)(std::string_view content);
+  std::string (*patchesList)(std::string_view serial);
+  bool (*patchSetEnabled)(std::string_view hash, std::string_view description,
+                          std::string_view serial, std::string_view appVersion,
+                          bool enabled);
 };
 
 struct RPCSXLibrary : RPCSXApi {
@@ -110,6 +116,10 @@ struct RPCSXLibrary : RPCSXApi {
     result.getVersion = reinterpret_cast<decltype(getVersion)>(dlsym(handle, "_rpcsx_getVersion"));
     result.setAppInfo = reinterpret_cast<decltype(setAppInfo)>(dlsym(handle, "_rpcsx_setAppInfo"));
     result.setCustomDriver = reinterpret_cast<decltype(setCustomDriver)>(dlsym(handle, "_rpcsx_setCustomDriver"));
+    result.patchEngineVersion = reinterpret_cast<decltype(patchEngineVersion)>(dlsym(handle, "_rpcsx_patchEngineVersion"));
+    result.patchesImport = reinterpret_cast<decltype(patchesImport)>(dlsym(handle, "_rpcsx_patchesImport"));
+    result.patchesList = reinterpret_cast<decltype(patchesList)>(dlsym(handle, "_rpcsx_patchesList"));
+    result.patchSetEnabled = reinterpret_cast<decltype(patchSetEnabled)>(dlsym(handle, "_rpcsx_patchSetEnabled"));
     // clang-format on
 
     return result;
@@ -339,4 +349,40 @@ Java_net_rpcsx_RPCSX_setCustomDriver(JNIEnv *env, jobject, jstring jpath,
 #else
   return false;
 #endif // __aarch64__
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_net_rpcsx_RPCSX_patchEngineVersion(JNIEnv *env, jobject) {
+  if (rpcsxLib.patchEngineVersion) {
+    return wrap(env, rpcsxLib.patchEngineVersion());
+  }
+  return wrap(env, "1.2");
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_net_rpcsx_RPCSX_patchesImport(JNIEnv *env, jobject, jstring jcontent) {
+  if (rpcsxLib.patchesImport) {
+    return rpcsxLib.patchesImport(unwrap(env, jcontent));
+  }
+  return -1;
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_net_rpcsx_RPCSX_patchesList(JNIEnv *env, jobject, jstring jserial) {
+  if (rpcsxLib.patchesList) {
+    return wrap(env, rpcsxLib.patchesList(unwrap(env, jserial)));
+  }
+  return wrap(env, "[]");
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_net_rpcsx_RPCSX_patchSetEnabled(JNIEnv *env, jobject, jstring jhash,
+                                     jstring jdescription, jstring jserial,
+                                     jstring jappVersion, jboolean jenabled) {
+  if (rpcsxLib.patchSetEnabled) {
+    return rpcsxLib.patchSetEnabled(unwrap(env, jhash), unwrap(env, jdescription),
+                                    unwrap(env, jserial), unwrap(env, jappVersion),
+                                    jenabled);
+  }
+  return false;
 }

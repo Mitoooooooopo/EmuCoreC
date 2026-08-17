@@ -51,18 +51,18 @@ class LibraryViewModel(application: Application) : AndroidViewModel(application)
             _uiState.value = _uiState.value.copy(isLoading = true)
             val isFirstLoad = !_uiState.value.hasLoadedOnce
             allItems = scanGames(context)
-            publishState()
             // The first scan after onboarding can run before the picked folder
             // (or a storage migration) has settled. Retry the initial load a
-            // few times when it comes back empty; later refreshes scan once.
+            // few times when it comes back empty; keep isLoading = true so
+            // the loading animation stays visible instead of flashing empty.
             if (isFirstLoad && allItems.isEmpty()) {
                 for (attempt in 1..3) {
                     kotlinx.coroutines.delay(1_200)
                     allItems = scanGames(context)
-                    publishState()
                     if (allItems.isNotEmpty()) break
                 }
             }
+            publishState()
         }
     }
 
