@@ -16,19 +16,24 @@ EmuCoreC is a PlayStation 3 emulator application for Android. It combines a focu
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/library.png" width="47%" alt="Game library" />
-  <img src="screenshots/catalog.png" width="47%" alt="Game catalog" />
+  <img src="screenshots/Screenshot_20260816-1419225.png" width="47%" />
+  <img src="screenshots/Screenshot_20260817-180702.png" width="47%" />
 </p>
 <p align="center">
-  <img src="screenshots/game-detail.png" width="47%" alt="Game details" />
-  <img src="screenshots/game-manager.png" width="47%" alt="Game manager" />
+  <img src="screenshots/Screenshot_20260817-180717.png" width="47%" />
+  <img src="screenshots/Screenshot_20260817-203023.png" width="47%" />
 </p>
 <p align="center">
-  <img src="screenshots/play-time.png" width="47%" alt="Play time statistics" />
-  <img src="screenshots/achievements.png" width="47%" alt="Trophies" />
+  <img src="screenshots/Screenshot_20260817-205008.png" width="47%" />
+  <img src="screenshots/Screenshot_20260817-205937.png" width="47%" />
 </p>
 <p align="center">
-  <img src="screenshots/home-menu.png" width="47%" alt="In-game menu" />
+  <img src="screenshots/Screenshot_20260817-205957.png" width="47%" />
+  <img src="screenshots/Screenshot_20260817-210743.png" width="47%" />
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot_20260817-211242.png" width="47%" />
+  <img src="screenshots/Screenshot_20260817-212932.png" width="47%" />
 </p>
 
 ## Features

@@ -127,6 +127,8 @@ CMakeUserPresets.json
 .cache/
 .lldbinit
 
+/assets/
+
 # EmuCoreC local files (not part of the repository)
 local.properties
 /IGDB/
