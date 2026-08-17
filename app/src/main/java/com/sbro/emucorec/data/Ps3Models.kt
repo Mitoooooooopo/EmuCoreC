@@ -9,7 +9,8 @@ data class InstalledPs3Game(
     val category: String?,
     val iconPath: String?,
     val catalogCoverUrl: String?,
-    val installPath: String
+    val installPath: String,
+    val isCustomFolderGame: Boolean = false
 )
 
 enum class Ps3CompatibilityState {

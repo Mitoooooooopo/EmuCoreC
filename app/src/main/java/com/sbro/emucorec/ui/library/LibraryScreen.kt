@@ -460,19 +460,21 @@ fun LibraryScreen(
                                 )
                             }
                         )
-                        DropdownMenuItem(
-                            text = { Text(deleteGameLabel) },
-                            onClick = {
-                                deleteGameId = game.titleId
-                                menuExpanded = false
-                            },
-                            leadingIcon = {
-                                Icon(
-                                    imageVector = Icons.Rounded.Delete,
-                                    contentDescription = null
-                                )
-                            }
-                        )
+                        if (!game.isCustomFolderGame) {
+                            DropdownMenuItem(
+                                text = { Text(deleteGameLabel) },
+                                onClick = {
+                                    deleteGameId = game.titleId
+                                    menuExpanded = false
+                                },
+                                leadingIcon = {
+                                    Icon(
+                                        imageVector = Icons.Rounded.Delete,
+                                        contentDescription = null
+                                    )
+                                }
+                            )
+                        }
                     }
                 }
             }
@@ -616,19 +618,21 @@ fun LibraryScreen(
                                         )
                                     }
                                 )
-                                DropdownMenuItem(
-                                    text = { Text(deleteGameLabel) },
-                                    onClick = {
-                                        deleteGameId = game.titleId
-                                        menuExpanded = false
-                                    },
-                                    leadingIcon = {
-                                        Icon(
-                                            imageVector = Icons.Rounded.Delete,
-                                            contentDescription = null
-                                        )
-                                    }
-                                )
+                                if (!game.isCustomFolderGame) {
+                                    DropdownMenuItem(
+                                        text = { Text(deleteGameLabel) },
+                                        onClick = {
+                                            deleteGameId = game.titleId
+                                            menuExpanded = false
+                                        },
+                                        leadingIcon = {
+                                            Icon(
+                                                imageVector = Icons.Rounded.Delete,
+                                                contentDescription = null
+                                            )
+                                        }
+                                    )
+                                }
                             }
                         }
                     }

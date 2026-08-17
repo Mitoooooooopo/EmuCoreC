@@ -232,19 +232,21 @@ fun GameDetailScreen(
                                 )
                             }
                         )
-                        DropdownMenuItem(
-                            text = { Text(deleteGameLabel) },
-                            onClick = {
-                                showOverflowMenu = false
-                                showDeleteDialog = true
-                            },
-                            leadingIcon = {
-                                Icon(
-                                    imageVector = Icons.Rounded.Delete,
-                                    contentDescription = null
-                                )
-                            }
-                        )
+                        if (!game.isCustomFolderGame) {
+                            DropdownMenuItem(
+                                text = { Text(deleteGameLabel) },
+                                onClick = {
+                                    showOverflowMenu = false
+                                    showDeleteDialog = true
+                                },
+                                leadingIcon = {
+                                    Icon(
+                                        imageVector = Icons.Rounded.Delete,
+                                        contentDescription = null
+                                    )
+                                }
+                            )
+                        }
                     }
                 } else {
                     Spacer(modifier = Modifier.size(48.dp))

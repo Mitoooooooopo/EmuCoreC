@@ -95,7 +95,6 @@ class InstalledGameRepository {
 
         val candidateGameDirs = searchRoots
             .flatMap { root -> safeListFiles(root).filter { it.isDirectory || FolderGames.isLink(it) } }
-            .plus(customGameDirs)
             .distinctBy { it.absolutePath }
 
         val installedFromDirs = candidateGameDirs
@@ -122,14 +121,42 @@ class InstalledGameRepository {
                 )
             }
 
+        val customFolderDirGames = customGameDirs.mapNotNull { directory ->
+            if (directory.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(directory)) {
+                return@mapNotNull com.sbro.emucorec.core.Ps3IsoParser.parse(context, directory)
+                    ?.copy(isCustomFolderGame = true)
+            }
+            val sfo = findParamSfo(directory) ?: EmulatorStorage.paramSfoPath(context, directory.name)
+            if (!sfo.isFile) return@mapNotNull null
+            val metadata = Ps3SfoParser.parse(sfo)
+            val parsedTitleId = metadata.titleId?.takeIf(String::isNotBlank) ?: return@mapNotNull null
+            val parsedTitle = metadata.title?.takeIf(String::isNotBlank) ?: return@mapNotNull null
+            val iconFile = findIcon(directory) ?: EmulatorStorage.iconPath(context, parsedTitleId)
+            InstalledPs3Game(
+                titleId = parsedTitleId,
+                title = parsedTitle,
+                contentId = metadata.contentId,
+                saveDataId = metadata.saveDataId ?: parsedTitleId,
+                version = metadata.version,
+                category = metadata.category,
+                iconPath = iconFile.takeIf { it.exists() }?.absolutePath,
+                catalogCoverUrl = null,
+                installPath = directory.absolutePath,
+                isCustomFolderGame = true
+            )
+        }
+
         val directBootGames = FolderGames.entries(context).mapNotNull { (_, targetPath) ->
             val target = File(targetPath)
             if (target.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(target)) {
                 com.sbro.emucorec.core.Ps3IsoParser.parse(context, target)
+                    ?.copy(isCustomFolderGame = true)
             } else null
         }
 
-        val installed = (installedFromDirs + customIsoGames + directBootGames)
+        val markedCustomIsoGames = customIsoGames.map { it.copy(isCustomFolderGame = true) }
+
+        val installed = (installedFromDirs + markedCustomIsoGames + directBootGames + customFolderDirGames)
             // Prioritise bootable game directories over DLC/patch folders that share the
             // same TITLE_ID but contain no EBOOT.BIN. distinctBy keeps the first entry,
             // so we sort bootable entries to the front before deduplication.
