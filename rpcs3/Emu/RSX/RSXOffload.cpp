@@ -21,7 +21,7 @@ namespace rsx
 	// memcpy(), enter VKGSRender::on_access_violation(), and fault recursively
 	// while SIGSEGV is still blocked by the kernel. Resolve protected guest
 	// ranges from normal thread context before starting the DMA copy instead.
-	static void prepare_guest_read(u32 address, u32 length)
+	void prepare_guest_read(u32 address, u32 length)
 	{
 		if (!address || !length || !g_access_violation_handler)
 		{

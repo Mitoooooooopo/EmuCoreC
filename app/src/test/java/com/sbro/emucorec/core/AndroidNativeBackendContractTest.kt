@@ -41,6 +41,21 @@ class AndroidNativeBackendContractTest {
         }
     }
 
+    @Test
+    fun androidVulkanTextureFallbackKeepsFastTransfersAndPreparesCpuReads() {
+        val source = repositoryRoot()
+            .resolve("rpcs3/Emu/RSX/VK/VKTexture.cpp")
+            .readText()
+
+        val androidFallback = source.substringAfter("#ifdef __ANDROID__", source)
+            .substringAfter("const bool source_is_gpu_only")
+            .substringBefore("#else")
+        assertTrue("Guest textures must avoid unstable compute conversion", "caps.supports_byteswap = source_is_gpu_only" in androidFallback)
+        assertTrue("Guest textures must avoid unstable compute deswizzle", "caps.supports_hw_deswizzle = source_is_gpu_only" in androidFallback)
+        assertTrue("Zero-copy transfers must remain enabled", "caps.supports_zero_copy = true" in androidFallback)
+        assertTrue("CPU conversion must prepare protected guest pages", "rsx::prepare_guest_read(guest_address, layout.data.size<u32>())" in source)
+    }
+
     private fun repositoryRoot(): Path {
         val workingDirectory = Path.of(System.getProperty("user.dir"))
         return sequenceOf(workingDirectory, workingDirectory.parent)

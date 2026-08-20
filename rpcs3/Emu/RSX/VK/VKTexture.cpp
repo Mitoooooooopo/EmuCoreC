@@ -11,6 +11,7 @@
 #include "VKGSRender.h"
 
 #include "../GCM.h"
+#include "../RSXOffload.h"
 #include "../rsx_utils.h"
 #include "Utilities/deferred_op.hpp"
 
@@ -1154,9 +1155,22 @@ namespace vk
 			// Only do GPU-side conversion if occupancy is good
 			if (check_hw_caps)
 			{
+				#ifdef __ANDROID__
+				const bool source_is_gpu_only = image_setup_flags & source_is_gpu_resident;
+				// Android Vulkan drivers can reject or crash while linking the
+				// generic SSBO conversion kernels. Keep GPU conversion only when
+				// the source cannot be accessed by the CPU at all. The normal guest
+				// texture path uses the SIMD CPU converters before upload.
+				caps.supports_byteswap = source_is_gpu_only;
+				caps.supports_hw_deswizzle = source_is_gpu_only;
+				// Zero-copy itself is a transfer path and does not use a compute
+				// pipeline. Preserve it for formats which need no conversion.
+				caps.supports_zero_copy = true;
+				#else
 				caps.supports_byteswap = (image_linear_size >= 1024) || (image_setup_flags & source_is_gpu_resident);
 				caps.supports_hw_deswizzle = caps.supports_byteswap;
 				caps.supports_zero_copy = caps.supports_byteswap;
+				#endif
 				caps.supports_vtc_decoding = false;
 				check_hw_caps = false;
 			}
@@ -1174,6 +1188,18 @@ namespace vk
 				void* mapped_buffer = upload_heap.map(offset_in_upload_buffer, image_linear_size + 8);
 				return { mapped_buffer, image_linear_size };
 			};
+
+			#ifdef __ANDROID__
+			// Linear B8 can use the zero-copy DMA path below and never touches
+			// guest memory on the CPU. All other guest formats can enter one of
+			// the CPU conversion paths, so resolve RSX-protected pages first.
+			const bool may_read_on_cpu = is_swizzled || format != CELL_GCM_TEXTURE_B8;
+			if (!(image_setup_flags & source_is_gpu_resident) && may_read_on_cpu)
+			{
+				const u32 guest_address = vm::try_get_addr(layout.data.data()).first;
+				rsx::prepare_guest_read(guest_address, layout.data.size<u32>());
+			}
+			#endif
 
 			auto io_buf = rsx::io_buffer(buf_allocator);
 			opt = upload_texture_subresource(io_buf, layout, format, is_swizzled, caps);
