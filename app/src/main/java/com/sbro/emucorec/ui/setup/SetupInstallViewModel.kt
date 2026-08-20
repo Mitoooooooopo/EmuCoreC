@@ -41,6 +41,7 @@ class SetupInstallViewModel(application: Application) : AndroidViewModel(applica
     val uiState: StateFlow<SetupInstallUiState> = _uiState.asStateFlow()
     private val stagedFilesToCleanup = mutableListOf<String>()
     private val temporaryRootsToCleanup = mutableListOf<File>()
+    private var sourceStagingSession: File? = null
 
     fun dismissDialog() {
         if (_uiState.value.status != InstallStatus.Running) _uiState.value = SetupInstallUiState()
@@ -50,7 +51,7 @@ class SetupInstallViewModel(application: Application) : AndroidViewModel(applica
         val path = resolveInstallSource(uriString) ?: return@runInstall finishError(
             appContext.getString(R.string.install_dialog_firmware_failed)
         )
-        val version = Ps3InstallBridge.installFirmware(appContext, path)
+        val version = Ps3InstallBridge.installFirmware(appContext, path, Ps3InstallBridge.Listener(::handleProgress))
         if (version != null) finishSuccess(appContext.getString(R.string.install_dialog_firmware_done))
         else finishError(appContext.getString(R.string.install_dialog_firmware_failed), _uiState.value.detail)
     }
@@ -59,7 +60,7 @@ class SetupInstallViewModel(application: Application) : AndroidViewModel(applica
         val path = resolveInstallSource(uriString) ?: return@runInstall finishError(
             appContext.getString(R.string.install_dialog_license_failed)
         )
-        if (Ps3InstallBridge.installLicense(appContext, path)) {
+        if (Ps3InstallBridge.installLicense(appContext, path, Ps3InstallBridge.Listener(::handleProgress))) {
             finishSuccess(appContext.getString(R.string.install_dialog_license_done))
         } else {
             finishError(appContext.getString(R.string.install_dialog_license_failed), _uiState.value.detail)
@@ -88,7 +89,12 @@ class SetupInstallViewModel(application: Application) : AndroidViewModel(applica
             )
         }
         prepared.temporaryRoot?.let(temporaryRootsToCleanup::add)
-        if (Ps3InstallBridge.installContent(appContext, prepared.files.map(File::getAbsolutePath))) {
+        if (Ps3InstallBridge.installContent(
+                appContext,
+                prepared.files.map(File::getAbsolutePath),
+                Ps3InstallBridge.Listener(::handleProgress),
+            )
+        ) {
             finishSuccess(appContext.getString(R.string.install_dialog_pkg_done))
         } else {
             finishError(appContext.getString(R.string.install_dialog_pkg_failed), _uiState.value.detail)
@@ -99,13 +105,13 @@ class SetupInstallViewModel(application: Application) : AndroidViewModel(applica
         if (_uiState.value.status == InstallStatus.Running) return
         stagedFilesToCleanup.clear()
         temporaryRootsToCleanup.clear()
+        sourceStagingSession = null
         _uiState.value = SetupInstallUiState(
             status = InstallStatus.Running,
             operation = operation,
             indeterminate = true,
         )
         viewModelScope.launch(Dispatchers.IO) {
-            Ps3InstallBridge.setListener(::handleProgress)
             try {
                 block()
             } catch (error: Throwable) {
@@ -115,15 +121,24 @@ class SetupInstallViewModel(application: Application) : AndroidViewModel(applica
                 stagedFilesToCleanup.clear()
                 temporaryRootsToCleanup.forEach(File::deleteRecursively)
                 temporaryRootsToCleanup.clear()
-                Ps3InstallBridge.setListener(null)
+                sourceStagingSession?.deleteRecursively()
+                sourceStagingSession = null
             }
         }
     }
 
-    private fun resolveInstallSource(uriString: String): String? =
-        DocumentPathResolver.resolveFilePath(appContext, uriString, copyToCache = true)?.also {
+    private fun resolveInstallSource(uriString: String): String? {
+        val session = sourceStagingSession ?: DocumentPathResolver.createStagingSession(appContext)
+            ?.also { sourceStagingSession = it }
+        return DocumentPathResolver.resolveFilePath(
+            context = appContext,
+            rawPath = uriString,
+            copyToCache = true,
+            stagingSession = session,
+        )?.also {
             stagedFilesToCleanup += it
         }
+    }
 
     private fun handleProgress(progress: NativeInstallProgress) {
         _uiState.value = _uiState.value.copy(

@@ -47,9 +47,6 @@ class ProgressRepository {
         @Keep
         @JvmStatic
         fun onProgressEvent(id: Long, value: Long, maximum: Long, message: String?): Boolean {
-            synchronized(lock) {
-                if (id !in mutableProgress.value) return false
-            }
             val failed = value < 0
             val completed = !failed && maximum > 0 && value >= maximum
             val update = NativeProgress(
@@ -61,6 +58,10 @@ class ProgressRepository {
                 completed = completed,
             )
             val listener = synchronized(lock) {
+                // Check and update while holding the same lock. A cancellation
+                // between two separate critical sections used to let a late
+                // native callback add the removed operation back to the map.
+                if (id !in mutableProgress.value) return false
                 mutableProgress.value = mutableProgress.value + (id to update)
                 listeners[id]
             }

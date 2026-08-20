@@ -13,7 +13,6 @@ import net.rpcsx.ProgressRepository
 import net.rpcsx.RPCSX
 import com.sbro.emucorec.BuildConfig
 import java.io.File
-import java.io.FileInputStream
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
 import java.util.ArrayList
@@ -156,23 +155,11 @@ object Ps3Runtime {
             sources.forEach { source ->
                 descriptors += openDescriptor(context, source) ?: return false
             }
-            // The official RPCS3 core has no split-pkg API: a split package is
-            // just the original .pkg cut into numbered parts, so concatenating
-            // them in order reproduces the .pkg that install() accepts.
-            val merged = File(context.applicationContext.cacheDir, "split-pkg-merged.pkg")
-            try {
-                merged.outputStream().use { out ->
-                    descriptors.forEach { descriptor ->
-                        FileInputStream(descriptor.fileDescriptor).use { input -> input.copyTo(out) }
-                    }
-                }
-                GameRepository.createGameInstallEntry(progressId)
-                ParcelFileDescriptor.open(merged, ParcelFileDescriptor.MODE_READ_ONLY).use { descriptor ->
-                    RPCSX.instance.install(descriptor.fd, progressId)
-                }
-            } finally {
-                merged.delete()
-            }
+            GameRepository.createGameInstallEntry(progressId)
+            RPCSX.instance.installSplitPkg(
+                descriptors.map(ParcelFileDescriptor::getFd).toIntArray(),
+                progressId,
+            )
         } finally {
             descriptors.forEach { runCatching { it.close() } }
         }

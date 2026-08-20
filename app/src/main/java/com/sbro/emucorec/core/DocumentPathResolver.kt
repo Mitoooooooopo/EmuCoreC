@@ -8,6 +8,7 @@ import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
 import java.io.File
 import android.util.Log
+import java.util.UUID
 
 object DocumentPathResolver {
 
@@ -44,7 +45,12 @@ object DocumentPathResolver {
         return direct
     }
 
-    fun resolveFilePath(context: Context, rawPath: String, copyToCache: Boolean = false): String? {
+    fun resolveFilePath(
+        context: Context,
+        rawPath: String,
+        copyToCache: Boolean = false,
+        stagingSession: File? = null,
+    ): String? {
         if (rawPath.startsWith("file://")) return rawPath.toUri().path
         if (!rawPath.startsWith("content://")) return rawPath
 
@@ -63,7 +69,7 @@ object DocumentPathResolver {
         if (treePath != null) return treePath
 
         if (copyToCache) {
-            return copyUriToCache(context, uri, fileName)
+            return copyUriToCache(context, uri, fileName, stagingSession)
         }
 
         return null
@@ -80,7 +86,7 @@ object DocumentPathResolver {
         runCatching {
             val staged = File(path)
             val stagingDir = EmulatorStorage.installStagingRoot(context)
-            if (staged.isFile && staged.canonicalPath.startsWith(stagingDir.canonicalPath)) {
+            if (staged.isFile && isPathWithinRoot(stagingDir, staged)) {
                 staged.delete()
             }
         }.onFailure { error ->
@@ -88,12 +94,29 @@ object DocumentPathResolver {
         }
     }
 
-    private fun copyUriToCache(context: Context, uri: Uri, fileName: String): String? {
+    fun createStagingSession(context: Context): File? = runCatching {
+        val root = EmulatorStorage.installStagingRoot(context).canonicalFile
+        if (!root.isDirectory && !root.mkdirs()) return null
+        File(root, "source-${UUID.randomUUID()}").canonicalFile
+            .takeIf { it.parentFile == root && (it.mkdirs() || it.isDirectory) }
+    }.getOrNull()
+
+    private fun copyUriToCache(
+        context: Context,
+        uri: Uri,
+        fileName: String,
+        stagingSession: File?,
+    ): String? {
+        var partialFile: File? = null
         return try {
-            val cacheDir = EmulatorStorage.installStagingRoot(context)
-            if (!cacheDir.exists()) cacheDir.mkdirs()
-            val destFile = File(cacheDir, fileName)
-            if (destFile.exists()) destFile.delete()
+            val stagingRoot = EmulatorStorage.installStagingRoot(context).canonicalFile
+            val cacheDir = (stagingSession ?: createStagingSession(context) ?: return null).canonicalFile
+            if (!isPathWithinRoot(stagingRoot, cacheDir) || (!cacheDir.isDirectory && !cacheDir.mkdirs())) {
+                return null
+            }
+            val safeName = sanitizeStagingFileName(fileName)
+            val destFile = uniqueDestination(cacheDir, safeName)
+            partialFile = destFile
 
             val inputStream = context.contentResolver.openInputStream(uri) ?: return null
             inputStream.use { input ->
@@ -103,9 +126,25 @@ object DocumentPathResolver {
             }
             destFile.takeIf { it.isFile }?.absolutePath
         } catch (e: Exception) {
+            partialFile?.delete()
             Log.e("DocumentPathResolver", "Failed to copy URI to cache: $uri", e)
             null
         }
+    }
+
+    private fun uniqueDestination(directory: File, fileName: String): File {
+        val initial = File(directory, fileName).canonicalFile
+        require(initial.parentFile == directory.canonicalFile)
+        if (!initial.exists()) return initial
+
+        val extension = fileName.substringAfterLast('.', "").takeIf(String::isNotBlank)
+        val stem = if (extension == null) fileName else fileName.removeSuffix(".$extension")
+        for (index in 1..10_000) {
+            val candidateName = if (extension == null) "$stem-$index" else "$stem-$index.$extension"
+            val candidate = File(directory, candidateName).canonicalFile
+            if (candidate.parentFile == directory.canonicalFile && !candidate.exists()) return candidate
+        }
+        error("Unable to allocate a unique staging file")
     }
 
     private fun resolveExternalStoragePath(uri: Uri): String? {
@@ -173,5 +212,22 @@ object DocumentPathResolver {
         }
 
         return null
+    }
+
+    internal fun sanitizeStagingFileName(fileName: String): String {
+        val leaf = fileName.replace('\\', '/').substringAfterLast('/')
+        val safe = leaf
+            .filter { it.code >= 0x20 && it != '\u007f' }
+            .replace(Regex("[^\\p{L}\\p{N}._() +\\-]+"), "-")
+            .trim(' ', '.')
+            .take(180)
+        return safe.ifBlank { "install-content.bin" }
+    }
+
+    internal fun isPathWithinRoot(root: File, candidate: File): Boolean {
+        val canonicalRoot = root.canonicalFile
+        val canonicalCandidate = candidate.canonicalFile
+        return canonicalCandidate == canonicalRoot ||
+            canonicalCandidate.path.startsWith(canonicalRoot.path + File.separator)
     }
 }

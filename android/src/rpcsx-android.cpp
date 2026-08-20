@@ -4098,25 +4098,28 @@ static bool installPkg(JNIEnv *env, std::vector<fs::file> &&files,
     std::this_thread::sleep_for(std::chrono::seconds(2));
   }
 
-  if (worker()) {
-    auto paths = std::vector(bootable_paths.begin(), bootable_paths.end());
-    collectGameInfo(env, -1, paths);
-
-    // Deliberately NOT queued for precompilation.
-    //
-    // CompilationQueue::impl does Emu.SetState(running), g_fxo->init<>() of the
-    // progress-dialog server and main_ppu_module, and vm::init(). That is only safe in
-    // a process that has not already brought those up -- which is true during onboarding
-    // (firmware install) and false for a PKG installed from the library after a game has
-    // been booted. init<> returns null the second time and vm::init() re-maps an address
-    // space that already exists, which crashed the app the moment extraction finished.
-    // The extraction itself had already completed, which is why the game still appeared
-    // in the library on the next launch.
-    //
-    // Nothing is lost by skipping it: the game precompiles on its first boot, with the
-    // normal compile screen, exactly as a disc game does. RPCS3 desktop does not
-    // precompile on install either.
+  if (!worker()) {
+    progress.failure("Installation failed");
+    return false;
   }
+
+  auto paths = std::vector(bootable_paths.begin(), bootable_paths.end());
+  collectGameInfo(env, -1, paths);
+
+  // Deliberately NOT queued for precompilation.
+  //
+  // CompilationQueue::impl does Emu.SetState(running), g_fxo->init<>() of the
+  // progress-dialog server and main_ppu_module, and vm::init(). That is only safe in
+  // a process that has not already brought those up -- which is true during onboarding
+  // (firmware install) and false for a PKG installed from the library after a game has
+  // been booted. init<> returns null the second time and vm::init() re-maps an address
+  // space that already exists, which crashed the app the moment extraction finished.
+  // The extraction itself had already completed, which is why the game still appeared
+  // in the library on the next launch.
+  //
+  // Nothing is lost by skipping it: the game precompiles on its first boot, with the
+  // normal compile screen, exactly as a disc game does. RPCS3 desktop does not
+  // precompile on install either.
 
   return true;
 }

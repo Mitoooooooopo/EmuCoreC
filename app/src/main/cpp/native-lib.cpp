@@ -9,6 +9,7 @@
 #include <sys/resource.h>
 #include <unistd.h>
 #include <utility>
+#include <vector>
 
 #if defined(__aarch64__)
 #include <adrenotools/driver.h>
@@ -36,6 +37,8 @@ struct RPCSXApi {
   bool (*isInstallableFile)(jint fd);
   jstring (*getDirInstallPath)(JNIEnv *env, jint fd);
   bool (*install)(JNIEnv *env, int fd, long progressId);
+  bool (*installSplitPkg)(JNIEnv *env, const int *fds, int count,
+                          long progressId);
   bool (*installKey)(JNIEnv *env, int fd, long progressId,
                      std::string_view gamePath);
   std::string (*systemInfo)();
@@ -107,6 +110,7 @@ struct RPCSXLibrary : RPCSXApi {
     result.isInstallableFile = reinterpret_cast<decltype(isInstallableFile)>(dlsym(handle, "_rpcsx_isInstallableFile"));
     result.getDirInstallPath = reinterpret_cast<decltype(getDirInstallPath)>(dlsym(handle, "_rpcsx_getDirInstallPath"));
     result.install = reinterpret_cast<decltype(install)>(dlsym(handle, "_rpcsx_install"));
+    result.installSplitPkg = reinterpret_cast<decltype(installSplitPkg)>(dlsym(handle, "_rpcsx_installSplitPkg"));
     result.installKey = reinterpret_cast<decltype(installKey)>(dlsym(handle, "_rpcsx_installKey"));
     result.systemInfo = reinterpret_cast<decltype(systemInfo)>(dlsym(handle, "_rpcsx_systemInfo"));
     result.loginUser = reinterpret_cast<decltype(loginUser)>(dlsym(handle, "_rpcsx_loginUser"));
@@ -258,6 +262,29 @@ Java_net_rpcsx_RPCSX_getDirInstallPath(JNIEnv *env, jobject, jint fd) {
 extern "C" JNIEXPORT jboolean JNICALL
 Java_net_rpcsx_RPCSX_install(JNIEnv *env, jobject, jint fd, jlong progressId) {
   return rpcsxLib.install(env, fd, progressId);
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_net_rpcsx_RPCSX_installSplitPkg(JNIEnv *env, jobject, jintArray jfds,
+                                     jlong progressId) {
+  if (rpcsxLib.installSplitPkg == nullptr || jfds == nullptr) {
+    return false;
+  }
+
+  const jsize count = env->GetArrayLength(jfds);
+  if (count <= 0) {
+    return false;
+  }
+
+  std::vector<jint> fds(static_cast<std::size_t>(count));
+  env->GetIntArrayRegion(jfds, 0, count, fds.data());
+  if (env->ExceptionCheck()) {
+    return false;
+  }
+
+  static_assert(sizeof(jint) == sizeof(int));
+  return rpcsxLib.installSplitPkg(
+      env, reinterpret_cast<const int *>(fds.data()), count, progressId);
 }
 
 extern "C" JNIEXPORT jboolean JNICALL Java_net_rpcsx_RPCSX_installKey(

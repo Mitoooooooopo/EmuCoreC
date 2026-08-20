@@ -7,6 +7,8 @@ import net.rpcsx.ProgressRepository
 import java.io.File
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.coroutines.resume
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 data class NativeInstallProgress(
     val stage: String,
@@ -20,19 +22,20 @@ object Ps3InstallBridge {
     fun interface Listener { fun onProgress(progress: NativeInstallProgress) }
 
     @Volatile private var listener: Listener? = null
+    private val installMutex = Mutex()
 
-    fun setListener(listener: Listener?) {
-        this.listener = listener
-    }
-
-    suspend fun installFirmware(context: Context, firmwarePath: String): String? {
+    suspend fun installFirmware(
+        context: Context,
+        firmwarePath: String,
+        progressListener: Listener? = null,
+    ): String? = runExclusive(progressListener) {
         emit("firmware", 0f, "Installing PS3 system software")
         val success = awaitNativeInstall("firmware", 0, 1, "Installing PS3 system software") { progressId ->
             Ps3Runtime.installFirmware(context, firmwarePath, progressId)
         }
         Ps3Runtime.stop()
         emit("firmware", if (success) 1f else 0f, if (success) "Installed" else "Installation failed")
-        return if (success) net.rpcsx.FirmwareRepository.version.value ?: "installed" else null
+        if (success) net.rpcsx.FirmwareRepository.version.value ?: "installed" else null
     }
 
     private suspend fun installPackage(context: Context, contentPath: String): Int {
@@ -46,7 +49,11 @@ object Ps3InstallBridge {
         return if (success) 1 else 0
     }
 
-    suspend fun installLicense(context: Context, licensePath: String): Boolean {
+    suspend fun installLicense(
+        context: Context,
+        licensePath: String,
+        progressListener: Listener? = null,
+    ): Boolean = runExclusive(progressListener) {
         emit("license", 0f, "Installing PS3 RAP license")
         val file = File(licensePath)
         val success = if (file.extension.equals("rap", true)) {
@@ -57,26 +64,29 @@ object Ps3InstallBridge {
             }
         }
         emit("license", if (success) 1f else 0f, if (success) "Installed" else "Installation failed")
-        return success
+        success
     }
 
-    suspend fun installPkg(context: Context, pkgPath: String): Boolean =
-        installPackage(context, pkgPath) > 0
+    suspend fun installPkg(
+        context: Context,
+        pkgPath: String,
+        progressListener: Listener? = null,
+    ): Boolean = runExclusive(progressListener) { installPackage(context, pkgPath) > 0 }
 
-    suspend fun installContent(context: Context, paths: List<String>): Boolean {
-        val files = paths.map(::File).filter(File::isFile).sortedWith(ArchiveContentInstaller.naturalFileOrder)
-        val licences = files.filter { it.extension.equals("rap", true) || it.extension.equals("edat", true) }
-        val payloads = files - licences.toSet()
-        if (payloads.isEmpty() && licences.isEmpty()) return false
+    suspend fun installContent(
+        context: Context,
+        paths: List<String>,
+        progressListener: Listener? = null,
+    ): Boolean = runExclusive(progressListener) {
+        val plan = InstallContentPlanner.create(paths)
+        val licences = plan.licences
+        val payloads = plan.payloads
+        if (payloads.isEmpty() && licences.isEmpty()) return@runExclusive false
 
-        val splitPackage = payloads.size > 1 &&
-            payloads.mapNotNull(::splitPackageKey).distinct().size == 1 &&
-            payloads.all(::isPackagePart)
-        val payloadUnits = if (splitPackage) 1 else payloads.size
-        val totalUnits = payloadUnits + licences.size
+        val totalUnits = plan.totalUnits
         var unitIndex = 0
         var success = true
-        if (splitPackage) {
+        if (plan.isSplitPackage) {
             emit("content", 0f, "Installing split PS3 package")
             success = awaitNativeInstall("content", unitIndex, totalUnits, "Installing split PS3 package") { progressId ->
                 Ps3Runtime.installSplitPackages(context, payloads.map(File::getAbsolutePath), progressId)
@@ -108,18 +118,7 @@ object Ps3InstallBridge {
         if (success) NativeLib.refreshAppsList()
         Ps3Runtime.stop()
         emit("content", if (success) 1f else 0f, if (success) "Installed" else "Installation failed")
-        return success
-    }
-
-    private fun isPackagePart(file: File): Boolean =
-        file.name.contains(".pkg", ignoreCase = true)
-
-    private fun splitPackageKey(file: File): String? {
-        if (!isPackagePart(file)) return null
-        val withoutNumberedExtension = file.name.lowercase().replace(Regex("\\.pkg\\.\\d+$"), ".pkg")
-        val stem = withoutNumberedExtension.removeSuffix(".pkg")
-        val stripped = stem.replace(Regex("(?:[._-](?:part)?\\d+)$"), "")
-        return stripped.takeIf { it != stem || file.name.matches(Regex(".*\\.pkg\\.\\d+$", RegexOption.IGNORE_CASE)) }
+        success
     }
 
     private suspend fun awaitNativeInstall(
@@ -181,4 +180,14 @@ object Ps3InstallBridge {
     private fun emit(stage: String, progress: Float, detail: String) {
         listener?.onProgress(NativeInstallProgress(stage, progress, progress, 1f, detail))
     }
+
+    private suspend fun <T> runExclusive(progressListener: Listener?, block: suspend () -> T): T =
+        installMutex.withLock {
+            listener = progressListener
+            try {
+                block()
+            } finally {
+                listener = null
+            }
+        }
 }
