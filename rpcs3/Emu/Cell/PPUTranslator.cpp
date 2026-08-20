@@ -4768,9 +4768,10 @@ void PPUTranslator::FRSP(ppu_opcode_t op)
 void PPUTranslator::FCTIW(ppu_opcode_t op)
 {
 	const auto b = GetFpr(op.frb);
-
 #if defined(ARCH_X64)
 	const auto xormask = m_ir->CreateSExt(m_ir->CreateFCmpOGE(b, ConstantFP::get(GetType<f64>(), std::exp2l(31.))), GetType<s32>());
+
+	// fix result saturation (0x80000000 -> 0x7fffffff)
 	SetFpr(op.frd, m_ir->CreateXor(xormask, Call(GetType<s32>(), "llvm.x86.sse2.cvtsd2si", m_ir->CreateInsertElement(GetUndef<f64[2]>(), b, u64{0}))));
 #elif defined(ARCH_ARM64)
 	SetFpr(op.frd, Call(GetType<s32>(), "llvm.aarch64.neon.fcvtns.i32.f64", b));
@@ -4787,9 +4788,10 @@ void PPUTranslator::FCTIW(ppu_opcode_t op)
 void PPUTranslator::FCTIWZ(ppu_opcode_t op)
 {
 	const auto b = GetFpr(op.frb);
-
 #if defined(ARCH_X64)
 	const auto xormask = m_ir->CreateSExt(m_ir->CreateFCmpOGE(b, ConstantFP::get(GetType<f64>(), std::exp2l(31.))), GetType<s32>());
+
+	// fix result saturation (0x80000000 -> 0x7fffffff)
 	SetFpr(op.frd, m_ir->CreateXor(xormask, Call(GetType<s32>(), "llvm.x86.sse2.cvttsd2si", m_ir->CreateInsertElement(GetUndef<f64[2]>(), b, u64{0}))));
 #elif defined(ARCH_ARM64)
 	SetFpr(op.frd, Call(GetType<s32>(), "llvm.aarch64.neon.fcvtzs.i32.f64", b));
@@ -5068,9 +5070,10 @@ void PPUTranslator::FABS(ppu_opcode_t op)
 void PPUTranslator::FCTID(ppu_opcode_t op)
 {
 	const auto b = GetFpr(op.frb);
-
 #if defined(ARCH_X64)
 	const auto xormask = m_ir->CreateSExt(m_ir->CreateFCmpOGE(b, ConstantFP::get(GetType<f64>(), std::exp2l(63.))), GetType<s64>());
+
+	// fix result saturation (0x8000000000000000 -> 0x7fffffffffffffff)
 	SetFpr(op.frd, m_ir->CreateXor(xormask, Call(GetType<s64>(), "llvm.x86.sse2.cvtsd2si64", m_ir->CreateInsertElement(GetUndef<f64[2]>(), b, u64{0}))));
 #elif defined(ARCH_ARM64)
 	SetFpr(op.frd, Call(GetType<s64>(), "llvm.aarch64.neon.fcvtns.i64.f64", b));
@@ -5088,9 +5091,10 @@ void PPUTranslator::FCTID(ppu_opcode_t op)
 void PPUTranslator::FCTIDZ(ppu_opcode_t op)
 {
 	const auto b = GetFpr(op.frb);
-
 #if defined(ARCH_X64)
 	const auto xormask = m_ir->CreateSExt(m_ir->CreateFCmpOGE(b, ConstantFP::get(GetType<f64>(), std::exp2l(63.))), GetType<s64>());
+
+	// fix result saturation (0x8000000000000000 -> 0x7fffffffffffffff)
 	SetFpr(op.frd, m_ir->CreateXor(xormask, Call(GetType<s64>(), "llvm.x86.sse2.cvttsd2si64", m_ir->CreateInsertElement(GetUndef<f64[2]>(), b, u64{0}))));
 #elif defined(ARCH_ARM64)
 	SetFpr(op.frd, Call(GetType<s64>(), "llvm.aarch64.neon.fcvtzs.i64.f64", b));

@@ -716,6 +716,17 @@ class spu_llvm_recompiler : public spu_recompiler_base, public cpu_translator
 		ensure(val && val->getType() == get_type<u32[4]>());
 
 		const auto x = m_ir->CreateZExt(val, get_type<u64[4]>());
+
+		// Use integer operations here so LLVM can fold the masks into VPTERNLOG
+		if (m_use_avx512)
+		{
+			const auto s = m_ir->CreateAnd(m_ir->CreateShl(x, 32), 0x8000000000000000);
+			const auto m = m_ir->CreateAnd(m_ir->CreateShl(x, 29), 0x0fffffffe0000000);
+			const auto f = m_ir->CreateAdd(m_ir->CreateOr(s, m), splat<u64[4]>(0x3800000000000000).eval(m_ir));
+			const auto e = m_ir->CreateAnd(val, 0x7f800000);
+			return uint64_as_double(m_ir->CreateSelect(m_ir->CreateIsNotNull(e), f, s));
+		}
+
 		const auto s = m_ir->CreateShl(m_ir->CreateAnd(x, 0x80000000), 32);
 		const auto a = m_ir->CreateAnd(x, 0x7fffffff);
 		const auto m = m_ir->CreateShl(m_ir->CreateAdd(a, splat<u64[4]>(0x1c0000000).eval(m_ir)), 29);
@@ -728,6 +739,19 @@ class spu_llvm_recompiler : public spu_recompiler_base, public cpu_translator
 	llvm::Value* xfloat_in_double(llvm::Value* val)
 	{
 		ensure(val && val->getType() == get_type<f64[4]>());
+
+		// Use integer operations here so LLVM can fold the masks into VPTERNLOG
+		if (m_use_avx512)
+		{
+			const auto d = double_as_uint64(val);
+			const auto smax = splat<u64[4]>(0x47ffffffe0000000).eval(m_ir);
+			const auto smin = splat<u64[4]>(0x3810000000000000).eval(m_ir);
+			const auto a = m_ir->CreateAnd(d, 0x7fffffffe0000000);
+			const auto n = m_ir->CreateICmpUGE(a, smin);
+			const auto c = m_ir->CreateSelect(m_ir->CreateICmpULT(a, smax), a, smax);
+			const auto r = m_ir->CreateOr(c, m_ir->CreateAnd(d, 0x8000000000000000));
+			return uint64_as_double(m_ir->CreateSelect(n, r, splat<u64[4]>(0).eval(m_ir)));
+		}
 
 		const auto smax = uint64_as_double(splat<u64[4]>(0x47ffffffe0000000).eval(m_ir));
 		const auto smin = uint64_as_double(splat<u64[4]>(0x3810000000000000).eval(m_ir));
@@ -7347,7 +7371,7 @@ public:
 
 				if (auto [a, b] = match_vrs<f64[4]>(op.ra, op.rb); a || b)
 				{
-					set_vr(op.rt4, select(sel_bool, get_vr<f64[4]>(op.rb), get_vr<f64[4]>(op.ra)));
+					set_vr(op.rt4, select(sel_bool, get_vr<f64[4]>(op.rb), get_vr<f64[4]>(op.ra)), nullptr, !(a && b));
 					return true;
 				}
 
@@ -7405,7 +7429,7 @@ public:
 			{
 				if (const auto [a_f64, b_f64] = match_vrs<f64[4]>(op.ra, op.rb); a_f64 || b_f64)
 				{
-					set_vr(op.rt4, select(noncast<s32[4]>(c) != 0, get_vr<f64[4]>(op.rb), get_vr<f64[4]>(op.ra)));
+					set_vr(op.rt4, select(noncast<s32[4]>(c) != 0, get_vr<f64[4]>(op.rb), get_vr<f64[4]>(op.ra)), nullptr, !(a_f64 && b_f64));
 					return;
 				}
 
