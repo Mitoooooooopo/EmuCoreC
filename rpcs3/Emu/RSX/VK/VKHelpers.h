@@ -82,6 +82,7 @@ namespace vk
 		preserve_image_layout   = 0x0004,
 		source_is_gpu_resident  = 0x0008,
 		source_is_userptr       = 0x0010,
+		source_guest_read_prepared = 0x0020,
 
 		// meta-flags
 		upload_contents_inline    = 0,

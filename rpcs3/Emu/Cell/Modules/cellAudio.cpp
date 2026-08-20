@@ -1238,7 +1238,7 @@ error_code cellAudioQuit()
 
 error_code cellAudioPortOpen(vm::ptr<CellAudioPortParam> audioParam, vm::ptr<u32> portNum)
 {
-	cellAudio.warning("cellAudioPortOpen(audioParam=*0x%x, portNum=*0x%x)", audioParam, portNum);
+	cellAudio.trace("cellAudioPortOpen(audioParam=*0x%x, portNum=*0x%x)", audioParam, portNum);
 
 	auto& g_audio = g_fxo->get<cell_audio>();
 
@@ -1280,7 +1280,7 @@ error_code cellAudioPortOpen(vm::ptr<CellAudioPortParam> audioParam, vm::ptr<u32
 	}
 	if (attr & CELL_AUDIO_PORTATTR_OUT_SECONDARY)
 	{
-		cellAudio.todo("cellAudioPortOpen(): CELL_AUDIO_PORTATTR_OUT_SECONDARY");
+		cellAudio.trace("cellAudioPortOpen(): CELL_AUDIO_PORTATTR_OUT_SECONDARY");
 	}
 	if (attr & CELL_AUDIO_PORTATTR_OUT_PERSONAL_0)
 	{
@@ -1439,7 +1439,7 @@ error_code cellAudioPortStart(u32 portNum)
 
 error_code cellAudioPortClose(u32 portNum)
 {
-	cellAudio.warning("cellAudioPortClose(portNum=%d)", portNum);
+	cellAudio.trace("cellAudioPortClose(portNum=%d)", portNum);
 
 	auto& g_audio = g_fxo->get<cell_audio>();
 
@@ -1770,7 +1770,7 @@ error_code cellAudioSetNotifyEventQueue(ppu_thread& ppu, u64 key)
 {
 	ppu.state += cpu_flag::wait;
 
-	cellAudio.warning("cellAudioSetNotifyEventQueue(key=0x%llx)", key);
+	cellAudio.trace("cellAudioSetNotifyEventQueue(key=0x%llx)", key);
 
 	return AudioSetNotifyEventQueue(ppu, key, 0);
 }
@@ -1820,7 +1820,7 @@ error_code AudioRemoveNotifyEventQueue(u64 key, u32 iFlags)
 
 error_code cellAudioRemoveNotifyEventQueue(u64 key)
 {
-	cellAudio.warning("cellAudioRemoveNotifyEventQueue(key=0x%llx)", key);
+	cellAudio.trace("cellAudioRemoveNotifyEventQueue(key=0x%llx)", key);
 
 	return AudioRemoveNotifyEventQueue(key, 0);
 }

@@ -224,7 +224,7 @@ error_code sys_event_queue_create(cpu_thread& cpu, vm::ptr<u32> equeue_id, vm::p
 {
 	cpu.state += cpu_flag::wait;
 
-	sys_event.warning("sys_event_queue_create(equeue_id=*0x%x, attr=*0x%x, ipc_key=0x%llx, size=%d)", equeue_id, attr, ipc_key, size);
+	sys_event.trace("sys_event_queue_create(equeue_id=*0x%x, attr=*0x%x, ipc_key=0x%llx, size=%d)", equeue_id, attr, ipc_key, size);
 
 	if (size <= 0 || size > 127)
 	{
@@ -268,7 +268,7 @@ error_code sys_event_queue_destroy(ppu_thread& ppu, u32 equeue_id, s32 mode)
 {
 	ppu.state += cpu_flag::wait;
 
-	sys_event.warning("sys_event_queue_destroy(equeue_id=0x%x, mode=%d)", equeue_id, mode);
+	sys_event.trace("sys_event_queue_destroy(equeue_id=0x%x, mode=%d)", equeue_id, mode);
 
 	if (mode && mode != SYS_EVENT_QUEUE_DESTROY_FORCE)
 	{
@@ -410,7 +410,7 @@ error_code sys_event_queue_destroy(ppu_thread& ppu, u32 equeue_id, s32 mode)
 
 		if (!lost_data.empty())
 		{
-			sys_event.warning("sys_event_queue_destroy(): %s", lost_data);
+			sys_event.trace("sys_event_queue_destroy(): %s", lost_data);
 		}
 	}
 

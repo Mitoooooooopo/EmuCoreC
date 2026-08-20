@@ -1276,6 +1276,11 @@ namespace vk
 		}
 
 		rsx::flags32_t upload_command_flags = initialize_image_layout | upload_contents_inline;
+#ifdef __ANDROID__
+		// upload_texture() resolves protected guest pages before reacquiring the
+		// texture-cache lock. Avoid repeating that work from upload_image().
+		upload_command_flags |= source_guest_read_prepared;
+#endif
 		if (context == rsx::texture_upload_context::shader_read && upload_async)
 		{
 			upload_command_flags |= upload_contents_async;

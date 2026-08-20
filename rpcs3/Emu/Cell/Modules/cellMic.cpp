@@ -1262,7 +1262,7 @@ error_code cellMicGetFormatDsp(s32 dev_num, vm::ptr<CellMicInputFormatI> format)
 
 error_code cellMicSetNotifyEventQueue(u64 key)
 {
-	cellMic.todo("cellMicSetNotifyEventQueue(key=0x%llx)", key);
+	cellMic.trace("cellMicSetNotifyEventQueue(key=0x%llx)", key);
 
 	auto& mic_thr = g_fxo->get<mic_thread>();
 	const std::lock_guard lock(mic_thr.mutex);

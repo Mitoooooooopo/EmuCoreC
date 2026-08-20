@@ -74,6 +74,12 @@
 
 extern atomic_t<u64> g_watchdog_hold_ctr;
 
+#ifdef ARCH_ARM64
+// GHC-CC recompiled functions use the gateway stack as shared spill storage.
+// Large compiled functions can exceed the historical 8 KiB allocation.
+constexpr u32 s_aarch64_ghc_scratch_size = 64 * 1024;
+#endif
+
 // Should be of the same type
 using spu_rdata_t = decltype(ppu_thread::rdata);
 
@@ -376,7 +382,7 @@ const auto ppu_gateway = build_function_asm<void(*)(ppu_thread*)>("ppu_gateway",
 
 	// GHC scratchpad mem. If managed correctly (i.e no returns ever), GHC functions should never require a stack frame.
 	// We allocate a slab to use for all functions as they tail-call into each other.
-	c.sub(a64::sp, a64::sp, Imm(8192));
+	c.sub(a64::sp, a64::sp, Imm(s_aarch64_ghc_scratch_size));
 
 	// Execute LLE call
 	c.blr(call_target);
@@ -385,7 +391,7 @@ const auto ppu_gateway = build_function_asm<void(*)(ppu_thread*)>("ppu_gateway",
 	c.bind(hv_ctx_pc);
 
 	// Clear scratchpad allocation
-	c.add(a64::sp, a64::sp, Imm(8192));
+	c.add(a64::sp, a64::sp, Imm(s_aarch64_ghc_scratch_size));
 
 	c.ldr(a64::x20, arm::Mem(a64::sp));
 	c.add(a64::sp, a64::sp, Imm(16));

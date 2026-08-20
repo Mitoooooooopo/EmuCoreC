@@ -24,6 +24,9 @@
 #include "Emu/Cell/timers.hpp"
 
 #include "Emu/RSX/Core/RSXReservationLock.hpp"
+#ifdef __ANDROID__
+#include "Emu/RSX/RSXOffload.h"
+#endif
 
 #include <cmath>
 #include <cfenv>
@@ -2153,7 +2156,14 @@ void spu_thread::do_dma_transfer(spu_thread* _this, const spu_mfc_cmd& args, u8*
 		src = zero_buf;
 	}
 
-	rsx::reservation_lock<false, 1> rsx_lock(eal, args.size, !is_get && (g_cfg.video.strict_rendering_mode || (g_cfg.core.rsx_fifo_accuracy && !g_cfg.core.spu_accurate_dma && eal < rsx::constants::local_mem_base)));
+	bool android_prepared_guest_write = false;
+#ifdef __ANDROID__
+	if (!is_get && eal < RAW_SPU_BASE_ADDR)
+	{
+		android_prepared_guest_write = rsx::prepare_guest_write(eal, args.size);
+	}
+#endif
+	rsx::reservation_lock<false, 1> rsx_lock(eal, args.size, !is_get && (android_prepared_guest_write || g_cfg.video.strict_rendering_mode || (g_cfg.core.rsx_fifo_accuracy && !g_cfg.core.spu_accurate_dma && eal < rsx::constants::local_mem_base)));
 
 	if (!is_get || g_cfg.core.spu_accurate_dma)  [[unlikely]]
 	{

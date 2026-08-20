@@ -1191,10 +1191,14 @@ namespace vk
 
 			#ifdef __ANDROID__
 			// Linear B8 can use the zero-copy DMA path below and never touches
-			// guest memory on the CPU. All other guest formats can enter one of
-			// the CPU conversion paths, so resolve RSX-protected pages first.
+			// guest memory on the CPU. The privileged sudo mapping is already
+			// readable and must not be sent through the fault handler: doing so
+			// can invalidate an active render target while load_memory() is using it.
 			const bool may_read_on_cpu = is_swizzled || format != CELL_GCM_TEXTURE_B8;
-			if (!(image_setup_flags & source_is_gpu_resident) && may_read_on_cpu)
+			const uptr source_address = uptr(layout.data.data());
+			const uptr sudo_address = uptr(vm::g_sudo_addr);
+			const bool uses_sudo_mapping = source_address >= sudo_address && (source_address - sudo_address) <= u32{umax};
+			if (!(image_setup_flags & (source_is_gpu_resident | source_guest_read_prepared)) && may_read_on_cpu && !uses_sudo_mapping)
 			{
 				const u32 guest_address = vm::try_get_addr(layout.data.data()).first;
 				rsx::prepare_guest_read(guest_address, layout.data.size<u32>());

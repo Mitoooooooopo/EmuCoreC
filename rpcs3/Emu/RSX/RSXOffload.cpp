@@ -3,6 +3,7 @@
 #include "Emu/Memory/vm.h"
 #include "Common/BufferUtils.h"
 #include "Core/RSXReservationLock.hpp"
+#include "Host/MM.h"
 #include "RSXOffload.h"
 #include "RSXThread.h"
 
@@ -21,19 +22,33 @@ namespace rsx
 	// memcpy(), enter VKGSRender::on_access_violation(), and fault recursively
 	// while SIGSEGV is still blocked by the kernel. Resolve protected guest
 	// ranges from normal thread context before starting the DMA copy instead.
-	void prepare_guest_read(u32 address, u32 length)
+	static bool prepare_guest_access(u32 address, u32 length, bool is_writing)
 	{
 		if (!address || !length || !g_access_violation_handler)
 		{
-			return;
+			return false;
 		}
 
 		const u32 last = utils::add_saturate<u32>(address, length - 1);
 		u32 current = address;
+		bool handled = false;
 
 		for (;;)
 		{
-			g_access_violation_handler(current, false);
+			const u8 required_permission = is_writing ? vm::page_writable : vm::page_readable;
+			if (vm::check_addr(current, required_permission) && mm_is_accessible(current, is_writing))
+			{
+				if (current / 4096 == last / 4096)
+				{
+					break;
+				}
+
+				current = utils::align(current + 1, 4096);
+				continue;
+			}
+
+			const bool page_handled = g_access_violation_handler(current, is_writing);
+			handled |= page_handled;
 
 			if (current / 4096 == last / 4096)
 			{
@@ -42,6 +57,18 @@ namespace rsx
 
 			current = utils::align(current + 1, 4096);
 		}
+
+		return handled;
+	}
+
+	bool prepare_guest_read(u32 address, u32 length)
+	{
+		return prepare_guest_access(address, length, false);
+	}
+
+	bool prepare_guest_write(u32 address, u32 length)
+	{
+		return prepare_guest_access(address, length, true);
 	}
 #endif
 

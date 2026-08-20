@@ -5,6 +5,9 @@
 #include "Emu/RSX/Core/RSXReservationLock.hpp"
 #include "Emu/RSX/Common/tiled_dma_copy.hpp"
 #include "Emu/RSX/Host/MM.h"
+#ifdef __ANDROID__
+#include "Emu/RSX/RSXOffload.h"
+#endif
 
 #include "context_accessors.define.h"
 
@@ -584,6 +587,17 @@ namespace rsx
 			// Lock here. RSX cannot execute any locking operations from this point, including ZCULL read barriers
 			const u32 read_length = src.pitch * src.height;
 			const u32 write_length = dst.pitch * dst.clip_height;
+#ifdef __ANDROID__
+			// A CPU blit can touch RSX-protected source or destination pages. Resolve
+			// them on the normal RSX stack before entering memcpy/tiled conversion;
+			// the Android signal stack is too small for texture readback and shader
+			// compilation performed by the violation handler.
+			// Resolve the destination first: its invalidation can flush/re-protect
+			// texture-cache ranges which overlap the source. Prepare the source last,
+			// immediately before taking the reservation and starting the blit.
+			prepare_guest_write(dst.rsx_address, write_length);
+			prepare_guest_read(src.rsx_address, read_length);
+#endif
 			auto res = ::rsx::reservation_lock<true>(
 				dst.rsx_address, write_length,
 				src.rsx_address, read_length);

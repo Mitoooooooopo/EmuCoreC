@@ -2,6 +2,9 @@
 
 #include "Emu/RSX/Common/simple_array.hpp"
 #include "Emu/RSX/Core/RSXContext.h"
+#ifdef __ANDROID__
+#include "Emu/RSX/RSXOffload.h"
+#endif
 #include "Emu/RSX/RSXThread.h"
 #include "texture_cache_utils.h"
 #include "texture_cache_predictor.h"
@@ -2763,7 +2766,11 @@ namespace rsx
 			}
 
 			const auto lookup_range = utils::address_range32::start_length(attributes.address, attributes.pitch * required_surface_height);
+#ifdef __ANDROID__
+			std::optional<reader_lock> lock{std::in_place, m_cache_mutex};
+#else
 			reader_lock lock(m_cache_mutex);
+#endif
 
 			auto result = fast_texture_search(cmd, attributes, scale, tex.decoded_remap(),
 				options, lookup_range, extended_dimension, m_rtts,
@@ -2909,7 +2916,18 @@ namespace rsx
 				tex_size = static_cast<u32>(get_texture_size(tex));
 			}
 
+#ifdef __ANDROID__
+			// CPU conversion must not enter the RSX memory-fault handler while the
+			// texture-cache lock is held: the handler invalidates this cache and
+			// would recursively wait on the same lock. Resolve protected guest pages
+			// first, then reacquire the cache lock and continue the normal invalidation.
+			lock.reset();
+			prepare_guest_read(attributes.address, tex_size);
+			lock.emplace(m_cache_mutex);
+			lock->upgrade();
+#else
 			lock.upgrade();
+#endif
 
 			// Invalidate
 			const address_range32 tex_range = address_range32::start_length(attributes.address, tex_size);
@@ -3679,7 +3697,7 @@ namespace rsx
 					{
 						// Keep Cell from touching the range we need
 						const auto prot_range = dst_range.to_page_range();
-						utils::memory_protect(vm::base(prot_range.start), prot_range.length(), utils::protection::no);
+						rsx::mm_protect_immediate(vm::base(prot_range.start), prot_range.length(), utils::protection::no);
 
 						force_dma_load = true;
 					}
@@ -3717,7 +3735,7 @@ namespace rsx
 						// HACK: workaround for data race with Cell
 						// Pre-lock the memory range we'll be touching, then load with super_ptr
 						const auto prot_range = dst_range.to_page_range();
-						utils::memory_protect(vm::base(prot_range.start), prot_range.length(), utils::protection::no);
+						rsx::mm_protect_immediate(vm::base(prot_range.start), prot_range.length(), utils::protection::no);
 
 						const auto pitch_in_block = dst.pitch / dst_bpp;
 						std::vector<rsx::subresource_layout> subresource_layout;

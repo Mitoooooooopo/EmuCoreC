@@ -2,6 +2,7 @@
 #include "nv0039.h"
 
 #include "Emu/RSX/RSXThread.h"
+#include "Emu/RSX/RSXOffload.h"
 #include "Emu/RSX/Core/RSXReservationLock.hpp"
 #include "Emu/RSX/Host/MM.h"
 
@@ -113,6 +114,15 @@ namespace rsx
 					return;
 				}
 			}
+
+#ifdef __ANDROID__
+			// NV0039 performs CPU-side copies between guest ranges. Resolve RSX host
+			// protections before taking the reservation lock: recovering from memcpy's
+			// SIGSEGV on Android would run the texture-cache path on the signal stack and
+			// can fault recursively. Destination first mirrors the transfer's access order.
+			prepare_guest_write(write_address, write_length);
+			prepare_guest_read(read_address, read_length);
+#endif
 
 			// Deferred write_barrier on RSX side
 			utils::deferred_op deferred([&]()
