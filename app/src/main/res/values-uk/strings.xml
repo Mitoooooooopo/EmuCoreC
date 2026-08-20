@@ -945,12 +945,12 @@
     <string name="core_label_ppu_calling_history">Історія викликів PPU</string>
     <string name="core_label_ppu_debug">Налагодження PPU</string>
     <string name="core_label_ppu_decoder">Декодер PPU</string>
-    <string name="core_label_ppu_profiler">PPU Profiler</string>
+    <string name="core_label_ppu_profiler">Профайлер PPU</string>
     <string name="core_label_ppu_reservation_priority_over_spus">Пріоритет резервування PPU над SPU</string>
-    <string name="core_label_ppu_set_fpcc_bits">PPU Set FPCC Bits</string>
-    <string name="core_label_ppu_set_saturation_bit">PPU Set Saturation Bit</string>
+    <string name="core_label_ppu_set_fpcc_bits">Встановлення бітів FPCC PPU</string>
+    <string name="core_label_ppu_set_saturation_bit">Встановлення біта насичення PPU</string>
     <string name="core_label_ppu_threads">Потоки PPU</string>
-    <string name="core_label_ppu_vector_nan_handling">PPU Vector NaN Handling</string>
+    <string name="core_label_ppu_vector_nan_handling">Обробка векторних NaN у PPU</string>
     <string name="core_label_precise_spu_verification">Точна перевірка SPU</string>
     <string name="core_label_prefer_color">Віддайте перевагу кольору</string>
     <string name="core_label_prefer_depth">Віддайте перевагу глибині</string>
@@ -966,7 +966,7 @@
     <string name="core_label_quadraphonic">Квадрафонічний</string>
     <string name="core_label_quadraphonic_lfe">Квадрафонічні LFE</string>
     <string name="core_label_raw">Сирий</string>
-    <string name="core_label_raw_mouse">Raw Mouse</string>
+    <string name="core_label_raw_mouse">Пряме введення миші</string>
     <string name="core_label_read_color_buffers">Читайте буфери кольорів</string>
     <string name="core_label_read_depth_buffer">Буфер глибини читання</string>
     <string name="core_label_real">Справжня</string>
@@ -1035,12 +1035,12 @@
     <string name="core_label_spu_llvm_lower_bound">Нижня межа SPU LLVM</string>
     <string name="core_label_spu_llvm_upper_bound">SPU LLVM Верхня межа</string>
     <string name="core_label_spu_loop_detection">Виявлення петлі SPU</string>
-    <string name="core_label_spu_profiler">SPU Profiler</string>
-    <string name="core_label_spu_reservation_busy_waiting_enabled">SPU Reservation Busy Waiting Enabled</string>
+    <string name="core_label_spu_profiler">Профайлер SPU</string>
+    <string name="core_label_spu_reservation_busy_waiting_enabled">Активне очікування резервування SPU</string>
     <string name="core_label_spu_reservation_busy_waiting_percentage_1">Бронювання SPU Відсоток очікування зайнятості 1</string>
     <string name="core_label_spu_verification">Перевірка SPU</string>
     <string name="core_label_spu_wake_up_delay">Затримка пробудження SPU</string>
-    <string name="core_label_spu_wake_up_delay_thread_mask">SPU Wake-Up Delay Thread Mask</string>
+    <string name="core_label_spu_wake_up_delay_thread_mask">Маска потоків затримки пробудження SPU</string>
     <string name="core_label_spu_xfloat_accuracy">Точність SPU XFloat</string>
     <string name="core_label_standard">Стандартний</string>
     <string name="core_label_start_games_in_fullscreen_mode">Запускайте ігри в повноекранному режимі</string>
@@ -1056,7 +1056,7 @@
     <string name="core_label_suspend_emulation_savestate_mode">Призупинити режим емуляції Savestate</string>
     <string name="core_label_system">Система</string>
     <string name="core_label_system_name">Назва системи</string>
-    <string name="core_label_texture_lod_bias_addend">Texture LOD Bias Addend</string>
+    <string name="core_label_texture_lod_bias_addend">Додаток зміщення LOD текстур</string>
     <string name="core_label_thread_scheduler_mode">Режим планувальника потоків</string>
     <string name="core_label_time_format">Формат часу</string>
     <string name="core_label_time_stretching_threshold">Поріг розтягування часу</string>
@@ -1076,11 +1076,11 @@
     <string name="core_label_use_re_bar_for_gpu_uploads">Використовуйте Re-BAR для завантажень GPU</string>
     <string name="core_label_use_recursive_scan">Використовуйте рекурсивне сканування</string>
     <string name="core_label_use_window_space">Використовуйте віконний простір</string>
-    <string name="core_label_usleep_only">Usleep Only</string>
+    <string name="core_label_usleep_only">Лише usleep</string>
     <string name="core_label_usleep_time_addend">Додавання часу сну</string>
     <string name="core_label_uvc_1_1">UVC 1.1</string>
     <string name="core_label_vblank_ntsc_fixup">Виправлення Vblank NTSC</string>
-    <string name="core_label_vblank_rate">Vblank Rate</string>
+    <string name="core_label_vblank_rate">Частота VBlank</string>
     <string name="core_label_vertical">Вертикальний</string>
     <string name="core_label_vertical_margin" formatted="false">Вертикальна маржа (%)</string>
     <string name="core_label_vfs">VFS</string>
@@ -1173,7 +1173,7 @@ Over-Under ближче до рідного стереовиходу, але п�
 Це може спричинити серйозне зниження продуктивності та заїкання в деяких іграх.
 Ця опція потрібна лише розробникам для усунення проблем із захистом пам’яті кешу текстур.</string>
     <string name="core_help_video_disable_fifo_reordering" formatted="false">Повністю вимикає оптимізацію RSX FIFO. Розіграші обробляються по мірі отримання знімачем DMA.</string>
-    <string name="core_help_video_disable_hardware_colorspace_remapping" formatted="false">Disables use of hardware-native color-space remapping formats such as _sRGB and _SNORM suffixes.
+    <string name="core_help_video_disable_hardware_colorspace_remapping" formatted="false">Вимикає використання апаратних форматів перевідображення простору кольорів, як-от суфікси _sRGB та _SNORM.
 Вимкнення цієї опції підвищує точність порівняно з PS3, але також може створювати певний шум через роботу програмної емуляції.</string>
     <string name="core_help_video_disable_msl_fast_math" formatted="false">Вимикає Fast Math для шейдерів MSL, які можуть порушувати стандарт IEEE 754.
 Його вимкнення може виправити деякі артефакти, особливо на графічних процесорах Apple, за рахунок зниження продуктивності.</string>
@@ -1181,40 +1181,40 @@ Over-Under ближче до рідного стереовиходу, але п�
 Можуть виникнути проблеми з порушенням оклюзії, наприклад відсутність геометрії та надмірне спливаюче вікно.</string>
     <string name="core_help_video_disable_on_disk_shader_cache" formatted="false">Вимикає завантаження та збереження шейдерів із кешу шейдерів у каталозі даних і до нього.</string>
     <string name="core_help_core_disable_spu_getllar_spin_optimization" formatted="false">Вимкніть оптимізацію обертання SPU GETLLAR.
-This can cause severe performance degradation and stuttering in many games.
+Це може спричинити значне падіння продуктивності та ривки в багатьох іграх.
 Ця опція потрібна лише для певної кількості ігор.</string>
     <string name="core_help_video_disable_vertex_cache" formatted="false">Вимикає кеш вершин.
 Може усунути відсутність або мерехтіння графічного виводу.
-May degrade performance.</string>
+Може знизити продуктивність.</string>
     <string name="core_help_video_disable_video_output" formatted="false">Вимикає весь вихід відео та графічний рендеринг PS3.
 Його єдиний варіант використання — це оцінка продуктивності CELL для розробки.</string>
     <string name="core_help_video_disable_vulkan_memory_allocator" formatted="false">Вимикає настроюваний розподільник пам’яті Vulkan і повертається до прямих викликів VkAllocateMemory/VkFreeMemory.</string>
     <string name="core_help_net_dns_address" formatted="false">DNS використовується для визначення імен хостів програмами.</string>
-    <string name="core_help_video_driver_wake_up_delay" formatted="false">Controls how much time it takes for RSX to start processing after waking up by the Cell processor.
-Increasing wakeup delay improves stability, but very high values can lower RSX/GPU performance.
-It is recommend to adjust this at 20µs to 40µs increments until the best value for optimal stability is reached.</string>
+    <string name="core_help_video_driver_wake_up_delay" formatted="false">Керує затримкою початку обробки RSX після пробудження процесором Cell.
+Збільшення затримки пробудження покращує стабільність, але надто великі значення можуть знизити продуктивність RSX/GPU.
+Рекомендовано змінювати значення кроками від 20 до 40 мкс, доки не буде досягнуто найкращої стабільності.</string>
     <string name="core_help_audio_dump_to_file" formatted="false">Зберігає весь аудіофайл як необроблений хвильовий файл. Якщо не впевнені, не встановлюйте цей прапорець.</string>
     <string name="core_help_vfs_empty_dev_hdd0_tmp" formatted="false">Необхідний для деяких модів Homebrew або ігор.
 Якщо не впевнені, не використовуйте цю опцію</string>
     <string name="core_help_video_emulate_special_depth_comparison" formatted="false">Емулюйте операції порівняння глибини, де поведінка апаратного забезпечення робочого столу відрізняється від PS3, як правило, режими порівняння EQUAL.
-Fixes excessive shadow flickering and Z-fighting in some games.
+Виправляє надмірне мерехтіння тіней і Z-конфлікти в деяких іграх.
 Це найбільш очевидно в деяких іграх, де формат глибини перед проходом Z відрізняється від формату глибини растеризації, сценарій, який ніколи не працюватиме належним чином на сумісному обладнанні настільного комп’ютера.</string>
-    <string name="core_help_audio_enable_buffering" formatted="false">Enables audio buffering, which reduces crackle/stutter but increases audio latency.</string>
+    <string name="core_help_audio_enable_buffering" formatted="false">Увімкнення буферизації зменшує тріск і ривки звуку, але збільшує його затримку.</string>
     <string name="core_help_net_clans_enabled" formatted="false">Увімкніть підключення до сервера Clans.
 Впливає лише на ігри, які підтримують функцію кланів.</string>
     <string name="core_help_core_spu_reservation_busy_waiting_enabled" formatted="false">Увімкнути обертання SPU RdEventStat.
-This increases CPU usage, this setting is beneficial for high-threaded CPUs (12+) with select number of games.</string>
+Це збільшує використання ЦП; налаштування може бути корисним для багатопотокових процесорів (12+ потоків) у деяких іграх.</string>
     <string name="core_help_miscellaneous_enable_gamemode" formatted="false">Активуйте GameMode Feral Interactive.
 Це низка оптимізацій центрального та графічного процесорів, які потенційно можуть покращити продуктивність гри на деяких системах.</string>
     <string name="core_help_vfs_enable_host_root" formatted="false">Необхідний для деяких Homebrew.
 Якщо не впевнені, не використовуйте цю опцію.</string>
-    <string name="core_help_audio_enable_time_stretching" formatted="false">Enables time stretching - requires buffering to be enabled.
-Reduces crackle/stutter further, but may cause a very noticeable reduction in audio quality on slower CPUs.</string>
+    <string name="core_help_audio_enable_time_stretching" formatted="false">Увімкнення розтягування часу потребує активної буферизації.
+Додатково зменшує тріск і ривки, але на повільніших ЦП може помітно погіршити якість звуку.</string>
     <string name="core_help_net_upnp_enabled" formatted="false">Увімкніть UPNP.
-This will automatically forward ports bound on 0.0.0.0 if your router has UPNP enabled.</string>
-    <string name="core_help_system_enter_button_assignment" formatted="false">The button used for enter/accept/confirm in system dialogs.
-Change this to use the Circle button instead, which is the default configuration on Japanese systems and in many Japanese games.
-In these cases having the cross button assigned can often lead to confusion.</string>
+Якщо маршрутизатор підтримує UPNP, порти, прив’язані до 0.0.0.0, буде перенаправлено автоматично.</string>
+    <string name="core_help_system_enter_button_assignment" formatted="false">Кнопка для входу, прийняття або підтвердження в системних діалогах.
+Виберіть кнопку «Коло», якщо потрібна стандартна конфігурація японських систем і багатьох японських ігор.
+Призначення кнопки «Хрест» у таких випадках може спричиняти плутанину.</string>
     <string name="core_help_video_vulkan_exclusive_fullscreen_mode" formatted="false">Контролює, який повноекранний режим запитує RPCS3 у драйверів під час використання рендерера Vulkan.
 Автоматично дозволить водієві вибрати відповідний режим, тоді як інші параметри підкажуть водіям, чи варто їм використовувати ексклюзивний або безрамковий повноекранний режим.
 Використання опції «Віддавати перевагу безрамковому повноекранному режиму» може допомогти, якщо у вас виникають проблеми з потоковою трансляцією гри RPCS3 або якщо ваша система неправильно вмикає режим HDR під час повноекранного режиму.</string>

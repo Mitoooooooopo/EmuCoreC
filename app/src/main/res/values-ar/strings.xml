@@ -1051,7 +1051,7 @@
     <string name="core_label_stereo_lfe">ستيريو LFE</string>
     <string name="core_label_stretch_to_display_area">تمتد إلى منطقة العرض</string>
     <string name="core_label_strict_rendering_mode">وضع العرض الصارم</string>
-    <string name="core_label_strict_texture_flushing">Strict Texture Flushing</string>
+    <string name="core_label_strict_texture_flushing">تفريغ صارم للأنسجة</string>
     <string name="core_label_stub_ppu_traps">كعب PPU الفخاخ</string>
     <string name="core_label_surround_5_1">المحيطي 5.1</string>
     <string name="core_label_surround_7_1">المحيطي 7.1</string>
@@ -1060,7 +1060,7 @@
     <string name="core_label_system_name">اسم النظام</string>
     <string name="core_label_texture_lod_bias_addend">إضافة تحيز LOD للملمس</string>
     <string name="core_label_thread_scheduler_mode">وضع جدولة الموضوع</string>
-    <string name="core_label_time_format">Time Format</string>
+    <string name="core_label_time_format">تنسيق الوقت</string>
     <string name="core_label_time_stretching_threshold">عتبة تمديد الوقت</string>
     <string name="core_label_title_background_hex">خلفية العنوان (ست عشرية)</string>
     <string name="core_label_title_color_hex">لون العنوان (ست عشري)</string>
@@ -1092,7 +1092,7 @@
     <string name="core_label_vulkan">فولكان</string>
     <string name="core_label_window_title_format">تنسيق عنوان النافذة</string>
     <string name="core_label_write_color_buffers">كتابة مخازن الألوان</string>
-    <string name="core_label_write_depth_buffer">Write Depth Buffer</string>
+    <string name="core_label_write_depth_buffer">كتابة مخزن العمق</string>
     <string name="core_label_xaudio2">XAudio2</string>
     <string name="core_label_yyyymmdd">Yyymmdd</string>
     <string name="core_help_core_accurate_cache_line_stores" formatted="false">يعالج بدقة تعليمات PPU DCBZ.
@@ -1617,4 +1617,21 @@
     <string name="onboarding_permission_storage_desc">الوصول إلى مساحة تخزين الجهاز لقراءة ملفات الألعاب مباشرة دون نسخ</string>
     <string name="onboarding_permission_storage_grant">منح الإذن</string>
     <string name="onboarding_permission_storage_granted">تم منح الإذن</string>
+
+    <plurals name="library_game_count">
+        <item quantity="zero">لا توجد ألعاب</item>
+        <item quantity="one">إجمالي لعبة واحدة</item>
+        <item quantity="two">إجمالي لعبتين</item>
+        <item quantity="few">إجمالي %1$d ألعاب</item>
+        <item quantity="many">إجمالي %1$d لعبة</item>
+        <item quantity="other">إجمالي %1$d لعبة</item>
+    </plurals>
+    <plurals name="install_dialog_items_progress">
+        <item quantity="zero">لم يكتمل أي عنصر من %2$d</item>
+        <item quantity="one">اكتمل عنصر واحد من %2$d</item>
+        <item quantity="two">اكتمل عنصران من %2$d</item>
+        <item quantity="few">اكتملت %1$d عناصر من %2$d</item>
+        <item quantity="many">اكتمل %1$d عنصرًا من %2$d</item>
+        <item quantity="other">اكتمل %1$d من %2$d عنصر</item>
+    </plurals>
 </resources>

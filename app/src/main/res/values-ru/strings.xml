@@ -948,9 +948,9 @@
     <string name="core_label_ppu_profiler">Профилировщик ППУ</string>
     <string name="core_label_ppu_reservation_priority_over_spus">Приоритет резервирования PPU над SPU</string>
     <string name="core_label_ppu_set_fpcc_bits">PPU устанавливает биты FPCC</string>
-    <string name="core_label_ppu_set_saturation_bit">PPU Set Saturation Bit</string>
+    <string name="core_label_ppu_set_saturation_bit">Установка бита насыщения PPU</string>
     <string name="core_label_ppu_threads">Потоки PPU</string>
-    <string name="core_label_ppu_vector_nan_handling">PPU Vector NaN Handling</string>
+    <string name="core_label_ppu_vector_nan_handling">Обработка векторных NaN в PPU</string>
     <string name="core_label_precise_spu_verification">Точная проверка SPU</string>
     <string name="core_label_prefer_color">Предпочитаю цвет</string>
     <string name="core_label_prefer_depth">Предпочитаю глубину</string>
@@ -1048,7 +1048,7 @@
     <string name="core_label_stereo">Стерео</string>
     <string name="core_label_stereo_lfe">Стерео НЧЭ</string>
     <string name="core_label_stretch_to_display_area">Растянуть до области отображения</string>
-    <string name="core_label_strict_rendering_mode">Strict Rendering Mode</string>
+    <string name="core_label_strict_rendering_mode">Строгий режим рендеринга</string>
     <string name="core_label_strict_texture_flushing">Строгая текстурная промывка</string>
     <string name="core_label_stub_ppu_traps">Заглушки ППУ-ловушки</string>
     <string name="core_label_surround_5_1">Объемное звучание 5.1</string>
@@ -1070,7 +1070,7 @@
     <string name="core_label_upnp_enabled">УПНП включен</string>
     <string name="core_label_use_accurate_dfma">Используйте точный DFMA</string>
     <string name="core_label_use_full_rgb_output_range">Используйте полный выходной диапазон RGB</string>
-    <string name="core_label_use_gpu_texture_scaling">Use GPU texture scaling</string>
+    <string name="core_label_use_gpu_texture_scaling">Использовать масштабирование текстур на GPU</string>
     <string name="core_label_use_llvm_cpu">Использовать процессор LLVM</string>
     <string name="core_label_use_native_user_interface">Используйте собственный пользовательский интерфейс</string>
     <string name="core_label_use_re_bar_for_gpu_uploads">Используйте Re-BAR для загрузки графического процессора</string>
@@ -1089,7 +1089,7 @@
     <string name="core_label_vsync_mode">Режим вертикальной синхронизации</string>
     <string name="core_label_vulkan">Вулкан</string>
     <string name="core_label_window_title_format">Формат заголовка окна</string>
-    <string name="core_label_write_color_buffers">Write Color Buffers</string>
+    <string name="core_label_write_color_buffers">Записывать буферы цвета</string>
     <string name="core_label_write_depth_buffer">Запись буфера глубины</string>
     <string name="core_label_xaudio2">XAudio2</string>
     <string name="core_label_yyyymmdd">Ггггммдд</string>

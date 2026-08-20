@@ -1170,7 +1170,7 @@ En cas de doute, n\'utilisez pas cette option.</string>
     <string name="core_help_video_disable_asynchronous_memory_manager" formatted="false">Forcer les appels de gestion de la mémoire hôte à être intégrés au lieu d’être traités de manière asynchrone.
 Cela peut entraîner une grave dégradation des performances et un bégaiement dans certains jeux.
 Cette option n\'est nécessaire aux développeurs que pour déboguer les problèmes liés à la protection de la mémoire cache des textures.</string>
-    <string name="core_help_video_disable_fifo_reordering" formatted="false">Disables RSX FIFO optimizations completely. Les tirages sont traités au fur et à mesure de leur réception par l\'extracteur DMA.</string>
+    <string name="core_help_video_disable_fifo_reordering" formatted="false">Désactive complètement les optimisations FIFO du RSX. Les tirages sont traités au fur et à mesure de leur réception par l\'extracteur DMA.</string>
     <string name="core_help_video_disable_hardware_colorspace_remapping" formatted="false">Désactive l\'utilisation de formats de remappage d\'espace colorimétrique natifs du matériel tels que les suffixes _sRGB et _SNORM.
 La désactivation de cette option augmente la précision par rapport à la PS3 mais peut également introduire du bruit en raison du fonctionnement de l\'émulation logicielle.</string>
     <string name="core_help_video_disable_msl_fast_math" formatted="false">Désactive Fast Math pour les shaders MSL, qui peuvent violer la norme IEEE 754.

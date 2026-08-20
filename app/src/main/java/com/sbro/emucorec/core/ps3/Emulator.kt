@@ -15,8 +15,8 @@ import android.view.MotionEvent
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.annotation.Keep
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -49,7 +49,7 @@ import kotlin.math.roundToInt
 
 /** PS3 emulation activity: RPCS3 surface, RPCS3 lifecycle, and the existing EmuCoreC overlay. */
 @android.annotation.SuppressLint("RestrictedApi")
-class Emulator : ComponentActivity(), InputManager.InputDeviceListener {
+class Emulator : AppCompatActivity(), InputManager.InputDeviceListener {
     private var _currentGameId by mutableStateOf("")
     val currentGameId: String get() = _currentGameId
 

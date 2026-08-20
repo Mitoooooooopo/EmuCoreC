@@ -761,7 +761,7 @@
     <string name="core_label_camera_id">Identificativo della fotocamera</string>
     <string name="core_label_camera_type">Tipo di fotocamera</string>
     <string name="core_label_cellaudio">CellAudio</string>
-    <string name="core_label_center_horizontally">Center Horizontally</string>
+    <string name="core_label_center_horizontally">Centra orizzontalmente</string>
     <string name="core_label_center_vertically">Centra verticalmente</string>
     <string name="core_label_clans_enabled">Clan abilitati</string>
     <string name="core_label_clock12">Orologio12</string>
@@ -776,7 +776,7 @@
     <string name="core_label_convert_to_16_bit">Converti a 16 bit</string>
     <string name="core_label_core">Nucleo</string>
     <string name="core_label_cubeb">Cubeb</string>
-    <string name="core_label_custom_anaglyph_matrices">Custom Anaglyph Matrices</string>
+    <string name="core_label_custom_anaglyph_matrices">Matrici anaglifiche personalizzate</string>
     <string name="core_label_darkening_effect_strength">Intensità dell\'effetto oscurante</string>
     <string name="core_label_date_format">Formato data</string>
     <string name="core_label_ddmmyyyy">Ggmmaaaa</string>
@@ -791,7 +791,7 @@
     <string name="core_label_disable">Disabilita</string>
     <string name="core_label_disable_asynchronous_memory_manager">Disabilitare il gestore della memoria asincrona</string>
     <string name="core_label_disable_fifo_reordering">Disabilita il riordino FIFO</string>
-    <string name="core_label_disable_hardware_colorspace_remapping">Disable Hardware ColorSpace Remapping</string>
+    <string name="core_label_disable_hardware_colorspace_remapping">Disabilita la rimappatura hardware dello spazio colore</string>
     <string name="core_label_disable_msl_fast_math">Disabilita matematica veloce MSL</string>
     <string name="core_label_disable_on_disk_shader_cache">Disabilita la cache dello shader su disco</string>
     <string name="core_label_disable_sampling_skip">Disabilita il salto del campionamento</string>
@@ -987,7 +987,7 @@
     <string name="core_label_rsxaudio">RSXAudio</string>
     <string name="core_label_rsxaudio_avport">RSXAudio Avporto</string>
     <string name="core_label_safe">Sicuro</string>
-    <string name="core_label_save_disc_game_data">Save Disc Game Data</string>
+    <string name="core_label_save_disc_game_data">Salva i dati di gioco del disco</string>
     <string name="core_label_save_llvm_logs">Salva i registri LLVM</string>
     <string name="core_label_savestate">Savestate</string>
     <string name="core_label_screen_size_in_inches">Dimensioni dello schermo in pollici</string>
@@ -1015,7 +1015,7 @@
     <string name="core_label_show_pressure_intensity_toggle_hint">Mostra il suggerimento per attivare/disattivare l\'intensità della pressione</string>
     <string name="core_label_show_rpcn_popups">Mostra i popup RPCN</string>
     <string name="core_label_show_shader_compilation_hint">Mostra il suggerimento per la compilazione dello shader</string>
-    <string name="core_label_show_trophy_popups">Show trophy popups</string>
+    <string name="core_label_show_trophy_popups">Mostra le notifiche dei trofei</string>
     <string name="core_label_side_by_side">Fianco a fianco</string>
     <string name="core_label_silence_all_logs">Silenzia tutti i registri</string>
     <string name="core_label_simulated">Simulato</string>
@@ -1032,7 +1032,7 @@
     <string name="core_label_spu_getllar_busy_waiting_percentage">SPU GETLLAR Percentuale di attesa occupato</string>
     <string name="core_label_spu_llvm_lower_bound">Limite inferiore LLVM SPU</string>
     <string name="core_label_spu_llvm_upper_bound">SPU LLVM Limite superiore</string>
-    <string name="core_label_spu_loop_detection">SPU loop detection</string>
+    <string name="core_label_spu_loop_detection">Rilevamento dei cicli SPU</string>
     <string name="core_label_spu_profiler">Profilo SPU</string>
     <string name="core_label_spu_reservation_busy_waiting_enabled">Attesa di prenotazione SPU occupata abilitata</string>
     <string name="core_label_spu_reservation_busy_waiting_percentage_1">Percentuale di attesa di prenotazione SPU occupata 1</string>

@@ -8,7 +8,7 @@
         <item name="postSplashScreenTheme">@style/Theme.EmuCoreC</item>
     </style>
 
-    <style name="Theme.EmuCoreC" parent="android:Theme.Material.NoActionBar">
+    <style name="Theme.EmuCoreC" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@color/launch_background</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -17,7 +17,7 @@
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
     </style>
 
-    <style name="Theme.EmuCoreC.Emulator" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+    <style name="Theme.EmuCoreC.Emulator" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:windowBackground">@android:color/black</item>
         <item name="android:colorBackground">@android:color/black</item>
         <item name="android:windowDisablePreview">true</item>
