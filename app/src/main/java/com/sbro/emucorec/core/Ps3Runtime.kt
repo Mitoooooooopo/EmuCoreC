@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.ParcelFileDescriptor
 import android.util.Log
 import android.view.Surface
+import com.sbro.emucorec.data.InstalledGameRepository
 import net.rpcsx.BootResult
 import net.rpcsx.EmulatorState
 import net.rpcsx.FirmwareRepository
@@ -186,8 +187,10 @@ object Ps3Runtime {
         if (!ensureInitialized(context)) return false
         val input = File(source)
         if (!input.isFile || input.length() != 0x10L) return false
-        val contentId = input.nameWithoutExtension.trim()
-        if (!contentId.matches(Regex("[A-Za-z0-9_-]{1,128}"))) return false
+        val contentId = RapLicenseContentIdResolver.resolve(
+            input,
+            InstalledGameRepository().loadInstalledGames(context),
+        ) ?: return false
 
         val user = runCatching { RPCSX.instance.getUser() }.getOrNull().orEmpty().ifBlank { USER_ID }
         val directory = File(RPCSX.getHdd0Dir(), "home/$user/exdata").canonicalFile
