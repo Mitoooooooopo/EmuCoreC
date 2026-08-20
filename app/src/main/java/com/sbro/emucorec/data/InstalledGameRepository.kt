@@ -156,12 +156,9 @@ class InstalledGameRepository {
 
         val markedCustomIsoGames = customIsoGames.map { it.copy(isCustomFolderGame = true) }
 
-        val installed = (installedFromDirs + markedCustomIsoGames + directBootGames + customFolderDirGames)
-            // Prioritise bootable game directories over DLC/patch folders that share the
-            // same TITLE_ID but contain no EBOOT.BIN. distinctBy keeps the first entry,
-            // so we sort bootable entries to the front before deduplication.
-            .sortedByDescending { hasBootable(File(it.installPath)) }
-            .distinctBy { it.titleId.uppercase() }
+        val installed = InstalledGameCandidateMerger.merge(
+            installedFromDirs + markedCustomIsoGames + directBootGames + customFolderDirGames
+        )
 
         val covers = Ps3CatalogRepository(context.applicationContext)
             .findCoverUrls(installed)
@@ -198,14 +195,6 @@ class InstalledGameRepository {
         }
 
         return findInstalledGameFolders(context, safeTitleId).isEmpty()
-    }
-
-    private fun hasBootable(fileOrDir: File): Boolean {
-        if (fileOrDir.isFile && com.sbro.emucorec.core.Ps3IsoParser.isIsoImage(fileOrDir)) return true
-        return File(fileOrDir, "EBOOT.BIN").isFile ||
-               File(fileOrDir, "PS3_GAME/EBOOT.BIN").isFile ||
-               File(fileOrDir, "USRDIR/EBOOT.BIN").isFile ||
-               File(fileOrDir, "PS3_GAME/USRDIR/EBOOT.BIN").isFile
     }
 
     /** listFiles() throws SecurityException on directories the app lost access to mid-scan. */

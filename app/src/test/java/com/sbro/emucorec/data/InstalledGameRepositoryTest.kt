@@ -67,6 +67,91 @@ class InstalledGameRepositoryTest {
         assertEquals("Custom Game", parsed.title)
     }
 
+    @Test
+    fun discUpdateUsesNewMetadataButKeepsIsoLaunchSource() {
+        val iso = tempFolder.newFile("Grand Theft Auto IV.iso")
+        val updateDirectory = tempFolder.newFolder("BLES00229-update")
+        val base = game(
+            titleId = "BLES00229",
+            version = "01.00",
+            category = "DG",
+            installPath = iso.absolutePath,
+            iconPath = "/disc/ICON0.PNG"
+        )
+        val update = game(
+            titleId = "BLES00229",
+            version = "01.08",
+            category = "GD",
+            installPath = updateDirectory.absolutePath,
+            iconPath = "/update/ICON0.PNG"
+        )
+
+        val merged = InstalledGameCandidateMerger.merge(listOf(update, base)).single()
+
+        assertEquals(iso.absolutePath, merged.installPath)
+        assertEquals("01.08", merged.version)
+        assertEquals("DG", merged.category)
+        assertEquals("/update/ICON0.PNG", merged.iconPath)
+    }
+
+    @Test
+    fun installedUpdateWithoutBaseGameIsNotListedAsStandaloneGame() {
+        val update = game(
+            titleId = "BLES00229",
+            version = "01.08",
+            category = "GD",
+            installPath = tempFolder.newFolder("orphan-update").absolutePath
+        )
+
+        assertTrue(InstalledGameCandidateMerger.merge(listOf(update)).isEmpty())
+    }
+
+    @Test
+    fun olderUpdateCannotDowngradeBaseMetadata() {
+        val base = game(
+            titleId = "NPUB12345",
+            version = "02.10",
+            category = "HG",
+            installPath = tempFolder.newFolder("digital-base").absolutePath
+        )
+        val staleUpdate = game(
+            titleId = "NPUB12345",
+            version = "02.09",
+            category = "GD",
+            installPath = tempFolder.newFolder("stale-update").absolutePath
+        )
+
+        val merged = InstalledGameCandidateMerger.merge(listOf(staleUpdate, base)).single()
+
+        assertEquals(base.installPath, merged.installPath)
+        assertEquals("02.10", merged.version)
+    }
+
+    @Test
+    fun versionComparisonUsesNumericComponents() {
+        assertTrue(InstalledGameCandidateMerger.compareVersions("01.10", "01.9") > 0)
+        assertEquals(0, InstalledGameCandidateMerger.compareVersions("01.08", "1.8"))
+        assertTrue(InstalledGameCandidateMerger.compareVersions(null, "01.00") < 0)
+    }
+
+    private fun game(
+        titleId: String,
+        version: String,
+        category: String,
+        installPath: String,
+        iconPath: String? = null
+    ) = InstalledPs3Game(
+        titleId = titleId,
+        title = "Test Game",
+        contentId = null,
+        saveDataId = titleId,
+        version = version,
+        category = category,
+        iconPath = iconPath,
+        catalogCoverUrl = null,
+        installPath = installPath
+    )
+
     private fun createParamSfoBytes(titleId: String, title: String): ByteArray {
         val entries = listOf(
             "TITLE_ID" to titleId,
