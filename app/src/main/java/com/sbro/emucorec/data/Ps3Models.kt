@@ -89,4 +89,7 @@ data class Ps3PatchInfo(
     val appVersion: String,
     val game: String,
     val enabled: Boolean
-)
+) {
+    val identityKey: String
+        get() = listOf(hash, name, appVersion, game).joinToString("\u0000")
+}

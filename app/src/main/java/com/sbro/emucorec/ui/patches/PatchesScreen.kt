@@ -190,9 +190,10 @@ fun PatchesScreen(
                     }
                 }
             } else {
-                items(uiState.patches, key = { "${it.hash}_${it.name}" }) { patch ->
+                items(uiState.patches, key = Ps3PatchInfo::identityKey) { patch ->
                     PatchCard(
                         patch = patch,
+                        enabled = patch.identityKey !in uiState.togglingPatchKeys,
                         onToggle = { viewModel.togglePatch(patch) }
                     )
                 }
@@ -444,6 +445,7 @@ private fun PatchGamePicker(
 @Composable
 private fun PatchCard(
     patch: Ps3PatchInfo,
+    enabled: Boolean,
     onToggle: () -> Unit
 ) {
     Surface(
@@ -484,6 +486,7 @@ private fun PatchCard(
                 }
                 Switch(
                     checked = patch.enabled,
+                    enabled = enabled,
                     onCheckedChange = { onToggle() },
                     colors = SwitchDefaults.colors(
                         checkedThumbColor = MaterialTheme.colorScheme.primary,
@@ -509,7 +512,7 @@ private fun PatchCard(
                 if (patch.version.isNotBlank()) {
                     PatchBadge(label = stringResource(R.string.patches_version, patch.version))
                 }
-                if (patch.appVersion.isNotBlank() && patch.appVersion != "all") {
+                if (patch.appVersion.isNotBlank() && !patch.appVersion.equals("all", ignoreCase = true)) {
                     PatchBadge(label = stringResource(R.string.patches_app_version, patch.appVersion))
                 }
                 if (patch.game.isNotBlank()) {

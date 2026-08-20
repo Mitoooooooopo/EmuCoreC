@@ -3,8 +3,12 @@ package com.sbro.emucorec.data
 import android.content.Context
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.booleanOrNull
 import net.rpcsx.RPCSX
-import org.json.JSONArray
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
@@ -64,25 +68,7 @@ class PatchRepository(private val context: Context) {
 
     fun listPatches(serial: String): List<Ps3PatchInfo> {
         return try {
-            val json = RPCSX.instance.patchesList(serial)
-            val array = JSONArray(json)
-            val result = mutableListOf<Ps3PatchInfo>()
-            for (i in 0 until array.length()) {
-                val obj = array.getJSONObject(i)
-                result.add(
-                    Ps3PatchInfo(
-                        hash = obj.getString("hash"),
-                        name = obj.getString("name"),
-                        author = obj.optString("author", ""),
-                        notes = obj.optString("notes", ""),
-                        version = obj.optString("version", ""),
-                        appVersion = obj.optString("appVersion", "all"),
-                        game = obj.optString("game", ""),
-                        enabled = obj.optBoolean("enabled", false)
-                    )
-                )
-            }
-            result
+            PatchListParser.parse(RPCSX.instance.patchesList(serial))
         } catch (e: Exception) {
             emptyList()
         }
@@ -100,5 +86,37 @@ class PatchRepository(private val context: Context) {
         } catch (e: Exception) {
             false
         }
+    }
+}
+
+internal object PatchListParser {
+    private val parser = Json { ignoreUnknownKeys = true }
+
+    fun parse(json: String): List<Ps3PatchInfo> {
+        val array = parser.parseToJsonElement(json) as? JsonArray ?: return emptyList()
+        return buildList(array.size) {
+            for (element in array) {
+                val obj = element as? JsonObject ?: continue
+                val hash = obj.string("hash").trim()
+                val name = obj.string("name").trim()
+                if (hash.isEmpty() || name.isEmpty()) continue
+                add(
+                    Ps3PatchInfo(
+                        hash = hash,
+                        name = name,
+                        author = obj.string("author"),
+                        notes = obj.string("notes"),
+                        version = obj.string("version"),
+                        appVersion = obj.string("appVersion", "all").ifBlank { "all" },
+                        game = obj.string("game"),
+                        enabled = (obj["enabled"] as? JsonPrimitive)?.booleanOrNull ?: false,
+                    )
+                )
+            }
+        }.distinctBy(Ps3PatchInfo::identityKey)
+    }
+
+    private fun JsonObject.string(key: String, default: String = ""): String {
+        return (this[key] as? JsonPrimitive)?.content ?: default
     }
 }

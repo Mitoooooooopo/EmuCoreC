@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.Job
 
 data class PatchesUiState(
     val games: List<InstalledPs3Game> = emptyList(),
@@ -25,6 +26,7 @@ data class PatchesUiState(
     val isDownloading: Boolean = false,
     val downloadResult: PatchRepository.DownloadResult? = null,
     val errorMessage: String? = null,
+    val togglingPatchKeys: Set<String> = emptySet(),
 ) {
     val selectedGame: InstalledPs3Game?
         get() = games.firstOrNull { it.titleId == selectedTitleId }
@@ -36,6 +38,8 @@ class PatchesViewModel(application: Application) : AndroidViewModel(application)
 
     private val _uiState = MutableStateFlow(PatchesUiState())
     val uiState: StateFlow<PatchesUiState> = _uiState.asStateFlow()
+    private var refreshJob: Job? = null
+    private var patchesJob: Job? = null
 
     init {
         refresh()
@@ -43,12 +47,14 @@ class PatchesViewModel(application: Application) : AndroidViewModel(application)
 
     fun refresh(preferredTitleId: String? = null) {
         val context = getApplication<Application>()
-        viewModelScope.launch {
+        refreshJob?.cancel()
+        refreshJob = viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true) }
             val games = withContext(Dispatchers.IO) { gameRepository.loadInstalledGames(context) }
-            val titleId = preferredTitleId
-                ?: _uiState.value.selectedTitleId
-                ?: games.firstOrNull()?.titleId
+            val candidates = listOfNotNull(preferredTitleId, _uiState.value.selectedTitleId)
+            val titleId = candidates.firstNotNullOfOrNull { candidate ->
+                games.firstOrNull { it.titleId.equals(candidate, ignoreCase = true) }?.titleId
+            } ?: games.firstOrNull()?.titleId
 
             _uiState.update {
                 it.copy(
@@ -77,10 +83,13 @@ class PatchesViewModel(application: Application) : AndroidViewModel(application)
     }
 
     private fun loadPatches(serial: String) {
-        viewModelScope.launch {
+        patchesJob?.cancel()
+        patchesJob = viewModelScope.launch {
             _uiState.update { it.copy(patchesLoading = true) }
             val patches = withContext(Dispatchers.IO) { patchRepository.listPatches(serial) }
-            _uiState.update { it.copy(patches = patches, patchesLoading = false) }
+            _uiState.update {
+                if (it.selectedTitleId == serial) it.copy(patches = patches, patchesLoading = false) else it
+            }
         }
     }
 
@@ -98,6 +107,10 @@ class PatchesViewModel(application: Application) : AndroidViewModel(application)
 
     fun togglePatch(patch: Ps3PatchInfo) {
         val serial = _uiState.value.selectedTitleId ?: return
+        val key = patch.identityKey
+        if (key in _uiState.value.togglingPatchKeys) return
+        val desiredEnabled = !patch.enabled
+        _uiState.update { it.copy(togglingPatchKeys = it.togglingPatchKeys + key) }
         viewModelScope.launch {
             val success = withContext(Dispatchers.IO) {
                 patchRepository.togglePatch(
@@ -105,21 +118,21 @@ class PatchesViewModel(application: Application) : AndroidViewModel(application)
                     name = patch.name,
                     serial = serial,
                     appVersion = patch.appVersion,
-                    enabled = !patch.enabled
+                    enabled = desiredEnabled
                 )
             }
-            if (success) {
-                _uiState.update { state ->
-                    state.copy(
-                        patches = state.patches.map {
-                            if (it.hash == patch.hash && it.name == patch.name) {
-                                it.copy(enabled = !it.enabled)
-                            } else {
-                                it
-                            }
-                        }
-                    )
+            _uiState.update { state ->
+                val updatedPatches = if (success && state.selectedTitleId == serial) {
+                    state.patches.map {
+                        if (it.identityKey == key) it.copy(enabled = desiredEnabled) else it
+                    }
+                } else {
+                    state.patches
                 }
+                state.copy(
+                    patches = updatedPatches,
+                    togglingPatchKeys = state.togglingPatchKeys - key,
+                )
             }
         }
     }

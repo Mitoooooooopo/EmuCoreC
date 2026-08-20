@@ -3564,58 +3564,60 @@ extern "C" std::string _rpcsx_patchesList(std::string_view serial) {
       // changes every other game too. Desktop RPCS3 shows them once, under
       // their own "All titles" node (patch_manager_dialog.cpp), and the global
       // list below (empty serial) is this app's equivalent.
-      bool applies = serial.empty();
-      std::string app_version = "all";
-      std::string game_title;
+      std::vector<std::pair<std::string, std::string>> targets;
 
       for (const auto &[title, serials] : info.titles) {
         for (const auto &[ser, versions] : serials) {
-          const bool hit = !serial.empty() && ser == serial;
-          if (hit || serial.empty()) {
-            if (game_title.empty()) game_title = title;
+          if (!serial.empty() && ser != serial) {
+            continue;
           }
-          if (hit) {
-            applies = true;
-            game_title = title;
-            if (!versions.empty()) app_version = versions.begin()->first;
-          }
-        }
-      }
-
-      if (!applies) continue;
-
-      // Enabled state has to be read for THIS serial only. patchSetEnabled
-      // writes per serial, so a patch switched on from another game's list has
-      // an enabled entry under that game's serial and none under this one --
-      // counting any enabled entry reported it as on for every game the patch
-      // covers, and the row then showed a toggle the game was not getting.
-      // A wildcard entry still counts: a patch listed here for its own serial
-      // can also carry an "All" entry, and an enabled one of those does reach
-      // this game even though wildcard-only patches are not listed above.
-      bool is_on = false;
-      if (auto it = enabled.find(hash); it != enabled.end()) {
-        if (auto p = it->second.patch_info_map.find(description);
-            p != it->second.patch_info_map.end()) {
-          for (const auto &[title, serials] : p->second.titles)
-            for (const auto &[ser, versions] : serials) {
-              if (!serial.empty() && ser != serial && ser != patch_key::all)
-                continue;
-              for (const auto &[ver, values] : versions)
-                if (values.enabled) is_on = true;
+          for (const auto &[version, values] : versions) {
+            const auto target = std::pair{title, version};
+            if (std::find(targets.begin(), targets.end(), target) ==
+                targets.end()) {
+              targets.push_back(target);
             }
+          }
         }
       }
 
-      if (!first) out += ",";
-      first = false;
-      out += "{\"hash\":" + json_quote(hash) +
-             ",\"name\":" + json_quote(description) +
-             ",\"author\":" + json_quote(info.author) +
-             ",\"notes\":" + json_quote(info.notes) +
-             ",\"version\":" + json_quote(info.patch_version) +
-             ",\"appVersion\":" + json_quote(app_version) +
-             ",\"game\":" + json_quote(game_title) +
-             ",\"enabled\":" + (is_on ? "true" : "false") + "}";
+      if (targets.empty()) {
+        continue;
+      }
+
+      for (const auto &[game_title, app_version] : targets) {
+        // Enabled state is specific to this serial AND app version. A wildcard
+        // config entry still applies, but a different concrete version does not.
+        bool is_on = false;
+        if (auto it = enabled.find(hash); it != enabled.end()) {
+          if (auto p = it->second.patch_info_map.find(description);
+              p != it->second.patch_info_map.end()) {
+            for (const auto &[title, serials] : p->second.titles) {
+              for (const auto &[ser, versions] : serials) {
+                if (!serial.empty() && ser != serial && ser != patch_key::all)
+                  continue;
+                for (const auto &[ver, values] : versions) {
+                  if ((ver == app_version || ver == patch_key::all) &&
+                      values.enabled) {
+                    is_on = true;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        if (!first) out += ",";
+        first = false;
+        out += "{\"hash\":" + json_quote(hash) +
+               ",\"name\":" + json_quote(description) +
+               ",\"author\":" + json_quote(info.author) +
+               ",\"notes\":" + json_quote(info.notes) +
+               ",\"version\":" + json_quote(info.patch_version) +
+               ",\"appVersion\":" + json_quote(app_version) +
+               ",\"game\":" + json_quote(game_title) +
+               ",\"enabled\":" + (is_on ? "true" : "false") + "}";
+      }
     }
   }
 
@@ -3649,21 +3651,63 @@ extern "C" bool _rpcsx_patchSetEnabled(std::string_view hash,
 
   // save_config only writes entries whose `enabled` is set, so disabling is
   // simply not carrying the entry over.
+  // Start from the current database shape, then carry every previously enabled
+  // concrete target across. Replacing it with the database entry directly used
+  // to disable version A when the user enabled version B of the same patch.
+  auto updated_info = p->second;
+  if (auto existing_hash = config.find(std::string(hash));
+      existing_hash != config.end()) {
+    if (auto existing_patch =
+            existing_hash->second.patch_info_map.find(std::string(description));
+        existing_patch != existing_hash->second.patch_info_map.end()) {
+      for (const auto &[title, serials] : existing_patch->second.titles) {
+        for (const auto &[ser, versions] : serials) {
+          for (const auto &[ver, values] : versions) {
+            if (!values.enabled) continue;
+            if (auto title_it = updated_info.titles.find(title);
+                title_it != updated_info.titles.end()) {
+              if (auto serial_it = title_it->second.find(ser);
+                  serial_it != title_it->second.end()) {
+                if (auto version_it = serial_it->second.find(ver);
+                    version_it != serial_it->second.end()) {
+                  version_it->second.enabled = true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  bool matched = false;
+  for (auto &[title, serials] : updated_info.titles) {
+    for (auto &[ser, versions] : serials) {
+      if (!serial.empty() && ser != serial) continue;
+      for (auto &[ver, values] : versions) {
+        const bool version_matches =
+            appVersion.empty() || ver == appVersion ||
+            (appVersion == "all" && ver == patch_key::all);
+        if (version_matches) {
+          values.enabled = enabled;
+          matched = true;
+        }
+      }
+    }
+  }
+
+  if (!matched) {
+    rpcsx_android.error("patchSetEnabled: target not found for %s / %s / %s",
+                        description, serial, appVersion);
+    return false;
+  }
+
   auto &entry = config[std::string(hash)];
   entry.hash = std::string(hash);
   entry.version = h->second.version;
 
   auto &info = entry.patch_info_map[std::string(description)];
-  info = p->second;
-
-  // patch_key::all is spelled "All"; the lowercase literal this used to compare
-  // against never matched, so a wildcard patch toggled from a game's own list
-  // wrote nothing and the switch did nothing.
-  for (auto &[title, serials] : info.titles)
-    for (auto &[ser, versions] : serials)
-      for (auto &[ver, values] : versions)
-        if (ser == serial || serial.empty() || ser == patch_key::all)
-          values.enabled = enabled;
+  info = std::move(updated_info);
 
   patch_engine::save_config(config);
   return true;
