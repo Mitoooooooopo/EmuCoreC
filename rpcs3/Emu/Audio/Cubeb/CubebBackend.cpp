@@ -24,7 +24,16 @@ CubebBackend::CubebBackend()
 #endif
 
 	cubeb *ctx{};
-	if (int err = cubeb_init(&ctx, "RPCS3", nullptr))
+#ifdef __ANDROID__
+	// AAudio is Cubeb's default on modern Android, but some vendor audio
+	// services accept stream creation and then disconnect requestStart().
+	// OpenSL ES is Cubeb's broadly compatible Android backend and preserves
+	// the same buffering/callback contract expected by cellAudio.
+	constexpr const char* backend_name = "opensl";
+#else
+	constexpr const char* backend_name = nullptr;
+#endif
+	if (int err = cubeb_init(&ctx, "RPCS3", backend_name))
 	{
 		Cubeb.error("cubeb_init() failed: %i", err);
 		return;

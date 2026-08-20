@@ -13,6 +13,38 @@
 
 namespace rsx
 {
+#ifdef __ANDROID__
+	extern std::function<bool(u32 addr, bool is_writing)> g_access_violation_handler;
+
+	// Android's ART signal chain cannot safely host the full RSX texture-cache
+	// readback path. In particular, a protected vertex source can fault in
+	// memcpy(), enter VKGSRender::on_access_violation(), and fault recursively
+	// while SIGSEGV is still blocked by the kernel. Resolve protected guest
+	// ranges from normal thread context before starting the DMA copy instead.
+	static void prepare_guest_read(u32 address, u32 length)
+	{
+		if (!address || !length || !g_access_violation_handler)
+		{
+			return;
+		}
+
+		const u32 last = utils::add_saturate<u32>(address, length - 1);
+		u32 current = address;
+
+		for (;;)
+		{
+			g_access_violation_handler(current, false);
+
+			if (current / 4096 == last / 4096)
+			{
+				break;
+			}
+
+			current = utils::align(current + 1, 4096);
+		}
+	}
+#endif
+
 	struct dma_manager::offload_thread
 	{
 		lf_queue<transport_packet> m_work_queue;
@@ -49,6 +81,9 @@ namespace rsx
 					case raw_copy:
 					{
 						const u32 vm_addr = vm::try_get_addr(job.src).first;
+#ifdef __ANDROID__
+						prepare_guest_read(vm_addr, job.length);
+#endif
 						rsx::reservation_lock<true, 1> rsx_lock(vm_addr, job.length, g_cfg.video.strict_rendering_mode && vm_addr);
 						std::memcpy(job.dst, job.src, job.length);
 						break;
@@ -115,6 +150,9 @@ namespace rsx
 		if (length <= max_immediate_transfer_size || !g_cfg.video.multithreaded_rsx)
 		{
 			const u32 vm_addr = vm::try_get_addr(src).first;
+#ifdef __ANDROID__
+			prepare_guest_read(vm_addr, length);
+#endif
 			rsx::reservation_lock<true, 1> rsx_lock(vm_addr, length, g_cfg.video.strict_rendering_mode && vm_addr);
 			std::memcpy(dst, src, length);
 		}
