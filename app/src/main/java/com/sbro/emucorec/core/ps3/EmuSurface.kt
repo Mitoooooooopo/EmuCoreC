@@ -38,14 +38,14 @@ class EmuSurface(context: Context) : SurfaceView(context), SurfaceHolder.Callbac
 
     override fun surfaceCreated(holder: SurfaceHolder) {
         if (width > 1 && height > 1) {
-            Ps3Runtime.attachSurface(holder.surface, width, height)
+            Ps3Runtime.attachSurface(holder.surface, width, height, currentRefreshRate())
             emulator?.onEmulationSurfaceReady()
         }
     }
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
         if (width > 1 && height > 1) {
-            Ps3Runtime.attachSurface(holder.surface, width, height)
+            Ps3Runtime.attachSurface(holder.surface, width, height, currentRefreshRate())
             emulator?.onEmulationSurfaceReady()
         }
     }
@@ -53,4 +53,7 @@ class EmuSurface(context: Context) : SurfaceView(context), SurfaceHolder.Callbac
     override fun surfaceDestroyed(holder: SurfaceHolder) {
         Ps3Runtime.detachSurface()
     }
+
+    private fun currentRefreshRate(): Double =
+        display?.refreshRate?.toDouble()?.takeIf { it.isFinite() && it >= 20.0 } ?: 60.0
 }

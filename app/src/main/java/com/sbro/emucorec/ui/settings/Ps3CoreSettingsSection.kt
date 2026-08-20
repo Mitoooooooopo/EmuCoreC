@@ -432,8 +432,11 @@ private fun CoreEnumRow(
 }
 
 internal fun userFacingCoreVariants(path: String, variants: List<String>): List<String> = when (path) {
-    // Null is an RPCS3 diagnostic renderer. It produces no image and must not be offered to players.
-    "Video@@Renderer" -> variants.filterNot { it.equals("Null", ignoreCase = true) }
+    // Null produces no image, while this Android target does not compile the
+    // desktop OpenGL backend. Never offer a renderer that cannot be created.
+    "Video@@Renderer" -> variants.filterNot {
+        it.equals("Null", ignoreCase = true) || it.equals("OpenGL", ignoreCase = true)
+    }
     else -> variants
 }
 

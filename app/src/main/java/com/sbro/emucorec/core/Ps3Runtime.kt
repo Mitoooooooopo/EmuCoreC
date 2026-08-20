@@ -227,10 +227,12 @@ object Ps3Runtime {
         return RPCSX.boot(path)
     }
 
-    fun attachSurface(surface: Surface, width: Int, height: Int) {
+    fun attachSurface(surface: Surface, width: Int, height: Int, refreshRate: Double) {
         if (!RPCSX.initialized) return
         val event = if (currentSurface == null) SURFACE_CREATED else SURFACE_CHANGED
         currentSurface = surface
+        RPCSX.instance.surfaceSizeChanged(width, height)
+        RPCSX.instance.displayRefreshRateChanged(refreshRate)
         RPCSX.instance.surfaceEvent(surface, event)
     }
 

@@ -1404,8 +1404,7 @@
     <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">يتيح استخدام مخازن OpenGL المؤقتة الكلاسيكية التي تسمح لأدوات الالتقاط بالعمل مع RPCS3، مثل RenderDoc.
 يسمح أيضًا لـ Vulkan باستخدام علامات تصحيح الأخطاء لالتقاط صور Renderdoc أجمل.
 إذا لم تكن متأكدًا، فلا تستخدم هذا الخيار.</string>
-    <string name="core_help_video_renderer" formatted="false">Vulkan هو أسرع العارضين. OpenGL هو العارض الأكثر دقة.
-إذا لم تكن متأكدا، استخدم فولكان. إذا كانت لديك أية مشكلات في التوافق، فارجع إلى OpenGL.</string>
+    <string name="core_help_video_renderer" formatted="false">Vulkan هو العارض المدعوم على Android. لا يتوفر OpenGL في هذا الإصدار.</string>
     <string name="core_help_video_resolution" formatted="false">سيتم تجاهل هذا الإعداد إذا تم ضبط مقياس الدقة على أي شيء آخر غير 100%!
 اترك هذا على 1280x720. كل لعبة PS3 متوافقة مع هذا القرار.
 استخدم 1920×1080 فقط إذا كانت اللعبة تدعمها.

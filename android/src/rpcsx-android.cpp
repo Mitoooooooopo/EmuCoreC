@@ -112,6 +112,10 @@ static std::atomic<ANativeWindow *> g_native_window;
 // game booted in.
 static std::atomic<u64> g_native_window_size;
 
+// Android's active display refresh rate in millihertz. Keeping an integer
+// atomic avoids platform-dependent lock-based atomic<double> implementations.
+static std::atomic<u32> g_display_refresh_millihz{60000};
+
 // Set when losing the surface is what paused the emulator, so getting it back resumes only
 // the pause we caused.
 static std::atomic<bool> g_paused_by_surface_loss;
@@ -543,7 +547,9 @@ struct GraphicsFrame : GSFrameBase {
     getNativeWindow();
     return height;
   }
-  f64 client_display_rate() override { return 30.f; }
+  f64 client_display_rate() override {
+    return static_cast<f64>(g_display_refresh_millihz.load()) / 1000.0;
+  }
   bool has_alpha() override {
     return ANativeWindow_getFormat(getNativeWindow()) ==
            WINDOW_FORMAT_RGBA_8888;
@@ -2329,6 +2335,10 @@ static void setupCallbacks() {
       .on_save_state_progress = [](auto...) {},
       .enable_disc_eject = [](auto...) {},
       .enable_disc_insert = [](auto...) {},
+      .try_to_quit = [](bool, std::function<void()> on_exit) {
+        if (on_exit) on_exit();
+        return true;
+      },
       .handle_taskbar_progress = [](auto...) {},
       .init_kb_handler =
           [](auto...) {
@@ -2349,53 +2359,6 @@ static void setupCallbacks() {
           [](auto...) {
             Emulator::SaveSettings(g_cfg.to_string(), Emu.GetTitleID());
           },
-      // These five were never set, so they were empty std::functions. Emulator::Load
-      // invokes enable_gamemode and get_database_config unconditionally, which
-      // aborted the process with
-      //   "bad_function_call was thrown in -fno-exceptions mode"
-      // the moment anything booted -- including Boot XMB.
-      //
-      // GameMode is a Linux desktop daemon and has no Android equivalent, so it is
-      // a no-op.
-      .enable_gamemode = [](bool) {},
-      // Recommended settings for this title, as a config YAML string.
-      //
-      // This used to return a PATH, which was simply the wrong thing: Emulator::Load
-      // takes the return value as the config CONTENT and hands it to BootGame as
-      // db_config, so what it actually got was a filename that failed to parse and was
-      // discarded. The feature has therefore never done anything here.
-      //
-      // Desktop reaches api.rpcs3.net through Qt's downloader and parses the JSON with
-      // QJsonDocument, neither of which exists in this build. The app fetches and splits
-      // the database instead (see ConfigDatabase.kt), leaving one YAML per title on disk,
-      // so all that is needed here is to read it back.
-      .get_database_config =
-          [](const std::string &title_id) -> std::string {
-            if (title_id.empty()) {
-              return {};
-            }
-
-            const std::string path =
-                fs::get_config_dir(true) + "config_db/" + title_id + ".yml";
-
-            if (!fs::is_file(path)) {
-              return {};
-            }
-
-            fs::file config{path};
-            if (!config) {
-              return {};
-            }
-
-            rpcsx_android.notice("using database config for %s", title_id);
-            return config.to_string();
-          },
-      .get_photo_path = [](std::string_view) { return std::string{}; },
-      .try_to_quit = [](bool, std::function<void()> on_exit) {
-        if (on_exit) on_exit();
-        return true;
-      },
-      .make_video_source = []() -> std::unique_ptr<video_source> { return nullptr; },
       .close_gs_frame = [](auto...) {},
       .get_gs_frame = [] { return std::make_unique<GraphicsFrame>(); },
       .get_camera_handler =
@@ -2485,6 +2448,7 @@ static void setupCallbacks() {
         return substitute_arg<char32_t>(entry->second, arg);
       },
       .get_localized_setting = [](auto...) { return ""; },
+      .get_photo_path = [](std::string_view) { return std::string{}; },
       .play_sound = [](auto...) {},
       .get_image_info = [](auto...) { return false; },
       .get_scaled_image = [](auto...) { return false; },
@@ -2513,6 +2477,35 @@ static void setupCallbacks() {
       .display_sleep_control_supported = [](auto...) { return false; },
       .enable_display_sleep = [](auto...) {},
       .check_microphone_permissions = [](auto...) {},
+      .make_video_source = []() -> std::unique_ptr<video_source> { return nullptr; },
+      // These callbacks were once left empty. Emulator::Load invokes both
+      // unconditionally, which aborted Android boots with bad_function_call.
+      // GameMode is a Linux desktop daemon and has no Android equivalent.
+      .enable_gamemode = [](bool) {},
+      // Recommended settings for this title, as config YAML content. The app
+      // downloads and splits the database into one file per title because the
+      // Qt downloader used by desktop RPCS3 is not part of this build.
+      .get_database_config =
+          [](const std::string &title_id) -> std::string {
+            if (title_id.empty()) {
+              return {};
+            }
+
+            const std::string path =
+                fs::get_config_dir(true) + "config_db/" + title_id + ".yml";
+
+            if (!fs::is_file(path)) {
+              return {};
+            }
+
+            fs::file config{path};
+            if (!config) {
+              return {};
+            }
+
+            rpcsx_android.notice("using database config for %s", title_id);
+            return config.to_string();
+          },
   });
 }
 
@@ -2838,15 +2831,29 @@ extern "C" bool _rpcsx_initialize(std::string_view rootDir,
   // Emu.Init() also asserts a non-empty adapter when the default is Vulkan
   // (System.cpp:493), and an empty string means "first device" to vk::instance,
   // so it has to be a real name rather than left blank.
-  Emu.SetSupportedRenderers({
+  std::set<video_renderer> supported_renderers{
       video_renderer::null,
-      video_renderer::opengl,
       video_renderer::vulkan,
-  });
+  };
+#ifdef RSX_GLES
+  supported_renderers.insert(video_renderer::opengl);
+#endif
+  Emu.SetSupportedRenderers(std::move(supported_renderers));
   Emu.SetDefaultRenderer(video_renderer::vulkan);
   Emu.SetDefaultGraphicsAdapter("Default");
 
   Emu.Init();
+
+#ifndef RSX_GLES
+  // Migrate configurations written by older Android builds which exposed the
+  // desktop OpenGL enum even though no GL renderer was linked.
+  if (g_cfg.video.renderer == video_renderer::opengl) {
+    rpcsx_android.warning(
+        "OpenGL was selected in the saved config but this Android build has no GLES backend; using Vulkan");
+    g_cfg.video.renderer.set(video_renderer::vulkan);
+    Emulator::SaveSettings(g_cfg.to_string(), "");
+  }
+#endif
 
   g_cfg_input.player1.handler.set(pad_handler::virtual_pad);
   g_cfg_input.player1.device.from_string("Virtual");
@@ -4168,6 +4175,15 @@ static bool installPkg(JNIEnv *env, std::vector<fs::file> &&files,
   return true;
 }
 
+extern "C" void _rpcsx_displayRefreshRateChanged(double refreshRate) {
+  if (!std::isfinite(refreshRate) || refreshRate < 20.0 || refreshRate > 1000.0) {
+    return;
+  }
+
+  g_display_refresh_millihz.store(
+      static_cast<u32>(std::lround(refreshRate * 1000.0)));
+}
+
 static bool installEdat(JNIEnv *env, fs::file &&file, jlong progressId,
                         std::string_view rootPath = {}) {
   Progress progress(env, progressId);
@@ -4927,6 +4943,11 @@ static void emit_cfg_json(const cfg::_base *node, std::string &out) {
     out += ",\"variants\":[";
     bool first = true;
     for (const std::string &variant : node->to_list()) {
+#ifndef RSX_GLES
+      if (node == &g_cfg.video.renderer && variant == "OpenGL") {
+        continue;
+      }
+#endif
       if (!first) out += ',';
       first = false;
       json_append_escaped(out, variant);
@@ -5027,6 +5048,14 @@ extern "C" bool _rpcsx_settingsSet(std::string_view path,
   } else {
     decoded.assign(valueString);
   }
+
+#ifndef RSX_GLES
+  if (root == &g_cfg.video.renderer && decoded == "OpenGL") {
+    rpcsx_android.error(
+        "settingsSet: OpenGL is unavailable because this Android build has no GLES backend");
+    return false;
+  }
+#endif
 
   if (!root->from_string(decoded, !Emu.IsStopped())) {
     rpcsx_android.error("settingsSet: node %s does not accept value '%s'", path,

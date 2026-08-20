@@ -169,6 +169,8 @@ class Emulator : AppCompatActivity(), InputManager.InputDeviceListener {
                     surfaceView.holder.surface,
                     width,
                     height,
+                    surfaceView.display?.refreshRate?.toDouble()
+                        ?.takeIf { it.isFinite() && it >= 20.0 } ?: 60.0,
                 )
                 bootThread = thread(name = "emucorec-ps3-game") {
                     val result = Ps3Runtime.boot(this, gamePath, currentGameIdOrIntent())

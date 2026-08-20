@@ -79,6 +79,8 @@ class RPCSX {
     external fun installKey(fd: Int, requestId: Long, gamePath: String): Boolean
     external fun boot(path: String): Int
     external fun surfaceEvent(surface: Surface, event: Int): Boolean
+    external fun surfaceSizeChanged(width: Int, height: Int)
+    external fun displayRefreshRateChanged(refreshRate: Double)
     external fun usbDeviceEvent(fd: Int, vendorId: Int, productId: Int, event: Int): Boolean
     external fun processCompilationQueue(): Boolean
     external fun startMainThreadProcessor(): Boolean

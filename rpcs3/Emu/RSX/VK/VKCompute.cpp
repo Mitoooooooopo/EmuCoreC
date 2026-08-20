@@ -75,6 +75,23 @@ namespace vk
 				optimal_kernel_size = 1;
 				optimal_group_size = 64;
 				break;
+			case vk::driver_vendor::ADRENO:
+			case vk::driver_vendor::TURNIP:
+				// Qualcomm hardware executes compute in 64-wide wavefronts.
+				unroll_loops = true;
+				optimal_kernel_size = 1;
+				optimal_group_size = 64;
+				break;
+			case vk::driver_vendor::POWERVR:
+			case vk::driver_vendor::XCLIPSE:
+			case vk::driver_vendor::BROADCOM:
+			case vk::driver_vendor::VERISILICON:
+				// Conservative mobile default. A size of one made all buffer
+				// conversion compute jobs needlessly serial on these drivers.
+				unroll_loops = true;
+				optimal_kernel_size = 1;
+				optimal_group_size = 32;
+				break;
 			case vk::driver_vendor::MVK:
 			case vk::driver_vendor::HONEYKRISP:
 				unroll_loops = true;

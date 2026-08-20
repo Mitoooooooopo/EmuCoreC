@@ -27,10 +27,10 @@ class CoreSettingsSurfaceTest {
     }
 
     @Test
-    fun nullRendererIsNeverOfferedToPlayers() {
+    fun onlyCompiledRendererIsOfferedToPlayers() {
         assertTrue(
             userFacingCoreVariants("Video@@Renderer", listOf("Null", "OpenGL", "Vulkan")) ==
-                listOf("OpenGL", "Vulkan")
+                listOf("Vulkan")
         )
     }
 }

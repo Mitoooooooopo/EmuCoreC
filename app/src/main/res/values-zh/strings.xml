@@ -1399,8 +1399,7 @@ FidelityFX 目前不支持立体 3D 输出。</string>
     <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">允许使用经典的 OpenGL 缓冲区，从而允许捕获工具与 RPCS3（例如 RenderDoc）配合使用。
 还允许 Vulkan 使用调试标记来获得更好的 Renderdoc 捕获。
 如果不确定，请勿使用此选项。</string>
-    <string name="core_help_video_renderer" formatted="false">Vulkan 是最快的渲染器。 OpenGL 是最精确的渲染器。
-如果不确定，请使用 Vulkan。如果您有任何兼容性问题，请回退到 OpenGL。</string>
+    <string name="core_help_video_renderer" formatted="false">Android 支援 Vulkan 渲染器。此版本不提供 OpenGL。</string>
     <string name="core_help_video_resolution" formatted="false">如果分辨率比例设置为 100% 以外的任何值，则此设置将被忽略！
 将其保留为 1280x720。每个 PS3 游戏都兼容此分辨率。
 仅当游戏支持时才使用 1920x1080。

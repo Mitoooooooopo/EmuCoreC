@@ -160,6 +160,15 @@ namespace vk
 		case driver_vendor::ARM_MALI:
 			// Needs more testing
 			break;
+		case driver_vendor::ADRENO:
+		case driver_vendor::TURNIP:
+		case driver_vendor::POWERVR:
+		case driver_vendor::XCLIPSE:
+		case driver_vendor::BROADCOM:
+		case driver_vendor::VERISILICON:
+			// Recognized mobile Vulkan drivers. Device feature checks apply
+			// their capability-specific workarounds during device creation.
+			break;
 		default:
 			rsx_log.warning("Unsupported device: %s", gpu_name);
 		}

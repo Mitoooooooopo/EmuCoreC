@@ -1400,8 +1400,7 @@ Ciò influisce anche sugli screenshot.</string>
     <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">Consente l\'uso dei classici buffer OpenGL che consentono agli strumenti di acquisizione di funzionare con RPCS3, ad esempio RenderDoc.
 Consente inoltre a Vulkan di utilizzare marcatori di debug per acquisizioni Renderdoc più belle.
 In caso di dubbi, non utilizzare questa opzione.</string>
-    <string name="core_help_video_renderer" formatted="false">Vulkan è il renderer più veloce. OpenGL è il renderer più accurato.
-Se non sei sicuro, usa Vulkan. In caso di problemi di compatibilità, ricorrere a OpenGL.</string>
+    <string name="core_help_video_renderer" formatted="false">Vulkan è il renderer supportato su Android. OpenGL non è disponibile in questa build.</string>
     <string name="core_help_video_resolution" formatted="false">Questa impostazione verrà ignorata se la scala di risoluzione è impostata su un valore diverso dal 100%!
 Lascialo su 1280x720. Ogni gioco per PS3 è compatibile con questa risoluzione.
 Utilizza 1920x1080 solo se il gioco lo supporta.
