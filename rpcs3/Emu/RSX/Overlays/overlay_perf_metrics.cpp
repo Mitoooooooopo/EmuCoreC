@@ -16,8 +16,9 @@
 #include "Emu/RSX/VK/vkutils/device.h"
 #endif
 
-// The GL renderer is only built on desktop (see rpcs3/Emu/CMakeLists.txt).
-#if !defined(__ANDROID__) && !defined(__APPLE__)
+// OpenGL is available on desktop and through the Android EGL/GLES backend.
+// Apple builds do not include the GL renderer.
+#if !defined(__APPLE__)
 #define EMUCOREC_HAS_GL_RENDERER 1
 #include "Emu/RSX/GL/OpenGL.h"
 #endif
@@ -37,6 +38,7 @@ namespace rsx
 			std::string g_device_name;
 
 			bool g_gpu_name_queried = false;
+			video_renderer g_gpu_name_renderer = video_renderer::null;
 			std::string g_gpu_name;
 
 			// Overlay palette: parameter names light blue, values white.
@@ -66,16 +68,17 @@ namespace rsx
 
 			std::string get_gpu_name()
 			{
-				if (g_gpu_name_queried)
+				const video_renderer renderer = g_cfg.video.renderer;
+				if (g_gpu_name_queried && g_gpu_name_renderer == renderer)
 				{
 					return g_gpu_name;
 				}
 
-				g_gpu_name_queried = true;
+				g_gpu_name_renderer = renderer;
 
 				std::string name;
 
-				switch (g_cfg.video.renderer)
+				switch (renderer)
 				{
 				case video_renderer::vulkan:
 				{
@@ -129,6 +132,10 @@ namespace rsx
 					name = std::move(compact);
 				}
 
+				// The overlay can be initialized just before the GL context or Vulkan
+				// device becomes available. Cache only a real result so a later update
+				// can populate the device name instead of keeping an empty value forever.
+				g_gpu_name_queried = !name.empty();
 				g_gpu_name = std::move(name);
 				return g_gpu_name;
 			}
@@ -396,40 +403,43 @@ namespace rsx
 				}
 
 				const std::string gpu_name = get_gpu_name();
-				if (!gpu_name.empty())
+				std::string renderer_name = "Null";
+				switch (g_cfg.video.renderer)
 				{
-					std::string renderer_name = "Null";
-					switch (g_cfg.video.renderer)
-					{
-					case video_renderer::vulkan: renderer_name = "Vulkan"; break;
-					case video_renderer::opengl: renderer_name = "OpenGL"; break;
-					default: break;
-					}
+				case video_renderer::vulkan: renderer_name = "Vulkan"; break;
+				case video_renderer::opengl: renderer_name = "OpenGL"; break;
+				default: break;
+				}
 
-					u32 res_w = 0;
-					u32 res_h = 0;
-					if (auto* avconfig = g_fxo->try_get<rsx::avconf>())
-					{
-						res_w = avconfig->resolution_x;
-						res_h = avconfig->resolution_y;
+				u32 res_w = 0;
+				u32 res_h = 0;
+				if (auto* avconfig = g_fxo->try_get<rsx::avconf>())
+				{
+					res_w = avconfig->resolution_x;
+					res_h = avconfig->resolution_y;
 
-						const u16 scale = g_cfg.video.resolution_scale_percent;
-						if (scale != 100)
-						{
-							res_w = res_w * scale / 100;
-							res_h = res_h * scale / 100;
-						}
-					}
-
-					if (res_w > 0 && res_h > 0)
+					const u16 scale = g_cfg.video.resolution_scale_percent;
+					if (scale != 100)
 					{
-						push_line(m_body_lines, "GPU:", fmt::format(" %s | %s | %ux%u", gpu_name, renderer_name, res_w, res_h), m_opacity);
-					}
-					else
-					{
-						push_line(m_body_lines, "GPU:", fmt::format(" %s | %s", gpu_name, renderer_name), m_opacity);
+						res_w = res_w * scale / 100;
+						res_h = res_h * scale / 100;
 					}
 				}
+
+				std::string gpu_value;
+				if (!gpu_name.empty())
+				{
+					fmt::append(gpu_value, " %s |", gpu_name);
+				}
+				fmt::append(gpu_value, " %s", renderer_name);
+				if (res_w > 0 && res_h > 0)
+				{
+					fmt::append(gpu_value, " | %ux%u", res_w, res_h);
+				}
+
+				// Keep the active backend visible even if a driver temporarily cannot
+				// provide GL_RENDERER (for example while the context is being rebuilt).
+				push_line(m_body_lines, "GPU:", gpu_value, m_opacity);
 			}
 		}
 
