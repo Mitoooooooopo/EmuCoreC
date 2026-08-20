@@ -1048,6 +1048,31 @@ private fun TouchControlCanvasItem(
     val widthPx = element.width * canvasWidth
     val heightPx = element.height * canvasHeight
     var pressed by remember(element.id, editMode) { mutableStateOf(false) }
+    val buttonPointerTracker = remember(element.id, editMode) { TouchButtonPointerTracker() }
+
+    fun applyButtonTransition(controlId: Int, transition: TouchButtonTransition?) {
+        when (transition) {
+            TouchButtonTransition.Pressed -> {
+                pressed = true
+                onButtonChange(controlId, true)
+            }
+
+            TouchButtonTransition.Released -> {
+                pressed = false
+                onButtonChange(controlId, false)
+            }
+
+            null -> Unit
+        }
+    }
+
+    DisposableEffect(element.id, editMode) {
+        onDispose {
+            descriptor.controlId?.let { controlId ->
+                applyButtonTransition(controlId, buttonPointerTracker.cancel())
+            }
+        }
+    }
     val itemShape = if (descriptor.type == TouchControlType.Analog && element.analogMode == TouchAnalogMode.TouchArea) {
         RoundedCornerShape(18.dp)
     } else {
@@ -1093,14 +1118,36 @@ private fun TouchControlCanvasItem(
                 val controlId = descriptor.controlId ?: return@pointerInteropFilter false
                 when (event.actionMasked) {
                     MotionEvent.ACTION_DOWN, MotionEvent.ACTION_POINTER_DOWN -> {
-                        pressed = true
-                        onButtonChange(controlId, true)
+                        val index = event.actionIndex
+                        val pointerIsInside = event.getX(index) in 0f..widthPx &&
+                            event.getY(index) in 0f..heightPx
+                        if (pointerIsInside) {
+                            applyButtonTransition(
+                                controlId,
+                                buttonPointerTracker.onPointerDown(event.getPointerId(index))
+                            )
+                        }
                         true
                     }
 
-                    MotionEvent.ACTION_UP, MotionEvent.ACTION_POINTER_UP, MotionEvent.ACTION_CANCEL -> {
-                        pressed = false
-                        onButtonChange(controlId, false)
+                    MotionEvent.ACTION_MOVE -> {
+                        val pointerIds = buildSet(event.pointerCount) {
+                            for (index in 0 until event.pointerCount) add(event.getPointerId(index))
+                        }
+                        applyButtonTransition(controlId, buttonPointerTracker.onPointersChanged(pointerIds))
+                        true
+                    }
+
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_POINTER_UP -> {
+                        applyButtonTransition(
+                            controlId,
+                            buttonPointerTracker.onPointerUp(event.getPointerId(event.actionIndex))
+                        )
+                        true
+                    }
+
+                    MotionEvent.ACTION_CANCEL -> {
+                        applyButtonTransition(controlId, buttonPointerTracker.cancel())
                         true
                     }
 
