@@ -224,10 +224,23 @@ namespace gl
 	gl::texture_view* ui_overlay_renderer::load_simple_image(const rsx::overlays::image_info_base* desc, bool temp_resource, u32 owner_uid)
 	{
 		auto tex = std::make_unique<gl::texture>(GL_TEXTURE_2D, desc->w, desc->h, 1, 1, 1, GL_RGBA8, RSX_FORMAT_CLASS_COLOR);
+	#ifdef RSX_GLES
+		// Overlay images are decoded to ordinary RGBA8 bytes. Desktop GL accepts
+		// GL_UNSIGNED_INT_8_8_8_8 here, but that packed transfer type is not part
+		// of the GLES pixel upload contract used by Adreno. Upload the bytes in
+		// their native order and use the original image directly: a texture view
+		// is unnecessary when neither the format nor the subresource changes.
+		tex->copy_from(desc->as_span(), gl::texture::format::rgba, gl::texture::type::ubyte, {});
+	#else
 		tex->copy_from(desc->as_span(), gl::texture::format::rgba, gl::texture::type::uint_8_8_8_8, {});
+	#endif
 
+	#ifdef RSX_GLES
+		auto view = std::make_unique<gl::nil_texture_view>(tex.get());
+	#else
 		const GLenum remap[] = { GL_RED, GL_ALPHA, GL_BLUE, GL_GREEN };
 		auto view = std::make_unique<gl::texture_view>(tex.get(), remap);
+	#endif
 
 		auto result = view.get();
 		if (!temp_resource)
@@ -311,8 +324,14 @@ namespace gl
 		auto tex = std::make_unique<gl::texture>(GL_TEXTURE_2D_ARRAY, font_size.width, font_size.height, font_size.depth, 1, 1, GL_R8, RSX_FORMAT_CLASS_COLOR);
 		tex->copy_from(std::span<const u8>(glyph_data), gl::texture::format::r, gl::texture::type::ubyte, {});
 
+	#ifdef RSX_GLES
+		// The font atlas already has the exact R8 array layout sampled by the
+		// overlay shader. Avoid an otherwise redundant texture view on GLES.
+		auto view = std::make_unique<gl::nil_texture_view>(tex.get());
+	#else
 		GLenum remap[] = { GL_RED, GL_RED, GL_RED, GL_RED };
 		auto view = std::make_unique<gl::texture_view>(tex.get(), remap);
+	#endif
 
 		auto result = view.get();
 		font_cache[key] = std::move(tex);
@@ -333,7 +352,11 @@ namespace gl
 
 			if (dirty)
 			{
+			#ifdef RSX_GLES
+				view->image()->copy_from(desc->as_span(), gl::texture::format::rgba, gl::texture::type::ubyte, {});
+			#else
 				view->image()->copy_from(desc->as_span(), gl::texture::format::rgba, gl::texture::type::uint_8_8_8_8, {});
+			#endif
 			}
 
 			return view;
@@ -542,9 +565,25 @@ namespace gl
 
 	rp_ssbo_to_generic_texture::rp_ssbo_to_generic_texture()
 	{
+	#ifdef RSX_GLES
+		// This transfer pass derives its address from gl_FragCoord and has no
+		// fragment inputs. Keep the GLES stage interface minimal; some Adreno
+		// releases fail to link the otherwise unused tc0 vertex output.
+		vs_src = R"(
+#version 320 es
+void main()
+{
+	const vec2 positions[4] = vec2[4](
+		vec2(-1.0, -1.0), vec2(1.0, -1.0),
+		vec2(-1.0, 1.0), vec2(1.0, 1.0));
+	gl_Position = vec4(positions[gl_VertexID & 3], 0.0, 1.0);
+}
+)";
+	#else
 		vs_src =
 		#include "../Program/GLSLSnippets/GenericVSPassthrough.glsl"
 		;
+	#endif
 
 		fs_src =
 		#include "../Program/GLSLSnippets/CopyBufferToGenericImage.glsl"
@@ -552,7 +591,13 @@ namespace gl
 
 		const auto& caps = gl::get_driver_caps();
 		const bool stencil_export_supported = caps.ARB_shader_stencil_export_supported;
+	#ifdef RSX_GLES
+		// The GLES buffer-to-image path deliberately uses this render pass for
+		// ordinary color formats instead of an untyped desktop imageStore shader.
+		const bool legacy_format_support = true;
+	#else
 		const bool legacy_format_support = caps.subvendor_ATI;
+	#endif
 
 		std::pair<std::string_view, std::string> repl_list[] =
 		{

@@ -112,6 +112,12 @@ if (NOT ANDROID AND NOT APPLE)
 	else()
 		target_link_libraries(3rdparty_opengl INTERFACE OpenGL::GL OpenGL::GLU OpenGL::GLX)
 	endif()
+elseif(ANDROID)
+	# Android exposes OpenGL ES through EGL rather than desktop libGL. Keep the
+	# renderer enabled and let the Android compatibility layer provide the few
+	# desktop-only operations used by the upstream RSX backend.
+	add_library(3rdparty_opengl INTERFACE)
+	target_link_libraries(3rdparty_opengl INTERFACE EGL GLESv3)
 else()
 	add_library(3rdparty_opengl INTERFACE)
 	target_compile_definitions(3rdparty_opengl INTERFACE WITHOUT_OPENGL=1)

@@ -2,6 +2,7 @@
 #if defined(__ANDROID__)
 #include <GLES3/gl32.h>
 #include <GLES2/gl2ext.h>
+#include "OpenGLESCompat.h"
 #elif !defined(_WIN32)
 #include <GL/glew.h>
 #endif

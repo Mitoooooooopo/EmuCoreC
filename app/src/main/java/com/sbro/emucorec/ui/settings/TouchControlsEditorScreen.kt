@@ -1,8 +1,8 @@
 package com.sbro.emucorec.ui.settings
 
-import android.app.Activity
 import android.content.pm.ActivityInfo
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,7 +47,7 @@ fun TouchControlsEditorScreen(
 
     // The touch controls only exist in landscape (the game is landscape-only);
     // lock the editor to landscape and release the lock when leaving it.
-    val activity = LocalContext.current as? Activity
+    val activity = LocalActivity.current
     DisposableEffect(Unit) {
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         onDispose {

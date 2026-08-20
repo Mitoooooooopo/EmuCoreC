@@ -165,6 +165,17 @@ void GLGSRender::on_init_thread()
 		exception_reasons.push_back("GL_ARB_direct_state_access or GL_EXT_direct_state_access is required but not supported by your GPU");
 	}
 
+#ifdef RSX_GLES
+	if (!gl_caps.GLES_texture_view_supported)
+	{
+		exception_reasons.push_back("GL_OES_texture_view or GL_EXT_texture_view is required by the Android OpenGL ES renderer");
+	}
+	if (!gl_caps.GLES_clip_distance_supported)
+	{
+		exception_reasons.push_back("GL_EXT_clip_cull_distance is required by the Android OpenGL ES renderer");
+	}
+#endif
+
 	if (!exception_reasons.empty())
 	{
 		throw_fatal(exception_reasons);

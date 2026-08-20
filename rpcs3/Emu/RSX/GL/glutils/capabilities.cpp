@@ -10,7 +10,9 @@ namespace gl
 {
 	version_info::version_info(const char* version_string, int major_scale)
 	{
-		auto tokens = fmt::split(version_string, { "." });
+		const std::string_view raw = version_string ? version_string : "";
+		const auto number_start = raw.find_first_of("0123456789");
+		auto tokens = fmt::split(number_start == std::string_view::npos ? raw : raw.substr(number_start), { "." });
 		if (tokens.size() < 2)
 		{
 			rsx_log.warning("Invalid version string: '%s'", version_string);
@@ -94,8 +96,24 @@ namespace gl
 		CHECK_EXTENSION_SUPPORT(EXT_texture_compression_s3tc);
 
 		CHECK_EXTENSION_SUPPORT(ARB_shader_storage_buffer_object);
-
 #undef CHECK_EXTENSION_SUPPORT
+
+#ifdef RSX_GLES
+		// GLES 3.2 provides these desktop ARB capabilities in core. DSA itself
+		// is emulated by OpenGLESCompat using bind/restore operations.
+		EXT_direct_state_access_supported = true;
+		ARB_texture_buffer_object_supported = true;
+		ARB_depth_buffer_float_supported = true;
+		ARB_compute_shader_supported = true;
+		ARB_shader_texture_image_samples_supported = true;
+		ARB_shader_storage_buffer_object_supported = true;
+		GLES_texture_view_supported = all_extensions.contains("GL_OES_texture_view") || all_extensions.contains("GL_EXT_texture_view");
+		GLES_clip_distance_supported = all_extensions.contains("GL_EXT_clip_cull_distance");
+
+		// Persistent mappings require GL_EXT_buffer_storage entry-point loading
+		// and semantics that the mutable compatibility path cannot promise yet.
+		ARB_buffer_storage_supported = false;
+#endif
 
 		// Set GLSL version
 		glsl_version = version_info(reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)));
@@ -140,7 +158,10 @@ namespace gl
 			if (version_major > 3 || (version_major == 3 && version_minor >= 3))
 				ARB_texture_buffer_object_supported = true;
 
-			// Check for expected library entry-points for some required functions
+			// Check for expected library entry-points for some required functions.
+			// Android uses the GLES compatibility dispatch instead of desktop
+			// symbols, and Qualcomm devices must never enter this Intel workaround.
+#ifndef RSX_GLES
 			if (!ARB_buffer_storage_supported && glNamedBufferStorage && glMapNamedBufferRange)
 				ARB_buffer_storage_supported = true;
 
@@ -149,6 +170,7 @@ namespace gl
 
 			if (!EXT_direct_state_access_supported && glGetTextureImageEXT && glTextureBufferRangeEXT)
 				EXT_direct_state_access_supported = true;
+#endif
 		}
 		else if (!vendor_MESA && vendor_string.find("nvidia") != umax)
 		{

@@ -440,6 +440,44 @@ namespace gl
 		u32 out_offset = in_offset;
 		const auto& caps = gl::get_driver_caps();
 
+	#ifdef RSX_GLES
+		if (dst->aspect() == image_aspect::color)
+		{
+			// Prefer GLES' native pixel-unpack path for ordinary color images.
+			// The desktop implementation routes all formats through one large
+			// untyped imageStore/SSBO shader; Qualcomm accepts the individual
+			// stages but rejects both compute and fragment variants at link time.
+			// Byte shuffling stays on the GPU, then the typed transfer is handled
+			// by the driver using formats that are valid in the GLES contract.
+			glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT | GL_BUFFER_UPDATE_BARRIER_BIT);
+
+			if (auto job = get_trivial_transform_job(unpack_info))
+			{
+				job->run(cmd, src, static_cast<u32>(mem_info->image_size_in_bytes), in_offset);
+				glMemoryBarrier(GL_PIXEL_BUFFER_BARRIER_BIT);
+			}
+
+			GLenum upload_format = unpack_info.format;
+			GLenum upload_type = unpack_info.type;
+			if (dst->get_internal_format() == texture::internal_format::rgba8 ||
+				dst->get_internal_format() == texture::internal_format::bgra8)
+			{
+				// Packed 8_8_8_8 transfer types are desktop-only. After the
+				// 32-bit byte shuffle the same four bytes can be uploaded directly.
+				upload_format = GL_RGBA;
+				upload_type = GL_UNSIGNED_BYTE;
+			}
+
+			glBindBuffer(GL_SHADER_STORAGE_BUFFER, GL_NONE);
+			pixel_unpack_settings unpack_settings{};
+			if (unpack_info.alignment) unpack_settings.alignment(unpack_info.alignment);
+			if (unpack_info.row_length) unpack_settings.row_length(unpack_info.row_length);
+			dst->copy_from(*src, in_offset, static_cast<texture::format>(upload_format),
+				static_cast<texture::type>(upload_type), dst_level, dst_region, unpack_settings);
+			return;
+		}
+	#endif
+
 		auto initialize_scratch_mem = [&]()
 		{
 			if (in_offset >= mem_info->memory_required)
@@ -526,6 +564,15 @@ namespace gl
 			bool use_compute_transform = (
 				dst->aspect() == gl::image_aspect::color &&  // Cannot use image_load_store with depth images
 				caps.subvendor_ATI == false);                // The old AMD/ATI driver does not support image writeonly without format specifier
+
+		#ifdef RSX_GLES
+			// GLES requires a concrete image format qualifier and validates it
+			// against the bound image. The desktop compute decoder intentionally
+			// serves many destination formats from one unqualified image2D shader,
+			// which Adreno cannot link reliably. Use the render-target decoder below;
+			// it has identical conversion semantics and works with typed GLES FBOs.
+			use_compute_transform = false;
+		#endif
 
 			if (use_compute_transform)
 			{

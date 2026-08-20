@@ -110,13 +110,21 @@ gl::texture* GLGSRender::get_present_source(gl::present_surface_info* info, cons
 	}
 
 	const GLenum expected_format = gl::RSX_display_format_to_gl_format(avconfig.format);
+	#ifdef RSX_GLES
+	// GL_BGRA8 plus the packed desktop transfer types is not a portable GLES
+	// upload combination. Keep fallback presentation storage in core RGBA8;
+	// the CPU fallback below performs the explicit PS3 channel conversion.
+	const GLenum scratch_format = GL_RGBA8;
+	#else
+	const GLenum scratch_format = expected_format;
+	#endif
 	std::unique_ptr<gl::texture>& flip_image = m_flip_tex_color[info->eye];
 
 	auto initialize_scratch_image = [&]()
 	{
 		if (!flip_image || flip_image->size2D() != sizeu{ info->width, info->height })
 		{
-			flip_image = std::make_unique<gl::texture>(GL_TEXTURE_2D, info->width, info->height, 1, 1, 1, expected_format, RSX_FORMAT_CLASS_COLOR);
+			flip_image = std::make_unique<gl::texture>(GL_TEXTURE_2D, info->width, info->height, 1, 1, 1, scratch_format, RSX_FORMAT_CLASS_COLOR);
 		}
 	};
 
@@ -124,17 +132,54 @@ gl::texture* GLGSRender::get_present_source(gl::present_surface_info* info, cons
 	{
 		rsx_log.warning("Flip texture was not found in cache. Uploading surface from CPU");
 
-		gl::pixel_unpack_settings unpack_settings;
-		unpack_settings.alignment(1).row_length(info->pitch / 4);
-
 		initialize_scratch_image();
 
 		gl::command_context cmd{ gl_state };
 		const auto range = utils::address_range32::start_length(info->address, info->pitch * info->height);
 		m_gl_texture_cache.invalidate_range(cmd, range, rsx::invalidation_cause::read);
 
+		#ifdef RSX_GLES
+		// PS3 scanout memory is big-endian XRGB/XBGR. Desktop GL's packed
+		// transfer types describe that byte order, but they are outside the
+		// GLES 3 core contract and fail on Adreno. Convert only this uncommon
+		// CPU presentation fallback to tightly packed RGBA8. The normal render
+		// target path remains entirely on the GPU.
+		std::vector<u8> rgba(static_cast<usz>(info->width) * info->height * 4);
+		const auto* src = static_cast<const u8*>(vm::base(info->address));
+		for (u32 y = 0; y < info->height; ++y)
+		{
+			const auto* src_row = src + static_cast<usz>(y) * info->pitch;
+			auto* dst_row = rgba.data() + static_cast<usz>(y) * info->width * 4;
+			for (u32 x = 0; x < info->width; ++x)
+			{
+				const auto* pixel = src_row + static_cast<usz>(x) * 4;
+				auto* out = dst_row + static_cast<usz>(x) * 4;
+				if (avconfig.format == CELL_VIDEO_OUT_BUFFER_COLOR_FORMAT_X8B8G8R8)
+				{
+					out[0] = pixel[3];
+					out[1] = pixel[2];
+					out[2] = pixel[1];
+				}
+				else
+				{
+					out[0] = pixel[1];
+					out[1] = pixel[2];
+					out[2] = pixel[3];
+				}
+				out[3] = 0xff;
+			}
+		}
+
+		gl::pixel_unpack_settings unpack_settings;
+		unpack_settings.alignment(1).row_length(info->width);
+		const rsx::io_buffer read_buf = { rgba.data(), rgba.size() };
+		flip_image->copy_from(read_buf, gl::texture::format::rgba, gl::texture::type::ubyte, unpack_settings);
+		#else
+		gl::pixel_unpack_settings unpack_settings;
+		unpack_settings.alignment(1).row_length(info->pitch / 4);
 		const rsx::io_buffer read_buf = { vm::base(info->address), range.length() };
 		flip_image->copy_from(read_buf, static_cast<gl::texture::format>(expected_format), gl::texture::type::uint_8_8_8_8, unpack_settings);
+		#endif
 		image = flip_image.get();
 	}
 	else if (image->get_internal_format() != static_cast<gl::texture::internal_format>(expected_format))
@@ -414,6 +459,26 @@ void GLGSRender::flip(const rsx::display_flip_info_t& info)
 			}
 		}
 
+		#ifdef RSX_GLES
+		// The desktop output passes rely on texture-view and sampler behavior
+		// that varies across Android drivers. Present the already-rendered RSX
+		// color target through the GLES 3 framebuffer blit path first. Besides
+		// being the native GLES operation, this keeps scanout independent from
+		// the shader translation layer used by game rendering.
+		m_sshot_fbo.create();
+		m_sshot_fbo.color = *image_to_flip;
+		m_sshot_fbo.read_buffer(m_sshot_fbo.color);
+		if (m_sshot_fbo.check())
+		{
+			m_sshot_fbo.blit(gl::screen, screen_area, aspect_ratio.flipped_vertical(), gl::buffers::color, gl::filter::linear);
+		}
+		else
+		{
+			rsx_log.error("OpenGL ES present source framebuffer is incomplete (texture=%u, %ux%u)",
+				image_to_flip->id(), image_to_flip->width(), image_to_flip->height());
+		}
+		m_sshot_fbo.remove();
+		#elif !defined(RSX_GLES)
 		if (!backbuffer_has_alpha && use_full_rgb_range_output && rsx::fcmp(avconfig.gamma, 1.f) && !avconfig.stereo_enabled)
 		{
 			// Blit source image to the screen
@@ -438,6 +503,7 @@ void GLGSRender::flip(const rsx::display_flip_info_t& info)
 			gl::screen.bind();
 			m_video_output_pass.run(cmd, areau(aspect_ratio), images.map(FN(x ? x->id() : GL_NONE)), gamma, limited_range, avconfig.stereo_enabled, filter);
 		}
+		#endif
 	}
 
 	render_overlays(nullptr, areau(aspect_ratio));

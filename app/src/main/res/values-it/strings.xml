@@ -487,6 +487,7 @@
     <string name="customization_preview_subtitle">La tua raccolta, su misura per te</string>
     <plurals name="customization_games_per_row">
         <item quantity="one">%1$d gioco per riga</item>
+        <item quantity="many">%1$d giochi per riga</item>
         <item quantity="other">%1$d giochi per riga</item>
     </plurals>
     <string name="customization_home_background">Sfondo della schermata principale</string>
@@ -1400,7 +1401,7 @@ Ciò influisce anche sugli screenshot.</string>
     <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">Consente l\'uso dei classici buffer OpenGL che consentono agli strumenti di acquisizione di funzionare con RPCS3, ad esempio RenderDoc.
 Consente inoltre a Vulkan di utilizzare marcatori di debug per acquisizioni Renderdoc più belle.
 In caso di dubbi, non utilizzare questa opzione.</string>
-    <string name="core_help_video_renderer" formatted="false">Vulkan è il renderer supportato su Android. OpenGL non è disponibile in questa build.</string>
+    <string name="core_help_video_renderer" formatted="false">Vulkan è consigliato su Android. OpenGL usa il livello di compatibilità OpenGL ES e può aiutare con problemi grafici specifici di alcuni giochi.</string>
     <string name="core_help_video_resolution" formatted="false">Questa impostazione verrà ignorata se la scala di risoluzione è impostata su un valore diverso dal 100%!
 Lascialo su 1280x720. Ogni gioco per PS3 è compatibile con questa risoluzione.
 Utilizza 1920x1080 solo se il gioco lo supporta.

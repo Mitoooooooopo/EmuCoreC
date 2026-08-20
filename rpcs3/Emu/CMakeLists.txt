@@ -578,7 +578,7 @@ target_sources(rpcs3_emu PRIVATE
     RSX/rsx_vertex_data.cpp
 )
 
-if(NOT ANDROID AND NOT APPLE)
+if(NOT APPLE)
     target_sources(rpcs3_emu PRIVATE
         RSX/GL/GLCommonDecompiler.cpp
         RSX/GL/GLCompute.cpp
@@ -610,6 +610,10 @@ if(NOT ANDROID AND NOT APPLE)
         RSX/GL/OpenGL.cpp
         RSX/GL/upscalers/fsr1/fsr_pass.cpp
     )
+endif()
+
+if(ANDROID)
+    target_compile_definitions(rpcs3_emu PUBLIC RSX_GLES=1)
 endif()
 
 if(TARGET 3rdparty_vulkan)

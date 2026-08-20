@@ -487,6 +487,7 @@
     <string name="customization_preview_subtitle">A sua biblioteca, ajustada a si</string>
     <plurals name="customization_games_per_row">
         <item quantity="one">%1$d jogo por linha</item>
+        <item quantity="many">%1$d jogos por linha</item>
         <item quantity="other">%1$d jogos por linha</item>
     </plurals>
     <string name="customization_home_background">Fundo do ecrã principal</string>
@@ -1326,7 +1327,7 @@ Selecione Qt para usar o dispositivo de saída padrão do seu sistema operaciona
 Talvez não seja possível reproduzir todos os formatos de áudio.</string>
     <string name="core_help_core_ppu_threads" formatted="false">Afeta a quantidade máxima de threads PPU em execução simultaneamente, o valor 1 tem compatibilidade muito baixa com jogos.
 2 é o padrão; se não tiver certeza, não modifique esta configuração.
-Aviso: alterar este valor invalida o cache PPU/SPU compilado. A compilacao completa dos modulos sera repetida do zero no proximo inicio.</string>
+Aviso: alterar este valor invalida o cache PPU/SPU compilado. A compilação completa dos módulos será repetida do zero no próximo início.</string>
     <string name="core_help_video_output_scaling_mode" formatted="false">Filtragem final da imagem. O Nearest não aplica filtragem, o Bilinear suaviza a imagem e a Super Resolução FidelityFX aprimora as imagens ampliadas.
 Se o jogo estiver sendo renderizado em uma resolução interna inferior à resolução da janela, o FidelityFX cuidará do upscale.
 FidelityFX pode causar artefatos visuais.
@@ -1400,7 +1401,7 @@ Isso também afeta as capturas de tela.</string>
     <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">Permite o uso de buffers OpenGL clássicos que permitem ferramentas de captura para funcionar com RPCS3, por exemplo, RenderDoc.
 Também permite que o Vulkan use marcadores de depuração para capturas Renderdoc mais agradáveis.
 Se não tiver certeza, não use esta opção.</string>
-    <string name="core_help_video_renderer" formatted="false">Vulkan é o renderizador compatível no Android. OpenGL não está disponível nesta compilação.</string>
+    <string name="core_help_video_renderer" formatted="false">Vulkan é recomendado no Android. OpenGL usa a camada de compatibilidade OpenGL ES e pode ajudar com problemas gráficos específicos de alguns jogos.</string>
     <string name="core_help_video_resolution" formatted="false">Esta configuração será ignorada se a Escala de Resolução estiver definida para algo diferente de 100%!
 Deixe isso em 1280x720. Todo jogo PS3 é compatível com esta resolução.
 Use 1920x1080 apenas se o jogo suportar.

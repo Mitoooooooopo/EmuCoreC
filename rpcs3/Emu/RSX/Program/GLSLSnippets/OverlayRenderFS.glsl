@@ -8,15 +8,15 @@ R"(
 #define USE_UBO 1
 #endif
 
-#define SAMPLER_MODE_NONE      0
-#define SAMPLER_MODE_FONT2D    1
-#define SAMPLER_MODE_FONT3D    2
-#define SAMPLER_MODE_TEXTURE2D 3
+#define SAMPLER_MODE_NONE      0u
+#define SAMPLER_MODE_FONT2D    1u
+#define SAMPLER_MODE_FONT3D    2u
+#define SAMPLER_MODE_TEXTURE2D 3u
 
-#define SDF_DISABLED  0
-#define SDF_ELLIPSE   1
-#define SDF_BOX       2
-#define SDF_ROUND_BOX 3
+#define SDF_DISABLED  0u
+#define SDF_ELLIPSE   1u
+#define SDF_BOX       2u
+#define SDF_ROUND_BOX 3u
 
 #ifdef VULKAN
 	layout(set=0, binding=0) uniform sampler2D fs0;
@@ -63,8 +63,8 @@ struct config_t
 config_t unpack_fragment_options()
 {
 	config_t result;
-	result.clip_fragments = bitfieldExtract(fragment_config, 0, 1) != 0;
-	result.use_pulse_glow = bitfieldExtract(fragment_config, 1, 1) != 0;
+	result.clip_fragments = bitfieldExtract(fragment_config, 0, 1) != 0u;
+	result.use_pulse_glow = bitfieldExtract(fragment_config, 1, 1) != 0u;
 	result.sampler_mode = bitfieldExtract(fragment_config, 2, 2);
 	result.sdf = bitfieldExtract(fragment_config, 4, 2);
 	return result;
@@ -137,12 +137,11 @@ vec4 blur_sample(sampler2D tex, vec2 coord, vec2 tex_offset)
 	coords[7] = coord + vec2(0., tex_offset.y);
 	coords[8] = coord + tex_offset;
 
-	float weights[9] =
-	{
+	float weights[9] = float[9](
 		1., 2., 1.,
 		2., 4., 2.,
 		1., 2., 1.
-	};
+	);
 
 	vec4 blurred = vec4(0.);
 	for (int n = 0; n < 9; ++n)
@@ -156,10 +155,10 @@ vec4 blur_sample(sampler2D tex, vec2 coord, vec2 tex_offset)
 vec4 sample_image(sampler2D tex, vec2 coord, float blur_strength)
 {
 	vec4 original = texture(tex, coord);
-	if (blur_strength == 0) return original;
+	if (blur_strength == 0.0) return original;
 
 	vec2 constraints = 1.f / vec2(640, 360);
-	vec2 res_offset = 1.f / textureSize(fs0, 0);
+	vec2 res_offset = 1.f / vec2(textureSize(fs0, 0));
 	vec2 tex_offset = max(res_offset, constraints);
 
 	// Sample triangle pattern and average

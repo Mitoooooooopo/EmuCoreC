@@ -1400,7 +1400,7 @@ Approximate ist eine viel schnellere Möglichkeit, Okklusionsdaten zu generieren
     <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">Ermöglicht die Verwendung klassischer OpenGL-Puffer, sodass Erfassungstools mit RPCS3 arbeiten können, z. B. RenderDoc.
 Ermöglicht Vulkan außerdem die Verwendung von Debug-Markern für schönere Renderdoc-Erfassungen.
 Wenn Sie unsicher sind, verwenden Sie diese Option nicht.</string>
-    <string name="core_help_video_renderer" formatted="false">Unter Android wird der Vulkan-Renderer unterstützt. OpenGL ist in diesem Build nicht verfügbar.</string>
+    <string name="core_help_video_renderer" formatted="false">Unter Android wird Vulkan empfohlen. OpenGL verwendet die OpenGL-ES-Kompatibilitätsschicht und kann bei spielspezifischen Grafikproblemen helfen.</string>
     <string name="core_help_video_resolution" formatted="false">Diese Einstellung wird ignoriert, wenn die Auflösungsskala auf etwas anderes als 100 % eingestellt ist!
 Belassen Sie dies bei 1280x720. Jedes PS3-Spiel ist mit dieser Auflösung kompatibel.
 Verwenden Sie 1920 x 1080 nur, wenn das Spiel dies unterstützt.

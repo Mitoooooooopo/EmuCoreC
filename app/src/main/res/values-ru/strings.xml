@@ -1402,7 +1402,7 @@ FidelityFX на данный момент не работает со стере�
     <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">Позволяет использовать классические буферы OpenGL, что позволяет захватывать инструменты для работы с RPCS3, например RenderDoc.
 Также позволяет Vulkan использовать маркеры отладки для более качественного захвата Renderdoc.
 Если вы не уверены, не используйте эту опцию.</string>
-    <string name="core_help_video_renderer" formatted="false">На Android поддерживается рендерер Vulkan. OpenGL в этой сборке недоступен.</string>
+    <string name="core_help_video_renderer" formatted="false">На Android рекомендуется Vulkan. OpenGL использует слой совместимости OpenGL ES и может помочь с графическими проблемами в отдельных играх.</string>
     <string name="core_help_video_resolution" formatted="false">Этот параметр будет игнорироваться, если для шкалы разрешения установлено любое значение, отличное от 100 %!
 Оставьте это значение 1280x720. Любая игра для PS3 совместима с этим разрешением.
 Используйте разрешение 1920x1080, только если игра его поддерживает.

@@ -1400,7 +1400,7 @@ PS3 नेटिव का उपयोग केवल तभी किया �
     <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">क्लासिक ओपनजीएल बफ़र्स के उपयोग को सक्षम करता है जो कैप्चरिंग टूल को आरपीसीएस3 जैसे रेंडरडॉक के साथ काम करने की अनुमति देता है।
 वल्कन को अच्छे रेंडरडॉक कैप्चर के लिए डिबग मार्कर का उपयोग करने की भी अनुमति देता है।
 यदि अनिश्चित हो तो इस विकल्प का उपयोग न करें।</string>
-    <string name="core_help_video_renderer" formatted="false">Android पर Vulkan समर्थित रेंडरर है। इस बिल्ड में OpenGL उपलब्ध नहीं है।</string>
+    <string name="core_help_video_renderer" formatted="false">Android पर Vulkan अनुशंसित है। OpenGL, OpenGL ES संगतता परत का उपयोग करता है और कुछ गेम की ग्राफ़िक्स समस्याओं में मदद कर सकता है।</string>
     <string name="core_help_video_resolution" formatted="false">यदि रिज़ॉल्यूशन स्केल 100% के अलावा किसी अन्य पर सेट है तो इस सेटिंग को अनदेखा कर दिया जाएगा!
 इसे 1280x720 पर छोड़ें। प्रत्येक PS3 गेम इस रिज़ॉल्यूशन के अनुकूल है।
 1920x1080 का उपयोग केवल तभी करें जब गेम इसका समर्थन करता हो।

@@ -432,10 +432,10 @@ private fun CoreEnumRow(
 }
 
 internal fun userFacingCoreVariants(path: String, variants: List<String>): List<String> = when (path) {
-    // Null produces no image, while this Android target does not compile the
-    // desktop OpenGL backend. Never offer a renderer that cannot be created.
+    // Null produces no image. Vulkan and the Android OpenGL ES compatibility
+    // backend are both compiled and may be selected by the player.
     "Video@@Renderer" -> variants.filterNot {
-        it.equals("Null", ignoreCase = true) || it.equals("OpenGL", ignoreCase = true)
+        it.equals("Null", ignoreCase = true)
     }
     else -> variants
 }
@@ -511,26 +511,29 @@ private fun coreFilterChipColors() = FilterChipDefaults.filterChipColors(
 @Composable
 private fun localizedCoreLabel(raw: String): String {
     val context = LocalContext.current
+    val resources = LocalResources.current
+    val locale = resources.configuration.locales[0]
     val resourceName = remember(raw) { coreLabelResourceName(raw) }
-    val resourceId = remember(resourceName) {
+    val resourceId = remember(resourceName, resources) {
         CoreSettingsTreeCache.resourceId(resourceName) {
-            context.resources.getIdentifier(resourceName, "string", context.packageName)
+            resources.getIdentifier(resourceName, "string", context.packageName)
         }
     }
-    if (resourceId == 0) return raw.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+    if (resourceId == 0) return raw.replaceFirstChar { if (it.isLowerCase()) it.titlecase(locale) else it.toString() }
     val localized = stringResource(resourceId)
-    return remember(localized) {
-        localized.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+    return remember(localized, locale) {
+        localized.replaceFirstChar { if (it.isLowerCase()) it.titlecase(locale) else it.toString() }
     }
 }
 
 @Composable
 private fun localizedCoreHelp(path: String): String {
     val context = LocalContext.current
+    val resources = LocalResources.current
     val resourceName = remember(path) { coreHelpResourceName(path) }
-    val resourceId = remember(resourceName) {
+    val resourceId = remember(resourceName, resources) {
         CoreSettingsTreeCache.resourceId(resourceName) {
-            context.resources.getIdentifier(resourceName, "string", context.packageName)
+            resources.getIdentifier(resourceName, "string", context.packageName)
         }
     }
     check(resourceId != 0) { "Missing localized RPCS3 help for $path" }

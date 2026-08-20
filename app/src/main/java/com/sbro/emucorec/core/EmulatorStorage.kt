@@ -145,7 +145,29 @@ object EmulatorStorage {
             }
         }
 
+        installBundledResources(context, ps3Root)
+
         purgeOrphanedInstallStaging(context)
+    }
+
+    private fun installBundledResources(context: Context, ps3Root: File) {
+        copyAssetTree(context, "Icons", File(ps3Root, "config/Icons"))
+    }
+
+    private fun copyAssetTree(context: Context, assetPath: String, destination: File) {
+        val children = context.assets.list(assetPath).orEmpty()
+        if (children.isNotEmpty()) {
+            destination.mkdirs()
+            children.forEach { child ->
+                copyAssetTree(context, "$assetPath/$child", File(destination, child))
+            }
+            return
+        }
+
+        destination.parentFile?.mkdirs()
+        context.assets.open(assetPath).use { input ->
+            destination.outputStream().use { output -> input.copyTo(output) }
+        }
     }
 
     /**

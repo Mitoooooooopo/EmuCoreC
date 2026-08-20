@@ -181,7 +181,7 @@ namespace glsl
 		if (props.require_clip_plane_functions)
 		{
 			OS <<
-				"#define CLIP_PLANE_DISABLED 1\n"
+				"#define CLIP_PLANE_DISABLED 1u\n"
 				"#define is_user_clip_enabled(idx) (_get_bits(get_user_clip_config(), idx * 2, 2) != CLIP_PLANE_DISABLED)\n"
 				"#define user_clip_factor(idx) (float(_get_bits(get_user_clip_config(), idx * 2, 2)) - 1.f)\n\n";
 		}

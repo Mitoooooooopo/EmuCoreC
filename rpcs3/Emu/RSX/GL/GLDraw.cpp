@@ -230,11 +230,15 @@ void GLGSRender::update_draw_state()
 	case rsx::primitive_type::line_loop:
 	case rsx::primitive_type::line_strip:
 		gl_state.line_width(rsx::method_registers.line_width() * resolution_scaling_config.scale_factor());
+#ifndef RSX_GLES
 		gl_state.enable(rsx::method_registers.line_smooth_enabled(), GL_LINE_SMOOTH);
+#endif
 		break;
 	default:
+#ifndef RSX_GLES
 		gl_state.enable(rsx::method_registers.poly_offset_point_enabled(), GL_POLYGON_OFFSET_POINT);
 		gl_state.enable(rsx::method_registers.poly_offset_line_enabled(), GL_POLYGON_OFFSET_LINE);
+#endif
 		gl_state.enable(rsx::method_registers.poly_offset_fill_enabled(), GL_POLYGON_OFFSET_FILL);
 
 		// offset_bias is the constant factor, multiplied by the implementation factor R
@@ -671,6 +675,14 @@ void GLGSRender::bind_texture_env()
 
 void GLGSRender::emit_geometry(u32 sub_index)
 {
+	#ifdef RSX_GLES
+	// Attribute errors to the draw itself instead of letting a later transfer
+	// or present operation consume and obscure them.
+	while (glGetError() != GL_NO_ERROR)
+	{
+	}
+	#endif
+
 	const auto do_heap_cleanup = [this]()
 	{
 		if (manually_flush_ring_buffers)
@@ -822,9 +834,16 @@ void GLGSRender::emit_geometry(u32 sub_index)
 		const u32 index_offset = std::get<1>(*upload_info.index_info);
 		const bool restarts_valid = gl::is_primitive_native(draw_call.primitive) && !draw_call.is_disjoint_primitive;
 
-		if (gl_state.enable(restarts_valid && rsx::method_registers.restart_index_enabled(), GL_PRIMITIVE_RESTART))
+		if (gl_state.enable(restarts_valid && rsx::method_registers.restart_index_enabled(),
+#ifdef RSX_GLES
+			GL_PRIMITIVE_RESTART_FIXED_INDEX))
+#else
+			GL_PRIMITIVE_RESTART))
+#endif
 		{
+#ifndef RSX_GLES
 			glPrimitiveRestartIndex((index_type == GL_UNSIGNED_SHORT) ? 0xffff : 0xffffffff);
+#endif
 		}
 
 		m_index_ring_buffer->bind();
@@ -861,6 +880,18 @@ void GLGSRender::emit_geometry(u32 sub_index)
 			glMultiDrawElements(draw_mode, counts, index_type, offsets, static_cast<GLsizei>(draw_count));
 		}
 	}
+
+	#ifdef RSX_GLES
+	if (const GLenum error = glGetError(); error != GL_NO_ERROR)
+	{
+		static atomic_t<u32> reported_draw_errors = 0;
+		if (reported_draw_errors.fetch_add(1) < 32)
+		{
+			rsx_log.error("OpenGL ES draw failed: error=0x%x mode=0x%x vertices=%u indexed=%s",
+				error, draw_mode, upload_info.vertex_draw_count, upload_info.index_info ? "true" : "false");
+		}
+	}
+	#endif
 
 	m_frame_stats.draw_exec_time += m_profiler.duration();
 }

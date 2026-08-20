@@ -1400,7 +1400,7 @@ Yaklaşık, PS3\'ün oluşturacağı verilerle her zaman eşleşmeyebilecek tık
     <string name="core_help_video_renderdoc_compatibility_mode" formatted="false">Yakalama araçlarının RPCS3 (ör. RenderDoc) ile çalışmasına olanak tanıyan klasik OpenGL arabelleklerinin kullanımına olanak tanır.
 Ayrıca Vulkan\'ın daha güzel Renderdoc yakalamaları için hata ayıklama işaretçilerini kullanmasına olanak tanır.
 Emin değilseniz bu seçeneği kullanmayın.</string>
-    <string name="core_help_video_renderer" formatted="false">Android üzerinde desteklenen oluşturucu Vulkan’dır. OpenGL bu yapıda kullanılamaz.</string>
+    <string name="core_help_video_renderer" formatted="false">Android’de Vulkan önerilir. OpenGL, OpenGL ES uyumluluk katmanını kullanır ve bazı oyunlara özgü grafik sorunlarında yardımcı olabilir.</string>
     <string name="core_help_video_resolution" formatted="false">Çözünürlük Ölçeği %100 dışında bir değere ayarlanırsa bu ayar göz ardı edilecektir!
 Bunu 1280x720\'de bırakın. Her PS3 oyunu bu çözünürlükle uyumludur.
 Yalnızca oyun destekliyorsa 1920x1080\'i kullanın.

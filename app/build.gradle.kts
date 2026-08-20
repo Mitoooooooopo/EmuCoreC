@@ -213,7 +213,9 @@ android {
         getByName("main") {
             java.setSrcDirs(listOf("src/main/java"))
             res.setSrcDirs(listOf("src/main/res"))
-            assets.setSrcDirs(listOf("src/main/assets"))
+            // RPCS3 native overlays resolve resources from the runtime tree,
+            // so package the upstream Icons directory for first-run extraction.
+            assets.setSrcDirs(listOf("src/main/assets", "../bin"))
             jniLibs.setSrcDirs(listOf("src/main/jniLibs"))
         }
     }

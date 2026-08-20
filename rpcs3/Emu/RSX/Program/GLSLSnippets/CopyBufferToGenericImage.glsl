@@ -55,24 +55,24 @@ layout(%push_block) uniform UnpackConfiguration
 uint getTexelOffset()
 {
 	const ivec2 coords = ivec2(gl_FragCoord.xy);
-	return coords.y * src_pitch + coords.x;
+	return uint(coords.y) * src_pitch + uint(coords.x);
 }
 
 // Decoders. Beware of multi-wide swapped types (e.g swap(16x2) != swap(32x1))
 uint readUint8(const in uint address)
 {
-	const uint block = address / 4;
-	const uint offset = address % 4;
+	const uint block = address / 4u;
+	const uint offset = address % 4u;
 	return bitfieldExtract(data[block], int(offset) * 8, 8);
 }
 
 uint readUint16(const in uint address)
 {
-	const uint block = address / 2;
-	const uint offset = address % 2;
+	const uint block = address / 2u;
+	const uint offset = address % 2u;
 	const uint value = bitfieldExtract(data[block], int(offset) * 16, 16);
 
-	if (swap_bytes != 0)
+	if (swap_bytes != 0u)
 	{
 		return bswap_u16(value);
 	}
@@ -83,7 +83,7 @@ uint readUint16(const in uint address)
 uint readUint32(const in uint address)
 {
 	const uint value = data[address];
-	return (swap_bytes != 0) ? bswap_u32(value) : value;
+	return (swap_bytes != 0u) ? bswap_u32(value) : value;
 }
 
 uvec2 readUint24_8(const in uint address)
@@ -107,31 +107,31 @@ ivec2 readInt8x2(const in uint address)
 	return raw - (ivec2(greaterThan(raw, ivec2(127))) * 256);
 }
 
-#define readFixed8(address) readUint8(address) / 255.f
-#define readFixed8x2(address) readUint8x2(address) / 255.f
-#define readFixed8x2Snorm(address) readInt8x2(address) / 127.f
+#define readFixed8(address) float(readUint8(address)) / 255.f
+#define readFixed8x2(address) vec2(readUint8x2(address)) / 255.f
+#define readFixed8x2Snorm(address) vec2(readInt8x2(address)) / 127.f
 
 vec4 readFixed8x4(const in uint address)
 {
 	const uint raw = readUint32(address);
-	return uvec4(
+	return vec4(uvec4(
 		bitfieldExtract(raw, 0, 8),
 		bitfieldExtract(raw, 8, 8),
 		bitfieldExtract(raw, 16, 8),
 		bitfieldExtract(raw, 24, 8)
-	) / 255.f;
+	)) / 255.f;
 }
 
-#define readFixed16(address) readUint16(uint(address)) / 65535.f
-#define readFixed16x2(address) vec2(readFixed16(address * 2 + 0), readFixed16(address * 2 + 1))
-#define readFixed16x4(address) vec4(readFixed16(address * 4 + 0), readFixed16(address * 4 + 1), readFixed16(address * 4 + 2), readFixed16(address * 4 + 3))
+#define readFixed16(address) float(readUint16(uint(address))) / 65535.f
+#define readFixed16x2(address) vec2(readFixed16(address * 2u + 0u), readFixed16(address * 2u + 1u))
+#define readFixed16x4(address) vec4(readFixed16(address * 4u + 0u), readFixed16(address * 4u + 1u), readFixed16(address * 4u + 2u), readFixed16(address * 4u + 3u))
 
 #define readFloat16(address) unpackHalf2x16(readUint16(uint(address))).x
-#define readFloat16x2(address) vec2(readFloat16(address * 2 + 0), readFloat16(address * 2 + 1))
-#define readFloat16x4(address) vec4(readFloat16(address * 4 + 0), readFloat16(address * 4 + 1), readFloat16(address * 4 + 2), readFloat16(address * 4 + 3))
+#define readFloat16x2(address) vec2(readFloat16(address * 2u + 0u), readFloat16(address * 2u + 1u))
+#define readFloat16x4(address) vec4(readFloat16(address * 4u + 0u), readFloat16(address * 4u + 1u), readFloat16(address * 4u + 2u), readFloat16(address * 4u + 3u))
 
 #define readFloat32(address) uintBitsToFloat(readUint32(address))
-#define readFloat32x4(address) uintBitsToFloat(uvec4(readUint32(address * 4 + 0), readUint32(address * 4 + 1), readUint32(address * 4 + 2), readUint32(address * 4 + 3)))
+#define readFloat32x4(address) uintBitsToFloat(uvec4(readUint32(address * 4u + 0u), readUint32(address * 4u + 1u), readUint32(address * 4u + 2u), readUint32(address * 4u + 3u)))
 
 void main()
 {
@@ -203,30 +203,30 @@ void main()
 	// Packed color
 	case FMT_GL_RGB565:
 		utmp = readUint16(texel_address);
-		outColor.b = bitfieldExtract(utmp, 0, 5) / 31.f;
-		outColor.g = bitfieldExtract(utmp, 5, 6) / 63.f;
-		outColor.r = bitfieldExtract(utmp, 11, 5) / 31.f;
+		outColor.b = float(bitfieldExtract(utmp, 0, 5)) / 31.f;
+		outColor.g = float(bitfieldExtract(utmp, 5, 6)) / 63.f;
+		outColor.r = float(bitfieldExtract(utmp, 11, 5)) / 31.f;
 		break;
 	case FMT_GL_BGR5_A1:
 		utmp = readUint16(texel_address);
-		outColor.b = bitfieldExtract(utmp, 0, 5) / 31.f;
-		outColor.g = bitfieldExtract(utmp, 5, 5) / 31.f;
-		outColor.r = bitfieldExtract(utmp, 10, 5) / 31.f;
-		outColor.a = bitfieldExtract(utmp, 15, 1) * 1.f;
+		outColor.b = float(bitfieldExtract(utmp, 0, 5)) / 31.f;
+		outColor.g = float(bitfieldExtract(utmp, 5, 5)) / 31.f;
+		outColor.r = float(bitfieldExtract(utmp, 10, 5)) / 31.f;
+		outColor.a = float(bitfieldExtract(utmp, 15, 1));
 		break;
 	case FMT_GL_RGB5_A1:
 		utmp = readUint16(texel_address);
-		outColor.a = bitfieldExtract(utmp, 0, 1) * 1.f;
-		outColor.b = bitfieldExtract(utmp, 1, 5) / 31.f;
-		outColor.g = bitfieldExtract(utmp, 6, 5) / 31.f;
-		outColor.r = bitfieldExtract(utmp, 11, 5) / 31.f;
+		outColor.a = float(bitfieldExtract(utmp, 0, 1));
+		outColor.b = float(bitfieldExtract(utmp, 1, 5)) / 31.f;
+		outColor.g = float(bitfieldExtract(utmp, 6, 5)) / 31.f;
+		outColor.r = float(bitfieldExtract(utmp, 11, 5)) / 31.f;
 		break;
 	case FMT_GL_RGBA4:
 		utmp = readUint16(texel_address);
-		outColor.b = bitfieldExtract(utmp, 0, 4) / 15.f;
-		outColor.g = bitfieldExtract(utmp, 4, 4) / 15.f;
-		outColor.r = bitfieldExtract(utmp, 8, 4) / 15.f;
-		outColor.a = bitfieldExtract(utmp, 12, 4) / 15.f;
+		outColor.b = float(bitfieldExtract(utmp, 0, 4)) / 15.f;
+		outColor.g = float(bitfieldExtract(utmp, 4, 4)) / 15.f;
+		outColor.r = float(bitfieldExtract(utmp, 8, 4)) / 15.f;
+		outColor.a = float(bitfieldExtract(utmp, 12, 4)) / 15.f;
 		break;
 	}
 }

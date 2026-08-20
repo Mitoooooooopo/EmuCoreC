@@ -69,6 +69,16 @@ namespace gl
 
 	texture::texture(GLenum target, GLuint width, GLuint height, GLuint depth, GLuint mipmaps, GLubyte samples, GLenum sized_format, rsx::format_class format_class)
 	{
+#ifdef RSX_GLES
+		// GLES has no 1D texture target. Store RSX 1D images as 2D images with a
+		// single row so every later bind and texture operation uses a valid target.
+		if (target == GL_TEXTURE_1D)
+		{
+			target = GL_TEXTURE_2D;
+			height = depth = 1;
+		}
+#endif
+
 		// Upgrade targets for MSAA
 		if (samples > 1)
 		{
@@ -96,9 +106,13 @@ namespace gl
 		default:
 			fmt::throw_exception("Invalid image target 0x%X", target);
 		case GL_TEXTURE_1D:
+#ifdef RSX_GLES
+			fmt::throw_exception("Internal error: a 1D texture was not converted for GLES");
+#else
 			glTexStorage1D(target, mipmaps, storage_fmt, width);
 			height = depth = 1;
 			break;
+#endif
 		case GL_TEXTURE_2D:
 		case GL_TEXTURE_CUBE_MAP:
 			glTexStorage2D(target, mipmaps, storage_fmt, width, height);
