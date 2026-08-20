@@ -53,6 +53,9 @@ set(EMUCOREC_INPUT_SOURCES
 
 add_library(emucorec-core SHARED
     src/rpcsx-android.cpp
+    # Android OpenGL ES context ownership. This is compiled independently of
+    # the renderer while the desktop GL backend is being ported to GLES.
+    ${CMAKE_SOURCE_DIR}/rpcs3/Emu/RSX/GL/EGLAndroid.cpp
     ${EMUCOREC_INPUT_SOURCES}
     # rpcs3::get_version() and friends. Like Input/, this is compiled into the
     # `rpcs3` executable upstream, not into rpcs3_emu, so Android never gets it.
@@ -92,6 +95,8 @@ target_link_libraries(emucorec-core
     3rdparty::hidapi
     3rdparty::libusb
     android
+    EGL
+    GLESv3
     log
 )
 

@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "OpenGL.h"
 
+#ifdef __ANDROID__
+#include <EGL/egl.h>
+#endif
+
 #if defined(HAVE_WAYLAND)
 #include <EGL/egl.h>
 #endif
@@ -35,7 +39,7 @@ void gl::init()
 #undef WGL_PROC
 #undef OPENGL_PROC2
 #endif
-#ifdef __unix__
+#if defined(__unix__) && !defined(__ANDROID__)
 	glewExperimental = true;
 	glewInit();
 #endif
@@ -65,6 +69,11 @@ void gl::set_swapinterval(int interval)
 
 	//No existing drawable or missing swap extension, EGL?
 	rsx_log.error("Failed to set swap interval");
+#elif defined(__ANDROID__)
+	if (!eglSwapInterval(eglGetCurrentDisplay(), interval))
+	{
+		rsx_log.error("Failed to set EGL swap interval to %d (error=0x%x)", interval, eglGetError());
+	}
 #else
 	rsx_log.error("Swap control not implemented for this platform. Vsync options not available. (interval=%d)", interval);
 #endif
