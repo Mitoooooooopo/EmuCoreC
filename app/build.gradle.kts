@@ -161,7 +161,7 @@ android {
 
     defaultConfig {
         applicationId = "com.sbro.emucorec"
-        minSdk = 29
+        minSdk = 28
         targetSdk = 37
         versionCode = 14
         versionName = "0.0.5"
