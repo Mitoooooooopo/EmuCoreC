@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-android:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout with submodules
         uses: actions/checkout@v4
@@ -28,13 +28,55 @@ jobs:
       - name: Install NDK 29.0.14206865
         run: sdkmanager --install "ndk;29.0.14206865"
 
-      - name: Install CMake 3.30+
+      - name: Install CMake 3.30.5
         uses: jwlawson/actions-setup-cmake@v2
         with:
-          cmake-version: '3.30.x'
+          cmake-version: '3.30.5'
 
       - name: Install Ninja
         uses: seanmiddleditch/gha-setup-ninja@master
+
+      - name: Install MinGW-w64 to expected path
+        shell: pwsh
+        run: |
+          choco install mingw --version=13.2.0 -y
+          $target = "$env:LOCALAPPDATA\mingw"
+          New-Item -ItemType Directory -Force -Path $target | Out-Null
+          Copy-Item -Recurse -Force "C:\ProgramData\mingw64\mingw64" "$target\mingw64"
+
+      - name: Install Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Symlink Python to expected path
+        shell: pwsh
+        run: |
+          $pyDir = "$env:LOCALAPPDATA\Programs\Python\Python312"
+          New-Item -ItemType Directory -Force -Path $pyDir | Out-Null
+          Copy-Item (Get-Command python).Source "$pyDir\python.exe"
+
+      # --- Caches: keyed so unrelated app/UI changes hit cache and skip
+      # straight past the expensive native builds. ---
+
+      - name: Cache emucorec-core build (CMake+LLVM)
+        uses: actions/cache@v4
+        with:
+          path: app/build/emucorec-core-build
+          key: >-
+            core-${{ runner.os }}-
+            ${{ hashFiles('android/configure-core.cmd', '**/CMakeLists.txt', 'app/build.gradle.kts') }}-
+            ${{ hashFiles('rpcs3/**/*.h', 'rpcs3/**/*.cpp', 'android/**') }}
+          restore-keys: |
+            core-${{ runner.os }}-
+
+      - name: Cache FFmpeg build
+        uses: actions/cache@v4
+        with:
+          path: app/build/ffmpeg-android
+          key: ffmpeg-${{ runner.os }}-${{ hashFiles('android/build-ffmpeg.sh') }}
+          restore-keys: |
+            ffmpeg-${{ runner.os }}-
 
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -44,14 +86,48 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      # --- Fail fast: check every hardcoded assumption before the expensive
+      # native build steps run. ---
 
-      - name: Set ANDROID_NDK_HOME
-        run: echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/29.0.14206865" >> $GITHUB_ENV
+      - name: Pre-flight checks (fail fast before native build)
+        shell: pwsh
+        run: |
+          $errors = @()
+
+          if (-not (Test-Path "$env:LOCALAPPDATA\mingw\mingw64\bin\gcc.exe")) {
+            $errors += "MinGW gcc.exe not found at expected path"
+          }
+          if (-not (Test-Path "$env:LOCALAPPDATA\mingw\mingw64\bin\g++.exe")) {
+            $errors += "MinGW g++.exe not found at expected path"
+          }
+          if (-not (Test-Path "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe")) {
+            $errors += "Python 3.12 not found at expected path"
+          }
+          if (-not (Test-Path "C:\Program Files\Git\bin\bash.exe")) {
+            $errors += "Git Bash not found at expected path"
+          }
+          if (-not (Test-Path "android\build-ffmpeg.sh")) {
+            $errors += "android/build-ffmpeg.sh not found"
+          }
+          if (-not (Test-Path "android\configure-core.cmd")) {
+            $errors += "android/configure-core.cmd not found"
+          }
+          if (-not (Get-Command cmake -ErrorAction SilentlyContinue)) {
+            $errors += "cmake not found on PATH"
+          }
+          if (-not (Get-Command ninja -ErrorAction SilentlyContinue)) {
+            $errors += "ninja not found on PATH"
+          }
+
+          if ($errors.Count -gt 0) {
+            Write-Host "::error::Pre-flight checks failed:"
+            $errors | ForEach-Object { Write-Host "::error::  - $_" }
+            exit 1
+          }
+          Write-Host "All pre-flight checks passed."
 
       - name: Build APK
-        run: ./gradlew :app:assembleDebug --stacktrace
+        run: .\gradlew.bat :app:assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
